@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+    <style>
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #nav_sj {
+            width: 100%;
+            height: 10%;
+            background: rgb(67, 190, 123);
+            display: inline-flex;
+            position: fixed;
+            top: 90%;
+        }
+
+        #nav_sj div {
+            width: 20%;
+            padding: 10px;
+            font-size: 8px;
+            color: white;
+            text-align: center;
+        }
+
+        #name_sj {
+            width: 100%;
+            height: 12%;
+            display: inline-flex;
+        }
+
+        #store_name_sj {
+            text-align: center;
+            font-size: 25px;
+            width: 70%;
+        }
+
+        #market_name_sj {
+            text-align: center;
+            font-size: 20px;
+            width: 30%;
+        }
+
+        #sns_sj {
+            width: 100%;
+            height: 9%;
+            display: inline-flex;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #menu_sj {
+            width: 100%;
+            height: 12%;
+            display: inline-flex;
+        }
+
+        #stamp_sj {
+            width: 100%;
+            height: 33%;
+
+        }
+
+        #stamp_infor_sj {
+            width: 100%;
+            height: 11%;
+
+        }
+
+        p {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        #button_sj {
+            width: 100%;
+            height: 10%;
+            background-color: orangered;
+            border-color: orangered;
+            color: white;
+            font-size: 25px;
+        }
+
+        #yesGood_Button_sj {
+            display: none;
+        }
+
+        #goodCount_sj {
+            font-size: 25px;
+        }
+
+        #sns_sj img,
+        #sns_sj p {
+            margin-left: 6%;
+        }
+
+        #menu_sj p {
+            width: 33.333%;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        #fiveControls_sj,
+        #tenControls_sj {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        #tenStamp_sj {
+            width: 100%;
+            height: 100%;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        #fiveStamp_sj {
+            width: 100%;
+            height: 100%;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .five_sj,
+        .ten_sj {
+            display: inline-flex;
+            width: 15%;
+            height: 55px;
+            border-radius: 200px;
+            margin-left: 3%;
+            background-color: rgb(202, 199, 199);
+            text-align: center;
+            color: white;
+            font-size: 30px;
+            line-height: 55px;
+
+        }
+
+        #tenStamp_top_sj,
+        #tenStamp_bottom_sj {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="name_sj">
+        <p id="store_name_sj"><%= result[0].user_id %></p>
+        <p id="market_name_sj"><%= result[0].market_name %></p>
+    </div>
+    <div id="sns_sj">
+        <img id="noGood_Button_sj" src="/images/noGood.png" width="16%" height="auto">
+        <img id="yesGood_Button_sj" src="/images/yesGood.png" width="16%" height="auto">
+        <p id="goodCount_sj">215</p>
+        <img src="/images/ka.png" width="16%" height="auto">
+        <img src="/images/face.png" width="16%" height="auto">
+    </div>
+    <div id="menu_sj">
+        <p>쿠폰</p>
+        <p>상점 정보</p>
+        <p>댓글</p>
+    </div>
+    <div id="stamp_sj">
+
+        <div id="tenControls_sj">
+            <div id="tenStamp_sj">
+
+                <div id="tenStamp_top_sj">
+                    <div id="stamp1_sj1" class="ten_sj">1</div>
+                    <div id="stamp2_sj2" class="ten_sj">2</div>
+                    <div id="stamp3_sj3" class="ten_sj">3</div>
+                    <div id="stamp4_sj4" class="ten_sj">4</div>
+                    <div id="stamp5_sj5" class="ten_sj">5</div>
+                </div>
+
+                <div id="tenStamp_bottom_sj">
+                    <div id="stamp1_sj" class="ten_sj">6</div>
+                    <div id="stamp2_sj" class="ten_sj">7</div>
+                    <div id="stamp3_sj" class="ten_sj">8</div>
+                    <div id="stamp4_sj" class="ten_sj">9</div>
+                    <div id="stamp5_sj" class="ten_sj">10</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="fiveControls_sj">
+
+            <div id="fiveStamp_sj">
+                <div id="stamp1_sj" class="five_sj">1</div>
+                <div id="stamp2_sj" class="five_sj">2</div>
+                <div id="stamp3_sj" class="five_sj">3</div>
+                <div id="stamp4_sj" class="five_sj">4</div>
+                <div id="stamp5_sj" class="five_sj">5</div>
+            </div>
+        </div>
+
+    </div>
+    <div id="stamp_infor_sj">
+        <p>기준:5000원 이상</p>
+        <p>보상:<%= result[0].stamp_reward %></p>
+    </div>
+
+    <button id="button_sj">삭제</button>
+    <div id="nav_sj">
+        <div id="coupon_sj">
+            <img src="/images/coupon.png" width="60%">
+            <br/>쿠폰</div>
+        <div id="search_sj">
+            <img src="/images/search.png" width="60%">
+            <br/>서울 시장</div>
+        <div id="location_sj">
+            <img src="/images/location.png" width="60%">
+            <br/>주변 가맹점</div>
+        <div id="myStamp_sj">
+            <img src="/images/stamp.png" width="60%">
+            <br/>내 스탬프</div>
+        <div id="my_sj">
+            <img src="/images/my.png" width="60%">MyPage</div>
+    </div>
+
+    <script>
+        coupon();
+        var good = document.getElementById('goodCount_sj');
+        $('#noGood_Button_sj').click(function () {
+            $(this).css('display', 'none');
+            $('#yesGood_Button_sj').css('display', 'block');
+            good.innerHTML = "216";
+        })
+        $('#yesGood_Button_sj').click(function () {
+            $(this).css('display', 'none');
+            $('#noGood_Button_sj').css('display', 'block');
+            good.innerHTML = "215";
+        })
+
+
+        function coupon() {
+
+            var reset_stamp_count = 0;
+            var stamp_count = '<%= result[0].stamp_count %>';
+            var market_name = '<%= result[0].market_name %>';
+            var user_id = '<%= result[0].user_id %>';
+            var stamp_standard = '<%= result[0].stamp_standard %>';
+            var new_stamp_count = parseInt(stamp_count) + 1;
+            if (parseInt(stamp_standard) >= parseInt(new_stamp_count)) {
+                var data = {
+                    'stamp_count': new_stamp_count,
+                    'market_name': market_name,
+                    'user_id': user_id
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: '/aboutstamp_count',
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    cache: false,
+                    dataType: 'json',
+                    data: data,
+                    success: function (result) {
+                        if (result['result'] == 'success') {
+                            alert('1');
+                            $(window).attr('location', '/main');
+                        }
+                    },
+                    error: function (error) {
+                        console.log('error');
+                    }
+                });
+            }
+            else {
+                var data = {
+                    'stamp_count': reset_stamp_count,
+                    'market_name': market_name,
+                    'user_id': user_id
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: '/reset_aboutstamp_count',
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    cache: false,
+                    dataType: 'json',
+                    data: data,
+                    success: function (result) {
+                        if (result['result'] == 'successs') {
+                            alert('2');
+                            $(window).attr('location', '/main');
+                        }
+                    },
+                    error: function (error) {
+                        console.log('error');
+                    }
+                });
+            }
+
+
+            var back_number = prompt("배경테마 선택 1=과일 2=채소", "");
+            if (back_number == 1) {
+                $('#stamp_sj').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
+            }
+            else if (back_number == 2) {
+                $('#stamp_sj').css({ "background": "url(/images/backSample2.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
+            }
+            if (stamp_standard == 0) {
+                $('#fiveControls_sj').css('display', 'table');
+                for (var i = 0; i < stamp_count; i++) {
+                    var check = document.getElementsByClassName('five_sj')[i];
+                    check.style.backgroundColor = "#232323";
+                }
+            }
+            
+            if (stamp_standard== 1) {
+                $('#tenControls_sj').css('display', 'table');
+                for (var i = 0; i < stamp_count; i++) {
+                    var check = document.getElementsByClassName('ten_sj')[i];
+                    check.style.backgroundColor = "#232323";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

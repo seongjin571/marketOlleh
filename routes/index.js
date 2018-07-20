@@ -8,15 +8,18 @@ var conn = mysql.createConnection(dbconfig);
 router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
+// router.get('/coupon', function(req, res) {
+//   res.render('coupon', { title: 'Express' });
+// });
 
-router.get('/main', function(req, res) {
+router.get('/coupon', function(req, res) {
   var sql = 'select * from `stamp`';
   conn.query(sql, function(error, result){
     if(error){
       console.log(error);
     }else{
-      res.render('main', {
-        title: 'main',
+      res.render('coupon', {
+        title: 'coupon',
         result : result
       });
     }
