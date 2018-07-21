@@ -4,8 +4,9 @@
             height: 100%;
             padding: 0;
             margin: 0;
-            overflow: hidden;
+            /* overflow: hidden; */
         }
+    
 
         #nav_sj {
             width: 100%;
@@ -15,7 +16,7 @@
             position: fixed;
             top: 90%;
         }
-
+        
         #nav_sj div {
             width: 20%;
             padding: 10px;
@@ -28,6 +29,8 @@
             width: 100%;
             height: 12%;
             display: inline-flex;
+            position: fixed;
+            background-color: white;
         }
 
         #store_name_sj {
@@ -48,16 +51,24 @@
             display: inline-flex;
             padding: 10px;
             text-align: center;
+            position: fixed;
+            top: 12%;
+            background-color: white;
         }
 
         #menu_sj {
             width: 100%;
             height: 12%;
             display: inline-flex;
+            position: fixed;
+            top: 24%;
+            background-color: white;
         }
         #stamp_menu_sj{
             width: 100%;
             height: 54%;
+            position: fixed;
+            top: 36%;
         }
         #stamp_sj {
             width: 100%;
@@ -146,6 +157,10 @@
         }
         #store_detail_sj,#store_review_sj{
             display: none;
+            position: absolute;
+            top: 36%;
+            z-index: -1;
+            margin-bottom: 12%;
         }
         .review_div_sj{
             width: 90%;
@@ -157,6 +172,18 @@
             padding-top: 5px;
             padding-bottom: 5px;
             /* color: white; */
+        }
+        #review_button_sj{
+            width: 80%;
+            margin: 20px 0;
+            margin-left: 10%;
+            height:45px;
+           
+            background-color:rgb(67, 190, 123);
+            border-color: rgb(67, 190, 123);
+            border-radius: 5px;
+            color: white;
+            font-size: 25px;
         }
         .review_content_sj{
             width: 80%;
