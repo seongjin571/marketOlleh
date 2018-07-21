@@ -56,7 +56,7 @@ function coupon_count() {
                 if (result['result'] == 'success') {
                     alert('1');
                     alert(stamp_count);
-                    $(window).attr('location', '/main');
+                    $(window).attr('location', '/myStamp');
                 }
             },
             error: function (error) {
@@ -80,7 +80,7 @@ function coupon_count() {
             success: function (result) {
                 if (result['result'] == 'successs') {
                     alert('2');
-                    $(window).attr('location', '/main');
+                    $(window).attr('location', '/myStamp');
                 }
             },
             error: function (error) {
