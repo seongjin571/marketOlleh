@@ -37,6 +37,7 @@
             display: inline-flex;
             position: fixed;
             top: 90%;
+            z-index: 1;
         }
         
         #nav_sj div {
@@ -53,6 +54,7 @@
             display: inline-flex;
             position: fixed;
             background-color: white;
+            z-index: 1;
         }
 
         #store_name_sj {
@@ -80,6 +82,7 @@
             position: fixed;
             top: 12%;
             background-color: white;
+            z-index: 1;
         }
 
         #menu_sj {
@@ -90,6 +93,7 @@
             top: 24%;
             background-color: white;
             line-height: 70px;
+            z-index: 1;
         }
         #stamp_menu_sj{
             width: 100%;
@@ -202,7 +206,7 @@
             display: none;
             position: absolute;
             top: 36%;
-            z-index: -1;
+          
             margin-bottom: 12%;
         }
         .review_div_sj{
@@ -250,9 +254,29 @@
             margin-bottom: 20px;
         }
         #review_write_sj{
+            width: 100%;
             display: none;
+            position: absolute;
+            top: 36%;
         }
         #write_button_div_sj{
+            width: 100%;
             display: inline-flex;
+        }
+        textarea{
+            width: 80%;
+            margin-left: 10%;
+            font-size: 23px;
+        }
+        #write_button_div_sj button{
+            width: 35%;
+            height: 50px;
+            /* background-color:  */
+            background-color:rgb(67, 190, 123);
+            border-color: rgb(67, 190, 123);
+            border-radius: 5px;
+            color: white;
+            font-size: 25px;
+            margin-top: 20px;
         }
    
