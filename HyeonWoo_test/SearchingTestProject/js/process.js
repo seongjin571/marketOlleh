@@ -9,3 +9,20 @@ for(var i=0; i<test2.length; i++){
 function addText(event){
 	text_inner.value += this.innerText+" / ";
 }
+
+// function navControl(event){
+// 	this.hidden = true;
+// 	console.log(this);
+// 	console.log(this.hidden);
+// }
+
+function navControl(event){
+	var booleanB = Boolean(Searching.hidden);
+	Searching.hidden = !booleanB;
+	Goomap.hidden = booleanB;
+}
+
+navControl();
+//////////////////////addEventListener//////////////////////
+
+document.getElementById('navControlButton').addEventListener('click', navControl, false);
