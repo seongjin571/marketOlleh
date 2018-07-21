@@ -13,13 +13,13 @@ router.get('/', function(req, res) {
 //   res.render('coupon', { title: 'Express' });
 // });
 
-router.get('/coupon', function(req, res) {
+router.get('/myStamp', function(req, res) {
   var sql = 'select * from `stamp`';
   conn.query(sql, function(error, result){
     if(error){
       console.log(error);
     }else{
-      res.render('coupon', {
+      res.render('myStamp', {
         title: 'coupon',
         result : result
       });
