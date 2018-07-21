@@ -60,4 +60,20 @@ router.post('/reset_aboutstamp_count',function(req,res,next){
 });
 
 
+router.post('/stamp_count_password',function(req,res,next){
+  var user_id = req.body.user_id;
+  var market_name = req.body.market_name;
+  var sql = 'select * from stamp where user_id =? and market_name = ?';
+  conn.query(sql,[user_id,market_name],function(error,results,fields){
+    if(error){
+      console.log('stamp_count_password error');
+    }else{
+      res.send({
+        password : results[0].stamp_password,
+        result : 'success'
+      });
+    }
+  })
+});
+
 module.exports = router;

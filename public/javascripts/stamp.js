@@ -38,9 +38,37 @@ $('#yesGood_Button_sj').click(function () {
 })
 
 $('#stamp_sj').click(function () { //쿠폰 클릭시 이벤트 발생
-    coupon_count();
+    stamp_count_password();
 })
+function stamp_count_password() {
+  var stamp_count_password_number = prompt("비밀번호를 입력하세요", "");
+  var data = {
+    'market_name': market_name,
+    'user_id': user_id
+  }
+  $.ajax({
+      type: 'POST',
+      url: '/stamp_count_password',
+      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      cache: false,
+      dataType: 'json',
+      data: data,
+      success: function (result) {
+          if (result['password'] == stamp_count_password_number) {
 
+              alert('비밀번호 일치');
+              coupon_count();
+          
+          }else{
+            alert('비밀번호 불일치');
+            $(window).attr('location', '/myStamp');
+          }
+      },
+      error: function (error) {
+          console.log('error');
+      }
+  });
+}
 function coupon_count() {
     if (parseInt(stamp_standard) >= parseInt(new_stamp_count)) {
         var data = {
@@ -57,8 +85,8 @@ function coupon_count() {
             data: data,
             success: function (result) {
                 if (result['result'] == 'success') {
-                    alert('1');
-                    alert(stamp_count);
+                    alert('스탬프추가');
+                    // alert(stamp_count);
                     $(window).attr('location', '/myStamp');
                 }
             },
@@ -82,7 +110,7 @@ function coupon_count() {
             data: data,
             success: function (result) {
                 if (result['result'] == 'successs') {
-                    alert('2');
+                    alert('초기화');
                     $(window).attr('location', '/myStamp');
                 }
             },
