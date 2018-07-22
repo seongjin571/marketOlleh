@@ -6,8 +6,8 @@ var conn = mysql.createConnection(dbconfig);
 
 
 /* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+router.get('/login', function(req, res) {
+  res.render('login', { title: 'Express' });
 });
 // router.get('/coupon', function(req, res) {
 //   res.render('coupon', { title: 'Express' });
