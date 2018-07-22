@@ -126,7 +126,7 @@ function coupon_count() {
             success: function (result) {
                 if (result['result'] == 'success') {
                     alert('스탬프추가');
-                    $(window).attr('location', '/marketOlleh/myStamp');
+                    $(window).attr('location', '/myStamp');
                 }
             },
             error: function (error) {
@@ -150,7 +150,7 @@ function coupon_count() {
             success: function (result) {
                 if (result['result'] == 'successs') {
                     alert('초기화');
-                    $(window).attr('location', '/marketOlleh/myStamp');
+                    $(window).attr('location', '/myStamp');
                 }
             },
             error: function (error) {
