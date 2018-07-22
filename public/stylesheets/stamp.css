@@ -279,4 +279,38 @@
             font-size: 25px;
             margin-top: 20px;
         }
-   
+        #password_number_div_sj{
+            display: none;
+            width: 80%;
+            margin-left: 10%;
+            height: 52%;
+            position: fixed;
+            top: 36%;
+            background-color: rgb(230, 247, 236);
+            border-radius: 5px;
+            font-size: 20px;
+            text-align: center;
+             line-height: 70px;
+        }
+        .password_line_sj{
+            display: inline-flex;
+            width: 100%;
+            height: 25%;
+        }
+        .password_line_sj div{
+            width: 33.33%;
+            height: 100%;
+            border-style: solid;
+            border-color: rgb(181, 233, 199);
+        }
+        #password_cancel{
+            background-color: rgb(241, 37, 37);
+            color: white;
+        }
+        #password_ok{
+            background-color: rgb(241, 37, 37);
+            color: white;
+        }
+        .password_number_sj:hover{
+            background-color: rgb(185, 184, 184);
+        }
