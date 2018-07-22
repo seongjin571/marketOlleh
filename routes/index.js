@@ -10,7 +10,7 @@ router.get('/login', function(req, res) {
   res.render('login', { title: 'Express' });
 });
 // router.get('/coupon', function(req, res) {
-//   res.render('coupon', { title: 'Express' });
+//     res.render('coupon', { title: 'Express' });
 // });
 
 router.get('/myStamp', function(req, res) {
