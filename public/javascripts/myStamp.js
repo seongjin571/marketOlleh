@@ -19,7 +19,6 @@ $('#go_store_review_sj').click(function () {
     $('#store_review_sj').show(200);
     $('#review_write_sj').hide(200);
     $('#password_number_div_sj').hide(200);
-    
 })
 $('#review_button_sj').click(function () {
     $('#store_review_sj').hide(200);

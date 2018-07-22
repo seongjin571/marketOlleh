@@ -39,10 +39,11 @@ $('#yesGood_Button_sj').click(function () {
     good.innerHTML = "215";
 })
 
-$('#stamp_sj').click(function () { //쿠폰 클릭시 이벤트 발생
+$('#stamp_sj').click(function () {
+    count=0; //쿠폰 클릭시 이벤트 발생
     $('#stamp_menu_sj').hide(200);
     $('#password_number_div_sj').show(200);
-    var count=0;
+    
     shuffle(password_number_array_sj);
     for(var i=0; i<10; i++){
         document.getElementsByClassName('password_number_sj')[i].innerHTML=password_number_array_sj[i];
