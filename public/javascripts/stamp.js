@@ -10,7 +10,7 @@ else if (back_number == 2) {
 else if (back_number == 3) {
     $('#stamp_sj').css({ "background": "url(/images/backSample3.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
 }
-if (stamp_standard == 0) {
+if (stamp_standard == 5) {
     $('#fiveControls_sj').css('display', 'table');
     for (var i = 0; i < stamp_count; i++) {
         var check = document.getElementsByClassName('five_sj')[i];
@@ -18,7 +18,7 @@ if (stamp_standard == 0) {
     }
 }
 
-if (stamp_standard == 1) {
+if (stamp_standard == 10) {
     $('#tenControls_sj').css('display', 'table');
     for (var i = 0; i < stamp_count; i++) {
         var check = document.getElementsByClassName('ten_sj')[i];
