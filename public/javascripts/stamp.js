@@ -1,13 +1,12 @@
-var back_number = prompt("배경테마 선택 1=과일 2=채소 3=기본테마", "");
 var password_number_array_sj = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
-if (back_number == 1) {
+if (stamp_kind == 1) {
     $('#stamp_sj').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
 }
-else if (back_number == 2) {
+else if (stamp_kind == 2) {
     $('#stamp_sj').css({ "background": "url(/images/backSample2.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
 }
-else if (back_number == 3) {
+else if (stamp_kind == 3) {
     $('#stamp_sj').css({ "background": "url(/images/backSample3.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
 }
 if (stamp_standard == 5) {

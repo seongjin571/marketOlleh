@@ -1,0 +1,28 @@
+body,
+html {
+    font-family: 'LotteMartDream', sans-serif;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    /* overflow: hidden; */
+}
+
+
+#nav_sj {
+    width: 100%;
+    height: 10%;
+    background: #63dded;
+    display: inline-flex;
+    position: fixed;
+    top: 90%;
+    z-index: 1;
+}
+
+#nav_sj div {
+    width: 20%;
+    padding: 10px;
+    font-size: 8px;
+    color: white;
+    text-align: center;
+}
