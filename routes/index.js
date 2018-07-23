@@ -5,6 +5,12 @@ var dbconfig = require('../database.js');
 var conn = mysql.createConnection(dbconfig);
 
 
+
+router.get('/select', function(req, res){
+  res.render('select');
+});
+
+
 router.get('/intro', function(req, res){
   res.render('intro');
 });
