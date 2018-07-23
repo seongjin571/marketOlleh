@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Login</h1>
+    <div>
+      <form action='/login' method='POST'>
+        <input type='text' name='userid' placeholder='아이디' style='margin-bottom: 10px;'/><br/>
+        <input type='password' name='userpwd' placeholder='비밀번호' style='margin-bottom: 10px;'/><br/>
+        <input type='submit' value='로그인' style='margin-bottom: 10px;'/><br/>
+      </form>
+      <div style='margin-bottom: 10px; margin-top: 10px;'><a href='/signup'><button>Sign Up</button></a></div>
+      <div style='margin-bottom: 10px;'><a href='/login/kakao'><button>Kakao Login</button></a></div>
+      <div style='margin-bottom: 10px;'><a href='/login/naver'><button>Naver Login</button></a></div>
+    </div>
+  </body>
+</html>
