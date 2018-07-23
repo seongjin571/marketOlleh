@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>login</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
+</head>
+
+<body>
+    <div id="all_body">
+        <img id="intro_image" src="/images/intro.jpg" width="100%" height="100%">
+        <div id="top_part">
+            <div id="top_vertical_helper">
+                <div id="logo_div"></div>
+            </div>
+        </diV>
+        <div id="bottom_part">
+            <button id="user_login">고객 로그인</button>
+            <button id="seller_login">상인 로그인</button>
+
+        </div>
+    </div>
+    <script>
+        setTimeout(function () {
+            $('#intro_image').fadeOut('300');
+        }, 2500);
+        $('#user_login').click(function () {
+            location.href = "/loginUser";
+        });
+            // $('#seller_login').click(function(){
+            //     location.href="login_B.html";
+            // });
+    </script>
+</body>
+
+</html>
