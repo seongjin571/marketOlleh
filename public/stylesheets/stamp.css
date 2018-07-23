@@ -33,7 +33,7 @@
         #nav_sj {
             width: 100%;
             height: 10%;
-            background: rgb(67, 190, 123);
+            background: #63dded;
             display: inline-flex;
             position: fixed;
             top: 90%;
@@ -136,7 +136,8 @@
             width: 100%;
             height: 20%;
    
-            background-color: rgb(67, 190, 123);
+            background-color: #fb83a5;
+            border-color: #fb83a5;
 
             color: white;
             font-size: 25px;
@@ -226,8 +227,8 @@
             margin-left: 10%;
             height:45px;
            
-            background-color:rgb(67, 190, 123);
-            border-color: rgb(67, 190, 123);
+            background-color:#fb83a5;
+            border-color: #fb83a5;
             border-radius: 5px;
             color: white;
             font-size: 25px;
@@ -272,8 +273,8 @@
             width: 35%;
             height: 50px;
             /* background-color:  */
-            background-color:rgb(67, 190, 123);
-            border-color: rgb(67, 190, 123);
+            background-color:  #fb83a5;
+            border-color: #fb83a5;
             border-radius: 5px;
             color: white;
             font-size: 25px;
@@ -314,3 +315,4 @@
         .password_number_sj:hover{
             background-color: rgb(185, 184, 184);
         }
+      

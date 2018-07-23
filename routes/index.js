@@ -5,6 +5,10 @@ var dbconfig = require('../database.js');
 var conn = mysql.createConnection(dbconfig);
 
 
+router.get('/intro', function(req, res){
+  res.render('intro');
+});
+
 router.get('/myStamp', function(req, res) {
   var sql = 'select * from `stamp`';
   conn.query(sql, function(error, result){
