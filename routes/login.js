@@ -16,7 +16,7 @@ router.get('/loginUser', function(req, res) {
 /*  local login  */
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/login',
+  failureRedirect: '/loginUser',
   failureFlash: true
 }));
 
@@ -112,7 +112,7 @@ router.get('/oauth/naver/callback', passport.authenticate('naver-login', {
 /*  logout  */
 router.get('/logout', function(req, res) {
   req.logout();
-  res.redirect('/login');
+  res.redirect('/loginUser');
 });
 
 module.exports = router;
