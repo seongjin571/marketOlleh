@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign Up</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <body>
+    <h1>Sign Up</h1>
+    <div>
+      <form id='signupForm'>
+        <input type='text' id='userid' name='userid' placeholder='아이디' style='margin-bottom: 10px;'/><br/>
+        <input type='text' id='username' name='username' placeholder='이름' style='margin-bottom: 10px;'/><br/>
+        <input type='text' id='userphone' name='userphone' placeholder='연락처' style='margin-bottom: 10px;'/><br/>
+        <input type='password' id='userpwd' name='userpwd' placeholder='비밀번호' style='margin-bottom: 10px;'/><br/>
+        <input type='submit' value='회원가입' style='margin-bottom: 10px;'/><br/>
+      </form>
+      <script>
+        $('#signupForm').submit(function(e) {
+          e.preventDefault();
+          var data = {
+            userid: $('#userid').val(),
+            username: $('#username').val(),
+            userphone: $('#userphone').val(),
+            userpwd: $('#userpwd').val()
+          }
+          console.log($('#userid').val());
+          $.ajax({
+            type : "POST",
+            url : "/signup",
+            contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+            cache: false,
+            datatype : "json",
+            data : data,
+            success : function(result){
+              if (result['result']=='success'){
+                alert('가입 성공');
+                $(window).attr('location','/login');
+              }
+              else if(result['result'] == 'already') {
+                alert('이미 존재하는 아이디입니다.');
+                $('#userid').val('')
+              }
+            },
+            error: function(error){
+              alert('가입 실패');
+            }
+          });
+        });
+      </script>
+      <div style='margin-bottom: 10px;'><a href='/login/kakao'><button>Kakao Login</button></a></div>
+      <div style='margin-bottom: 10px;'><a href='/login/naver'><button>Naver Login</button></a></div>
+    </div>
+  </body>
+</html>
