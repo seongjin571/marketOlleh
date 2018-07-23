@@ -9,7 +9,7 @@ var NaverStrategy = require('passport-naver').Strategy;
 
 var conn = mysql.createConnection(dbconfig);
 
-router.get('/login', function(req, res) {
+router.get('/loginUser', function(req, res) {
   res.render('loginUser');
 });
 
@@ -108,5 +108,11 @@ router.get('/oauth/naver/callback', passport.authenticate('naver-login', {
   failureRedirect: '/login'
 }));
 
+
+/*  logout  */
+router.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/login');
+});
 
 module.exports = router;
