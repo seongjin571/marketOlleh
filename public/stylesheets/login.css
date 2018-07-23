@@ -8,36 +8,37 @@
         overflow: hidden;
     }
 
-    #a {
+    #all_body {
         width: 100%;
         height: 100%;
+        position: absolute;
     }
 
-    #ab {
+    #top_part {
         display: table;
         width: 100%;
         height: 60%;         
     }
 
-    #ac {
+    #bottom_part {
         width: 100%;
         height: 40%;
     }
 
-    #b1,
-    #b2 {
+    #user_login,
+    #seller_login {
         width: 70%;
         height: 50px;
         margin-left: 15%;
         margin-top: 5%;
     }
-    #abc {
+    #top_vertical_helper {
             width: 70%;
             height: 70%;
             display: table-cell;
         vertical-align: middle;
         }
-    #abcd{
+    #logo_div{
         width: 70%;
         margin-left: 15%;
         height: 70%;

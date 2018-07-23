@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>login</title>
     <meta charset="utf-8" />
@@ -7,29 +8,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-    
+
 </head>
+
 <body>
-    <div id="a">
-        <diV id="ab">
-            <div id="abc">
-            <div id="abcd"></div>
-        </div>
+    <div id="all_body">
+        <img id="intro_image" src="/images/intro.jpg" width="100%" height="100%">
+        <div id="top_part">
+            <div id="top_vertical_helper">
+                <div id="logo_div"></div>
+            </div>
         </diV>
-        <div id="ac">
-            <button id="b1">고객 로그인</button>
-            <button id="b2">상인 로그인</button>
+        <div id="bottom_part">
+            <button id="user_login">고객 로그인</button>
+            <button id="seller_login">상인 로그인</button>
 
         </div>
     </div>
     <script>
-            $('#b1').click(function(){
-                location.href="/loginUser";
-            });
-            $('#b2').click(function(){
-                location.href="login_B.html";
-            });
-            </script>
-  
+        setTimeout(function () {
+            $('#intro_image').fadeOut('300');
+        }, 2500);
+        $('#user_login').click(function () {
+            location.href = "/loginUser";
+        });
+            // $('#seller_login').click(function(){
+            //     location.href="login_B.html";
+            // });
+    </script>
 </body>
+
 </html>
