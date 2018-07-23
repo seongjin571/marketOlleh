@@ -6,8 +6,8 @@ var conn = mysql.createConnection(dbconfig);
 
 
 
-router.get('/select', function(req, res){
-  res.render('select');
+router.get('/start', function(req, res){
+  res.render('start');
 });
 
 
