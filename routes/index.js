@@ -9,6 +9,9 @@ var conn = mysql.createConnection(dbconfig);
 router.get('/login', function(req, res) {
   res.render('login', { title: 'Express' });
 });
+router.get('/intro', function(req, res) {
+  res.render('intro', { title: 'Express' });
+});
 // router.get('/coupon', function(req, res) {
 //     res.render('coupon', { title: 'Express' });
 // });
