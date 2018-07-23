@@ -9,7 +9,11 @@ router.get('/', function(req, res) {
   res.render('signupUser');
 });
 
+<<<<<<< HEAD
 router.get('/signup_manager', function(req, res) {
+=======
+router.get('/signupmanager', function(req, res) {
+>>>>>>> 0ae5bff8b427d0504f6090747d25475045992baa
   res.render('signupManager');
 });
 
@@ -43,16 +47,34 @@ router.post('/signupmanager', function(req, res) {
   var market_name = req.body.market_name;
   var market_location = req.body.market_location;
   var manager_phone = req.body.manager_phone;
+<<<<<<< HEAD
   var selectSql = 'select * from `manager` where `manager_id`=?';
   var insertSql = 'insert into `manager`(`user_id`, `password`, `user_name`, `user_phone`) values (?,?,?,?);';
 
   conn.query(selectSql, [userId], function(error, results){
+=======
+  var manager_name = req.body.manager_name;
+  var stamp_standard = req.body.stamp_standard;
+  var stamp_reward = req.body.stamp_reward;
+  var stamp_password = req.body.stamp_password;
+  var market_promotion = req.body.market_promotion;
+  var stamp_kind = req.body.stamp_kind;
+  var market_introduce = req.body.market_introduce;
+  var selectSql = 'select * from `manager` where `manager_id`=?';
+  var insertSql = 'insert into `manager`(`manager_id`, `password`, `market_name`,`market_location`,`manager_phone`,`manager_name`,`stamp_standard`,`stamp_reward`,`stamp_password`,`market_promotion`,`stamp_kind`,`market_introduce`) values (?,?,?,?,?,?,?,?,?,?,?,?);';
+
+  conn.query(selectSql, [manager_id], function(error, results){
+>>>>>>> 0ae5bff8b427d0504f6090747d25475045992baa
     if(error) { console.log(error); }
     else if(results.length) {
       res.send({ result: 'already' });
     }
     else{
+<<<<<<< HEAD
       conn.query(insertSql, [userId, password, userName, userPhone], function(err, rows){
+=======
+      conn.query(insertSql, [manager_id, password, market_name,market_location,manager_phone,manager_name,stamp_standard,stamp_reward,stamp_password,market_promotion,stamp_kind,market_introduce], function(err, rows){
+>>>>>>> 0ae5bff8b427d0504f6090747d25475045992baa
         if(err){ console.log(err); }
         else{
           res.send({ result: 'success' });
@@ -61,4 +83,8 @@ router.post('/signupmanager', function(req, res) {
     }
   });
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0ae5bff8b427d0504f6090747d25475045992baa
 module.exports = router;
