@@ -54,10 +54,7 @@ router.post('/signupmanager', function(req, res) {
   var insertSql = 'insert into `manager`(`manager_id`, `password`, `market_name`,`market_location`,`manager_phone`,`manager_name`,`stamp_standard`,`stamp_reward`,`stamp_password`,`market_promotion`,`stamp_kind`,`market_introduce`) values (?,?,?,?,?,?,?,?,?,?,?,?);';
 
   conn.query(selectSql, [manager_id], function(error, results){
-<<<<<<< HEAD
-=======
 
->>>>>>> 72156892b8edeeb318a7738dd556e8ed171951fd
     if(error) { console.log(error); }
     else if(results.length) {
       res.send({ result: 'already' });
@@ -72,8 +69,5 @@ router.post('/signupmanager', function(req, res) {
     }
   });
 });
-<<<<<<< HEAD
-=======
 
->>>>>>> 72156892b8edeeb318a7738dd556e8ed171951fd
 module.exports = router;
