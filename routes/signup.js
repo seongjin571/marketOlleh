@@ -54,6 +54,7 @@ router.post('/signupmanager', function(req, res) {
   var insertSql = 'insert into `manager`(`manager_id`, `password`, `market_name`,`market_location`,`manager_phone`,`manager_name`,`stamp_standard`,`stamp_reward`,`stamp_password`,`market_promotion`,`stamp_kind`,`market_introduce`) values (?,?,?,?,?,?,?,?,?,?,?,?);';
 
   conn.query(selectSql, [manager_id], function(error, results){
+
     if(error) { console.log(error); }
     else if(results.length) {
       res.send({ result: 'already' });
@@ -68,4 +69,5 @@ router.post('/signupmanager', function(req, res) {
     }
   });
 });
+
 module.exports = router;
