@@ -25,7 +25,9 @@
           <option>5</option>
           <option>10</option>
         </seclect>
+
         <br>
+
         <input type="text" placeholder="stamp_reward" id="stamp_reward" name='stamp_reward' style='margin-bottom: 10px;'>
         <br>
         <input type="text" placeholder="stamp_password" id="stamp_password" name='stamp_password' style='margin-bottom: 10px;'>
@@ -37,16 +39,15 @@
           <option>2</option>
           <option>3</option>
         </seclect>
-
-        <br>
-
         <input type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce' style='margin-bottom: 10px;'>
         <br>
           <input type='submit' value='회원가입' style='margin-bottom: 10px;'/><br/>
         </form>
         <script>
         $('#signupForm').submit(function(e) {
+
           e.preventDefault();
+
           var manager_id = $('#manager_id').val();
           var password= $('#password').val();
           var market_name= $('#market_name').val();
@@ -57,6 +58,7 @@
           var stamp_password= $('#stamp_password').val();
           var market_promotion= $('#market_promotion').val();
           var market_introduce= $('#market_introduce').val();
+
           var test = document.getElementsByClassName('stamp_standard');
           var select_stamp_standard = test[0].selectedIndex;
           var stamp_standard;
@@ -76,6 +78,7 @@
             stamp_kind = 3;
           }
           var data = {
+
             'manager_id': manager_id,
             'password': password,
             'market_name': market_name,
@@ -88,6 +91,7 @@
             'market_introduce': market_introduce,
             'stamp_standard' : stamp_standard,
             'stamp_kind' : stamp_kind
+
           }
           $.ajax({
             type : "POST",
