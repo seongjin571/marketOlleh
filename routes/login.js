@@ -13,6 +13,9 @@ router.get('/loginUser', function(req, res) {
   res.render('loginUser');
 });
 
+router.get('/loginManager', function(req, res) {
+  res.render('loginManager');
+});
 /*  local login  */
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
@@ -62,15 +65,15 @@ router.get('/login/kakao', passport.authenticate('kakao-login'));
 passport.use('kakao-login', new KakaoStrategy({
     clientID: 'c9a735fae8a320ab9e04755d40497123',
     clientSecret: 'mnjlSVADKdIwpwucXg5uFBWGe6Jp8dnL',
-    callbackURL: 'http://13.209.89.231:3000/oauth/kakao/callback'
+    callbackURL: '/oauth/kakao/callback'
   },
   function(accessToken, refreshToken, profile, done) {
     var selectSql = 'select * from `user` where `user_id`=?;';
-    var insertSql = 'insert into `user`(`user_id`, `password`, `user_name`, `user_phone`) values (?,?,?,?);';
+    var insertSql = 'insert into `user`(`user_id`, `password`, `user_name`) values (?,?,?);';
     conn.query(selectSql, [profile.id], function(error, results) {
       if(error) { return done(error, false); }
       else if(! results.length) {
-        conn.query(insertSql, [profile.id, profile.id, profile.username, 1], function(err, rows) {
+        conn.query(insertSql, [profile.id, profile.id, profile.username], function(err, rows) {
           if(err) { return done(err, false); }
           else {
             return done(null, profile);
@@ -85,8 +88,8 @@ passport.use('kakao-login', new KakaoStrategy({
 ));
 
 router.get('/oauth/kakao/callback', passport.authenticate('kakao-login', {
-  successRedirect: '/',
-  failureRedirect: '/login'
+  successRedirect: '/main',
+  failureRedirect: '/loginUser'
 }));
 
 
@@ -104,8 +107,8 @@ passport.use('naver-login', new NaverStrategy({
 ));
 
 router.get('/oauth/naver/callback', passport.authenticate('naver-login', {
-  successRedirect: '/',
-  failureRedirect: '/login'
+  successRedirect: '/main',
+  failureRedirect: '/loginUser'
 }));
 
 
@@ -115,4 +118,36 @@ router.get('/logout', function(req, res) {
   res.redirect('/loginUser');
 });
 
+
+router.post('/loginmanager',function(req,res,next){
+  var id = req.body.manager_id;
+  var password = req.body.password;
+
+  var sql = "select * from manager where manager_id=?";
+  conn.query(sql,[id], function(error,results,fields){
+    if(error){
+      console.log(id);
+
+    } else {
+      var user = results[0];
+      if(!user){
+        console.log('manager_id fail');
+        res.send({result:'error'});
+      } else if(password == user.password){
+        req.session.authId = id;
+        req.session.save(function() {
+          res.send({result:'success'});
+        });
+      } else {
+        res.send({result:'error'});
+      }
+    }
+  });
+});
+
+
+router.get('/logoutmanager',function(req,res){
+  delete req.session.authId;
+  res.redirect('/loginmanager');
+});
 module.exports = router;

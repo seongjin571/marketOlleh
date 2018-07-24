@@ -40,14 +40,13 @@
           <option>3</option>
         </seclect>
 
-        <br>
-
         <input type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce' style='margin-bottom: 10px;'>
         <br>
           <input type='submit' value='회원가입' style='margin-bottom: 10px;'/><br/>
         </form>
         <script>
         $('#signupForm').submit(function(e) {
+
           e.preventDefault();
 
           var manager_id = $('#manager_id').val();

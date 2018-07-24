@@ -72,4 +72,5 @@ router.post('/signupmanager', function(req, res) {
     }
   });
 });
+
 module.exports = router;
