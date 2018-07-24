@@ -11,6 +11,25 @@ router.get('/start', function(req, res){
 });
 
 
+router.get('/main', function(req, res){
+  res.render('main');
+});
+
+router.get('/store_infor', function(req, res) {
+  var sql = 'select * from `stamp`';
+  conn.query(sql, function(error, result){
+    if(error){
+      console.log(error);
+    }else{
+      res.render('store_infor', {
+        title: 'coupon',
+        result : result
+      });
+    }
+  })
+});
+
+
 router.get('/myStamp', function(req, res) {
   var sql = 'select * from `stamp`';
   conn.query(sql, function(error, result){
@@ -73,5 +92,7 @@ router.post('/stamp_count_password',function(req,res,next){
     }
   })
 });
+
+
 
 module.exports = router;
