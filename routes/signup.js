@@ -10,6 +10,8 @@ router.get('/', function(req, res) {
 });
 
 
+
+
 router.get('/signupmanager', function(req, res) {
   res.render('signupManager');
 });
