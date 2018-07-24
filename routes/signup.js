@@ -9,6 +9,7 @@ router.get('/', function(req, res) {
   res.render('signupUser');
 });
 
+
 router.get('/signupmanager', function(req, res) {
   res.render('signupManager');
 });
@@ -43,6 +44,7 @@ router.post('/signupmanager', function(req, res) {
   var market_name = req.body.market_name;
   var market_location = req.body.market_location;
   var manager_phone = req.body.manager_phone;
+
   var manager_name = req.body.manager_name;
   var stamp_standard = req.body.stamp_standard;
   var stamp_reward = req.body.stamp_reward;
@@ -60,6 +62,7 @@ router.post('/signupmanager', function(req, res) {
       res.send({ result: 'already' });
     }
     else{
+
       conn.query(insertSql, [manager_id, password, market_name,market_location,manager_phone,manager_name,stamp_standard,stamp_reward,stamp_password,market_promotion,stamp_kind,market_introduce], function(err, rows){
         if(err){ console.log(err); }
         else{
