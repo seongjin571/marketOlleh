@@ -13,6 +13,9 @@ router.get('/loginUser', function(req, res) {
   res.render('loginUser');
 });
 
+router.get('/loginManager', function(req, res) {
+  res.render('loginManager');
+});
 /*  local login  */
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
@@ -115,4 +118,36 @@ router.get('/logout', function(req, res) {
   res.redirect('/loginUser');
 });
 
+
+router.post('/loginmanager',function(req,res,next){
+  var id = req.body.manager_id;
+  var password = req.body.password;
+
+  var sql = "select * from manager where manager_id=?";
+  conn.query(sql,[id], function(error,results,fields){
+    if(error){
+      console.log(id);
+
+    } else {
+      var user = results[0];
+      if(!user){
+        console.log('manager_id fail');
+        res.send({result:'error'});
+      } else if(password == user.password){
+        req.session.authId = id;
+        req.session.save(function() {
+          res.send({result:'success'});
+        });
+      } else {
+        res.send({result:'error'});
+      }
+    }
+  });
+});
+
+
+router.get('/logoutmanager',function(req,res){
+  delete req.session.authId;
+  res.redirect('/loginmanager');
+});
 module.exports = router;
