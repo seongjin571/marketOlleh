@@ -9,7 +9,6 @@ router.get('/', function(req, res) {
   res.render('signupUser');
 });
 
-
 router.get('/signupmanager', function(req, res) {
   res.render('signupManager');
 });
@@ -72,4 +71,5 @@ router.post('/signupmanager', function(req, res) {
     }
   });
 });
+
 module.exports = router;
