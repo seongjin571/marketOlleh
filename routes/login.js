@@ -18,7 +18,7 @@ router.get('/loginManager', function(req, res) {
 });
 /*  local login  */
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/main',
   failureRedirect: '/loginUser',
   failureFlash: true
 }));
