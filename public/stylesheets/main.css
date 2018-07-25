@@ -7,11 +7,149 @@ html {
     margin: 0;
     /* overflow: hidden; */
 }
+#text_logo{
+    width: 95%;
+    height: 10%;
+    margin-left: 5%;
+}
+#search{
+    width: 85%;
+    margin: 0 auto;
+    height: auto;
+    background-color: #acdce2;
+    padding: 20px;
+    border-radius: 5px;
+    
+
+}
+#search_bar{
+    width: 100%;
+    display: inline-flex;
+    
+}
+#search_bar input{
+
+    width:80%;
+    height:30px;
+}
+#search_bar img{
+margin-left: 10px;
+}
+#search button{
+    width: 80%;
+    height: 40px;
+    margin-top: 15px;
+    background-color: #fb83a5;
+    color: white;
+    border-radius: 5px;
+    font-size: 21px;
+    margin-left: 10%;
+}
+#mystamp{
+    width: 85%;
+    margin: 0 auto;
+    height: 20%;
+    background-color: #acdce2;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top:10px;
+}
+label{
+    color:white;
+}
+#stamp_list{
+    width: 80%;
+    height: 100%;
+    background-color: #fb83a5;
+    margin-left: 10%;
+    border-radius: 5px;
+    color: white;
+}
+#stamp_name{
+    display: inline-flex;
+    width: 90%;
+    height: 30%;
+    margin-left: 5%;
+    margin-top: 5px;
+}
+#market_name{
+    font-size: 14px;
+    text-align: center;
+}
+#stamp_count{
+    width: 100%;
+    height: 60%;
+    font-size: 25px;
+    display: table;
+}
+#stamp_count_vertical{
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#near_market{
+    width: 85%;
+    margin: 0 auto;
+    height: 35%;
+    background-color: #acdce2;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top:10px;
+}
+
+#hot_store{
+    width: 85%;
+    margin: 0 auto;
+    height: 1620px;
+    background-color: #acdce2;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top:10px;
+    margin-bottom: 80px;
+}
+.hot_store_list{
+    width: 100%;
+    display: inline-flex
+}
+
+.hot_store_detail{
+    width: 45%;
+    height: 150px;
+    border-style: solid;
+    border-color: #fb83a5;
+    margin-left: 3%;
+    color:white;
+}
+#user_name{
+    width: 90%;
+    height: 15%;
+    margin-left: 5%;
+    color: white;
+}
+#market_pic{
+    width: 90%;
+    margin-left: 5%;
+    height: 70%;
+}
+.detail_name{
+    text-align: center;
+}
+#near_infor{
+    width: 90%;
+    height: 15%;
+    margin-left:5%;
+    display: inline-flex;
+    text-align: center;
+    color: white;
+}
 
 
 #nav_sj {
     width: 100%;
-    height: 10%;
+    height: 20%;
     background: #63dded;
     display: inline-flex;
     position: fixed;
