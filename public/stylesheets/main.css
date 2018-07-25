@@ -46,25 +46,53 @@ margin-left: 10px;
     font-size: 21px;
     margin-left: 10%;
 }
-#mystamp{
-    width: 85%;
+#myStamp{
+    width: 95%;
     margin: 0 auto;
-    height: 20%;
+    height: 30%;
     background-color: #acdce2;
-    padding: 15px;
+    /* padding: 20px; */
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.swiper-container{
+    width: 80%;
+    height: 85%;
+    background-color: #acdce2;
+    border-radius: 5px;
+    margin-top:10px;
+}
+.swiper-wrapper{
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    background-color: #acdce2;
+    /* padding: 15px; */
     border-radius: 5px;
     margin-top:10px;
 }
 label{
     color:black;
 }
-.stamp_list{
+.swiper-slide{
     width: 80%;
-    height: 100%;
+    height: 70%;
     background-color: #fb83a5;
-    margin-left: 10%;
+    /* margin-left: 10%; */
     border-radius: 5px;
     color: white;
+    /* display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center; */
 }
 .stamp_name{
     display: inline-flex;

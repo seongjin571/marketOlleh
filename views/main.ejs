@@ -5,8 +5,12 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
-    <meta name="viewport"  content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
+
     <!-- <script src="main.js"></script> -->
 </head>
 
@@ -23,27 +27,46 @@
         <button>지도로 찾기</button>
     </div>
 
-    <div id="mystamp">
-        <!-- <label>내 스탬프</label> -->
-        <% if(myStamps) { %>
-          <% for(var i=0; i<myStamps.length; i++) { %>
-            <div class="stamp_list">
-                <div class="stamp_name">
-                    <div style="width: 70%"><%= myStamps[i].market_name %></div>
-                    <div style="width: 30%" class="market_name"><%= myStamps[i].sijang_name %></div>
-                </div>
-                <div class="stamp_count">
-                    <div class="stamp_count_vertical">
-                        <p><%= myStamps[i].stamp_count %>/<%= myStamps[i].stamp_standard %></p>
-                    </div>
-                </div>
+
+
+
+
+
+
+
+    <div id="myStamp">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!-- <label>내 스탬프</label> -->
+                <% if(myStamps) { %>
+                    <% for(var i=0; i<myStamps.length; i++) { %>
+                        <div class="swiper-slide">
+                            <div class="stamp_name">
+                                <div style="width: 70%">
+                                    <%= myStamps[i].market_name %>
+                                </div>
+                                <div style="width: 30%" class="market_name">
+                                    <%= myStamps[i].sijang_name %>
+                                </div>
+                            </div>
+                            <div class="stamp_count">
+                                <div class="stamp_count_vertical">
+                                    <p>
+                                        <%= myStamps[i].stamp_count %>/
+                                            <%= myStamps[i].stamp_standard %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                            <% } else { %>
+                                <div class='stamp_list'>
+                                    <div id="no_stamp">발급받은 쿠폰이 없습니다.</div>
+                                </div>
+                                <% } %>
             </div>
-          <% } %>
-        <% } else { %>
-          <div class='stamp_list'>
-            <div id="no_stamp">발급받은 쿠폰이 없습니다.</div>
-          </div>
-        <% } %>
+            <div class="swiper-pagination"></div>
+        </div>
     </div>
 
     <div id="near_market">
@@ -72,7 +95,8 @@
                     <img src="/images/fruit.jpg" width="100%">
                 </div>
                 <div class="detail_name">
-                    통인시장 <br>김가네 과일가게
+                    통인시장
+                    <br>김가네 과일가게
                 </div>
             </div>
             <div class="hot_store_detail"></div>
@@ -133,11 +157,21 @@
             <img src="/images/my.png" width="60%">
             <br/>MyPage</div>
     </div>
-<script> 
-$('#myStamp_sj').click(function(){
-    location.href="/myStamp";
-})
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+    <script> 
+        window.addEventListener('load', function () {
+            FastClick.attach(document.body);
+        }, false);
+        $('#myStamp_sj').click(function () {
+            location.href = "/myStamp";
+        })
+        var swiper = new Swiper('.swiper-container', {
+            pagination: {
+                el: '.swiper-pagination',
+                dynamicBullets: true,
+            },
+        });
+    </script>
 </body>
 
 </html>
