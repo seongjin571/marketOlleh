@@ -41,6 +41,8 @@
         </seclect>
         <input type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce' style='margin-bottom: 10px;'>
         <br>
+        <input type="text" placeholder="sijang_name" id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'>
+        <br>
           <input type='submit' value='회원가입' style='margin-bottom: 10px;'/><br/>
         </form>
         <script>
@@ -77,6 +79,7 @@
           }else if(select_stamp_kind == 2){
             stamp_kind = 3;
           }
+          var sijang_name = $('#sijang_name').val();
           var data = {
 
             'manager_id': manager_id,
@@ -90,8 +93,8 @@
             'market_promotion': market_promotion,
             'market_introduce': market_introduce,
             'stamp_standard' : stamp_standard,
-            'stamp_kind' : stamp_kind
-
+            'stamp_kind' : stamp_kind,
+            'sijang_name' : sijang_name
           }
           $.ajax({
             type : "POST",
