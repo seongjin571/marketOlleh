@@ -93,6 +93,22 @@ router.post('/stamp_count_password',function(req,res,next){
   })
 });
 
-
+//상점 리스트 뜨기
+router.get('/manager_list', function(req, res, next) {
+  var sql='select * from manager;';//지원자 정보를 불러오는 쿼리문 저장
+    conn.query(sql,function(error,results,fields){
+      if(error){//데이터베이스에서 불러올 때 오류 메세지 띄워줌
+        console.log(error);
+        console.log('information failed');
+      }
+      else{//화면 렌더링 할 때 보내는 값, 사이트 제목, 지원자 정보
+        res.render('manager_list',{
+          title:'manager_list', // 사이트 제목
+          results : results // 지원자 정보
+        });//render
+      }
+    });//query
+  //res.render('applyadmin',{title:'apply admin page'});
+});
 
 module.exports = router;
