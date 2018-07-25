@@ -16,10 +16,11 @@ router.get('/main', function(req, res){
   conn.query(stampSql, [req.user.id], function(error, results) {
     if(error) { console.log(error); }
     else {
-      if(! results) {
+      if(! results.length) {
+        console.log(results);
         res.render('main', {
           user: req.user,
-          myStamps: '발급받은 쿠폰이 없습니다.',
+          myStamps: undefined,
         });
       }
       else {
@@ -29,6 +30,13 @@ router.get('/main', function(req, res){
         });
       }
     }
+  });
+});
+
+
+router.get('/mainManager', function(req, res){
+  res.render('mainManager', {
+    admin_name: req.session.authId,
   });
 });
 
