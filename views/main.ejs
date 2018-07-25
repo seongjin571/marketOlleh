@@ -25,23 +25,25 @@
 
     <div id="mystamp">
         <!-- <label>내 스탬프</label> -->
-        <div id="stamp_list">
-            <div id="stamp_name">
-                <div style="width: 70%">나현이네 과일가게</div>
-                <div style="width: 30%" id="market_name">통인 시장</div>
-            </div>
-            <div id="stamp_count">
-                <div id="stamp_count_vertical">
-                    <p>3/10</p>
-                </div>
-            </div>
-        </div>
+        <% for(var i=0; i<myStamps.length; i++) { %>
+          <div class="stamp_list">
+              <div class="stamp_name">
+                  <div style="width: 70%"><%= myStamps[i].market_name %></div>
+                  <div style="width: 30%" class="market_name">통인 시장</div>
+              </div>
+              <div class="stamp_count">
+                  <div class="stamp_count_vertical">
+                      <p><%= myStamps[i].stamp_count %>/<%= myStamps[i].stamp_standard %></p>
+                  </div>
+              </div>
+          </div>
+        <% } %>
     </div>
 
     <div id="near_market">
         <!-- <label>내 스탬프</label> -->
         <div id="user_name">
-            seongjin571님 근처 시장
+            <%= user.username %>님 근처 시장
         </div>
         <div id="market_pic">
             <img src="/images/market.png" width="100%" height="100%">
