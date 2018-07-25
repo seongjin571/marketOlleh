@@ -7,6 +7,7 @@
     <title>Page Title</title>
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mainManager.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- <script src="main.js"></script> -->
 </head>
 
@@ -32,6 +33,9 @@
         <div id="market_pic">
             <img src="/images/fruit.jpg" width="100%" height="100%">
         </div>
+        <div id="store_name">
+            나현이네 과일과게
+            </div>
     </div>
 
 
@@ -101,12 +105,12 @@
         <div id="myStamp_sj">
             <img src="/images/stamp.png" width="43%">
             <br/>스탬프 관리</div>
-        <div id="my_sj">
+        <div id="mystore_sj">
             <img src="/images/my.png" width="43%">
-            <br/>MyPage</div>
+            <br/>내 상점</div>
     </div>
 <script>
-    $('#myStamp_sj').click(function(){
+    $('#mystore_sj').click(function(){
         location.href="/mystore";
     })
 </script>
