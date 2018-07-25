@@ -32,6 +32,11 @@ router.get('/main', function(req, res){
   });
 });
 
+
+router.get('/mainManager', function(req, res){
+  res.render('mainManager');
+});
+
 router.get('/store_infor', function(req, res) {
   var sql = 'select * from `stamp`';
   conn.query(sql, function(error, result){
