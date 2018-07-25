@@ -12,7 +12,10 @@ router.get('/start', function(req, res){
 
 
 router.get('/main', function(req, res){
-  res.render('main');
+  var stampSql = 'select * from `stamp` where `uesr_id`=?;';
+  res.render('main', {
+    user: req.user,
+  });
 });
 
 router.get('/store_infor', function(req, res) {
