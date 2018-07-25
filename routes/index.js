@@ -12,8 +12,38 @@ router.get('/start', function(req, res){
 
 
 router.get('/main', function(req, res){
-  res.render('main');
+  var stampSql = 'select * from `stamp` where `user_id`=?;';
+  conn.query(stampSql, [req.user.id], function(error, results) {
+    if(error) { console.log(error); }
+    else {
+      if(! results.length) {
+        console.log(results);
+        res.render('main', {
+          user: req.user,
+          myStamps: undefined,
+        });
+      }
+      else {
+        res.render('main', {
+          user: req.user,
+          myStamps: results,
+        });
+      }
+    }
+  });
 });
+
+
+router.get('/mainManager', function(req, res){
+  res.render('mainManager', {
+    admin_name: req.session.authId,
+  });
+});
+
+router.get('/mystore', function(req, res){
+  res.render('mystore');
+});
+
 
 router.get('/store_infor', function(req, res) {
   var user_id = req.user.id;

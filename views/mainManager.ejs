@@ -5,8 +5,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
-    <meta name="viewport"  content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
-    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+    <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mainManager.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- <script src="main.js"></script> -->
 </head>
 
@@ -23,41 +24,18 @@
         <button>지도로 찾기</button>
     </div>
 
-    <div id="mystamp">
-        <!-- <label>내 스탬프</label> -->
-        <% if(myStamps) { %>
-          <% for(var i=0; i<myStamps.length; i++) { %>
-            <div class="stamp_list">
-                <div class="stamp_name">
-                    <div style="width: 70%"><%= myStamps[i].market_name %></div>
-                    <div style="width: 30%" class="market_name"><%= myStamps[i].sijang_name %></div>
-                </div>
-                <div class="stamp_count">
-                    <div class="stamp_count_vertical">
-                        <p><%= myStamps[i].stamp_count %>/<%= myStamps[i].stamp_standard %></p>
-                    </div>
-                </div>
-            </div>
-          <% } %>
-        <% } else { %>
-          <div class='stamp_list'>
-            <div>발급받은 쿠폰이 없습니다.</div>
-          </div>
-        <% } %>
-    </div>
 
-    <div id="near_market">
+    <div id="mystore">
         <!-- <label>내 스탬프</label> -->
         <div id="user_name">
-            <%= user.username %>님 근처 시장
+            <%= admin_name %>
         </div>
         <div id="market_pic">
-            <img src="/images/market.png" width="100%" height="100%">
+            <img src="/images/fruit.jpg" width="100%" height="100%">
         </div>
-        <div id="near_infor">
-            <div style="width: 50%">통인 시장</div>
-            <div style="width: 50%">3.2km</div>
-        </div>
+        <div id="store_name">
+            나현이네 과일과게
+            </div>
     </div>
 
 
@@ -72,7 +50,8 @@
                     <img src="/images/fruit.jpg" width="100%">
                 </div>
                 <div class="detail_name">
-                    통인시장 <br>김가네 과일가게
+                    통인시장
+                    <br>김가네 과일가게
                 </div>
             </div>
             <div class="hot_store_detail"></div>
@@ -117,23 +96,24 @@
 
 
     <div id="nav_sj">
-        <div id="home_sj">
-            <img src="/images/home.png" width="60%">
+        <div id="home">
+            <img src="/images/home.png" width="43%">
             <br/>홈</div>
         <div id="coupon_sj">
-            <img src="/images/coupon.png" width="60%">
+            <img src="/images/coupon.png" width="43%">
             <br/>쿠폰</div>
-        <div id="location_sj">
-            <img src="/images/location.png" width="60%">
-            <br/>주변 가맹점</div>
         <div id="myStamp_sj">
-            <img src="/images/stamp.png" width="60%">
-            <br/>내 스탬프</div>
-        <div id="my_sj">
-            <img src="/images/my.png" width="60%">
-            <br/>MyPage</div>
+            <img src="/images/stamp.png" width="43%">
+            <br/>스탬프 관리</div>
+        <div id="mystore_sj">
+            <img src="/images/my.png" width="43%">
+            <br/>내 상점</div>
     </div>
-
+<script>
+    $('#mystore_sj').click(function(){
+        location.href="/mystore";
+    })
+</script>
 </body>
 
 </html>
