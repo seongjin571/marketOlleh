@@ -42,15 +42,7 @@ margin-left: 10px;
     font-size: 21px;
     margin-left: 10%;
 }
-#mystamp{
-    width: 85%;
-    margin: 0 auto;
-    height: 20%;
-    background-color: #acdce2;
-    padding: 15px;
-    border-radius: 5px;
-    margin-top:10px;
-}
+
 label{
     color:black;
 }
@@ -94,11 +86,20 @@ label{
     height: 15%;
     margin-left: 5%;
     color: white;
+    font-size: 18px;
 }
 #market_pic{
     width: 90%;
     margin-left: 5%;
     height: 70%;
+}
+#store_name{
+    width: 90%;
+    margin-left: 5%;
+    height: 15%;
+    text-align: center;
+    color: white;
+    font-size: 18px;
 }
 .detail_name{
     text-align: center;
