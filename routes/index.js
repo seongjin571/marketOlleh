@@ -40,6 +40,11 @@ router.get('/mainManager', function(req, res){
   });
 });
 
+router.get('/mystore', function(req, res){
+  res.render('mystore');
+});
+
+
 router.get('/store_infor', function(req, res) {
   var sql = 'select * from `stamp`';
   conn.query(sql, function(error, result){
