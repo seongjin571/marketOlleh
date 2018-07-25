@@ -25,17 +25,23 @@
 
     <div id="mystamp">
         <!-- <label>내 스탬프</label> -->
-        <% for(var i=0; i<myStamps.length; i++) { %>
-          <div class="stamp_list">
-              <div class="stamp_name">
-                  <div style="width: 70%"><%= myStamps[i].market_name %></div>
-                  <div style="width: 30%" class="market_name"><%= myStamps[i].sijang_name %></div>
-              </div>
-              <div class="stamp_count">
-                  <div class="stamp_count_vertical">
-                      <p><%= myStamps[i].stamp_count %>/<%= myStamps[i].stamp_standard %></p>
-                  </div>
-              </div>
+        <% if(myStamps) { %>
+          <% for(var i=0; i<myStamps.length; i++) { %>
+            <div class="stamp_list">
+                <div class="stamp_name">
+                    <div style="width: 70%"><%= myStamps[i].market_name %></div>
+                    <div style="width: 30%" class="market_name"><%= myStamps[i].sijang_name %></div>
+                </div>
+                <div class="stamp_count">
+                    <div class="stamp_count_vertical">
+                        <p><%= myStamps[i].stamp_count %>/<%= myStamps[i].stamp_standard %></p>
+                    </div>
+                </div>
+            </div>
+          <% } %>
+        <% } else { %>
+          <div class='stamp_list'>
+            <div>발급받은 쿠폰이 없습니다.</div>
           </div>
         <% } %>
     </div>
@@ -111,12 +117,12 @@
 
 
     <div id="nav_sj">
+        <div id="home_sj">
+            <img src="/images/home.png" width="60%">
+            <br/>홈</div>
         <div id="coupon_sj">
             <img src="/images/coupon.png" width="60%">
             <br/>쿠폰</div>
-        <div id="search_sj">
-            <img src="/images/search.png" width="60%">
-            <br/>서울 시장</div>
         <div id="location_sj">
             <img src="/images/location.png" width="60%">
             <br/>주변 가맹점</div>
@@ -124,7 +130,8 @@
             <img src="/images/stamp.png" width="60%">
             <br/>내 스탬프</div>
         <div id="my_sj">
-            <img src="/images/my.png" width="60%">MyPage</div>
+            <img src="/images/my.png" width="60%">
+            <br/>MyPage</div>
     </div>
 
 </body>
