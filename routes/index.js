@@ -12,19 +12,63 @@ router.get('/start', function(req, res){
 
 
 router.get('/main', function(req, res){
-  res.render('main');
+  var stampSql = 'select * from `stamp` where `user_id`=?;';
+  conn.query(stampSql, [req.user.id], function(error, results) {
+    if(error) { console.log(error); }
+    else {
+      if(! results.length) {
+        console.log(results);
+        res.render('main', {
+          user: req.user,
+          myStamps: undefined,
+        });
+      }
+      else {
+        res.render('main', {
+          user: req.user,
+          myStamps: results,
+        });
+      }
+    }
+  });
 });
 
+
+router.get('/mainManager', function(req, res){
+  res.render('mainManager', {
+    admin_name: req.session.authId,
+  });
+});
+
+router.get('/mystore', function(req, res){
+  res.render('mystore');
+});
+
+
 router.get('/store_infor', function(req, res) {
-  var sql = 'select * from `stamp`';
-  conn.query(sql, function(error, result){
+  var user_id = req.user.id;
+  var market_name = req.session.usestamp_market_name;
+  var sql = 'select * from `stamp` where market_name = ? and user_id = ?';
+  console.log(user_id);
+  conn.query(sql,[market_name,user_id], function(error, result){
     if(error){
       console.log(error);
     }else{
-      res.render('store_infor', {
-        title: 'coupon',
-        result : result
-      });
+      if(result[0] == null){
+        console.log(market_name);
+        // console.log(result);
+        res.render('store_infor', {
+          title: 'if문',
+          result : result
+        });
+      }else{
+        console.log(market_name);
+        // console.log(result);
+        res.render('store_infor', {
+          title: 'else문',
+          result : result
+        });
+      }
     }
   })
 });
@@ -37,8 +81,24 @@ router.get('/myStamp', function(req, res) {
       console.log(error);
     }else{
       res.render('myStamp', {
-        title: 'coupon',
+        title: req.session.usestamp_market_name,
         result : result
+      });
+    }
+  })
+});
+
+router.post('/managerlistnextpage', function(req, res) {
+  var market_name = req.body.market_name;
+  var sql = 'select * from manager where market_name = ?';
+  conn.query(sql,[market_name],function(error,result,fields){
+    if(error){
+      console.log('error');
+    }else{
+      console.log(market_name);
+      req.session.usestamp_market_name = market_name;
+      req.session.save(function() {
+        res.send({result:'success'});
       });
     }
   })
@@ -93,6 +153,22 @@ router.post('/stamp_count_password',function(req,res,next){
   })
 });
 
-
+//상점 리스트 뜨기
+router.get('/manager_list', function(req, res, next) {
+  var sql='select * from manager;';//지원자 정보를 불러오는 쿼리문 저장
+    conn.query(sql,function(error,results,fields){
+      if(error){//데이터베이스에서 불러올 때 오류 메세지 띄워줌
+        console.log(error);
+        console.log('information failed');
+      }
+      else{//화면 렌더링 할 때 보내는 값, 사이트 제목, 지원자 정보
+        res.render('manager_list',{
+          title:'manager_list', // 사이트 제목
+          results : results // 지원자 정보
+        });//render
+      }
+    });//query
+  //res.render('applyadmin',{title:'apply admin page'});
+});
 
 module.exports = router;

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title><%= title %></title>
+</head>
+<style>
+.applicant_container{
+  width:800px;
+  border:solid;
+  margin-bottom: 30px;
+  word-wrap: break-word;
+  display: inline-block;
+}
+#applicant_name_area{
+  width: 21%;
+  height: 1200px;
+  display: inline-block;
+  border-right: groove;
+  vertical-align: top;
+}
+#applicant_content_area{
+  width: 78%;
+  height: 1200px;
+  display: inline-block;
+  vertical-align: top;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<body>
+
+  <!-- adad데이터베이스에서 값을 불러옵니다. 해당 내용은 밑에 언급이 되어있으므로 자세한 얘기는 생략하겠습니다. -->
+
+  <div id='applicant_name_area'>
+    <% for(var i=0; i<results.length;i++){ %>
+      <div class='list_name'><button class="market_name"><%= results[i].market_name %></button></div>
+      <% } %>
+
+
+      <script>
+
+      $('.list_name').click(function(){
+        var index = $(this).index();
+        var market=document.getElementsByClassName('market_name')[index];
+        var market_name =market.innerHTML;
+        var data = {
+          'market_name' : market_name
+        }
+        console.log(data);
+        $.ajax({
+          type: 'post',
+          url: '/managerlistnextpage',
+          contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+          cache: false,
+          data: data,
+          datatype: 'json',
+          success: function(result) {
+            if (result['result']=='success'){
+              // console.log(result);
+              alert(market_name);
+              $(window).attr('location', '/store_infor');
+            }
+            else{
+              console.log(result);
+              alert('실패1');
+            }
+          },
+          error: function(error){
+            alert('실패2');
+            location.reload();
+          }
+        });
+      });
+      </script>
+    </body>
+    </html>
