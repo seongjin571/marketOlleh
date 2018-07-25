@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+  </head>
+  <style>
+  .applicant_container{
+  width:800px;
+  border:solid;
+  margin-bottom: 30px;
+  word-wrap: break-word;
+  display: inline-block;
+}
+#applicant_name_area{
+  width: 21%;
+  height: 1200px;
+  display: inline-block;
+  border-right: groove;
+  vertical-align: top;
+}
+#applicant_content_area{
+  width: 78%;
+  height: 1200px;
+  display: inline-block;
+  vertical-align: top;
+}
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <body>
+
+      <!-- adad데이터베이스에서 값을 불러옵니다. 해당 내용은 밑에 언급이 되어있으므로 자세한 얘기는 생략하겠습니다. -->
+
+        <div id='applicant_name_area'>
+          <% for(var i=0; i<results.length;i++){ %>
+            <div class='list_name'><button><%= results[i].market_name %></button></div>
+          <% } %>
+        </div>
+        <div id='applicant_content_area'>
+          <% for(var i=0; i<results.length;i++){ %>
+            <div class='list_content' style='display: none;'>
+              <div class='applicant_container'>
+                <div>위치 : <%= results[i].market_location %></div>
+                <div>가게이름 : <%= results[i].market_name %></div>
+                <div>연락처 : <%= results[i].manager_phone %></div>
+                <hr>
+                <hr>
+                <div>가게 소개글 : </div><br><div><%= results[i].market_introduce %></div>
+                <hr>
+              </div>
+            </div>
+          <% } %>
+        </div>
+
+        <script>
+          var contents = document.getElementsByClassName('list_content');
+
+          $('.list_name').click(function(){
+            $('.list_content').css('display', 'none');
+            var idx = $('.list_name').index(this);
+            contents[idx].style.display = 'block';
+          });
+        </script>
+  </body>
+</html>

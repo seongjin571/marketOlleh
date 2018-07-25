@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LoginManager</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+      input{
+        width: 700px;
+        height: 100px;
+        font-size: 30px;
+      }
+      button{
+        width: 500px;
+        height: 70px;
+        font-size: 30px;
+      }
+      </style>
+  </head>
+  <body>
+    <h1>LoginManager</h1>
+    <div>
+      <form action='/login' method='POST'>
+        <input type='text' id="manager_id"name='manager_id' placeholder='아이디' style='margin-bottom:30px;'/><br/>
+        <input type='password' id="password" name='password' placeholder='비밀번호' style='margin-bottom: 30px;'/><br/>
+        <input type='button' id="loginButton" value='로그인' style='margin-bottom: 10px;'/><br/>
+      </form>
+      <div id="loginForm"style='margin-bottom: 10px; margin-top: 10px;'><a href='/signup/signupManager'><button>Sign Up</button></a></div>
+
+    </div>
+  </body>
+  <script>
+  $('#loginButton').click(function(e){
+    e.preventDefault();
+    alert('a');
+    var manager_id = $('#manager_id').val();
+    var password = $('#password').val();
+    var data ={
+      'manager_id' : manager_id,
+      'password' : password
+    }
+    console.log(data);
+    $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
+        type:'POST',
+        url:'/loginmanager',
+        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+        cache:false,
+        dataType:'json',
+        data:data,
+        success:function(result){
+          if(result['result']=='success'){
+            alert('ok');
+            $(window).attr('location','/myStamp');
+          }//result if
+        },
+        error:function(error){
+          console.log('erer');
+        }
+  });
+  });
+  </script>
+</html>

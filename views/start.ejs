@@ -13,7 +13,11 @@
 
 <body>
     <div id="all_body">
-        <img id="intro_image" src="/images/intro.jpg" width="100%" height="100%">
+            <div id="intro_image_div">
+                    <div id="intro_image_vertical">
+                        <img id="intro_image" src="/images/logo_with_text.png" width="45%" height="auto">
+                    </div>
+                </div>
         <div id="top_part">
             <div id="top_vertical_helper">
                 <div id="logo_div"></div>
@@ -27,14 +31,14 @@
     </div>
     <script>
         setTimeout(function () {
-            $('#intro_image').fadeOut('300');
+            $('#intro_image_div').fadeOut('500');
         }, 2000);
         $('#user_login').click(function () {
             location.href = "/loginUser";
         });
-            // $('#seller_login').click(function(){
-            //     location.href="login_B.html";
-            // });
+            $('#seller_login').click(function(){
+                location.href="/loginManager";
+            });
     </script>
 </body>
 
