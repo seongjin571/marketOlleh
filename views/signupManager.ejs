@@ -106,7 +106,7 @@
             success : function(result){
               if (result['result']=='success'){
                 alert('가입 성공');
-                $(window).attr('location','/login');
+                $(window).attr('location','/manager_list');
               }
               else if(result['result'] == 'already') {
                 alert('이미 존재하는 아이디입니다.');

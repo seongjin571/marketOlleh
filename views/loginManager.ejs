@@ -51,7 +51,9 @@
           if(result['result']=='success'){
             alert('ok');
             $(window).attr('location','/myStamp');
-          }//result if
+          }else {
+            alert('로그인실패');
+          }
         },
         error:function(error){
           console.log('erer');
