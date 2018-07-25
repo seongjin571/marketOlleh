@@ -12,9 +12,23 @@ router.get('/start', function(req, res){
 
 
 router.get('/main', function(req, res){
-  var stampSql = 'select * from `stamp` where `uesr_id`=?;';
-  res.render('main', {
-    user: req.user,
+  var stampSql = 'select * from `stamp` where `user_id`=?;';
+  conn.query(stampSql, [req.user.id], function(error, results) {
+    if(error) { console.log(error); }
+    else {
+      if(! results) {
+        res.render('main', {
+          user: req.user,
+          myStamps: '발급받은 쿠폰이 없습니다.',
+        });
+      }
+      else {
+        res.render('main', {
+          user: req.user,
+          myStamps: results,
+        });
+      }
+    }
   });
 });
 
