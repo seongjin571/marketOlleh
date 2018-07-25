@@ -114,6 +114,7 @@ router.get('/oauth/naver/callback', passport.authenticate('naver-login', {
 
 /*  logout  */
 router.get('/logout', function(req, res) {
+  delete req.session.usestamp_market_name;
   req.logout();
   res.redirect('/loginUser');
 });

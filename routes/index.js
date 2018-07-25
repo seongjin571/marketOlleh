@@ -40,16 +40,35 @@ router.get('/mainManager', function(req, res){
   });
 });
 
+router.get('/mystore', function(req, res){
+  res.render('mystore');
+});
+
+
 router.get('/store_infor', function(req, res) {
-  var sql = 'select * from `stamp`';
-  conn.query(sql, function(error, result){
+  var user_id = req.user.id;
+  var market_name = req.session.usestamp_market_name;
+  var sql = 'select * from `stamp` where market_name = ? and user_id = ?';
+  console.log(user_id);
+  conn.query(sql,[market_name,user_id], function(error, result){
     if(error){
       console.log(error);
     }else{
-      res.render('store_infor', {
-        title: 'coupon',
-        result : result
-      });
+      if(result[0] == null){
+        console.log(market_name);
+        // console.log(result);
+        res.render('store_infor', {
+          title: 'if문',
+          result : result
+        });
+      }else{
+        console.log(market_name);
+        // console.log(result);
+        res.render('store_infor', {
+          title: 'else문',
+          result : result
+        });
+      }
     }
   })
 });
@@ -62,8 +81,24 @@ router.get('/myStamp', function(req, res) {
       console.log(error);
     }else{
       res.render('myStamp', {
-        title: 'coupon',
+        title: req.session.usestamp_market_name,
         result : result
+      });
+    }
+  })
+});
+
+router.post('/managerlistnextpage', function(req, res) {
+  var market_name = req.body.market_name;
+  var sql = 'select * from manager where market_name = ?';
+  conn.query(sql,[market_name],function(error,result,fields){
+    if(error){
+      console.log('error');
+    }else{
+      console.log(market_name);
+      req.session.usestamp_market_name = market_name;
+      req.session.save(function() {
+        res.send({result:'success'});
       });
     }
   })

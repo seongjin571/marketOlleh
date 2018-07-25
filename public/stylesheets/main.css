@@ -20,6 +20,10 @@ html {
     padding: 20px;
     border-radius: 5px;
 }
+#no_stamp{
+    text-align: center;
+    font-size: 18px;
+}
 #search_bar{
     width: 100%;
     display: inline-flex;

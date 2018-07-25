@@ -7,6 +7,7 @@
     <title>Page Title</title>
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mainManager.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- <script src="main.js"></script> -->
 </head>
 
@@ -31,6 +32,9 @@
         </div>
         <div id="market_pic">
             <img src="/images/fruit.jpg" width="100%" height="100%">
+        </div>
+        <div id="store_name">
+            나현이네 과일과게
         </div>
     </div>
 
@@ -93,19 +97,26 @@
 
     <div id="nav_sj">
         <div id="home">
-            <img src="/images/home.png" width="43%">
+            <img src="/images/home.png" width="55%">
             <br/>홈</div>
         <div id="coupon_sj">
-            <img src="/images/coupon.png" width="43%">
+            <img src="/images/coupon.png" width="55%">
             <br/>쿠폰</div>
         <div id="myStamp_sj">
-            <img src="/images/stamp.png" width="43%">
-            <br/>스탬프 관리</div>
-        <div id="my_sj">
-            <img src="/images/my.png" width="43%">
-            <br/>MyPage</div>
+            <img src="/images/stamp.png" width="55%">
+            <br/>스탬프</div>
+        <div id="mystore_sj">
+            <img src="/images/store.png" width="55%">
+            <br/>내 상점</div>
+        <div id="mypage_sj">
+            <img src="/images/my.png" width="55%">
+            <br/>Mypage</div>
     </div>
-
+    <script>
+        $('#mystore_sj').click(function () {
+            location.href = "/mystore";
+        })
+    </script>
 </body>
 
 </html>
