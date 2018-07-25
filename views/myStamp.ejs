@@ -47,10 +47,10 @@
     <div id="selected_stamp">
         <div id="name_sj">
             <p id="store_name_sj">
-<!--상점 이름-->
+                <!--상점 이름-->
             </p>
             <p id="market_name_sj">
-<!--시장 이름-->
+                <!--시장 이름-->
             </p>
         </div>
         <div id="sns_sj">
@@ -133,7 +133,8 @@
             </div>
             <div id="stamp_infor_sj">
                 <p>기준:5000원 이상</p>
-                <p>보상:<!--보상-->
+                <p>보상:
+                    <!--보상-->
 
                 </p>
             </div>
@@ -239,12 +240,12 @@
 
 
     <div id="nav_sj">
+        <div id="home_sj">
+            <img src="/images/home.png" width="60%">
+            <br/>홈</div>
         <div id="coupon_sj">
             <img src="/images/coupon.png" width="60%">
             <br/>쿠폰</div>
-        <div id="search_sj">
-            <img src="/images/search.png" width="60%">
-            <br/>서울 시장</div>
         <div id="location_sj">
             <img src="/images/location.png" width="60%">
             <br/>주변 가맹점</div>
@@ -252,12 +253,16 @@
             <img src="/images/stamp.png" width="60%">
             <br/>내 스탬프</div>
         <div id="my_sj">
-            <img src="/images/my.png" width="60%">MyPage</div>
+            <img src="/images/my.png" width="60%">
+            <br/>MyPage</div>
     </div>
 
     <script>
-
+        $('#home_sj').click(function () {
+            location.href = "/main";
+        })
     </script>
+
     <!--stamp_kind 불러와야함-->
     <!--stamp_count 불러와야함-->
     <!--stamp_standard 불러와야함-->
