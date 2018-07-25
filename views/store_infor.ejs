@@ -14,10 +14,10 @@
 <body>
     <div id="name_sj">
         <p id="store_name_sj">
-            <%= result[0].user_id %>
+          <%= title %>
         </p>
         <p id="market_name_sj">
-            <%= result[0].market_name %>
+
         </p>
     </div>
     <div id="sns_sj">
@@ -101,7 +101,7 @@
         <div id="stamp_infor_sj">
             <p>기준:5000원 이상</p>
             <p>보상:
-                <%= result[0].stamp_reward %>
+
             </p>
         </div>
 
@@ -225,11 +225,8 @@
 
     <script>
         var reset_stamp_count = 0;
-        var market_name = '<%= result[0].market_name %>';
-        var stamp_kind = '<%= result[0].stamp_kind %>';
-        var user_id = '<%= result[0].user_id %>';
-        var stamp_standard = '<%= result[0].stamp_standard %>';
-       
+
+
 
         if (stamp_kind == 1) {
             $('#stamp_sj').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
@@ -242,12 +239,12 @@
         }
         if (stamp_standard == 5) {
             $('#fiveControls_sj').css('display', 'table');
-           
+
         }
 
         if (stamp_standard == 10) {
             $('#tenControls_sj').css('display', 'table');
-            
+
         }
     </script>
     <script src="/javascripts/myStamp.js"></script>
