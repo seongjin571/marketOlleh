@@ -28,76 +28,120 @@
         <h2 id="good_market_list">
             내가 가는 시장들
         </h2>
-        <ul>
-            <li>통인시장
-            </li>
-            <li>광장시장
-            </li>
-            <li>모란시장
-            </li>
-        
+
+        <div class="market"><p>통인 시장</p></div>
+        <div class="market"><p>광장 시장</p></div>
+        <div class="market"><p>모란 시장</p></div>
+
 
         <h2 id="near_market_list">
             주변 시장들
         </h2>
-      
-            <li>통인시장
-            </li>
-            <li>비산시장
-            </li>
-            <li>서울장터시장
-            </li>
-        </ul>
+
+        <div class="market"><p>통인 시장</p></div>
+        <div class="market"><p>서울관광 시장</p></div>
+        <div class="market"><p>모란 시장</p></div>
     </div>
 
-    <!-- <div class="find_coupon">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="store_and_market">
-                            <div class="store_name">나현이네 과일가게</div>
-                            <div class="market_name">통인시장</div>
-                        </div>
-                        <div class="sale_price">
-                            1000원 할인
-                        </div>
-                        <div class="standard">
-                            5000원 이상 구매 시
-                        </div>
-                        <div class="period">
-                            기간:~18.8.20
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="delete">쿠폰 삭제</div>
-                    </div>
-                </div>
+    <div class="find_coupon_list">
+
+        <div class="find_coupon">
+            <div class="store_and_market">
+                <div class="store_name">나현이네 과일가게</div>
+                <div class="market_name">통인시장</div>
             </div>
-    
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="store_and_market">
-                            <div class="store_name">퉁이네 정육점</div>
-                            <div class="market_name">통인시장</div>
-                        </div>
-                        <div class="sale_price">
-                            2000원 할인
-                        </div>
-                        <div class="standard">
-                            10000원 이상 구매 시
-                        </div>
-                        <div class="period">
-                            기간:~18.8.22
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="delete">쿠폰 삭제</div>
-                    </div>
-                </div>
+            <div class="sale_price">
+                1000원 할인
+            </div>
+            <div class="standard">
+                5000원 이상 구매 시
+            </div>
+            <div class="period">
+                기간:~18.8.20
             </div>
         </div>
- -->
+
+        <div class="find_coupon">
+            <div class="store_and_market">
+                <div class="store_name">퉁이네 정육점</div>
+                <div class="market_name">통인시장</div>
+            </div>
+            <div class="sale_price">
+                2000원 할인
+            </div>
+            <div class="standard">
+                10000원 이상 구매 시
+            </div>
+            <div class="period">
+                기간:~18.8.22
+            </div>
+        </div>
+
+        <div class="find_coupon">
+            <div class="store_and_market">
+                <div class="store_name">나현이네 과일가게</div>
+                <div class="market_name">통인시장</div>
+            </div>
+            <div class="sale_price">
+                1000원 할인
+            </div>
+            <div class="standard">
+                5000원 이상 구매 시
+            </div>
+            <div class="period">
+                기간:~18.8.20
+            </div>
+        </div>
+
+        <div class="find_coupon">
+            <div class="store_and_market">
+                <div class="store_name">퉁이네 정육점</div>
+                <div class="market_name">통인시장</div>
+            </div>
+            <div class="sale_price">
+                2000원 할인
+            </div>
+            <div class="standard">
+                10000원 이상 구매 시
+            </div>
+            <div class="period">
+                기간:~18.8.22
+            </div>
+        </div>
+
+        <div class="find_coupon">
+            <div class="store_and_market">
+                <div class="store_name">나현이네 과일가게</div>
+                <div class="market_name">통인시장</div>
+            </div>
+            <div class="sale_price">
+                1000원 할인
+            </div>
+            <div class="standard">
+                5000원 이상 구매 시
+            </div>
+            <div class="period">
+                기간:~18.8.20
+            </div>
+        </div>
+
+        <div class="find_coupon">
+            <div class="store_and_market">
+                <div class="store_name">퉁이네 정육점</div>
+                <div class="market_name">통인시장</div>
+            </div>
+            <div class="sale_price">
+                2000원 할인
+            </div>
+            <div class="standard">
+                10000원 이상 구매 시
+            </div>
+            <div class="period">
+                기간:~18.8.22
+            </div>
+        </div>
+
+    </div>
 
 
     <div class="my_coupon">
@@ -188,10 +232,11 @@
     })
     var swiper = new Swiper('.swiper-container');
 
-    $('li').click(function(){
-        var index=$(this).index();
-        $('li').eq(index).append("<li>awdw</li>");
+    $('.market').click(function () {
+        $('.find_coupon_list').show(200);
+        $(this).append($('.find_coupon_list'));
     })
+
 </script>
 
 </html>
