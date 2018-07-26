@@ -96,7 +96,9 @@ router.get('/store_infor', function(req, res) {
             sijang_name : result1[0].sijang_name,
             market_name : result1[0].market_name,
             stamp_standard : result1[0].stamp_standard,
-            stamp_kind : result1[0].stamp_kind
+            stamp_kind : result1[0].stamp_kind,
+            stamp_reward : result1[0].stamp_reward,
+            stamp_password : result1[0].stamp_password
           });
         });
       }else{
@@ -112,7 +114,9 @@ router.get('/store_infor', function(req, res) {
             sijang_name : result1[0].sijang_name,
             market_name : result1[0].market_name,
             stamp_standard : result1[0].stamp_standard,
-            stamp_kind : result1[0].stamp_kind
+            stamp_kind : result1[0].stamp_kind,
+            stamp_reward : result1[0].stamp_reward,
+            stamp_password : result1[0].stamp_password
           });
         });
       }
@@ -232,18 +236,27 @@ router.post('/make_stamp', function(req, res) {
   var market_name = req.body.market_name;
   var sijang_name = req.body.sijang_name;
   var user_id = req.body.user_id;
-  var sql = 'select * from manager where market_name = ? and sijang_name=?';
-  conn.query(sql,[market_name,sijang_name],function(error,result,fields){
-    if(error){
-      console.log('error');
-    }else{
-      console.log(market_name);
-      req.session.usestamp_market_name = market_name;
-      req.session.usestamp_sijang_name = sijang_name;
-      req.session.save(function() {
-        res.send({result:'success'});
-      });
+  var stamp_count = req.body.stamp_count;
+  var stamp_standard = req.body.stamp_standard;
+  var stamp_reward = req.body.stamp_reward;
+  var stamp_password = req.body.stamp_password;
+  var stamp_kind = req.body.stamp_kind;
+  var postsql = "select * from `stamp` where user_id = ? and market_name = ? and sijang_name = ?"
+  var sql = 'insert into `stamp`(`user_id`,`market_name`,`stamp_count`,`stamp_standard`,`stamp_reward`,`stamp_password`,`stamp_kind`,`sijang_name`) values (?,?,?,?,?,?,?,?);';
+  conn.query(postsql, [user_id,market_name,sijang_name], function(error, results){
+    if(error) { console.log(error); }
+    else if(results.length) {
+      res.send({ result: 'already' });
     }
-  })
+    else{
+      conn.query(sql,[user_id,market_name,stamp_count,stamp_standard,stamp_reward,stamp_password,stamp_kind,sijang_name],function(error,result,fields){
+        if(error){
+          console.log('error');
+        }  else{
+            res.send({ result: 'success' });
+          }
+      })
+    }
+  });
 });
 module.exports = router;

@@ -71,6 +71,7 @@
             text-align: center;
         }
 
+
         #nav_sj {
             width: 100%;
             height: 10%;
@@ -126,7 +127,7 @@
             z-index: 1;
         }
 
-        #menu_sj {
+        .menu_sj {
             width: 100%;
             height: 12%;
             display: inline-flex;
@@ -136,7 +137,7 @@
             line-height: 70px;
             z-index: 1;
         }
-        #stamp_menu_sj{
+        .stamp_menu_sj{
             width: 100%;
             height: 54%;
             position: fixed;
@@ -198,7 +199,7 @@
             margin-left: 6%;
         }
 
-        #menu_sj p {
+        .menu_sj p {
             width: 33.333%;
             text-align: center;
             font-size: 25px;
@@ -244,7 +245,7 @@
         .tenStamp_bottom_sj {
             margin-bottom: 10px;
         }
-        .store_detail_sj,#store_review_sj{
+        .store_detail_sj,.store_review_sj{
             display: none;
             position: absolute;
             top: 36%;
@@ -295,13 +296,13 @@
             font-size: 20px;
             margin-bottom: 20px;
         }
-        #review_write_sj{
+        .review_write_sj{
             width: 100%;
             display: none;
             position: absolute;
             top: 36%;
         }
-        #write_button_div_sj{
+        .write_button_div_sj{
             width: 100%;
             display: inline-flex;
         }
@@ -310,7 +311,7 @@
             margin-left: 10%;
             font-size: 23px;
         }
-        #write_button_div_sj button{
+        .write_button_div_sj button{
             width: 35%;
             height: 50px;
             /* background-color:  */
@@ -321,7 +322,7 @@
             font-size: 25px;
             margin-top: 20px;
         }
-        #password_number_div_sj{
+        .password_number_div_sj{
             display: none;
             width: 80%;
             margin-left: 10%;
@@ -345,11 +346,11 @@
             border-style: solid;
             border-color: rgb(181, 233, 199);
         }
-        #password_cancel{
+        .password_cancel{
             background-color: rgb(241, 37, 37);
             color: white;
         }
-        #password_ok{
+        .password_ok{
             background-color: rgb(241, 37, 37);
             color: white;
         }

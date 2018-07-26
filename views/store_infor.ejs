@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/stamp.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/store_infor.css" />
     <script>
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
@@ -19,14 +19,14 @@
 
 <body>
 
-    <div id="name_sj">
+    <div class="name_sj">
         <p id="store_name_sj">
           <%= title %>
           <%= result.market_name %>
           <%= result.sijang_name %>
           <%= result.user_id %>
         </p>
-        <p id="market_name_sj">
+        <p class="market_name_sj">
 
         </p>
     </div>
@@ -43,12 +43,12 @@
         <p id="go_store_review_sj">리뷰</p>
     </div>
     <div id="stamp_menu_sj">
-        <div id="stamp_sj">
+        <div class="stamp_sj">
 
-            <div id="tenControls_sj">
-                <div id="tenStamp_sj">
+            <div class="tenControls_sj">
+                <div class="tenStamp_sj">
 
-                    <div id="tenStamp_top_sj">
+                    <div class="tenStamp_top_sj">
                         <div class="ten_sj">
                             <p>1</p>
                         </div>
@@ -66,7 +66,7 @@
                         </div>
                     </div>
 
-                    <div id="tenStamp_bottom_sj">
+                    <div class="tenStamp_bottom_sj">
                         <div class="ten_sj">
                             <p>6</p>
                         </div>
@@ -87,8 +87,8 @@
                 </div>
             </div>
 
-            <div id="fiveControls_sj">
-                <div id="fiveStamp_sj">
+            <div class="fiveControls_sj">
+                <div class="fiveStamp_sj">
                     <div class="five_sj">
                         <p>1</p>
                     </div>
@@ -115,38 +115,12 @@
             </p>
         </div>
 
-        <button id="button_sj">다운받기</button>
-    </div>
-
-    <div id="password_number_div_sj">
-
-        <div class="password_line_sj">
-            <div class="password_number_sj"></div>
-            <div class="password_number_sj"></div>
-            <div class="password_number_sj"></div>
-        </div>
-        <div class="password_line_sj">
-            <div class="password_number_sj"></div>
-            <div class="password_number_sj"></div>
-            <div class="password_number_sj"></div>
-        </div>
-        <div class="password_line_sj">
-            <div class="password_number_sj"></div>
-            <div class="password_number_sj"></div>
-            <div class="password_number_sj"></div>
-        </div>
-        <div class="password_line_sj">
-            <div id="password_cancel">취소</div>
-            <div class="password_number_sj"></div>
-            <div id="password_ok"></div>
-        </div>
-
+        <button class="button_sj">다운받기</button>
     </div>
 
 
 
-
-    <div id="store_detail_sj">
+    <div class="store_detail_sj">
         <h2>상점 소개</h2>
         <p>저희 과일 가게는 항상 신선한 유기농 과일만을 공수해 옵니다. </p>
         <img src="/images/fruit.jpg" width="100%">
@@ -159,8 +133,8 @@
 
 
 
-    <div id="store_review_sj">
-        <button id="review_button_sj">리뷰 등록</button>
+    <div class="store_review_sj">
+        <button class="review_button_sj">리뷰 등록</button>
         <div class="review_div_sj">
 
             <div class="review_content_sj">
@@ -241,31 +215,41 @@
         console.log(stamp_kind);
         console.log(stamp_standard);
         if (stamp_kind == 1) {
-            $('#stamp_sj').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
+            $('.stamp_sj').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
         }
         else if (stamp_kind == 2) {
-            $('#stamp_sj').css({ "background": "url(/images/backSample2.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
+            $('.stamp_sj').css({ "background": "url(/images/backSample2.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
         }
         else if (stamp_kind == 3) {
-            $('#stamp_sj').css({ "background": "url(/images/backSample3.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
+            $('.stamp_sj').css({ "background": "url(/images/backSample3.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
         }
         if (stamp_standard == 5) {
-            $('#fiveControls_sj').css('display', 'table');
+            $('.fiveControls_sj').css('display', 'table');
 
         }
 
         if (stamp_standard == 10) {
-            $('#tenControls_sj').css('display', 'table');
+            $('.tenControls_sj').css('display', 'table');
 
         }
-        $('#button_sj').click(function(){
+        $('.button_sj').click(function(){
           var market_name = '<%= market_name %>';
           var sijang_name = '<%= sijang_name %>';
           var user_id = '<%= user_id %>';
+          var stamp_count = 0;
+          var stamp_standard = '<%= stamp_standard %>';
+          var stamp_reward = '<%= stamp_reward %>';
+          var stamp_password = '<%= stamp_password %>';
+          var stamp_kind = '<%= stamp_kind %>';
           var data = {
             'market_name' : market_name,
             'sijang_name' : sijang_name,
-            'user_id' : user_id
+            'user_id' : user_id,
+            'stamp_count' : stamp_count,
+            'stamp_standard' : stamp_standard,
+            'stamp_reward' : stamp_reward,
+            'stamp_password' : stamp_password,
+            'stamp_kind' : stamp_kind
           }
           $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
             type: 'POST',
@@ -277,9 +261,10 @@
             success: function (result) {
               if (result['result'] == 'success') {
                 alert('스탬프생성');
-                $(window).attr('location', '/mainManager');
-              } else {
+                location.reload();
+              } else if(result['result']=='already'){
                 alert('스탬프 이미 존재');
+                location.reload();
               }
             },
             error: function (error) {
@@ -288,7 +273,7 @@
           });
         });
     </script>
-    <script src="/javascripts/myStamp.js"></script>
+    <script src="/javascripts/store_infor.js"></script>
     <!-- myStamp 메뉴 관련 js -->
 
 
