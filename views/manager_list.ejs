@@ -5,25 +5,15 @@
   <title><%= title %></title>
 </head>
 <style>
-.applicant_container{
-  width:800px;
-  border:solid;
-  margin-bottom: 30px;
-  word-wrap: break-word;
-  display: inline-block;
-}
 #applicant_name_area{
   width: 21%;
-  height: 1200px;
   display: inline-block;
-  border-right: groove;
+  border: groove;
   vertical-align: top;
+  background-color: yellow;
 }
-#applicant_content_area{
-  width: 78%;
-  height: 1200px;
-  display: inline-block;
-  vertical-align: top;
+.list_name{
+  cursor : pointer;
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -39,7 +29,10 @@
 
   <div id='applicant_name_area'>
     <% for(var i=0; i<results.length;i++){ %>
-      <div class='list_name'><button class="market_name"><%= results[i].market_name %></button></div>
+      <div class='list_name'>
+        <div class="market_name"><%= results[i].market_name %></div>
+        <div class="sijang_name"><%= results[i].sijang_name %></div>
+      </div>
       <% } %>
 
 
@@ -49,8 +42,11 @@
         var index = $(this).index();
         var market=document.getElementsByClassName('market_name')[index];
         var market_name =market.innerHTML;
+        var sijang=document.getElementsByClassName('sijang_name')[index];
+        var sijang_name =sijang.innerHTML;
         var data = {
-          'market_name' : market_name
+          'market_name' : market_name,
+          'sijang_name' : sijang_name
         }
         console.log(data);
         $.ajax({
