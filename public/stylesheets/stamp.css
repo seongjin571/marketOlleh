@@ -143,7 +143,7 @@
             position: fixed;
             top: 36%;
         }
-        #stamp_sj {
+        .stamp_sj {
             width: 100%;
             height: 60%;
 
@@ -168,13 +168,13 @@
         h2{
             margin-left: 20px;
         }
-        #store_detail_sj p{
+        .store_detail_sj p{
             width: 90%;
             margin-left: 5%;
             font-size: 20px;
             margin-bottom: 20px;
         }
-        #button_sj {
+        .button_sj {
             width: 100%;
             height: 20%;
 
@@ -189,7 +189,7 @@
             display: none;
         }
 
-        #goodCount_sj {
+        .goodCount_sj {
             font-size: 25px;
             line-height: 70px;
         }
@@ -205,21 +205,21 @@
             font-size: 25px;
         }
 
-        #fiveControls_sj,
-        #tenControls_sj {
+        .fiveControls_sj,
+        .tenControls_sj {
             width: 100%;
             height: 100%;
             display: none;
         }
 
-        #tenStamp_sj {
+        .tenStamp_sj {
             width: 100%;
             height: 100%;
             display: table-cell;
             vertical-align: middle;
         }
 
-        #fiveStamp_sj {
+        .fiveStamp_sj {
             width: 100%;
             height: 100%;
             display: table-cell;
@@ -241,11 +241,11 @@
 
         }
 
-        #tenStamp_top_sj,
-        #tenStamp_bottom_sj {
+        .tenStamp_top_sj,
+        .tenStamp_bottom_sj {
             margin-bottom: 10px;
         }
-        #store_detail_sj,#store_review_sj{
+        .store_detail_sj,#store_review_sj{
             display: none;
             position: absolute;
             top: 36%;
@@ -263,7 +263,7 @@
             padding-bottom: 5px;
             /* color: white; */
         }
-        #review_button_sj{
+        .review_button_sj{
             width: 80%;
             margin: 20px 0;
             margin-left: 10%;

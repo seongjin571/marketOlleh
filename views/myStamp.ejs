@@ -58,7 +58,7 @@
             <div id="sns_sj">
               <img id="noGood_Button_sj" src="/images/noGood.png" width="16%" height="auto">
               <img id="yesGood_Button_sj" src="/images/yesGood.png" width="16%" height="auto">
-              <p id="goodCount_sj">215</p>
+              <p class='goodCount_sj' id="goodCount_sj<%= myStamps[i].id %>">215</p>
               <img src="/images/ka.png" width="16%" height="auto">
               <img src="/images/face.png" width="16%" height="auto">
             </div>
@@ -68,43 +68,43 @@
               <p id="go_store_review_sj">리뷰</p>
             </div>
             <div id="stamp_menu_sj">
-              <div id="stamp_sj">
+              <div class='stamp_sj' id="stamp_sj<%= myStamps[i].id %>">
 
-                <div id="tenControls_sj">
-                  <div id="tenStamp_sj">
+                <div class='tenControls_sj' id="tenControls_sj<%= myStamps[i].id %>">
+                  <div class='tenStamp_sj' id="tenStamp_sj<%= myStamps[i].id %>">
 
-                    <div id="tenStamp_top_sj">
-                      <div class="ten_sj">
+                    <div class='tenStamp_top_sj' id="tenStamp_top_sj<%= myStamps[i].id %>">
+                      <div class="ten_sj <%= myStamps[i].id %>">
                         <p>1</p>
                       </div>
-                      <div class="ten_sj">
+                      <div class="ten_sj <%= myStamps[i].id %>">
                         <p>2</p>
                       </div>
-                      <div class="ten_sj">
+                      <div class="ten_sj <%= myStamps[i].id %>">
                         <p>3</p>
                       </div>
-                      <div class="ten_sj">
+                      <div class="ten_sj <%= myStamps[i].id %>">
                         <p>4</p>
                       </div>
-                      <div class="ten_sj">
+                      <div class="ten_sj <%= myStamps[i].id %>">
                         <p>5</p>
                       </div>
                     </div>
 
-                    <div id="tenStamp_bottom_sj">
-                      <div class="ten_sj">
+                    <div class='tenStamp_bottom_sj' id="tenStamp_bottom_sj<%= myStamps[i].id %>">
+                      <div class="ten_sj <%= myStamps[i].id %>">
                         <p>6</p>
                       </div>
-                      <div class="ten_sj">
+                      <div class="ten_sj <%= myStamps[i].id %>">
                         <p>7</p>
                       </div>
-                      <div class="ten_sj">
+                      <div class="ten_sj <%= myStamps[i].id %>">
                         <p>8</p>
                       </div>
-                      <div class="ten_sj">
+                      <div class="ten_sj <%= myStamps[i].id %>">
                         <p>9</p>
                       </div>
-                      <div class="ten_sj">
+                      <div class="ten_sj <%= myStamps[i].id %>">
                         <p>10</p>
                       </div>
                     </div>
@@ -112,21 +112,21 @@
                   </div>
                 </div>
 
-                <div id="fiveControls_sj">
-                  <div id="fiveStamp_sj">
-                    <div class="five_sj">
+                <div class='fiveControls_sj' id="fiveControls_sj<%= myStamps[i].id %>">
+                  <div class='fiveStamp_sj' id="fiveStamp_sj<%= myStamps[i].id %>">
+                    <div class="five_sj <%= myStamps[i].id %>">
                       <p>1</p>
                     </div>
-                    <div class="five_sj">
+                    <div class="five_sj <%= myStamps[i].id %>">
                       <p>2</p>
                     </div>
-                    <div class="five_sj">
+                    <div class="five_sj <%= myStamps[i].id %>">
                       <p>3</p>
                     </div>
-                    <div class="five_sj">
+                    <div class="five_sj <%= myStamps[i].id %>">
                       <p>4</p>
                     </div>
-                    <div class="five_sj">
+                    <div class="five_sj <%= myStamps[i].id %>">
                       <p>5</p>
                     </div>
                   </div>
@@ -141,7 +141,7 @@
                 </p>
               </div>
 
-              <button id="button_sj">삭제</button>
+              <button class='button_sj' id="button_sj<%= myStamps[i].id %>">삭제</button>
             </div>
 
             <div id="password_number_div_sj">
@@ -172,7 +172,7 @@
 
 
 
-            <div id="store_detail_sj">
+            <div class='store_detail_sj' id="store_detail_sj<%= myStamps[i].id %>">
               <h2>상점 소개</h2>
               <p>저희 과일 가게는 항상 신선한 유기농 과일만을 공수해 옵니다. </p>
               <img src="/images/fruit.jpg" width="100%">
@@ -185,7 +185,7 @@
 
 
             <div id="store_review_sj">
-              <button id="review_button_sj">리뷰 등록</button>
+              <button class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">리뷰 등록</button>
               <div class="review_div_sj">
 
                 <div class="review_content_sj">
@@ -245,6 +245,35 @@
               $('#selected_stamp<%= myStamps[i].id %>').css('display', 'block');
               $('#myStamp').css('display', 'none');
             });
+            var stamp_kind = '<%= myStamps[i].stamp_kind %>';
+            var stamp_count = '<%= myStamps[i].stamp_count %>';
+            var stamp_standard = '<%= myStamps[i].stamp_standard %>';
+
+
+            if (stamp_kind == 1) {
+                $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
+            }
+            else if (stamp_kind == 2) {
+                $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample2.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
+            }
+            else if (stamp_kind == 3) {
+                $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample3.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
+            }
+            if (stamp_standard == 5) {
+                $('#fiveControls_sj<%= myStamps[i].id %>').css('display', 'table');
+                for (var i = 0; i < stamp_count; i++) {
+                    var check = document.getElementsByClassName('five_sj <%= myStamps[i].id %>')[i];
+                    check.style.backgroundColor = "#232323";
+                }
+            }
+
+            if (stamp_standard == 10) {
+                $('#tenControls_sj<%= myStamps[i].id %>').css('display', 'table');
+                for (var i = 0; i < stamp_count; i++) {
+                    var check = document.getElementsByClassName('ten_sj <%= myStamps[i].id %>')[i];
+                    check.style.backgroundColor = "#232323";
+                }
+            }
           </script>
         <% } %>
     <% } %>
