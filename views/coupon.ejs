@@ -29,18 +29,30 @@
             내가 가는 시장들
         </h2>
 
-        <div class="market"><p>통인 시장</p></div>
-        <div class="market"><p>광장 시장</p></div>
-        <div class="market"><p>모란 시장</p></div>
+        <div class="market">
+            <p>통인 시장</p>
+        </div>
+        <div class="market">
+            <p>광장 시장</p>
+        </div>
+        <div class="market">
+            <p>모란 시장</p>
+        </div>
 
 
         <h2 id="near_market_list">
             주변 시장들
         </h2>
 
-        <div class="market"><p>통인 시장</p></div>
-        <div class="market"><p>서울관광 시장</p></div>
-        <div class="market"><p>모란 시장</p></div>
+        <div class="market">
+            <p>통인 시장</p>
+        </div>
+        <div class="market">
+            <p>서울관광 시장</p>
+        </div>
+        <div class="market">
+            <p>모란 시장</p>
+        </div>
     </div>
 
     <div class="find_coupon_list">
@@ -235,6 +247,17 @@
     $('.market').click(function () {
         $('.find_coupon_list').show(200);
         $(this).append($('.find_coupon_list'));
+    })
+    $('.find_coupon').click(function () {
+        var index = $(this).index();
+        down();
+        function down() {
+            if (confirm(index + '번째 쿠폰을 다운로드 하시겠습니까?')) {
+                alert(index+'번째 쿠폰 다운로드 완료')
+            } else {
+                // no click
+            }
+        }
     })
 
 </script>
