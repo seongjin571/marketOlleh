@@ -10,6 +10,11 @@ router.get('/start', function(req, res){
   res.render('start');
 });
 
+router.get('/coupon', function(req, res){
+  res.render('coupon');
+});
+
+
 
 router.get('/main', function(req, res){
   var stampSql = 'select * from `stamp` where `user_id`=?;';
