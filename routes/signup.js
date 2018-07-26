@@ -10,8 +10,6 @@ router.get('/', function(req, res) {
 });
 
 
-
-
 router.get('/signupmanager', function(req, res) {
   res.render('signupManager');
 });
@@ -46,7 +44,6 @@ router.post('/signupmanager', function(req, res) {
   var market_name = req.body.market_name;
   var market_location = req.body.market_location;
   var manager_phone = req.body.manager_phone;
-
   var manager_name = req.body.manager_name;
   var stamp_standard = req.body.stamp_standard;
   var stamp_reward = req.body.stamp_reward;
@@ -54,18 +51,17 @@ router.post('/signupmanager', function(req, res) {
   var market_promotion = req.body.market_promotion;
   var stamp_kind = req.body.stamp_kind;
   var market_introduce = req.body.market_introduce;
+  var sijang_name = req.body.sijang_name;
   var selectSql = 'select * from `manager` where `manager_id`=?';
-  var insertSql = 'insert into `manager`(`manager_id`, `password`, `market_name`,`market_location`,`manager_phone`,`manager_name`,`stamp_standard`,`stamp_reward`,`stamp_password`,`market_promotion`,`stamp_kind`,`market_introduce`) values (?,?,?,?,?,?,?,?,?,?,?,?);';
+  var insertSql = 'insert into `manager`(`manager_id`, `password`, `market_name`,`market_location`,`manager_phone`,`manager_name`,`stamp_standard`,`stamp_reward`,`stamp_password`,`market_promotion`,`stamp_kind`,`market_introduce`,`sijang_name`) values (?,?,?,?,?,?,?,?,?,?,?,?,?);';
 
   conn.query(selectSql, [manager_id], function(error, results){
-
     if(error) { console.log(error); }
     else if(results.length) {
       res.send({ result: 'already' });
     }
     else{
-
-      conn.query(insertSql, [manager_id, password, market_name,market_location,manager_phone,manager_name,stamp_standard,stamp_reward,stamp_password,market_promotion,stamp_kind,market_introduce], function(err, rows){
+      conn.query(insertSql, [manager_id, password, market_name,market_location,manager_phone,manager_name,stamp_standard,stamp_reward,stamp_password,market_promotion,stamp_kind,market_introduce,sijang_name], function(err, rows){
         if(err){ console.log(err); }
         else{
           res.send({ result: 'success' });
