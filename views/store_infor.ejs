@@ -18,10 +18,13 @@
 </head>
 
 <body>
- 
+
     <div id="name_sj">
         <p id="store_name_sj">
           <%= title %>
+          <%= result.market_name %>
+          <%= result.sijang_name %>
+          <%= result.user_id %>
         </p>
         <p id="market_name_sj">
 
@@ -231,11 +234,12 @@
 
 
     <script>
-       
+
         var reset_stamp_count = 0;
-
-
-
+        var stamp_kind = '<%= stamp_kind %>';
+        var stamp_standard = '<%= stamp_standard %>';
+        console.log(stamp_kind);
+        console.log(stamp_standard);
         if (stamp_kind == 1) {
             $('#stamp_sj').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
         }
@@ -254,6 +258,35 @@
             $('#tenControls_sj').css('display', 'table');
 
         }
+        $('#button_sj').click(function(){
+          var market_name = '<%= market_name %>';
+          var sijang_name = '<%= sijang_name %>';
+          var user_id = '<%= user_id %>';
+          var data = {
+            'market_name' : market_name,
+            'sijang_name' : sijang_name,
+            'user_id' : user_id
+          }
+          $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
+            type: 'POST',
+            url: '/make_stamp',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            cache: false,
+            dataType: 'json',
+            data: data,
+            success: function (result) {
+              if (result['result'] == 'success') {
+                alert('스탬프생성');
+                $(window).attr('location', '/mainManager');
+              } else {
+                alert('스탬프 이미 존재');
+              }
+            },
+            error: function (error) {
+              console.log('erer');
+            }
+          });
+        });
     </script>
     <script src="/javascripts/myStamp.js"></script>
     <!-- myStamp 메뉴 관련 js -->
