@@ -33,6 +33,28 @@ router.get('/main', function(req, res){
   });
 });
 
+router.get('/myStamp', function(req, res){
+  var stampSql = 'select * from `stamp` where `user_id`=?;';
+  conn.query(stampSql, [req.user.id], function(error, results) {
+    if(error) { console.log(error); }
+    else {
+      if(! results.length) {
+        console.log(results);
+        res.render('myStamp', {
+          user: req.user,
+          myStamps: undefined,
+        });
+      }
+      else {
+        res.render('myStamp', {
+          user: req.user,
+          myStamps: results,
+        });
+      }
+    }
+  });
+});
+
 
 router.get('/mainManager', function(req, res){
   res.render('mainManager', {
