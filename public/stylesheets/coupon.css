@@ -47,6 +47,9 @@ html {
     margin-left: 2.5%;
     display: none;
 }
+.find_coupon{
+    display: none;
+}
 .my_coupon{
     width: 80%;
     margin-left: 10%;
