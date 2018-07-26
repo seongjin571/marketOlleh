@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Sign Up Manager</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <body>
-    <h1>Sign Up Manager</h1>
-    <div>
-      <form id='signupForm'>
-        <input type="text" id="manager_id" name='manager_id' placeholder="manager_id" style='margin-bottom: 10px;'>
-        <br>
-        <input type="text" id="password" name='password' placeholder="password" style='margin-bottom: 10px;'>
-        <br>
-        <input type="text" id="market_name" name='market_name' placeholder="market_name" style='margin-bottom: 10px;'>
-        <br>
-        <input type="text" id="market_location" name='market_location' placeholder="market_location" style='margin-bottom: 10px;'>
-        <br>
-        <input type="text" placeholder="manager_phone" id="manager_phone" name='manager_phone' style='margin-bottom: 10px;'>
-        <br>
-        <input type="text" placeholder="manager_name" id="manager_name" name='manager_name' style='margin-bottom: 10px;'>
-        <br>
-        <select class='stamp_standard' name="stamp_standard">
-          <option>5</option>
-          <option>10</option>
+
+<head>
+  <title>Sign Up Manager</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
+<script>
+  window.addEventListener('load', function () {
+    FastClick.attach(document.body);
+  }, false);
+</script>
+
+<body>
+
+  <h1>Sign Up Manager</h1>
+  <div>
+
+    <form id='signupForm'>
+      <input type="text" id="manager_id" name='manager_id' placeholder="manager_id" style='margin-bottom: 10px;'>
+      <br>
+      <input type="text" id="password" name='password' placeholder="password" style='margin-bottom: 10px;'>
+      <br>
+      <input type="text" id="market_name" name='market_name' placeholder="market_name" style='margin-bottom: 10px;'>
+      <br>
+      <input type="text" id="market_location" name='market_location' placeholder="market_location" style='margin-bottom: 10px;'>
+      <br>
+      <input type="text" placeholder="manager_phone" id="manager_phone" name='manager_phone' style='margin-bottom: 10px;'>
+      <br>
+      <input type="text" placeholder="manager_name" id="manager_name" name='manager_name' style='margin-bottom: 10px;'>
+      <br>
+      <select class='stamp_standard' name="stamp_standard">
+        <option>5</option>
+        <option>10</option>
         </seclect>
 
         <br>
@@ -38,87 +48,89 @@
           <option>1</option>
           <option>2</option>
           <option>3</option>
-        </seclect>
-        <input type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce' style='margin-bottom: 10px;'>
-        <br>
-        <input type="text" placeholder="sijang_name" id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'>
-        <br>
-          <input type='submit' value='회원가입' style='margin-bottom: 10px;'/><br/>
-        </form>
-        <script>
-        $('#signupForm').submit(function(e) {
+          </seclect>
+          <input type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce' style='margin-bottom: 10px;'>
+          <br>
+          <input type="text" placeholder="sijang_name" id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'>
+          <br>
+          <input type='submit' value='회원가입' style='margin-bottom: 10px;' />
+          <br/>
+    </form>
+    <script>
+      $('#signupForm').submit(function (e) {
 
-          e.preventDefault();
+        e.preventDefault();
 
-          var manager_id = $('#manager_id').val();
-          var password= $('#password').val();
-          var market_name= $('#market_name').val();
-          var market_location= $('#market_location').val();
-          var manager_name= $('#manager_name').val();
-          var manager_phone= $('#manager_phone').val();
-          var stamp_reward= $('#stamp_reward').val();
-          var stamp_password= $('#stamp_password').val();
-          var market_promotion= $('#market_promotion').val();
-          var market_introduce= $('#market_introduce').val();
+        var manager_id = $('#manager_id').val();
+        var password = $('#password').val();
+        var market_name = $('#market_name').val();
+        var market_location = $('#market_location').val();
+        var manager_name = $('#manager_name').val();
+        var manager_phone = $('#manager_phone').val();
+        var stamp_reward = $('#stamp_reward').val();
+        var stamp_password = $('#stamp_password').val();
+        var market_promotion = $('#market_promotion').val();
+        var market_introduce = $('#market_introduce').val();
 
-          var test = document.getElementsByClassName('stamp_standard');
-          var select_stamp_standard = test[0].selectedIndex;
-          var stamp_standard;
-          if(select_stamp_standard == 0){
-            stamp_standard = 5;
-          }else if(select_stamp_standard == 1){
-            stamp_standard = 10;
-          }
-          var test = document.getElementsByClassName('stamp_kind');
-          var select_stamp_kind = test[0].selectedIndex;
-          var stamp_kind;
-          if(select_stamp_kind == 0){
-            stamp_kind = 1;
-          }else if(select_stamp_kind == 1){
-            stamp_kind = 2;
-          }else if(select_stamp_kind == 2){
-            stamp_kind = 3;
-          }
-          var sijang_name = $('#sijang_name').val();
-          var data = {
+        var test = document.getElementsByClassName('stamp_standard');
+        var select_stamp_standard = test[0].selectedIndex;
+        var stamp_standard;
+        if (select_stamp_standard == 0) {
+          stamp_standard = 5;
+        } else if (select_stamp_standard == 1) {
+          stamp_standard = 10;
+        }
+        var test = document.getElementsByClassName('stamp_kind');
+        var select_stamp_kind = test[0].selectedIndex;
+        var stamp_kind;
+        if (select_stamp_kind == 0) {
+          stamp_kind = 1;
+        } else if (select_stamp_kind == 1) {
+          stamp_kind = 2;
+        } else if (select_stamp_kind == 2) {
+          stamp_kind = 3;
+        }
+        var sijang_name = $('#sijang_name').val();
+        var data = {
 
-            'manager_id': manager_id,
-            'password': password,
-            'market_name': market_name,
-            'market_location': market_location,
-            'manager_phone': manager_phone,
-            'manager_name': manager_name,
-            'stamp_reward': stamp_reward,
-            'stamp_password': stamp_password,
-            'market_promotion': market_promotion,
-            'market_introduce': market_introduce,
-            'stamp_standard' : stamp_standard,
-            'stamp_kind' : stamp_kind,
-            'sijang_name' : sijang_name
-          }
-          $.ajax({
-            type : "POST",
-            url : "/signup/signupmanager",
-            contentType : "application/x-www-form-urlencoded; charset=UTF-8",
-            cache: false,
-            datatype : "json",
-            data : data,
-            success : function(result){
-              if (result['result']=='success'){
-                alert('가입 성공');
-                $(window).attr('location','/manager_list');
-              }
-              else if(result['result'] == 'already') {
-                alert('이미 존재하는 아이디입니다.');
-                $('#manager_id').val('')
-              }
-            },
-            error: function(error){
-              alert('가입 실패');
+          'manager_id': manager_id,
+          'password': password,
+          'market_name': market_name,
+          'market_location': market_location,
+          'manager_phone': manager_phone,
+          'manager_name': manager_name,
+          'stamp_reward': stamp_reward,
+          'stamp_password': stamp_password,
+          'market_promotion': market_promotion,
+          'market_introduce': market_introduce,
+          'stamp_standard': stamp_standard,
+          'stamp_kind': stamp_kind,
+          'sijang_name': sijang_name
+        }
+        $.ajax({
+          type: "POST",
+          url: "/signup/signupmanager",
+          contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+          cache: false,
+          datatype: "json",
+          data: data,
+          success: function (result) {
+            if (result['result'] == 'success') {
+              alert('가입 성공');
+              $(window).attr('location', '/manager_list');
             }
-          });
+            else if (result['result'] == 'already') {
+              alert('이미 존재하는 아이디입니다.');
+              $('#manager_id').val('')
+            }
+          },
+          error: function (error) {
+            alert('가입 실패');
+          }
         });
-      </script>
-    </div>
-  </body>
+      });
+    </script>
+  </div>
+</body>
+
 </html>

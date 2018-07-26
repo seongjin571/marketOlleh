@@ -8,16 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-
+    <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
+    <script>
+        window.addEventListener('load', function () {
+            FastClick.attach(document.body);
+        }, false);
+    </script>
 </head>
 
 <body>
+
     <div id="all_body">
-            <div id="intro_image_div">
-                    <div id="intro_image_vertical">
-                        <img id="intro_image" src="/images/logo_with_text.png" width="45%" height="auto">
-                    </div>
-                </div>
+        <div id="intro_image_div">
+            <div id="intro_image_vertical">
+                <img id="intro_image" src="/images/logo_with_text.png" width="45%" height="auto">
+            </div>
+        </div>
         <div id="top_part">
             <div id="top_vertical_helper">
                 <div id="logo_div"></div>
@@ -30,15 +36,16 @@
         </div>
     </div>
     <script>
+
         setTimeout(function () {
             $('#intro_image_div').fadeOut('500');
         }, 2000);
         $('#user_login').click(function () {
             location.href = "/loginUser";
         });
-            $('#seller_login').click(function(){
-                location.href="/loginManager";
-            });
+        $('#seller_login').click(function () {
+            location.href = "/loginManager";
+        });
     </script>
 </body>
 
