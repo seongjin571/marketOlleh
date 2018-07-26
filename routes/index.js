@@ -72,26 +72,43 @@ router.get('/store_infor', function(req, res) {
   var market_name = req.session.usestamp_market_name;
   var sijang_name = req.session.usestamp_sijang_name;
   var sql = 'select * from `stamp` where market_name = ? and sijang_name = ? and user_id = ?';
+  var sql2 = 'select * from `manager` where market_name = ? and sijang_name = ?';
   console.log(user_id);
   conn.query(sql,[market_name,sijang_name,user_id], function(error, result){
     if(error){
       console.log(error);
     }else{
       if(result[0] == null){
-        console.log(market_name);
-        console.log(sijang_name);
-        // console.log(result);
-        res.render('store_infor', {
-          title: '스탬프 미존재',
-          result : result
+        conn.query(sql2,[market_name,sijang_name],function(error,result1){
+          console.log(market_name);
+          console.log(sijang_name);
+          // console.log(result);
+          res.render('store_infor', {
+            title: '스탬프 미존재',
+            result : result,
+            result1 : result1,
+            user_id : user_id,
+            sijang_name : result1[0].sijang_name,
+            market_name : result1[0].market_name,
+            stamp_standard : result1[0].stamp_standard,
+            stamp_kind : result1[0].stamp_kind
+          });
         });
       }else{
-        console.log(market_name);
-        console.log(sijang_name);
-        // console.log(result);
-        res.render('store_infor', {
-          title: '스탬프 존재',
-          result : result
+        conn.query(sql2,[market_name,sijang_name],function(error,result1){
+          console.log(market_name);
+          console.log(sijang_name);
+          // console.log(result);
+          res.render('store_infor', {
+            title: '스탬프 존재',
+            result : result,
+            result1 : result1,
+            user_id : user_id,
+            sijang_name : result1[0].sijang_name,
+            market_name : result1[0].market_name,
+            stamp_standard : result1[0].stamp_standard,
+            stamp_kind : result1[0].stamp_kind
+          });
         });
       }
     }
@@ -206,4 +223,22 @@ router.get('/manager_list', function(req, res, next) {
   //res.render('applyadmin',{title:'apply admin page'});
 });
 
+router.post('/make_stamp', function(req, res) {
+  var market_name = req.body.market_name;
+  var sijang_name = req.body.sijang_name;
+  var user_id = req.body.user_id;
+  var sql = 'select * from manager where market_name = ? and sijang_name=?';
+  conn.query(sql,[market_name,sijang_name],function(error,result,fields){
+    if(error){
+      console.log('error');
+    }else{
+      console.log(market_name);
+      req.session.usestamp_market_name = market_name;
+      req.session.usestamp_sijang_name = sijang_name;
+      req.session.save(function() {
+        res.send({result:'success'});
+      });
+    }
+  })
+});
 module.exports = router;
