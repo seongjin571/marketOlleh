@@ -90,7 +90,6 @@
                         <p>5</p>
                       </div>
                     </div>
-                </div>
 
                     <div class='tenStamp_bottom_sj' id="tenStamp_bottom_sj<%= myStamps[i].id %>">
                       <div class="ten_sj <%= myStamps[i].id %>">
@@ -183,6 +182,8 @@
             </div>
 
 
+
+
             <div id="store_review_sj">
               <button class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">리뷰 등록</button>
               <div class="review_div_sj">
@@ -266,7 +267,7 @@
                 }
             }
 
-            if (stamp_standard == 10) {
+            else if (stamp_standard == 10) {
                 $('#tenControls_sj<%= myStamps[i].id %>').css('display', 'table');
                 for (var i = 0; i < stamp_count; i++) {
                     var check = document.getElementsByClassName('ten_sj <%= myStamps[i].id %>')[i];
@@ -276,6 +277,7 @@
           </script>
         <% } %>
     <% } %>
+
 
 
     <div id="nav_sj">
