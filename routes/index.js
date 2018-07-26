@@ -97,17 +97,25 @@ router.get('/store_infor', function(req, res) {
 
 
 router.get('/myStamp', function(req, res) {
-  var sql = 'select * from `stamp`';
-  conn.query(sql, function(error, result){
-    if(error){
-      console.log(error);
-    }else{
-      res.render('myStamp', {
-        title: req.session.usestamp_market_name,
-        result : result
-      });
+  var sql = 'select * from `stamp` where `user_id`=?';
+  conn.query(sql, [req.user.id],function(error, result){
+    if(error) { console.log(error); }
+    else {
+      if(! result.length) {
+        console.log(result);
+        res.render('myStamp', {
+          user: req.user,
+          myStamps: undefined,
+        });
+      }
+      else {
+        res.render('myStamp', {
+          user: req.user,
+          myStamps: result,
+        });
+      }
     }
-  })
+  });
 });
 
 router.post('/managerlistnextpage', function(req, res) {

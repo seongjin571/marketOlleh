@@ -1,29 +1,29 @@
 var password_number_array_sj = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
-if (stamp_kind == 1) {
-    $('#stamp_sj').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
-}
-else if (stamp_kind == 2) {
-    $('#stamp_sj').css({ "background": "url(/images/backSample2.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
-}
-else if (stamp_kind == 3) {
-    $('#stamp_sj').css({ "background": "url(/images/backSample3.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
-}
-if (stamp_standard == 5) {
-    $('#fiveControls_sj').css('display', 'table');
-    for (var i = 0; i < stamp_count; i++) {
-        var check = document.getElementsByClassName('five_sj')[i];
-        check.style.backgroundColor = "#232323";
-    }
-}
-
-if (stamp_standard == 10) {
-    $('#tenControls_sj').css('display', 'table');
-    for (var i = 0; i < stamp_count; i++) {
-        var check = document.getElementsByClassName('ten_sj')[i];
-        check.style.backgroundColor = "#232323";
-    }
-}
+// if (stamp_kind == 1) {
+//     $('#stamp_sj').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
+// }
+// else if (stamp_kind == 2) {
+//     $('#stamp_sj').css({ "background": "url(/images/backSample2.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
+// }
+// else if (stamp_kind == 3) {
+//     $('#stamp_sj').css({ "background": "url(/images/backSample3.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
+// }
+// if (stamp_standard == 5) {
+//     $('#fiveControls_sj').css('display', 'table');
+//     for (var i = 0; i < stamp_count; i++) {
+//         var check = document.getElementsByClassName('five_sj')[i];
+//         check.style.backgroundColor = "#232323";
+//     }
+// }
+//
+// if (stamp_standard == 10) {
+//     $('#tenControls_sj').css('display', 'table');
+//     for (var i = 0; i < stamp_count; i++) {
+//         var check = document.getElementsByClassName('ten_sj')[i];
+//         check.style.backgroundColor = "#232323";
+//     }
+// }
 
 
 var good = document.getElementById('goodCount_sj');

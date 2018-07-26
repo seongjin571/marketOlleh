@@ -4,21 +4,21 @@
     font-weight: 800;
     src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
   }
-  
+
   @font-face {
     font-family: 'LotteMartDream';
     font-style: normal;
     font-weight: 700;
     src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff') format('woff');
   }
-  
+
   @font-face {
     font-family: 'LotteMartDream';
     font-style: normal;
     font-weight: 200;
     src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff') format('woff');
   }
-  
+
         body,
         html {
             font-family: 'LotteMartDream', sans-serif;
@@ -32,7 +32,7 @@
             width: 100%;
             height:100%;
         }
-        #selected_stamp{
+        .selected_stamp{
             width: 100%;
             height:100%;
             display: none;
@@ -70,7 +70,6 @@
             vertical-align: middle;
             text-align: center;
         }
-        
 
         #nav_sj {
             width: 100%;
@@ -81,7 +80,7 @@
             top: 90%;
             z-index: 1;
         }
-        
+
         #nav_sj div {
             width: 20%;
             padding: 10px;
@@ -177,7 +176,7 @@
         #button_sj {
             width: 100%;
             height: 20%;
-   
+
             background-color: #fb83a5;
             border-color: #fb83a5;
 
@@ -249,7 +248,7 @@
             display: none;
             position: absolute;
             top: 36%;
-          
+
             margin-bottom: 12%;
         }
         .review_div_sj{
@@ -268,7 +267,7 @@
             margin: 20px 0;
             margin-left: 10%;
             height:45px;
-           
+
             background-color:#fb83a5;
             border-color: #fb83a5;
             border-radius: 5px;
@@ -357,4 +356,3 @@
         .password_number_sj:hover{
             background-color: rgb(185, 184, 184);
         }
-      
