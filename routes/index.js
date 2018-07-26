@@ -70,24 +70,27 @@ router.get('/mystore', function(req, res){
 router.get('/store_infor', function(req, res) {
   var user_id = req.user.id;
   var market_name = req.session.usestamp_market_name;
-  var sql = 'select * from `stamp` where market_name = ? and user_id = ?';
+  var sijang_name = req.session.usestamp_sijang_name;
+  var sql = 'select * from `stamp` where market_name = ? and sijang_name = ? and user_id = ?';
   console.log(user_id);
-  conn.query(sql,[market_name,user_id], function(error, result){
+  conn.query(sql,[market_name,sijang_name,user_id], function(error, result){
     if(error){
       console.log(error);
     }else{
       if(result[0] == null){
         console.log(market_name);
+        console.log(sijang_name);
         // console.log(result);
         res.render('store_infor', {
-          title: 'if문',
+          title: '스탬프 미존재',
           result : result
         });
       }else{
         console.log(market_name);
+        console.log(sijang_name);
         // console.log(result);
         res.render('store_infor', {
-          title: 'else문',
+          title: '스탬프 존재',
           result : result
         });
       }
@@ -120,13 +123,15 @@ router.get('/myStamp', function(req, res) {
 
 router.post('/managerlistnextpage', function(req, res) {
   var market_name = req.body.market_name;
-  var sql = 'select * from manager where market_name = ?';
-  conn.query(sql,[market_name],function(error,result,fields){
+  var sijang_name = req.body.sijang_name;
+  var sql = 'select * from manager where market_name = ? and sijang_name=?';
+  conn.query(sql,[market_name,sijang_name],function(error,result,fields){
     if(error){
       console.log('error');
     }else{
       console.log(market_name);
       req.session.usestamp_market_name = market_name;
+      req.session.usestamp_sijang_name = sijang_name;
       req.session.save(function() {
         res.send({result:'success'});
       });
