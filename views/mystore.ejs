@@ -10,9 +10,15 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/mystore.css" />
+    <script>
+        window.addEventListener('load', function () {
+            FastClick.attach(document.body);
+        }, false);
+    </script>
 </head>
 
 <body>
+
     <div id="name_sj">
         <p id="store_name_sj">
             나현이네 과일가게
@@ -122,9 +128,6 @@
     </div>
 
     <script>
-        window.addEventListener('load', function () {
-            FastClick.attach(document.body);
-        }, false);
         $('#home').click(function () {
             location.href = "/mainManager";
         })

@@ -10,8 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
-
-    <!-- <script src="main.js"></script> -->
+    <script>
+        window.addEventListener('load', function () {
+            FastClick.attach(document.body);
+        }, false);
+    </script>
 </head>
 
 <body>
@@ -159,9 +162,6 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
     <script> 
-        window.addEventListener('load', function () {
-            FastClick.attach(document.body);
-        }, false);
         $('#myStamp_sj').click(function () {
             location.href = "/myStamp";
         })
