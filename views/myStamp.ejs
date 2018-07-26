@@ -238,10 +238,10 @@
                 </div>
 
                 <div class='review_write_sj' id="review_write_sj<%= myStamps[i].id %>">
-                    <textarea rows="7"></textarea>
+                    <textarea id="review_textarea" rows="7"></textarea>
                     <div class='write_button_div_sj' id="write_button_div_sj<%= myStamps[i].id %>">
                         <button class='write_cancel_sj' id="write_cancel_sj<%= myStamps[i].id %>" style="margin-left: 12.5%">취소</button>
-                        <button style="margin-left:5%">등록</button>
+                        <button id="review_textarea_ok_button"style="margin-left:5%">등록</button>
                     </div>
                 </div>
             </div>
@@ -325,7 +325,10 @@
                         a[j] = x;
                     }
                 }
-
+                $('#review_textarea_ok_button').click(function(){
+                  // var text = $('#review_textarea').val();
+                  alert('1');
+                });
                 $('#stamp_sj<%= myStamps[i].id %>').click(function () {
                     var count = 0; //쿠폰 클릭시 이벤트 발생
                     $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
