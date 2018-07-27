@@ -14,6 +14,10 @@ router.get('/coupon', function(req, res){
   res.render('coupon');
 });
 
+router.get('/couponManager', function(req, res){
+  res.render('couponManager');
+});
+
 
 
 router.get('/main', function(req, res){
