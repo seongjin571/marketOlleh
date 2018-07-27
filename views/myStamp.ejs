@@ -163,7 +163,7 @@
               </div>
               <div class="password_line_sj <%= myStamps[i].id %>">
                 <div class='password_cancel' id="password_cancel<%= myStamps[i].id %>">취소</div>
-                <div class="password_number_sj"></div>
+                <div class="password_number_sj <%= myStamps[i].id %>"></div>
                 <div class='password_ok' id="password_ok<%= myStamps[i].id %>"></div>
               </div>
 
@@ -307,6 +307,12 @@
                 $('#review_write_sj<%= myStamps[i].id %>').hide(200);
                 $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
             })
+
+            $('#password_cancel<%= myStamps[i].id %>').click(function(){
+
+               $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+               $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
+           });
 
             var password_number_array_sj = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 

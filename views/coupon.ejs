@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/coupon.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
     <script>
@@ -13,59 +15,198 @@
             FastClick.attach(document.body);
         }, false);
     </script>
-    <style>
-        @font-face {
-            font-family: 'LotteMartDream';
-            font-style: normal;
-            font-weight: 800;
-            src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
-        }
-
-        @font-face {
-            font-family: 'LotteMartDream';
-            font-style: normal;
-            font-weight: 700;
-            src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff') format('woff');
-        }
-
-        @font-face {
-            font-family: 'LotteMartDream';
-            font-style: normal;
-            font-weight: 200;
-            src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff') format('woff');
-        }
-
-        body,
-        html {
-            font-family: 'LotteMartDream', sans-serif;
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-            /* overflow: hidden; */
-        }
-
-        #nav_sj {
-            width: 100%;
-            height: 20%;
-            background: #63dded;
-            display: inline-flex;
-            position: fixed;
-            top: 90%;
-            z-index: 1;
-        }
-
-        #nav_sj div {
-            width: 20%;
-            padding: 10px;
-            font-size: 8px;
-            color: white;
-            text-align: center;
-        }
-    </style>
 </head>
 
 <body>
+    <div id="menu">
+        <div id="go_my_coupon">내 쿠폰</div>
+        <div id="go_coupon_view">쿠폰 보기</div>
+    </div>
+
+
+    <div id="coupon_view">
+        <h2 id="good_market_list">
+            내가 가는 시장들
+        </h2>
+
+        <div class="market">
+            <p>통인 시장</p>
+        </div>
+        <div class="market">
+            <p>광장 시장</p>
+        </div>
+        <div class="market">
+            <p>모란 시장</p>
+        </div>
+
+
+        <h2 id="near_market_list">
+            주변 시장들
+        </h2>
+
+        <div class="market">
+            <p>통인 시장</p>
+        </div>
+        <div class="market">
+            <p>서울관광 시장</p>
+        </div>
+        <div class="market">
+            <p>모란 시장</p>
+        </div>
+    </div>
+
+    <div class="find_coupon_list">
+
+        <div class="find_coupon">
+            <div class="store_and_market">
+                <div class="store_name">나현이네 과일가게</div>
+                <div class="market_name">통인시장</div>
+            </div>
+            <div class="sale_price">
+                1000원 할인
+            </div>
+            <div class="standard">
+                5000원 이상 구매 시
+            </div>
+            <div class="period">
+                기간:~18.8.20
+            </div>
+        </div>
+
+        <div class="find_coupon">
+            <div class="store_and_market">
+                <div class="store_name">퉁이네 정육점</div>
+                <div class="market_name">통인시장</div>
+            </div>
+            <div class="sale_price">
+                2000원 할인
+            </div>
+            <div class="standard">
+                10000원 이상 구매 시
+            </div>
+            <div class="period">
+                기간:~18.8.22
+            </div>
+        </div>
+
+        <div class="find_coupon">
+            <div class="store_and_market">
+                <div class="store_name">나현이네 과일가게</div>
+                <div class="market_name">통인시장</div>
+            </div>
+            <div class="sale_price">
+                1000원 할인
+            </div>
+            <div class="standard">
+                5000원 이상 구매 시
+            </div>
+            <div class="period">
+                기간:~18.8.20
+            </div>
+        </div>
+
+        <div class="find_coupon">
+            <div class="store_and_market">
+                <div class="store_name">퉁이네 정육점</div>
+                <div class="market_name">통인시장</div>
+            </div>
+            <div class="sale_price">
+                2000원 할인
+            </div>
+            <div class="standard">
+                10000원 이상 구매 시
+            </div>
+            <div class="period">
+                기간:~18.8.22
+            </div>
+        </div>
+
+        <div class="find_coupon">
+            <div class="store_and_market">
+                <div class="store_name">나현이네 과일가게</div>
+                <div class="market_name">통인시장</div>
+            </div>
+            <div class="sale_price">
+                1000원 할인
+            </div>
+            <div class="standard">
+                5000원 이상 구매 시
+            </div>
+            <div class="period">
+                기간:~18.8.20
+            </div>
+        </div>
+
+        <div class="find_coupon">
+            <div class="store_and_market">
+                <div class="store_name">퉁이네 정육점</div>
+                <div class="market_name">통인시장</div>
+            </div>
+            <div class="sale_price">
+                2000원 할인
+            </div>
+            <div class="standard">
+                10000원 이상 구매 시
+            </div>
+            <div class="period">
+                기간:~18.8.22
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="my_coupon">
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="store_and_market">
+                        <div class="store_name">나현이네 과일가게</div>
+                        <div class="market_name">통인시장</div>
+                    </div>
+                    <div class="sale_price">
+                        1000원 할인
+                    </div>
+                    <div class="standard">
+                        5000원 이상 구매 시
+                    </div>
+                    <div class="period">
+                        기간:~18.8.20
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="delete">쿠폰 삭제</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="store_and_market">
+                        <div class="store_name">퉁이네 정육점</div>
+                        <div class="market_name">통인시장</div>
+                    </div>
+                    <div class="sale_price">
+                        2000원 할인
+                    </div>
+                    <div class="standard">
+                        10000원 이상 구매 시
+                    </div>
+                    <div class="period">
+                        기간:~18.8.22
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="delete">쿠폰 삭제</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <div id="nav_sj">
         <div id="home_sj">
             <img src="/images/home.png" width="60%">
@@ -84,5 +225,41 @@
             <br/>MyPage</div>
     </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+<script>
+
+    $('#go_my_coupon').click(function () {
+        $('#coupon_view').hide(200);
+        $('.my_coupon').show(200);
+    })
+    $('#go_coupon_view').click(function () {
+        $('#coupon_view').show(200);
+        $('.my_coupon').hide(200);
+    })
+    $('#myStamp_sj').click(function () {
+        location.href = "/myStamp";
+    })
+    $('#home_sj').click(function () {
+        location.href = "/main";
+    })
+    var swiper = new Swiper('.swiper-container');
+
+    $('.market').click(function () {
+        $('.find_coupon_list').show(200);
+        $(this).append($('.find_coupon_list'));
+    })
+    $('.find_coupon').click(function () {
+        var index = $(this).index();
+        down();
+        function down() {
+            if (confirm(index + '번째 쿠폰을 다운로드 하시겠습니까?')) {
+                alert(index+'번째 쿠폰 다운로드 완료')
+            } else {
+                // no click
+            }
+        }
+    })
+
+</script>
 
 </html>
