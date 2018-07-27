@@ -150,34 +150,28 @@
                     <button class='button_sj' id="button_sj<%= myStamps[i].id %>">삭제</button>
                 </div>
 
-                <div class='password_number_div_sj' id="password_number_div_sj<%= myStamps[i].id %>">
+            <div class='password_number_div_sj' id="password_number_div_sj<%= myStamps[i].id %>">
 
-                    <div class="password_line_sj <%= myStamps[i].id %>">
-                        <div class="password_number_sj <%= myStamps[i].id %>"></div>
-                        <div class="password_number_sj <%= myStamps[i].id %>"></div>
-                        <div class="password_number_sj <%= myStamps[i].id %>"></div>
-                    </div>
-                    <div class="password_line_sj <%= myStamps[i].id %>">
-                        <div class="password_number_sj <%= myStamps[i].id %>"></div>
-                        <div class="password_number_sj <%= myStamps[i].id %>"></div>
-                        <div class="password_number_sj <%= myStamps[i].id %>"></div>
-                    </div>
-                    <div class="password_line_sj <%= myStamps[i].id %>">
-                        <div class="password_number_sj <%= myStamps[i].id %>"></div>
-                        <div class="password_number_sj <%= myStamps[i].id %>"></div>
-                        <div class="password_number_sj <%= myStamps[i].id %>"></div>
-                    </div>
-                    <div class="password_line_sj <%= myStamps[i].id %>">
-                        <div class='password_cancel' id="password_cancel<%= myStamps[i].id %>">취소</div>
-                        <div class="password_number_sj"></div>
-                        <div class='password_ok' id="password_ok<%= myStamps[i].id %>"></div>
-                    </div>
-
-                </div>
-
-
-
-
+              <div class="password_line_sj <%= myStamps[i].id %>">
+                <div class="password_number_sj <%= myStamps[i].id %>"></div>
+                <div class="password_number_sj <%= myStamps[i].id %>"></div>
+                <div class="password_number_sj <%= myStamps[i].id %>"></div>
+              </div>
+              <div class="password_line_sj <%= myStamps[i].id %>">
+                <div class="password_number_sj <%= myStamps[i].id %>"></div>
+                <div class="password_number_sj <%= myStamps[i].id %>"></div>
+                <div class="password_number_sj <%= myStamps[i].id %>"></div>
+              </div>
+              <div class="password_line_sj <%= myStamps[i].id %>">
+                <div class="password_number_sj <%= myStamps[i].id %>"></div>
+                <div class="password_number_sj <%= myStamps[i].id %>"></div>
+                <div class="password_number_sj <%= myStamps[i].id %>"></div>
+              </div>
+              <div class="password_line_sj <%= myStamps[i].id %>">
+                <div class='password_cancel' id="password_cancel<%= myStamps[i].id %>">취소</div>
+                <div class="password_number_sj <%= myStamps[i].id %>"></div>
+                <div class='password_ok' id="password_ok<%= myStamps[i].id %>"></div>
+              </div>
                 <div class='store_detail_sj' id="store_detail_sj<%= myStamps[i].id %>">
                     <h2>상점 소개</h2>
                     <p>저희 과일 가게는 항상 신선한 유기농 과일만을 공수해 옵니다. </p>
@@ -280,50 +274,56 @@
                         check.style.backgroundColor = "#232323";
                     }
                 }
+            }
 
 
-                $('#go_stamp_sj<%= myStamps[i].id %>').click(function () {
-                    $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
-                    $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
-                    $('#store_review_sj<%= myStamps[i].id %>').hide(200);
-                    $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-                    $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-                })
-                $('#go_store_detail_sj<%= myStamps[i].id %>').click(function () {
-                    $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
-                    $('#store_detail_sj<%= myStamps[i].id %>').show(200);
-                    $('#store_review_sj<%= myStamps[i].id %>').hide(200);
-                    $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-                    $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-                })
-                $('#go_store_review_sj<%= myStamps[i].id %>').click(function () {
-                    $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
-                    $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
-                    $('#store_review_sj<%= myStamps[i].id %>').show(200);
-                    $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-                    $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-                })
-                $('#review_button_sj<%= myStamps[i].id %>').click(function () {
-                    $('#store_review_sj<%= myStamps[i].id %>').hide(200);
-                    $('#review_write_sj<%= myStamps[i].id %>').show(200);
-                    $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-                })
-                $('#write_cancel_sj<%= myStamps[i].id %>').click(function () {
-                    $('#store_review_sj<%= myStamps[i].id %>').show(200);
-                    $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-                    $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-                })
+            $('#go_stamp_sj<%= myStamps[i].id %>').click(function () {
+                $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
+                $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
+                $('#store_review_sj<%= myStamps[i].id %>').hide(200);
+                $('#review_write_sj<%= myStamps[i].id %>').hide(200);
+                $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+            })
+            $('#go_store_detail_sj<%= myStamps[i].id %>').click(function () {
+                $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
+                $('#store_detail_sj<%= myStamps[i].id %>').show(200);
+                $('#store_review_sj<%= myStamps[i].id %>').hide(200);
+                $('#review_write_sj<%= myStamps[i].id %>').hide(200);
+                $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+            })
+            $('#go_store_review_sj<%= myStamps[i].id %>').click(function () {
+                $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
+                $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
+                $('#store_review_sj<%= myStamps[i].id %>').show(200);
+                $('#review_write_sj<%= myStamps[i].id %>').hide(200);
+                $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+            })
+            $('#review_button_sj<%= myStamps[i].id %>').click(function () {
+                $('#store_review_sj<%= myStamps[i].id %>').hide(200);
+                $('#review_write_sj<%= myStamps[i].id %>').show(200);
+                $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+            })
+            $('#write_cancel_sj<%= myStamps[i].id %>').click(function () {
+                $('#store_review_sj<%= myStamps[i].id %>').show(200);
+                $('#review_write_sj<%= myStamps[i].id %>').hide(200);
+                $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+            })
 
-                var password_number_array_sj = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+            $('#password_cancel<%= myStamps[i].id %>').click(function(){
 
-                function shuffle(a) {
-                    var j, x, i;
-                    for (i = a.length; i; i -= 1) {
-                        j = Math.floor(Math.random() * i);
-                        x = a[i - 1];
-                        a[i - 1] = a[j];
-                        a[j] = x;
-                    }
+               $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+               $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
+           });
+
+            var password_number_array_sj = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+
+            function shuffle(a) {
+                var j, x, i;
+                for (i = a.length; i; i -= 1) {
+                    j = Math.floor(Math.random() * i);
+                    x = a[i - 1];
+                    a[i - 1] = a[j];
+                    a[j] = x;
                 }
                 $('#review_textarea_ok_button').click(function(){
                   // var text = $('#review_textarea').val();
