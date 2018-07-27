@@ -9,6 +9,12 @@
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/stamp.css" />
+    <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
+    <script>
+        window.addEventListener('load', function () {
+            FastClick.attach(document.body);
+        }, false);
+    </script>
 </head>
 
 <body>
@@ -46,103 +52,103 @@
 
     <% if(myStamps) { %>
         <% for(var i=0; i<myStamps.length; i++) { %>
-          <div class='selected_stamp' id="selected_stamp<%= myStamps[i].id %>">
-            <div id="name_sj">
-              <p id="store_name_sj">
-                <%= myStamps[i].market_name %>
-              </p>
-              <p id="market_name_sj">
-                <%= myStamps[i].sijang_name %>
-              </p>
-            </div>
-            <div id="sns_sj">
-              <img id="noGood_Button_sj" src="/images/noGood.png" width="16%" height="auto">
-              <img id="yesGood_Button_sj" src="/images/yesGood.png" width="16%" height="auto">
-              <p class='goodCount_sj' id="goodCount_sj<%= myStamps[i].id %>">215</p>
-              <img src="/images/ka.png" width="16%" height="auto">
-              <img src="/images/face.png" width="16%" height="auto">
-            </div>
-            <div class='menu_sj' id="menu_sj<%= myStamps[i].id %>">
-              <p class='go_stamp_sj' id="go_stamp_sj<%= myStamps[i].id %>">스탬프</p>
-              <p class='go_store_detail_sj' id="go_store_detail_sj<%= myStamps[i].id %>">상점 정보</p>
-              <p class='go_store_review_sj' id="go_store_review_sj<%= myStamps[i].id %>">리뷰</p>
-            </div>
-            <div class='stamp_menu_sj' id="stamp_menu_sj<%= myStamps[i].id %>">
-              <div class='stamp_sj' id="stamp_sj<%= myStamps[i].id %>">
-
-                <div class='tenControls_sj' id="tenControls_sj<%= myStamps[i].id %>">
-                  <div class='tenStamp_sj' id="tenStamp_sj<%= myStamps[i].id %>">
-
-                    <div class='tenStamp_top_sj' id="tenStamp_top_sj<%= myStamps[i].id %>">
-                      <div class="ten_sj <%= myStamps[i].id %>">
-                        <p>1</p>
-                      </div>
-                      <div class="ten_sj <%= myStamps[i].id %>">
-                        <p>2</p>
-                      </div>
-                      <div class="ten_sj <%= myStamps[i].id %>">
-                        <p>3</p>
-                      </div>
-                      <div class="ten_sj <%= myStamps[i].id %>">
-                        <p>4</p>
-                      </div>
-                      <div class="ten_sj <%= myStamps[i].id %>">
-                        <p>5</p>
-                      </div>
-                    </div>
-
-                    <div class='tenStamp_bottom_sj' id="tenStamp_bottom_sj<%= myStamps[i].id %>">
-                      <div class="ten_sj <%= myStamps[i].id %>">
-                        <p>6</p>
-                      </div>
-                      <div class="ten_sj <%= myStamps[i].id %>">
-                        <p>7</p>
-                      </div>
-                      <div class="ten_sj <%= myStamps[i].id %>">
-                        <p>8</p>
-                      </div>
-                      <div class="ten_sj <%= myStamps[i].id %>">
-                        <p>9</p>
-                      </div>
-                      <div class="ten_sj <%= myStamps[i].id %>">
-                        <p>10</p>
-                      </div>
-                    </div>
-
-                  </div>
+            <div class='selected_stamp' id="selected_stamp<%= myStamps[i].id %>">
+                <div id="name_sj">
+                    <p id="store_name_sj">
+                        <%= myStamps[i].market_name %>
+                    </p>
+                    <p id="market_name_sj">
+                        <%= myStamps[i].sijang_name %>
+                    </p>
                 </div>
-
-                <div class='fiveControls_sj' id="fiveControls_sj<%= myStamps[i].id %>">
-                  <div class='fiveStamp_sj' id="fiveStamp_sj<%= myStamps[i].id %>">
-                    <div class="five_sj <%= myStamps[i].id %>">
-                      <p>1</p>
-                    </div>
-                    <div class="five_sj <%= myStamps[i].id %>">
-                      <p>2</p>
-                    </div>
-                    <div class="five_sj <%= myStamps[i].id %>">
-                      <p>3</p>
-                    </div>
-                    <div class="five_sj <%= myStamps[i].id %>">
-                      <p>4</p>
-                    </div>
-                    <div class="five_sj <%= myStamps[i].id %>">
-                      <p>5</p>
-                    </div>
-                  </div>
+                <div id="sns_sj">
+                    <img id="noGood_Button_sj" src="/images/noGood.png" width="16%" height="auto">
+                    <img id="yesGood_Button_sj" src="/images/yesGood.png" width="16%" height="auto">
+                    <p class='goodCount_sj' id="goodCount_sj<%= myStamps[i].id %>">215</p>
+                    <img src="/images/ka.png" width="16%" height="auto">
+                    <img src="/images/face.png" width="16%" height="auto">
                 </div>
+                <div class='menu_sj' id="menu_sj<%= myStamps[i].id %>">
+                    <p class='go_stamp_sj' id="go_stamp_sj<%= myStamps[i].id %>">스탬프</p>
+                    <p class='go_store_detail_sj' id="go_store_detail_sj<%= myStamps[i].id %>">상점 정보</p>
+                    <p class='go_store_review_sj' id="go_store_review_sj<%= myStamps[i].id %>">리뷰</p>
+                </div>
+                <div class='stamp_menu_sj' id="stamp_menu_sj<%= myStamps[i].id %>">
+                    <div class='stamp_sj' id="stamp_sj<%= myStamps[i].id %>">
 
-              </div>
-              <div id="stamp_infor_sj">
-                <p>기준:5000원 이상</p>
-                <p>보상:
-                  <%= myStamps[i].stamp_reward %>
+                        <div class='tenControls_sj' id="tenControls_sj<%= myStamps[i].id %>">
+                            <div class='tenStamp_sj' id="tenStamp_sj<%= myStamps[i].id %>">
 
-                </p>
-              </div>
+                                <div class='tenStamp_top_sj' id="tenStamp_top_sj<%= myStamps[i].id %>">
+                                    <div class="ten_sj <%= myStamps[i].id %>">
+                                        <p>1</p>
+                                    </div>
+                                    <div class="ten_sj <%= myStamps[i].id %>">
+                                        <p>2</p>
+                                    </div>
+                                    <div class="ten_sj <%= myStamps[i].id %>">
+                                        <p>3</p>
+                                    </div>
+                                    <div class="ten_sj <%= myStamps[i].id %>">
+                                        <p>4</p>
+                                    </div>
+                                    <div class="ten_sj <%= myStamps[i].id %>">
+                                        <p>5</p>
+                                    </div>
+                                </div>
 
-              <button class='button_sj' id="button_sj<%= myStamps[i].id %>">삭제</button>
-            </div>
+                                <div class='tenStamp_bottom_sj' id="tenStamp_bottom_sj<%= myStamps[i].id %>">
+                                    <div class="ten_sj <%= myStamps[i].id %>">
+                                        <p>6</p>
+                                    </div>
+                                    <div class="ten_sj <%= myStamps[i].id %>">
+                                        <p>7</p>
+                                    </div>
+                                    <div class="ten_sj <%= myStamps[i].id %>">
+                                        <p>8</p>
+                                    </div>
+                                    <div class="ten_sj <%= myStamps[i].id %>">
+                                        <p>9</p>
+                                    </div>
+                                    <div class="ten_sj <%= myStamps[i].id %>">
+                                        <p>10</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class='fiveControls_sj' id="fiveControls_sj<%= myStamps[i].id %>">
+                            <div class='fiveStamp_sj' id="fiveStamp_sj<%= myStamps[i].id %>">
+                                <div class="five_sj <%= myStamps[i].id %>">
+                                    <p>1</p>
+                                </div>
+                                <div class="five_sj <%= myStamps[i].id %>">
+                                    <p>2</p>
+                                </div>
+                                <div class="five_sj <%= myStamps[i].id %>">
+                                    <p>3</p>
+                                </div>
+                                <div class="five_sj <%= myStamps[i].id %>">
+                                    <p>4</p>
+                                </div>
+                                <div class="five_sj <%= myStamps[i].id %>">
+                                    <p>5</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="stamp_infor_sj">
+                        <p>기준:5000원 이상</p>
+                        <p>보상:
+                            <%= myStamps[i].stamp_reward %>
+
+                        </p>
+                    </div>
+
+                    <button class='button_sj' id="button_sj<%= myStamps[i].id %>">삭제</button>
+                </div>
 
             <div class='password_number_div_sj' id="password_number_div_sj<%= myStamps[i].id %>">
 
@@ -166,112 +172,107 @@
                 <div class="password_number_sj <%= myStamps[i].id %>"></div>
                 <div class='password_ok' id="password_ok<%= myStamps[i].id %>"></div>
               </div>
+                <div class='store_detail_sj' id="store_detail_sj<%= myStamps[i].id %>">
+                    <h2>상점 소개</h2>
+                    <p>저희 과일 가게는 항상 신선한 유기농 과일만을 공수해 옵니다. </p>
+                    <img src="/images/fruit.jpg" width="100%">
 
+                    <h2>위치</h2>
+                    <img src="/images/han.png" width="100%">
+                </div>
+
+
+
+
+                <div class='store_review_sj' id="store_review_sj<%= myStamps[i].id %>">
+                    <button class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">리뷰 등록</button>
+                    <div class="review_div_sj">
+
+                        <div class="review_content_sj">
+                            <div class="review_content_id_sj">
+                                <b>gkstjdwls11</b>
+                            </div>
+                            <div class="review_content_date_sj">18-07-12</div>
+                        </div>
+                        <p>과일이 굉장히 신선하고 좋았습니다! 사장님도 굉장히 친절하셔요</p>
+                    </div>
+
+                    <div class="review_div_sj">
+                        <div class="review_content_sj">
+                            <div class="review_content_id_sj">
+                                <b>kingkw</b>
+                            </div>
+                            <div class="review_content_date_sj">18-07-13</div>
+                        </div>
+                        <p>사장님이 굉장히 친절하시다던데..누가 그런말은 하는건지 완전 불친절ㅡㅡ</p>
+                    </div>
+
+                    <div class="review_div_sj">
+                        <div class="review_content_sj">
+                            <div class="review_content_id_sj">
+                                <b>simson94</b>
+                            </div>
+                            <div class="review_content_date_sj">18-07-13</div>
+                        </div>
+                        <p>이 집에서 멜론 사먹어봤는데 진짜 엄청 달더라고요ㅋㅋ 다음에 와이프 데리고 한번 더 사러 가겠습니다. 번창하세요!</p>
+                    </div>
+
+                    <div class="review_div_sj">
+                        <div class="review_content_sj">
+                            <div class="review_content_id_sj">
+                                <b>jungjaeho1115</b>
+                            </div>
+                            <div class="review_content_date_sj">18-07-14</div>
+                        </div>
+                        <p>사과가 다른 가게보다 좀 비싼 감이 있었지만 다른 과일들은 모두 저렴하고 상품도 좋네요!</p>
+                    </div>
+
+
+
+                </div>
+
+                <div class='review_write_sj' id="review_write_sj<%= myStamps[i].id %>">
+                    <textarea id="review_textarea" rows="7"></textarea>
+                    <div class='write_button_div_sj' id="write_button_div_sj<%= myStamps[i].id %>">
+                        <button class='write_cancel_sj' id="write_cancel_sj<%= myStamps[i].id %>" style="margin-left: 12.5%">취소</button>
+                        <button id="review_textarea_ok_button"style="margin-left:5%">등록</button>
+                    </div>
+                </div>
             </div>
 
+            <script>
+                $('#stamp_list<%= myStamps[i].id %>').click(function () {
+                    $('#selected_stamp<%= myStamps[i].id %>').css('display', 'block');
+                    $('#myStamp').css('display', 'none');
+                });
+                var stamp_kind = '<%= myStamps[i].stamp_kind %>';
+                var stamp_count = '<%= myStamps[i].stamp_count %>';
+                var stamp_standard = '<%= myStamps[i].stamp_standard %>';
 
 
-
-            <div class='store_detail_sj' id="store_detail_sj<%= myStamps[i].id %>">
-              <h2>상점 소개</h2>
-              <p>저희 과일 가게는 항상 신선한 유기농 과일만을 공수해 옵니다. </p>
-              <img src="/images/fruit.jpg" width="100%">
-
-              <h2>위치</h2>
-              <img src="/images/han.png" width="100%">
-            </div>
-
-
-
-
-            <div class='store_review_sj' id="store_review_sj<%= myStamps[i].id %>">
-              <button class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">리뷰 등록</button>
-              <div class="review_div_sj">
-
-                <div class="review_content_sj">
-                  <div class="review_content_id_sj">
-                    <b>gkstjdwls11</b>
-                  </div>
-                  <div class="review_content_date_sj">18-07-12</div>
-                </div>
-                <p>과일이 굉장히 신선하고 좋았습니다! 사장님도 굉장히 친절하셔요</p>
-              </div>
-
-              <div class="review_div_sj">
-                <div class="review_content_sj">
-                  <div class="review_content_id_sj">
-                    <b>kingkw</b>
-                  </div>
-                  <div class="review_content_date_sj">18-07-13</div>
-                </div>
-                <p>사장님이 굉장히 친절하시다던데..누가 그런말은 하는건지 완전 불친절ㅡㅡ</p>
-              </div>
-
-              <div class="review_div_sj">
-                <div class="review_content_sj">
-                  <div class="review_content_id_sj">
-                    <b>simson94</b>
-                  </div>
-                  <div class="review_content_date_sj">18-07-13</div>
-                </div>
-                <p>이 집에서 멜론 사먹어봤는데 진짜 엄청 달더라고요ㅋㅋ 다음에 와이프 데리고 한번 더 사러 가겠습니다. 번창하세요!</p>
-              </div>
-
-              <div class="review_div_sj">
-                <div class="review_content_sj">
-                  <div class="review_content_id_sj">
-                    <b>jungjaeho1115</b>
-                  </div>
-                  <div class="review_content_date_sj">18-07-14</div>
-                </div>
-                <p>사과가 다른 가게보다 좀 비싼 감이 있었지만 다른 과일들은 모두 저렴하고 상품도 좋네요!</p>
-              </div>
-
-
-
-            </div>
-
-            <div class='review_write_sj' id="review_write_sj<%= myStamps[i].id %>">
-              <textarea rows="7"></textarea>
-              <div class='write_button_div_sj' id="write_button_div_sj<%= myStamps[i].id %>">
-                <button class='write_cancel_sj' id="write_cancel_sj<%= myStamps[i].id %>" style="margin-left: 12.5%">취소</button>
-                <button style="margin-left:5%">등록</button>
-              </div>
-            </div>
-          </div>
-
-          <script>
-            $('#stamp_list<%= myStamps[i].id %>').click(function() {
-              $('#selected_stamp<%= myStamps[i].id %>').css('display', 'block');
-              $('#myStamp').css('display', 'none');
-            });
-            var stamp_kind = '<%= myStamps[i].stamp_kind %>';
-            var stamp_count = '<%= myStamps[i].stamp_count %>';
-            var stamp_standard = '<%= myStamps[i].stamp_standard %>';
-
-
-            if (stamp_kind == 1) {
-                $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
-            }
-            else if (stamp_kind == 2) {
-                $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample2.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
-            }
-            else if (stamp_kind == 3) {
-                $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample3.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
-            }
-            if (stamp_standard == 5) {
-                $('#fiveControls_sj<%= myStamps[i].id %>').css('display', 'table');
-                for (var i = 0; i < stamp_count; i++) {
-                    var check = document.getElementsByClassName('five_sj <%= myStamps[i].id %>')[i];
-                    check.style.backgroundColor = "#232323";
+                if (stamp_kind == 1) {
+                    $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
                 }
-            }
+                else if (stamp_kind == 2) {
+                    $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample2.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
+                }
+                else if (stamp_kind == 3) {
+                    $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample3.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
+                }
+                if (stamp_standard == 5) {
+                    $('#fiveControls_sj<%= myStamps[i].id %>').css('display', 'table');
+                    for (var i = 0; i < stamp_count; i++) {
+                        var check = document.getElementsByClassName('five_sj <%= myStamps[i].id %>')[i];
+                        check.style.backgroundColor = "#232323";
+                    }
+                }
 
-            else if (stamp_standard == 10) {
-                $('#tenControls_sj<%= myStamps[i].id %>').css('display', 'table');
-                for (var i = 0; i < stamp_count; i++) {
-                    var check = document.getElementsByClassName('ten_sj <%= myStamps[i].id %>')[i];
-                    check.style.backgroundColor = "#232323";
+                else if (stamp_standard == 10) {
+                    $('#tenControls_sj<%= myStamps[i].id %>').css('display', 'table');
+                    for (var i = 0; i < stamp_count; i++) {
+                        var check = document.getElementsByClassName('ten_sj <%= myStamps[i].id %>')[i];
+                        check.style.backgroundColor = "#232323";
+                    }
                 }
             }
 
@@ -324,92 +325,68 @@
                     a[i - 1] = a[j];
                     a[j] = x;
                 }
-            }
+                $('#review_textarea_ok_button').click(function(){
+                  // var text = $('#review_textarea').val();
+                  alert('1');
+                });
+                $('#stamp_sj<%= myStamps[i].id %>').click(function () {
+                    var count = 0; //쿠폰 클릭시 이벤트 발생
+                    $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
+                    $('#password_number_div_sj<%= myStamps[i].id %>').show(200);
 
-            $('#stamp_sj<%= myStamps[i].id %>').click(function () {
-              var count=0; //쿠폰 클릭시 이벤트 발생
-              $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
-              $('#password_number_div_sj<%= myStamps[i].id %>').show(200);
+                    shuffle(password_number_array_sj);
 
-              shuffle(password_number_array_sj);
+                    for (var i = 0; i < 10; i++) {
+                        document.getElementsByClassName('password_number_sj <%= myStamps[i].id %>')[i].innerHTML = password_number_array_sj[i];
+                    }
 
-              for(var i=0; i<10; i++){
-                  document.getElementsByClassName('password_number_sj <%= myStamps[i].id %>')[i].innerHTML=password_number_array_sj[i];
-              }
-
-              if(count == 0) {
-                $('.password_number_sj <%= myStamps[i].id %>').click(function(){
-                    var number=$(this).html();
-                    count=1;
-                    if(count==1){
-                        $('.password_number_sj <%= myStamps[i].id %>').click(function(){
-                            var number2=number+$(this).html();
-                            count=2;
-                            if(count==2){
-                                $('.password_number_sj <%= myStamps[i].id %>').click(function(){
-                                    var number3=number2+$(this).html();
-                                    count=3;
-                                    if(count==3){
-                                        $('.password_number_sj <%= myStamps[i].id %>').click(function(){
-                                            var number4=number3+$(this).html();
-                                                stamp_count_password(number4);
+                    if (count == 0) {
+                        $('.password_number_sj <%= myStamps[i].id %>').click(function () {
+                            var number = $(this).html();
+                            count = 1;
+                            if (count == 1) {
+                                $('.password_number_sj <%= myStamps[i].id %>').click(function () {
+                                    var number2 = number + $(this).html();
+                                    count = 2;
+                                    if (count == 2) {
+                                        $('.password_number_sj <%= myStamps[i].id %>').click(function () {
+                                            var number3 = number2 + $(this).html();
+                                            count = 3;
+                                            if (count == 3) {
+                                                $('.password_number_sj <%= myStamps[i].id %>').click(function () {
+                                                    var number4 = number3 + $(this).html();
+                                                    stamp_count_password(number4);
+                                                })
+                                            }
                                         })
                                     }
                                 })
                             }
                         })
                     }
-                })
-              }
-            });
-
-            function stamp_count_password(number4) {
-                var data = {
-                    'market_name': market_name,
-                    'user_id': user_id
-                }
-                $.ajax({
-                    type: 'POST',
-                    url: '/stamp_count_password',
-                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                    cache: false,
-                    dataType: 'json',
-                    data: data,
-                    success: function (result) {
-                        if (result['password'] == number4) {
-
-                            alert('비밀번호 일치');
-                            coupon_count();
-
-                        } else {
-                            alert('비밀번호 불일치');
-                            location.reload();
-                        }
-                    },
-                    error: function (error) {
-                        console.log('error');
-                    }
                 });
-            }
 
-            function coupon_count() {
-                if (parseInt(stamp_standard) >= parseInt(new_stamp_count)) {
+                function stamp_count_password(number4) {
                     var data = {
-                        'stamp_count': new_stamp_count,
                         'market_name': market_name,
                         'user_id': user_id
-                    };
+                    }
                     $.ajax({
                         type: 'POST',
-                        url: '/aboutstamp_count',
+                        url: '/stamp_count_password',
                         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
                         cache: false,
                         dataType: 'json',
                         data: data,
                         success: function (result) {
-                            if (result['result'] == 'success') {
-                                alert('스탬프추가');
-                                $(window).attr('location', '/myStamp');
+                            if (result['password'] == number4) {
+
+                                alert('비밀번호 일치');
+                                coupon_count();
+
+                            } else {
+                                alert('비밀번호 불일치');
+                                location.reload();
                             }
                         },
                         error: function (error) {
@@ -417,68 +394,97 @@
                         }
                     });
                 }
-                else {
-                    var data = {
-                        'stamp_count': reset_stamp_count,
-                        'market_name': market_name,
-                        'user_id': user_id
-                    };
-                    $.ajax({
-                        type: 'POST',
-                        url: '/reset_aboutstamp_count',
-                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                        cache: false,
-                        dataType: 'json',
-                        data: data,
-                        success: function (result) {
-                            if (result['result'] == 'successs') {
-                                alert('초기화');
-                                $(window).attr('location', '/myStamp');
+
+                function coupon_count() {
+                    if (parseInt(stamp_standard) >= parseInt(new_stamp_count)) {
+                        var data = {
+                            'stamp_count': new_stamp_count,
+                            'market_name': market_name,
+                            'user_id': user_id
+                        };
+                        $.ajax({
+                            type: 'POST',
+                            url: '/aboutstamp_count',
+                            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                            cache: false,
+                            dataType: 'json',
+                            data: data,
+                            success: function (result) {
+                                if (result['result'] == 'success') {
+                                    alert('스탬프추가');
+                                    $(window).attr('location', '/myStamp');
+                                }
+                            },
+                            error: function (error) {
+                                console.log('error');
                             }
-                        },
-                        error: function (error) {
-                            console.log('error');
-                        }
-                    });
+                        });
+                    }
+                    else {
+                        var data = {
+                            'stamp_count': reset_stamp_count,
+                            'market_name': market_name,
+                            'user_id': user_id
+                        };
+                        $.ajax({
+                            type: 'POST',
+                            url: '/reset_aboutstamp_count',
+                            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                            cache: false,
+                            dataType: 'json',
+                            data: data,
+                            success: function (result) {
+                                if (result['result'] == 'successs') {
+                                    alert('초기화');
+                                    $(window).attr('location', '/myStamp');
+                                }
+                            },
+                            error: function (error) {
+                                console.log('error');
+                            }
+                        });
+                    }
                 }
-            }
-          </script>
-        <% } %>
-    <% } %>
+            </script>
+            <% } %>
+                <% } %>
 
 
 
-    <div id="nav_sj">
-        <div id="home_sj">
-            <img src="/images/home.png" width="60%">
-            <br/>홈</div>
-        <div id="coupon_sj">
-            <img src="/images/coupon.png" width="60%">
-            <br/>쿠폰</div>
-        <div id="location_sj">
-            <img src="/images/location.png" width="60%">
-            <br/>주변 가맹점</div>
-        <div id="myStamp_sj">
-            <img src="/images/stamp.png" width="60%">
-            <br/>내 스탬프</div>
-        <div id="my_sj">
-            <img src="/images/my.png" width="60%">
-            <br/>MyPage</div>
-    </div>
+                    <div id="nav_sj">
+                        <div id="home_sj">
+                            <img src="/images/home.png" width="60%">
+                            <br/>홈</div>
+                        <div id="coupon_sj">
+                            <img src="/images/coupon.png" width="60%">
+                            <br/>쿠폰</div>
+                        <div id="location_sj">
+                            <img src="/images/location.png" width="60%">
+                            <br/>주변 가맹점</div>
+                        <div id="myStamp_sj">
+                            <img src="/images/stamp.png" width="60%">
+                            <br/>내 스탬프</div>
+                        <div id="my_sj">
+                            <img src="/images/my.png" width="60%">
+                            <br/>MyPage</div>
+                    </div>
 
-    <script>
-        $('#home_sj').click(function () {
-            location.href = "/main";
-        })
-    </script>
+                    <script>
+                        $('#home_sj').click(function () {
+                            location.href = "/main";
+                        })
+                        $('#coupon_sj').click(function () {
+                            location.href = "/coupon";
+                        })
+                    </script>
 
-    <!--stamp_kind 불러와야함-->
-    <!--stamp_count 불러와야함-->
-    <!--stamp_standard 불러와야함-->
-    <!-- <script src="/javascripts/stamp.js"></script> -->
-    <!-- stamp 기능적인 부분 js-->
-    <!-- <script src="/javascripts/myStamp.js"></script> -->
-    <!-- myStamp 메뉴 관련 js -->
+                    <!--stamp_kind 불러와야함-->
+                    <!--stamp_count 불러와야함-->
+                    <!--stamp_standard 불러와야함-->
+                    <!-- <script src="/javascripts/stamp.js"></script> -->
+                    <!-- stamp 기능적인 부분 js-->
+                    <!-- <script src="/javascripts/myStamp.js"></script> -->
+                    <!-- myStamp 메뉴 관련 js -->
 
 
 </body>
