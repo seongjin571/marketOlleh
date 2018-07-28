@@ -335,21 +335,48 @@
                 document.getElementsByClassName('password_number_sj <%= myStamps[i].id %>')[i].innerHTML = password_number_array_sj[i];
               }
               if (count == 0) {
-                $('.password_number_sj <%= myStamps[i].id %>').click(function () {
+                $('.password_number_sj').click(function () {
                   var number = $(this).html();
                   count = 1;
                   if (count == 1) {
-                    $('.password_number_sj <%= myStamps[i].id %>').click(function () {
+                    $('.password_number_sj').click(function () {
                       var number2 = number + $(this).html();
                       count = 2;
                       if (count == 2) {
-                        $('.password_number_sj <%= myStamps[i].id %>').click(function () {
+                        $('.password_number_sj').click(function () {
                           var number3 = number2 + $(this).html();
                           count = 3;
                           if (count == 3) {
-                            $('.password_number_sj <%= myStamps[i].id %>').click(function () {
+                            $('.password_number_sj').click(function () {
                               var number4 = number3 + $(this).html();
-                              stamp_count_password(number4);
+                              console.log(number4);
+                              //stamp_count_password(number4);
+
+                              //
+
+                              $.ajax({
+                                type: 'POST',
+                                url: '/stamp_count_password/<%= myStamps[i].id %>',
+                                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                                cache: false,
+                                dataType: 'json',
+                                success: function (result) {
+                                  if (result['password'] == number4) {
+                                    console.log(result['password']);
+                                    alert('비밀번호 일치');
+                                    //coupon_count();
+                                  } else {
+                                    console.log(result['password']);
+                                    alert('비밀번호 불일치');
+                                    //location.reload();
+                                  }
+                                },
+                                error: function (error) {
+                                  console.log('error');
+                                }
+                              });
+
+                              //
                             })
 
                           }
@@ -367,24 +394,25 @@
             });
 
             function stamp_count_password(number4) {
-              var data = {
-                'market_name': market_name,
-                'user_id': user_id
-              }
+              // var data = {
+              //   'market_name': market_name,
+              //   'user_id': user_id
+              // }
               $.ajax({
                 type: 'POST',
-                url: '/stamp_count_password',
+                url: '/stamp_count_password/<%= myStamps[i].id %>',
                 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
                 cache: false,
                 dataType: 'json',
-                data: data,
                 success: function (result) {
                   if (result['password'] == number4) {
+                    console.log(result['password']);
                     alert('비밀번호 일치');
-                    coupon_count();
+                    //coupon_count();
                   } else {
+                    console.log(result['password']);
                     alert('비밀번호 불일치');
-                    location.reload();
+                    //location.reload();
                   }
                 },
                 error: function (error) {
