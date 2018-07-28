@@ -169,12 +169,13 @@ router.post('/managerlistnextpage', function(req, res) {
   })
 });
 
-router.post('/aboutstamp_count',function(req,res,next){
+router.post('/aboutstamp_count/:id',function(req,res,next){
   var stamp_count = req.body.stamp_count;
-  var user_id = req.body.user_id;
-  var market_name = req.body.market_name;
-  var sql = 'update stamp set stamp_count =? where user_id = ? and market_name =?';
-  conn.query(sql,[stamp_count, user_id,market_name],function(error,result,fields){
+  // var user_id = req.body.user_id;
+  // var market_name = req.body.market_name;
+  var stamp_id = req.params.id;
+  var sql = 'update `stamp` set `stamp_count`=? where `id`=?;';
+  conn.query(sql,[stamp_count, stamp_id],function(error,result,fields){
     if(error){
       console.log('aboutstamp_count error');
     }else{
@@ -185,12 +186,13 @@ router.post('/aboutstamp_count',function(req,res,next){
   })
 });
 
-router.post('/reset_aboutstamp_count',function(req,res,next){
+router.post('/reset_aboutstamp_count/:id',function(req,res,next){
   var stamp_count = req.body.stamp_count;
-  var user_id = req.body.user_id;
-  var market_name = req.body.market_name;
-  var sql = 'update stamp set stamp_count =? where user_id = ? and market_name =?';
-  conn.query(sql,[stamp_count, user_id,market_name],function(error,result,fields){
+  // var user_id = req.body.user_id;
+  // var market_name = req.body.market_name;
+  var stamp_id = req.params.id;
+  var sql = 'update `stamp set `stamp_count`=? where `id`=?;';
+  conn.query(sql,[stamp_count, stamp_id],function(error,result,fields){
     if(error){
       console.log('reset_aboutstamp_count error');
     }else{
