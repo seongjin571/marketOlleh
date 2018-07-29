@@ -2,8 +2,6 @@
 
 
 // FUNCTION
-// 기본적인 함수 흐름 TableSetting -> gooAjax ~ makeGooTable (hideGooTable)
-// --> 
 
 function TableSetting() {
 	document.getElementById('KakaoMap').style.display = "none";
@@ -26,6 +24,9 @@ function deleteNewGooTabe() {
 	// 동적으로 New Table 삭제 --> 기존 테이블 show
 	$('#NewGoomap > table').remove();
 	$('#Goomap > table').show();
+
+	// 지도 표출후 다시 original Goomap 으로 가는 상황 고려
+	$('#KakaoMap').hide();
 }
 
 function deleteNewSearchList() {
@@ -146,9 +147,18 @@ function searchingAjax(event) {
 } // searchingAjax
 
 function navControl(event){
+	// 첫 실행값은 true
 	var booleanB = Boolean(Searching.hidden);
-	Searching.hidden = !booleanB;
-	Goomap.hidden = booleanB;
+
+	if (Searching.hidden) {
+		Searching.hidden = !booleanB;
+		Goomap.hidden = booleanB;
+	} else { // 검색후 navControl 버튼 눌렀을때 고려
+		deleteNewSearchList();
+		Searching.hidden = !booleanB;
+		Goomap.hidden = booleanB;
+	}
+	
 }
 
 
