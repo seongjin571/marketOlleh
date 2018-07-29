@@ -191,7 +191,7 @@ router.post('/reset_aboutstamp_count/:id',function(req,res,next){
   // var user_id = req.body.user_id;
   // var market_name = req.body.market_name;
   var stamp_id = req.params.id;
-  var sql = 'update `stamp set `stamp_count`=? where `id`=?;';
+  var sql = 'update `stamp` set `stamp_count`=? where `id`=?;';
   conn.query(sql,[stamp_count, stamp_id],function(error,result,fields){
     if(error){
       console.log('reset_aboutstamp_count error');
