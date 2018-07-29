@@ -18,7 +18,52 @@ router.get('/couponManager', function(req, res){
   res.render('couponManager');
 });
 
+// 시장 검색 부분 ────────────────────────────────────────────────────
 
+router.get('/searching', function(req, res) {
+  res.render('searching');
+});
+
+// router.post('/searching', function(req, res) {
+
+//   var filed = req.body.filed;
+//   var search_value = req.body.search_value;
+
+//   if (filed&&search_value) {
+//     console.log("searching success!");
+//     var sql = "SELECT * FROM `market` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
+//     conn.query(sql, function(error, rows, fileds) {
+//       res.send({ result: rows });
+//     }); // conn.query
+//   } // if
+
+// }); // get '/searching'
+
+router.post('/searching/gooname', function(req, res){
+
+  // goo tile click
+  var gooname = req.body.gooname;
+
+  // submit ~ ajax (searching)
+  var filed = req.body.filed;
+  var search_value = req.body.search_value;
+  
+  if(gooname){
+    var sql = "SELECT * FROM `market` WHERE `gooname` LIKE '%"+gooname+"%'";
+    conn.query(sql, function(error, rows, fileds) {
+      return res.send({ rows: rows });
+    });// conn.query
+  } else if(filed&&search_value){
+    console.log("searching success!");
+    var sql = "SELECT * FROM `market` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
+    conn.query(sql, function(error, rows, fileds) {
+      return res.send({ rows: rows });
+    }); // conn.query
+  } // else if
+
+}); // post /searching/gooname
+
+//────────────────────────────────────────────────────────────────
 
 router.get('/main', function(req, res){
   var stampSql = 'select * from `stamp` where `user_id`=?;';
