@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/couponManager.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
+    <script>
+        window.addEventListener('load', function () {
+            FastClick.attach(document.body);
+        }, false);
+    </script>
+</head>
+
+<body>
+    <div id="menu">내 쿠폰
+    </div>
+    <div id="all_coupon_div">
+        <button id="make_coupon">쿠폰 생성</button>
+
+        <div class="my_coupon_list">
+            <div class="my_coupon">
+                <div class="store_and_market">
+                    <div class="store_name">나현이네 과일가게</div>
+                    <div class="market_name">통인시장</div>
+                </div>
+                <div class="sale_price">
+                    1000원 할인
+                </div>
+                <div class="standard">
+                    5000원 이상 구매 시
+                </div>
+                <div class="period">
+                    기간:~18.8.20
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="make_coupon_div">
+        <label>할인 금액</label>
+        <select>
+            <option>500원 할인</option>
+            <option>1000원 할인</option>
+            <option>1500원 할인</option>
+            <option>2000원 할인</option>
+            <option>3000원 할인</option>
+        </select>
+        <br/>
+        <label>사용 기준</label>
+        <input type="text" placeholder="ex)5000원 이상 구매 시">
+        <br/>
+        <label>사용 기한</label>
+        <input type="text" placeholder="ex)18/08/20">
+        <br/>
+        <button id="cancel">취소</button>
+        <button>생성</button>
+    </div>
+
+
+    <div id="nav_sj">
+            <div id="home">
+                <img src="/images/home.png" width="55%">
+                <br/>홈</div>
+            <div id="coupon_sj">
+                <img src="/images/coupon.png" width="55%">
+                <br/>쿠폰</div>
+            <div id="myStamp_sj">
+                <img src="/images/stamp.png" width="55%">
+                <br/>스탬프</div>
+            <div id="mystore_sj">
+                <img src="/images/store.png" width="55%">
+                <br/>내 상점</div>
+            <div id="mypage_sj">
+                <img src="/images/my.png" width="55%">
+                <br/>Mypage</div>
+        </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+<script>
+
+    $('#go_my_coupon').click(function () {
+        $('#coupon_view').hide(200);
+        $('.my_coupon').show(200);
+    })
+    $('#go_coupon_view').click(function () {
+        $('#coupon_view').show(200);
+        $('.my_coupon').hide(200);
+    })
+    $('#myStamp_sj').click(function () {
+        location.href = "/myStamp";
+    })
+    $('#home_sj').click(function () {
+        location.href = "/main";
+    })
+    var swiper = new Swiper('.swiper-container');
+
+    $('#make_coupon').click(function () {
+        $('#all_coupon_div').hide(200);
+        $('#make_coupon_div').show(200);
+    })
+    $('#cancel').click(function () {
+        $('#make_coupon_div').hide(200);
+        $('#all_coupon_div').show(200);
+    })
+    $('#home').click(function(){
+        location.href='/mainManager';
+    })
+    $('#mystore_sj').click(function(){
+        location.href='/mystore';
+    })
+    
+
+</script>
+
+</html>
