@@ -18,6 +18,10 @@ router.get('/couponManager', function(req, res){
   res.render('couponManager');
 });
 
+router.get('/mystampManager', function(req, res){
+  res.render('mystampManager');
+});
+
 
 
 router.get('/main', function(req, res){
