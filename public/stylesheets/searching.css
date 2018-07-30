@@ -1,0 +1,8 @@
+td:hover, li:hover {
+	background-color: rgba(0, 206, 209, 0.5);
+	transition: background-color 1.6s;
+}
+
+table {
+	width: 100%;
+}
