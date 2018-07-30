@@ -33,9 +33,9 @@
             </div>
           </div>
           <div class="stamp_count">
-            <div class="stamp_count_vertical">
+            <div class="stamp_count_vertical" id='stamp_count_vertical<%= myStamps[i].id %>'>
               <p>
-                <%= myStamps[i].stamp_count %>/
+                <%= myStamps[i].stamp_count %> /
                 <%= myStamps[i].stamp_standard %>
               </p>
             </div>
@@ -401,6 +401,7 @@
                                                 check.style.backgroundColor = "#232323";
                                               }
                                             }
+                                            $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p>'+ (parseInt("<%= myStamps[i].stamp_count %>")+1) +' / <%= myStamps[i].stamp_standard %></p>');
                                             $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
                                             $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
                                           }
