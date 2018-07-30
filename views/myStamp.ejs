@@ -378,30 +378,34 @@
                 }
               });
             });
+
             $('#stamp_sj<%= myStamps[i].id %>').click(function () {
-              var count = 0; //쿠폰 클릭시 이벤트 발생
+              var count<%= myStamps[i].id %> = 0; //쿠폰 클릭시 이벤트 발생
               $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
               $('#password_number_div_sj<%= myStamps[i].id %>').show(200);
               shuffle(password_number_array_sj);
               for (var i = 0; i < 10; i++) {
                 document.getElementsByClassName('password_number_sj <%= myStamps[i].id %>')[i].innerHTML = password_number_array_sj[i];
               }
-              if (count == 0) {
+              if (count<%= myStamps[i].id %> == 0) {
                 $('.password_number_sj').click(function () {
                   var number = $(this).html();
-                  count = 1;
-                  if (count == 1) {
+                  count<%= myStamps[i].id %> = 1;
+
+                  if (count<%= myStamps[i].id %> == 1) {
                     $('.password_number_sj').click(function () {
                       var number2 = number + $(this).html();
-                      count = 2;
-                      if (count == 2) {
+                      count<%= myStamps[i].id %> = 2;
+
+                      if (count<%= myStamps[i].id %> == 2) {
                         $('.password_number_sj').click(function () {
                           var number3 = number2 + $(this).html();
-                          count = 3;
-                          if (count == 3) {
+                          count<%= myStamps[i].id %> = 3;
+
+                          if (count<%= myStamps[i].id %> == 3) {
                             $('.password_number_sj').click(function () {
                               var number4 = number3 + $(this).html();
-                              //stamp_count_password(number4);
+                              // count<%= myStamps[i].id %> = 0;
 
                               //
 
@@ -452,12 +456,14 @@
                                             $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p>'+ (parseInt("<%= myStamps[i].stamp_count %>")+1) +' / <%= myStamps[i].stamp_standard %></p>');
                                             $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
                                             $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+                                            // count<%= myStamps[i].id %> = 0;
                                           }
                                         },
                                         error: function (error) {
                                           console.log('error');
                                         }
                                       });
+                                      // count<%= myStamps[i].id %> = 0;
                                     }
                                     else {
                                       var data = {
@@ -473,19 +479,22 @@
                                         success: function (result) {
                                           if (result['result'] == 'successs') {
                                             alert('초기화');
-                                            // $(window).attr('location', '/myStamp');
+                                            // count<%= myStamps[i].id %> = 0;
                                           }
                                         },
                                         error: function (error) {
                                           console.log('error');
                                         }
                                       });
+                                      // count<%= myStamps[i].id %> = 0;
                                     }
 
+                                    // count<%= myStamps[i].id %> = 0;
                                     //
                                   } else {
                                     console.log(result['password']);
                                     alert('비밀번호 불일치');
+                                    console.log(count<%= myStamps[i].id %>);
                                     //location.reload();
                                   }
                                 },
