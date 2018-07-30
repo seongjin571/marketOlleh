@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
+    <script>
+        window.addEventListener('load', function () {
+            FastClick.attach(document.body);
+        }, false);
+    </script>
+    <style>
+        @font-face {
+            font-family: 'LotteMartDream';
+            font-style: normal;
+            font-weight: 800;
+            src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'LotteMartDream';
+            font-style: normal;
+            font-weight: 700;
+            src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'LotteMartDream';
+            font-style: normal;
+            font-weight: 200;
+            src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff') format('woff');
+        }
+
+        body,
+        html {
+            font-family: 'LotteMartDream', sans-serif;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        #menu {
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            background-color: #63dded;
+            line-height: 50px;
+            color: white;
+        }
+
+        #nav_sj {
+            width: 100%;
+            height: 20%;
+            background: #63dded;
+            display: inline-flex;
+            position: fixed;
+            top: 90%;
+            z-index: 1;
+        }
+
+        #nav_sj div {
+            width: 20%;
+            padding: 10px;
+            font-size: 8px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="menu">내 스탬프
+    </div>
+    <div id="nav_sj">
+        <div id="home">
+            <img src="/images/home.png" width="55%">
+            <br/>홈</div>
+        <div id="coupon_sj">
+            <img src="/images/coupon.png" width="55%">
+            <br/>쿠폰</div>
+        <div id="myStamp_sj">
+            <img src="/images/stamp.png" width="55%">
+            <br/>스탬프</div>
+        <div id="mystore_sj">
+            <img src="/images/store.png" width="55%">
+            <br/>내 상점</div>
+        <div id="mypage_sj">
+            <img src="/images/my.png" width="55%">
+            <br/>Mypage</div>
+    </div>
+    <script>
+        $('#home').click(function () {
+            location.href = "/mainManager";
+        })
+        $('#coupon_sj').click(function () {
+            location.href = "/couponManager";
+        })
+        $('#mystore_sj').click(function () {
+            location.href = "/mystore";
+        })
+    </script>
+</body>
+
+</html>
