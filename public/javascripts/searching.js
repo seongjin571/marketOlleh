@@ -147,6 +147,7 @@ function searchingAjax(event) {
 } // searchingAjax
 
 function navControl(event){
+	deleteNewGooTabe() // 구 클릭후 검색하는 현상 고려
 	// 첫 실행값은 true
 	var booleanB = Boolean(Searching.hidden);
 
