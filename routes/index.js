@@ -19,6 +19,7 @@ router.get('/couponManager', function(req, res){
 });
 
 
+
 router.get('/mystampManager', function(req, res){
   res.render('mystampManager');
 });
@@ -66,6 +67,8 @@ router.post('/searching/gooname', function(req, res){
   } // else if
 
 }); // post /searching/gooname
+
+
 
 
 
