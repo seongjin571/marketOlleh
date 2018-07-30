@@ -10,11 +10,11 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/stylesheets/stamp.css" />
   <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
-  <script>
+  <!-- <script>
   window.addEventListener('load', function () {
     FastClick.attach(document.body);
   }, false);
-  </script>
+  </script> -->
 </head>
 
 <body>
@@ -238,10 +238,10 @@
               </div>
 
               <div class='review_write_sj' id="review_write_sj<%= myStamps[i].id %>">
-                <textarea rows="7"></textarea>
+                <textarea class="review_textarea<%= myStamps[i].id %>" rows="7"></textarea>
                 <div class='write_button_div_sj' id="write_button_div_sj<%= myStamps[i].id %>">
                   <button class='write_cancel_sj' id="write_cancel_sj<%= myStamps[i].id %>" style="margin-left: 12.5%">취소</button>
-                  <button style="margin-left:5%">등록</button>
+                  <button class="write_ok_button<%= myStamps[i].id %>" style="margin-left:5%">등록</button>
                 </div>
               </div>
             </div>
@@ -326,9 +326,57 @@
                 a[j] = x;
               }
             }
-            $('#review_textarea_ok_button').click(function(){
-              // var text = $('#review_textarea').val();
-              alert('1');
+            $('.write_ok_button<%= myStamps[i].id %>').click(function(){
+              var user_id = '<%= myStamps[i].user_id %>';
+              var market_name = '<%= myStamps[i].market_name %>';
+              var text=$('.review_textarea<%= myStamps[i].id %>').val();
+              var now = new Date();
+              function leadingZeros(n, digits){
+                var zero='';
+                n = n.toString();
+                if(n.length < digits){
+                  for(i = 0 ; i < digits - n.length; i++){
+                    zero += '0';
+                  }
+                }
+                return zero + n;
+              }
+              var post_date = leadingZeros(now.getYear()-100,2)+ '-'+
+                  leadingZeros(now.getMonth()+1,2)+'-' +
+                  leadingZeros(now.getDate(),2);
+
+              var sijang_name = '<%= myStamps[i].sijang_name %>';
+              var data = {
+                'market_name' : market_name,
+                'user_id' : user_id,
+                'date' : post_date,
+                'review' : text,
+                'sijang_name' : sijang_name
+              }
+              console.log(data);
+              $.ajax({
+                type: 'post',
+                url: '/review',
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                cache: false,
+                data: data,
+                datatype: 'json',
+                success: function(result) {
+                  if (result['result']=='success'){
+                    // console.log(result);
+                    alert('등록완료');
+                    location.reload();
+                  }
+                  else{
+                    console.log(result);
+                    alert('등록실패1');
+                  }
+                },
+                error: function(error){
+                  alert('등록실패2');
+                  location.reload();
+                }
+              });
             });
             $('#stamp_sj<%= myStamps[i].id %>').click(function () {
               var count = 0; //쿠폰 클릭시 이벤트 발생
