@@ -23,14 +23,24 @@ function hideGooTabe() {
 	$('#NewGoomap > table').append("<tbody></tbody>")
 }
 
-// ◀ 버튼의 함수 _ #tableControl // navControl 과 서로 영향
+// ◀ 버튼의 함수 _ #tableControl // Goomap, NewGoomap interact
 function deleteNewGooTable() {
-	// 동적으로 New Table 삭제 --> 기존 테이블 show
-	$('#NewGoomap > table').remove();
-	$('#Goomap > table').show();
 
-	// 지도 표출후 다시 original Goomap 으로 가는 상황 고려
-	$('#KakaoMap').hide();
+	var temp = document.getElementById('NewGoomap');
+
+	// 새로운 구 테이블에 시장정보 있다면
+	if (temp.hasChildNodes()){
+		// 동적으로 New Table 삭제 --> 기존 테이블 show
+		$('#NewGoomap > table').remove();
+		$('#Goomap > table').show();
+
+		// 지도 표출후 다시 original Goomap 으로 가는 상황 고려
+		$('#KakaoMap').hide();
+	} else if(document.getElementById('Goomap').style.display == 'block'){
+		console.log("Turn back");
+		navControl();
+	} // Goomap이 표출된 상태에선 뒤로가기 기능
+	
 }
 
 function deleteNewSearchList() {
@@ -154,18 +164,17 @@ function searchingAjax(event) {
 
 // 지도로 찾기 버튼 이벤트 
 function navControl(event){
+	// 지도로 찾기 / 활성화 되어있을때 if --> 다시 none으로
 	if (document.getElementById('Goomap').style.display == "block") {
 		document.getElementById('Searching').style.display = "block";
 		document.getElementById('Goomap').style.display = "none";
 		document.getElementById('aaa').style.display = "block";
-	} else { // 검색후 navControl 버튼 눌렀을때 고려
-		deleteNewSearchList();
+	} else { // 지도로 찾기 비활성화 되어있을때 else --> block
+		deleteNewSearchList(); // 검색후 navControl 버튼 눌렀을때 고려
 		document.getElementById('Searching').style.display = "none";
 		document.getElementById('Goomap').style.display = "block";
 		document.getElementById('aaa').style.display = "none";
 	}
-	deleteNewGooTable(); // 구 클릭후 검색하는 현상 고려
-	deleteNewSearchList(); // 검색후 지도로 찾기 클릭 현상 고려
 }
 
 
@@ -181,4 +190,5 @@ $("#search_value").keyup(function(event) {
     $("#searchingButton").trigger("click");
   };
 });
+
 ////////////////////KAKAO MAP API SECTIOn////////////////////
