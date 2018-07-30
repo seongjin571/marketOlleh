@@ -20,6 +20,12 @@ router.get('/couponManager', function(req, res){
 
 // 시장 검색 부분 ────────────────────────────────────────────────────
 
+
+router.get('/mystampManager', function(req, res){
+  res.render('mystampManager');
+});
+
+
 router.get('/searching', function(req, res) {
   res.render('searching');
 });
@@ -63,7 +69,9 @@ router.post('/searching/gooname', function(req, res){
 
 }); // post /searching/gooname
 
+
 //────────────────────────────────────────────────────────────────
+
 
 router.get('/main', function(req, res){
   var stampSql = 'select * from `stamp` where `user_id`=?;';

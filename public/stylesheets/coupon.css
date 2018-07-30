@@ -30,6 +30,7 @@ html {
 
 #menu {
     width: 100%;
+    display: inline-flex;
     height: 50px;
 }
 
