@@ -23,6 +23,7 @@ function hideGooTabe() {
 	$('#NewGoomap > table').append("<tbody></tbody>")
 }
 
+// ◀ 버튼의 함수 _ #tableControl // navControl 과 서로 영향
 function deleteNewGooTable() {
 	// 동적으로 New Table 삭제 --> 기존 테이블 show
 	$('#NewGoomap > table').remove();
@@ -72,11 +73,9 @@ function makeGooTable(tableValue, gooCounter) {
 		temp = $(this).text();
 		for(var i = 0; i < parseInt(gooCounter); i++){
 			if(temp == tableValue.rows[i].name){
-				console.log(tableValue.rows[i].coordinateX, tableValue.rows[i].coordinateY);
-				changeCenter(tableValue.rows[i].coordinateX, tableValue.rows[i].coordinateX);
+				console.log(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
+				changeCenter(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
 			}
-			else
-				console.log('false');
 		}
 	// this의 text 시장 이름 값에 맞는 '좌표 가져와서 map API로 연결해주기'	
 	// 여기서도 ajax로 DB참조해 시장 이름에 맞는 좌표 가져와서 그 결과를
@@ -89,6 +88,7 @@ function makeSearchList(searchResult, listCounter) {
 	
 	// 검색하면 aaa div 부분 none 하기
 	document.getElementById('aaa').style.display = "none";
+
 	deleteNewSearchList();
 	console.log(searchResult.rows[0].name, listCounter);
 	var tempString = new Array();
@@ -152,6 +152,7 @@ function searchingAjax(event) {
 
 } // searchingAjax
 
+// 지도로 찾기 버튼 이벤트 
 function navControl(event){
 	if (document.getElementById('Goomap').style.display == "block") {
 		document.getElementById('Searching').style.display = "block";
