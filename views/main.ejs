@@ -42,7 +42,7 @@
     </div>
 
     <div>
-        <input type="button" value="구 선택" id="tableControl">
+        <input type="button" value=" ◀ " id="tableControl">
         <input type="button" value="지도로 찾기" id="navControlButton">
     </div>
 
@@ -318,14 +318,14 @@
             map.relayout();
         }                
 
-        function changeCenter(){
-            var moveLatLon = new daum.maps.LatLng(Umaplat.value, Umaplng.value);
+        // function changeCenter(){
+        //     var moveLatLon = new daum.maps.LatLng(Umaplat.value, Umaplng.value);
 
-            // 지도 중심을 이동 시킵니다
-            map.setCenter(moveLatLon);
-            map.setLevel(2);
-            relayout();
-        }
+        //     // 지도 중심을 이동 시킵니다
+        //     map.setCenter(moveLatLon);
+        //     map.setLevel(2);
+        //     relayout();
+        // }
 
         function changeCenter(mapLat, mapLng){
             var moveLatLon = new daum.maps.LatLng(mapLat, mapLng);
@@ -334,6 +334,9 @@
             map.setCenter(moveLatLon);
             map.setLevel(2);
             relayout();
+
+            // 입력받은 좌표에 마커 추가
+            addMarker(moveLatLon);
         }
 
 

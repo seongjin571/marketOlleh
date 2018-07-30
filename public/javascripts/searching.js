@@ -23,13 +23,37 @@ function hideGooTabe() {
 	$('#NewGoomap > table').append("<tbody></tbody>")
 }
 
+// ◀ 버튼의 함수 _ #tableControl
+// Goomap, NewGoomap, search_result, navControl() interact!
+function turningBack() {
+
+	var temp_goo = document.getElementById('NewGoomap');
+	var temp_serch = document.getElementById('search_result');
+
+	// 새로운 구(NewGoomap > table) 테이블에 시장정보 있다면
+	if (temp_goo.hasChildNodes()) {
+		deleteNewGooTable();
+	} else if(document.getElementById('Goomap').style.display == 'block'){
+		console.log("Turn back");
+		navControl();
+	} // Goomap이 표출된 상태에선 뒤로가기 기능
+
+
+	if (temp_serch.hasChildNodes() && document.getElementById('aaa').style.display == "none") {
+		deleteNewSearchList();
+		document.getElementById('aaa').style.display = "block";
+	}
+
+}
+
+// TurningBack의 자유로운 사용을 위해 NewGooTable 제어 함수 분할
 function deleteNewGooTable() {
 	// 동적으로 New Table 삭제 --> 기존 테이블 show
 	$('#NewGoomap > table').remove();
 	$('#Goomap > table').show();
 
 	// 지도 표출후 다시 original Goomap 으로 가는 상황 고려
-	$('#KakaoMap').hide();
+	$('#KakaoMap').hide();	
 }
 
 function deleteNewSearchList() {
@@ -72,11 +96,9 @@ function makeGooTable(tableValue, gooCounter) {
 		temp = $(this).text();
 		for(var i = 0; i < parseInt(gooCounter); i++){
 			if(temp == tableValue.rows[i].name){
-				console.log(tableValue.rows[i].coordinateX, tableValue.rows[i].coordinateY);
-				changeCenter(tableValue.rows[i].coordinateX, tableValue.rows[i].coordinateX);
+				console.log(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
+				changeCenter(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
 			}
-			else
-				console.log('false');
 		}
 	// this의 text 시장 이름 값에 맞는 '좌표 가져와서 map API로 연결해주기'	
 	// 여기서도 ajax로 DB참조해 시장 이름에 맞는 좌표 가져와서 그 결과를
@@ -89,6 +111,7 @@ function makeSearchList(searchResult, listCounter) {
 	
 	// 검색하면 aaa div 부분 none 하기
 	document.getElementById('aaa').style.display = "none";
+
 	deleteNewSearchList();
 	console.log(searchResult.rows[0].name, listCounter);
 	var tempString = new Array();
@@ -152,19 +175,20 @@ function searchingAjax(event) {
 
 } // searchingAjax
 
+// 지도로 찾기 버튼 이벤트 
 function navControl(event){
+	// Goomap / 활성화 되어있을때 if --> 다시 none으로
 	if (document.getElementById('Goomap').style.display == "block") {
 		document.getElementById('Searching').style.display = "block";
 		document.getElementById('Goomap').style.display = "none";
 		document.getElementById('aaa').style.display = "block";
-	} else { // 검색후 navControl 버튼 눌렀을때 고려
-		deleteNewSearchList();
+	} else { // Goomap / 비활성화 되어있을때 else --> block
+		deleteNewSearchList(); // 검색후 navControl 버튼 눌렀을때 고려
 		document.getElementById('Searching').style.display = "none";
 		document.getElementById('Goomap').style.display = "block";
 		document.getElementById('aaa').style.display = "none";
 	}
-	deleteNewGooTable(); // 구 클릭후 검색하는 현상 고려
-	deleteNewSearchList(); // 검색후 지도로 찾기 클릭 현상 고려
+	deleteNewGooTable();	
 }
 
 
@@ -172,7 +196,7 @@ function navControl(event){
 
 TableSetting();
 document.getElementById('navControlButton').addEventListener('click', navControl, false);
-document.getElementById('tableControl').addEventListener('click', deleteNewGooTable, false);
+document.getElementById('tableControl').addEventListener('click', turningBack, false);
 document.getElementById('searchingButton').addEventListener('click', searchingAjax, false);
 $("#search_value").keyup(function(event) {
   // Enter 처리
@@ -180,4 +204,5 @@ $("#search_value").keyup(function(event) {
     $("#searchingButton").trigger("click");
   };
 });
+
 ////////////////////KAKAO MAP API SECTIOn////////////////////
