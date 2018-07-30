@@ -18,7 +18,12 @@ router.get('/couponManager', function(req, res){
   res.render('couponManager');
 });
 
-// 시장 검색 부분 ────────────────────────────────────────────────────
+
+
+router.get('/mystampManager', function(req, res){
+  res.render('mystampManager');
+});
+
 
 router.get('/searching', function(req, res) {
   res.render('searching');
@@ -47,7 +52,7 @@ router.post('/searching/gooname', function(req, res){
   // submit ~ ajax (searching)
   var filed = req.body.filed;
   var search_value = req.body.search_value;
-  
+
   if(gooname){
     var sql = "SELECT * FROM `market` WHERE `gooname` LIKE '%"+gooname+"%'";
     conn.query(sql, function(error, rows, fileds) {
@@ -63,7 +68,9 @@ router.post('/searching/gooname', function(req, res){
 
 }); // post /searching/gooname
 
-//────────────────────────────────────────────────────────────────
+
+
+
 
 router.get('/main', function(req, res){
   var stampSql = 'select * from `stamp` where `user_id`=?;';
@@ -176,6 +183,7 @@ router.get('/store_infor', function(req, res) {
 
 router.get('/myStamp', function(req, res) {
   var sql = 'select * from `stamp` where `user_id`=?';
+  var sql2 = 'select * from `review` where `user_id`=?';
   conn.query(sql, [req.user.id],function(error, result){
     if(error) { console.log(error); }
     else {
@@ -187,10 +195,25 @@ router.get('/myStamp', function(req, res) {
         });
       }
       else {
-        res.render('myStamp', {
-          user: req.user,
-          myStamps: result,
-        });
+        conn.query(sql2, [req.user.id],function(error, results){
+        if(error) { console.log(error2); }
+        else {
+          if(! results.length) {
+            res.render('myStamp', {
+              user: req.user,
+              myStamps: result,
+              review_result : undefined
+            });
+          }
+          else {
+            res.render('myStamp', {
+              user: req.user,
+              myStamps: result,
+              review_result : results
+            });
+          }
+        }
+      });
       }
     }
   });
@@ -311,5 +334,26 @@ router.post('/make_stamp', function(req, res) {
       })
     }
   });
+});
+
+
+router.post('/review',function(req,res,next){
+  var user_id = req.body.user_id;
+  var market_name = req.body.market_name;
+  var sijang_name = req.body.sijang_name;
+  var date = req.body.date;
+  var review = req.body.review;
+  var sql = 'insert into `review`(`user_id`,`market_name`,`sijang_name`,`review`,`date`) values (?,?,?,?,?);';
+  // var sql = 'select * from stamp where user_id =? and market_name = ?';
+  console.log(user_id);
+  conn.query(sql,[user_id,market_name,sijang_name,review,date],function(error,results,fields){
+    if(error){
+      console.log('er');
+    }else{
+      res.send({
+        result : 'success'
+      });
+    }
+  })
 });
 module.exports = router;
