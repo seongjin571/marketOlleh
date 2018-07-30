@@ -1,5 +1,8 @@
 //───────────────────────────── 검색 부분 javascripts ─────────────────────────────//
 
+document.getElementById('Searching').style.display = "block";
+document.getElementById('Goomap').style.display = "none";
+document.getElementById('aaa').style.display = "block";
 
 // FUNCTION
 
@@ -20,7 +23,7 @@ function hideGooTabe() {
 	$('#NewGoomap > table').append("<tbody></tbody>")
 }
 
-function deleteNewGooTabe() {
+function deleteNewGooTable() {
 	// 동적으로 New Table 삭제 --> 기존 테이블 show
 	$('#NewGoomap > table').remove();
 	$('#Goomap > table').show();
@@ -84,6 +87,8 @@ function makeGooTable(tableValue, gooCounter) {
 
 function makeSearchList(searchResult, listCounter) {
 	
+	// 검색하면 aaa div 부분 none 하기
+	document.getElementById('aaa').style.display = "none";
 	deleteNewSearchList();
 	console.log(searchResult.rows[0].name, listCounter);
 	var tempString = new Array();
@@ -98,7 +103,7 @@ function makeSearchList(searchResult, listCounter) {
 	$('#search_result > li').click(function(event) {
 		alert("click FUNCTION test");
 	});
-} // makerSearchList --> ol태그 부분
+} // makerSearchList --> articlr태그 부분
 
 function gooAjax(event){
 	// ajax 비동기적 통신으로 (index.js ~ url 참조)
@@ -144,31 +149,30 @@ function searchingAjax(event) {
 			console.log('process error : ', e);
 		}
 	});
+
 } // searchingAjax
 
 function navControl(event){
-	deleteNewGooTabe() // 구 클릭후 검색하는 현상 고려
-	// 첫 실행값은 true
-	var booleanB = Boolean(Searching.hidden);
-
-	if (Searching.hidden) {
-		Searching.hidden = !booleanB;
-		Goomap.hidden = booleanB;
+	if (document.getElementById('Goomap').style.display == "block") {
+		document.getElementById('Searching').style.display = "block";
+		document.getElementById('Goomap').style.display = "none";
+		document.getElementById('aaa').style.display = "block";
 	} else { // 검색후 navControl 버튼 눌렀을때 고려
 		deleteNewSearchList();
-		Searching.hidden = !booleanB;
-		Goomap.hidden = booleanB;
+		document.getElementById('Searching').style.display = "none";
+		document.getElementById('Goomap').style.display = "block";
+		document.getElementById('aaa').style.display = "none";
 	}
-	
+	deleteNewGooTable(); // 구 클릭후 검색하는 현상 고려
+	deleteNewSearchList(); // 검색후 지도로 찾기 클릭 현상 고려
 }
 
 
 //////////////////////addEventListener//////////////////////
 
 TableSetting();
-navControl();
 document.getElementById('navControlButton').addEventListener('click', navControl, false);
-document.getElementById('tableControl').addEventListener('click', deleteNewGooTabe, false);
+document.getElementById('tableControl').addEventListener('click', deleteNewGooTable, false);
 document.getElementById('searchingButton').addEventListener('click', searchingAjax, false);
 $("#search_value").keyup(function(event) {
   // Enter 처리
