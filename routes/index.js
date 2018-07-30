@@ -18,7 +18,6 @@ router.get('/couponManager', function(req, res){
   res.render('couponManager');
 });
 
-// 시장 검색 부분 ────────────────────────────────────────────────────
 
 
 router.get('/mystampManager', function(req, res){
@@ -70,7 +69,10 @@ router.post('/searching/gooname', function(req, res){
 }); // post /searching/gooname
 
 
+<<<<<<< HEAD
+=======
 //────────────────────────────────────────────────────────────────
+>>>>>>> 2bd68612b59e64cb0630c996050271fcf806eafa
 
 
 router.get('/main', function(req, res){
