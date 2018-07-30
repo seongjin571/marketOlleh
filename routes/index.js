@@ -94,27 +94,6 @@ router.get('/main', function(req, res){
   });
 });
 
-router.get('/myStamp', function(req, res){
-  var stampSql = 'select * from `stamp` where `user_id`=?;';
-  conn.query(stampSql, [req.user.id], function(error, results) {
-    if(error) { console.log(error); }
-    else {
-      if(! results.length) {
-        console.log(results);
-        res.render('myStamp', {
-          user: req.user,
-          myStamps: undefined,
-        });
-      }
-      else {
-        res.render('myStamp', {
-          user: req.user,
-          myStamps: results,
-        });
-      }
-    }
-  });
-});
 
 
 router.get('/mainManager', function(req, res){
@@ -185,31 +164,35 @@ router.get('/myStamp', function(req, res) {
   var sql = 'select * from `stamp` where `user_id`=?';
   var sql2 = 'select * from `review` where `user_id`=?';
   conn.query(sql, [req.user.id],function(error, result){
-    if(error) { console.log(error); }
+    if(error) {
+       console.log(error);
+      }
     else {
       if(! result.length) {
-        console.log(result);
+        console.log("3");
         res.render('myStamp', {
           user: req.user,
           myStamps: undefined,
         });
       }
       else {
-        conn.query(sql2, [req.user.id],function(error, results){
-        if(error) { console.log(error2); }
+        conn.query(sql2, [req.user.id],function(error2, results){
+        if(error2) { console.log(error2); }
         else {
           if(! results.length) {
+            console.log("1");
             res.render('myStamp', {
               user: req.user,
               myStamps: result,
-              review_result : undefined
+              review : undefined
             });
           }
           else {
+            console.log("2");
             res.render('myStamp', {
               user: req.user,
               myStamps: result,
-              review_result : results
+              review : results
             });
           }
         }

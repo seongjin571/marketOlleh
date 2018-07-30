@@ -189,18 +189,17 @@
                 <img src="/images/han.png" width="100%">
               </div>
 
-
               <div class='store_review_sj' id="store_review_sj<%= myStamps[i].id %>">
                 <button class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">리뷰 등록</button>
                 <div class="review_div_sj">
 
                   <div class="review_content_sj">
                     <div class="review_content_id_sj">
-                      <b>gkstjdwls11</b>
+                      <b><%= review[i].user_id %></b>
                     </div>
                     <div class="review_content_date_sj">18-07-12</div>
                   </div>
-                  <p>과일이 굉장히 신선하고 좋았습니다! 사장님도 굉장히 친절하셔요</p>
+                  <p><%= review[i].review %></p>
                 </div>
 
                 <div class="review_div_sj">
@@ -378,34 +377,30 @@
                 }
               });
             });
-
             $('#stamp_sj<%= myStamps[i].id %>').click(function () {
-              var count<%= myStamps[i].id %> = 0; //쿠폰 클릭시 이벤트 발생
+              var count = 0; //쿠폰 클릭시 이벤트 발생
               $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
               $('#password_number_div_sj<%= myStamps[i].id %>').show(200);
               shuffle(password_number_array_sj);
               for (var i = 0; i < 10; i++) {
                 document.getElementsByClassName('password_number_sj <%= myStamps[i].id %>')[i].innerHTML = password_number_array_sj[i];
               }
-              if (count<%= myStamps[i].id %> == 0) {
+              if (count == 0) {
                 $('.password_number_sj').click(function () {
                   var number = $(this).html();
-                  count<%= myStamps[i].id %> = 1;
-
-                  if (count<%= myStamps[i].id %> == 1) {
+                  count = 1;
+                  if (count == 1) {
                     $('.password_number_sj').click(function () {
                       var number2 = number + $(this).html();
-                      count<%= myStamps[i].id %> = 2;
-
-                      if (count<%= myStamps[i].id %> == 2) {
+                      count = 2;
+                      if (count == 2) {
                         $('.password_number_sj').click(function () {
                           var number3 = number2 + $(this).html();
-                          count<%= myStamps[i].id %> = 3;
-
-                          if (count<%= myStamps[i].id %> == 3) {
+                          count = 3;
+                          if (count == 3) {
                             $('.password_number_sj').click(function () {
                               var number4 = number3 + $(this).html();
-                              // count<%= myStamps[i].id %> = 0;
+                              //stamp_count_password(number4);
 
                               //
 
@@ -456,14 +451,12 @@
                                             $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p>'+ (parseInt("<%= myStamps[i].stamp_count %>")+1) +' / <%= myStamps[i].stamp_standard %></p>');
                                             $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
                                             $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-                                            // count<%= myStamps[i].id %> = 0;
                                           }
                                         },
                                         error: function (error) {
                                           console.log('error');
                                         }
                                       });
-                                      // count<%= myStamps[i].id %> = 0;
                                     }
                                     else {
                                       var data = {
@@ -479,22 +472,19 @@
                                         success: function (result) {
                                           if (result['result'] == 'successs') {
                                             alert('초기화');
-                                            // count<%= myStamps[i].id %> = 0;
+                                            // $(window).attr('location', '/myStamp');
                                           }
                                         },
                                         error: function (error) {
                                           console.log('error');
                                         }
                                       });
-                                      // count<%= myStamps[i].id %> = 0;
                                     }
 
-                                    // count<%= myStamps[i].id %> = 0;
                                     //
                                   } else {
                                     console.log(result['password']);
                                     alert('비밀번호 불일치');
-                                    console.log(count<%= myStamps[i].id %>);
                                     //location.reload();
                                   }
                                 },
