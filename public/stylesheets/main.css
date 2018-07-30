@@ -33,40 +33,79 @@
     height: 10%;
     margin-left: 5%;
 }
-#search{
+
+#no_stamp{
+    text-align: center;
+    font-size: 18px;
+}
+
+#aaa{
+    width: 100%;
+    height: 100%;
+}
+
+/* 검색 부분 CSS - 현우가 주석 처리함 / searching css 참조 */
+
+#Searching{
     width: 85%;
     margin: 0 auto;
     height: auto;
     background-color: #acdce2;
     padding: 20px;
     border-radius: 5px;
+    display: table;
 }
-#no_stamp{
-    text-align: center;
-    font-size: 18px;
-}
-#search_bar{
+
+#verti{
     width: 100%;
+    height: 50px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#vertical_helper{
+    width: 100%;
+    height: 30px;
     display: inline-flex;
 }
-#search_bar input{
 
-    width:80%;
+#Searching input{
+    width:60%;
     height:30px;
 }
-#search_bar img{
-margin-left: 10px;
+
+#Searching select{
+    height: 35px;
 }
-#search button{
+
+#Searching img{
+    margin-left: 5px;
+}
+
+#navControlButton{
     width: 80%;
     height: 40px;
     margin-top: 15px;
-    background-color: #fb83a5;
     color: white;
     border-radius: 5px;
     font-size: 21px;
     margin-left: 10%;
 }
+
+/* △ 검색 부분 CSS △ */
+
+/* ▽ 구 표시 부분 CSS - 현우 ▽ */
+
+#Goomap{
+    width: 100%;
+}
+
+#Goomap table{
+    display: center;
+}
+
+/* △ 구 표시 부분 CSS △ */
+
 #myStamp{
     width: 95%;
     margin: 0 auto;
@@ -76,6 +115,7 @@ margin-left: 10px;
     border-radius: 5px;
     margin-top: 20px;
 }
+
 .swiper-container{
     width: 80%;
     height: 85%;
@@ -83,6 +123,7 @@ margin-left: 10px;
     border-radius: 5px;
     margin-top:10px;
 }
+
 .swiper-wrapper{
     width: 100%;
     margin: 0 auto;
@@ -92,9 +133,11 @@ margin-left: 10px;
     border-radius: 5px;
     margin-top:10px;
 }
+
 label{
     color:black;
 }
+
 .swiper-slide{
     width: 80%;
     height: 70%;

@@ -1,9 +1,10 @@
 //───────────────────────────── 검색 부분 javascripts ─────────────────────────────//
 
+document.getElementById('Searching').style.display = "block";
+document.getElementById('Goomap').style.display = "none";
+document.getElementById('aaa').style.display = "block";
 
 // FUNCTION
-// 기본적인 함수 흐름 TableSetting -> gooAjax ~ makeGooTable (hideGooTable)
-// --> 
 
 function TableSetting() {
 	document.getElementById('KakaoMap').style.display = "none";
@@ -22,10 +23,14 @@ function hideGooTabe() {
 	$('#NewGoomap > table').append("<tbody></tbody>")
 }
 
-function deleteNewGooTabe() {
+// ◀ 버튼의 함수 _ #tableControl // navControl 과 서로 영향
+function deleteNewGooTable() {
 	// 동적으로 New Table 삭제 --> 기존 테이블 show
 	$('#NewGoomap > table').remove();
 	$('#Goomap > table').show();
+
+	// 지도 표출후 다시 original Goomap 으로 가는 상황 고려
+	$('#KakaoMap').hide();
 }
 
 function deleteNewSearchList() {
@@ -68,11 +73,9 @@ function makeGooTable(tableValue, gooCounter) {
 		temp = $(this).text();
 		for(var i = 0; i < parseInt(gooCounter); i++){
 			if(temp == tableValue.rows[i].name){
-				console.log(tableValue.rows[i].coordinateX, tableValue.rows[i].coordinateY);
-				changeCenter(tableValue.rows[i].coordinateX, tableValue.rows[i].coordinateX);
+				console.log(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
+				changeCenter(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
 			}
-			else
-				console.log('false');
 		}
 	// this의 text 시장 이름 값에 맞는 '좌표 가져와서 map API로 연결해주기'	
 	// 여기서도 ajax로 DB참조해 시장 이름에 맞는 좌표 가져와서 그 결과를
@@ -83,6 +86,9 @@ function makeGooTable(tableValue, gooCounter) {
 
 function makeSearchList(searchResult, listCounter) {
 	
+	// 검색하면 aaa div 부분 none 하기
+	document.getElementById('aaa').style.display = "none";
+
 	deleteNewSearchList();
 	console.log(searchResult.rows[0].name, listCounter);
 	var tempString = new Array();
@@ -97,7 +103,7 @@ function makeSearchList(searchResult, listCounter) {
 	$('#search_result > li').click(function(event) {
 		alert("click FUNCTION test");
 	});
-} // makerSearchList --> ol태그 부분
+} // makerSearchList --> articlr태그 부분
 
 function gooAjax(event){
 	// ajax 비동기적 통신으로 (index.js ~ url 참조)
@@ -143,21 +149,31 @@ function searchingAjax(event) {
 			console.log('process error : ', e);
 		}
 	});
+
 } // searchingAjax
 
+// 지도로 찾기 버튼 이벤트 
 function navControl(event){
-	var booleanB = Boolean(Searching.hidden);
-	Searching.hidden = !booleanB;
-	Goomap.hidden = booleanB;
+	if (document.getElementById('Goomap').style.display == "block") {
+		document.getElementById('Searching').style.display = "block";
+		document.getElementById('Goomap').style.display = "none";
+		document.getElementById('aaa').style.display = "block";
+	} else { // 검색후 navControl 버튼 눌렀을때 고려
+		deleteNewSearchList();
+		document.getElementById('Searching').style.display = "none";
+		document.getElementById('Goomap').style.display = "block";
+		document.getElementById('aaa').style.display = "none";
+	}
+	deleteNewGooTable(); // 구 클릭후 검색하는 현상 고려
+	deleteNewSearchList(); // 검색후 지도로 찾기 클릭 현상 고려
 }
 
 
 //////////////////////addEventListener//////////////////////
 
 TableSetting();
-navControl();
 document.getElementById('navControlButton').addEventListener('click', navControl, false);
-document.getElementById('tableControl').addEventListener('click', deleteNewGooTabe, false);
+document.getElementById('tableControl').addEventListener('click', deleteNewGooTable, false);
 document.getElementById('searchingButton').addEventListener('click', searchingAjax, false);
 $("#search_value").keyup(function(event) {
   // Enter 처리
