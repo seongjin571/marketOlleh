@@ -169,7 +169,7 @@ router.get('/myStamp', function(req, res) {
       }
     else {
       if(! result.length) {
-        console.log("3");
+        console.log("sql은 들어왔으나 stamp디비에 값이 없어서 sql2실행 x");
         res.render('myStamp', {
           user: req.user,
           myStamps: undefined,
@@ -180,7 +180,8 @@ router.get('/myStamp', function(req, res) {
         if(error2) { console.log(error2); }
         else {
           if(! results.length) {
-            console.log("1");
+            console.log(req.session.market_name);
+            console.log("stamp디비에는 값이 있으나 review값은 없는 경우");
             res.render('myStamp', {
               user: req.user,
               myStamps: result,
@@ -188,7 +189,7 @@ router.get('/myStamp', function(req, res) {
             });
           }
           else {
-            console.log("2");
+            console.log("stamp,review값이 모두 있는 경우");
             res.render('myStamp', {
               user: req.user,
               myStamps: result,

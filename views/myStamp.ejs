@@ -191,49 +191,26 @@
 
               <div class='store_review_sj' id="store_review_sj<%= myStamps[i].id %>">
                 <button class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">리뷰 등록</button>
-                <div class="review_div_sj">
-
-                  <div class="review_content_sj">
-                    <div class="review_content_id_sj">
-                      <b><%= review[i].user_id %></b>
-                    </div>
-                    <div class="review_content_date_sj">18-07-12</div>
-                  </div>
-                  <p><%= review[i].review %></p>
-                </div>
-
+                <% if(review) {%>
+                  <% for(var j=0; j<review.length; j++) { %>
+                    <% if(review[j].market_name == myStamps[i].market_name) {%>
                 <div class="review_div_sj">
                   <div class="review_content_sj">
                     <div class="review_content_id_sj">
-                      <b>kingkw</b>
+                      <b><%= review[j].user_id %></b>
                     </div>
-                    <div class="review_content_date_sj">18-07-13</div>
+                    <div class="review_content_date_sj"><%= review[j].date %></div>
                   </div>
-                  <p>사장님이 굉장히 친절하시다던데..누가 그런말은 하는건지 완전 불친절ㅡㅡ</p>
+                  <p><%= review[j].review %></p>
                 </div>
-
-                <div class="review_div_sj">
-                  <div class="review_content_sj">
-                    <div class="review_content_id_sj">
-                      <b>simson94</b>
-                    </div>
-                    <div class="review_content_date_sj">18-07-13</div>
+                  <% } else {%>
+                    <% } %>
+                    <% } %>
+                <% } else { %>
+                  <div class='stamp_list'>
+                    <div id="no_stamp">리뷰가 없습니다.</div>
                   </div>
-                  <p>이 집에서 멜론 사먹어봤는데 진짜 엄청 달더라고요ㅋㅋ 다음에 와이프 데리고 한번 더 사러 가겠습니다. 번창하세요!</p>
-                </div>
-
-                <div class="review_div_sj">
-                  <div class="review_content_sj">
-                    <div class="review_content_id_sj">
-                      <b>jungjaeho1115</b>
-                    </div>
-                    <div class="review_content_date_sj">18-07-14</div>
-                  </div>
-                  <p>사과가 다른 가게보다 좀 비싼 감이 있었지만 다른 과일들은 모두 저렴하고 상품도 좋네요!</p>
-                </div>
-
-
-
+                  <% } %>
               </div>
 
               <div class='review_write_sj' id="review_write_sj<%= myStamps[i].id %>">
@@ -246,6 +223,7 @@
             </div>
 
             <script>
+
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
               $('#selected_stamp<%= myStamps[i].id %>').css('display', 'block');
               $('#myStamp').css('display', 'none');
