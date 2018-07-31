@@ -227,7 +227,7 @@ function navControl(event) {
 		document.getElementById('tableControl').style.display = "none";
 	} else { // Goomap / 비활성화 되어있을때 else --> block
 		deleteNewSearchList(); // 검색후 navControl 버튼 눌렀을때 고려
-		document.getElementById('map_button').style.display = "none";
+		// document.getElementById('map_button').style.display = "none";
 		document.getElementById('Searching').style.display = "none";
 		document.getElementById('Goomap').style.display = "block";
 		document.getElementById('aaa').style.display = "none";

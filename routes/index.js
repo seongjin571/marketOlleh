@@ -42,25 +42,24 @@ router.post('/searching/gooname', function(req, res){
       return res.send({ rows: rows });
     });// conn.query
   } else if(filed&&search_value){ // searching ~ 에서 접속 DB 부분
-    console.log(filed);
-
+    
     // main.ejs ~ Searching ~ select 에서 뭘 선택했냐에 따라
-    if (filed == "name") { // 시장 이름으로 검색 ~ market table
-      var sql = "SELECT * FROM `market` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
-      conn.query(sql, function(error, rows, fileds) {
-      return res.send({ rows: rows });
-      }); // conn.query
-    } else { // 상점 이름으로 검색 ~ manager table
+    if (filed == "market_name") { // 상점 이름으로 검색 ~ manager table
       var sql = "SELECT * FROM `manager` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
       conn.query(sql, function(error, rows, fileds) {
       return res.send({ rows: rows });
+      }); // conn.query
+    } else { // 시장 이름으로 검색 ~ market table 
+      console.log("시장 이름 으로 검색");
+      console.log(filed);
+      var sql = "SELECT * FROM `market` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
+      conn.query(sql, function(error, rows, fileds) {
+      return res.send({ rows: rows });
       }); // conn.query    
-    }// else
+    } // inner else
   }// else if
 
 }); // post /searching/gooname
-
-
 
 
 
