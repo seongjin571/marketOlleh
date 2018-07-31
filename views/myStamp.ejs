@@ -299,15 +299,57 @@
             /*  좋아요  */
             var good<%= myStamps[i].id %> = document.getElementById('goodCount_sj<%= myStamps[i].id %>');
             $('#noGood_Button_sj<%= myStamps[i].id %>').click(function () {
-                $(this).css('display', 'none');
-                $('#yesGood_Button_sj<%= myStamps[i].id %>').css('display', 'block');
-                good<%= myStamps[i].id %>.innerHTML = "216";
+              var data = {
+                'market_name' : '<%= myStamps[i].market_name %>',
+                'sijang_name' : '<%= myStamps[i].sijang_name %>'
+              }
+
+              $.ajax({
+                type: 'post',
+                url: '/like/<%= myStamps[i].id %>',
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                cache: false,
+                data: data,
+                datatype: 'json',
+                success: function(result) {
+                  if (result['result']=='success'){
+                    console.log(result);
+                    $('#noGood_Button_sj<%= myStamps[i].id %>').css('display', 'none');
+                    $('#yesGood_Button_sj<%= myStamps[i].id %>').css('display', 'block');
+                    good<%= myStamps[i].id %>.innerHTML = result['like'];
+                  }
+                },
+                error: function(error){
+                  console.log('좋아요 실패');
+                }
+              });
             });
             $('#yesGood_Button_sj<%= myStamps[i].id %>').click(function () {
-                $(this).css('display', 'none');
-                $('#noGood_Button_sj<%= myStamps[i].id %>').css('display', 'block');
-                good<%= myStamps[i].id %>.innerHTML = "215";
+              var data = {
+                'market_name' : '<%= myStamps[i].market_name %>',
+                'sijang_name' : '<%= myStamps[i].sijang_name %>'
+              }
+
+              $.ajax({
+                type: 'post',
+                url: '/cancel_like/<%= myStamps[i].id %>',
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                cache: false,
+                data: data,
+                datatype: 'json',
+                success: function(result) {
+                  if (result['result']=='success'){
+                    $('#yesGood_Button_sj<%= myStamps[i].id %>').css('display', 'none');
+                    $('#noGood_Button_sj<%= myStamps[i].id %>').css('display', 'block');
+                    good<%= myStamps[i].id %>.innerHTML = result['like'];
+                  }
+                },
+                error: function(error){
+                  console.log('좋아요 취소 실패');
+                }
+              });
             });
+
 
             /* 비밀번호 키패드 섞는 함수 */
             var password_number_array_sj = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];

@@ -31,7 +31,7 @@
 
 /* main ~ display 부분 초기 설정 */
 
-#tableControl, #Goomap, #KakaoMap{
+#tableControl, #Goomap{
     display: none;
 }
 
@@ -49,7 +49,7 @@
     margin-bottom: 2%;
     display: table;
 }
-#store_infor{
+#store_infor,#market_infor{
     display: none;
 }
 #verti{
