@@ -19,8 +19,11 @@
 
 <body>
     <div id="text_logo">
-        <img src="/images/text.png" width="50%" height="auto">
+        <div id="verti">
+        <img id="inline_logo"src="/images/inline-logo.png" width="60%" height="auto">
+        <img id="tableControl"src="/images/backButton.png" width="35px" height="35px">
     </div>
+</div>
 
     <!-- Searching Seaction - Hyeon Woo -->
 
@@ -42,7 +45,7 @@
     </div>
 
     <div>
-        <input type="button" value=" ◀ " id="tableControl">
+        <!-- <input type="button" value=" ◀ " id="tableControl"> -->
         <input type="button" value="지도로 찾기" id="navControlButton">
     </div>
 
@@ -331,7 +334,7 @@
 
             // 지도 중심을 이동 시킵니다
             map.setCenter(moveLatLon);
-            map.setLevel(2);
+            map.setLevel(4);
             relayout();
 
             // 입력받은 좌표에 마커 추가
