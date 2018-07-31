@@ -19,15 +19,6 @@
     src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff') format('woff');
   }
 
-        body,
-        html {
-            font-family: 'LotteMartDream', sans-serif;
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-            /* overflow: hidden; */
-        }
         #mystamp{
             width: 100%;
             height:100%;
@@ -68,24 +59,6 @@
             height: 100%;
             display: table-cell;
             vertical-align: middle;
-            text-align: center;
-        }
-
-        #nav_sj {
-            width: 100%;
-            height: 10%;
-            background: #63dded;
-            display: inline-flex;
-            position: fixed;
-            top: 90%;
-            z-index: 1;
-        }
-
-        #nav_sj div {
-            width: 20%;
-            padding: 10px;
-            font-size: 8px;
-            color: white;
             text-align: center;
         }
 
@@ -262,18 +235,6 @@
             padding-bottom: 5px;
             /* color: white; */
         }
-        .review_button_sj{
-            width: 80%;
-            margin: 20px 0;
-            margin-left: 10%;
-            height:45px;
-
-            background-color:#fb83a5;
-            border-color: #fb83a5;
-            border-radius: 5px;
-            color: white;
-            font-size: 25px;
-        }
         .review_content_sj{
             width: 80%;
             margin-left: 10%;
@@ -295,7 +256,7 @@
             font-size: 20px;
             margin-bottom: 20px;
         }
-        #review_write_sj{
+        /* #review_write_sj{
             width: 100%;
             display: none;
             position: absolute;
@@ -320,4 +281,4 @@
             color: white;
             font-size: 25px;
             margin-top: 20px;
-        }
+        } */

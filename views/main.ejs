@@ -7,10 +7,11 @@
     <title>Page Title</title>
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/store_infor.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
-<!--     <script>
+    <!--     <script>
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
         }, false);
@@ -19,7 +20,10 @@
 
 <body>
     <div id="text_logo">
-        <img src="/images/text.png" width="50%" height="auto">
+        <div id="verti">
+            <img id="inline_logo" src="/images/inline-logo.png" width="60%" height="auto">
+            <img id="tableControl" src="/images/backButton.png" width="35px" height="35px">
+        </div>
     </div>
 
     <!-- Searching Seaction - Hyeon Woo -->
@@ -30,7 +34,7 @@
                 <select name="filed">
                     <option value="name" selected="selected">시장이름</option>
                     <option value="market_name">상점이름</option>
-<!--                     <option value="dongname">동</option>
+                    <!--                     <option value="dongname">동</option>
                     <option value="newaddress">도로명</option>
                     <option value="oldaddress">지번</option> -->
                 </select>
@@ -42,7 +46,7 @@
     </div>
 
     <div>
-        <input type="button" value=" ◀ " id="tableControl">
+        <!-- <input type="button" value=" ◀ " id="tableControl"> -->
         <input type="button" value="지도로 찾기" id="navControlButton">
     </div>
 
@@ -57,7 +61,7 @@
                 <td>성동구</td>
                 <td>은평구</td>
                 <td>양천구</td>
-                <td>강북구</td>                
+                <td>강북구</td>
             </tr>
             <tr>
                 <td>동대문구</td>
@@ -91,7 +95,7 @@
         </table>
     </div>
 
-    <div id="NewGoomap"></div>    
+    <div id="NewGoomap"></div>
     <!-- Searching Seaction - Hyeon Woo -->
 
     <!-------------------- KAKAO MAP API ---------------------->
@@ -100,11 +104,13 @@
         <p>
             <button onclick="hideMarkers()">마커 감추기</button>
             <button onclick="showMarkers()">마커 보이기</button>
-        </p> 
+        </p>
         <em>클릭한 위치에 마커가 표시됩니다!</em>
-        <div id="clickLatlng"></div><br>
+        <div id="clickLatlng"></div>
+        <br>
 
-        <div><!-- map center 위도 경도 좌표 바꾸기 -->
+        <div>
+            <!-- map center 위도 경도 좌표 바꾸기 -->
             <input type="text" id="Umaplat" placeholder="위도">
             <input type="text" id="Umaplng" placeholder="경도">
             <input type="submit" value="Click" id="ChangeLatLng" onclick="changeCenter()">
@@ -217,6 +223,164 @@
         </div>
     </div>
 
+    <div id="store_infor">
+        <div class="name_sj">
+            <p id="store_name_sj">
+
+            </p>
+            <p class="market_name_sj">
+
+            </p>
+        </div>
+        <div id="sns_sj">
+            <img id="noGood_Button_sj" src="/images/noGood.png" width="16%" height="auto">
+            <img id="yesGood_Button_sj" src="/images/yesGood.png" width="16%" height="auto">
+            <p id="goodCount_sj">215</p>
+            <img src="/images/ka.png" width="16%" height="auto">
+            <img src="/images/face.png" width="16%" height="auto">
+        </div>
+        <div id="menu_sj">
+            <p id="go_stamp_sj">스탬프</p>
+            <p id="go_store_detail_sj">상점 정보</p>
+            <p id="go_store_review_sj">리뷰</p>
+        </div>
+        <div id="stamp_menu_sj">
+            <div class="stamp_sj">
+
+                <div class="tenControls_sj">
+                    <div class="tenStamp_sj">
+
+                        <div class="tenStamp_top_sj">
+                            <div class="ten_sj">
+                                <p>1</p>
+                            </div>
+                            <div class="ten_sj">
+                                <p>2</p>
+                            </div>
+                            <div class="ten_sj">
+                                <p>3</p>
+                            </div>
+                            <div class="ten_sj">
+                                <p>4</p>
+                            </div>
+                            <div class="ten_sj">
+                                <p>5</p>
+                            </div>
+                        </div>
+
+                        <div class="tenStamp_bottom_sj">
+                            <div class="ten_sj">
+                                <p>6</p>
+                            </div>
+                            <div class="ten_sj">
+                                <p>7</p>
+                            </div>
+                            <div class="ten_sj">
+                                <p>8</p>
+                            </div>
+                            <div class="ten_sj">
+                                <p>9</p>
+                            </div>
+                            <div class="ten_sj">
+                                <p>10</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="fiveControls_sj">
+                    <div class="fiveStamp_sj">
+                        <div class="five_sj">
+                            <p>1</p>
+                        </div>
+                        <div class="five_sj">
+                            <p>2</p>
+                        </div>
+                        <div class="five_sj">
+                            <p>3</p>
+                        </div>
+                        <div class="five_sj">
+                            <p>4</p>
+                        </div>
+                        <div class="five_sj">
+                            <p>5</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="stamp_infor_sj">
+                <p>기준:5000원 이상</p>
+                <p>보상:
+
+                </p>
+            </div>
+
+            <button class="button_sj">다운받기</button>
+        </div>
+
+
+
+        <div class="store_detail_sj">
+            <h2>상점 소개</h2>
+            <p>저희 과일 가게는 항상 신선한 유기농 과일만을 공수해 옵니다. </p>
+            <img src="/images/fruit.jpg" width="100%">
+            <!-- <img src="10.png" width="100%"> -->
+
+            <h2>위치</h2>
+            <img src="/images/han.png" width="100%">
+        </div>
+
+
+
+
+        <div class="store_review_sj">
+            <button class="review_button_sj">리뷰 등록</button>
+            <div class="review_div_sj">
+
+                <div class="review_content_sj">
+                    <div class="review_content_id_sj">
+                        <b>gkstjdwls11</b>
+                    </div>
+                    <div class="review_content_date_sj">18-07-12</div>
+                </div>
+                <p>과일이 굉장히 신선하고 좋았습니다! 사장님도 굉장히 친절하셔요</p>
+            </div>
+
+            <div class="review_div_sj">
+                <div class="review_content_sj">
+                    <div class="review_content_id_sj">
+                        <b>kingkw</b>
+                    </div>
+                    <div class="review_content_date_sj">18-07-13</div>
+                </div>
+                <p>사장님이 굉장히 친절하시다던데..누가 그런말은 하는건지 완전 불친절ㅡㅡ</p>
+            </div>
+
+            <div class="review_div_sj">
+                <div class="review_content_sj">
+                    <div class="review_content_id_sj">
+                        <b>simson94</b>
+                    </div>
+                    <div class="review_content_date_sj">18-07-13</div>
+                </div>
+                <p>이 집에서 멜론 사먹어봤는데 진짜 엄청 달더라고요ㅋㅋ 다음에 와이프 데리고 한번 더 사러 가겠습니다. 번창하세요!</p>
+            </div>
+
+            <div class="review_div_sj">
+                <div class="review_content_sj">
+                    <div class="review_content_id_sj">
+                        <b>jungjaeho1115</b>
+                    </div>
+                    <div class="review_content_date_sj">18-07-14</div>
+                </div>
+                <p>사과가 다른 가게보다 좀 비싼 감이 있었지만 다른 과일들은 모두 저렴하고 상품도 좋네요!</p>
+            </div>
+        </div>
+    </div>
+
+
     <div id="nav_sj">
         <div id="home_sj">
             <img src="/images/home.png" width="60%">
@@ -252,8 +416,8 @@
 
     <script type="text/javascript">
         // 지도를 표시할 div (id)
-        var mapContainer = document.getElementById('map'), 
-            mapOption = { 
+        var mapContainer = document.getElementById('map'),
+            mapOption = {
                 center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
                 level: 4 // 지도의 확대 레벨
             };
@@ -261,14 +425,14 @@
         var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
         // 지도를 클릭했을때 클릭한 위치에 마커를 추가하도록 지도에 클릭이벤트를 등록합니다
-        daum.maps.event.addListener(map, 'click', function(mouseEvent) {
-            var latlng = mouseEvent.latLng; 
+        daum.maps.event.addListener(map, 'click', function (mouseEvent) {
+            var latlng = mouseEvent.latLng;
             // 클릭한 위치에 마커를 표시합니다 
             addMarker(latlng);
 
-            var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고,  '+'경도는 ' + latlng.getLng() + ' 입니다';
+            var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고,  ' + '경도는 ' + latlng.getLng() + ' 입니다';
             var resultDiv = document.getElementById('clickLatlng');
-            resultDiv.innerHTML = message;       
+            resultDiv.innerHTML = message;
         }); // PS. latLng를 DB로부터 받아서 for문과 DB 데이터 교환을 통해 addMarker 함수 호출해서 모든 시장의 마크 찍을 수 있을 듯
 
         // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
@@ -279,7 +443,7 @@
 
         // 마커를 생성하고 지도위에 표시하는 함수입니다
         function addMarker(position) {
-            
+
             // 마커를 생성합니다
             var marker = new daum.maps.Marker({
                 position: position
@@ -296,26 +460,26 @@
         function setMarkers(map) {
             for (var i = 0; i < markers.length; i++) {
                 markers[i].setMap(map);
-            }            
+            }
         }
 
         // "마커 보이기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에 표시하는 함수입니다
         function showMarkers() {
-            setMarkers(map)    
+            setMarkers(map)
         }
 
         // "마커 감추기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
         function hideMarkers() {
-            setMarkers(null);    
+            setMarkers(null);
         }
 
-        function relayout() {    
-            
+        function relayout() {
+
             // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
             // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
             // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
             map.relayout();
-        }                
+        }
 
         // function changeCenter(){
         //     var moveLatLon = new daum.maps.LatLng(Umaplat.value, Umaplng.value);
@@ -326,12 +490,12 @@
         //     relayout();
         // }
 
-        function changeCenter(mapLat, mapLng){
+        function changeCenter(mapLat, mapLng) {
             var moveLatLon = new daum.maps.LatLng(mapLat, mapLng);
 
             // 지도 중심을 이동 시킵니다
             map.setCenter(moveLatLon);
-            map.setLevel(2);
+            map.setLevel(4);
             relayout();
 
             // 입력받은 좌표에 마커 추가
