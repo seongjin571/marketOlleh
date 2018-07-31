@@ -49,6 +49,9 @@
     margin-bottom: 2%;
     display: table;
 }
+#store_infor{
+    display: none;
+}
 #verti{
     display: table-cell;
     vertical-align: middle;
