@@ -100,7 +100,7 @@ function makeGooTable(tableValue, gooCounter) {
 		temp = $(this).text();
 		for(var i = 0; i < parseInt(gooCounter); i++){
 			if(temp == tableValue.rows[i].name){
-				// console.log(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
+				console.log(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
 				changeCenter(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
 			}
 		}
