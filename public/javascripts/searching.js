@@ -69,7 +69,7 @@ function deleteNewSearchList() {
 
 function makeGooTable(tableValue, gooCounter) {
 
-	hideGooTabe();
+	hideGooTabe(); // Goomap ~ table 부분 숨기기
 	var tempString = new Array();
 	console.log(tableValue.rows[0].name);
 	var fullString = '\0';
@@ -100,7 +100,7 @@ function makeGooTable(tableValue, gooCounter) {
 		temp = $(this).text();
 		for(var i = 0; i < parseInt(gooCounter); i++){
 			if(temp == tableValue.rows[i].name){
-				console.log(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
+				// console.log(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
 				changeCenter(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
 			}
 		}
@@ -118,17 +118,24 @@ function makeSearchList(searchResult, listCounter) {
 	document.getElementById('aaa').style.display = "none";
 	document.getElementById('tableControl').style.display = "block";
 	
-
+	// 검색 결과 생성전, li 존재하면 정리
 	deleteNewSearchList();
-	console.log(searchResult.rows[0].name, listCounter);
 	var tempString = new Array();
 	var fullString = '\0';
 
-	for (var i = 0; i < parseInt(listCounter); i++){
-		tempString[i] = '<li>'+searchResult.rows[i].name+'</li>'
-		fullString += tempString[i];
-	} // for
+	if (searchResult.rows[0].name) { // 시장 이름 검색
+		for (var i = 0; i < parseInt(listCounter); i++){
+			tempString[i] = '<li>'+searchResult.rows[i].name+'</li>'
+			fullString += tempString[i];
+		} // for		
+	}else if(searchResult.rows[0].market_name) { // 상점 이름 검색
+		for (var i = 0; i < parseInt(listCounter); i++){
+			tempString[i] = '<li>'+searchResult.rows[i].market_name+'</li>'
+			fullString += tempString[i];
+		} // for
+	}
 
+	// 검색 결과 li 태그로 제어 + 이벤트 추가하기
 	$('#search_result').html(fullString);
 	$('#search_result > li').click(function(event) {
 		alert("click FUNCTION test");

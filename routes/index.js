@@ -18,32 +18,15 @@ router.get('/couponManager', function(req, res){
   res.render('couponManager');
 });
 
-
-
 router.get('/mystampManager', function(req, res){
   res.render('mystampManager');
 });
-
 
 router.get('/searching', function(req, res) {
   res.render('searching');
 });
 
-// router.post('/searching', function(req, res) {
-
-//   var filed = req.body.filed;
-//   var search_value = req.body.search_value;
-
-//   if (filed&&search_value) {
-//     console.log("searching success!");
-//     var sql = "SELECT * FROM `market` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
-//     conn.query(sql, function(error, rows, fileds) {
-//       res.send({ result: rows });
-//     }); // conn.query
-//   } // if
-
-// }); // get '/searching'
-
+// 검색 부분 ajax 데이터 통신 위한 페이지 (렌더링 view X)
 router.post('/searching/gooname', function(req, res){
 
   // goo tile click
@@ -53,17 +36,26 @@ router.post('/searching/gooname', function(req, res){
   var filed = req.body.filed;
   var search_value = req.body.search_value;
 
-  if(gooname){
+  if(gooname){ // NewGoo ~ table에서 구 선택시 오는 부분
     var sql = "SELECT * FROM `market` WHERE `gooname` LIKE '%"+gooname+"%'";
     conn.query(sql, function(error, rows, fileds) {
       return res.send({ rows: rows });
     });// conn.query
-  } else if(filed&&search_value){
-    console.log("searching success!");
-    var sql = "SELECT * FROM `market` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
-    conn.query(sql, function(error, rows, fileds) {
+  } else if(filed&&search_value){ // searching ~ 에서 접속 DB 부분
+    console.log(filed);
+
+    // main.ejs ~ Searching ~ select 에서 뭘 선택했냐에 따라
+    if (filed == "name") { // 시장 이름으로 검색 ~ market table
+      var sql = "SELECT * FROM `market` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
+      conn.query(sql, function(error, rows, fileds) {
       return res.send({ rows: rows });
-    }); // conn.query
+      }); // conn.query
+    } else { // 상점 이름으로 검색 ~ manager table
+      var sql = "SELECT * FROM `manager` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
+      conn.query(sql, function(error, rows, fileds) {
+      return res.send({ rows: rows });
+      }); // conn.query    
+    }
   } // else if
 
 }); // post /searching/gooname
