@@ -33,6 +33,7 @@ function turningBack() {
 	// 새로운 구(NewGoomap > table) 테이블에 시장정보 있다면
 	if (temp_goo.hasChildNodes()) {
 		deleteNewGooTable();
+		// document.getElementById('aaa').style.display = "none";
 	} else if(document.getElementById('Goomap').style.display == 'block'){
 		console.log("Turn back");
 		navControl();
