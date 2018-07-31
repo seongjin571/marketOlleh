@@ -21,7 +21,7 @@
 <body>
     <div id="text_logo">
         <div id="verti">
-            <img id="inline_logo" src="/images/inline-logo.png" width="60%" height="auto">
+            <img id="inline_logo" src="/images/inline-logo.png" width="50%" height="auto" style="margin-left: 25%">
             <img id="tableControl" src="/images/backButton.png" width="35px" height="35px">
         </div>
     </div>
@@ -31,23 +31,23 @@
     <div id="Searching">
         <div id="verti">
             <div id="vertical_helper">
-                <select name="filed">
+                <!-- <select name="filed">
                     <option value="name" selected="selected">시장이름</option>
                     <option value="market_name">상점이름</option>
-                    <!--                     <option value="dongname">동</option>
-                    <option value="newaddress">도로명</option>
-                    <option value="oldaddress">지번</option> -->
-                </select>
-                <input type="text" placeholder="searching" id="search_value">
+                </select> -->
+                <!-- <input type="text" id="search_value" style="background-image:url('/images/search3.png'); background-position:100px 0px; background-repeat: no-repeat" onFocus="this.style.backgroundImage='url(none)';"> -->
+                <input type="text" id="search_value">
                 <!-- <input type="button" value="검색" id="searchingButton"> -->
-                <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
+                <img src="/images/search3.png" value="검색" id="searchingButton" width="25px" height="25px">
             </div>
         </div>
     </div>
 
-    <div id="map_button">
-        <!-- <input type="button" value=" ◀ " id="tableControl"> -->
-        <input type="button" value="지도로 찾기" id="navControlButton">
+    <!-- <input type="button" value=" ◀ " id="tableControl"> -->
+    <div id="navControlButton">
+        <div id="verti-helper">
+            <img src="/images/search2.png" width="14px" height="14px">&nbsp지도로 검색
+        </div>
     </div>
 
     <article>
@@ -106,6 +106,7 @@
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
     <!-------------------- KAKAO MAP API ---------------------->
     <div id="aaa">
+        <h4>내 스탬프</h4>
         <div id="myStamp">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -140,19 +141,31 @@
                 <div class="swiper-pagination"></div>
             </div>
         </div>
-
+        <h3 id="user_name">
+            <%= user.username %>님 근처 시장
+        </h3>
         <div id="near_market">
-            <!-- <label>내 스탬프</label> -->
-            <div id="user_name">
-                <%= user.username %>님 근처 시장
+            <div class="near_market_list">
+                <div id="market_pic">
+                    <img src="/images/market.png" width="100%" height="100%">
+                </div>
+                <div class="near_market_name">통인시장</div>
+                <div class="distance">2.2km</div>
             </div>
-            <div id="market_pic">
-                <img src="/images/market.png" width="100%" height="100%">
-            </div>
-            <div id="near_infor">
-                <div style="width: 50%">통인 시장</div>
-                <div style="width: 50%">3.2km</div>
-            </div>
+            <div class="near_market_list">
+                    <div id="market_pic">
+                        <img src="/images/fruit.jpg" width="100%" height="100%">
+                    </div>
+                    <div class="near_market_name">노원시장</div>
+                    <div class="distance">5.4km</div>
+                </div>
+                <div class="near_market_list">
+                        <div id="market_pic">
+                            <img src="/images/market2.jpg" width="100%" height="100%">
+                        </div>
+                        <div class="near_market_name">광장시장</div>
+                        <div class="distance">7.9km</div>
+                    </div>
         </div>
 
         <div id="hot_store">
@@ -478,7 +491,7 @@
             // 지도 중심을 이동 시킵니다
             map.setCenter(moveLatLon);
             map.setLevel(4);
-            
+
         } // changeCenter
     </script>
     <!-------------------- KAKAO MAP API ---------------------->
