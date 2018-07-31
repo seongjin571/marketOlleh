@@ -28,6 +28,19 @@
     margin: 0;
     /* overflow: hidden; */
 }
+
+/* main ~ display 부분 초기 설정 */
+
+#tableControl, #Goomap, #KakaoMap{
+    display: none;
+}
+
+#Searching, #aaa{
+    display: block;
+}
+
+/* △ main ~ display △ */
+
 #text_logo{
     width: 95%;
     height: 10%;
