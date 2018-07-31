@@ -34,28 +34,50 @@
       <select class='stamp_standard' name="stamp_standard">
         <option>5</option>
         <option>10</option>
+      </seclect>
+
+      <input type="text" placeholder="stamp_reward" id="stamp_reward" name='stamp_reward' style='margin-bottom: 10px;'>
+      <br>
+      <input type="text" placeholder="stamp_password" id="stamp_password" name='stamp_password' style='margin-bottom: 10px;'>
+      <br>
+      <input type="text" placeholder="market_promotion" id="market_promotion" name='market_promotion' style='margin-bottom: 10px;'>
+      <br>
+      <select class='stamp_kind' name="stamp_kind">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
         </seclect>
-
+        <input type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce' style='margin-bottom: 10px;'>
         <br>
-
-        <input type="text" placeholder="stamp_reward" id="stamp_reward" name='stamp_reward' style='margin-bottom: 10px;'>
+        <input type="text" placeholder="sijang_name" id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'>
+        <input type="button" value="시장찾기" id="modal_display">
         <br>
-        <input type="text" placeholder="stamp_password" id="stamp_password" name='stamp_password' style='margin-bottom: 10px;'>
-        <br>
-        <input type="text" placeholder="market_promotion" id="market_promotion" name='market_promotion' style='margin-bottom: 10px;'>
-        <br>
-        <select class='stamp_kind' name="stamp_kind">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          </seclect>
-          <input type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce' style='margin-bottom: 10px;'>
-          <br>
-          <input type="text" placeholder="sijang_name" id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'>
-          <br>
-          <input type='submit' value='회원가입' style='margin-bottom: 10px;' />
-          <br/>
+        <input type='submit' value='회원가입' style='margin-bottom: 10px;' />
+        <br/>
     </form>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span id="modal_close">&times;</span>
+        <h1>HI</h1>
+        <div id="Searching">
+          <select name="filed">
+              <option value="name" selected="selected">시장이름</option>
+              <option value="dongname">동</option>
+              <option value="newaddress">도로명</option>
+              <option value="oldaddress">지번</option>
+          </select>
+          <input type="text" placeholder="searching" id="search_value">
+          <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
+        </div>
+      </div>
+
+    </div>
+
+
     <script>
       $('#signupForm').submit(function (e) {
 
@@ -129,6 +151,54 @@
           }
         });
       });
+
+      // 현우가 건든 부분 ~ 모달창 제어
+
+      modal_display.addEventListener('click', function(event) {
+        myModal.style.display = "block";
+      }, false);
+
+      modal_close.addEventListener('click', function(event) {
+          myModal.style.display = "none";
+      }, false);
+
+      // 언제든지 ESC키 누르면 모달창 닫을수 있게
+      window.onkeydown = function (event) {
+        if(event.keyCode == 27) { 
+          myModal.style.display = 'none'; 
+        }
+      };
+
+      function searchingAjax(event) {
+
+        // 전달하려는 json 변수
+        var params = {
+          filed: $('select').val(),
+          search_value: $('#search_value').val()
+        };
+        $.ajax({
+          url: "/searching/gooname",
+          dataType: 'json',
+          type: 'POST',
+          contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+          data: params,
+          success: function (result) {
+            console.log('form data ajax clear!')
+            console.log(result);
+            // 비동기식, 함수호출
+            if (result.rows.length > 0) {
+              makeSearchList(result, result.rows.length);
+            } else {
+              alert("검색어를 확인하세요!")
+            }
+          },
+          error: function (e) {
+            alert("Error!");
+            console.log('process error : ', e);
+          }
+        });
+      } // searchingAjax
+      
     </script>
   </div>
 </body>

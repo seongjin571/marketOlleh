@@ -55,8 +55,8 @@ router.post('/searching/gooname', function(req, res){
       conn.query(sql, function(error, rows, fileds) {
       return res.send({ rows: rows });
       }); // conn.query    
-    }
-  } // else if
+    }// else
+  }// else if
 
 }); // post /searching/gooname
 
