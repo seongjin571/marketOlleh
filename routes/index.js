@@ -332,4 +332,10 @@ router.post('/review',function(req,res,next){
     }
   })
 });
+
+
+/* 좋아요 */
+router.post('/like/:id', function(req, res) {});
+
+router.post('/cancel_like/:id', function(req, res) {}); 
 module.exports = router;
