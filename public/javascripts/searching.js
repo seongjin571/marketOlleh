@@ -1,16 +1,15 @@
 //───────────────────────────── 검색 부분 javascripts ─────────────────────────────//
 
-// display 초기 설정 부분
-document.getElementById('tableControl').style.display = "none";
-document.getElementById('Searching').style.display = "block";
-document.getElementById('Goomap').style.display = "none";
-document.getElementById('aaa').style.display = "block";
-
+// display 초기 설정 부분 --> main.css 로 이동함
+// document.getElementById('tableControl').style.display = "none";
+// document.getElementById('Searching').style.display = "block";
+// document.getElementById('Goomap').style.display = "none";
+// document.getElementById('aaa').style.display = "block";
+// document.getElementById('KakaoMap').style.display = "none";
 
 // FUNCTION
 
 function TableSetting() {
-	document.getElementById('KakaoMap').style.display = "none";
 	var test2 = document.getElementsByTagName('td');
 
 	for(var i=0; i<test2.length; i++){
