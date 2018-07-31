@@ -54,7 +54,7 @@ router.post('/searching/gooname', function(req, res){
       var sql = "SELECT * FROM `manager` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
       conn.query(sql, function(error, rows, fileds) {
       return res.send({ rows: rows });
-      }); // conn.query
+      }); // conn.query    
     }
   } // else if
 
