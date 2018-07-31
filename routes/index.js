@@ -18,32 +18,15 @@ router.get('/couponManager', function(req, res){
   res.render('couponManager');
 });
 
-
-
 router.get('/mystampManager', function(req, res){
   res.render('mystampManager');
 });
-
 
 router.get('/searching', function(req, res) {
   res.render('searching');
 });
 
-// router.post('/searching', function(req, res) {
-
-//   var filed = req.body.filed;
-//   var search_value = req.body.search_value;
-
-//   if (filed&&search_value) {
-//     console.log("searching success!");
-//     var sql = "SELECT * FROM `market` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
-//     conn.query(sql, function(error, rows, fileds) {
-//       res.send({ result: rows });
-//     }); // conn.query
-//   } // if
-
-// }); // get '/searching'
-
+// 검색 부분 ajax 데이터 통신 위한 페이지 (렌더링 view X)
 router.post('/searching/gooname', function(req, res){
 
   // goo tile click
@@ -53,17 +36,26 @@ router.post('/searching/gooname', function(req, res){
   var filed = req.body.filed;
   var search_value = req.body.search_value;
 
-  if(gooname){
+  if(gooname){ // NewGoo ~ table에서 구 선택시 오는 부분
     var sql = "SELECT * FROM `market` WHERE `gooname` LIKE '%"+gooname+"%'";
     conn.query(sql, function(error, rows, fileds) {
       return res.send({ rows: rows });
     });// conn.query
-  } else if(filed&&search_value){
-    console.log("searching success!");
-    var sql = "SELECT * FROM `market` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
-    conn.query(sql, function(error, rows, fileds) {
+  } else if(filed&&search_value){ // searching ~ 에서 접속 DB 부분
+    console.log(filed);
+
+    // main.ejs ~ Searching ~ select 에서 뭘 선택했냐에 따라
+    if (filed == "name") { // 시장 이름으로 검색 ~ market table
+      var sql = "SELECT * FROM `market` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
+      conn.query(sql, function(error, rows, fileds) {
       return res.send({ rows: rows });
-    }); // conn.query
+      }); // conn.query
+    } else { // 상점 이름으로 검색 ~ manager table
+      var sql = "SELECT * FROM `manager` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
+      conn.query(sql, function(error, rows, fileds) {
+      return res.send({ rows: rows });
+      }); // conn.query
+    }
   } // else if
 
 }); // post /searching/gooname
@@ -94,27 +86,6 @@ router.get('/main', function(req, res){
   });
 });
 
-router.get('/myStamp', function(req, res){
-  var stampSql = 'select * from `stamp` where `user_id`=?;';
-  conn.query(stampSql, [req.user.id], function(error, results) {
-    if(error) { console.log(error); }
-    else {
-      if(! results.length) {
-        console.log(results);
-        res.render('myStamp', {
-          user: req.user,
-          myStamps: undefined,
-        });
-      }
-      else {
-        res.render('myStamp', {
-          user: req.user,
-          myStamps: results,
-        });
-      }
-    }
-  });
-});
 
 
 router.get('/mainManager', function(req, res){
@@ -185,31 +156,36 @@ router.get('/myStamp', function(req, res) {
   var sql = 'select * from `stamp` where `user_id`=?';
   var sql2 = 'select * from `review` where `user_id`=?';
   conn.query(sql, [req.user.id],function(error, result){
-    if(error) { console.log(error); }
+    if(error) {
+       console.log(error);
+      }
     else {
       if(! result.length) {
-        console.log(result);
+        console.log("sql은 들어왔으나 stamp디비에 값이 없어서 sql2실행 x");
         res.render('myStamp', {
           user: req.user,
           myStamps: undefined,
         });
       }
       else {
-        conn.query(sql2, [req.user.id],function(error, results){
-        if(error) { console.log(error2); }
+        conn.query(sql2, [req.user.id],function(error2, results){
+        if(error2) { console.log(error2); }
         else {
           if(! results.length) {
+            console.log(req.session.market_name);
+            console.log("stamp디비에는 값이 있으나 review값은 없는 경우");
             res.render('myStamp', {
               user: req.user,
               myStamps: result,
-              review_result : undefined
+              review : undefined
             });
           }
           else {
+            console.log("stamp,review값이 모두 있는 경우");
             res.render('myStamp', {
               user: req.user,
               myStamps: result,
-              review_result : results
+              review : results
             });
           }
         }
@@ -356,4 +332,10 @@ router.post('/review',function(req,res,next){
     }
   })
 });
+
+
+/* 좋아요 */
+router.post('/like/:id', function(req, res) {});
+
+router.post('/cancel_like/:id', function(req, res) {}); 
 module.exports = router;

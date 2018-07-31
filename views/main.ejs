@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
-    <script>
+<!--     <script>
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
         }, false);
-    </script>
+    </script> -->
 </head>
 
 <body>
@@ -23,25 +23,31 @@
     </div>
 
     <!-- Searching Seaction - Hyeon Woo -->
-    <input type="button" value="tableControl" id="tableControl">
-    <input type="button" value="navControl" id="navControlButton">
 
     <div id="Searching">
-        <select name="filed">
-            <option value="name" selected="selected">시장이름</option>
-            <option value="gooname">구</option>
-            <option value="dongname">동</option>
-            <option value="newaddress">도로명</option>
-            <option value="oldaddress">지번</option>
-        </select>
-        <input type="text" placeholder="searching" id="search_value">
-        <input type="button" value="검색" id="searchingButton">
-        <img src="/images/search.png" width="10%" height="30px">
+        <div id="verti">
+            <div id="vertical_helper">
+                <select name="filed">
+                    <option value="name" selected="selected">시장이름</option>
+                    <option value="market_name">상점이름</option>
+<!--                     <option value="dongname">동</option>
+                    <option value="newaddress">도로명</option>
+                    <option value="oldaddress">지번</option> -->
+                </select>
+                <input type="text" placeholder="searching" id="search_value">
+                <!-- <input type="button" value="검색" id="searchingButton"> -->
+                <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <input type="button" value=" ◀ " id="tableControl">
+        <input type="button" value="지도로 찾기" id="navControlButton">
     </div>
 
     <article>
-        <ol id="search_result">
-        </ol>
+        <ol id="search_result"></ol>
     </article>
 
     <div id="Goomap">
@@ -51,38 +57,35 @@
                 <td>성동구</td>
                 <td>은평구</td>
                 <td>양천구</td>
-                <td>강북구</td>
-                <td>동대문구</td>
+                <td>강북구</td>                
             </tr>
             <tr>
+                <td>동대문구</td>
                 <td>도봉구</td>
                 <td>송파구</td>
                 <td>성북구</td>
                 <td>관악구</td>
-                <td>영등포구</td>
-                <td>중구</td>
             </tr>
             <tr>
                 <td>금천구</td>
                 <td>서대문구</td>
                 <td>강동구</td>
                 <td>종로구</td>
+                <td>영등포구</td>
+
             </tr>
             <tr>
                 <td>동작구</td>
                 <td>강남구</td>
                 <td>마포구</td>
+                <td>중구</td>
+                <td>서초구</td>
             </tr>
             <tr>
-                <td>서초구</td>
                 <td>강서구</td>
                 <td>광진구</td>
-            </tr>
-            <tr>
                 <td>구로구</td>
                 <td>중랑구</td>
-            </tr>
-            <tr>
                 <td>용산구</td>
             </tr>
         </table>
@@ -110,109 +113,109 @@
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
     <!-------------------- KAKAO MAP API ---------------------->
-
-    <div id="myStamp">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <!-- <label>내 스탬프</label> -->
-                <% if(myStamps) { %>
-                    <% for(var i=0; i<myStamps.length; i++) { %>
-                        <div class="swiper-slide">
-                            <div class="stamp_name">
-                                <div style="width: 70%">
-                                    <%= myStamps[i].market_name %>
+    <div id="aaa">
+        <div id="myStamp">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- <label>내 스탬프</label> -->
+                    <% if(myStamps) { %>
+                        <% for(var i=0; i<myStamps.length; i++) { %>
+                            <div class="swiper-slide">
+                                <div class="stamp_name">
+                                    <div style="width: 70%">
+                                        <%= myStamps[i].market_name %>
+                                    </div>
+                                    <div style="width: 30%" class="market_name">
+                                        <%= myStamps[i].sijang_name %>
+                                    </div>
                                 </div>
-                                <div style="width: 30%" class="market_name">
-                                    <%= myStamps[i].sijang_name %>
+                                <div class="stamp_count">
+                                    <div class="stamp_count_vertical">
+                                        <p>
+                                            <%= myStamps[i].stamp_count %>/
+                                                <%= myStamps[i].stamp_standard %>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="stamp_count">
-                                <div class="stamp_count_vertical">
-                                    <p>
-                                        <%= myStamps[i].stamp_count %>/
-                                            <%= myStamps[i].stamp_standard %>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <% } %>
-                            <% } else { %>
-                                <div class='stamp_list'>
-                                    <div id="no_stamp">발급받은 쿠폰이 없습니다.</div>
-                                </div>
-                                <% } %>
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </div>
-
-    <div id="near_market">
-        <!-- <label>내 스탬프</label> -->
-        <div id="user_name">
-            <%= user.username %>님 근처 시장
-        </div>
-        <div id="market_pic">
-            <img src="/images/market.png" width="100%" height="100%">
-        </div>
-        <div id="near_infor">
-            <div style="width: 50%">통인 시장</div>
-            <div style="width: 50%">3.2km</div>
-        </div>
-    </div>
-
-    <div id="hot_store">
-        <label>서울시 인기 상점</label>
-        <div class="hot_store_list">
-            <div class="hot_store_detail">
-                <div>좋아요: 212</div>
-                <div>
-                    <img src="/images/fruit.jpg" width="100%">
+                            <% } %>
+                                <% } else { %>
+                                    <div class='stamp_list'>
+                                        <div id="no_stamp">발급받은 쿠폰이 없습니다.</div>
+                                    </div>
+                                    <% } %>
                 </div>
-                <div class="detail_name">
-                    통인시장
-                    <br>김가네 과일가게
-                </div>
+                <div class="swiper-pagination"></div>
             </div>
-            <div class="hot_store_detail"></div>
         </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
+
+        <div id="near_market">
+            <!-- <label>내 스탬프</label> -->
+            <div id="user_name">
+                <%= user.username %>님 근처 시장
+            </div>
+            <div id="market_pic">
+                <img src="/images/market.png" width="100%" height="100%">
+            </div>
+            <div id="near_infor">
+                <div style="width: 50%">통인 시장</div>
+                <div style="width: 50%">3.2km</div>
+            </div>
         </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
+
+        <div id="hot_store">
+            <label>서울시 인기 상점</label>
+            <div class="hot_store_list">
+                <div class="hot_store_detail">
+                    <div>좋아요: 212</div>
+                    <div>
+                        <img src="/images/fruit.jpg" width="100%">
+                    </div>
+                    <div class="detail_name">
+                        통인시장
+                        <br>김가네 과일가게
+                    </div>
+                </div>
+                <div class="hot_store_detail"></div>
+            </div>
+            <div class="hot_store_list">
+                <div class="hot_store_detail"></div>
+                <div class="hot_store_detail"></div>
+            </div>
+            <div class="hot_store_list">
+                <div class="hot_store_detail"></div>
+                <div class="hot_store_detail"></div>
+            </div>
+            <div class="hot_store_list">
+                <div class="hot_store_detail"></div>
+                <div class="hot_store_detail"></div>
+            </div>
+            <div class="hot_store_list">
+                <div class="hot_store_detail"></div>
+                <div class="hot_store_detail"></div>
+            </div>
+            <div class="hot_store_list">
+                <div class="hot_store_detail"></div>
+                <div class="hot_store_detail"></div>
+            </div>
+            <div class="hot_store_list">
+                <div class="hot_store_detail"></div>
+                <div class="hot_store_detail"></div>
+            </div>
+            <div class="hot_store_list">
+                <div class="hot_store_detail"></div>
+                <div class="hot_store_detail"></div>
+            </div>
+            <div class="hot_store_list">
+                <div class="hot_store_detail"></div>
+                <div class="hot_store_detail"></div>
+            </div>
+            <div class="hot_store_list">
+                <div class="hot_store_detail"></div>
+                <div class="hot_store_detail"></div>
+            </div>
         </div>
     </div>
-
 
     <div id="nav_sj">
         <div id="home_sj">
@@ -306,14 +309,22 @@
             setMarkers(null);    
         }
 
-        // 
-        function changeCenter(){
-            var moveLatLon = new daum.maps.LatLng(Umaplat.value, Umaplng.value);
+        function relayout() {    
+            
+            // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
+            // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
+            // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
+            map.relayout();
+        }                
 
-            // 지도 중심을 이동 시킵니다
-            map.setCenter(moveLatLon);
-            map.setLevel(2);
-        }
+        // function changeCenter(){
+        //     var moveLatLon = new daum.maps.LatLng(Umaplat.value, Umaplng.value);
+
+        //     // 지도 중심을 이동 시킵니다
+        //     map.setCenter(moveLatLon);
+        //     map.setLevel(2);
+        //     relayout();
+        // }
 
         function changeCenter(mapLat, mapLng){
             var moveLatLon = new daum.maps.LatLng(mapLat, mapLng);
@@ -321,9 +332,15 @@
             // 지도 중심을 이동 시킵니다
             map.setCenter(moveLatLon);
             map.setLevel(2);
+            relayout();
+
+            // 입력받은 좌표에 마커 추가
+            addMarker(moveLatLon);
         }
+
+
     </script>
-    <script type='text/javascript' src='javascripts/searching.js'></script>    
+    <script type='text/javascript' src='javascripts/searching.js'></script>
 </body>
 
 </html>

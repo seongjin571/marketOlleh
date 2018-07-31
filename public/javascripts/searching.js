@@ -1,10 +1,15 @@
 //───────────────────────────── 검색 부분 javascripts ─────────────────────────────//
 
+// display 초기 설정 부분 --> main.css 로 이동함
+// document.getElementById('tableControl').style.display = "none";
+// document.getElementById('Searching').style.display = "block";
+// document.getElementById('Goomap').style.display = "none";
+// document.getElementById('aaa').style.display = "block";
+// document.getElementById('KakaoMap').style.display = "none";
 
 // FUNCTION
 
 function TableSetting() {
-	document.getElementById('KakaoMap').style.display = "none";
 	var test2 = document.getElementsByTagName('td');
 
 	for(var i=0; i<test2.length; i++){
@@ -20,13 +25,39 @@ function hideGooTabe() {
 	$('#NewGoomap > table').append("<tbody></tbody>")
 }
 
-function deleteNewGooTabe() {
+// ◀ 버튼의 함수 _ #tableControl
+// Goomap, NewGoomap, search_result, navControl() interact!
+function turningBack() {
+
+	var temp_goo = document.getElementById('NewGoomap');
+	var temp_serch = document.getElementById('search_result');
+
+	// 새로운 구(NewGoomap > table) 테이블에 시장정보 있다면
+	if (temp_goo.hasChildNodes()) {
+		deleteNewGooTable();
+		// document.getElementById('aaa').style.display = "none";
+	} else if(document.getElementById('Goomap').style.display == 'block'){
+		console.log("Turn back");
+		navControl();
+	} // Goomap이 표출된 상태에선 뒤로가기 기능
+
+	// 검색 후 뒤돌아가기 기능
+	if (temp_serch.hasChildNodes() && document.getElementById('aaa').style.display == "none") {
+		deleteNewSearchList();
+		document.getElementById('aaa').style.display = "block";
+		document.getElementById('tableControl').style.display = "none";
+	}
+
+}
+
+// TurningBack의 자유로운 사용을 위해 NewGooTable 제어 함수 분할
+function deleteNewGooTable() {
 	// 동적으로 New Table 삭제 --> 기존 테이블 show
 	$('#NewGoomap > table').remove();
 	$('#Goomap > table').show();
 
 	// 지도 표출후 다시 original Goomap 으로 가는 상황 고려
-	$('#KakaoMap').hide();
+	$('#KakaoMap').hide();	
 }
 
 function deleteNewSearchList() {
@@ -38,7 +69,7 @@ function deleteNewSearchList() {
 
 function makeGooTable(tableValue, gooCounter) {
 
-	hideGooTabe();
+	hideGooTabe(); // Goomap ~ table 부분 숨기기
 	var tempString = new Array();
 	console.log(tableValue.rows[0].name);
 	var fullString = '\0';
@@ -69,11 +100,9 @@ function makeGooTable(tableValue, gooCounter) {
 		temp = $(this).text();
 		for(var i = 0; i < parseInt(gooCounter); i++){
 			if(temp == tableValue.rows[i].name){
-				console.log(tableValue.rows[i].coordinateX, tableValue.rows[i].coordinateY);
-				changeCenter(tableValue.rows[i].coordinateX, tableValue.rows[i].coordinateX);
+				// console.log(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
+				changeCenter(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
 			}
-			else
-				console.log('false');
 		}
 	// this의 text 시장 이름 값에 맞는 '좌표 가져와서 map API로 연결해주기'	
 	// 여기서도 ajax로 DB참조해 시장 이름에 맞는 좌표 가져와서 그 결과를
@@ -84,21 +113,34 @@ function makeGooTable(tableValue, gooCounter) {
 
 function makeSearchList(searchResult, listCounter) {
 	
+	// 검색하면 aaa div 부분 none 하기
+	// 검색하면 뒤로가기 버튼 blcok 하기 (turningBack 함수 참조)
+	document.getElementById('aaa').style.display = "none";
+	document.getElementById('tableControl').style.display = "block";
+	
+	// 검색 결과 생성전, li 존재하면 정리
 	deleteNewSearchList();
-	console.log(searchResult.rows[0].name, listCounter);
 	var tempString = new Array();
 	var fullString = '\0';
 
-	for (var i = 0; i < parseInt(listCounter); i++){
-		tempString[i] = '<li>'+searchResult.rows[i].name+'</li>'
-		fullString += tempString[i];
-	} // for
+	if (searchResult.rows[0].name) { // 시장 이름 검색
+		for (var i = 0; i < parseInt(listCounter); i++){
+			tempString[i] = '<li>'+searchResult.rows[i].name+'</li>'
+			fullString += tempString[i];
+		} // for		
+	}else if(searchResult.rows[0].market_name) { // 상점 이름 검색
+		for (var i = 0; i < parseInt(listCounter); i++){
+			tempString[i] = '<li>'+searchResult.rows[i].market_name+'</li>'
+			fullString += tempString[i];
+		} // for
+	}
 
+	// 검색 결과 li 태그로 제어 + 이벤트 추가하기
 	$('#search_result').html(fullString);
 	$('#search_result > li').click(function(event) {
 		alert("click FUNCTION test");
 	});
-} // makerSearchList --> ol태그 부분
+} // makerSearchList --> articlr태그 부분
 
 function gooAjax(event){
 	// ajax 비동기적 통신으로 (index.js ~ url 참조)
@@ -144,31 +186,33 @@ function searchingAjax(event) {
 			console.log('process error : ', e);
 		}
 	});
+
 } // searchingAjax
 
+// 지도로 찾기 버튼 이벤트 
 function navControl(event){
-	deleteNewGooTabe() // 구 클릭후 검색하는 현상 고려
-	// 첫 실행값은 true
-	var booleanB = Boolean(Searching.hidden);
-
-	if (Searching.hidden) {
-		Searching.hidden = !booleanB;
-		Goomap.hidden = booleanB;
-	} else { // 검색후 navControl 버튼 눌렀을때 고려
-		deleteNewSearchList();
-		Searching.hidden = !booleanB;
-		Goomap.hidden = booleanB;
+	// Goomap / 활성화 되어있을때 if --> 다시 none으로
+	if (document.getElementById('Goomap').style.display == "block") {
+		document.getElementById('Searching').style.display = "block";
+		document.getElementById('Goomap').style.display = "none";
+		document.getElementById('aaa').style.display = "block";
+		document.getElementById('tableControl').style.display = "none";
+	} else { // Goomap / 비활성화 되어있을때 else --> block
+		deleteNewSearchList(); // 검색후 navControl 버튼 눌렀을때 고려
+		document.getElementById('Searching').style.display = "none";
+		document.getElementById('Goomap').style.display = "block";
+		document.getElementById('aaa').style.display = "none";
+		document.getElementById('tableControl').style.display = "block";
 	}
-	
+	deleteNewGooTable();	
 }
 
 
 //////////////////////addEventListener//////////////////////
 
 TableSetting();
-navControl();
 document.getElementById('navControlButton').addEventListener('click', navControl, false);
-document.getElementById('tableControl').addEventListener('click', deleteNewGooTabe, false);
+document.getElementById('tableControl').addEventListener('click', turningBack, false);
 document.getElementById('searchingButton').addEventListener('click', searchingAjax, false);
 $("#search_value").keyup(function(event) {
   // Enter 처리
@@ -176,4 +220,5 @@ $("#search_value").keyup(function(event) {
     $("#searchingButton").trigger("click");
   };
 });
+
 ////////////////////KAKAO MAP API SECTIOn////////////////////

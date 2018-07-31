@@ -62,8 +62,8 @@
                 </p>
               </div>
               <div id="sns_sj">
-                <img id="noGood_Button_sj" src="/images/noGood.png" width="16%" height="auto">
-                <img id="yesGood_Button_sj" src="/images/yesGood.png" width="16%" height="auto">
+                <img class='noGood_Button_sj' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/noGood.png" width="16%" height="auto">
+                <img class='yesGood_Button_sj' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/yesGood.png" width="16%" height="auto">
                 <p class='goodCount_sj' id="goodCount_sj<%= myStamps[i].id %>">215</p>
                 <img src="/images/ka.png" width="16%" height="auto">
                 <img src="/images/face.png" width="16%" height="auto">
@@ -189,52 +189,28 @@
                 <img src="/images/han.png" width="100%">
               </div>
 
-
               <div class='store_review_sj' id="store_review_sj<%= myStamps[i].id %>">
                 <button class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">리뷰 등록</button>
-                <div class="review_div_sj">
-
-                  <div class="review_content_sj">
-                    <div class="review_content_id_sj">
-                      <b>gkstjdwls11</b>
-                    </div>
-                    <div class="review_content_date_sj">18-07-12</div>
-                  </div>
-                  <p>과일이 굉장히 신선하고 좋았습니다! 사장님도 굉장히 친절하셔요</p>
-                </div>
-
+                <% if(review) {%>
+                  <% for(var j=0; j<review.length; j++) { %>
+                    <% if(review[j].market_name == myStamps[i].market_name) {%>
                 <div class="review_div_sj">
                   <div class="review_content_sj">
                     <div class="review_content_id_sj">
-                      <b>kingkw</b>
+                      <b><%= review[j].user_id %></b>
                     </div>
-                    <div class="review_content_date_sj">18-07-13</div>
+                    <div class="review_content_date_sj"><%= review[j].date %></div>
                   </div>
-                  <p>사장님이 굉장히 친절하시다던데..누가 그런말은 하는건지 완전 불친절ㅡㅡ</p>
+                  <p><%= review[j].review %></p>
                 </div>
-
-                <div class="review_div_sj">
-                  <div class="review_content_sj">
-                    <div class="review_content_id_sj">
-                      <b>simson94</b>
-                    </div>
-                    <div class="review_content_date_sj">18-07-13</div>
+                  <% } else {%>
+                    <% } %>
+                    <% } %>
+                <% } else { %>
+                  <div class='stamp_list'>
+                    <div id="no_stamp">리뷰가 없습니다.</div>
                   </div>
-                  <p>이 집에서 멜론 사먹어봤는데 진짜 엄청 달더라고요ㅋㅋ 다음에 와이프 데리고 한번 더 사러 가겠습니다. 번창하세요!</p>
-                </div>
-
-                <div class="review_div_sj">
-                  <div class="review_content_sj">
-                    <div class="review_content_id_sj">
-                      <b>jungjaeho1115</b>
-                    </div>
-                    <div class="review_content_date_sj">18-07-14</div>
-                  </div>
-                  <p>사과가 다른 가게보다 좀 비싼 감이 있었지만 다른 과일들은 모두 저렴하고 상품도 좋네요!</p>
-                </div>
-
-
-
+                  <% } %>
               </div>
 
               <div class='review_write_sj' id="review_write_sj<%= myStamps[i].id %>">
@@ -247,6 +223,7 @@
             </div>
 
             <script>
+
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
               $('#selected_stamp<%= myStamps[i].id %>').css('display', 'block');
               $('#myStamp').css('display', 'none');
@@ -258,6 +235,7 @@
             var reset_stamp_count = 0;
             var new_stamp_count = parseInt(stamp_count) + 1;
 
+            /* 스탬프 테마 적용 */
             if (stamp_kind == 1) {
               $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
             }
@@ -267,6 +245,8 @@
             else if (stamp_kind == 3) {
               $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample3.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
             }
+
+            /*  적립해놓은 스탬프 색칠  */
             if (stamp_standard == 5) {
               $('#fiveControls_sj<%= myStamps[i].id %>').css('display', 'table');
               for (var i = 0; i < stamp_count; i++) {
@@ -283,6 +263,7 @@
 
             }
 
+            /*  가게 상세정보 각 탭 및 버튼 클릭 이벤트  */
             $('#go_stamp_sj<%= myStamps[i].id %>').click(function () {
               $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
               $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
@@ -315,6 +296,20 @@
               $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
             })
 
+            /*  좋아요  */
+            var good<%= myStamps[i].id %> = document.getElementById('goodCount_sj<%= myStamps[i].id %>');
+            $('#noGood_Button_sj<%= myStamps[i].id %>').click(function () {
+                $(this).css('display', 'none');
+                $('#yesGood_Button_sj<%= myStamps[i].id %>').css('display', 'block');
+                good<%= myStamps[i].id %>.innerHTML = "216";
+            });
+            $('#yesGood_Button_sj<%= myStamps[i].id %>').click(function () {
+                $(this).css('display', 'none');
+                $('#noGood_Button_sj<%= myStamps[i].id %>').css('display', 'block');
+                good<%= myStamps[i].id %>.innerHTML = "215";
+            });
+
+            /* 비밀번호 키패드 섞는 함수 */
             var password_number_array_sj = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
             function shuffle(a) {
@@ -326,6 +321,8 @@
                 a[j] = x;
               }
             }
+
+            /* 리뷰 작성 버튼 */
             $('.write_ok_button<%= myStamps[i].id %>').click(function(){
               var user_id = '<%= myStamps[i].user_id %>';
               var market_name = '<%= myStamps[i].market_name %>';
@@ -379,33 +376,31 @@
               });
             });
 
+            /*  스탬프 적립  */
             $('#stamp_sj<%= myStamps[i].id %>').click(function () {
-              var count<%= myStamps[i].id %> = 0; //쿠폰 클릭시 이벤트 발생
+              var count = 0; //쿠폰 클릭시 이벤트 발생
               $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
               $('#password_number_div_sj<%= myStamps[i].id %>').show(200);
               shuffle(password_number_array_sj);
               for (var i = 0; i < 10; i++) {
                 document.getElementsByClassName('password_number_sj <%= myStamps[i].id %>')[i].innerHTML = password_number_array_sj[i];
               }
-              if (count<%= myStamps[i].id %> == 0) {
+              if (count == 0) {
                 $('.password_number_sj').click(function () {
                   var number = $(this).html();
-                  count<%= myStamps[i].id %> = 1;
-
-                  if (count<%= myStamps[i].id %> == 1) {
+                  count = 1;
+                  if (count == 1) {
                     $('.password_number_sj').click(function () {
                       var number2 = number + $(this).html();
-                      count<%= myStamps[i].id %> = 2;
-
-                      if (count<%= myStamps[i].id %> == 2) {
+                      count = 2;
+                      if (count == 2) {
                         $('.password_number_sj').click(function () {
                           var number3 = number2 + $(this).html();
-                          count<%= myStamps[i].id %> = 3;
-
-                          if (count<%= myStamps[i].id %> == 3) {
+                          count = 3;
+                          if (count == 3) {
                             $('.password_number_sj').click(function () {
                               var number4 = number3 + $(this).html();
-                              // count<%= myStamps[i].id %> = 0;
+                              //stamp_count_password(number4);
 
                               //
 
@@ -456,14 +451,12 @@
                                             $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p>'+ (parseInt("<%= myStamps[i].stamp_count %>")+1) +' / <%= myStamps[i].stamp_standard %></p>');
                                             $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
                                             $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-                                            // count<%= myStamps[i].id %> = 0;
                                           }
                                         },
                                         error: function (error) {
                                           console.log('error');
                                         }
                                       });
-                                      // count<%= myStamps[i].id %> = 0;
                                     }
                                     else {
                                       var data = {
@@ -479,22 +472,19 @@
                                         success: function (result) {
                                           if (result['result'] == 'successs') {
                                             alert('초기화');
-                                            // count<%= myStamps[i].id %> = 0;
+                                            // $(window).attr('location', '/myStamp');
                                           }
                                         },
                                         error: function (error) {
                                           console.log('error');
                                         }
                                       });
-                                      // count<%= myStamps[i].id %> = 0;
                                     }
 
-                                    // count<%= myStamps[i].id %> = 0;
                                     //
                                   } else {
                                     console.log(result['password']);
                                     alert('비밀번호 불일치');
-                                    console.log(count<%= myStamps[i].id %>);
                                     //location.reload();
                                   }
                                 },
@@ -515,6 +505,7 @@
               }
             });
 
+            /* 비밀번호 키패드에서 취소 버튼 눌렀을 때 */
             $('#password_cancel<%= myStamps[i].id %>').click(function(){
               $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
               $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
