@@ -50,6 +50,7 @@ function turningBack() {
 		document.getElementById('tableControl').style.display = "none";
 		document.getElementById('Searching').style.display = "block";
 		$('article').css('display', 'block');
+		document.getElementById('market_infor').style.display = "none";
 	}
 
 }
@@ -96,6 +97,7 @@ function makeGooTable(tableValue, gooCounter) {
 		// Daum(kakao map api test line)
 		$('#map_button').css('display', 'none');
 		$('table').css('display', 'none');
+
 		var temp = document.getElementById('market_infor').style.display;
 		if (temp == "block") {
 			document.getElementById('market_infor').style.display = "none";
@@ -109,10 +111,7 @@ function makeGooTable(tableValue, gooCounter) {
 				console.log(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
 				changeCenter(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
 			}
-		}
-		// this의 text 시장 이름 값에 맞는 '좌표 가져와서 map API로 연결해주기'	
-		// 여기서도 ajax로 DB참조해 시장 이름에 맞는 좌표 가져와서 그 결과를
-		// 기반으로 changeCenter() 함수 실행하기
+		} // for
 
 	}); // click function
 } // makeGooTable
@@ -149,7 +148,19 @@ function makeSearchList(searchResult, listCounter) {
 		// $('#store_infor').css('display', 'block');
 		$('article').css('display', 'none');
 		$('#Searching').css('display', 'none');
-	});
+		document.getElementById('market_infor').style.display = "block";
+
+		temp = $(this).text();
+		// 검색 결과 li 태그도 클릭시 맵 좌표 찍어주기
+		for(var i = 0; i < parseInt(listCounter); i++){
+			if(temp == searchResult.rows[i].name){
+				console.log(temp);
+				console.log(searchResult.rows[i].coordinateY, searchResult.rows[i].coordinateX);
+				changeCenter(searchResult.rows[i].coordinateY, searchResult.rows[i].coordinateX);
+			} // if
+		} // for
+
+	}); // click function
 } // makerSearchList --> articlr태그 부분
 
 function gooAjax(event) {
