@@ -40,8 +40,10 @@ function makeSearchList(searchResult, listCounter) {
   // 검색 결과 li 태그로 제어 + 이벤트 추가하기
   $('#search_result').html(fullString);
   $('#search_result > li').click(function (event) {
-    temp = $(this).text();
-
+    var temp = $(this).text();
+    console.log(temp);
+    sijang_name.innerHTML = temp;
+    myModal.style.display = 'none';
   }); // click function
 } // makerSearchList --> articlr태그 부분
 
