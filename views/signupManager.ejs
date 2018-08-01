@@ -73,6 +73,8 @@
           <input type="text" placeholder="searching" id="search_value">
           <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
         </div>
+
+        <ol id="search_result"></ol>
       </div>
 
     </div>
@@ -150,56 +152,9 @@
             alert('가입 실패');
           }
         });
-      });
-
-      // 현우가 건든 부분 ~ 모달창 제어
-
-      modal_display.addEventListener('click', function(event) {
-        myModal.style.display = "block";
-      }, false);
-
-      modal_close.addEventListener('click', function(event) {
-          myModal.style.display = "none";
-      }, false);
-
-      // 언제든지 ESC키 누르면 모달창 닫을수 있게
-      window.onkeydown = function (event) {
-        if(event.keyCode == 27) { 
-          myModal.style.display = 'none'; 
-        }
-      };
-
-      function searchingAjax(event) {
-
-        // 전달하려는 json 변수
-        var params = {
-          filed: $('select').val(),
-          search_value: $('#search_value').val()
-        };
-        $.ajax({
-          url: "/searching/gooname",
-          dataType: 'json',
-          type: 'POST',
-          contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-          data: params,
-          success: function (result) {
-            console.log('form data ajax clear!')
-            console.log(result);
-            // 비동기식, 함수호출
-            if (result.rows.length > 0) {
-              makeSearchList(result, result.rows.length);
-            } else {
-              alert("검색어를 확인하세요!")
-            }
-          },
-          error: function (e) {
-            alert("Error!");
-            console.log('process error : ', e);
-          }
-        });
-      } // searchingAjax
-      
+      });      
     </script>
+    <script type="text/javascript" src="/javascripts/signupManager.js"></script>
   </div>
 </body>
 
