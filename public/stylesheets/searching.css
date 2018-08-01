@@ -1,3 +1,12 @@
 * {
 	border: 1px solid black;
 }
+
+#Goomap, #Goomap > table {
+	height: 85%;
+	width: 100%;
+}
+
+#Goomap > td {
+	display: center;
+}
