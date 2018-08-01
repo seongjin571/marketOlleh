@@ -12,6 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/searching.css" />
     <!--     <script>
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
@@ -116,12 +117,14 @@
                         <% for(var i=0; i<myStamps.length; i++) { %>
                             <div class="swiper-slide">
                                 <div class="store_market_name">
-                                        <%= myStamps[i].market_name %>
+                                    <%= myStamps[i].market_name %>
                                 </div>
                                 <div class="stamp_count">
                                     <div class="stamp_count_vertical">
                                         <div class="stamp_inline">
-                                            <p class="deadline"><%= myStamps[i].sijang_name %></p>
+                                            <p class="deadline">
+                                                <%= myStamps[i].sijang_name %>
+                                            </p>
                                             <p class="count_stamp">
                                                 <%= myStamps[i].stamp_count %>/
                                                     <%= myStamps[i].stamp_standard %>
@@ -439,19 +442,19 @@
 
     <div id="nav_sj">
         <div id="home_sj">
-            <img src="/images/home.png" width="60%">
+            <img src="/images/home.png" width="40%">
             <br/>홈</div>
         <div id="coupon_sj">
-            <img src="/images/coupon.png" width="60%">
+            <img src="/images/coupon.png" width="40%">
             <br/>쿠폰</div>
         <div id="location_sj">
-            <img src="/images/location.png" width="60%">
+            <img src="/images/location.png" width="40%">
             <br/>주변 가맹점</div>
         <div id="myStamp_sj">
-            <img src="/images/stamp.png" width="60%">
+            <img src="/images/stamp.png" width="40%">
             <br/>내 스탬프</div>
         <div id="my_sj">
-            <img src="/images/my.png" width="60%">
+            <img src="/images/my.png" width="40%">
             <br/>MyPage</div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
