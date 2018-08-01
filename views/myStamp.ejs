@@ -62,8 +62,8 @@
                 </p>
               </div>
               <div id="sns_sj">
-                <img id="noGood_Button_sj" src="/images/noGood.png" width="16%" height="auto">
-                <img id="yesGood_Button_sj" src="/images/yesGood.png" width="16%" height="auto">
+                <img class='noGood_Button_sj' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/noGood.png" width="16%" height="auto">
+                <img class='yesGood_Button_sj' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/yesGood.png" width="16%" height="auto">
                 <p class='goodCount_sj' id="goodCount_sj<%= myStamps[i].id %>">215</p>
                 <img src="/images/ka.png" width="16%" height="auto">
                 <img src="/images/face.png" width="16%" height="auto">
@@ -235,6 +235,7 @@
             var reset_stamp_count = 0;
             var new_stamp_count = parseInt(stamp_count) + 1;
 
+            /* 스탬프 테마 적용 */
             if (stamp_kind == 1) {
               $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
             }
@@ -244,6 +245,8 @@
             else if (stamp_kind == 3) {
               $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample3.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
             }
+
+            /*  적립해놓은 스탬프 색칠  */
             if (stamp_standard == 5) {
               $('#fiveControls_sj<%= myStamps[i].id %>').css('display', 'table');
               for (var i = 0; i < stamp_count; i++) {
@@ -260,6 +263,7 @@
 
             }
 
+            /*  가게 상세정보 각 탭 및 버튼 클릭 이벤트  */
             $('#go_stamp_sj<%= myStamps[i].id %>').click(function () {
               $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
               $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
@@ -292,6 +296,62 @@
               $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
             })
 
+            /*  좋아요  */
+            var good<%= myStamps[i].id %> = document.getElementById('goodCount_sj<%= myStamps[i].id %>');
+            $('#noGood_Button_sj<%= myStamps[i].id %>').click(function () {
+              var data = {
+                'market_name' : '<%= myStamps[i].market_name %>',
+                'sijang_name' : '<%= myStamps[i].sijang_name %>'
+              }
+
+              $.ajax({
+                type: 'post',
+                url: '/like/<%= myStamps[i].id %>',
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                cache: false,
+                data: data,
+                datatype: 'json',
+                success: function(result) {
+                  if (result['result']=='success'){
+                    console.log(result);
+                    $('#noGood_Button_sj<%= myStamps[i].id %>').css('display', 'none');
+                    $('#yesGood_Button_sj<%= myStamps[i].id %>').css('display', 'block');
+                    good<%= myStamps[i].id %>.innerHTML = result['like'];
+                  }
+                },
+                error: function(error){
+                  console.log('좋아요 실패');
+                }
+              });
+            });
+            $('#yesGood_Button_sj<%= myStamps[i].id %>').click(function () {
+              var data = {
+                'market_name' : '<%= myStamps[i].market_name %>',
+                'sijang_name' : '<%= myStamps[i].sijang_name %>'
+              }
+
+              $.ajax({
+                type: 'post',
+                url: '/cancel_like/<%= myStamps[i].id %>',
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                cache: false,
+                data: data,
+                datatype: 'json',
+                success: function(result) {
+                  if (result['result']=='success'){
+                    $('#yesGood_Button_sj<%= myStamps[i].id %>').css('display', 'none');
+                    $('#noGood_Button_sj<%= myStamps[i].id %>').css('display', 'block');
+                    good<%= myStamps[i].id %>.innerHTML = result['like'];
+                  }
+                },
+                error: function(error){
+                  console.log('좋아요 취소 실패');
+                }
+              });
+            });
+
+
+            /* 비밀번호 키패드 섞는 함수 */
             var password_number_array_sj = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
             function shuffle(a) {
@@ -303,6 +363,8 @@
                 a[j] = x;
               }
             }
+
+            /* 리뷰 작성 버튼 */
             $('.write_ok_button<%= myStamps[i].id %>').click(function(){
               var user_id = '<%= myStamps[i].user_id %>';
               var market_name = '<%= myStamps[i].market_name %>';
@@ -355,6 +417,9 @@
                 }
               });
             });
+
+
+            /*  스탬프 적립  */
             $('#stamp_sj<%= myStamps[i].id %>').click(function () {
               var count = 0; //쿠폰 클릭시 이벤트 발생
               var result = 1;
@@ -470,6 +535,7 @@
 
             });
 
+            /* 비밀번호 키패드에서 취소 버튼 눌렀을 때 */
             $('#password_cancel<%= myStamps[i].id %>').click(function(){
               $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
               $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);

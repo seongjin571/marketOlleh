@@ -42,25 +42,24 @@ router.post('/searching/gooname', function(req, res){
       return res.send({ rows: rows });
     });// conn.query
   } else if(filed&&search_value){ // searching ~ 에서 접속 DB 부분
-    console.log(filed);
-
+    
     // main.ejs ~ Searching ~ select 에서 뭘 선택했냐에 따라
-    if (filed == "name") { // 시장 이름으로 검색 ~ market table
-      var sql = "SELECT * FROM `market` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
-      conn.query(sql, function(error, rows, fileds) {
-      return res.send({ rows: rows });
-      }); // conn.query
-    } else { // 상점 이름으로 검색 ~ manager table
+    if (filed == "market_name") { // 상점 이름으로 검색 ~ manager table
       var sql = "SELECT * FROM `manager` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
       conn.query(sql, function(error, rows, fileds) {
       return res.send({ rows: rows });
+      }); // conn.query
+    } else { // 시장 이름으로 검색 ~ market table 
+      console.log("시장 이름 으로 검색");
+      console.log(filed);
+      var sql = "SELECT * FROM `market` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
+      conn.query(sql, function(error, rows, fileds) {
+      return res.send({ rows: rows });
       }); // conn.query    
-    }
-  } // else if
+    } // inner else
+  }// else if
 
 }); // post /searching/gooname
-
-
 
 
 
@@ -332,4 +331,62 @@ router.post('/review',function(req,res,next){
     }
   })
 });
+
+
+/* 좋아요 */
+router.post('/like/:id', function(req, res) {
+  var market_name = req.body.market_name;
+  var sijang_name = req.body.sijang_name;
+  var sql = 'insert into `likeMarket` (`user_id`, `sijang_name`, `market_name`) values (?, ?, ?);';
+  conn.query(sql, [req.user.id, sijang_name, market_name], function(err, rows) {
+    if(err) {
+      console.log(err);
+      console.log('좋아요 실패');
+    }
+    else{
+      var sql2 = 'select count(*) as cnt from `likeMarket` where `sijang_name`=? and `market_name`=?';
+      conn.query(sql2, [sijang_name, market_name], function(error, rows2) {
+        if(error){
+          console.log('좋아요 집계 실패');
+          console.log(error);
+        }
+        else {
+          res.send({
+            result: 'success',
+            like: rows2[0].cnt
+          });
+        }
+      });
+    }
+  });
+});
+
+router.post('/cancel_like/:id', function(req, res) {
+  var market_name = req.body.market_name;
+  var sijang_name = req.body.sijang_name;
+  var sql = 'delete from `likeMarket` where `user_id`=? and `sijang_name`=? and `market_name`=?';
+  conn.query(sql, [req.user.id, sijang_name, market_name], function(err, rows) {
+    if(err) {
+      console.log(err);
+      console.log('좋아요 취소 실패');
+    }
+    else{
+      var sql2 = 'select count(*) as cnt from `likeMarket` where `sijang_name`=? and `market_name`=?';
+      conn.query(sql2, [sijang_name, market_name], function(error, rows2) {
+        if(error) {
+          console.log(error);
+          console.log('좋아요 취소 집계 실패');
+        }
+        else {
+          res.send({
+            result: 'success',
+            like: rows2[0].cnt
+          });
+        }
+      });
+    }
+  });
+});
+
+
 module.exports = router;
