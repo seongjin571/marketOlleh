@@ -45,10 +45,10 @@ function turningBack() {
 	if (temp_serch.hasChildNodes() && document.getElementById('aaa').style.display == "none") {
 		deleteNewSearchList();
 		document.getElementById('aaa').style.display = "block";
-		$('#map_button').css('display', 'block');
+		$('#navControlButton').css('display', 'table');
 		document.getElementById('inline_logo').style.display = "block";
 		document.getElementById('tableControl').style.display = "none";
-		document.getElementById('Searching').style.display = "block";
+		document.getElementById('Searching').style.display = "table";
 		$('article').css('display', 'block');
 		document.getElementById('market_infor').style.display = "none";
 	}
@@ -95,7 +95,7 @@ function makeGooTable(tableValue, gooCounter) {
 	$('#NewGoomap > table > tbody').html(fullString);
 	$('#NewGoomap > table > tbody > tr > td').click(function (event) {
 		// Daum(kakao map api test line)
-		$('#map_button').css('display', 'none');
+		$('#navControlButton').css('display', 'none');
 		$('table').css('display', 'none');
 
 		var temp = document.getElementById('market_infor').style.display;
@@ -122,7 +122,7 @@ function makeSearchList(searchResult, listCounter) {
 	// 검색하면 뒤로가기 버튼 blcok 하기 (turningBack 함수 참조)
 	document.getElementById('aaa').style.display = "none";
 	document.getElementById('inline_logo').style.display = "none";
-	$('#map_button').css('display', 'none');
+	$('#navControlButton').css('display', 'none');
 	document.getElementById('tableControl').style.display = "block";
 
 	// 검색 결과 생성전, li 존재하면 정리
@@ -218,16 +218,15 @@ function searchingAjax(event) {
 function navControl(event) {
 	// Goomap / 활성화 되어있을때 if --> 다시 none으로
 	if (document.getElementById('Goomap').style.display == "block") {
-		document.getElementById('map_button').style.display = "none";
-		document.getElementById('Searching').style.display = "block";
+		document.getElementById('Searching').style.display = "table";
 		document.getElementById('Goomap').style.display = "none";
 		document.getElementById('aaa').style.display = "block";
 		document.getElementById('inline_logo').style.display = "block";
-		document.getElementById('map_button').style.display = "block";
+		document.getElementById('navControlButton').style.display = "table";
 		document.getElementById('tableControl').style.display = "none";
 	} else { // Goomap / 비활성화 되어있을때 else --> block
 		deleteNewSearchList(); // 검색후 navControl 버튼 눌렀을때 고려
-		// document.getElementById('map_button').style.display = "none";
+		document.getElementById('navControlButton').style.display = "none";
 		document.getElementById('Searching').style.display = "none";
 		document.getElementById('Goomap').style.display = "block";
 		document.getElementById('aaa').style.display = "none";
