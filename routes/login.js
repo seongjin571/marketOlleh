@@ -63,11 +63,13 @@ passport.use('local', new LocalStrategy({
 router.get('/login/kakao', passport.authenticate('kakao-login'));
 
 passport.use('kakao-login', new KakaoStrategy({
-  clientID: '78082ec49e1ad9d86acb3223550b6166',
-  clientSecret: 't5PBPI8K4Zv0cbYGxtV0uXbZSYL3KdJG',
-  callbackURL: '/oauth/kakao/callback'
-},
-  function (accessToken, refreshToken, profile, done) {
+
+    clientID: 'c9a735fae8a320ab9e04755d40497123',
+    clientSecret: 'mnjlSVADKdIwpwucXg5uFBWGe6Jp8dnL',
+    callbackURL: '/oauth/kakao/callback'
+  },
+  function(accessToken, refreshToken, profile, done) {
+
     var selectSql = 'select * from `user` where `user_id`=?;';
     var insertSql = 'insert into `user`(`user_id`, `password`, `user_name`) values (?,?,?);';
     conn.query(selectSql, [profile.id], function (error, results) {
