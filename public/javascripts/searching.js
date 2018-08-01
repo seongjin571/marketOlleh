@@ -129,18 +129,30 @@ function makeSearchList(searchResult, listCounter) {
 	deleteNewSearchList();
 	var tempString = new Array();
 	var fullString = '\0';
+	var isManager = false;
 
-	if (searchResult.rows[0].name) { // 시장 이름 검색
-		for (var i = 0; i < parseInt(listCounter); i++) {
+	// 시장, 상점 통합 검색
+	for (var i = 0; i < parseInt(listCounter); i++){
+		if (searchResult.rows[i].name) { // 시장 API 검색 이면
 			tempString[i] = '<li>' + searchResult.rows[i].name + '</li>'
 			fullString += tempString[i];
-		} // for		
-	} else if (searchResult.rows[0].market_name) { // 상점 이름 검색
-		for (var i = 0; i < parseInt(listCounter); i++) {
+		} else { // manager DB에서 결과라면
 			tempString[i] = '<li>' + searchResult.rows[i].market_name + '</li>'
 			fullString += tempString[i];
-		} // for
+		}
 	}
+
+	// if (searchResult.rows[0].name) { // 시장 이름 검색
+	// 	for (var i = 0; i < parseInt(listCounter); i++) {
+	// 		tempString[i] = '<li>' + searchResult.rows[i].name + '</li>'
+	// 		fullString += tempString[i];
+	// 	} // for		
+	// } else if (searchResult.rows[0].market_name) { // 상점 이름 검색
+	// 	for (var i = 0; i < parseInt(listCounter); i++) {
+	// 		tempString[i] = '<li>' + searchResult.rows[i].market_name + '</li>'
+	// 		fullString += tempString[i];
+	// 	} // for
+	// }
 
 	// 검색 결과 li 태그로 제어 + 이벤트 추가하기
 	$('#search_result').html(fullString);
@@ -188,7 +200,8 @@ function searchingAjax(event) {
 
 	// 전달하려는 json 변수
 	var params = {
-		filed: $('select').val(),
+		// filed: $('select').val(),
+		filed: "name",
 		search_value: $('#search_value').val()
 	};
 	$.ajax({
