@@ -92,15 +92,7 @@ router.post('/searching/gooname', function(req, res){
       return res.send({ rows: rows });
     });// conn.query
   } else if(filed&&search_value){ // searching ~ 에서 접속 DB 부분
-
-
     /*
-
-
-
-    /*
-
-
     // main.ejs ~ Searching ~ select 에서 뭘 선택했냐에 따라
     if (filed == "market_name") { // 상점 이름으로 검색 ~ manager table
       var sql = "SELECT * FROM `manager` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
@@ -133,11 +125,7 @@ router.post('/searching/gooname', function(req, res){
           return res.send({ rows: rows_first });
         }); // inner conn.query
       }); // conn.query
-
     /*
-
-
-
     } // inner else
     */
   }// else if
