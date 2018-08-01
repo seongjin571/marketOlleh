@@ -131,7 +131,7 @@ function makeSearchList(searchResult, listCounter) {
 	var fullString = '\0';
 	var isManager = false;
 
-	// 
+	// 시장, 상점 통합 검색
 	for (var i = 0; i < parseInt(listCounter); i++){
 		if (searchResult.rows[i].name) { // 시장 API 검색 이면
 			tempString[i] = '<li>' + searchResult.rows[i].name + '</li>'
