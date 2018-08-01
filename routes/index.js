@@ -14,8 +14,58 @@ router.get('/coupon', function(req, res){
   res.render('coupon');
 });
 
-router.get('/couponManager', function(req, res){
-  res.render('couponManager');
+router.get('/couponManager', function(req, res, next) {
+  var sql='select * from manager where `manager_id`=?;';
+  var sql2 = 'select * from coupon_manager where `manager_id`=?';
+    conn.query(sql,[req.session.authId],function(error,results,fields){
+      if(error){
+        console.log(error);
+      }
+      else{
+        conn.query(sql2,[req.session.authId],function(error,results1,fields){
+          if(error){
+            console.log(error);
+            console.log('information failed');
+          }
+          else if(! results1.length){
+            console.log(req.session.authId);
+            console.log('발급한 쿠폰이 없는 경우');
+            res.render('couponManager',{
+              title:'couponManager_no',
+              results : results,
+              results1 : undefined
+            });
+          }else{
+            console.log(req.session.authId);
+            console.log('발급한 쿠폰이 있는 경우');
+            res.render('couponManager',{
+              title:'couponManager_yes',
+              results : results,
+              results1 : results1
+            });
+          }
+        });
+      }
+    });
+});
+
+
+router.post('/couponManager', function(req, res) {
+  var market_name = req.body.market_name;
+  var manager_id = req.body.manager_id;
+  var sijang_name = req.body.sijang_name;
+  var coupon_standard = req.body.coupon_standard;
+  var coupon_due_date = req.body.coupon_due_date;
+  var coupon_password = req.body.coupon_password;
+  var coupon_reward = req.body.coupon_reward;
+  var sql = 'insert into `coupon_manager`(`manager_id`,`market_name`,`sijang_name`,`coupon_standard`,`coupon_reward`,`coupon_password`,`coupon_due_date`) values (?,?,?,?,?,?,?);';
+  conn.query(sql, [manager_id, market_name, sijang_name, coupon_standard, coupon_reward, coupon_password, coupon_due_date], function(error, result){
+    if(error){
+      console.log(error);
+    }else {
+        res.send({ result: 'success' });
+    }
+  });
 });
 
 router.get('/mystampManager', function(req, res){
@@ -42,14 +92,17 @@ router.post('/searching/gooname', function(req, res){
       return res.send({ rows: rows });
     });// conn.query
   } else if(filed&&search_value){ // searching ~ 에서 접속 DB 부분
+
     
     /*
+
     // main.ejs ~ Searching ~ select 에서 뭘 선택했냐에 따라
     if (filed == "market_name") { // 상점 이름으로 검색 ~ manager table
       var sql = "SELECT * FROM `manager` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
       conn.query(sql, function(error, rows, fileds) {
       return res.send({ rows: rows });
       }); // conn.query
+
     } else { // 시장 이름으로 검색 ~ market table 
     */
       // X --> 시장이름 뿐 아니라 상점이름으로 까지 같이 동작
@@ -69,6 +122,7 @@ router.post('/searching/gooname', function(req, res){
       }); // conn.query
 
     /*  
+
     } // inner else
     */
   }// else if

@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
-    <script>
+    <!-- <script>
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
         }, false);
-    </script>
+    </script> -->
 </head>
 
 <body>
@@ -26,7 +26,7 @@
         <div class="my_coupon_list">
             <div class="my_coupon">
                 <div class="store_and_market">
-                    <div class="store_name">나현이네 과일가게</div>
+                    <div class="store_name"><%= results[0].manager_id %></div>
                     <div class="market_name">통인시장</div>
                 </div>
                 <div class="sale_price">
@@ -42,10 +42,13 @@
         </div>
     </div>
 
+
+
+
+
     <div id="make_coupon_div">
         <label>할인 금액</label>
-        <select>
-            <option>500원 할인</option>
+        <select class="coupon_reward" name="coupon_reward">
             <option>1000원 할인</option>
             <option>1500원 할인</option>
             <option>2000원 할인</option>
@@ -53,13 +56,16 @@
         </select>
         <br/>
         <label>사용 기준</label>
-        <input type="text" placeholder="ex)5000원 이상 구매 시">
+        <input type="text" id="coupon_standard" placeholder="ex)5000원 이상 구매 시">
         <br/>
         <label>사용 기한</label>
-        <input type="text" placeholder="ex)18/08/20">
+        <input type="text" id="coupon_due_date" placeholder="ex)18-08-20">
+        <br/>
+        <label>쿠폰 비밀번호</label>
+        <input type="password" id="coupon_password" placeholder="쿠폰비밀번호입력(4자리)">
         <br/>
         <button id="cancel">취소</button>
-        <button>생성</button>
+        <button id="coupon_make_button">생성</button>
     </div>
 
 
@@ -117,7 +123,60 @@
     $('#mystore_sj').click(function(){
         location.href='/mystore';
     })
-    
+    $('#coupon_make_button').click(function(){
+      var manager_id = '<%= results[0].manager_id %>';
+      var sijang_name = '<%= results[0].sijang_name %>';
+      var market_name = '<%= results[0].market_name %>';
+      var coupon_standard = $('#coupon_standard').val();
+      var coupon_due_date = $('#coupon_due_date').val();
+      var coupon_password = $('#coupon_password').val();
+      var test = document.getElementsByClassName('coupon_reward');
+      var scr = test[0].selectedIndex;
+      var coupon_reward;
+      if(scr == 0){
+        coupon_reward = 1000;
+      }else if(scr == 1){
+        coupon_reward = 1500;
+      }if(scr == 2){
+        coupon_reward = 2000;
+      }else if(scr == 3){
+        coupon_reward = 3000;
+      }
+
+      var data = {
+        'manager_id' : manager_id,
+        'sijang_name' : sijang_name,
+        'market_name' : market_name,
+        'coupon_standard' : coupon_standard,
+        'coupon_due_date' : coupon_due_date,
+        'coupon_password' : coupon_password,
+        'coupon_reward' : coupon_reward
+      }
+      console.log(data);
+
+      $.ajax({
+        type: "POST",
+        url: "/couponManager",
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        cache: false,
+        datatype: "json",
+        data: data,
+        success: function (result) {
+          if (result['result'] == 'success') {
+            alert("쿠폰 등록");
+            location.reload();
+          }
+          else {
+            alert('쿠폰등록실패1');
+            location.reload();
+          }
+        },
+        error: function (error) {
+          alert('쿠폰등록실패2');
+        }
+      });
+    })
+
 
 </script>
 
