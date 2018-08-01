@@ -30,12 +30,15 @@ function makeSearchList(searchResult, listCounter) {
   var tempString = new Array();
   var fullString = '\0';
 
-  if (searchResult.rows[0].name) { // 시장 이름 검색
-    for (var i = 0; i < parseInt(listCounter); i++) {
+  for (var i = 0; i < parseInt(listCounter); i++) {
+    // index.js에서 DB 두개 동시에 불러와서 이부분도 수정
+    if (searchResult.rows[i].market_name){ 
+      continue;
+    } else {
       tempString[i] = '<li>' + searchResult.rows[i].name + '</li>'
       fullString += tempString[i];
-    } // for    
-  }
+    }
+  } // for    
 
   // 검색 결과 li 태그로 제어 + 이벤트 추가하기
   $('#search_result').html(fullString);
