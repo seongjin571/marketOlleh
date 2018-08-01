@@ -134,7 +134,7 @@
           'sijang_name': sijang_name.innerHTML
 
         };
-        
+
         $.ajax({
           type: "POST",
           url: "/signup/signupmanager",
@@ -145,7 +145,7 @@
           success: function (result) {
             if (result['result'] == 'success') {
               alert('가입 성공');
-              $(window).attr('location', '/manager_list');
+              $(window).attr('location', '/mainManager');
             }
             else if (result['result'] == 'already') {
               alert('이미 존재하는 아이디입니다.');
@@ -156,7 +156,7 @@
             alert('가입 실패');
           }
         });
-      });      
+      });
     </script>
     <script type="text/javascript" src="/javascripts/signupManager.js"></script>
   </div>
