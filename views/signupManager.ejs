@@ -21,7 +21,7 @@
     <form id='signupForm'>
       <input type="text" id="manager_id" name='manager_id' placeholder="manager_id" style='margin-bottom: 10px;'>
       <br>
-      <input type="text" id="password" name='password' placeholder="password" style='margin-bottom: 10px;'>
+      <input type="password" id="password" name='password' placeholder="password" style='margin-bottom: 10px;'>
       <br>
       <input type="text" id="market_name" name='market_name' placeholder="market_name" style='margin-bottom: 10px;'>
       <br>
@@ -34,28 +34,54 @@
       <select class='stamp_standard' name="stamp_standard">
         <option>5</option>
         <option>10</option>
+      </seclect>
+
+      <input type="text" placeholder="stamp_reward" id="stamp_reward" name='stamp_reward' style='margin-bottom: 10px;'>
+      <br>
+      <input type="text" placeholder="stamp_password" id="stamp_password" name='stamp_password' style='margin-bottom: 10px;'>
+      <br>
+      <input type="text" placeholder="market_promotion" id="market_promotion" name='market_promotion' style='margin-bottom: 10px;'>
+      <br>
+      <select class='stamp_kind' name="stamp_kind">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
         </seclect>
-
+        <input type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce' style='margin-bottom: 10px;'>
         <br>
-
-        <input type="text" placeholder="stamp_reward" id="stamp_reward" name='stamp_reward' style='margin-bottom: 10px;'>
+<!--         <input type="text" placeholder="sijang_name" id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'> -->
+        <label id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'> 시장 찾기 </label>
+        <input type="button" value="시장찾기" id="modal_display">
         <br>
-        <input type="text" placeholder="stamp_password" id="stamp_password" name='stamp_password' style='margin-bottom: 10px;'>
-        <br>
-        <input type="text" placeholder="market_promotion" id="market_promotion" name='market_promotion' style='margin-bottom: 10px;'>
-        <br>
-        <select class='stamp_kind' name="stamp_kind">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          </seclect>
-          <input type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce' style='margin-bottom: 10px;'>
-          <br>
-          <input type="text" placeholder="sijang_name" id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'>
-          <br>
-          <input type='submit' value='회원가입' style='margin-bottom: 10px;' />
-          <br/>
+        <input type='submit' value='회원가입' style='margin-bottom: 10px;' />
+        <br/>
     </form>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span id="modal_close">&times;</span>
+        <h1>HI</h1>
+        <div id="Searching">
+          <select name="filed">
+              <option value="name" selected="selected">시장이름</option>
+              <option value="gooname">구</option>
+              <option value="dongname">동</option>
+              <option value="newaddress">도로명</option>
+              <option value="oldaddress">지번</option>
+          </select>
+          <input type="text" placeholder="searching" id="search_value">
+          <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
+        </div>
+
+        <ol id="search_result"></ol>
+      </div>
+
+    </div>
+
+
     <script>
       $('#signupForm').submit(function (e) {
 
@@ -90,7 +116,7 @@
         } else if (select_stamp_kind == 2) {
           stamp_kind = 3;
         }
-        var sijang_name = $('#sijang_name').val();
+        // var sijang_name = sijang_name.innerHTML;
         var data = {
 
           'manager_id': manager_id,
@@ -105,8 +131,10 @@
           'market_introduce': market_introduce,
           'stamp_standard': stamp_standard,
           'stamp_kind': stamp_kind,
-          'sijang_name': sijang_name
-        }
+          'sijang_name': sijang_name.innerHTML
+
+        };
+
         $.ajax({
           type: "POST",
           url: "/signup/signupmanager",
@@ -117,7 +145,7 @@
           success: function (result) {
             if (result['result'] == 'success') {
               alert('가입 성공');
-              $(window).attr('location', '/manager_list');
+              $(window).attr('location', '/mainManager');
             }
             else if (result['result'] == 'already') {
               alert('이미 존재하는 아이디입니다.');
@@ -130,6 +158,7 @@
         });
       });
     </script>
+    <script type="text/javascript" src="/javascripts/signupManager.js"></script>
   </div>
 </body>
 

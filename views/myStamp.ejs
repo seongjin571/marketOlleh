@@ -223,17 +223,18 @@
             </div>
 
             <script>
-
+            var number1 = "";
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
               $('#selected_stamp<%= myStamps[i].id %>').css('display', 'block');
               $('#myStamp').css('display', 'none');
             });
 
             var stamp_kind = '<%= myStamps[i].stamp_kind %>';
-            var stamp_count = '<%= myStamps[i].stamp_count %>';
-            var stamp_standard = '<%= myStamps[i].stamp_standard %>';
+            var stamp_count<%= myStamps[i].id %> = parseInt('<%= myStamps[i].stamp_count %>');
+            var stamp_standard<%= myStamps[i].id %> = '<%= myStamps[i].stamp_standard %>';
             var reset_stamp_count = 0;
-            var new_stamp_count = parseInt(stamp_count) + 1;
+            var new_stamp_count = parseInt(stamp_count<%= myStamps[i].id %>) + 1;
+            console.log(stamp_count<%= myStamps[i].id %>);
 
             /* 스탬프 테마 적용 */
             if (stamp_kind == 1) {
@@ -247,16 +248,16 @@
             }
 
             /*  적립해놓은 스탬프 색칠  */
-            if (stamp_standard == 5) {
+            if (stamp_standard<%= myStamps[i].id %> == 5) {
               $('#fiveControls_sj<%= myStamps[i].id %>').css('display', 'table');
-              for (var i = 0; i < stamp_count; i++) {
+              for (var i = 0; i < stamp_count<%= myStamps[i].id %>; i++) {
                 var check = document.getElementsByClassName('five_sj <%= myStamps[i].id %>')[i];
                 check.style.backgroundColor = "#232323";
               }
             }
-            else if (stamp_standard == 10) {
+            else if (stamp_standard<%= myStamps[i].id %> == 10) {
               $('#tenControls_sj<%= myStamps[i].id %>').css('display', 'table');
-              for (var i = 0; i < stamp_count; i++) {
+              for (var i = 0; i < stamp_count<%= myStamps[i].id %>; i++) {
                 var check = document.getElementsByClassName('ten_sj <%= myStamps[i].id %>')[i];
                 check.style.backgroundColor = "#232323";
               }
@@ -422,130 +423,119 @@
             /*  스탬프 적립  */
             $('#stamp_sj<%= myStamps[i].id %>').click(function () {
               var count = 0; //쿠폰 클릭시 이벤트 발생
+              var result = 1;
+
+              alert("시작");
               $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
               $('#password_number_div_sj<%= myStamps[i].id %>').show(200);
               shuffle(password_number_array_sj);
               for (var i = 0; i < 10; i++) {
                 document.getElementsByClassName('password_number_sj <%= myStamps[i].id %>')[i].innerHTML = password_number_array_sj[i];
-              }
-              if (count == 0) {
-                $('.password_number_sj').click(function () {
-                  var number = $(this).html();
-                  count = 1;
-                  if (count == 1) {
-                    $('.password_number_sj').click(function () {
-                      var number2 = number + $(this).html();
-                      count = 2;
-                      if (count == 2) {
-                        $('.password_number_sj').click(function () {
-                          var number3 = number2 + $(this).html();
-                          count = 3;
-                          if (count == 3) {
-                            $('.password_number_sj').click(function () {
-                              var number4 = number3 + $(this).html();
-                              //stamp_count_password(number4);
+               }
+              $('.password_number_sj').off().on('click',function(){
+                console.log('<%= myStamps[i].stamp_count %>')
+                number1 += $(this).html();
+                count++;
+                console.log(number1);
+                console.log("count"+count);
+                if(count == 4){
+                  count=0;
+                  $.ajax({
+                    type: 'POST',
+                    url: '/stamp_count_password/<%= myStamps[i].id %>',
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    cache: false,
+                    dataType: 'json',
+                    success: function (result) {
+                      if (result['password'] == number1) {
+                        console.log(result['password']);
+                        alert('비밀번호 일치');
 
-                              //
-
-                              $.ajax({
-                                type: 'POST',
-                                url: '/stamp_count_password/<%= myStamps[i].id %>',
-                                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                                cache: false,
-                                dataType: 'json',
-                                success: function (result) {
-                                  if (result['password'] == number4) {
-                                    console.log(result['password']);
-                                    alert('비밀번호 일치');
-                                    //coupon_count();
-
-                                    //
-
-                                    if (parseInt('<%= myStamps[i].stamp_standard %>') >= parseInt('<%= myStamps[i].stamp_count %>')+1) {
-                                      var data = {
-                                        'stamp_count': parseInt('<%= myStamps[i].stamp_count %>') + 1,
-                                      };
-                                      console.log(data);
-                                      $.ajax({
-                                        type: 'POST',
-                                        url: '/aboutstamp_count/<%= myStamps[i].id %>',
-                                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                                        cache: false,
-                                        dataType: 'json',
-                                        data: data,
-                                        success: function (result) {
-                                          if (result['result'] == 'success') {
-                                            alert('스탬프추가');
-                                            // $(window).attr('location', '/myStamp');
-                                            if (parseInt('<%= myStamps[i].stamp_standard %>') == 5) {
-                                              $('#fiveControls_sj<%= myStamps[i].id %>').css('display', 'table');
-                                              for (var i = 0; i < parseInt('<%= myStamps[i].stamp_count %>') + 1; i++) {
-                                                var check = document.getElementsByClassName('five_sj <%= myStamps[i].id %>')[i];
-                                                check.style.backgroundColor = "#232323";
-                                              }
-                                            }
-                                            else if (parseInt('<%= myStamps[i].stamp_standard %>') == 10) {
-                                              $('#tenControls_sj<%= myStamps[i].id %>').css('display', 'table');
-                                              for (var i = 0; i < parseInt('<%= myStamps[i].stamp_count %>') + 1; i++) {
-                                                var check = document.getElementsByClassName('ten_sj <%= myStamps[i].id %>')[i];
-                                                check.style.backgroundColor = "#232323";
-                                              }
-                                            }
-                                            $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p>'+ (parseInt("<%= myStamps[i].stamp_count %>")+1) +' / <%= myStamps[i].stamp_standard %></p>');
-                                            $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
-                                            $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-                                          }
-                                        },
-                                        error: function (error) {
-                                          console.log('error');
-                                        }
-                                      });
-                                    }
-                                    else {
-                                      var data = {
-                                        'stamp_count': reset_stamp_count,
-                                      };
-                                      $.ajax({
-                                        type: 'POST',
-                                        url: '/reset_aboutstamp_count/<%= myStamps[i].id %>',
-                                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                                        cache: false,
-                                        dataType: 'json',
-                                        data: data,
-                                        success: function (result) {
-                                          if (result['result'] == 'successs') {
-                                            alert('초기화');
-                                            // $(window).attr('location', '/myStamp');
-                                          }
-                                        },
-                                        error: function (error) {
-                                          console.log('error');
-                                        }
-                                      });
-                                    }
-
-                                    //
-                                  } else {
-                                    console.log(result['password']);
-                                    alert('비밀번호 불일치');
-                                    //location.reload();
+                        if (parseInt('<%= myStamps[i].stamp_standard %>') >= parseInt('<%= myStamps[i].stamp_count %>')+1) {
+                          var data = {
+                            'stamp_count': stamp_count<%= myStamps[i].id %> + 1,
+                          };
+                          console.log(data);
+                          $.ajax({
+                            type: 'POST',
+                            url: '/aboutstamp_count/<%= myStamps[i].id %>',
+                            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                            cache: false,
+                            dataType: 'json',
+                            data: data,
+                            success: function (result) {
+                              if (result['result'] == 'success') {
+                                alert('스탬프추가');
+                                number1 = "";
+                                console.log(result);
+                                stamp_count<%= myStamps[i].id %> = parseInt(result['new_stamp_count']);
+                                if (parseInt('<%= myStamps[i].stamp_standard %>') == 5) {
+                                  $('#fiveControls_sj<%= myStamps[i].id %>').css('display', 'table');
+                                  for (var i = 0; i < parseInt(stamp_count<%= myStamps[i].id %>); i++) {
+                                    var check = document.getElementsByClassName('five_sj <%= myStamps[i].id %>')[i];
+                                    check.style.backgroundColor = "#232323";
                                   }
-                                },
-                                error: function (error) {
-                                  console.log('error');
                                 }
-                              });
+                                else if (parseInt('<%= myStamps[i].stamp_standard %>') == 10) {
+                                  $('#tenControls_sj<%= myStamps[i].id %>').css('display', 'table');
+                                  for (var i = 0; i < parseInt(stamp_count<%= myStamps[i].id %>); i++) {
+                                    var check = document.getElementsByClassName('ten_sj <%= myStamps[i].id %>')[i];
+                                    check.style.backgroundColor = "#232323";
+                                  }
+                                }
 
-                              //
-                            })
+                                $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p>'+ (parseInt(stamp_count<%= myStamps[i].id %>)) +' / <%= myStamps[i].stamp_standard %></p>');
+                                $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
+                                $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+                                // $(window).attr('location', '/myStamp');
+                              }
+                            },
+                            error: function (error) {
+                              console.log('error');
+                            }
+                          });
+                        }
+                        else {
+                          var data = {
+                            'stamp_count': reset_stamp_count,
+                          };
+                          $.ajax({
+                            type: 'POST',
+                            url: '/reset_aboutstamp_count/<%= myStamps[i].id %>',
+                            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                            cache: false,
+                            dataType: 'json',
+                            data: data,
+                            success: function (result) {
+                              if (result['result'] == 'successs') {
+                                alert('초기화');
+                                $(window).attr('location', '/myStamp');
 
-                          }
-                        })
+                              }
+                            },
+                            error: function (error) {
+                              console.log('error');
+                            }
+                          });
+                        }
+
+                        //
+                      } else {
+                        console.log(result['password']);
+                        console.log(number1);
+                        alert('비밀번호가 일치하지 않습니다. 다시 입력해주세요.');
+                        number1 = "";
+
                       }
-                    })
-                  }
-                })
-              }
+                    },
+                    error: function (error) {
+                      console.log('error');
+                    }
+                  });
+
+                }
+              })
+
             });
 
             /* 비밀번호 키패드에서 취소 버튼 눌렀을 때 */
