@@ -293,8 +293,15 @@ router.post('/aboutstamp_count/:id',function(req,res,next){
     if(error){
       console.log('aboutstamp_count error');
     }else{
-      res.send({
-        result : 'success'
+      var sql2 = 'select * from `stamp` where `id`=? ;';
+      conn.query(sql2, [stamp_id], function(err, rows) {
+        if(err) { console.log(err); }
+        else {
+          res.send({
+            result : 'success',
+            new_stamp_count: rows[0].stamp_count
+          });
+        }
       });
     }
   })
