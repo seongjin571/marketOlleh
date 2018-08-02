@@ -1,8 +1,9 @@
-* {
+/** {
 	border: 1px solid black;
-}
+}*/
 
-#Goomap, #Goomap > table {
+#Goomap, #Goomap > table, #NewGoomap, #NewGoomap > table {
+	display: none;
 	height: 85%;
 	width: 100%;
 }
