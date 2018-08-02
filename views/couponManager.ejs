@@ -24,21 +24,29 @@
         <button id="make_coupon">쿠폰 생성</button>
 
         <div class="my_coupon_list">
+            <% if(results1) { %>
+              <% for(var i=0; i<results1.length; i++) { %>
             <div class="my_coupon">
                 <div class="store_and_market">
-                    <div class="store_name"><%= results[0].manager_id %></div>
-                    <div class="market_name">통인시장</div>
+                    <div class="store_name"><%= results1[i].market_name %></div>
+                    <div class="market_name"><%= results1[i].sijang_name %></div>
                 </div>
                 <div class="sale_price">
-                    1000원 할인
+                    <%= results1[i].coupon_reward %>
                 </div>
                 <div class="standard">
-                    5000원 이상 구매 시
+                    <%= results1[i].coupon_standard %>
                 </div>
                 <div class="period">
-                    기간:~18.8.20
+                    <%= results1[i].coupon_due_date %>
                 </div>
             </div>
+            <% } %>
+            <% } else { %>
+              <div class='stamp_list'>
+                <div id="no_stamp">발급받은 쿠폰이 없습니다.</div>
+              </div>
+              <% } %>
         </div>
     </div>
 
