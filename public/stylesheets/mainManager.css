@@ -137,18 +137,27 @@ label{
 
 #nav_sj {
     width: 100%;
-    height: 20%;
-    background: #63dded;
+    height: 8%;
+    background: white;
     display: inline-flex;
     position: fixed;
-    top: 90%;
+    top: 92%;
     z-index: 1;
+    border-top-style:solid;
+    border-top-width: 1px;
+    /* border-left-style: none */
 }
 
 #nav_sj div {
+    padding: 5px;
     width: 20%;
-    padding: 10px;
-    font-size: 8px;
-    color: white;
+    font-size: 10px;
+    color: #9c9c9c;
     text-align: center;
+}
+#nav_sj p{
+   margin:0;
+}
+#nav_text{
+    color: #63dded;
 }
