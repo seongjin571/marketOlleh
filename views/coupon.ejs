@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><%= title %></title>
+    <title>
+        <%= title %>
+    </title>
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/coupon.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
@@ -30,38 +32,40 @@
         </h2>
 
 
-      <% if(result2) { %>
-        <% var count =0; %>
-        <% for(var j=0; j<result2.length; j++) { %>
-          <% for(var k=j ;k<result2.length; k++) { %>
-            <% if(result2[j].sijang_name == result2[k].sijang_name) { %>
-              <% count++; %>
-              <% } %>
-        <% } %>
-        <% if(count == 1) { %>
-          <div class="market">
-              <p><%= result2[j].sijang_name %></p>
-          </div>
-        <% } %>
-        <% count =0; %>
-        <% } %>
-       <% } else { %>
-            <p>비어있음</p>
-        <% } %>
+        <% if(result2) { %>
+            <% var count =0; %>
+                <% for(var j=0; j<result2.length; j++) { %>
+                    <% for(var k=j ;k<result2.length; k++) { %>
+                        <% if(result2[j].sijang_name == result2[k].sijang_name) { %>
+                            <% count++; %>
+                                <% } %>
+                                    <% } %>
+                                        <% if(count == 1) { %>
+                                            <div class="market">
+                                                <p>
+                                                    <%= result2[j].sijang_name %>
+                                                </p>
+                                            </div>
+                                            <% } %>
+                                                <% count =0; %>
+                                                    <% } %>
+                                                        <% } else { %>
+                                                            <p>비어있음</p>
+                                                            <% } %>
 
-        <h2 id="near_market_list">
-            주변 시장들
-        </h2>
+                                                                <h2 id="near_market_list">
+                                                                    주변 시장들
+                                                                </h2>
 
-        <div class="market">
-            <p>통인 시장</p>
-        </div>
-        <div class="market">
-            <p>서울관광 시장</p>
-        </div>
-        <div class="market">
-            <p>모란 시장</p>
-        </div>
+                                                                <div class="market">
+                                                                    <p>통인 시장</p>
+                                                                </div>
+                                                                <div class="market">
+                                                                    <p>서울관광 시장</p>
+                                                                </div>
+                                                                <div class="market">
+                                                                    <p>모란 시장</p>
+                                                                </div>
     </div>
 
     <div class="find_coupon_list">
@@ -166,34 +170,38 @@
 
 
     <div class="my_coupon">
-      <% if(result1) { %>
-        <% for(var i=0; i<result1.length; i++) { %>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide content">
-                    <div class="store_and_market">
-                        <div class="store_name"><%= result1[i].market_name %></div>
-                        <div class="market_name"><%= result1[i].sijang_name %></div>
+        <% if(result1) { %>
+            <% for(var i=0; i<result1.length; i++) { %>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide content">
+                            <div class="store_and_market">
+                                <div class="store_name">
+                                    <%= result1[i].market_name %>
+                                </div>
+                                <div class="market_name">
+                                    <%= result1[i].sijang_name %>
+                                </div>
+                            </div>
+                            <div class="sale_price">
+                                <%= result1[i].coupon_reward %>
+                            </div>
+                            <div class="standard">
+                                <%= result1[i].coupon_standard %>
+                            </div>
+                            <div class="period">
+                                <%= result1[i].coupon_due_date %>
+                            </div>
+                        </div>
+                        <div class="swiper-slide menu">삭제</div>
                     </div>
-                    <div class="sale_price">
-                        <%= result1[i].coupon_reward %>
-                    </div>
-                    <div class="standard">
-                        <%= result1[i].coupon_standard %>
-                    </div>
-                    <div class="period">
-                        <%= result1[i].coupon_due_date %>
-                    </div>
+                    <% } %>
+                        <% } else { %>
+                            <div class='stamp_list'>
+                                <div id="no_stamp">발급받은 쿠폰이 없습니다.</div>
+                            </div>
+                            <% } %>
                 </div>
-                <div class="swiper-slide menu">삭제</div>
-            </div>
-            <% } %>
-            <% } else { %>
-              <div class='stamp_list'>
-                <div id="no_stamp">발급받은 쿠폰이 없습니다.</div>
-              </div>
-              <% } %>
-        </div>
 
     </div>
 
@@ -257,7 +265,7 @@
         }
         else {
             $('.find_coupon_list').fadeOut(100);
-            index=-1;
+            index = -1;
         }
     })
     $('.find_coupon').click(function () {
