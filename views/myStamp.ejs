@@ -451,7 +451,7 @@
                         console.log(result['password']);
                         alert('비밀번호 일치');
 
-                        if (parseInt('<%= myStamps[i].stamp_standard %>') >= parseInt('<%= myStamps[i].stamp_count %>')+1) {
+                        if (parseInt('<%= myStamps[i].stamp_standard %>') >= stamp_count<%= myStamps[i].id %> + 1) {
                           var data = {
                             'stamp_count': stamp_count<%= myStamps[i].id %> + 1,
                           };
