@@ -246,15 +246,25 @@
         location.href = "/main";
     })
     var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 'auto',
-            initialSlide: 0,
-            resistanceRatio: 0.5,
-            slideToClickedSlide: true,
-        });
-
+        slidesPerView: 'auto',
+        initialSlide: 0,
+        resistanceRatio: 0.5,
+        slideToClickedSlide: true,
+    });
+    var index = -1;
+    var next_index = 0;
     $('.market').click(function () {
-        $('.find_coupon_list').show(200);
-        $(this).append($('.find_coupon_list'));
+        next_index = $(this).index();
+        if (index != next_index) {
+            $('.market:eq(index)').children('div').remove();
+            $('.find_coupon_list').fadeIn(100);
+            $(this).append($('.find_coupon_list'));
+            index = $(this).index();
+        }
+        else {
+            $('.find_coupon_list').fadeOut(100);
+            index=-1;
+        }
     })
     $('.find_coupon').click(function () {
         var index = $(this).index();
