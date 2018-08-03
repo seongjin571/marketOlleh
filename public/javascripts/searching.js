@@ -46,8 +46,8 @@ function turningBack() {
 		deleteNewSearchList();
 		document.getElementById('aaa').style.display = "block";
 		$('#navControlButton').css('display', 'table');
-		document.getElementById('inline_logo').style.display = "block";
-		document.getElementById('tableControl').style.display = "none";
+		document.getElementById('text_logo').style.display = "block";
+		document.getElementById('back_div').style.display = "none";
 		document.getElementById('Searching').style.display = "table";
 		$('article').css('display', 'block');
 		document.getElementById('market_infor').style.display = "none";
@@ -121,9 +121,9 @@ function makeSearchList(searchResult, listCounter) {
 	// 검색하면 aaa div 부분 none 하기
 	// 검색하면 뒤로가기 버튼 blcok 하기 (turningBack 함수 참조)
 	document.getElementById('aaa').style.display = "none";
-	document.getElementById('inline_logo').style.display = "none";
+	document.getElementById('text_logo').style.display = "none";
 	$('#navControlButton').css('display', 'none');
-	document.getElementById('tableControl').style.display = "block";
+	document.getElementById('back_div').style.display = "block";
 
 	// 검색 결과 생성전, li 존재하면 정리
 	deleteNewSearchList();
@@ -234,17 +234,17 @@ function navControl(event) {
 		document.getElementById('Searching').style.display = "table";
 		document.getElementById('Goomap').style.display = "none";
 		document.getElementById('aaa').style.display = "block";
-		document.getElementById('inline_logo').style.display = "block";
+		document.getElementById('text_logo').style.display = "block";
 		document.getElementById('navControlButton').style.display = "table";
-		document.getElementById('tableControl').style.display = "none";
+		document.getElementById('back_div').style.display = "none";
 	} else { // Goomap / 비활성화 되어있을때 else --> block
 		deleteNewSearchList(); // 검색후 navControl 버튼 눌렀을때 고려
 		document.getElementById('navControlButton').style.display = "none";
 		document.getElementById('Searching').style.display = "none";
 		document.getElementById('Goomap').style.display = "block";
 		document.getElementById('aaa').style.display = "none";
-		document.getElementById('inline_logo').style.display = "none";
-		document.getElementById('tableControl').style.display = "block";
+		document.getElementById('text_logo').style.display = "none";
+		document.getElementById('back_div').style.display = "block";
 	}
 	deleteNewGooTable();
 }
@@ -254,7 +254,7 @@ function navControl(event) {
 
 TableSetting();
 document.getElementById('navControlButton').addEventListener('click', navControl, false);
-document.getElementById('tableControl').addEventListener('click', turningBack, false);
+document.getElementById('back_div').addEventListener('click', turningBack, false);
 document.getElementById('searchingButton').addEventListener('click', searchingAjax, false);
 $("#search_value").keyup(function (event) {
 	// Enter 처리

@@ -22,28 +22,27 @@
 
 <body>
     <div id="text_logo">
-        <div id="verti">
-            <img id="inline_logo" src="/images/inline-logo.png" width="50%" height="auto" style="margin-left: 25%">
-            <img id="tableControl" src="/images/backButton.png" width="35px" height="35px">
+        <!-- <div id="verti"> -->
+        <img id="inline_logo" src="/images/inline-logo.png" width="40%" height="auto">
+        <!-- </div> -->
+        <div id="Searching">
+            <div id="verti">
+                <div id="vertical_helper">
+                    <div id="searching_input" >
+                        <input type="text" id="search_value">
+                        <img src="/images/search3.png" value="검색" id="searchingButton" width="20px" height="20px">
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    <div id="back_div">
+        <img id="tableControl" src="/images/backButton.png" width="20px" height="20px">
     </div>
 
     <!-- Searching Seaction - Hyeon Woo -->
 
-    <div id="Searching">
-        <div id="verti">
-            <div id="vertical_helper">
-                <!-- <select name="filed">
-                    <option value="name" selected="selected">시장이름</option>
-                    <option value="market_name">상점이름</option>
-                </select> -->
-                <!-- <input type="text" id="search_value" style="background-image:url('/images/search3.png'); background-position:100px 0px; background-repeat: no-repeat" onFocus="this.style.backgroundImage='url(none)';"> -->
-                <input type="text" id="search_value">
-                <!-- <input type="button" value="검색" id="search_value"> -->
-                <img src="/images/search3.png" value="검색" id="searchingButton" width="25px" height="25px">
-            </div>
-        </div>
-    </div>
+
 
     <!-- <input type="button" value=" ◀ " id="tableControl"> -->
     <div id="navControlButton">
@@ -108,7 +107,7 @@
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
     <!-------------------- KAKAO MAP API ---------------------->
     <div id="aaa">
-        <h4>내 스탬프</h4>
+        <h3>내 스탬프</h3>
         <div id="myStamp">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -148,22 +147,22 @@
         </h3>
         <div id="near_market">
             <div class="near_market_list">
-                <div id="market_pic">
-                    <img src="/images/market.png" width="100%" height="100%">
+                <div class="market_pic">
+                    <img src="/images/market.png" width="100%" height="80px">
                 </div>
                 <div class="near_market_name">통인시장</div>
                 <div class="distance">2.2km</div>
             </div>
             <div class="near_market_list">
-                <div id="market_pic">
-                    <img src="/images/fruit.jpg" width="100%" height="100%">
+                <div class="market_pic">
+                    <img src="/images/fruit.jpg" width="100%" height="80px">
                 </div>
                 <div class="near_market_name">노원시장</div>
                 <div class="distance">5.4km</div>
             </div>
             <div class="near_market_list">
-                <div id="market_pic">
-                    <img src="/images/market2.jpg" width="100%" height="100%">
+                <div class="market_pic">
+                    <img src="/images/market2.jpg" width="100%" height="80px">
                 </div>
                 <div class="near_market_name">광장시장</div>
                 <div class="distance">7.9km</div>
@@ -281,7 +280,6 @@
             </div>
         </div>
     </div>
-
     <div id="store_infor">
         <div class="name_sj">
             <p id="store_name_sj">
@@ -442,20 +440,20 @@
 
     <div id="nav_sj">
         <div id="home_sj">
-            <img src="/images/home.png" width="40%">
-            <br/>홈</div>
+            <img src="/images/home2.png" width="40%">
+            <p id="nav_text">홈</p></div>
         <div id="coupon_sj">
             <img src="/images/coupon.png" width="40%">
-            <br/>쿠폰</div>
+            <p>쿠폰</p></div>
         <div id="location_sj">
             <img src="/images/location.png" width="40%">
-            <br/>주변 가맹점</div>
+            <p>주변 가맹점</p></div>
         <div id="myStamp_sj">
             <img src="/images/stamp.png" width="40%">
-            <br/>내 스탬프</div>
+            <p>내 스탬프</p></div>
         <div id="my_sj">
             <img src="/images/my.png" width="40%">
-            <br/>MyPage</div>
+            <p>MyPage</p></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
     <script> 
@@ -466,11 +464,14 @@
             location.href = "/coupon";
         })
         var swiper = new Swiper('.swiper-container', {
-            pagination: {
-                el: '.swiper-pagination',
-                dynamicBullets: true,
-            },
-        });
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      spaceBetween: 0,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
         // for(var i=0; i<3; i++){
         //     document.getElementsByClassName('swiper-slide').style.backgroundImage="url('images/backSample'i'')"
         // }

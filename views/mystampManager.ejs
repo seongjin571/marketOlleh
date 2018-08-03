@@ -56,20 +56,31 @@
 
         #nav_sj {
             width: 100%;
-            height: 20%;
-            background: #63dded;
+            height: 8%;
+            background: white;
             display: inline-flex;
             position: fixed;
-            top: 90%;
+            top: 92%;
             z-index: 1;
+            border-top-style: solid;
+            border-top-width: 1px;
+            /* border-left-style: none */
         }
 
         #nav_sj div {
+            padding: 5px;
             width: 20%;
-            padding: 10px;
-            font-size: 8px;
-            color: white;
+            font-size: 10px;
+            color: #9c9c9c;
             text-align: center;
+        }
+
+        #nav_sj p {
+            margin: 0;
+        }
+
+        #nav_text {
+            color: #63dded;
         }
     </style>
 </head>
@@ -79,20 +90,25 @@
     </div>
     <div id="nav_sj">
         <div id="home">
-            <img src="/images/home.png" width="55%">
-            <br/>홈</div>
+            <img src="/images/home.png" width="40%">
+            <p>홈</p>
+        </div>
         <div id="coupon_sj">
-            <img src="/images/coupon.png" width="55%">
-            <br/>쿠폰</div>
+            <img src="/images/coupon.png" width="40%">
+            <p>쿠폰</p>
+        </div>
         <div id="myStamp_sj">
-            <img src="/images/stamp.png" width="55%">
-            <br/>스탬프</div>
+            <img src="/images/stamp2.png" width="40%">
+            <p id="nav_text">스탬프</p>
+        </div>
         <div id="mystore_sj">
-            <img src="/images/store.png" width="55%">
-            <br/>내 상점</div>
+            <img src="/images/mystore.png" width="40%">
+            <p>내 상점</p>
+        </div>
         <div id="mypage_sj">
-            <img src="/images/my.png" width="55%">
-            <br/>Mypage</div>
+            <img src="/images/my.png" width="40%">
+            <p>MyPage</p>
+        </div>
     </div>
     <script>
         $('#home').click(function () {
