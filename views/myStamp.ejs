@@ -509,7 +509,29 @@
                             success: function (result) {
                               if (result['result'] == 'successs') {
                                 alert('초기화');
-                                $(window).attr('location', '/myStamp');
+                                number1 = "";
+                                stamp_count<%= myStamps[i].id %> = 0;
+
+                                if (parseInt('<%= myStamps[i].stamp_standard %>') == 5) {
+                                  $('#fiveControls_sj<%= myStamps[i].id %>').css('display', 'table');
+                                  for (var i = 0; i < 5; i++) {
+                                    var check = document.getElementsByClassName('five_sj <%= myStamps[i].id %>')[i];
+                                    check.style.backgroundColor = "rgb(202, 199, 199)";
+                                  }
+                                }
+                                else if (parseInt('<%= myStamps[i].stamp_standard %>') == 10) {
+                                  $('#tenControls_sj<%= myStamps[i].id %>').css('display', 'table');
+                                  for (var i = 0; i < 10; i++) {
+                                    var check = document.getElementsByClassName('ten_sj <%= myStamps[i].id %>')[i];
+                                    check.style.backgroundColor = "rgb(202, 199, 199)";
+                                  }
+                                }
+
+                                $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p>'+ (reset_stamp_count) +' / <%= myStamps[i].stamp_standard %></p>');
+                                $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
+                                $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+
+                                // $(window).attr('location', '/myStamp');
 
                               }
                             },
