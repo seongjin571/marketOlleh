@@ -3,11 +3,15 @@
 	border: 1px solid black;
 }*/
 
-#Goomap, #Goomap:nth-child(1) {
-	/*display: none;*/
+#Goomap {
 	height: 85%;
 	width: 100%;
+	display: none;
+}
+
+#Goomap_container {
 	display: flex;
+	flex-direction: column;
 }
 
 #Goomap > div > li {
@@ -17,6 +21,18 @@
 #Goomap > div > span {
 	height: 25%;
 	width: 25%;
+}
+
+.Goomap_inner {
+	display: flex;
+	flex-basis: 70px;
+	flex-grow: 1;
+}
+
+.Goomap_inner > span {
+	flex-direction: row;
+	flex-grow: 1;
+	text-align: center;
 }
 
 /* ───── NEW GOO MAP ───── */

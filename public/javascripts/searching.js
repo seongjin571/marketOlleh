@@ -10,7 +10,7 @@
 // FUNCTION
 
 function TableSetting() {
-	var test2 = $('#Goomap > div > span');
+	var test2 = $('.Goomap_inner > span');
 
 	for (var i = 0; i < test2.length; i++) {
 		// 동적으로 div~(Goomap table td) 태그에서 gooAjax 클릭 이벤트 추가
@@ -58,7 +58,7 @@ function turningBack() {
 function deleteNewGooTable() {
 	// 동적으로 New Table 삭제 --> 기존 테이블 show
 	$('#NewGoomap > div').remove();
-	$('#Goomap > div').show();
+	$('#Goomap_container').show();
 
 	// 지도 표출후 다시 original Goomap 으로 가는 상황 고려
 	$('#market_infor').hide();
@@ -97,7 +97,7 @@ function makeGooTable(tableValue, gooCounter) {
 	$('#NewGoomap > div > li').click(function (event) {
 		// Daum(kakao map api test line)
 		$('#navControlButton').css('display', 'none');
-		$('#Goomap > div').css('display', 'none');
+		$('#Goomap_container').css('display', 'none');
 		$('#Goomap').css('height', '0%');
 
 		var temp = document.getElementById('market_infor').style.display;
