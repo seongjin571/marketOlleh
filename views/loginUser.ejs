@@ -1,38 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Login</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <style>
-      input{
-        width: 700px;
-        height: 100px;
-        font-size: 30px;
-      }
-      button{
-        width: 500px;
-        height: 70px;
-        font-size: 30px;
-      }
-      </style>
-  </head>
-  <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
-  <script>
-      window.addEventListener('load', function () {
-          FastClick.attach(document.body);
-      }, false);
-  </script>
-  <body>
-    <h1>Login</h1>
-    <div>
-      <form action='/login' method='POST'>
-        <input type='text' name='userid' placeholder='아이디' style='margin-bottom:30px;'/><br/>
-        <input type='password' name='userpwd' placeholder='비밀번호' style='margin-bottom: 30px;'/><br/>
-        <input type='submit' value='로그인' style='margin-bottom: 10px;'/><br/>
-      </form>
-      <div style='margin-bottom: 10px; margin-top: 10px;'><a href='/signup'><button>Sign Up</button></a></div>
-      <div style='margin-bottom: 10px;'><a href='/login/kakao'><button>Kakao Login</button></a></div>
-      <div style='margin-bottom: 10px;'><a href='/login/naver'><button>Naver Login</button></a></div>
+<head>
+  <title>Login</title>
+  <link rel='stylesheet' href='/stylesheets/loginUser.css' />
+</head>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
+<script type='application/javascript' src='/javascripts/modalLayer.js'></script>
+<script>
+  window.addEventListener('load', function () {
+    FastClick.attach(document.body);
+  }, false);
+</script>
+
+<body>
+  <div id="loginUser_all_body">
+    <div id="loginUser_top_part">
+      <div id="loginUser_top_vertical_helper">
+        <img id ="loginUser_logo_with_text2" src="/images/logo_with_text2.png">
+      </div>
+      <div id="loginUser_button_list">
+        <form action='/login' method='POST'>
+          <input class="loginUser_input" type='text' name='userid' placeholder='     이메일 주소 또는 아이디' />
+          <br/>
+          <input class="loginUser_input" type='password' name='userpwd' placeholder='     비밀번호' />
+          <br/>
+          <div id="loginUser_idcheck">
+              <button id="loginUser_check1"></button><h1 id="loginUser_text">로그인 상태 유지</h1>
+          </div>
+          <input type='submit' value='' id="loginUser_insert" />
+          <br/>
+        </form>
+        <div id="loginUser_button_list2">
+            <button id="loginUser_idfind">아이디 찾기</button>
+            <button id="loginUser_sign_up" class="modalLink" >Sign Up</button>
+        </div>
+      </div>
     </div>
-  </body>
+    <div id="loginUser_bottom-part">
+        <a href='/login/kakao'>
+          <button class="loginUser_button"id="kakao_log">Kakao Login</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalLayer">
+    <div class="modalContent">
+      <div id="Userlogin_modalContent_top">
+        <img id ="Userlogin_logo_with_text3" src="/images/logo_with_text2.png">
+        <br>
+        <span id="Userlogin_join1">고객 회원가입</span>
+      </div>
+      <div id="modal_button">
+      <input class="Userlogin_modal" type='name' name='userid' placeholder='     이름'style="
+      margin-right: 0px;" />
+      <div id="id">
+      <input class="Userlogin_modal"type='text' name='userid' placeholder='      아이디'style="
+      margin-right: 0px;" />
+      <button id="Userlogin_idtwo">중복아이디</button>
+    </div>
+      <input class="Userlogin_modal"type='text' name='userid' placeholder='     비밀번호'style="
+      margin-right: 0px;" />
+    </div>
+    <div id="Userlogin_modalContent_bottom">
+      <button id="Userlogin_join2">회원가입</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+
 </html>
