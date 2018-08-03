@@ -1,0 +1,195 @@
+
+body, html {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #63dded;
+  overflow: hidden;
+}
+#loginUser_all_body {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+#loginUser_top_part {
+  display: table;
+  width: 100%;
+  height: 80%;         
+}
+#loginUser_top_vertical_helper{
+  margin-top: 40%;
+  width:auto;
+  position:relative;
+  
+}
+#loginUser_logo_with_text2
+{
+ margin-left:18%;
+ width: 60%;
+ height: auto;
+}
+.loginUser_input{
+  width: 60%;
+  height: 130px;
+  font-size: 30px;
+  margin-top:3%;
+  margin-left:5%;
+  margin-right:5%;
+  margin-bottom:3%;
+  border:0px;
+  font-size: 30pt;
+  border-radius: 30px 0 0 30px;
+}
+.loginUser_input{
+  color:gray;
+}
+#loginUser_check1{
+  width: 56px;
+  height: 56px;
+  border: 0px;
+  padding: 0;
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  float: left;
+}
+#loginUser_idcheck
+{
+  margin-left: 20%;
+}
+#loginUser_insert{
+  background-image: url('/images/loginbutton.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 130px;
+  cursor:pointer;
+  border: 0px;
+  padding: 0;
+  width: 90%;
+  margin-left: 5%;
+  background-color: #63dded;
+ }
+
+#loginUser_button_list2
+{
+  margin-left: 10%;
+}
+ 
+
+
+#loginUser_text{
+  float: left;
+  margin-left:3%;    
+  margin-top: 1%;
+
+}
+
+#loginUser_idfind{
+  width: 400px;
+  height: 70px;
+  font-size: 30pt;
+  border :0px;
+  padding: 0px;
+  background-color: #63dded;
+
+}
+#loginUser_sign_up{
+  width: 400px;
+  height: 70px;
+  font-size: 30pt;
+  border: 0px;
+  padding: 0px;
+  background-color: #63dded;
+}
+#loginUser_bottom-part{
+  width: 100%;
+  height: 20%;
+}
+
+
+#kakao_log
+{
+  margin-left: 20%;
+}
+
+a{color:#000;}
+
+.mask{width:100%; height:100%; position:fixed; left:0; top:0; z-index:10; background:#000; opacity:.5; filter:alpha(opacity=50);}
+
+#modalLayer{
+  position:fixed;
+  display:none;
+  width:100%;
+  height:100%;
+  background-color: white;
+  top:0;
+  left:0;
+  z-index:10;
+  
+}
+.modalContent{
+  height: 60%;         
+  width: 100%;
+  display: table;
+}
+#Userlogin_modalContent_top{
+  background-color: #63dded;    
+  padding-bottom: 10%;
+
+}
+#Userlogin_modalContent_bottom{
+  height: 40%;         
+  width: 100%;
+  display: table;
+  margin-top: 20%;
+  margin-left: 23%;
+}
+
+
+#Userlogin_logo_with_text3{
+  margin-top:30%;
+  margin-left:19%;
+  margin-bottom: 10%;
+  width: 60%;
+ height: auto;
+
+}
+#Userlogin_join1{
+  width: 100%;
+  height: 20%;
+  font-size: 50px;
+  margin-left:33%;
+  color: white;
+}
+.Userlogin_modal{
+  width: 60%;
+  height: 130px;
+  font-size: 30px;
+  margin-top:3%;
+  margin-left:5%;
+  margin-right:5%;
+  margin-bottom:3%;
+  border:0px;
+  font-size: 30pt;
+  border-radius: 30px 0 0 30px;
+}
+.Userlogin_loginUser_modal{
+  color:gray;
+}
+#Userlogin_join2{
+  width: 500px;
+  height: 70px;
+  font-size: 30pt; 
+}
+#kakao_log{
+  width: 500px;
+  height: 70px;
+  font-size: 30pt; 
+}
+#Userlogin_idtwo{
+  width: 300px;
+  height: 70px;
+  font-size: 30pt; 
+}

@@ -53,6 +53,9 @@
         <% if(myStamps) { %>
           <% for(var i=0; i<myStamps.length; i++) { %>
             <div class='selected_stamp' id="selected_stamp<%= myStamps[i].id %>">
+                <div class="back_div<%= myStamps[i].id %>" id="back_div">
+                    <img id="tableControl<%= myStamps[i].id %>" src="/images/backButton.png" width="20px" height="20px">
+                </div>
               <div id="name_sj">
                 <p id="store_name_sj">
                   <%= myStamps[i].market_name %>
@@ -214,7 +217,7 @@
               </div>
 
               <div class='review_write_sj' id="review_write_sj<%= myStamps[i].id %>">
-                <textarea class="review_textarea<%= myStamps[i].id %>" rows="7"></textarea>
+                <textarea class="review_textarea<%= myStamps[i].id %>" rows="6"></textarea>
                 <div class='write_button_div_sj' id="write_button_div_sj<%= myStamps[i].id %>">
                   <button class='write_cancel_sj' id="write_cancel_sj<%= myStamps[i].id %>" style="margin-left: 12.5%">취소</button>
                   <button class="write_ok_button<%= myStamps[i].id %>" style="margin-left:5%">등록</button>
@@ -226,8 +229,15 @@
             var number1 = "";
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
               $('#selected_stamp<%= myStamps[i].id %>').css('display', 'block');
+              $('.back_div<%= myStamps[i].id %>').css('display', 'block');
               $('#myStamp').css('display', 'none');
             });
+            $('.back_div<%= myStamps[i].id %>').click(function () {
+              $('#selected_stamp<%= myStamps[i].id %>').css('display', 'none');
+              $('.back_div<%= myStamps[i].id %>').css('display', 'none');
+              $('#myStamp').css('display', 'block');
+            });
+
 
             var stamp_kind = '<%= myStamps[i].stamp_kind %>';
             var stamp_count<%= myStamps[i].id %> = parseInt('<%= myStamps[i].stamp_count %>');
@@ -509,7 +519,29 @@
                             success: function (result) {
                               if (result['result'] == 'successs') {
                                 alert('초기화');
-                                $(window).attr('location', '/myStamp');
+                                number1 = "";
+                                stamp_count<%= myStamps[i].id %> = 0;
+
+                                if (parseInt('<%= myStamps[i].stamp_standard %>') == 5) {
+                                  $('#fiveControls_sj<%= myStamps[i].id %>').css('display', 'table');
+                                  for (var i = 0; i < 5; i++) {
+                                    var check = document.getElementsByClassName('five_sj <%= myStamps[i].id %>')[i];
+                                    check.style.backgroundColor = "rgb(202, 199, 199)";
+                                  }
+                                }
+                                else if (parseInt('<%= myStamps[i].stamp_standard %>') == 10) {
+                                  $('#tenControls_sj<%= myStamps[i].id %>').css('display', 'table');
+                                  for (var i = 0; i < 10; i++) {
+                                    var check = document.getElementsByClassName('ten_sj <%= myStamps[i].id %>')[i];
+                                    check.style.backgroundColor = "rgb(202, 199, 199)";
+                                  }
+                                }
+
+                                $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p>'+ (reset_stamp_count) +' / <%= myStamps[i].stamp_standard %></p>');
+                                $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
+                                $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+
+                                // $(window).attr('location', '/myStamp');
 
                               }
                             },
