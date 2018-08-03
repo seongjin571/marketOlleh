@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    
     <script>
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
@@ -17,35 +19,44 @@
 </head>
 
 <body>
+    <!--시작-->
 
-    <div id="all_body">
-        <div id="intro_image_div">
-            <div id="intro_image_vertical">
-                <img id="intro_image" src="/images/logo_with_text.png" width="45%" height="auto">
+    <div id="start_all_body">
+        <div id="start_intro_image_div">
+            <div id="start_intro_image_vertical">
+                <img id="start_intro_image" src="/images/logo_with_text.png" width="45%" height="auto">
             </div>
         </div>
-        <div id="top_part">
-            <div id="top_vertical_helper">
-                <div id="logo_div"></div>
+        <div id="start_top_part">
+            <div id="start_top_vertical_helper">
+                <img src="/images/startlogo.png" width="40%" height="auto">
             </div>
         </diV>
-        <div id="bottom_part">
-            <button id="user_login">고객 로그인</button>
-            <button id="seller_login">상인 로그인</button>
-
+        <div id="start_bottom-part">
+                 <div id="start_bottom-part1">
+                    <button id="start_user_login">고객 로그인</button>
+                    <img class="start_image" src="/images/login_tail.png">
+                 </div>
+                <div id="start_bottom-part2">
+                 <button id="start_seller_login">상인 로그인</button>
+                 <img class="start_image" src="/images/login_tail.png">
+                </div>
         </div>
     </div>
+
+
     <script>
 
         setTimeout(function () {
-            $('#intro_image_div').fadeOut('500');
-        }, 2000);
-        $('#user_login').click(function () {
+            $('#start_intro_image_div').fadeOut('500');
+        }, 1000);
+        $('#start_user_login').click(function () {
             location.href = "/loginUser";
         });
-        $('#seller_login').click(function () {
+        $('#start_seller_login').click(function () {
             location.href = "/loginManager";
         });
+      
     </script>
 </body>
 
