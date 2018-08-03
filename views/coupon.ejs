@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
-    <script>
+    <!-- <script>
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
-        }, false);
+        }, false); -->
     </script>
 </head>
 
@@ -157,22 +157,23 @@
 
 
     <div class="my_coupon">
-
+      <% if(result1) { %>
+        <% for(var i=0; i<result1.length; i++) { %>
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="store_and_market">
-                        <div class="store_name">나현이네 과일가게</div>
-                        <div class="market_name">통인시장</div>
+                        <div class="store_name"><%= result1[i].market_name %></div>
+                        <div class="market_name"><%= result1[i].sijang_name %></div>
                     </div>
                     <div class="sale_price">
-                        1000원 할인
+                        <%= result1[i].coupon_reward %>
                     </div>
                     <div class="standard">
-                        5000원 이상 구매 시
+                        <%= result1[i].coupon_standard %>
                     </div>
                     <div class="period">
-                        기간:~18.8.20
+                        <%= result1[i].coupon_due_date %>
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -180,29 +181,12 @@
                 </div>
             </div>
         </div>
-
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="store_and_market">
-                        <div class="store_name">퉁이네 정육점</div>
-                        <div class="market_name">통인시장</div>
-                    </div>
-                    <div class="sale_price">
-                        2000원 할인
-                    </div>
-                    <div class="standard">
-                        10000원 이상 구매 시
-                    </div>
-                    <div class="period">
-                        기간:~18.8.22
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="delete">쿠폰 삭제</div>
-                </div>
-            </div>
-        </div>
+        <% } %>
+        <% } else { %>
+          <div class='stamp_list'>
+            <div id="no_stamp">발급받은 쿠폰이 없습니다.</div>
+          </div>
+          <% } %>
     </div>
 
 
