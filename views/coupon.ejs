@@ -160,7 +160,7 @@
 
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                <div class="swiper-slide content">
                     <div class="store_and_market">
                         <div class="store_name">나현이네 과일가게</div>
                         <div class="market_name">통인시장</div>
@@ -175,15 +175,13 @@
                         기간:~18.8.20
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="delete">쿠폰 삭제</div>
-                </div>
+                <div class="swiper-slide menu">삭제</div>
             </div>
         </div>
 
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                <div class="swiper-slide content">
                     <div class="store_and_market">
                         <div class="store_name">퉁이네 정육점</div>
                         <div class="market_name">통인시장</div>
@@ -198,11 +196,10 @@
                         기간:~18.8.22
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="delete">쿠폰 삭제</div>
-                </div>
+                <div class="swiper-slide menu">삭제</div>
             </div>
         </div>
+        
     </div>
 
 
@@ -247,7 +244,12 @@
     $('#home_sj').click(function () {
         location.href = "/main";
     })
-    var swiper = new Swiper('.swiper-container');
+    var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto',
+            initialSlide: 0,
+            resistanceRatio: 0.5,
+            slideToClickedSlide: true,
+        });
 
     $('.market').click(function () {
         $('.find_coupon_list').show(200);
