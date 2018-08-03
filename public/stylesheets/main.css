@@ -163,17 +163,20 @@
 #myStamp{
     width: 95%;
     margin: 0 auto;
-    height: 30%;
+    height: 25%;
     /* background-color: #acdce2; */
     /* padding: 20px; */
     /* border-radius: 5px; */
+}
+#user_name{
+    margin-top: 8%;
 }
 .swiper-pagination{
     bottom:20px !important;
 }
 .swiper-container{
-    width: 80%;
-    height: 85%;
+    width: 96%;
+    height: 100%;
     /* background-color: #acdce2; */
     border-radius: 5px;
     margin-top:10px;
@@ -183,10 +186,6 @@
     width: 100%;
     margin: 0 auto;
     height: 100%;
-    /* background-color: #acdce2; */
-    /* padding: 15px; */
-    /* border-radius: 5px;
-    margin-top:10px; */
 }
 
 label{
@@ -194,7 +193,7 @@ label{
 }
 
 .swiper-slide:nth-child(1){
-    width: 80%;
+    width: 70%;
     height: 100%;
     background-image:url('/images/backSample1.png');
     background-repeat: no-repeat;
@@ -216,7 +215,7 @@ label{
     align-items: center; */
 }
 .swiper-slide:nth-child(2){
-    width: 80%;
+    width: 70%;
     height: 100%;
     background-image:url('/images/backSample2.png');
     background-repeat: no-repeat;
@@ -238,7 +237,7 @@ label{
     align-items: center; */
 }
 .swiper-slide:nth-child(3){
-    width: 80%;
+    width: 70%;
     height: 100%;
     background-image:url('/images/backSample4.png');
     background-repeat: no-repeat;
@@ -271,6 +270,7 @@ label{
     text-align: center;
 }
 .near_market_name{
+    font-size: 15px;
     margin-top: 5px;
 }
 .stamp_count{
@@ -290,7 +290,7 @@ label{
 }
 .count_stamp{
     width: 60%;
-    font-size: 45px;
+    font-size: 30px;
 }
 .stamp_count_vertical{
     width: 100%;
@@ -307,29 +307,45 @@ label{
     height: 130px;
     margin-left: 2%;
 }
-
+.good_market_name{
+    font-size: 15px;
+}
 #hot_store{
     width: 100%;
     /* margin: 0 auto; */
-    height: 1620px;
-    margin-top:20px;
+    height: 1670px;
+    margin-top:9%;
     margin-bottom: 80px;
 }
 .hot_store_list{
     width: 100%;
     display: inline-flex
 }
-
+.hot_store_list img{
+        border-radius: 4px;
+        border-style: solid;
+        border-color: #c5c6c7;
+        border-width: 0.8px;
+}
+.nav_icon2{
+    display: none;
+}
 .hot_store_detail{
     width: 43%;
-    height: 150px;
+    height: 155px;
     /* border-style: s; */
      border-radius: 5px;
     margin-left: 4.8%;
 }
-#market_pic{
+.market_pic{
     width: 100%;
     height: 68%;
+}
+.market_pic img{
+        border-radius: 4px;
+        border-style: solid;
+        border-color: #c5c6c7;
+        border-width: 0.8px;
 }
 
 h3,h4{
@@ -362,4 +378,7 @@ h3,h4{
     font-size: 10px;
     color: #9c9c9c;
     text-align: center;
+}
+#nav_text{
+    color: #63dded;
 }
