@@ -44,7 +44,7 @@
         <% } %>
         <% } else { %>
           <div class='stamp_list'>
-            <div id="no_stamp">발급받은 쿠폰이 없습니다.</div>
+            <div id="no_stamp">발급받은 스탬프가 없습니다.</div>
           </div>
           <% } %>
         </div>
@@ -451,7 +451,7 @@
                         console.log(result['password']);
                         alert('비밀번호 일치');
 
-                        if (parseInt('<%= myStamps[i].stamp_standard %>') >= parseInt('<%= myStamps[i].stamp_count %>')+1) {
+                        if (parseInt('<%= myStamps[i].stamp_standard %>') >= stamp_count<%= myStamps[i].id %> + 1) {
                           var data = {
                             'stamp_count': stamp_count<%= myStamps[i].id %> + 1,
                           };
@@ -627,22 +627,22 @@
             <% } %>
 
             <div id="nav_sj">
-              <div id="home_sj">
-                <img src="/images/home.png" width="60%">
-                <br/>홈</div>
+                <div id="home_sj">
+                    <img src="/images/home.png" width="40%">
+                    <p>홈</p></div>
                 <div id="coupon_sj">
-                  <img src="/images/coupon.png" width="60%">
-                  <br/>쿠폰</div>
-                  <div id="location_sj">
-                    <img src="/images/location.png" width="60%">
-                    <br/>주변 가맹점</div>
-                    <div id="myStamp_sj">
-                      <img src="/images/stamp.png" width="60%">
-                      <br/>내 스탬프</div>
-                      <div id="my_sj">
-                        <img src="/images/my.png" width="60%">
-                        <br/>MyPage</div>
-                      </div>
+                    <img src="/images/coupon.png" width="40%">
+                    <p>쿠폰</p></div>
+                <div id="location_sj">
+                    <img src="/images/location.png" width="40%">
+                    <p>주변 가맹점</p></div>
+                <div id="myStamp_sj">
+                    <img src="/images/stamp2.png" width="40%">
+                    <p id="nav_text">내 스탬프</p></div>
+                <div id="my_sj">
+                    <img src="/images/my.png" width="40%">
+                    <p>MyPage</p></div>
+            </div>
 
                       <script>
                       $('#home_sj').click(function () {
