@@ -3,12 +3,28 @@
 	border: 1px solid black;
 }*/
 
-#Goomap, #Goomap > table{
-	display: none;
+#Goomap, #Goomap > div {
+	/*display: none;*/
 	height: 85%;
 	width: 100%;
 }
 
-#Goomap > td {
+#Goomap > div > li {
+	list-style: none;
+}
+
+#Goomap > div > span {
 	display: center;
+}
+
+/* ───── NEW GOO MAP ───── */
+
+#NewGoomap {
+	list-style: none;
+}
+
+#NewGoomap > div > li {
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
 }

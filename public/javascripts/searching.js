@@ -10,7 +10,7 @@
 // FUNCTION
 
 function TableSetting() {
-	var test2 = document.getElementsByTagName('td');
+	var test2 = $('#Goomap > div > span');
 
 	for (var i = 0; i < test2.length; i++) {
 		// 동적으로 div~(Goomap table td) 태그에서 gooAjax 클릭 이벤트 추가
@@ -20,9 +20,8 @@ function TableSetting() {
 
 function hideGooTabe() {
 	// 기존 테이블 숨기고 동적으로 New Table
-	$('#Goomap > table').hide();
-	$('#NewGoomap').append("<table></table>");
-	$('#NewGoomap > table').append("<tbody></tbody>")
+	// $('#Goomap > table').hide();
+	$('#NewGoomap').append("<div></div>");
 }
 
 // ◀ 버튼의 함수 _ #tableControl
@@ -58,8 +57,8 @@ function turningBack() {
 // TurningBack의 자유로운 사용을 위해 NewGooTable 제어 함수 분할
 function deleteNewGooTable() {
 	// 동적으로 New Table 삭제 --> 기존 테이블 show
-	$('#NewGoomap > table').remove();
-	$('#Goomap > table').show();
+	$('#NewGoomap > div').remove();
+	$('#Goomap > div').show();
 
 	// 지도 표출후 다시 original Goomap 으로 가는 상황 고려
 	$('#market_infor').hide();
@@ -74,17 +73,19 @@ function deleteNewSearchList() {
 
 function makeGooTable(tableValue, gooCounter) {
 
+	// 다른 구 클릭 하고 뒤로가기 안하고 또 다른 구 누를때 고려
+	$('#NewGoomap > div').remove();
 	hideGooTabe(); // Goomap ~ table 부분 숨기기
 	var tempString = new Array();
 	console.log(tableValue.rows[0].name);
 	var fullString = '\0';
 
 	// making table 한줄에 5개 예시
-	tempString[0] = '<tr>'
+	tempString[0] = "<br>";
 	for (var i = 1; i <= parseInt(gooCounter); i++) {
-		tempString[i] += '<td>' + tableValue.rows[i - 1].name + '</td>'
-		if (i % 5 == 0) // 5개 시장마다 줄 바꿈
-			tempString[i] += '</tr><tr>'
+		tempString[i] = '<li>' + tableValue.rows[i - 1].name + '</li>'
+		if (i % 3 == 0) // 5개 시장마다 줄 바꿈
+			tempString[i] += '<br>'
 	} // for
 
 	for (var index in tempString) {
@@ -92,11 +93,12 @@ function makeGooTable(tableValue, gooCounter) {
 	} // for in 
 
 	// jquery, table값제어 / 동적 생성된 td에 클릭함수추가
-	$('#NewGoomap > table > tbody').html(fullString);
-	$('#NewGoomap > table > tbody > tr > td').click(function (event) {
+	$('#NewGoomap > div').html(fullString);
+	$('#NewGoomap > div > li').click(function (event) {
 		// Daum(kakao map api test line)
 		$('#navControlButton').css('display', 'none');
-		$('table').css('display', 'none');
+		$('#Goomap > div').css('display', 'none');
+		$('#Goomap').css('height', '0%');
 
 		var temp = document.getElementById('market_infor').style.display;
 		if (temp == "block") {
@@ -112,8 +114,8 @@ function makeGooTable(tableValue, gooCounter) {
 				changeCenter(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
 			}
 		} // for
-
 	}); // click function
+
 } // makeGooTable
 
 function makeSearchList(searchResult, listCounter) {
@@ -194,6 +196,8 @@ function gooAjax(event) {
 			console.log('process error : ', e);
 		}
 	});
+
+	$(this).append($('#NewGoomap'));
 } // gooAjax
 
 function searchingAjax(event) {
