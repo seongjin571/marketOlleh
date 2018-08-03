@@ -59,10 +59,11 @@ label{
 
 #hot_store{
     width: 100%;
-    height: 1670px;
+    height: 1750px;
     margin-top:9%;
     margin-bottom: 80px;
 }
+
 .hot_store_list{
     width: 100%;
     display: inline-flex
@@ -75,10 +76,29 @@ label{
 }
 .hot_store_detail{
     width: 43%;
-    height: 155px;
+    height: 165px;
     /* border-style: s; */
      border-radius: 5px;
     margin-left: 4.8%;
+    margin-bottom: 7px;
+}
+.good_store_name{
+    margin-top: 3px;
+    color: gray;
+    font-size: 13px;
+}
+.good_count{
+    height: 20px;
+    line-height: 25px;
+    display: inline-flex;
+    color:gray;
+    font-size: 14px;
+}
+.good_count img{
+    border: none;
+}
+.good_count p{
+    margin:0;
 }
 #user_name{
     width: 90%;
