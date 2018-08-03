@@ -53,6 +53,9 @@
         <% if(myStamps) { %>
           <% for(var i=0; i<myStamps.length; i++) { %>
             <div class='selected_stamp' id="selected_stamp<%= myStamps[i].id %>">
+                <div class="back_div<%= myStamps[i].id %>" id="back_div">
+                    <img id="tableControl<%= myStamps[i].id %>" src="/images/backButton.png" width="20px" height="20px">
+                </div>
               <div id="name_sj">
                 <p id="store_name_sj">
                   <%= myStamps[i].market_name %>
@@ -226,8 +229,15 @@
             var number1 = "";
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
               $('#selected_stamp<%= myStamps[i].id %>').css('display', 'block');
+              $('.back_div<%= myStamps[i].id %>').css('display', 'block');
               $('#myStamp').css('display', 'none');
             });
+            $('.back_div<%= myStamps[i].id %>').click(function () {
+              $('#selected_stamp<%= myStamps[i].id %>').css('display', 'none');
+              $('.back_div<%= myStamps[i].id %>').css('display', 'none');
+              $('#myStamp').css('display', 'block');
+            });
+
 
             var stamp_kind = '<%= myStamps[i].stamp_kind %>';
             var stamp_count<%= myStamps[i].id %> = parseInt('<%= myStamps[i].stamp_count %>');
