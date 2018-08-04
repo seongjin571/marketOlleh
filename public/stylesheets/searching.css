@@ -37,12 +37,16 @@
 
 /* ───── NEW GOO MAP ───── */
 
-#NewGoomap {
-	list-style: none;
+#NewGoomap > div {
+	position: relative;
+	display: block;
+	background-color: #C0C0C0;
 }
 
 #NewGoomap > div > li {
+	list-style: none;
 	display: inline-block;
-	margin-left: 10px;
-	margin-right: 10px;
+	color: white;
+
+	margin: 6px;
 }
