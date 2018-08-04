@@ -1,8 +1,4 @@
 
-/* * {
-	border: 1px solid black;
-}*/
-
 #Goomap {
 	margin-top: 50px;
 	width: 100%;
@@ -63,17 +59,17 @@
 	transition: 1s;
 }
 
-/* ───── NEW GOO MAP ───── */
-
-/* #NewGoomap > div {
-	position: relative;
-	display: block;
-	background-color: #C0C0C0;
-} */
-
 #NewGoomap > div > li {
 	list-style: none;
 	display: inline-flex;
 	color: white;
 	margin: 6px;
+}
+
+/*  market_infor (시장 API 정보 뿌려주는 div ~ article)  */
+/*  애초에 생성이 늦기에 적용이 안됨!!! js로 모두 동적으로 처리해줘야함  */
+/*  어떤 css줄지 Test line 들  */
+
+.market_infoText_li {
+	margin: 5px;
 }
