@@ -18,6 +18,7 @@
 .map_div{
 	width: 100%;
 }
+
 .Goomap_inner {
 	height: 32px;
 	width: 100%;
@@ -27,9 +28,11 @@
 	font-weight: 500;
 	font-size: 18px;
 }
+
 .Goomap_inner span{
 	width: 25%;
 }
+
 .menu{
 	display: inline-flex;
 	width: 100%;
@@ -40,6 +43,7 @@
 	font-size: 26px;
 	font-weight: 800;
 }
+
 .menu div{
 	width: 25%;
 	height: 100%;

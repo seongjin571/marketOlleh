@@ -373,7 +373,7 @@ h3,h4{
     top: 92%;
     z-index: 1;
     border-top-style:solid;
-    border-top-width: 1px;
+    border-top-width: 0.5px;
     /* border-left-style: none */
 }
 
