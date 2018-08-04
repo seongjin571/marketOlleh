@@ -178,6 +178,7 @@ function makeSearchList(searchResult, listCounter) {
 } // makerSearchList --> articlr태그 부분
 
 function gooAjax(event) {
+	$('.Goomap_inner>span').css('color','black');
 	// ajax 비동기적 통신으로 (index.js ~ url 참조)
 	// DB 값 rows json object 몽땅 받아옴
 	$.ajax({
@@ -197,7 +198,15 @@ function gooAjax(event) {
 		}
 	});
 
-	$(this).append($('#NewGoomap'));
+	$(this).parents(".map_div").append($('#NewGoomap'));
+	$(this).css('color','#fb83a5')
+	// var height=$('#NewGoomap').height();
+	// var height2=$('#Goomap').height();
+	// var new_height=height+height2+'px';
+	// alert(new_height)
+	// $('#Goomap').css('height',new_height);
+	
+	// alert(height)
 } // gooAjax
 
 function searchingAjax(event) {

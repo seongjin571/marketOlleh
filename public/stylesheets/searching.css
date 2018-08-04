@@ -4,35 +4,53 @@
 }*/
 
 #Goomap {
-	height: 85%;
+	margin-top: 50px;
 	width: 100%;
 	display: none;
+	margin-bottom: 20%;
 }
 
 #Goomap_container {
-	display: flex;
-	flex-direction: column;
+	height: 100%;
+	width: 100%;
 }
 
-#Goomap > div > li {
-	list-style: none;
+.map_div{
+	width: 100%;
 }
-
-#Goomap > div > span {
-	height: 25%;
+.Goomap_inner {
+	height: 32px;
+	width: 100%;
+	display: inline-flex;
+	text-align: center;
+	margin-top: 1%;
+	font-weight: 500;
+	font-size: 18px;
+}
+.Goomap_inner span{
 	width: 25%;
 }
-
-.Goomap_inner {
-	display: flex;
-	flex-basis: 70px;
-	flex-grow: 1;
+.menu{
+	display: inline-flex;
+	width: 100%;
+	height: 34px;
+	text-align: center;
+	margin-top: 4.5%;
+	color:#63dded;
+	font-size: 26px;
+	font-weight: 800;
+}
+.menu div{
+	width: 25%;
+	height: 100%;
 }
 
-.Goomap_inner > span {
-	flex-direction: row;
-	flex-grow: 1;
-	text-align: center;
+#NewGoomap{
+	width: 90%;
+	margin-left: 5%;
+	background-color: #C0C0C0;
+	margin-top: 10px;
+	border-radius: 5px;
 }
 
 .Goomap_inner > span:hover {
@@ -43,16 +61,15 @@
 
 /* ───── NEW GOO MAP ───── */
 
-#NewGoomap > div {
+/* #NewGoomap > div {
 	position: relative;
 	display: block;
 	background-color: #C0C0C0;
-}
+} */
 
 #NewGoomap > div > li {
 	list-style: none;
-	display: inline-block;
+	display: inline-flex;
 	color: white;
-
 	margin: 6px;
 }

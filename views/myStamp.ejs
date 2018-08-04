@@ -65,9 +65,12 @@
                 </p>
               </div>
               <div id="sns_sj">
-                <img class='noGood_Button_sj' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/noGood.png" width="16%" height="auto">
-                <img class='yesGood_Button_sj' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/yesGood.png" width="16%" height="auto">
-                <p class='goodCount_sj' id="goodCount_sj<%= myStamps[i].id %>">215</p>
+                <% if(! myStamps[i].like_check) { %>
+                  <img class='noGood_Button_sj' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/noGood.png" width="16%" height="auto">
+                <% } else { %>
+                  <img class='yesGood_Button_sj' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/yesGood.png" width="16%" height="auto">
+                <% } %>
+                <p class='goodCount_sj' id="goodCount_sj<%= myStamps[i].id %>"><%= myStamps[i].like_count %></p>
                 <img src="/images/ka.png" width="16%" height="auto">
                 <img src="/images/face.png" width="16%" height="auto">
               </div>

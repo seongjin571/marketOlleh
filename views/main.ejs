@@ -57,51 +57,81 @@
 
     <div id="Goomap">
         <div id="Goomap_container">
-            <li>ㄱ</li>
-            <div class="Goomap_inner">
-                <span>강남구</span>
-                <span>강북구</span>
-                <span>관악구</span>
-                <span>구로구</span>
+
+            <div class="menu">
+                <div>ㄱ</div>
             </div>
-            <div class="Goomap_inner">
-                <span>강동구</span>
-                <span>강서구</span>
-                <span>광진구</span>
-                <span>금천구</span>
+            <div class="map_div">
+                <div class="Goomap_inner">
+                    <span>강남구</span>
+                    <span>강북구</span>
+                    <span>관악구</span>
+                    <span>구로구</span>
+                </div>
             </div>
-            <li>ㄴ ㄷ</li>
-            <div class="Goomap_inner">
-                <span>노원구</span>
-                <span>도봉구</span>
-                <span>동대문구</span>
-                <span>동작구</span>
+
+            <div class="map_div">
+                <div class="Goomap_inner">
+                    <span>강동구</span>
+                    <span>강서구</span>
+                    <span>광진구</span>
+                    <span>금천구</span>
+                </div>
             </div>
-            <li >ㅁ ㅅ</li>
-            <div class="Goomap_inner">
-                <span>마포구</span>
-                <span>서대문구</span>
-                <span>서초구</span>
-                <span>성동구</span>
+
+            <div class="menu">
+                <div>ㄴ</div>
+                <div>ㄷ</div>
             </div>
-            <br>
-            <div class="Goomap_inner">
-                <span>      </span>
-                <span>성북구</span>
-                <span>송파구</span>
-                <span>      </span>    
+            <div class="map_div">
+                <div class="Goomap_inner">
+                    <span>노원구</span>
+                    <span>도봉구</span>
+                    <span>동대문구</span>
+                    <span>동작구</span>
+                </div>
             </div>
-            <li>ㅇ ㅈ</li>
-            <div class="Goomap_inner">
-                <span>양천구</span>
-                <span>용산구</span>
-                <span>종로구</span>
-                <span>중구</span>
+
+            <div class="menu">
+                <div>ㅁ</div>
+                <div>ㅅ</div>
             </div>
-            <br>
-            <div class="Goomap_inner">
-                <span>영등포구</span>
-                <span>은평구</span>
+            <div class="map_div">
+                <div class="Goomap_inner">
+                    <span>마포구</span>
+                    <span>서대문구</span>
+                    <span>서초구</span>
+                    <span>성동구</span>
+                </div>
+            </div>
+
+            <div class="map_div">
+                <div class="Goomap_inner">
+                    <span> </span>
+                    <span>성북구</span>
+                    <span>송파구</span>
+                    <span> </span>
+                </div>
+            </div>
+
+            <div class="menu">
+                <div>ㅇ</div>
+                <div style="margin-left: 25%">ㅈ</div>
+            </div>
+            <div class="map_div">
+                <div class="Goomap_inner">
+                    <span>양천구</span>
+                    <span>용산구</span>
+                    <span>종로구</span>
+                    <span>중구</span>
+                </div>
+            </div>
+            
+            <div class="map_div">
+                <div class="Goomap_inner">
+                    <span>영등포구</span>
+                    <span>은평구</span>
+                </div>
             </div>
         </div>
     </div>
@@ -676,136 +706,137 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="nav_sj">
-            <div id="home_sj">
-                <img src="/images/home2.png" width="40%">
-                <p id="nav_text">홈</p>
-            </div>
-            <div id="coupon_sj">
-                <img src="/images/coupon.png" width="40%">
-                <p>쿠폰</p>
-            </div>
-            <div id="location_sj">
-                <img src="/images/location.png" width="40%">
-                <p>주변 가맹점</p>
-            </div>
-            <div id="myStamp_sj">
-                <img src="/images/stamp.png" width="40%">
-                <p>내 스탬프</p>
-            </div>
-            <div id="my_sj">
-                <img src="/images/my.png" width="40%">
-                <p>MyPage</p>
-            </div>
+    <div id="nav_sj">
+        <div id="home_sj">
+            <img src="/images/home2.png" width="40%">
+            <p id="nav_text">홈</p>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
-        <script> 
-            $('#myStamp_sj').click(function () {
-                location.href = "/myStamp";
-            })
-            $('#coupon_sj').click(function () {
-                location.href = "/coupon";
-            })
-            var swiper = new Swiper('.swiper-container', {
-                slidesPerView: 'auto',
-                centeredSlides: true,
-                spaceBetween: 0,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
+        <div id="coupon_sj">
+            <img src="/images/coupon.png" width="40%">
+            <p>쿠폰</p>
+        </div>
+        <div id="location_sj">
+            <img src="/images/location.png" width="40%">
+            <p>주변 가맹점</p>
+        </div>
+        <div id="myStamp_sj">
+            <img src="/images/stamp.png" width="40%">
+            <p>내 스탬프</p>
+        </div>
+        <div id="my_sj">
+            <img src="/images/my.png" width="40%">
+            <p>MyPage</p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+    <script> 
+        $('#myStamp_sj').click(function () {
+            location.href = "/myStamp";
+        })
+        $('#coupon_sj').click(function () {
+            location.href = "/coupon";
+        })
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            spaceBetween: 0,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
         // for(var i=0; i<3; i++){
         //     document.getElementsByClassName('swiper-slide').style.backgroundImage="url('images/backSample'i'')"
         // }
 
-        </script>
+    </script>
 
 
-        <!-------------------- KAKAO MAP API ---------------------->
-        <script type="text/javascript">
-            // 지도를 표시할 div (id)
-            var mapContainer = document.getElementById('map'),
-                mapOption = {
-                    center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                    level: 4 // 지도의 확대 레벨
-                };
+    <!-------------------- KAKAO MAP API ---------------------->
+    <script type="text/javascript">
+        // 지도를 표시할 div (id)
+        var mapContainer = document.getElementById('map'),
+            mapOption = {
+                center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                level: 4 // 지도의 확대 레벨
+            };
 
-            var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+        var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-            // 지도를 클릭했을때 클릭한 위치에 마커를 추가하도록 지도에 클릭이벤트를 등록합니다
-            // daum.maps.event.addListener(map, 'click', function (mouseEvent) {
-            //     var latlng = mouseEvent.latLng;
-            //     // 클릭한 위치에 마커를 표시합니다 
-            //     addMarker(latlng);
+        // 지도를 클릭했을때 클릭한 위치에 마커를 추가하도록 지도에 클릭이벤트를 등록합니다
+        // daum.maps.event.addListener(map, 'click', function (mouseEvent) {
+        //     var latlng = mouseEvent.latLng;
+        //     // 클릭한 위치에 마커를 표시합니다 
+        //     addMarker(latlng);
 
-            //     var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고,  ' + '경도는 ' + latlng.getLng() + ' 입니다';
-            //     var resultDiv = document.getElementById('clickLatlng');
-            //     resultDiv.innerHTML = message;
-            // });
+        //     var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고,  ' + '경도는 ' + latlng.getLng() + ' 입니다';
+        //     var resultDiv = document.getElementById('clickLatlng');
+        //     resultDiv.innerHTML = message;
+        // });
 
-            // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
-            var markers = [];
+        // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
+        var markers = [];
 
-            // 마커 하나를 지도위에 표시합니다 
-            addMarker(new daum.maps.LatLng(33.450701, 126.570667));
+        // 마커 하나를 지도위에 표시합니다 
+        addMarker(new daum.maps.LatLng(33.450701, 126.570667));
 
-            // 마커를 생성하고 지도위에 표시하는 함수입니다
-            function addMarker(position) {
+        // 마커를 생성하고 지도위에 표시하는 함수입니다
+        function addMarker(position) {
 
-                // 마커를 생성합니다
-                var marker = new daum.maps.Marker({
-                    position: position
-                });
+            // 마커를 생성합니다
+            var marker = new daum.maps.Marker({
+                position: position
+            });
 
-                // 마커가 지도 위에 표시되도록 설정합니다
-                marker.setMap(map);
+            // 마커가 지도 위에 표시되도록 설정합니다
+            marker.setMap(map);
 
-                // 생성된 마커를 배열에 추가합니다
-                markers.push(marker);
+            // 생성된 마커를 배열에 추가합니다
+            markers.push(marker);
+        }
+
+        // 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
+        function setMarkers(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
             }
+        }
 
-            // 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
-            function setMarkers(map) {
-                for (var i = 0; i < markers.length; i++) {
-                    markers[i].setMap(map);
-                }
-            }
+        // "마커 보이기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에 표시하는 함수입니다
+        // function showMarkers() {
+        //     setMarkers(map)
+        // }
 
-            // "마커 보이기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에 표시하는 함수입니다
-            // function showMarkers() {
-            //     setMarkers(map)
-            // }
+        // "마커 감추기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
+        // function hideMarkers() {
+        //     setMarkers(null);
+        // }
 
-            // "마커 감추기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
-            // function hideMarkers() {
-            //     setMarkers(null);
-            // }
+        function relayout() {
 
-            function relayout() {
-
-                // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
-                // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
-                // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
-                map.relayout();
-            }
+            // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
+            // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
+            // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
+            map.relayout();
+        }
 
 
-            function changeCenter(mapLat, mapLng) {
-                var moveLatLon = new daum.maps.LatLng(mapLat, mapLng);
-                relayout();
-                // 입력받은 좌표에 마커 추가
-                addMarker(moveLatLon);
+        function changeCenter(mapLat, mapLng) {
+            var moveLatLon = new daum.maps.LatLng(mapLat, mapLng);
+            relayout();
+            // 입력받은 좌표에 마커 추가
+            addMarker(moveLatLon);
 
-                // 지도 중심을 이동 시킵니다
-                map.setCenter(moveLatLon);
-                map.setLevel(4);
+            // 지도 중심을 이동 시킵니다
+            map.setCenter(moveLatLon);
+            map.setLevel(4);
 
-            } // changeCenter
-        </script>
-        <!-------------------- KAKAO MAP API ---------------------->
-        <script type='text/javascript' src='javascripts/searching.js'></script>
+        } // changeCenter
+    </script>
+    <!-------------------- KAKAO MAP API ---------------------->
+    <script type='text/javascript' src='javascripts/searching.js'></script>
 </body>
 
 </html>
