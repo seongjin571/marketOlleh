@@ -1,8 +1,4 @@
 
-/* * {
-	border: 1px solid black;
-}*/
-
 #Goomap {
 	margin-top: 50px;
 	width: 100%;
@@ -18,6 +14,7 @@
 .map_div{
 	width: 100%;
 }
+
 .Goomap_inner {
 	height: 32px;
 	width: 100%;
@@ -27,9 +24,11 @@
 	font-weight: 500;
 	font-size: 18px;
 }
+
 .Goomap_inner span{
 	width: 25%;
 }
+
 .menu{
 	display: inline-flex;
 	width: 100%;
@@ -40,6 +39,7 @@
 	font-size: 26px;
 	font-weight: 800;
 }
+
 .menu div{
 	width: 25%;
 	height: 100%;
@@ -53,17 +53,23 @@
 	border-radius: 5px;
 }
 
-/* ───── NEW GOO MAP ───── */
-
-/* #NewGoomap > div {
-	position: relative;
-	display: block;
-	background-color: #C0C0C0;
-} */
+.Goomap_inner > span:hover {
+	font-weight: bold;
+	color: #FF69B4;
+	transition: 1s;
+}
 
 #NewGoomap > div > li {
 	list-style: none;
 	display: inline-flex;
 	color: white;
 	margin: 6px;
+}
+
+/*  market_infor (시장 API 정보 뿌려주는 div ~ article)  */
+/*  애초에 생성이 늦기에 적용이 안됨!!! js로 모두 동적으로 처리해줘야함  */
+/*  어떤 css줄지 Test line 들  */
+
+.market_infoText_li {
+	margin: 5px;
 }
