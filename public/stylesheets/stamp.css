@@ -84,7 +84,7 @@
             border-top-width: 1px;
             /* border-left-style: none */
         }
-        
+
         #nav_sj div {
             padding: 5px;
             width: 20%;
@@ -205,7 +205,7 @@
         }
 
         .yesGood_Button_sj {
-            display: none;
+            /* display: none; */
         }
 
         .goodCount_sj {

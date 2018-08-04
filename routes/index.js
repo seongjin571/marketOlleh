@@ -276,9 +276,10 @@ router.get('/store_infor', function(req, res) {
 
 
 router.get('/myStamp', function(req, res) {
-  var sql = 'select * from `stamp` where `user_id`=?';
+  // var sql = 'select * from `stamp` where `user_id`=?';
+  var sqlJoin = 'SELECT * FROM stamp INNER JOIN likeMarket ON stamp.sijang_name=likeMarket.sijang_name and stamp.market_name=likeMarket.market_name WHERE user_id=?;';
   var sql2 = 'select * from `review` where `user_id`=?';
-  conn.query(sql, [req.user.id],function(error, result){
+  conn.query(sqlJoin, [req.user.id],function(error, result){
     if(error) {
        console.log(error);
       }
@@ -294,6 +295,7 @@ router.get('/myStamp', function(req, res) {
         conn.query(sql2, [req.user.id],function(error2, results){
         if(error2) { console.log(error2); }
         else {
+          console.log(result);
           if(! results.length) {
             console.log(req.session.market_name);
             console.log("stamp디비에는 값이 있으나 review값은 없는 경우");
