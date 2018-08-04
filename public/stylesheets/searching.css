@@ -35,6 +35,12 @@
 	text-align: center;
 }
 
+.Goomap_inner > span:hover {
+	font-weight: bold;
+	color: #FF69B4;
+	transition: 1s;
+}
+
 /* ───── NEW GOO MAP ───── */
 
 #NewGoomap > div {
