@@ -11,7 +11,60 @@ router.get('/start', function(req, res){
 });
 
 router.get('/coupon', function(req, res){
-  res.render('coupon');
+  //resullt1은 발급쿠폰 결과
+  //result2는 발급받은 스탬프
+  var find_coupon_manager = 'select * from `manager`';
+  var find_stamp = 'select * from `stamp` where `user_id` =?';
+  var user_id = req.user.id;
+  var mycoupon = 'select * from `coupon_customer` where `user_id` = ?';
+  conn.query(mycoupon,[user_id],function(error,result1,fields){
+    if(error){
+      console.log('error1');
+    }
+    else if(! result1.length){
+      console.log('발급받은쿠폰없음');
+      conn.query(find_stamp,[user_id],function(error,result2,fields){
+        if(error){
+          console.log('error2');
+        }
+        else if(! result2.length){
+          console.log('발급받은 스탬프 없음');
+          res.render('coupon', {
+            title : '발급받은쿠폰없고 스탬프 없고',
+            result1 : undefined,
+            result2 : undefined
+          })
+        }else{
+          console.log('발급받은 스탬프 있음');
+          res.render('coupon', {
+            title : '발급받은쿠폰없고 스탬프 있고',
+            result1 : undefined,
+            result2 : result2
+          })
+        }
+      })
+    }
+    else{
+      console.log('발급받은쿠폰이있는경우');
+      conn.query(find_stamp,[user_id],function(error,result2,fields){
+        if(! result2.length){
+          console.log('발급받은 스탬프 없음');
+          res.render('coupon',{
+            title : '쿠폰있고 스탬프 없고',
+            result1 : result1,
+            result2 : undefined
+          })
+        }else{
+          console.log('발급받은 스탬프 있음');
+          res.render('coupon',{
+            title : '쿠폰있고 스탬프 있고',
+            result1 : result1,
+            result2 : result2
+          })
+        }
+      })
+    }
+  })
 });
 
 router.get('/couponManager', function(req, res, next) {
@@ -223,9 +276,10 @@ router.get('/store_infor', function(req, res) {
 
 
 router.get('/myStamp', function(req, res) {
-  var sql = 'select * from `stamp` where `user_id`=?';
+  // var sql = 'select * from `stamp` where `user_id`=?';
+  var sqlJoin = 'SELECT * FROM stamp INNER JOIN likeMarket ON stamp.sijang_name=likeMarket.sijang_name and stamp.market_name=likeMarket.market_name WHERE user_id=?;';
   var sql2 = 'select * from `review` where `user_id`=?';
-  conn.query(sql, [req.user.id],function(error, result){
+  conn.query(sqlJoin, [req.user.id],function(error, result){
     if(error) {
        console.log(error);
       }
@@ -241,6 +295,7 @@ router.get('/myStamp', function(req, res) {
         conn.query(sql2, [req.user.id],function(error2, results){
         if(error2) { console.log(error2); }
         else {
+          console.log(result);
           if(! results.length) {
             console.log(req.session.market_name);
             console.log("stamp디비에는 값이 있으나 review값은 없는 경우");

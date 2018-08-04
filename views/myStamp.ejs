@@ -53,6 +53,9 @@
         <% if(myStamps) { %>
           <% for(var i=0; i<myStamps.length; i++) { %>
             <div class='selected_stamp' id="selected_stamp<%= myStamps[i].id %>">
+                <div class="back_div<%= myStamps[i].id %>" id="back_div">
+                    <img id="tableControl<%= myStamps[i].id %>" src="/images/backButton.png" width="20px" height="20px">
+                </div>
               <div id="name_sj">
                 <p id="store_name_sj">
                   <%= myStamps[i].market_name %>
@@ -62,9 +65,12 @@
                 </p>
               </div>
               <div id="sns_sj">
-                <img class='noGood_Button_sj' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/noGood.png" width="16%" height="auto">
-                <img class='yesGood_Button_sj' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/yesGood.png" width="16%" height="auto">
-                <p class='goodCount_sj' id="goodCount_sj<%= myStamps[i].id %>">215</p>
+                <% if(! myStamps[i].like_check) { %>
+                  <img class='noGood_Button_sj' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/noGood.png" width="16%" height="auto">
+                <% } else { %>
+                  <img class='yesGood_Button_sj' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/yesGood.png" width="16%" height="auto">
+                <% } %>
+                <p class='goodCount_sj' id="goodCount_sj<%= myStamps[i].id %>"><%= myStamps[i].like_count %></p>
                 <img src="/images/ka.png" width="16%" height="auto">
                 <img src="/images/face.png" width="16%" height="auto">
               </div>
@@ -214,7 +220,7 @@
               </div>
 
               <div class='review_write_sj' id="review_write_sj<%= myStamps[i].id %>">
-                <textarea class="review_textarea<%= myStamps[i].id %>" rows="7"></textarea>
+                <textarea class="review_textarea<%= myStamps[i].id %>" rows="6"></textarea>
                 <div class='write_button_div_sj' id="write_button_div_sj<%= myStamps[i].id %>">
                   <button class='write_cancel_sj' id="write_cancel_sj<%= myStamps[i].id %>" style="margin-left: 12.5%">취소</button>
                   <button class="write_ok_button<%= myStamps[i].id %>" style="margin-left:5%">등록</button>
@@ -226,8 +232,15 @@
             var number1 = "";
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
               $('#selected_stamp<%= myStamps[i].id %>').css('display', 'block');
+              $('.back_div<%= myStamps[i].id %>').css('display', 'block');
               $('#myStamp').css('display', 'none');
             });
+            $('.back_div<%= myStamps[i].id %>').click(function () {
+              $('#selected_stamp<%= myStamps[i].id %>').css('display', 'none');
+              $('.back_div<%= myStamps[i].id %>').css('display', 'none');
+              $('#myStamp').css('display', 'block');
+            });
+
 
             var stamp_kind = '<%= myStamps[i].stamp_kind %>';
             var stamp_count<%= myStamps[i].id %> = parseInt('<%= myStamps[i].stamp_count %>');

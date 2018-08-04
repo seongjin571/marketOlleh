@@ -313,7 +313,7 @@ label{
 #hot_store{
     width: 100%;
     /* margin: 0 auto; */
-    height: 1670px;
+    height: 1750px;
     margin-top:9%;
     margin-bottom: 80px;
 }
@@ -327,15 +327,23 @@ label{
         border-color: #c5c6c7;
         border-width: 0.8px;
 }
-.nav_icon2{
-    display: none;
+.good_count{
+    height: 20px;
+    line-height: 25px;
+    display: inline-flex;
+    color:gray;
+    font-size: 14px;
+}
+.good_count img{
+    border: none;
 }
 .hot_store_detail{
     width: 43%;
-    height: 155px;
+    height: 165px;
     /* border-style: s; */
      border-radius: 5px;
     margin-left: 4.8%;
+    margin-bottom: 7px;
 }
 .market_pic{
     width: 100%;

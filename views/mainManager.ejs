@@ -18,86 +18,366 @@
 
 <body>
     <div id="text_logo">
-        <img src="/images/text.png" width="50%" height="auto">
+        <img id="inline_logo" src="/images/inline-logo.png" width="40%" height="auto">
     </div>
-
-    <div id="search">
-        <div id="search_bar">
-            <input>
-            <img src="/images/search.png" width="10%" height="30px">
-        </div>
-        <button>지도로 찾기</button>
-    </div>
-
 
     <div id="mystore">
-        <!-- <label>내 스탬프</label> -->
+        <h3><%= admin_name %>님 상점</h3>
         <div id="user_name">
-            <%= admin_name %>
+            <p>나현이네 과일과게</p>
         </div>
         <div id="market_pic">
-            <img src="/images/fruit.jpg" width="100%" height="100%">
+            <img src="/images/fruit.jpg" width="80%" height="100%">
         </div>
         <div id="store_name">
-            나현이네 과일과게
+            <p style="width: 50%">댓글 개수 : 52개</p>
+            <p style="width: 50%">좋아요 : 124개</p>
         </div>
     </div>
-
 
 
 
     <div id="hot_store">
-        <label>서울시 인기 상점</label>
-        <div class="hot_store_list">
-            <div class="hot_store_detail">
-                <div>좋아요: 212</div>
-                <div>
-                    <img src="/images/fruit.jpg" width="100%">
+            <h3>서울시 좋아요순 상점</h3>
+            <div class="hot_store_list">
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/fruit.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        통인시장
+                    </div>
+                    <div class="good_store_name">
+                        김가네 과일가게
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>213</p>
+                    </div>
                 </div>
-                <div class="detail_name">
-                    통인시장
-                    <br>김가네 과일가게
+
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market2.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        광장시장
+                    </div>
+                    <div class="good_store_name">
+                        꽃분이네
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>201</p>
+                    </div>
                 </div>
             </div>
-            <div class="hot_store_detail"></div>
+
+
+            <div class="hot_store_list">
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market5.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        통인시장
+                    </div>
+                    <div class="good_store_name">
+                        태양 수산
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>193</p>
+                    </div>
+                </div>
+
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market6.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        화양시장
+                    </div>
+                    <div class="good_store_name">
+                        화양명물가게
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>192</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hot_store_list">
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market3.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        먹자골목시장
+                    </div>
+                    <div class="good_store_name">
+                        용호과일
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>183</p>
+                    </div>
+                </div>
+
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market4.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        용통시장
+                    </div>
+                    <div class="good_store_name">
+                        쑨이네 꿀호떡
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>173</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hot_store_list">
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market7.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        화양시장
+                    </div>
+                    <div class="good_store_name">
+                        화양곶감
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>166</p>
+                    </div>
+                </div>
+
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market8.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        명랑시장
+                    </div>
+                    <div class="good_store_name">
+                        향초다방
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>154</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hot_store_list">
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market9.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        명동시장
+                    </div>
+                    <div class="good_store_name">
+                        마약김밥명동
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>130</p>
+                    </div>
+                </div>
+
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market10.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        광장시장
+                    </div>
+                    <div class="good_store_name">
+                        박가네
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>125</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hot_store_list">
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/fruit.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        통인시장
+                    </div>
+                    <div class="good_store_name">
+                        김가네 과일가게
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>213</p>
+                    </div>
+                </div>
+
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market2.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        광장시장
+                    </div>
+                    <div class="good_store_name">
+                        꽃분이네
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>201</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="hot_store_list">
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market5.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        통인시장
+                    </div>
+                    <div class="good_store_name">
+                        태양 수산
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>193</p>
+                    </div>
+                </div>
+
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market6.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        화양시장
+                    </div>
+                    <div class="good_store_name">
+                        화양명물가게
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>192</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hot_store_list">
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market3.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        먹자골목시장
+                    </div>
+                    <div class="good_store_name">
+                        용호과일
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>183</p>
+                    </div>
+                </div>
+
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market4.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        용통시장
+                    </div>
+                    <div class="good_store_name">
+                        쑨이네 꿀호떡
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>173</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hot_store_list">
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market7.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        화양시장
+                    </div>
+                    <div class="good_store_name">
+                        화양곶감
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>166</p>
+                    </div>
+                </div>
+
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market8.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        명랑시장
+                    </div>
+                    <div class="good_store_name">
+                        향초다방
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>154</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hot_store_list">
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market9.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        명동시장
+                    </div>
+                    <div class="good_store_name">
+                        마약김밥명동
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>130</p>
+                    </div>
+                </div>
+
+                <div class="hot_store_detail">
+                    <div>
+                        <img src="/images/market10.jpg" width="100%" height="100px">
+                    </div>
+                    <div class="good_market_name">
+                        광장시장
+                    </div>
+                    <div class="good_store_name">
+                        박가네
+                    </div>
+                    <div class="good_count">
+                        <img src="/images/good.png" width="20px" height="20px">
+                        <p>125</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-        <div class="hot_store_list">
-            <div class="hot_store_detail"></div>
-            <div class="hot_store_detail"></div>
-        </div>
-    </div>
 
 
 

@@ -40,6 +40,7 @@ html {
 .my_coupon_list{
     width: 80%;
     margin-left: 10%;
+    margin-bottom: 80px;
 }
 #make_coupon_div{
     width: 80%;
@@ -151,3 +152,4 @@ html {
 #nav_text{
     color: #63dded;
 }
+
