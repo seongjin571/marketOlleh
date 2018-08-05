@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>login</title>
     <meta charset="utf-8" />
@@ -7,29 +8,446 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-    
-</head>
-<body>
-    <div id="a">
-        <diV id="ab">
-            <div id="abc">
-            <div id="abcd"></div>
-        </div>
-        </diV>
-        <div id="ac">
-            <button id="b1">고객 로그인</button>
-            <button id="b2">상인 로그인</button>
+    <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
 
+    <script>
+        window.addEventListener('load', function () {
+            FastClick.attach(document.body);
+        }, false);
+    </script>
+</head>
+
+<body>
+
+    <!--start div 시작-->
+
+    <div id="start">
+        <div id="all_body">
+            <div id="intro_image_div">
+                <div id="intro_image_vertical">
+                    <img id="intro_image" src="/images/logo_with_text.png" width="45%" height="auto">
+                </div>
+            </div>
+            <div id="top_part">
+                <div id="top_vertical_helper">
+                    <div id="logo_div"></div>
+                </div>
+            </diV>
+            <div id="bottom_part">
+                <button id="user_login">고객 로그인</button>
+                <button id="seller_login">상인 로그인</button>
+
+            </div>
         </div>
     </div>
-    <script>
-            $('#b1').click(function(){
-                location.href="login_A.html";
-            });
-            $('#b2').click(function(){
-                location.href="login_B.html";
-            });
+    <style >
+        
+        input {
+            width: 700px;
+            height: 100px;
+            font-size: 30px;
+        }
+
+        button {
+            width: 500px;
+            height: 70px;
+            font-size: 30px;
+        }
+    </style>
+    <!--start div 끝-->
+
+    <!--loginuser 시작-->
+    <div id="loginuser">
+        <h1>Login</h1>
+        <form action='/login' method='POST'>
+            <input type='text' name='userid' placeholder='아이디' style='margin-bottom:30px;' />
+            <br/>
+            <input type='password' name='userpwd' placeholder='비밀번호' style='margin-bottom: 30px;' />
+            <br/>
+            <input type='submit' value='로그인' style='margin-bottom: 10px;' />
+            <br/>
+        </form>
+        <div style='margin-bottom: 10px; margin-top: 10px;'>
+            <a href='/signup'>
+                <button id="loginuser_signup">Sign Up</button>
+            </a>
+        </div>
+        <div style='margin-bottom: 10px;'>
+            <a href='/login/kakao'>
+                <button>Kakao Login</button>
+            </a>
+        </div>
+        <div style='margin-bottom: 10px;'>
+            <a href='/login/naver'>
+                <button>Naver Login</button>
+            </a>
+        </div>
+    </div>
+    <style>
+        #loginuser{
+            display: none;
+        }
+    </style>
+    <!--loginuser 끝-->
+
+
+    <!--loginManager 시작-->
+    <div id="loginManager">
+        <form action='/login' method='POST'>
+            <input type='text' id="manager_id" name='manager_id' placeholder='아이디' style='margin-bottom:30px;' />
+            <br/>
+            <input type='password' id="password" name='password' placeholder='비밀번호' style='margin-bottom: 30px;' />
+            <br/>
+            <input type='button' id="loginButton" value='로그인' style='margin-bottom: 10px;' />
+            <br/>
+        </form>
+        <div id="loginForm" style='margin-bottom: 10px; margin-top: 10px;'>
+            <a href='/signup/signupManager'>
+                <button id="loginManager_signup">Sign Up</button>
+            </a>
+        </div>
+
+    </div>
+    <style>
+        #loginManager{
+            display: none;
+        }
+        input {
+            width: 700px;
+            height: 100px;
+            font-size: 30px;
+        }
+
+        button {
+            width: 500px;
+            height: 70px;
+            font-size: 30px;
+        }
+    </style>
+
+    <!--loginManager 끝-->
+
+    <!--signupuser 시작-->
+    <div id="signupuser">
+        <h1>Sign Up</h1>
+        <div>
+            <form id='signupForm'>
+                <input type='text' id='userid' name='userid' placeholder='아이디' style='margin-bottom: 30px;' />
+                <br/>
+                <input type='text' id='username' name='username' placeholder='이름' style='margin-bottom: 30px;' />
+                <br/>
+                <input type='password' id='userpwd' name='userpwd' placeholder='비밀번호' style='margin-bottom: 30px;' />
+                <br/>
+                <input id="userfinish"type='submit' value='회원가입' style='margin-bottom: 10px;' />
+                <br/>
+            </form>
+            <script>
+                $('#signupForm').submit(function (e) {
+                    e.preventDefault();
+                    var data = {
+                        userid: $('#userid').val(),
+                        username: $('#username').val(),
+                        userpwd: $('#userpwd').val()
+                    }
+                    console.log($('#userid').val());
+                    $.ajax({
+                        type: "POST",
+                        url: "/signup",
+                        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                        cache: false,
+                        datatype: "json",
+                        data: data,
+                        success: function (result) {
+                            if (result['result'] == 'success') {
+                                alert('가입 성공');
+                                $(window).attr('location', '/loginUser');
+                            }
+                            else if (result['result'] == 'already') {
+                                alert('이미 존재하는 아이디입니다.');
+                                $('#userid').val('')
+                            }
+                        },
+                        error: function (error) {
+                            alert('가입 실패');
+                        }
+                    });
+                });
             </script>
-  
+            <div style='margin-bottom: 10px;'>
+                <a href='/login/kakao'>
+                    <button>Kakao Login</button>
+                </a>
+            </div>
+            <div style='margin-bottom: 10px;'>
+                <a href='/login/naver'>
+                    <button>Naver Login</button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <style>
+        #signupuser{
+            display: none;
+        }
+    </style>
+    <!--signupuser 끝-->
+
+    
+    <!--signupManager 시작-->
+   <div id="signupManager">
+        <h1>Sign Up Manager</h1>
+        <div>
+      
+          <form id='signupForm'>
+            <input type="text" id="manager_id" name='manager_id' placeholder="manager_id" style='margin-bottom: 10px;'>
+            <br>
+            <input type="password" id="password" name='password' placeholder="password" style='margin-bottom: 10px;'>
+            <br>
+            <input type="text" id="market_name" name='market_name' placeholder="market_name" style='margin-bottom: 10px;'>
+            <br>
+            <input type="text" id="market_location" name='market_location' placeholder="market_location" style='margin-bottom: 10px;'>
+            <br>
+            <input type="text" placeholder="manager_phone" id="manager_phone" name='manager_phone' style='margin-bottom: 10px;'>
+            <br>
+            <input type="text" placeholder="manager_name" id="manager_name" name='manager_name' style='margin-bottom: 10px;'>
+            <br>
+            <select class='stamp_standard' name="stamp_standard">
+              <option>5</option>
+              <option>10</option>
+            </seclect>
+      
+            <input type="text" placeholder="stamp_reward" id="stamp_reward" name='stamp_reward' style='margin-bottom: 10px;'>
+            <br>
+            <input type="text" placeholder="stamp_password" id="stamp_password" name='stamp_password' style='margin-bottom: 10px;'>
+            <br>
+            <input type="text" placeholder="market_promotion" id="market_promotion" name='market_promotion' style='margin-bottom: 10px;'>
+            <br>
+            <select class='stamp_kind' name="stamp_kind">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              </seclect>
+              <input type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce' style='margin-bottom: 10px;'>
+              <br>
+      <!--         <input type="text" placeholder="sijang_name" id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'> -->
+              <label id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'> 시장 찾기 </label>
+              <input type="button" value="시장찾기" id="modal_display">
+              <br>
+              <input id="managerfinish"type='submit' value='회원가입' style='margin-bottom: 10px;' />
+              <br/>
+          </form>
+      
+          <!-- Modal -->
+          <div id="myModal" class="modal">
+      
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span id="modal_close">&times;</span>
+              <h1>HI</h1>
+              <div id="Searching">
+                <select name="filed">
+                    <option value="name" selected="selected">시장이름</option>
+                    <option value="gooname">구</option>
+                    <option value="dongname">동</option>
+                    <option value="newaddress">도로명</option>
+                    <option value="oldaddress">지번</option>
+                </select>
+                <input type="text" placeholder="searching" id="search_value">
+                <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
+              </div>
+      
+              <ol id="search_result"></ol>
+            </div>
+      
+          </div>
+      
+      
+          <script>
+             
+            $('#signupForm').submit(function (e) {
+      
+              e.preventDefault();
+      
+              var manager_id = $('#manager_id').val();
+              var password = $('#password').val();
+              var market_name = $('#market_name').val();
+              var market_location = $('#market_location').val();
+              var manager_name = $('#manager_name').val();
+              var manager_phone = $('#manager_phone').val();
+              var stamp_reward = $('#stamp_reward').val();
+              var stamp_password = $('#stamp_password').val();
+              var market_promotion = $('#market_promotion').val();
+              var market_introduce = $('#market_introduce').val();
+      
+              var test = document.getElementsByClassName('stamp_standard');
+              var select_stamp_standard = test[0].selectedIndex;
+              var stamp_standard;
+              if (select_stamp_standard == 0) {
+                stamp_standard = 5;
+              } else if (select_stamp_standard == 1) {
+                stamp_standard = 10;
+              }
+              var test = document.getElementsByClassName('stamp_kind');
+              var select_stamp_kind = test[0].selectedIndex;
+              var stamp_kind;
+              if (select_stamp_kind == 0) {
+                stamp_kind = 1;
+              } else if (select_stamp_kind == 1) {
+                stamp_kind = 2;
+              } else if (select_stamp_kind == 2) {
+                stamp_kind = 3;
+              }
+              // var sijang_name = sijang_name.innerHTML;
+              var data = {
+      
+                'manager_id': manager_id,
+                'password': password,
+                'market_name': market_name,
+                'market_location': market_location,
+                'manager_phone': manager_phone,
+                'manager_name': manager_name,
+                'stamp_reward': stamp_reward,
+                'stamp_password': stamp_password,
+                'market_promotion': market_promotion,
+                'market_introduce': market_introduce,
+                'stamp_standard': stamp_standard,
+                'stamp_kind': stamp_kind,
+                'sijang_name': sijang_name.innerHTML
+      
+              };
+      
+              $.ajax({
+                type: "POST",
+                url: "/signup/signupmanager",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                cache: false,
+                datatype: "json",
+                data: data,
+                success: function (result) {
+                  if (result['result'] == 'success') {
+                    alert('가입 성공');
+                    $(window).attr('location', '/mainManager');
+                  }
+                  else if (result['result'] == 'already') {
+                    alert('이미 존재하는 아이디입니다.');
+                    $('#manager_id').val('')
+                  }
+                },
+                error: function (error) {
+                  alert('가입 실패');
+                }
+              });
+            });
+            
+          </script>
+          <script type="text/javascript" src="/javascripts/signupManager.js"></script>
+          
+        </div>
+
+   </div>
+   <style>
+        #signupManager{
+            display: none;
+        }
+    </style>
+    <!--signupManager 끝-->
+
 </body>
+
+
+
+
+
+<!--start script  시작-->
+<script>
+    setTimeout(function () {
+        $('#start_intro_image_div').fadeOut('500');
+    }, 1000);
+    
+    /* $('#start_user_login').click(function () {
+        location.href = "/loginUser";
+    });
+    $('#start_seller_login').click(function () {
+        location.href = "/loginManager";
+    });      */
+</script>
+<!--start script 끝-->
+
+
+<!--loginuser script 시작-->
+<!--loginuser script 끝-->
+
+
+<!--loginmanager script 시작-->
+<script>
+    $('#loginButton').click(function (e) {
+        e.preventDefault();
+        var manager_id = $('#manager_id').val();
+        var password = $('#password').val();
+        var data = {
+            'manager_id': manager_id,
+            'password': password
+        }
+        console.log(data);
+        $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
+            type: 'POST',
+            url: '/loginmanager',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            cache: false,
+            dataType: 'json',
+            data: data,
+            success: function (result) {
+                if (result['result'] == 'success') {
+                    alert('ok');
+                    $(window).attr('location', '/mainManager');
+                } else {
+                    alert('로그인실패');
+                }
+            },
+            error: function (error) {
+                console.log('erer');
+            }
+        });
+    });
+</script>
+<!--loginmanager script 끝-->
+
+
+
+<!--signupuser script 시작-->
+
+<!--signupuser script 끝-->
+<!--signupManager script 시작-->
+<!--signupManager script 끝-->
+<script>
+        $('#user_login').click(function () {
+            $('#start').fadeOut(300)
+            $('#loginuser').fadeIn(300)
+        })
+        $('#seller_login').click(function () {
+            $('#start').fadeOut(300)
+            $('#loginManager').fadeIn(300)
+        })
+        $('#loginuser_signup').click(function () {
+            $('#loginuser').fadeOut(300)
+            $('#signupuser').fadeIn(300)
+        })
+        $('#loginManager_signup').click(function () {
+            $('#loginManager').fadeOut(300)
+            $('#signupManager').fadeIn(300)
+        })
+        $('#userfinish').click(function () {
+            $('#signupuser').fadeOut(300)
+            $('#loginuser').fadeIn(300)
+        })
+        $('#managerfinish').click(function () {
+            $('#signupManager').fadeOut(300)
+            $('#loginManager').fadeIn(300)
+        })
+
+    </script>
+    
 </html>
