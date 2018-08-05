@@ -65,6 +65,10 @@
 	color: white;
 	margin: 6px;
 }
+article{
+	margin-top: 17%;
+	margin-bottom: 15%;
+}
 
 /*  market_infor (시장 API 정보 뿌려주는 div ~ article)  */
 /*  애초에 생성이 늦기에 적용이 안됨!!! js로 모두 동적으로 처리해줘야함  */
