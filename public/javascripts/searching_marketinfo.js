@@ -6,7 +6,7 @@ function NewGoomapLi_event(market_arr) {
 	var tempString = new Array();
 	var fullString = '';
 
-	tempString[0] = '<div class="market_infoText_li">'+market_arr.coordinateY+', '+market_arr.coordinateX+'</div>';
+	tempString[0] = '<div class="market_infoText_li">'+market_arr.coordinateX+', '+market_arr.coordinateY+'</div>';
 	tempString[1] = '<div class="market_infoText_li"> 시장 이름 : '+market_arr.name+'</div>';
 	tempString[2] = '<div class="market_infoText_li"> '+market_arr.shape+'</div>';
 	tempString[3] = '<div class="market_infoText_li"> <a href='+market_arr.web+'>시장 링크</a></div>';
@@ -40,6 +40,7 @@ function NewGoomapLi_event(market_arr) {
 
 // 
 function NewGoomapLi_css() {
+	$("#market_infor > article").css('display', 'block');
 	$(".market_infoText_li").css('margin', '10px');
 	$(".market_infoText_li > img").css('width', '100%');
 }
