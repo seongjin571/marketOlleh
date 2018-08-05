@@ -5,7 +5,7 @@ function NewGoomapLi_css() {
 	$(".market_infoText_li > img").css('width', '100%');
 }
 
-function NewGoomapLi_event(market_arr) {
+function marketInfoLi_event(market_arr) {
 
 	console.log(market_arr);
 	
@@ -46,7 +46,7 @@ function NewGoomapLi_event(market_arr) {
 
 }
 
-function SearchingLi_event(market_arr) {
+function managerInfoLi_event(market_arr) {
 
 	console.log(market_arr);
 

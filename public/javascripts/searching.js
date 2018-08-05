@@ -103,7 +103,7 @@ function makeGooTable(tableValue, gooCounter) {
 		for(var i = 0; i < parseInt(gooCounter); i++){
 			if(temp == tableValue.rows[i].name){
 				// searching_marketinfo.js 파일 참조하기!!
-				NewGoomapLi_event(tableValue.rows[i]);
+				marketInfoLi_event(tableValue.rows[i]);
 			}
 		} // for
 	}); // click function
@@ -148,9 +148,9 @@ function makeSearchList(searchResult, listCounter) {
 		// 검색 결과 li 태그도 클릭시 맵 좌표 찍어주기
 		for(var i = 0; i < parseInt(listCounter); i++){
 			if(temp == searchResult.rows[i].name){ // 시장 API 경우
-				NewGoomapLi_event(searchResult.rows[i]);
+				marketInfoLi_event(searchResult.rows[i]);
 			} else if(temp == searchResult.rows[i].market_name) { // manager DB에서 검색된 결과인 경우
-				SearchingLi_event(searchResult.rows[i]);
+				managerInfoLi_event(searchResult.rows[i]);
 			} // if ~ else
 		} // for
 
