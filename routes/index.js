@@ -470,23 +470,33 @@ router.post('/review',function(req,res,next){
 router.post('/like/:id', function(req, res) {
   var market_name = req.body.market_name;
   var sijang_name = req.body.sijang_name;
-  var sql = 'insert into `likeMarket` (`user_id`, `sijang_name`, `market_name`) values (?, ?, ?);';
-  conn.query(sql, [req.user.id, sijang_name, market_name], function(err, rows) {
+  var like_count = req.body.like_count;
+  var sql = 'update `likeMarket` set `like_count`=? where `sijang_name`=? and `market_name`=? ;';
+  conn.query(sql, [like_count ,sijang_name, market_name], function(err, rows) {
     if(err) {
       console.log(err);
       console.log('좋아요 실패');
     }
     else{
-      var sql2 = 'select count(*) as cnt from `likeMarket` where `sijang_name`=? and `market_name`=?';
-      conn.query(sql2, [sijang_name, market_name], function(error, rows2) {
+      var sql2 = 'update `stamp` set `like_check`=? where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
+      conn.query(sql2, [1, req.user.id, sijang_name, market_name], function(error, rows2) {
         if(error){
-          console.log('좋아요 집계 실패');
+          console.log('좋아요 체크 실패');
           console.log(error);
         }
         else {
-          res.send({
-            result: 'success',
-            like: rows2[0].cnt
+          var sql3 = 'select * from `likeMarket` where `sijang_name`=? and `market_name`=? ;';
+          conn.query(sql3, [sijang_name, market_name], function(err3, rows3) {
+            if(err3) {
+              console.log('좋아요 갯수 가져오기 실패');
+              console.log(err3);
+            }
+            else {
+              res.send({
+                result: 'success',
+                like: rows3[0].like_count
+              });
+            }
           });
         }
       });
@@ -497,23 +507,33 @@ router.post('/like/:id', function(req, res) {
 router.post('/cancel_like/:id', function(req, res) {
   var market_name = req.body.market_name;
   var sijang_name = req.body.sijang_name;
-  var sql = 'delete from `likeMarket` where `user_id`=? and `sijang_name`=? and `market_name`=?';
-  conn.query(sql, [req.user.id, sijang_name, market_name], function(err, rows) {
+  var like_count = req.body.like_count;
+  var sql = 'update `likeMarket` set `like_count`=? where `sijang_name`=? and `market_name`=? ;';
+  conn.query(sql, [like_count, sijang_name, market_name], function(err, rows) {
     if(err) {
       console.log(err);
       console.log('좋아요 취소 실패');
     }
     else{
-      var sql2 = 'select count(*) as cnt from `likeMarket` where `sijang_name`=? and `market_name`=?';
-      conn.query(sql2, [sijang_name, market_name], function(error, rows2) {
+      var sql2 = 'update `stamp` set `like_check`=? where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
+      conn.query(sql2, [0, req.user.id, sijang_name, market_name], function(error, rows2) {
         if(error) {
           console.log(error);
-          console.log('좋아요 취소 집계 실패');
+          console.log('좋아요 취소 체크 실패');
         }
         else {
-          res.send({
-            result: 'success',
-            like: rows2[0].cnt
+          var sql3 = 'select * from `likeMarket` where `sijang_name`=? and `market_name`=? ;';
+          conn.query(sql3, [sijang_name, market_name], function(err3, rows3) {
+            if(err3) {
+              console.log(err3);
+              console.log('좋아요 취소 갯수 가져오기 실패');
+            }
+            else {
+              res.send({
+                result: 'success',
+                like: rows3[0].like_count
+              });
+            }
           });
         }
       });

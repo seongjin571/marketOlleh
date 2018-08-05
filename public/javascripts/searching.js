@@ -1,12 +1,5 @@
 //───────────────────────────── 검색 부분 javascripts ─────────────────────────────//
 
-// display 초기 설정 부분 --> main.css 로 이동함
-// document.getElementById('tableControl').style.display = "none";
-// document.getElementById('Searching').style.display = "block";
-// document.getElementById('Goomap').style.display = "none";
-// document.getElementById('aaa').style.display = "block";
-// document.getElementById('KakaoMap').style.display = "none";
-
 // FUNCTION
 
 function TableSetting() {
@@ -18,14 +11,6 @@ function TableSetting() {
 	}
 }
 
-function hideGooTabe() {
-	// 기존 테이블 숨기고 동적으로 New Table
-	// $('#Goomap > table').hide();
-	$('#NewGoomap').append("<div></div>");
-}
-
-// ◀ 버튼의 함수 _ #tableControl
-// Goomap, NewGoomap, search_result, navControl() interact!
 function turningBack() {
 
 	var temp_goo = document.getElementById('NewGoomap');
@@ -73,24 +58,31 @@ function deleteNewSearchList() {
 
 function makeGooTable(tableValue, gooCounter) {
 
-	// 다른 구 클릭 하고 뒤로가기 안하고 또 다른 구 누를때 고려
-	$('#NewGoomap > div').remove();
-	hideGooTabe(); // Goomap ~ table 부분 숨기기
 	var tempString = new Array();
-	console.log(tableValue.rows[0].name);
-	var fullString = '\0';
+	var fullString = '';
 
-	// making table 한줄에 5개 예시
+	// making NewGoomap ~ div ~ li 태그
 	tempString[0] = "<br>";
 	for (var i = 1; i <= parseInt(gooCounter); i++) {
 		tempString[i] = '<li>' + tableValue.rows[i - 1].name + '</li>'
-		if (i % 3 == 0) // 5개 시장마다 줄 바꿈
+		if (i % 3 == 0) // 3개 시장마다 줄 바꿈
 			tempString[i] += '<br>'
 	} // for
 
 	for (var index in tempString) {
 		fullString += tempString[index];
 	} // for in 
+
+	// 같은 구 클릭했는지 검사
+	if ($('#NewGoomap > div')) {
+		if ($('#NewGoomap > div').html() == fullString) {
+			$('#NewGoomap > div').remove();
+			return;
+		}
+	}
+
+	$('#NewGoomap > div').remove();
+	$('#NewGoomap').append("<div></div>");
 
 	// jquery, table값제어 / 동적 생성된 td에 클릭함수추가
 	$('#NewGoomap > div').html(fullString);
@@ -110,8 +102,8 @@ function makeGooTable(tableValue, gooCounter) {
 		temp = $(this).text();
 		for(var i = 0; i < parseInt(gooCounter); i++){
 			if(temp == tableValue.rows[i].name){
-				console.log(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
-				changeCenter(tableValue.rows[i].coordinateY, tableValue.rows[i].coordinateX);
+				// searching_marketinfo.js 파일 참조하기!!
+				NewGoomapLi_event(tableValue.rows[i]);
 			}
 		} // for
 	}); // click function
@@ -144,18 +136,6 @@ function makeSearchList(searchResult, listCounter) {
 		}
 	}
 
-	// if (searchResult.rows[0].name) { // 시장 이름 검색
-	// 	for (var i = 0; i < parseInt(listCounter); i++) {
-	// 		tempString[i] = '<li>' + searchResult.rows[i].name + '</li>'
-	// 		fullString += tempString[i];
-	// 	} // for		
-	// } else if (searchResult.rows[0].market_name) { // 상점 이름 검색
-	// 	for (var i = 0; i < parseInt(listCounter); i++) {
-	// 		tempString[i] = '<li>' + searchResult.rows[i].market_name + '</li>'
-	// 		fullString += tempString[i];
-	// 	} // for
-	// }
-
 	// 검색 결과 li 태그로 제어 + 이벤트 추가하기
 	$('#search_result').html(fullString);
 	$('#search_result > li').click(function (event) {
@@ -168,8 +148,6 @@ function makeSearchList(searchResult, listCounter) {
 		// 검색 결과 li 태그도 클릭시 맵 좌표 찍어주기
 		for(var i = 0; i < parseInt(listCounter); i++){
 			if(temp == searchResult.rows[i].name){
-				console.log(temp);
-				console.log(searchResult.rows[i].coordinateY, searchResult.rows[i].coordinateX);
 				changeCenter(searchResult.rows[i].coordinateY, searchResult.rows[i].coordinateX);
 			} // if
 		} // for
@@ -178,6 +156,7 @@ function makeSearchList(searchResult, listCounter) {
 } // makerSearchList --> articlr태그 부분
 
 function gooAjax(event) {
+	$('.Goomap_inner>span').css('color','black');
 	// ajax 비동기적 통신으로 (index.js ~ url 참조)
 	// DB 값 rows json object 몽땅 받아옴
 	$.ajax({
@@ -186,9 +165,7 @@ function gooAjax(event) {
 		type: 'POST',
 		data: { "gooname": $(this).text() },
 		success: function (result) {
-			console.log('process sucess');
 			console.log(result);
-			// 비동기식 함수 실행 순서로 여기에다 함수 호출함
 			makeGooTable(result, result.rows.length);
 		},
 		error: function (e) {
@@ -197,14 +174,15 @@ function gooAjax(event) {
 		}
 	});
 
-	$(this).append($('#NewGoomap'));
+	$(this).parents(".map_div").append($('#NewGoomap'));
+	$(this).css('color','#fb83a5')
+
 } // gooAjax
 
 function searchingAjax(event) {
 
 	// 전달하려는 json 변수
 	var params = {
-		// filed: $('select').val(),
 		filed: "name",
 		search_value: $('#search_value').val()
 	};
@@ -215,9 +193,7 @@ function searchingAjax(event) {
 		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 		data: params,
 		success: function (result) {
-			console.log('form data ajax clear!')
 			console.log(result);
-			// 비동기식, 함수호출
 			if (result.rows.length > 0) {
 				makeSearchList(result, result.rows.length);
 			} else {

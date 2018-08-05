@@ -1,52 +1,75 @@
 
-/* * {
-	border: 1px solid black;
-}*/
-
 #Goomap {
-	height: 85%;
+	margin-top: 50px;
 	width: 100%;
 	display: none;
+	margin-bottom: 20%;
 }
 
 #Goomap_container {
-	display: flex;
-	flex-direction: column;
+	height: 100%;
+	width: 100%;
 }
 
-#Goomap > div > li {
-	list-style: none;
-}
-
-#Goomap > div > span {
-	height: 25%;
-	width: 25%;
+.map_div{
+	width: 100%;
 }
 
 .Goomap_inner {
-	display: flex;
-	flex-basis: 70px;
-	flex-grow: 1;
-}
-
-.Goomap_inner > span {
-	flex-direction: row;
-	flex-grow: 1;
+	height: 32px;
+	width: 100%;
+	display: inline-flex;
 	text-align: center;
+	margin-top: 1%;
+	font-weight: 500;
+	font-size: 18px;
 }
 
-/* ───── NEW GOO MAP ───── */
+.Goomap_inner span{
+	width: 25%;
+}
 
-#NewGoomap > div {
-	position: relative;
-	display: block;
+.menu{
+	display: inline-flex;
+	width: 100%;
+	height: 34px;
+	text-align: center;
+	margin-top: 4.5%;
+	color:#63dded;
+	font-size: 26px;
+	font-weight: 800;
+}
+
+.menu div{
+	width: 25%;
+	height: 100%;
+}
+
+#NewGoomap{
+	width: 90%;
+	margin-left: 5%;
 	background-color: #C0C0C0;
+	margin-top: 10px;
+	border-radius: 5px;
+}
+
+.Goomap_inner > span:hover {
+	font-weight: bold;
+	color: #FF69B4;
+	transition: 1s;
 }
 
 #NewGoomap > div > li {
 	list-style: none;
-	display: inline-block;
+	display: inline-flex;
 	color: white;
-
 	margin: 6px;
+}
+
+/*  market_infor (시장 API 정보 뿌려주는 div ~ article)  */
+/*  애초에 생성이 늦기에 적용이 안됨!!! js로 모두 동적으로 처리해줘야함  */
+/*  어떤 css줄지 Test line 들  */
+
+.market_infoText_li {
+	margin: 5px;
 }
