@@ -91,13 +91,7 @@ function makeGooTable(tableValue, gooCounter) {
 		$('#navControlButton').css('display', 'none');
 		$('#Goomap_container').css('display', 'none');
 		$('#Goomap').css('height', '0%');
-
-		var temp = document.getElementById('market_infor').style.display;
-		if (temp == "block") {
-			document.getElementById('market_infor').style.display = "none";
-		} else {
-			document.getElementById('market_infor').style.display = "block";
-		}
+		document.getElementById('market_infor').style.display = "block";
 
 		temp = $(this).text();
 		for(var i = 0; i < parseInt(gooCounter); i++){
@@ -148,7 +142,7 @@ function makeSearchList(searchResult, listCounter) {
 		// 검색 결과 li 태그도 클릭시 맵 좌표 찍어주기
 		for(var i = 0; i < parseInt(listCounter); i++){
 			if(temp == searchResult.rows[i].name){
-				changeCenter(searchResult.rows[i].coordinateY, searchResult.rows[i].coordinateX);
+				NewGoomapLi_event(searchResult.rows[i]);
 			} // if
 		} // for
 
