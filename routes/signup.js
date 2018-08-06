@@ -5,16 +5,8 @@ var dbconfig = require('../database.js');
 
 var conn = mysql.createConnection(dbconfig);
 
-router.get('/', function(req, res) {
-  res.render('signupUser');
-});
 
-
-router.get('/signupmanager', function(req, res) {
-  res.render('signupManager');
-});
-
-router.post('/', function(req, res) {
+router.post('/signupuser', function(req, res) {
   var userId = req.body.userid;
   var userName = req.body.username;
   var password = req.body.userpwd;
