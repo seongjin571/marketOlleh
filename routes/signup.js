@@ -56,16 +56,7 @@ router.post('/signupmanager', function(req, res) {
       conn.query(insertSql, [manager_id, password, market_name,market_location,manager_phone,manager_name,stamp_standard,stamp_reward,stamp_password,market_promotion,stamp_kind,market_introduce,sijang_name], function(err, rows){
         if(err){ console.log(err); }
         else{
-          var likeMarketSql = 'insert into `likeMarket` (`sijang_name`, `market_name`) values (?, ?) ;';
-          conn.query(likeMarketSql, [sijang_name, market_name], function(err2, rows2) {
-            if(err2) {
-              console.log(err2);
-              console.log('likeMarket 테이블 삽입 실패');
-            }
-            else {
-              res.send({ result: 'success' });
-            }
-          });
+          res.send({ result: 'success' });
         }
       });
     }

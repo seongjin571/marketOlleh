@@ -211,9 +211,9 @@
             <img src="/images/stamp.png" width="40%">
             <p>내 스탬프</p>
         </div>
-        <div id="my_sj">
-            <img src="/images/my.png" width="40%">
-            <p>MyPage</p>
+        <div id="logout">
+            <img src="/images/logout.png" width="40%">
+            <p>로그아웃</p>
         </div>
     </div>
 </body>
@@ -234,6 +234,13 @@
     $('#home_sj').click(function () {
         location.href = "/main";
     })
+    $('#logout').click(function () {
+            var logout = confirm("로그아웃 하시겠습니까?");
+            if (logout == true) {
+                
+            } else {
+            }
+        })
     var swiper = new Swiper('.swiper-container', {
         slidesPerView: 'auto',
         initialSlide: 0,

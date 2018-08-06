@@ -682,9 +682,10 @@
                 <div id="myStamp_sj">
                     <img src="/images/stamp2.png" width="40%">
                     <p id="nav_text">내 스탬프</p></div>
-                <div id="my_sj">
-                    <img src="/images/my.png" width="40%">
-                    <p>MyPage</p></div>
+                    <div id="logout">
+                        <img src="/images/logout.png" width="40%">
+                        <p>로그아웃</p>
+                    </div>
             </div>
 
                       <script>
@@ -694,6 +695,13 @@
                       $('#coupon_sj').click(function () {
                         location.href = "/coupon";
                       })
+                      $('#logout').click(function () {
+                       var logout = confirm("로그아웃 하시겠습니까?");
+                      if (logout == true) {
+                
+                        } else {
+                       }
+                       })
                       </script>
 
                       <!--stamp_kind 불러와야함-->

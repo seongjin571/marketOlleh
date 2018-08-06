@@ -277,7 +277,7 @@ router.get('/store_infor', function(req, res) {
 
 router.get('/myStamp', function(req, res) {
   // var sql = 'select * from `stamp` where `user_id`=?';
-  var sqlJoin = 'SELECT * FROM stamp INNER JOIN likeMarket ON stamp.sijang_name=likeMarket.sijang_name and stamp.market_name=likeMarket.market_name WHERE user_id=?;';
+  var sqlJoin = 'SELECT * FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name WHERE user_id=?;';
   var sql2 = 'select * from `review` where `user_id`=?';
   conn.query(sqlJoin, [req.user.id],function(error, result){
     if(error) {
@@ -471,7 +471,7 @@ router.post('/like/:id', function(req, res) {
   var market_name = req.body.market_name;
   var sijang_name = req.body.sijang_name;
   var like_count = req.body.like_count;
-  var sql = 'update `likeMarket` set `like_count`=? where `sijang_name`=? and `market_name`=? ;';
+  var sql = 'update `manager` set `like_count`=? where `sijang_name`=? and `market_name`=? ;';
   conn.query(sql, [like_count ,sijang_name, market_name], function(err, rows) {
     if(err) {
       console.log(err);
@@ -485,7 +485,7 @@ router.post('/like/:id', function(req, res) {
           console.log(error);
         }
         else {
-          var sql3 = 'select * from `likeMarket` where `sijang_name`=? and `market_name`=? ;';
+          var sql3 = 'select * from `manager` where `sijang_name`=? and `market_name`=? ;';
           conn.query(sql3, [sijang_name, market_name], function(err3, rows3) {
             if(err3) {
               console.log('좋아요 갯수 가져오기 실패');
@@ -508,7 +508,7 @@ router.post('/cancel_like/:id', function(req, res) {
   var market_name = req.body.market_name;
   var sijang_name = req.body.sijang_name;
   var like_count = req.body.like_count;
-  var sql = 'update `likeMarket` set `like_count`=? where `sijang_name`=? and `market_name`=? ;';
+  var sql = 'update `manager` set `like_count`=? where `sijang_name`=? and `market_name`=? ;';
   conn.query(sql, [like_count, sijang_name, market_name], function(err, rows) {
     if(err) {
       console.log(err);
@@ -522,7 +522,7 @@ router.post('/cancel_like/:id', function(req, res) {
           console.log('좋아요 취소 체크 실패');
         }
         else {
-          var sql3 = 'select * from `likeMarket` where `sijang_name`=? and `market_name`=? ;';
+          var sql3 = 'select * from `manager` where `sijang_name`=? and `market_name`=? ;';
           conn.query(sql3, [sijang_name, market_name], function(err3, rows3) {
             if(err3) {
               console.log(err3);
