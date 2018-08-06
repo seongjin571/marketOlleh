@@ -24,7 +24,7 @@
 </head>
 
 <body>
-       
+
 
     <div id="text_logo">
         <!-- <div id="verti"> -->
@@ -141,7 +141,7 @@
     <div id="market_infor">
         <!-- searching_marketinfo.js 필 참 -->
         <article id="market_infoText"></article>
-        <div id="map" style="width:100%;height:350px;"></div>        
+        <div id="map" style="width:100%;height:350px;"></div>
     </div>
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
@@ -549,8 +549,8 @@
                     </div>
                 </div>
             </div>
-        </div>        
-    </div> 
+        </div>
+    </div>
     <!--△─────────────────────aaa 태그 묶음 끝────────────────────△-->
 
     <!-- ▽ STORE INFO // store_infor.ejs 참조 ▽ -->
@@ -708,7 +708,7 @@
     </div>
 
     <!-- △ STORE INFO // store_infor.ejs 참조 △ -->
-    
+
     <div id="nav_sj">
         <div id="home_sj">
             <img src="/images/home2.png" width="40%">
@@ -726,9 +726,9 @@
             <img src="/images/stamp.png" width="40%">
             <p>내 스탬프</p>
         </div>
-        <div id="my_sj">
-            <img src="/images/my.png" width="40%">
-            <p>MyPage</p>
+        <div id="logout">
+            <img src="/images/logout.png" width="40%">
+            <p>로그아웃</p>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
@@ -738,6 +738,13 @@
         })
         $('#coupon_sj').click(function () {
             location.href = "/coupon";
+        })
+        $('#logout').click(function () {
+            var logout = confirm("로그아웃 하시겠습니까?");
+            if (logout == true) {
+                
+            } else {
+            }
         })
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 'auto',
@@ -751,7 +758,7 @@
         // for(var i=0; i<3; i++){
         //     document.getElementsByClassName('swiper-slide').style.backgroundImage="url('images/backSample'i'')"
         // }
-      
+
     </script>
 
 
