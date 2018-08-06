@@ -597,7 +597,6 @@
                 url: '/delete_stamp/<%= myStamps[i].id %>',
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8",
                 cache: false,
-                data: data,
                 datatype: 'json',
                 success: function(result) {
                   if (result['result']=='success'){
