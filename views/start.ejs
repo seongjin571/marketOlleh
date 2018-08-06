@@ -169,7 +169,7 @@
                 success: function (result) {
                     if (result['result'] == 'success') {
                         alert('ok');
-                        //$(window).attr('location', '/start');
+                        $(window).attr('location', '/mainManager');
                     } else {
                         alert('로그인실패');
                         //$(window).attr('location', '/start');
@@ -382,7 +382,7 @@
                         success: function (result) {
                             if (result['result'] == 'success') {
                                 alert('가입 성공');
-                                //$(window).attr('location', '/mainManager');
+                                $(window).attr('location', '/mainManager');
                             }
                             else if (result['result'] == 'already') {
                                 alert('이미 존재하는 아이디입니다.');
