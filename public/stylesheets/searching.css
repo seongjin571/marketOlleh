@@ -1,3 +1,5 @@
+@import url('//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
+body, h1, h2, h3, h4, h5, h6, li, p, span, div {font-family: 'NanumSquareRound',sans-serif;}
 
 #Goomap {
 	margin-top: 50px;
@@ -64,6 +66,10 @@
 	display: inline-flex;
 	color: white;
 	margin: 6px;
+}
+article{
+	margin-top: 17%;
+	margin-bottom: 15%;
 }
 
 /*  market_infor (시장 API 정보 뿌려주는 div ~ article)  */
