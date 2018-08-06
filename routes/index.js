@@ -542,4 +542,8 @@ router.post('/cancel_like/:id', function(req, res) {
 });
 
 
+router.post('/delete_stamp/:id', function(req, res) {
+  var sql = 'delete from `stamp` where user_id=? and id=?;';
+});
+
 module.exports = router;
