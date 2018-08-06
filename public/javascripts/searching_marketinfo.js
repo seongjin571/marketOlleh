@@ -5,7 +5,7 @@ function NewGoomapLi_css() {
 	$(".market_infoText_li > img").css('width', '100%');
 }
 
-function NewGoomapLi_event(market_arr) {
+function marketInfoLi_event(market_arr) {
 
 	console.log(market_arr);
 	
@@ -46,10 +46,10 @@ function NewGoomapLi_event(market_arr) {
 
 }
 
-function SearchingLi_event(market_arr) {
+function managerInfoLi_event(market_arr) {
 
 	console.log(market_arr);
-
+	store_infor.style.display = "block";
 	// 태그 동적으로 생성하기
 	var tempString = new Array();
 	var fullString = '';
