@@ -74,24 +74,146 @@ body, html {
 }
 
 /*start css finish*/
+
 /*loginuser css start*/
-#loginuser{
+#loginManager,#loginuser{
     width: 100%;
     height: 100%;
-    position: absolute;
     display: none;
 }
-.userinput
+#top_logo
 {
-    width: 60%;
-    height: 130px;
-    font-size: 30px;
-    margin-top:3%;
-    margin-left:5%;
-    margin-right:5%;
-    margin-bottom:3%;
-    border:0px;
-    font-size: 30pt;
-    border-radius: 30px 0 0 30px;
+    width:100%;
+    height: 25%;
 }
+#loginUser_logo_with_text2
+{
+    width:60%;
+    height: auto;
+    padding-top:30%;
+    padding-left: 20%;
+}
+
+
+.formuser
+{
+    margin-top: 10%;
+    width:100%;
+    height: 50%;
+}
+.login_button_user{
+    padding-left: 5%;
+    padding-bottom: 3%;
+    width:100%;
+    height:15%;
+}
+.login_button_user > .inputuser{
+    width:75%;
+    height:100%;
+    float:left;
+    border: 0;
+    outline:0;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: white;
+}
+
+.login_button_user > .login_user{
+    float:left;
+    width:15%;
+    height:100%;
+}
+#login_button_user2{
+   padding-left: 10%;
+   height: 10%;
+   width: 100%;
+    
+}
+.id_check
+{
+    width: 5%;
+    height:50%;
+}
+#font{
+    padding-left: 5%;
+    color:grey;
+    font-size: 70%;
+}
+
+#login_button_user3
+{
+    height: 15%;
+    width: 100%;
+}
+.loginUser_insert{
+    background-image: url('/images/loginbutton.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 90%;
+    height: 100%;
+    border: 0px;
+    padding: 0;
+    margin-left: 5%;
+    background-color: #63dded;
+   }
+#login_button_user4
+{
+    height: 15%;
+    width: 100%;
+    padding-top: 5%;
+    padding-left: 25%;
+}
+.idfind{
+    background-color: #63dded;
+    color:grey;
+    font-size: 70%;
+    height: 15%;
+    width: 20%;
+    border :0px;
+    padding: 0px;
+    float: left;
+    
+}
+#loginUser_sign_up{
+    background-color: #63dded;
+    color:grey;
+    font-size: 70%;
+    height: 15%;
+    width: 20%;
+    border :0px;
+    padding: 0px;
+    float: left;
+}
+#loginmanager_sign_up
+{
+    background-color: #63dded;
+    color:grey;
+    font-size: 70%;
+    height: 15%;
+    width: 20%;
+    border :0px;
+    padding: 0px;
+    float: left;
+}
+#kakao_logo{
+    width:100%;
+    height: 25%;
+    text-align: center;
+    
+}
+/*  
+#kakaobutton{
+    
+}
+*/
 /*loginuser css finish*/
+/*login manager css start*/
+   
+/*signupuser css start*/
+#signupuser{
+    display: none;
+}
+/*signupuser css finish*/
+/*login manager css finish*/
+/*login manager css finish*/
+/*login manager css finish*/
