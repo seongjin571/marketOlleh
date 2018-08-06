@@ -27,9 +27,10 @@ function turningBack() {
 
 	// 검색 후 뒤돌아가기 기능
 	if (temp_serch.hasChildNodes() && document.getElementById('aaa').style.display == "none") {
-		if ($('#market_infoText > div').length > 0) {
+		if ($('#market_infoText > div').length > 0) { // 첫 검색이 아닌 경우
 			document.getElementById('market_infor').style.display = "none";
 			$('#search_result').css('display', 'block');
+			store_infor.style.display = "none";
 		} else {
 			deleteNewSearchList();
 			document.getElementById('aaa').style.display = "block";
@@ -229,6 +230,14 @@ function navControl(event) {
 		document.getElementById('back_div').style.display = "block";
 	}
 	deleteNewGooTable();
+}
+
+function store_inforDisplay(){
+	if (store_infor.style.display == "none") {
+		store_infor.style.display = "block";
+	}else {
+		store_infor.style.display = "none";
+	}
 }
 
 

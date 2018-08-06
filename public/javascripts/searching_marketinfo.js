@@ -49,7 +49,7 @@ function marketInfoLi_event(market_arr) {
 function managerInfoLi_event(market_arr) {
 
 	console.log(market_arr);
-
+	store_infor.style.display = "block";
 	// 태그 동적으로 생성하기
 	var tempString = new Array();
 	var fullString = '';
