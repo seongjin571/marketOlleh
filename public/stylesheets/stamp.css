@@ -328,9 +328,9 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div {font-family: 'NanumSquareRound',
             display: none;
             width: 80%;
             margin-left: 10%;
-            height: 52%;
+            height: 50%;
             position: fixed;
-            top: 36%;
+            top: 42%;
             background-color: rgb(230, 247, 236);
             border-radius: 5px;
             font-size: 20px;
