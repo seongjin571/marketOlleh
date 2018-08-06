@@ -122,7 +122,19 @@ router.post('/couponManager', function(req, res) {
 });
 
 router.get('/mystampManager', function(req, res){
-  res.render('mystampManager');
+  var manager_id = req.session.authId;
+  var sql = 'select * from manager where manager_id = ?';
+  conn.query(sql,[manager_id],function(error,result){
+    if(error){
+      console.log(error);
+    }
+    else{
+      console.log('good');
+      res.render('mystampManager', {
+        result: result
+      });
+    }
+  })
 });
 
 router.get('/searching', function(req, res) {
@@ -543,7 +555,51 @@ router.post('/cancel_like/:id', function(req, res) {
 
 
 router.post('/delete_stamp/:id', function(req, res) {
-  var sql = 'delete from `stamp` where user_id=? and id=?;';
+  var sql = 'delete from `stamp` where id=?;';
+  conn.query(sql, [req.params.id], function(err, rows) {
+    if(err) {
+      console.log('스탬프 삭제 실패');
+      console.log(err);
+    }
+    else{
+      res.send({ result: 'success' });
+    }
+  });
+});
+
+router.post('/manager_reform_stamp',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
+  var manager_id = req.session.authId;
+  var market_name = req.body.market_name;
+  var sijang_name = req.body.sijang_name;
+  var stamp_reward = req.body.stamp_reward;
+  var stamp_password = req.body.stamp_password;
+  var market_introduce = req.body.market_introduce;
+  var market_promotion = req.body.market_promotion;
+
+  var update_manager_sql = 'update manager set stamp_reward = ?, stamp_password = ?, market_introduce =?, market_promotion =? where manager_id = ?';
+  var update_stamp_sql ='update stamp set stamp_reward = ?,stamp_password = ? where sijang_name = ? and market_name =?';
+  conn.query(update_manager_sql,[stamp_reward, stamp_password, market_introduce, market_promotion,manager_id],function(error,result,fields){
+    if(error){
+      console.log(error);
+      console.log('no1');
+    }
+    else{
+      conn.query(update_stamp_sql,[stamp_reward, stamp_password, sijang_name,market_name],function(error,result2,fields){
+        if(error){
+          console.log(error);
+          console.log('no2');
+        }
+        else{
+          console.log(result);
+          res.send({
+            result : result,
+            result2 : result2,
+            success : 'success'
+          });
+        }
+      });
+    }
+  });
 });
 
 module.exports = router;
