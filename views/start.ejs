@@ -26,7 +26,7 @@
 
     <div id="start">
         <div id="all_body">
-            <div id="intro_image_div" >  
+            <div id="intro_image_div" >
                 <!--인트로 display: none 성진이형 질문-->
                 <div id="intro_image_vertical">
                     <img id="intro_image" src="/images/logo_with_text.png">
@@ -64,14 +64,14 @@
         </form>
         <div style='margin-bottom: 10px; margin-top: 10px;'>
                 <button id="loginuser_signup">Sign Up</button>
-            
+
         </div>
         <div style='margin-bottom: 10px;'>
             <a href='/login/kakao'>
                 <button>Kakao Login</button>
             </a>
         </div>
-    </div>    
+    </div>
     <!--loginuser 끝-->
 
 
@@ -177,12 +177,12 @@
     </style>
     <!--signupuser 끝-->
 
-    
+
     <!--signupManager 시작-->
    <div id="signupManager">
         <h1>Sign Up Manager</h1>
         <div>
-      
+
           <form id='signupForm'>
             <input type="text" id="manager_id" name='manager_id' placeholder="manager_id" style='margin-bottom: 10px;'>
             <br>
@@ -200,7 +200,7 @@
               <option>5</option>
               <option>10</option>
             </seclect>
-      
+
             <input type="text" placeholder="stamp_reward" id="stamp_reward" name='stamp_reward' style='margin-bottom: 10px;'>
             <br>
             <input type="text" placeholder="stamp_password" id="stamp_password" name='stamp_password' style='margin-bottom: 10px;'>
@@ -221,10 +221,10 @@
               <input id="managerfinish"type='submit' value='회원가입' style='margin-bottom: 10px;' />
               <br/>
           </form>
-      
+
           <!-- Modal -->
           <div id="myModal" class="modal">
-      
+
             <!-- Modal content -->
             <div class="modal-content">
               <span id="modal_close">&times;</span>
@@ -240,19 +240,19 @@
                 <input type="text" placeholder="searching" id="search_value">
                 <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
               </div>
-      
+
               <ol id="search_result"></ol>
             </div>
-      
+
           </div>
-      
-      
+
+
           <script>
-             
+
             $('#signupForm').submit(function (e) {
-      
+
               e.preventDefault();
-      
+
               var manager_id = $('#manager_id').val();
               var password = $('#password').val();
               var market_name = $('#market_name').val();
@@ -263,7 +263,7 @@
               var stamp_password = $('#stamp_password').val();
               var market_promotion = $('#market_promotion').val();
               var market_introduce = $('#market_introduce').val();
-      
+
               var test = document.getElementsByClassName('stamp_standard');
               var select_stamp_standard = test[0].selectedIndex;
               var stamp_standard;
@@ -284,7 +284,7 @@
               }
               // var sijang_name = sijang_name.innerHTML;
               var data = {
-      
+
                 'manager_id': manager_id,
                 'password': password,
                 'market_name': market_name,
@@ -298,9 +298,9 @@
                 'stamp_standard': stamp_standard,
                 'stamp_kind': stamp_kind,
                 'sijang_name': sijang_name.innerHTML
-      
+
               };
-      
+
               $.ajax({
                 type: "POST",
                 url: "/signup/signupmanager",
@@ -323,10 +323,10 @@
                 }
               });
             });
-            
+
           </script>
           <script type="text/javascript" src="/javascripts/signupManager.js"></script>
-          
+
         </div>
 
    </div>
@@ -386,5 +386,5 @@
         })
 
     </script>
-    
+
 </html>
