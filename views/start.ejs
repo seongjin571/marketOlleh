@@ -26,13 +26,9 @@
 
     <div id="start">
         <div id="all_body">
-<<<<<<< HEAD
-            <div id="intro_image_div">
-=======
 
             <div id="intro_image_div">
 
->>>>>>> 962435415aab6bb86d51055448e07997f3f643dd
                 <!--인트로 display: none 성진이형 질문-->
                 <div id="intro_image_vertical">
                     <img id="intro_image" src="/images/logo_with_text.png">
@@ -91,19 +87,13 @@
     </div> -->
             <!-- 수정해야할 부분 -->
         </form>
-<<<<<<< HEAD
-=======
 
->>>>>>> 962435415aab6bb86d51055448e07997f3f643dd
         <div id="login_button_user4">
             <button class="idfind">아이디 찾기</button>
             <button id="loginUser_sign_up">Sign Up</button>
 
             <!-- 수정해야할 부분 -->
-<<<<<<< HEAD
-=======
 
->>>>>>> 962435415aab6bb86d51055448e07997f3f643dd
         </div>
         <div id="kakao_logo">
             <a href='/login/kakao'>
@@ -119,7 +109,7 @@
         <div id="top_logo">
             <img id="loginUser_logo_with_text2" src="/images/logo_with_text2.png">
         </div>
-        <form class="formuser" action='/login' method='POST'>
+        <form class="formuser" action='/loginmanager' method='POST'>
             <div class="login_button_user">
                 <input class="inputuser" type='text' id="manager_id" name='manager_id' placeholder='아이디' />
                 <img class="login_user" src="/images/login_tail.png">
@@ -178,9 +168,10 @@
                 success: function (result) {
                     if (result['result'] == 'success') {
                         alert('ok');
-                        $(window).attr('location', '/mainManager');
+                        //$(window).attr('location', '/start');
                     } else {
                         alert('로그인실패');
+                        //$(window).attr('location', '/start');
                     }
                 },
                 error: function (error) {
@@ -221,7 +212,7 @@
                     console.log($('#userid').val());
                     $.ajax({
                         type: "POST",
-                        url: "/signup",
+                        url: "/signup/signupuser",
                         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
                         cache: false,
                         datatype: "json",
@@ -229,7 +220,7 @@
                         success: function (result) {
                             if (result['result'] == 'success') {
                                 alert('가입 성공');
-                                $(window).attr('location', '/loginUser');
+                                //$(window).attr('location', '/start');
                             }
                             else if (result['result'] == 'already') {
                                 alert('이미 존재하는 아이디입니다.');
@@ -390,7 +381,7 @@
                         success: function (result) {
                             if (result['result'] == 'success') {
                                 alert('가입 성공');
-                                $(window).attr('location', '/mainManager');
+                                //$(window).attr('location', '/mainManager');
                             }
                             else if (result['result'] == 'already') {
                                 alert('이미 존재하는 아이디입니다.');
@@ -399,16 +390,14 @@
                         },
                         error: function (error) {
                             alert('가입 실패');
+                            //$(window).attr('location', '/start');
                         }
                     });
                 });
 
             </script>
             <script type="text/javascript" src="/javascripts/signupManager.js"></script>
-<<<<<<< HEAD
-=======
 
->>>>>>> 962435415aab6bb86d51055448e07997f3f643dd
 
         </div>
 
@@ -468,10 +457,6 @@
         $('#loginManager').fadeIn(300)
     })
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 962435415aab6bb86d51055448e07997f3f643dd
 </script>
 
 </html>
