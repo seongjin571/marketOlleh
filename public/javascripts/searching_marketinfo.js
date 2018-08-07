@@ -46,34 +46,3 @@ function marketInfoLi_event(market_arr) {
 
 }
 
-function managerInfoLi_event(market_arr) {
-
-	console.log(market_arr);
-	store_infor.style.display = "block";
-	// 태그 동적으로 생성하기
-	var tempString = new Array();
-	var fullString = '';
-
-	tempString[0] = '<div class="market_infoText_li"> 상점 이름 : '+market_arr.market_name+'</div>';
-	tempString[1] = '<div class="market_infoText_li"> 상점 주인 : '+market_arr.manager_name+'</div>';
-	tempString[2] = '<div class="market_infoText_li"> 상점 연락처 : '+market_arr.manager_phone+'</div>';
-	tempString[3] = '<div class="market_infoText_li"> 상점 위치 : '+market_arr.market_location+'</div>';
-	tempString[4] = '<div class="market_infoText_li"> 상점 프로모션 : '+market_arr.market_promotion+'</div>';
-	tempString[5] = '<div class="market_infoText_li"> 상점 소개 : '+market_arr.market_introduce+'</div>';
-	tempString[6] = '<div class="market_infoText_li"> 소속 시장 : '+market_arr.sijang_name+'</div>';
-
-	// 임시 배열 text 하나로 합치고 넣기
-	for (var index in tempString) {
-		fullString += tempString[index];
-	} // for in 
-
-	market_infoText.innerHTML = fullString;
-
-	// CSS 나중 적용
-	NewGoomapLi_css();
-
-	// MAP API
-	relayout();
-	changeCenter(market_arr.coordinateX, market_arr.coordinateY);
-
-}
