@@ -145,12 +145,15 @@
             location.href = "/mystampManager";
         })
         $('#logout').click(function () {
-            var logout = confirm("로그아웃 하시겠습니까?");
-            if (logout == true) {
-                
-            } else {
-            }
-        })
+                var logout = confirm("로그아웃 하시겠습니까?");
+                if (logout == true) {
+                  console.log('로그아웃성공');
+                  $(location).attr('href','/logoutmanager');
+
+                } else {
+                  console.log('로그아웃실패');
+                }
+            })
     </script>
     <script src="/javascripts/mystore.js"></script>
 

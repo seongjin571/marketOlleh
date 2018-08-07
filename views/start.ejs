@@ -143,13 +143,7 @@
 
 
     <script>
-    $(document).keypress(function (e) {
-        if (e.which == 13) {
-            $('#loginButton').click();
-            console.log('엔터키');
-            return false;
-        }
-    });
+  
         $('#loginButton').click(function (e) {
             e.preventDefault();
             var manager_id = $('#manager_id').val();

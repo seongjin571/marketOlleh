@@ -115,12 +115,15 @@
             location.href = "/mystore";
         })
         $('#logout').click(function () {
-            var logout = confirm("로그아웃 하시겠습니까?");
-            if (logout == true) {
+                var logout = confirm("로그아웃 하시겠습니까?");
+                if (logout == true) {
+                  console.log('로그아웃성공');
+                  $(location).attr('href','/logoutmanager');
 
-            } else {
-            }
-        })
+                } else {
+                  console.log('로그아웃실패');
+                }
+            })
         $('#stamp_reform_button').click(function(){
           var market_name = '<%= result[0].market_name %>';
           var sijang_name = '<%= result[0].sijang_name %>';
