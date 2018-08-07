@@ -28,7 +28,7 @@
 
     <div id="text_logo">
         <!-- <div id="verti"> -->
-        <img id="inline_logo" src="/images/inline-logo.png" width="25%" height="auto">
+        <img id="inline_logo" src="/images/inline-logo.png" width="40%" height="auto">
         <!-- </div> -->
         <div id="Searching">
             <div id="verti">
@@ -873,7 +873,7 @@
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
-    <script> 
+    <script>
         $('#myStamp_sj').click(function () {
             location.href = "/myStamp";
         })
@@ -881,12 +881,15 @@
             location.href = "/coupon";
         })
         $('#logout').click(function () {
-            var logout = confirm("로그아웃 하시겠습니까?");
-            if (logout == true) {
+                var logout = confirm("로그아웃 하시겠습니까?");
+                if (logout == true) {
+                  console.log('로그아웃성공');
+                  $(location).attr('href','/logout');
 
-            } else {
-            }
-        })
+                } else {
+                  console.log('로그아웃실패');
+                }
+            })
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 'auto',
             centeredSlides: true,
@@ -934,7 +937,7 @@
         // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
         var markers = [];
 
-        // 마커 하나를 지도위에 표시합니다 
+        // 마커 하나를 지도위에 표시합니다
         addMarker(new daum.maps.LatLng(33.450701, 126.570667));
 
         // 마커를 생성하고 지도위에 표시하는 함수입니다
@@ -961,7 +964,7 @@
 
         function relayout() {
             // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
-            // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
+            // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다
             // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
             map.relayout();
         }
