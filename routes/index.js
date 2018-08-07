@@ -17,49 +17,113 @@ router.get('/coupon', function(req, res){
   var find_stamp = 'select * from `stamp` where `user_id` =?';
   var user_id = req.user.id;
   var mycoupon = 'select * from `coupon_customer` where `user_id` = ?';
-  conn.query(mycoupon,[user_id],function(error,result1,fields){
-    if(error){
-      console.log('error1');
-    }
-    else if(! result1.length){
-      console.log('발급받은쿠폰없음');
-      conn.query(find_stamp,[user_id],function(error,result2,fields){
+  var couponlist = 'select * from `coupon_manager`';
+  conn.query(couponlist,function(err,cou_result){
+    if(err){
+      console.log('시작부터에러');
+    }else if(! cou_result.length){
+      conn.query(mycoupon,[user_id],function(error,result1,fields){
         if(error){
-          console.log('error2');
+          console.log('error1');
         }
-        else if(! result2.length){
-          console.log('발급받은 스탬프 없음');
-          res.render('coupon', {
-            title : '발급받은쿠폰없고 스탬프 없고',
-            result1 : undefined,
-            result2 : undefined
+        else if(! result1.length){
+          console.log('발급받은쿠폰없음');
+          conn.query(find_stamp,[user_id],function(error,result2,fields){
+            if(error){
+              console.log('error2');
+            }
+            else if(! result2.length){
+              console.log('발급받은 스탬프 없음');
+              res.render('coupon', {
+                title : '발급받은쿠폰없고 스탬프 없고',
+                result1 : undefined,
+                result2 : undefined,
+                cou_result : undefined
+              })
+            }else{
+              console.log('발급받은 스탬프 있음');
+              res.render('coupon', {
+                title : '발급받은쿠폰없고 스탬프 있고',
+                result1 : undefined,
+                result2 : result2,
+                cou_result : undefined
+              })
+            }
           })
-        }else{
-          console.log('발급받은 스탬프 있음');
-          res.render('coupon', {
-            title : '발급받은쿠폰없고 스탬프 있고',
-            result1 : undefined,
-            result2 : result2
+        }
+        else{
+          console.log('발급받은쿠폰이있는경우');
+          conn.query(find_stamp,[user_id],function(error,result2,fields){
+            if(! result2.length){
+              console.log('발급받은 스탬프 없음');
+              res.render('coupon',{
+                title : '쿠폰있고 스탬프 없고',
+                result1 : result1,
+                result2 : undefined,
+                cou_result : undefined
+              })
+            }else{
+              console.log('발급받은 스탬프 있음');
+              res.render('coupon',{
+                title : '쿠폰있고 스탬프 있고',
+                result1 : result1,
+                result2 : result2,
+                cou_result : undefined
+              })
+            }
           })
         }
       })
-    }
-    else{
-      console.log('발급받은쿠폰이있는경우');
-      conn.query(find_stamp,[user_id],function(error,result2,fields){
-        if(! result2.length){
-          console.log('발급받은 스탬프 없음');
-          res.render('coupon',{
-            title : '쿠폰있고 스탬프 없고',
-            result1 : result1,
-            result2 : undefined
+    }else{
+      conn.query(mycoupon,[user_id],function(error,result1,fields){
+        if(error){
+          console.log('error1');
+        }
+        else if(! result1.length){
+          console.log('발급받은쿠폰없음');
+          conn.query(find_stamp,[user_id],function(error,result2,fields){
+            if(error){
+              console.log('error2');
+            }
+            else if(! result2.length){
+              console.log('발급받은 스탬프 없음');
+              res.render('coupon', {
+                title : '발급받은쿠폰없고 스탬프 없고',
+                result1 : undefined,
+                result2 : undefined,
+                cou_result : cou_result
+              })
+            }else{
+              console.log('발급받은 스탬프 있음');
+              res.render('coupon', {
+                title : '발급받은쿠폰없고 스탬프 있고',
+                result1 : undefined,
+                result2 : result2,
+                cou_result : cou_result
+              })
+            }
           })
-        }else{
-          console.log('발급받은 스탬프 있음');
-          res.render('coupon',{
-            title : '쿠폰있고 스탬프 있고',
-            result1 : result1,
-            result2 : result2
+        }
+        else{
+          console.log('발급받은쿠폰이있는경우');
+          conn.query(find_stamp,[user_id],function(error,result2,fields){
+            if(! result2.length){
+              console.log('발급받은 스탬프 없음');
+              res.render('coupon',{
+                title : '쿠폰있고 스탬프 없고',
+                result1 : result1,
+                result2 : undefined,
+                cou_result : cou_result
+              })
+            }else{
+              console.log('발급받은 스탬프 있음');
+              res.render('coupon',{
+                title : '쿠폰있고 스탬프 있고',
+                result1 : result1,
+                result2 : result2,
+                cou_result : cou_result
+              })
+            }
           })
         }
       })
