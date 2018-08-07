@@ -29,6 +29,7 @@ function turningBack() {
 	if (temp_serch.hasChildNodes() && document.getElementById('aaa').style.display == "none") {
 		if ($('#market_infoText > div').length > 0) { // 첫 검색이 아닌 경우
 			document.getElementById('market_infor').style.display = "none";
+			document.getElementById('store_infor').style.display = "none";
 			$('#search_result').css('display', 'block');
 			store_infor.style.display = "none";
 		} else {
@@ -39,7 +40,8 @@ function turningBack() {
 			document.getElementById('back_div').style.display = "none";
 			document.getElementById('Searching').style.display = "table";
 			$('article').css('display', 'block');
-			document.getElementById('market_infor').style.display = "none";			
+			document.getElementById('market_infor').style.display = "none";
+			document.getElementById('store_infor').style.display = "none";			
 		} // inner else ~ if
 	} // if
 
@@ -54,6 +56,8 @@ function deleteNewGooTable() {
 
 	// 지도 표출후 다시 original Goomap 으로 가는 상황 고려
 	$('#market_infor').hide();
+	$('#store_infor').hide();
+	
 }
 
 function deleteNewSearchList() {
