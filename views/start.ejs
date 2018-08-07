@@ -12,6 +12,7 @@
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+    <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
 
     <script>
         window.addEventListener('load', function () {
@@ -67,14 +68,12 @@
                 <input class="inputuser" type='password' name='userpwd' placeholder='비밀번호' />
                 <img class="login_user" src="/images/login_tail.png">
             </div>
-            <!-- 수정해야할 부분 -->
-            <input type='submit' value='로그인' style='margin-bottom: 10px;' />
-            <br/>
-            <!-- 수정해야할 부분 -->
+            
             <div id="login_button_user2">
-                <button class="id_check"></button>
+                <input type="checkbox" class="id_check" name="feature" value="scales" checked />
                 <span id="font">로그인 상태 유지</span>
             </div>
+              <!-- 수정해야할 부분 -->
             <div id="login_button_user3">
                 <input type='submit' value='' class="loginUser_insert" />
             </div>
@@ -91,17 +90,16 @@
             <button class="idfind">아이디 찾기</button>
             <button id="loginUser_sign_up">Sign Up</button>
 
-            <!-- 수정해야할 부분 -->
 
+            <!-- 수정해야할 부분 -->
         </div>
         <div id="kakao_logo">
             <a href='/login/kakao'>
-                <button id="kakaobutton">Kakao Login</button>
+                <button id="kakaobutton"></button>
             </a>
         </div>
     </div>
     <!--loginuser 끝-->
-
 
     <!--loginManager 시작-->
     <div id="loginManager">
@@ -119,22 +117,17 @@
             </div>
 
             <div id="login_button_user2">
-                <button class="id_check"></button>
-                <span id="font">로그인 상태 유지</span>
-            </div>
-            <div id="login_button_user3">
-
-
-                <!-- 내가만든 로그인 -->
-                <input type='submit' value='' class="loginUser_insert" />
-                <!-- 원래양식 로그인 -->
-                <input type='button' id="loginButton" value='로그인' style='margin-bottom: 10px;' />
-            </div>
+                    <input type="checkbox" class="id_check" name="feature" value="scales" checked />
+                    <span id="font">로그인 상태 유지</span>
+                </div>
+         <div id="login_button_user3">
+                        <input type='submit' value='' class="loginUser_insert" />
+         </div>
         </form>
         <div id="login_button_user4">
                 <button class="idfind">아이디 찾기</button>
-                <button id="loginmanager_sign_up">Sign Up</button>
-         </div>
+                <button id="loginUser_sign_up">Sign Up</button>
+            </div>
 
         <!-- 회원가입부분 -->
         <!-- <div id="loginForm" style='margin-bottom: 10px; margin-top: 10px;'>
@@ -455,6 +448,7 @@
         $('#signupManager').fadeOut(300)
         $('#loginManager').fadeIn(300)
     })
+
 
 </script>
 
