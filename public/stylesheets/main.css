@@ -296,27 +296,34 @@ label{
     margin-top:9%;
     margin-bottom: 80px;
 }
-.hot_store_list{
+#hot_store_market{
+    width: 100%;
+    /* margin: 0 auto; */
+    height: 875px;
+    margin-top:9%;
+    margin-bottom: 80px;
+}
+.hot_store_list,.hot_store_list_market{
     width: 100%;
     display: inline-flex
 }
-.hot_store_list img{
+.hot_store_list img,.hot_store_list_market img{
         border-radius: 4px;
         border-style: solid;
         border-color: #c5c6c7;
         border-width: 0.8px;
 }
-.good_count{
+.good_count,.good_count_market{
     height: 20px;
     line-height: 25px;
     display: inline-flex;
     color:gray;
     font-size: 14px;
 }
-.good_count img{
+.good_count img,.good_count_market img{
     border: none;
 }
-.hot_store_detail{
+.hot_store_detail,.hot_store_detail_market{
     width: 43%;
     height: 165px;
     /* border-style: s; */
