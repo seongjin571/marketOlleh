@@ -68,7 +68,7 @@
                 <input class="inputuser" type='password' name='userpwd' placeholder='비밀번호' />
                 <img class="login_user" src="/images/login_tail.png">
             </div>
-            
+
             <div id="login_button_user2">
                 <input type="checkbox" class="id_check" name="feature" value="scales" checked />
                 <span id="font">로그인 상태 유지</span>
@@ -122,7 +122,7 @@
                     <span id="font">로그인 상태 유지</span>
                 </div>
          <div id="login_button_user3">
-                        <input type='submit' value='' class="loginUser_insert" />
+                        <input type='submit' id="loginButton" value='' class="loginUser_insert" />
          </div>
 
         </form>
@@ -143,6 +143,13 @@
 
 
     <script>
+    $(document).keypress(function (e) {
+        if (e.which == 13) {
+            $('#loginButton').click();
+            console.log('엔터키');
+            return false;
+        }
+    });
         $('#loginButton').click(function (e) {
             e.preventDefault();
             var manager_id = $('#manager_id').val();
