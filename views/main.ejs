@@ -703,7 +703,7 @@
             <p class="store_name_sj">
             </p>
             <p class="market_name_sj">
-                    
+
             </p>
         </div>
 
@@ -805,7 +805,6 @@
         </div>
 
         <div class="store_review_sj">
-            <button class="review_button_sj">리뷰 등록</button>
             <div class="review_div_sj">
 
                 <div class="review_content_sj">
@@ -897,6 +896,23 @@
                 clickable: true,
             },
         });
+
+        $('#go_stamp_sj').click(function () {
+            $('#stamp_menu_sj').show(200);
+            $('.store_detail_sj').hide(200);
+            $('.store_review_sj').hide(200);
+        })
+        $('#go_store_detail_sj').click(function () {
+            $('#stamp_menu_sj').hide(200);
+            $('.store_detail_sj').show(200);
+            $('.store_review_sj').hide(200);
+
+        })
+        $('#go_store_review_sj').click(function () {
+            $('#stamp_menu_sj').hide(200);
+            $('.store_detail_sj').hide(200);
+            $('.store_review_sj').show(200);
+        })
         // for(var i=0; i<3; i++){
         //     document.getElementsByClassName('swiper-slide').style.backgroundImage="url('images/backSample'i'')"
         // }
@@ -965,20 +981,20 @@
     <!-------------------- KAKAO MAP API ---------------------->
     <script type='text/javascript' src='javascripts/searching.js'></script>
     <script type='text/javascript' src='javascripts/searching_marketinfo.js'></script>
-<script>
-    function managerInfoLi_event(market_arr) {
-        $('#store_infor').css('display','block');
-        $('#market_infor').css('display','none');
-        console.log(market_arr);
-        var manager_id=market_arr.manager_id;
-        var market_name=market_arr.market_name;
-        var introduce=market_arr.market_introduce;
-        var stamp_reward=market_arr.stamp_reward;
-        var market_promotion=market_arr.market_promotion;
-        var like_count=market_arr.like_count;
-        alert(manager_id)
-    }
-</script>
+    <script>
+        function managerInfoLi_event(market_arr) {
+            $('#store_infor').css('display', 'block');
+            $('#market_infor').css('display', 'none');
+            console.log(market_arr);
+            var manager_id = market_arr.manager_id;
+            var market_name = market_arr.market_name;
+            var introduce = market_arr.market_introduce;
+            var stamp_reward = market_arr.stamp_reward;
+            var market_promotion = market_arr.market_promotion;
+            var like_count = market_arr.like_count;
+            alert(manager_id)
+        }
+    </script>
 </body>
 
 </html>
