@@ -12,6 +12,7 @@
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+    <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
 
     <script>
         window.addEventListener('load', function () {
@@ -31,9 +32,7 @@
             <div id="intro_image_div">
 
                 <!--인트로 display: none 성진이형 질문-->
-                <div id="intro_image_vertical">
-                    <img id="intro_image" src="/images/logo_with_text.png">
-                </div>
+                    <img id="intro_image" src="/images/intro.jpg">
             </div>
             <div id="top_part">
                 <div id="top_vertical_helper">
@@ -69,14 +68,12 @@
                 <input class="inputuser" type='password' name='userpwd' placeholder='비밀번호' />
                 <img class="login_user" src="/images/login_tail.png">
             </div>
-            <!-- 수정해야할 부분 -->
-            <input type='submit' value='로그인' style='margin-bottom: 10px;' />
-            <br/>
-            <!-- 수정해야할 부분 -->
+
             <div id="login_button_user2">
-                <button class="id_check"></button>
+                <input type="checkbox" class="id_check" name="feature" value="scales" checked />
                 <span id="font">로그인 상태 유지</span>
             </div>
+              <!-- 수정해야할 부분 -->
             <div id="login_button_user3">
                 <input type='submit' value='' class="loginUser_insert" />
             </div>
@@ -93,17 +90,16 @@
             <button class="idfind">아이디 찾기</button>
             <button id="loginUser_sign_up">Sign Up</button>
 
-            <!-- 수정해야할 부분 -->
 
+            <!-- 수정해야할 부분 -->
         </div>
         <div id="kakao_logo">
             <a href='/login/kakao'>
-                <button id="kakaobutton">Kakao Login</button>
+                <button id="kakaobutton"></button>
             </a>
         </div>
     </div>
     <!--loginuser 끝-->
-
 
     <!--loginManager 시작-->
     <div id="loginManager">
@@ -121,22 +117,19 @@
             </div>
 
             <div id="login_button_user2">
-                <button class="id_check"></button>
-                <span id="font">로그인 상태 유지</span>
-            </div>
-            <div id="login_button_user3">
 
+                    <input type="checkbox" class="id_check" name="feature" value="scales" checked />
+                    <span id="font">로그인 상태 유지</span>
+                </div>
+         <div id="login_button_user3">
+                        <input type='submit' id="loginButton" value='' class="loginUser_insert" />
+         </div>
 
-                <!-- 내가만든 로그인 -->
-                <input type='submit' value='' class="loginUser_insert" />
-                <!-- 원래양식 로그인 -->
-                <input type='button' id="loginButton" value='로그인' style='margin-bottom: 10px;' />
-            </div>
         </form>
         <div id="login_button_user4">
                 <button class="idfind">아이디 찾기</button>
-                <button id="loginmanager_sign_up">Sign Up</button>
-         </div>
+                <button id="loginUser_sign_up">Sign Up</button>
+            </div>
 
         <!-- 회원가입부분 -->
         <!-- <div id="loginForm" style='margin-bottom: 10px; margin-top: 10px;'>
@@ -150,6 +143,7 @@
 
 
     <script>
+  
         $('#loginButton').click(function (e) {
             e.preventDefault();
             var manager_id = $('#manager_id').val();
@@ -190,7 +184,10 @@
 
     <!--signupuser 시작-->
     <div id="signupuser">
-        <h1>Sign Up</h1>
+        <div id="top_logo2">
+            <img src="inline-logo.png" id="signuplogo" />
+            <p class="signuptitle">고객 회원가입</p>
+        </div>
         <div>
             <form id='signupForm1'>
                 <input type='text' id='userid' name='userid' placeholder='아이디' style='margin-bottom: 30px;' />
@@ -420,7 +417,7 @@
 <script>
     setTimeout(function () {
         $('#intro_image_div').fadeOut('500');
-    }, 1000);
+    }, 2000);
 </script>
 <!--start script 끝-->
 <!--loginuser script 시작-->
@@ -457,6 +454,7 @@
         $('#signupManager').fadeOut(300)
         $('#loginManager').fadeIn(300)
     })
+
 
 </script>
 

@@ -69,9 +69,10 @@
             position: fixed;
             background-color: white;
             z-index: 1;
+            top: 8%;
         }
 
-        #store_name_sj {
+        .store_name_sj {
             text-align: center;
             font-size: 28px;
             width: 70%;
@@ -79,7 +80,7 @@
 
         }
 
-        #market_name_sj {
+        .market_name_sj {
             text-align: center;
             font-size: 20px;
             width: 30%;
@@ -256,29 +257,4 @@
             font-size: 20px;
             margin-bottom: 20px;
         }
-        /* #review_write_sj{
-            width: 100%;
-            display: none;
-            position: absolute;
-            top: 36%;
-        }
-        #write_button_div_sj{
-            width: 100%;
-            display: inline-flex;
-        }
-        textarea{
-            width: 80%;
-            margin-left: 10%;
-            font-size: 23px;
-        }
-        #write_button_div_sj button{
-            width: 35%;
-            height: 50px;
-            /* background-color:  */
-            background-color:  #fb83a5;
-            border-color: #fb83a5;
-            border-radius: 5px;
-            color: white;
-            font-size: 25px;
-            margin-top: 20px;
-        } */
+

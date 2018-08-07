@@ -68,10 +68,19 @@
 </head>
 
 <body>
-  <div>
-
-  </div>
     <div id="menu">내 스탬프
+
+    </div>
+    <div>
+      <input type="text" id="stamp_reward" value="<%= result[0].stamp_reward %>">
+      <br>
+      <input type="text" id="market_promotion" value="<%= result[0].market_promotion %>">
+      <br>
+      <input type="text" id="market_introduce" value="<%= result[0].market_introduce %>">
+      <br>
+      <input type="text" id="stamp_password" value="<%= result[0].stamp_password %>">
+      <br>
+      <button id="stamp_reform_button">변경</button>
     </div>
     <div id="nav_sj">
         <div id="home">
@@ -106,12 +115,50 @@
             location.href = "/mystore";
         })
         $('#logout').click(function () {
-            var logout = confirm("로그아웃 하시겠습니까?");
-            if (logout == true) {
+                var logout = confirm("로그아웃 하시겠습니까?");
+                if (logout == true) {
+                  console.log('로그아웃성공');
+                  $(location).attr('href','/logoutmanager');
 
-            } else {
-            }
-        })
+                } else {
+                  console.log('로그아웃실패');
+                }
+            })
+        $('#stamp_reform_button').click(function(){
+          var market_name = '<%= result[0].market_name %>';
+          var sijang_name = '<%= result[0].sijang_name %>';
+          var stamp_reward = $('#stamp_reward').val();
+          var stamp_password = $('#stamp_password').val();
+          var market_promotion = $('#market_promotion').val();
+          var market_introduce = $('#market_introduce').val();
+
+          var data = {
+            'market_name' : market_name,
+            'sijang_name' : sijang_name,
+            'stamp_reward' : stamp_reward,
+            'stamp_password' : stamp_password,
+            'market_promotion' : market_promotion,
+            'market_introduce' : market_introduce
+          }
+
+          $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
+                  type:'POST',
+                  url:'/manager_reform_stamp',
+                  contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                  cache:false,
+                  dataType:'json',
+                  data:data,
+                  success:function(result){
+                    if(result['success']=='success'){
+                      alert('수정되었습니다.');
+                      location.reload();
+                    }//result if
+                  },
+                  error:function(error){
+                    console.log('erer');
+                  }
+            });
+        });
     </script>
 </body>
 

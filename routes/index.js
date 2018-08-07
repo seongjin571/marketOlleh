@@ -17,49 +17,113 @@ router.get('/coupon', function(req, res){
   var find_stamp = 'select * from `stamp` where `user_id` =?';
   var user_id = req.user.id;
   var mycoupon = 'select * from `coupon_customer` where `user_id` = ?';
-  conn.query(mycoupon,[user_id],function(error,result1,fields){
-    if(error){
-      console.log('error1');
-    }
-    else if(! result1.length){
-      console.log('발급받은쿠폰없음');
-      conn.query(find_stamp,[user_id],function(error,result2,fields){
+  var couponlist = 'select * from `coupon_manager`';
+  conn.query(couponlist,function(err,cou_result){
+    if(err){
+      console.log('시작부터에러');
+    }else if(! cou_result.length){
+      conn.query(mycoupon,[user_id],function(error,result1,fields){
         if(error){
-          console.log('error2');
+          console.log('error1');
         }
-        else if(! result2.length){
-          console.log('발급받은 스탬프 없음');
-          res.render('coupon', {
-            title : '발급받은쿠폰없고 스탬프 없고',
-            result1 : undefined,
-            result2 : undefined
+        else if(! result1.length){
+          console.log('발급받은쿠폰없음');
+          conn.query(find_stamp,[user_id],function(error,result2,fields){
+            if(error){
+              console.log('error2');
+            }
+            else if(! result2.length){
+              console.log('발급받은 스탬프 없음');
+              res.render('coupon', {
+                title : '발급받은쿠폰없고 스탬프 없고',
+                result1 : undefined,
+                result2 : undefined,
+                cou_result : undefined
+              })
+            }else{
+              console.log('발급받은 스탬프 있음');
+              res.render('coupon', {
+                title : '발급받은쿠폰없고 스탬프 있고',
+                result1 : undefined,
+                result2 : result2,
+                cou_result : undefined
+              })
+            }
           })
-        }else{
-          console.log('발급받은 스탬프 있음');
-          res.render('coupon', {
-            title : '발급받은쿠폰없고 스탬프 있고',
-            result1 : undefined,
-            result2 : result2
+        }
+        else{
+          console.log('발급받은쿠폰이있는경우');
+          conn.query(find_stamp,[user_id],function(error,result2,fields){
+            if(! result2.length){
+              console.log('발급받은 스탬프 없음');
+              res.render('coupon',{
+                title : '쿠폰있고 스탬프 없고',
+                result1 : result1,
+                result2 : undefined,
+                cou_result : undefined
+              })
+            }else{
+              console.log('발급받은 스탬프 있음');
+              res.render('coupon',{
+                title : '쿠폰있고 스탬프 있고',
+                result1 : result1,
+                result2 : result2,
+                cou_result : undefined
+              })
+            }
           })
         }
       })
-    }
-    else{
-      console.log('발급받은쿠폰이있는경우');
-      conn.query(find_stamp,[user_id],function(error,result2,fields){
-        if(! result2.length){
-          console.log('발급받은 스탬프 없음');
-          res.render('coupon',{
-            title : '쿠폰있고 스탬프 없고',
-            result1 : result1,
-            result2 : undefined
+    }else{
+      conn.query(mycoupon,[user_id],function(error,result1,fields){
+        if(error){
+          console.log('error1');
+        }
+        else if(! result1.length){
+          console.log('발급받은쿠폰없음');
+          conn.query(find_stamp,[user_id],function(error,result2,fields){
+            if(error){
+              console.log('error2');
+            }
+            else if(! result2.length){
+              console.log('발급받은 스탬프 없음');
+              res.render('coupon', {
+                title : '발급받은쿠폰없고 스탬프 없고',
+                result1 : undefined,
+                result2 : undefined,
+                cou_result : cou_result
+              })
+            }else{
+              console.log('발급받은 스탬프 있음');
+              res.render('coupon', {
+                title : '발급받은쿠폰없고 스탬프 있고',
+                result1 : undefined,
+                result2 : result2,
+                cou_result : cou_result
+              })
+            }
           })
-        }else{
-          console.log('발급받은 스탬프 있음');
-          res.render('coupon',{
-            title : '쿠폰있고 스탬프 있고',
-            result1 : result1,
-            result2 : result2
+        }
+        else{
+          console.log('발급받은쿠폰이있는경우');
+          conn.query(find_stamp,[user_id],function(error,result2,fields){
+            if(! result2.length){
+              console.log('발급받은 스탬프 없음');
+              res.render('coupon',{
+                title : '쿠폰있고 스탬프 없고',
+                result1 : result1,
+                result2 : undefined,
+                cou_result : cou_result
+              })
+            }else{
+              console.log('발급받은 스탬프 있음');
+              res.render('coupon',{
+                title : '쿠폰있고 스탬프 있고',
+                result1 : result1,
+                result2 : result2,
+                cou_result : cou_result
+              })
+            }
           })
         }
       })
@@ -122,7 +186,19 @@ router.post('/couponManager', function(req, res) {
 });
 
 router.get('/mystampManager', function(req, res){
-  res.render('mystampManager');
+  var manager_id = req.session.authId;
+  var sql = 'select * from manager where manager_id = ?';
+  conn.query(sql,[manager_id],function(error,result){
+    if(error){
+      console.log(error);
+    }
+    else{
+      console.log('good');
+      res.render('mystampManager', {
+        result: result
+      });
+    }
+  })
 });
 
 router.get('/searching', function(req, res) {
@@ -277,7 +353,8 @@ router.get('/store_infor', function(req, res) {
 
 router.get('/myStamp', function(req, res) {
   // var sql = 'select * from `stamp` where `user_id`=?';
-  var sqlJoin = 'SELECT * FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name WHERE user_id=?;';
+  // var sqlJoin = 'SELECT * FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name WHERE user_id=?;';
+  var sqlJoin = 'SELECT * FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id WHERE stamp.user_id=?;';
   var sql2 = 'select * from `review` where `user_id`=?';
   conn.query(sqlJoin, [req.user.id],function(error, result){
     if(error) {
@@ -543,7 +620,51 @@ router.post('/cancel_like/:id', function(req, res) {
 
 
 router.post('/delete_stamp/:id', function(req, res) {
-  var sql = 'delete from `stamp` where user_id=? and id=?;';
+  var sql = 'delete from `stamp` where id=?;';
+  conn.query(sql, [req.params.id], function(err, rows) {
+    if(err) {
+      console.log('스탬프 삭제 실패');
+      console.log(err);
+    }
+    else{
+      res.send({ result: 'success' });
+    }
+  });
+});
+
+router.post('/manager_reform_stamp',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
+  var manager_id = req.session.authId;
+  var market_name = req.body.market_name;
+  var sijang_name = req.body.sijang_name;
+  var stamp_reward = req.body.stamp_reward;
+  var stamp_password = req.body.stamp_password;
+  var market_introduce = req.body.market_introduce;
+  var market_promotion = req.body.market_promotion;
+
+  var update_manager_sql = 'update manager set stamp_reward = ?, stamp_password = ?, market_introduce =?, market_promotion =? where manager_id = ?';
+  var update_stamp_sql ='update stamp set stamp_reward = ?,stamp_password = ? where sijang_name = ? and market_name =?';
+  conn.query(update_manager_sql,[stamp_reward, stamp_password, market_introduce, market_promotion,manager_id],function(error,result,fields){
+    if(error){
+      console.log(error);
+      console.log('no1');
+    }
+    else{
+      conn.query(update_stamp_sql,[stamp_reward, stamp_password, sijang_name,market_name],function(error,result2,fields){
+        if(error){
+          console.log(error);
+          console.log('no2');
+        }
+        else{
+          console.log(result);
+          res.send({
+            result : result,
+            result2 : result2,
+            success : 'success'
+          });
+        }
+      });
+    }
+  });
 });
 
 module.exports = router;
