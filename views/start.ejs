@@ -27,12 +27,8 @@
 
     <div id="start">
         <div id="all_body">
-
-
             <div id="intro_image_div">
-
-                <!--인트로 display: none 성진이형 질문-->
-                    <img id="intro_image" src="/images/intro.jpg">
+                <img id="intro_image" src="/images/intro.jpg">
             </div>
             <div id="top_part">
                 <div id="top_vertical_helper">
@@ -73,7 +69,7 @@
                 <input type="checkbox" class="id_check" name="feature" value="scales" checked />
                 <span id="font">로그인 상태 유지</span>
             </div>
-              <!-- 수정해야할 부분 -->
+            <!-- 수정해야할 부분 -->
             <div id="login_button_user3">
                 <input type='submit' value='' class="loginUser_insert" />
             </div>
@@ -118,18 +114,18 @@
 
             <div id="login_button_user2">
 
-                    <input type="checkbox" class="id_check" name="feature" value="scales" checked />
-                    <span id="font">로그인 상태 유지</span>
-                </div>
-         <div id="login_button_user3">
-                        <input type='submit' id="loginButton" value='' class="loginUser_insert" />
-         </div>
+                <input type="checkbox" class="id_check" name="feature" value="scales" checked />
+                <span id="font">로그인 상태 유지</span>
+            </div>
+            <div id="login_button_user3">
+                <input type='submit' id="loginButton" value='' class="loginUser_insert" />
+            </div>
 
         </form>
         <div id="login_button_user4">
-                <button class="idfind">아이디 찾기</button>
-                <button id="loginUser_sign_up">Sign Up</button>
-            </div>
+            <button class="idfind">아이디 찾기</button>
+            <button id="loginmanager_sign_up">Sign Up</button>
+        </div>
 
         <!-- 회원가입부분 -->
         <!-- <div id="loginForm" style='margin-bottom: 10px; margin-top: 10px;'>
@@ -143,7 +139,7 @@
 
 
     <script>
-  
+
         $('#loginButton').click(function (e) {
             e.preventDefault();
             var manager_id = $('#manager_id').val();
@@ -184,21 +180,24 @@
 
     <!--signupuser 시작-->
     <div id="signupuser">
-        <div id="top_logo2">
-            <img src="inline-logo.png" id="signuplogo" />
-            <p class="signuptitle">고객 회원가입</p>
+        <div id="top_signup">
+            <div id="top_signup_logo">
+                <img src="/images/inline-logo.png" id="signuplogo" />
+                <p class="signuptitle">고객 회원가입</p>
+            </div>
         </div>
-        <div>
-            <form id='signupForm1'>
-                <input type='text' id='userid' name='userid' placeholder='아이디' style='margin-bottom: 30px;' />
+        <div class=signupform>
+            <form id='signupform1'>
+                <input class ="signuptext"type='text' id='userid' name='userid' placeholder='아이디' style='margin-bottom: 30px;' />
                 <br/>
-                <input type='text' id='username' name='username' placeholder='이름' style='margin-bottom: 30px;' />
+                <input class ="signuptext"type='text' id='username' name='username' placeholder='이름' style='margin-bottom: 30px;' />
                 <br/>
-                <input type='password' id='userpwd' name='userpwd' placeholder='비밀번호' style='margin-bottom: 30px;' />
+                <input class ="signuptext"type='password' id='userpwd' name='userpwd' placeholder='비밀번호' style='margin-bottom: 30px;' />
                 <br/>
-                <input id="userfinish" type='submit' value='회원가입' style='margin-bottom: 10px;' />
+                <input class ="signupbutton"id="userfinish" type='submit' value='회원가입' />
                 <br/>
             </form>
+        </div>
             <script>
                 $('#signupForm1').submit(function (e) {
                     e.preventDefault();
@@ -231,13 +230,13 @@
                     });
                 });
             </script>
-            <div style='margin-bottom: 10px;'>
+            <!-- <div style='margin-bottom: 10px;'>
                 <a href='/login/kakao'>
                     <button>Kakao Login</button>
-                </a>
-            </div>
-
+                </a> -->
         </div>
+
+    </div>
 
     </div>
 
@@ -248,46 +247,48 @@
 
     <!--signupManager 시작-->
     <div id="signupManager">
-        <h1>Sign Up Manager</h1>
-        <div>
+            <div id="top_signup">
+                    <div id="top_signup_logo">
+                        <img src="/images/inline-logo.png" id="signuplogo" />
+                        <p class="signuptitle">상인 회원가입</p>
+                    </div>
+                </div>
 
+        <div id=signupform>
             <form id='signupForm2'>
-                <input type="text" id="manager_id" name='manager_id' placeholder="manager_id" style='margin-bottom: 10px;'>
-                <br>
-                <input type="password" id="password" name='password' placeholder="password" style='margin-bottom: 10px;'>
-                <br>
-                <input type="text" id="market_name" name='market_name' placeholder="market_name" style='margin-bottom: 10px;'>
-                <br>
-                <input type="text" id="market_location" name='market_location' placeholder="market_location" style='margin-bottom: 10px;'>
-                <br>
-                <input type="text" placeholder="manager_phone" id="manager_phone" name='manager_phone' style='margin-bottom: 10px;'>
-                <br>
-                <input type="text" placeholder="manager_name" id="manager_name" name='manager_name' style='margin-bottom: 10px;'>
-                <br>
+                <input class ="signuptext"type="text" id="manager_id" name='manager_id' placeholder="manager_id" style='margin-bottom: 10px;'>
+                
+                <input class ="signuptext"type="password" id="password" name='password' placeholder="password" style='margin-bottom: 10px;'>
+                
+                <input class ="signuptext"type="text" id="market_name" name='market_name' placeholder="market_name" style='margin-bottom: 10px;'>
+                
+                <input class ="signuptext"type="text" id="market_location" name='market_location' placeholder="market_location" style='margin-bottom: 10px;'>
+                
+                <input class ="signuptext"type="text" placeholder="manager_phone" id="manager_phone" name='manager_phone' style='margin-bottom: 10px;'>
+                
+                <input class ="signuptext"type="text" placeholder="manager_name" id="manager_name" name='manager_name' style='margin-bottom: 10px;'>
+                
                 <select class='stamp_standard' name="stamp_standard">
                     <option>5</option>
                     <option>10</option>
                     </seclect>
 
-                    <input type="text" placeholder="stamp_reward" id="stamp_reward" name='stamp_reward' style='margin-bottom: 10px;'>
-                    <br>
-                    <input type="text" placeholder="stamp_password" id="stamp_password" name='stamp_password' style='margin-bottom: 10px;'>
-                    <br>
-                    <input type="text" placeholder="market_promotion" id="market_promotion" name='market_promotion' style='margin-bottom: 10px;'>
-                    <br>
-                    <select class='stamp_kind' name="stamp_kind">
+                <input class ="signuptext"type="text" placeholder="stamp_reward" id="stamp_reward" name='stamp_reward' style='margin-bottom: 10px;'>
+                    
+                <input class ="signuptext"type="text" placeholder="stamp_password" id="stamp_password" name='stamp_password' style='margin-bottom: 10px;'>
+                    
+                <input class ="signuptext"type="text" placeholder="market_promotion" id="market_promotion" name='market_promotion' style='margin-bottom: 10px;'>
+                    
+                <select class='stamp_kind' name="stamp_kind">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
                         </seclect>
-                        <input type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce' style='margin-bottom: 10px;'>
-                        <br>
+                <input class ="signuptext" type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce' style='margin-bottom: 10px;'>
                         <!--         <input type="text" placeholder="sijang_name" id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'> -->
-                        <label id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'> 시장 찾기 </label>
-                        <input type="button" value="시장찾기" id="modal_display">
-                        <br>
-                        <input id="managerfinish" type='submit' value='회원가입' style='margin-bottom: 10px;' />
-                        <br/>
+                <label id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'> 시장 찾기 </label>
+                <input type="button" value="시장찾기" id="modal_display">
+                <input id="signupbutton" type='submit' value='회원가입' />
             </form>
 
             <!-- Modal -->
@@ -308,13 +309,9 @@
                         <input type="text" placeholder="searching" id="search_value">
                         <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
                     </div>
-
                     <ol id="search_result"></ol>
                 </div>
-
             </div>
-
-
             <script>
 
                 $('#signupForm2').submit(function (e) {
@@ -400,19 +397,9 @@
         </div>
 
     </div>
-    <style>
-        #signupManager {
-            display: none;
-        }
-    </style>
     <!--signupManager 끝-->
 
 </body>
-
-
-
-
-
 <!--start script  시작-->
 <script>
     setTimeout(function () {
