@@ -32,7 +32,7 @@
         <label>상점 소개</label>
         <textarea readonly type="text" id="market_introduce" rows="5"><%= result[0].market_introduce %></textarea>
         <label>스탬프 비밀번호</label>
-        <input type="password" maxlength="4"id="stamp_password" readonly value="<%= result[0].stamp_password %>">
+        <input type="password"inputmode="numeric" maxlength="4"id="stamp_password" readonly value="<%= result[0].stamp_password %>">
         <div id="reform">
             <button id="stamp_reform_cancel" style="margin-right: 10%">취소</button>
             <button id="stamp_reform_button">확인</button>
