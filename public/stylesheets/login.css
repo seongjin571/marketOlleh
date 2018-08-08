@@ -5,7 +5,6 @@ body, html {
     padding: 0;
     margin: 0;
     background-color: #63dded;
-    overflow: hidden;
 }
 
 #all_body {
@@ -16,6 +15,7 @@ body, html {
 #intro_image_div{
     width: 100%;
     height: 100%;
+    position:fixed;
 }
 
 
@@ -81,7 +81,7 @@ body, html {
 {
     width:60%;
     height: auto;
-    padding-top:30%;
+    padding-top:25%;
     padding-left: 20%;
 }
 
@@ -207,31 +207,65 @@ body, html {
 /*login manager css start*/
    
 /*signupuser css start*/
-#signupuser{
+#signupManager,#signupuser{
     display: none;
     width:100%;
     height:100%;
+    background-color: white;
 }
-#top_logo2{
+#top_signup{
     background:#63dded;
     position:fixed;
     text-align:center;
     width:100%;
     height:30%;
-    
-
 }
-#signuplogo
+#top_signup_logo
 {
     width: 50%;
-    height: 20%;
+    height: 60%;
+    margin:-50px auto;
+    top:50%;
+    position:relative;
 }
-#signuptitle
-{
+#signuplogo{
+    width:200px;
+  }
+
+.signuptitle{
     font-size:20px;
     margin-top:20px;
     color:#fff;
+  }
+#signupform{
+    padding-top:250px;
+    width:100%;
+    text-align:center;
+  }
+#signupform1{
+    width:300px;
+    margin:0 auto;
 }
+#signupform2{
+    width:300px;
+    margin:0 auto;
+}
+.signuptext
+{
+    width:250px;
+    height:35px;
+    border:1px solid #ddd;
+    margin: 7px 0 7px 0;
+}
+.signupbutton{
+ width:150px;
+    height:50px;
+    border:1px solid #ddd;
+    border-radius:5px;
+    margin:15px 0 15px 0;    
+}
+
+
 /*signupuser css finish*/
 
 
