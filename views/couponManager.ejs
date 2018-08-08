@@ -72,7 +72,7 @@
         <input type="text" id="coupon_due_date" placeholder="ex)18-08-20">
         <br/>
         <label>쿠폰 비밀번호</label>
-        <input type="password" id="coupon_password" placeholder="쿠폰비밀번호입력(4자리)">
+        <input type="password" maxlength="4"id="coupon_password" placeholder="쿠폰비밀번호입력(4자리)">
         <br/>
         <button id="cancel">취소</button>
         <button id="coupon_make_button">생성</button>
@@ -135,12 +135,12 @@
     var swiper = new Swiper('.swiper-container');
 
     $('#make_coupon').click(function () {
-        $('#all_coupon_div').hide(200);
-        $('#make_coupon_div').show(200);
+        $('#all_coupon_div').css('display','none');
+        $('#make_coupon_div').css('display','block');
     })
     $('#cancel').click(function () {
-        $('#make_coupon_div').hide(200);
-        $('#all_coupon_div').show(200);
+        $('#make_coupon_div').css('display','none');
+        $('#all_coupon_div').css('display','block');
     })
     $('#home').click(function(){
         location.href='/mainManager';
