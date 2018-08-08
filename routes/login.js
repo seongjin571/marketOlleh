@@ -10,11 +10,32 @@ var NaverStrategy = require('passport-naver').Strategy;
 var conn = mysql.createConnection(dbconfig);
 
 /*  local login  */
-router.post('/login', passport.authenticate('local', {
-  successRedirect: '/main',
-  failureRedirect: '/start',
-  failureFlash: true
-}));
+// router.post('/login', passport.authenticate('local', {
+//   successRedirect: '/main',
+//   failureRedirect: '/start',
+//   failureFlash: true
+// }));
+
+router.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) {
+      return next(err); // will generate a 500 error
+    }
+    // Generate a JSON response reflecting authentication status
+    if (! user) {
+      return res.send(
+        '<script type="text/javascript">alert("존재하지 않는 아이디나 잘못된 비밀번호 입니다."); document.location.href="/start";</script>'
+      );
+    }
+    req.login(user, function(err){
+      if(err){
+        return next(err);
+      }
+      return res.redirect('/main');
+    });
+  })(req, res, next);
+});
+
 
 passport.serializeUser((user, done) => {
   console.log(user);
@@ -38,14 +59,15 @@ passport.use('local', new LocalStrategy({
         return done(error, false);
       }
       else if (!rows.length) {
+        console.log('no id or wrong pwd');
         return done(error, false);
       }
       else {
-        var user = {
-          id: rows[0].user_id,
-          username: rows[0].user_name
-        }
-        return done(null, user);
+          var user = {
+            id: rows[0].user_id,
+            username: rows[0].user_name
+          }
+          return done(null, user);
       }
     });
   })
