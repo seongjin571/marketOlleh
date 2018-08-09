@@ -18,7 +18,7 @@ router.get('/coupon', function(req, res){
   var user_id = req.user.id;
   var mycoupon = 'select * from `coupon_customer` where `user_id` = ?';
   var couponlist = 'select * from `coupon_manager`';
-  conn.query(couponlist,function(err,cou_result){
+  conn.query(couponlist,function(err,cou_result,fields){
     if(err){
       console.log('시작부터에러');
     }else if(! cou_result.length){
@@ -41,7 +41,8 @@ router.get('/coupon', function(req, res){
                 cou_result : undefined
               })
             }else{
-              console.log('발급받은 스탬프 있음');
+              console.log('발급받은 스탬프 있음1');
+              console.log('cou_result');
               res.render('coupon', {
                 title : '발급받은쿠폰없고 스탬프 있고',
                 result1 : undefined,
@@ -95,6 +96,7 @@ router.get('/coupon', function(req, res){
               })
             }else{
               console.log('발급받은 스탬프 있음');
+              console.log(cou_result);
               res.render('coupon', {
                 title : '발급받은쿠폰없고 스탬프 있고',
                 result1 : undefined,
@@ -117,6 +119,7 @@ router.get('/coupon', function(req, res){
               })
             }else{
               console.log('발급받은 스탬프 있음');
+              console.log('cou_result');
               res.render('coupon',{
                 title : '쿠폰있고 스탬프 있고',
                 result1 : result1,
