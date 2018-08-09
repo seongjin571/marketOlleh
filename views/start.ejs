@@ -32,7 +32,7 @@
             <div id="top_part">
                 <div id="top_vertical_helper">
                     <img id="startlogo" src="/images/logo_with_text.png">
-                
+
                 </div>
             </diV>
             <div id="bottom_part">
@@ -197,14 +197,14 @@
             </form>
         </div>
         <script>
-            $('#signupForm1').submit(function (e) {
+            $('#signupform1').submit(function (e) {
                 e.preventDefault();
                 var data = {
                     userid: $('#userid').val(),
                     username: $('#username').val(),
                     userpwd: $('#userpwd').val()
                 }
-                console.log($('#userid').val());
+                console.log(data);
                 $.ajax({
                     type: "POST",
                     url: "/signup/signupuser",
@@ -215,7 +215,7 @@
                     success: function (result) {
                         if (result['result'] == 'success') {
                             alert('가입 성공');
-                            //$(window).attr('location', '/start');
+                            $(window).attr('location', '/start');
                         }
                         else if (result['result'] == 'already') {
                             alert('이미 존재하는 아이디입니다.');

@@ -16,12 +16,14 @@ router.post('/signupuser', function(req, res) {
   conn.query(selectSql, [userId], function(error, results){
     if(error) { console.log(error); }
     else if(results.length) {
+      console.log('er 1');
       res.send({ result: 'already' });
     }
     else{
       conn.query(insertSql, [userId, password, userName], function(err, rows){
         if(err){ console.log(err); }
         else{
+          console.log('er 1');
           res.send({ result: 'success' });
         }
       });
