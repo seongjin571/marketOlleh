@@ -77,9 +77,9 @@ article{
 /*  어떤 css줄지 Test line 들  */
 
 #market_image{
-    width: 80%;
+    width: 90%;
     height: auto;
-    margin-left: 10% !important;
+    margin-left: 5% !important;
 }
 #market_image image{
     width: 100%;
