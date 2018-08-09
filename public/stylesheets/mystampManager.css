@@ -50,12 +50,25 @@ html {
     color: #63dded;
 }
 label{
-    margin-left: 18%;
+    /* margin-left: 18%; */
     font-size: 20px;
+    height:30px;
+    line-height: 30px;
+}
+.name{
+    width: 25%;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    text-align: center;
+}
+.inputLine{
+    width: 85%;
+    margin-left: 7.5%;
+    display: inline-flex;
+    margin-top: 1%;
 }
 input,textarea{
-    width:65%;
-    margin-left: 16.5%;
     margin-bottom: 6%;
     font-size: 17px;
     border-top: 0;
@@ -63,13 +76,16 @@ input,textarea{
     border-image-slice: 1;
     border-image-width: 0 0 2px 0;
     padding: 2px;
- 
-}
+ }
 input{
     height: 30px;
+    width:68%;
+    margin-left: 2%;
 }
 
 textarea{
+    width: 80%;
+    margin-left: 10%;
     margin-top: 10px;
     padding: 5px;
 }

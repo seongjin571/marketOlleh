@@ -24,15 +24,33 @@
     <div id="menu">내 스탬프
 
     </div>
+
     <div id="stamp_detail">
-        <label>스탬프 지급 기준</label>
-        <input type="text" id="market_promotion" readonly value="<%= result[0].market_promotion %>">
-        <label>스탬프 보상</label>
-        <input type="text" id="stamp_reward" readonly value="<%= result[0].stamp_reward %>">
-        <label>상점 소개</label>
+        <div class="inputLine">
+            <img src="/images/mulUserM.png" width="30px" height="30px">
+            <p class="name">사용자수</p>
+            <input readonly value="21"></input>
+        </div>
+        <div class="inputLine">
+            <img src="/images/stampM.png" width="30px" height="30px">
+            <p class="name">지급 기준</p>
+            <input class="input_content" type="text" id="market_promotion" readonly value="<%= result[0].market_promotion %>">
+        </div>
+        <div class="inputLine">
+            <img src="/images/stampM.png" width="30px" height="30px">
+            <p class="name">보상</p>
+            <input class="input_content" type="text" id="stamp_reward" readonly value="<%= result[0].stamp_reward %>">
+        </div>
+        <div class="inputLine">
+            <img src="/images/storeM.png" width="30px" height="30px">
+            <p class="name">상점 소개</p>
+        </div>
         <textarea readonly type="text" id="market_introduce" rows="5"><%= result[0].market_introduce %></textarea>
-        <label>스탬프 비밀번호</label>
-        <input type="password"inputmode="numeric" maxlength="4"id="stamp_password" readonly value="<%= result[0].stamp_password %>">
+        <div class="inputLine">
+            <img src="/images/lockM.png" width="30px" height="30px">
+            <p class="name">비밀번호</p>
+            <input class="input_content" type="password" inputmode="numeric" maxlength="4" id="stamp_password" readonly value="<%= result[0].stamp_password %>">
+        </div>
         <div id="reform">
             <button id="stamp_reform_cancel" style="margin-right: 10%">취소</button>
             <button id="stamp_reform_button">확인</button>
@@ -62,7 +80,7 @@
         </div>
     </div>
     <script>
-         var change=0;
+        var change = 0;
         $('#home').click(function () {
             location.href = "/mainManager";
         })
@@ -85,28 +103,28 @@
         $('#stamp_reform').click(function () {
             $(this).css('display', 'none');
             $('#reform').css('display', 'inline-flex');
-            $('input').attr('readonly', false);
+            $('.input_content').attr('readonly', false);
             $('textarea').attr('readonly', false);
             $('input').change(function () {
                 $(this).css('color', 'red');
-                change=1;
+                change = 1;
             })
             $('textarea').change(function () {
                 $(this).css('color', 'red');
-                change=1;
+                change = 1;
             })
         })
         $('#stamp_reform_cancel').click(function () {
-            if(change==1){
+            if (change == 1) {
                 location.reload();
             }
-            else{
+            else {
                 $('#reform').css('display', 'none');
-            $('#stamp_reform').css('display', 'block');
-            $('input').attr('readonly', true);
-            $('textarea').attr('readonly', true);
-            $('input').css('color', 'black');
-            $('textarea').css('color', 'black');
+                $('#stamp_reform').css('display', 'block');
+                $('.input_content').attr('readonly', true);
+                $('textarea').attr('readonly', true);
+                $('input').css('color', 'black');
+                $('textarea').css('color', 'black');
             }
         })
         $('#stamp_reform_button').click(function () {
