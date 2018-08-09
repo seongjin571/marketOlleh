@@ -13,13 +13,15 @@ html {
     width: 100%;
     display: inline-flex;
     height: 50px;
+    background-image: url('/images/mainBack.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #menu div {
     width: 50%;
     height: 100%;
     text-align: center;
-    background-color: #fb83a5;
     line-height: 50px;
     color: white;
 }

@@ -1,6 +1,6 @@
 var spinner;
 jQuery(function(){
-    spinner = new Spinner({ color: '#FF69B4' }).spin().el;
+    spinner = new Spinner({ color: '#6acbe8' }).spin().el;
     jQuery(document.body).append(spinner);
     jQuery(spinner).css('display','none');
 });
