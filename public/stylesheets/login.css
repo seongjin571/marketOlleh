@@ -4,7 +4,7 @@ body, html {
     height: 100%;
     padding: 0;
     margin: 0;
-    background-color: #63dded;
+    background-color: white;
 }
 
 #all_body {
@@ -26,42 +26,61 @@ body, html {
 #top_part {
     display: table;
     width: 100%;
-    height: 60%;         
+    height: 50%;         
 }
 #top_vertical_helper {
+    padding-top:50%;
     width: 100%;
     height: 100%;
-    display: table-cell;
-    vertical-align: middle;
     text-align: center;
 }
 #startlogo{
     width: 50%;
      height:auto;
+     padding-bottom: 10%;
 }
 #bottom_part {
+    padding-top:10%;
     width: 100%;
-    height: 40%;
+    height: 50%;
 }
 .login_button{
     width: 100%;
-    height: 30%;
-    margin-left:15%;
+    height: 15%;
+    margin-bottom: 7%;
+    text-align: center;
 }
-#user_login,
+#user_login{
+    width: 70%;
+    height: 100%;
+    background-color: white;
+    border: double 1px transparent;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+     radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;    
+    padding-left: 1px;
+    padding-right: 1px;
+    border-top-width: 0px;
+    padding-top: 1px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    padding-bottom: 1px;
+
+}
 #seller_login {
-    width: 50%;
-    height: 80%;
-    padding: 0;
-    border: 0;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    background-color:white;
-    float:left;
-}
-.start_image{
-    width: 20%;
-    height: 80%;
+    width: 70%;
+    height: 100%;
+    padding:0;
+    border:0;
+    border-radius: 50px;
+    color:white;
+    background: -webkit-linear-gradient(left, #17ead9, #6078ea);
+    background: -o-linear-gradient(right, #17ead9, #6078ea);
+    background: -moz-linear-gradient(right, #17ead9, #6078ea);
+    background: linear-gradient(to right, #17ead9 , #6078ea);
 }
 
 /*start css finish*/
