@@ -881,15 +881,15 @@
             location.href = "/coupon";
         })
         $('#logout').click(function () {
-                var logout = confirm("로그아웃 하시겠습니까?");
-                if (logout == true) {
-                  console.log('로그아웃성공');
-                  $(location).attr('href','/logout');
+            var logout = confirm("로그아웃 하시겠습니까?");
+            if (logout == true) {
+                console.log('로그아웃성공');
+                $(location).attr('href', '/logout');
 
-                } else {
-                  console.log('로그아웃실패');
-                }
-            })
+            } else {
+                console.log('로그아웃실패');
+            }
+        })
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 'auto',
             centeredSlides: true,
@@ -899,8 +899,24 @@
                 dynamicBullets: true,
                 clickable: true,
             },
+            on: {
+                init: function () {
+                    $('.swiper-slide-next').css('height', '85%')
+                    $('.swiper-slide-next').css('margin-top', '4%')         
+                },
+            }
+            // swiper.on('slideChange', function () {
+            //     console.log('slide changed');
+            // });
         });
-
+        // $('.swiper-container').hover(function () {
+        //     $('.swiper-slide-active').css('height', '100%')
+        //     $('.swiper-slide-active').css('margin-top', '0')
+        //     $('.swiper-slide-next').css('height', '85%')
+        //     $('.swiper-slide-next').css('margin-top', '4%')
+        //     $('.swiper-slide-prev').css('height', '85%')
+        //     $('.swiper-slide-prev').css('margin-top', '4%')
+        // })
         $('#go_stamp_sj').click(function () {
             $('#stamp_menu_sj').show(200);
             $('.store_detail_sj').hide(200);
@@ -917,6 +933,8 @@
             $('.store_detail_sj').hide(200);
             $('.store_review_sj').show(200);
         })
+
+
         // for(var i=0; i<3; i++){
         //     document.getElementsByClassName('swiper-slide').style.backgroundImage="url('images/backSample'i'')"
         // }

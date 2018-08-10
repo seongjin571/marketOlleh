@@ -52,13 +52,13 @@ html {
 label{
     /* margin-left: 18%; */
     font-size: 20px;
-    height:30px;
-    line-height: 30px;
+    height:27px;
+    line-height: 27px;
 }
 .name{
     width: 25%;
-    height: 30px;
-    line-height: 30px;
+    height: 27px;
+    line-height: 27px;
     margin: 0;
     text-align: center;
 }
@@ -66,7 +66,6 @@ label{
     width: 85%;
     margin-left: 7.5%;
     display: inline-flex;
-    margin-top: 1%;
 }
 input,textarea{
     margin-bottom: 6%;
@@ -78,7 +77,7 @@ input,textarea{
     padding: 2px;
  }
 input{
-    height: 30px;
+    height: 27px;
     width:68%;
     margin-left: 2%;
 }
@@ -102,7 +101,7 @@ textarea{
     border-style: none;
 }
 #stamp_detail{
-    margin-top: 10%;
+    margin-top: 7%;
 }
 #reform{
     display: inline-flex;
