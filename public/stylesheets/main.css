@@ -1,5 +1,5 @@
-@import url('//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
-body, h1, h2, h3, h4, h5, h6, li, p, span, div {font-family: 'NanumSquareRound',sans-serif;}
+@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family: 'NanumSquare',sans-serif;}
 
     body,
         html {
