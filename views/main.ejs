@@ -301,17 +301,20 @@
                                 <div class="store_market_name">
                                     <%= myStamps[i].market_name %>
                                 </div>
-                                <div class="stamp_count">
+                                <div class="my_stamp_count">
                                     <div class="stamp_count_vertical">
-                                        <div class="stamp_inline">
-                                            <p class="deadline">
-                                                <%= myStamps[i].sijang_name %>
-                                            </p>
-                                            <p class="count_stamp">
-                                                <%= myStamps[i].stamp_count %>/
-                                                    <%= myStamps[i].stamp_standard %>
-                                            </p>
-                                        </div>
+                                        <p class="count_stamp">
+                                            <%= myStamps[i].stamp_count %>&nbsp/
+                                                <%= myStamps[i].stamp_standard %>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="stamp_market">
+                                    <div class="stamp_vertical">
+                                        <p class="deadline">
+                                            <%= myStamps[i].sijang_name %>
+                                        </p>
+
                                     </div>
                                 </div>
                             </div>
@@ -906,54 +909,22 @@
                 },
             }
         });
-        // swiper.on('slideChange', function () {
-        //     $('.swiper-slide').animate({
-        //         height:'85%',
-        //         marginTop:'4%'
-        //     }, 100);
-        //     $(".swiper-slide-active").animate({
-        //         height:'85%',
-        //         marginTop:'4%'
-        //     }, 100);
-        //     $(".swiper-slide-next").animate({
-        //         height:'100%',
-        //         marginTop:'0%'
-        //     },100);
-        //     $(".swiper-slide-prev").animate({
-        //         height:'100%',
-        //         marginTop:'0%'
-        //     },100);
-        // });
 
-          swiper.on('slidePrevTransitionStart', function () {
+        swiper.on('slideChangeTransitionStart', function () {
             $(".swiper-slide-active").animate({
-                height:'100%',
-                marginTop:'0%'
+                height: '100%',
+                marginTop: '0%'
             }, 100);
             $(".swiper-slide-next").animate({
-                height:'85%',
-                marginTop:'4%'
-            },100);
+                height: '85%',
+                marginTop: '3.5%'
+            }, 100);
             $(".swiper-slide-prev").animate({
-                height:'85%',
-                marginTop:'4%'
-            },100);
+                height: '85%',
+                marginTop: '3.5%'
+            }, 100);
         });
 
-              swiper.on('slideNextTransitionStart', function () {
-                $(".swiper-slide-active").animate({
-                height:'100%',
-                marginTop:'0%'
-            }, 100);
-            $(".swiper-slide-next").animate({
-                height:'85%',
-                marginTop:'4%'
-            },100);
-            $(".swiper-slide-prev").animate({
-                height:'85%',
-                marginTop:'4%'
-            },100);
-        });
 
 
 
