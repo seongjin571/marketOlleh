@@ -21,35 +21,40 @@
 </head>
 
 <body>
-    <div id="menu">내 스탬프
-
+    <div id="text_logo">
+        <div id="mystore_div">
+            <div id="mystore_image"></div>
+            <div id="my_id">
+                <%= admin_name %>님 상점</div>
+            <div id="mystore_name">나현이네 과일과게</div>
+        </div>
     </div>
 
     <div id="stamp_detail">
         <div class="inputLine">
-            <img src="/images/mulUserM.png" width="30px" height="30px">
+            <img src="/images/mulUserM.png" width="24px" height="24px">
             <p class="name">사용자수</p>
             <input readonly value="21"></input>
         </div>
         <div class="inputLine">
-            <img src="/images/stampM.png" width="30px" height="30px">
+            <img src="/images/stampM.png" width="24px" height="24px">
             <p class="name">지급 기준</p>
             <input class="input_content" type="text" id="market_promotion" readonly value="<%= result[0].market_promotion %>">
         </div>
         <div class="inputLine">
-            <img src="/images/stampM.png" width="30px" height="30px">
+            <img src="/images/stampM.png" width="24px" height="24px">
             <p class="name">보상</p>
             <input class="input_content" type="text" id="stamp_reward" readonly value="<%= result[0].stamp_reward %>">
         </div>
         <div class="inputLine">
-            <img src="/images/storeM.png" width="30px" height="30px">
+            <img src="/images/storeM.png" width="24px" height="24px">
             <p class="name">상점 소개</p>
+            <textarea readonly type="text" id="market_introduce" rows="4"><%= result[0].market_introduce %></textarea>
         </div>
-        <textarea readonly type="text" id="market_introduce" rows="5"><%= result[0].market_introduce %></textarea>
         <div class="inputLine">
-            <img src="/images/lockM.png" width="30px" height="30px">
+            <img src="/images/lockM.png" width="24px" height="24px">
             <p class="name">비밀번호</p>
-            <input class="input_content" type="password" maxlength="4" id="stamp_password" readonly value="<%= result[0].stamp_password %>">
+            <input class="input_content" id="password_input"type="password" maxlength="4" id="stamp_password" readonly value="<%= result[0].stamp_password %>">
         </div>
         <div id="reform">
             <button id="stamp_reform_cancel" style="margin-right: 10%">취소</button>
@@ -105,6 +110,8 @@
             $('#reform').css('display', 'inline-flex');
             $('.input_content').attr('readonly', false);
             $('textarea').attr('readonly', false);
+            $('.input_content').css('border-image', 'linear-gradient(to right, #01c9ca 0%, #3886FF 50%)').css('border-image-slice', '1').css('border-image-width', '0 0 1.5px 0').css('border-top','0');
+            $('textarea').css('border-image', 'linear-gradient(to right, #01c9ca 0%, #3886FF 50%)').css('border-image-slice', '1').css('border-image-width', '0 0 1.5px 0').css('border-top','0');
             $('input').change(function () {
                 $(this).css('color', 'red');
                 change = 1;
@@ -119,14 +126,17 @@
                 location.reload();
             }
             else {
+
                 $('#reform').css('display', 'none');
                 $('#stamp_reform').css('display', 'block');
-                $('.input_content').attr('readonly', true);
-                $('textarea').attr('readonly', true);
-                $('input').css('color', 'black');
-                $('textarea').css('color', 'black');
+                $('.input_content').attr('readonly', true).css('border-image','none');
+                $('textarea').attr('readonly', true).css('border-image','none');
+                $('input').css('color', '#9c9c9c');
+                $('textarea').css('color', '#9c9c9c');
+                $('#password_input').css('color','#48a2eb');
             }
         })
+        $('#mystore_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
         $('#stamp_reform_button').click(function () {
             var market_name = '<%= result[0].market_name %>';
             var sijang_name = '<%= result[0].sijang_name %>';

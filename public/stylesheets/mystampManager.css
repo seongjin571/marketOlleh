@@ -10,16 +10,45 @@ html {
     margin: 0;
 }
 
-#menu {
+#text_logo{
     width: 100%;
-    height: 50px;
-    text-align: center;
-    background-image: url('/images/mainBack.png');
+    height:200px;
+    /* margin-left: 5%; */
+    background-image: url('/images/backSample5.png');
     background-repeat: no-repeat;
     background-size: cover;
-    line-height: 50px;
+    position: fixed;
+    top:0;
+    z-index: 2;
+}
+#mystore_div{
+    width: 50%;
+    margin-left: 25%;
+    height: 170px;
+    margin-top: 20px;
+    text-align: center;
+}
+#mystore_image{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    margin:0 auto;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-color: white;
+    border-width: 4px;
+}
+#my_id,#mystore_name{
+    height: 25px;
     color: white;
 }
+#my_id{
+    font-size: 18px;
+}
+#mystore_name{
+    font-size: 14px;
+}
+
 
 #nav_sj {
     width: 100%;
@@ -51,57 +80,64 @@ html {
 }
 label{
     /* margin-left: 18%; */
-    font-size: 20px;
-    height:27px;
-    line-height: 27px;
+    font-size: 18px;
+    height:24px;
+    line-height: 24px;
 }
 .name{
-    width: 25%;
-    height: 27px;
-    line-height: 27px;
-    margin: 0;
-    text-align: center;
+    width: 23%;
+    height: 24px;
+    line-height: 24px;
+    margin:0;
+    margin-left: 3%;
+    font-size: 15px;
 }
 .inputLine{
-    width: 85%;
-    margin-left: 7.5%;
+    width: 100%;
     display: inline-flex;
 }
 input,textarea{
-    margin-bottom: 6%;
-    font-size: 17px;
+    width:58%;
+    margin-left: 8%;
+    margin-bottom: 7%;
+    font-size: 14px;
     border-top: 0;
-    border-image: linear-gradient(to right, #01c9ca 0%, #3886FF 50%);
-    border-image-slice: 1;
-    border-image-width: 0 0 2px 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    border-bottom-style: solid;
+   border-color: #9c9c9c;
+   border-width: 1.35px;
     padding: 2px;
+    color: #9c9c9c;
  }
-input{
-    height: 27px;
-    width:68%;
-    margin-left: 2%;
-}
+ input{
+    height: 24px;
+ }
 
-textarea{
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 10px;
-    padding: 5px;
-}
+
+
+
 #stamp_reform{
-    width: 67%;
-    margin-left: 16.5%;
-    border-radius: 5px;
-    height: 50px;
-    background-image: url('/images/mainBack.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
-    font-size: 20px;
-    border-style: none;
+    font-size: 17px;
+    width: 45%;
+    margin-left: 27.5%;
+    height: 45px;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+    radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    border: 0px;
+    color:#9c9c9c;
 }
 #stamp_detail{
-    margin-top: 7%;
+    position: absolute;
+    top: 225px;
+    margin-bottom: 17%;
+    width: 85%;
+    margin-left: 7.5%;
 }
 #reform{
     display: inline-flex;
@@ -110,14 +146,30 @@ textarea{
     height: 50px;
     display: none;
 }
-#reform button{
+#stamp_reform_button{
+    font-size: 17px;
     width: 45%;
-    height: 50px;
+    height: 45px;
     background-image: url('/images/mainBack.png');
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
-    font-size: 20px;
     border-style: none;
-    border-radius: 5px;
+    border-radius: 50px;
+}
+#stamp_reform_cancel{
+    font-size: 17px;
+    color:#9c9c9c;
+    width: 45%;
+    height: 45px;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+    radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    border: 0px;
+}
+#password_input{
+    color:#48a2eb;
 }
