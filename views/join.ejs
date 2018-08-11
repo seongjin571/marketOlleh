@@ -39,11 +39,6 @@
         <br>
         <input type="text" placeholder="market_promotion" id="market_promotion" name='market_promotion' style='margin-bottom: 10px;'>
         <br>
-        <select class='stamp_kind' name="stamp_kind">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          </seclect>
           <input type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce' style='margin-bottom: 10px;'>
           <br>
           <input type='submit' value='회원가입' style='margin-bottom: 10px;' />
@@ -60,16 +55,6 @@
         } else if (select_stamp_standard == 1) {
           stamp_standard = 10;
         }
-        var test = document.getElementsByClassName('stamp_kind');
-        var select_stamp_kind = test[0].selectedIndex;
-        var stamp_kind;
-        if (select_stamp_kind == 0) {
-          stamp_kind = 1;
-        } else if (select_stamp_kind == 1) {
-          stamp_kind = 2;
-        } else if (select_stamp_kind == 2) {
-          stamp_kind = 3;
-        }
         var data = {
           manager_id: $('#manager_id').val(),
           password: $('#password').val(),
@@ -82,7 +67,6 @@
           market_promotion: $('#market_promotion').val(),
           market_introduce: $('#market_introduce').val(),
           stamp_standard: 'stamp_standard',
-          stamp_kind: 'stamp_kind'
         }
         $.ajax({
           type: "POST",
