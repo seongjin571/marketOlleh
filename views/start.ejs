@@ -50,47 +50,34 @@
     <!--loginuser 시작-->
     <div id="loginuser">
         <div id="top_logo">
-            <img id="loginUser_logo_with_text2" src="/images/logo_with_text2.png">
+            <img id="loginUser_logo_with_text2" src="/images/logo_with_text.png">
         </div>
         <form class="formuser" action='/login' method='POST'>
             <div class="login_button_user">
                 <input class="inputuser" type='text' name='userid' placeholder='아이디' />
-                <img class="login_user" src="/images/login_tail.png">
             </div>
 
             <div class="login_button_user">
                 <input class="inputuser" type='password' name='userpwd' placeholder='비밀번호' />
-                <img class="login_user" src="/images/login_tail.png">
             </div>
 
             <div id="login_button_user2">
-                <input type="checkbox" class="id_check" name="feature" value="scales" checked />
-                <span id="font">로그인 상태 유지</span>
-            </div>
-            <!-- 수정해야할 부분 -->
-            <div id="login_button_user3">
-                <input type='submit' value='' class="loginUser_insert" />
+                <input type="checkbox">
+                 <button class="idfind">로그인 상태 유지</button>
+                 <button class="idfind">아이디 찾기</button>
+                 <button id="loginUser_sign_up">Sign Up</button>
             </div>
 
-            <!-- <div style='margin-bottom: 10px; margin-top: 10px;'>
-            <a href='/signupUser'>
-            <button>Sign Up</button>
-        </a>
-    </div> -->
-            <!-- 수정해야할 부분 -->
         </form>
-
-        <div id="login_button_user4">
-            <button class="idfind">아이디 찾기</button>
-            <button id="loginUser_sign_up">Sign Up</button>
-
-
-            <!-- 수정해야할 부분 -->
-        </div>
         <div id="kakao_logo">
-            <a href='/login/kakao'>
-                <button id="kakaobutton"></button>
-            </a>
+            <div class="login_button_user3">
+                <button type='submit' value='' class="loginUser_insert">로그인</button>
+            </div>
+            <div class="login_button_user3">
+                <a href='/login/kakao'>
+                    <button id="kakaobutton">카카오톡 시작하기</button>
+                </a>
+            </div>
         </div>
     </div>
     <!--loginuser 끝-->
@@ -111,7 +98,6 @@
             </div>
 
             <div id="login_button_user2">
-
                 <input type="checkbox" class="id_check" name="feature" value="scales" checked />
                 <span id="font">로그인 상태 유지</span>
             </div>
