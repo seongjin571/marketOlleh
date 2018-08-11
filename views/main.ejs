@@ -901,32 +901,46 @@
             },
             on: {
                 init: function () {
-                    $('.swiper-slide-next').css('height', '85%')
-                    $('.swiper-slide-next').css('margin-top', '4%')
+                    $('.swiper-slide-active').css('height', '100%')
+                    $('.swiper-slide-active').css('margin-top', '0%')
                 },
             }
         });
-        swiper.on('slideChangeTransitionEnd', function () {
-            // $('.swiper-slide-active').css('height', '100%')
-            // $('.swiper-slide-active').css('margin-top', '0')
-            // $('.swiper-slide-next').css('height', '85%')
-            // $('.swiper-slide-next').css('margin-top', '4%')
-            // $('.swiper-slide-prev').css('height', '85%')
-            // $('.swiper-slide-prev').css('margin-top', '4%')
-
+        swiper.on('slideChange', function () {
+            $('.swiper-slide').animate({
+                height:'85%',
+                marginTop:'4%'
+            }, 100);
             $(".swiper-slide-active").animate({
-                height:'100%',
-                marginTop:'0'
-            }, 50);
+                height:'85%',
+                marginTop:'4%'
+            }, 100);
             $(".swiper-slide-next").animate({
-                height:'85%',
-                marginTop:'4%'
-            },50);
+                height:'100%',
+                marginTop:'0%'
+            },100);
             $(".swiper-slide-prev").animate({
-                height:'85%',
-                marginTop:'4%'
-            },50);
+                height:'100%',
+                marginTop:'0%'
+            },100);
         });
+
+
+        // swiper.on('slideChangeTransitionEnd', function () {
+
+        //     $(".swiper-slide-active").animate({
+        //         height:'100%',
+        //         marginTop:'0'
+        //     }, 1);
+        //     $(".swiper-slide-next").animate({
+        //         height:'85%',
+        //         marginTop:'4%'
+        //     },1);
+        //     $(".swiper-slide-prev").animate({
+        //         height:'85%',
+        //         marginTop:'4%'
+        //     },1);
+        // });
 
         $('#go_stamp_sj').click(function () {
             $('#stamp_menu_sj').show(200);
