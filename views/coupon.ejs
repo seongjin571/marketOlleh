@@ -44,11 +44,11 @@
               <% } %>
         <% } %>
         <% if(count == 1) { %>
-          <div class="market" name="sijang_name">
+          <div class="market" id="market_name_id"name="sijang_name">
               <p><%= result2[j].sijang_name %></p>
               <% if(cou_result) {%>
               <% for(var a=0; a<cou_result.length; a++) { %>
-              <% if(cou_result[a].sijang_name == result2[j].sijang_name) { %> -->
+              <% if(result2[j].sijang_name == cou_result[a].sijang_name) { %>
               <div class="find_coupon_list">
                   <div class="find_coupon">
                       <div class="store_and_market">
@@ -62,7 +62,7 @@
                           <%= cou_result[a].coupon_standard %>
                       </div>
                       <div class="period">
-                          <%= cou_result[a].coupon_due_date %>
+                          <%= cou_result[a].coupon_count %>
                       </div>
                   </div>
               </div>
@@ -120,7 +120,7 @@
                                 <%= result1[i].coupon_standard %>
                             </div>
                             <div class="period">
-                                <%= result1[i].coupon_due_date %>
+                                <%= result1[i].coupon_count %>
                             </div>
                         </div>
                         <div class="swiper-slide menu">삭제</div>
@@ -211,10 +211,14 @@
     })
     $('.find_coupon').click(function () {
         var index = $(this).index();
+        index = index;
+        var market=document.getElementsByClassName('store_name')[index];
+        var market_name =market.innerHTML;
         down();
         function down() {
             if (confirm(index + '번째 쿠폰을 다운로드 하시겠습니까?')) {
-                alert(index + '번째 쿠폰 다운로드 완료')
+
+                alert(market_name + '번째 쿠폰 다운로드 완료')
             } else {
                 // no click
             }

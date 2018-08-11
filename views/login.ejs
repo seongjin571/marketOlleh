@@ -43,7 +43,7 @@
         </div>
     </div>
     <style >
-        
+
         input {
             width: 700px;
             height: 100px;
@@ -195,12 +195,12 @@
     </style>
     <!--signupuser 끝-->
 
-    
+
     <!--signupManager 시작-->
    <div id="signupManager">
         <h1>Sign Up Manager</h1>
         <div>
-      
+
           <form id='signupForm'>
             <input type="text" id="manager_id" name='manager_id' placeholder="manager_id" style='margin-bottom: 10px;'>
             <br>
@@ -218,18 +218,14 @@
               <option>5</option>
               <option>10</option>
             </seclect>
-      
+
             <input type="text" placeholder="stamp_reward" id="stamp_reward" name='stamp_reward' style='margin-bottom: 10px;'>
             <br>
             <input type="text" placeholder="stamp_password" id="stamp_password" name='stamp_password' style='margin-bottom: 10px;'>
             <br>
             <input type="text" placeholder="market_promotion" id="market_promotion" name='market_promotion' style='margin-bottom: 10px;'>
             <br>
-            <select class='stamp_kind' name="stamp_kind">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              </seclect>
+
               <input type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce' style='margin-bottom: 10px;'>
               <br>
       <!--         <input type="text" placeholder="sijang_name" id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'> -->
@@ -239,10 +235,10 @@
               <input id="managerfinish"type='submit' value='회원가입' style='margin-bottom: 10px;' />
               <br/>
           </form>
-      
+
           <!-- Modal -->
           <div id="myModal" class="modal">
-      
+
             <!-- Modal content -->
             <div class="modal-content">
               <span id="modal_close">&times;</span>
@@ -258,19 +254,19 @@
                 <input type="text" placeholder="searching" id="search_value">
                 <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
               </div>
-      
+
               <ol id="search_result"></ol>
             </div>
-      
+
           </div>
-      
-      
+
+
           <script>
-             
+
             $('#signupForm').submit(function (e) {
-      
+
               e.preventDefault();
-      
+
               var manager_id = $('#manager_id').val();
               var password = $('#password').val();
               var market_name = $('#market_name').val();
@@ -281,7 +277,7 @@
               var stamp_password = $('#stamp_password').val();
               var market_promotion = $('#market_promotion').val();
               var market_introduce = $('#market_introduce').val();
-      
+
               var test = document.getElementsByClassName('stamp_standard');
               var select_stamp_standard = test[0].selectedIndex;
               var stamp_standard;
@@ -290,19 +286,10 @@
               } else if (select_stamp_standard == 1) {
                 stamp_standard = 10;
               }
-              var test = document.getElementsByClassName('stamp_kind');
-              var select_stamp_kind = test[0].selectedIndex;
-              var stamp_kind;
-              if (select_stamp_kind == 0) {
-                stamp_kind = 1;
-              } else if (select_stamp_kind == 1) {
-                stamp_kind = 2;
-              } else if (select_stamp_kind == 2) {
-                stamp_kind = 3;
-              }
+
               // var sijang_name = sijang_name.innerHTML;
               var data = {
-      
+
                 'manager_id': manager_id,
                 'password': password,
                 'market_name': market_name,
@@ -314,11 +301,10 @@
                 'market_promotion': market_promotion,
                 'market_introduce': market_introduce,
                 'stamp_standard': stamp_standard,
-                'stamp_kind': stamp_kind,
                 'sijang_name': sijang_name.innerHTML
-      
+
               };
-      
+
               $.ajax({
                 type: "POST",
                 url: "/signup/signupmanager",
@@ -341,10 +327,10 @@
                 }
               });
             });
-            
+
           </script>
           <script type="text/javascript" src="/javascripts/signupManager.js"></script>
-          
+
         </div>
 
    </div>
@@ -366,7 +352,7 @@
     setTimeout(function () {
         $('#start_intro_image_div').fadeOut('500');
     }, 1000);
-    
+
     /* $('#start_user_login').click(function () {
         location.href = "/loginUser";
     });
@@ -449,5 +435,5 @@
         })
 
     </script>
-    
+
 </html>

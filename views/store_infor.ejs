@@ -210,19 +210,8 @@
     <script>
 
         var reset_stamp_count = 0;
-        var stamp_kind = '<%= stamp_kind %>';
         var stamp_standard = '<%= stamp_standard %>';
-        console.log(stamp_kind);
         console.log(stamp_standard);
-        if (stamp_kind == 1) {
-            $('.stamp_sj').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
-        }
-        else if (stamp_kind == 2) {
-            $('.stamp_sj').css({ "background": "url(/images/backSample2.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
-        }
-        else if (stamp_kind == 3) {
-            $('.stamp_sj').css({ "background": "url(/images/backSample3.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
-        }
         if (stamp_standard == 5) {
             $('.fiveControls_sj').css('display', 'table');
 
@@ -240,7 +229,6 @@
           var stamp_standard = '<%= stamp_standard %>';
           var stamp_reward = '<%= stamp_reward %>';
           var stamp_password = '<%= stamp_password %>';
-          var stamp_kind = '<%= stamp_kind %>';
           var data = {
             'market_name' : market_name,
             'sijang_name' : sijang_name,
@@ -249,7 +237,6 @@
             'stamp_standard' : stamp_standard,
             'stamp_reward' : stamp_reward,
             'stamp_password' : stamp_password,
-            'stamp_kind' : stamp_kind
           }
           $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
             type: 'POST',

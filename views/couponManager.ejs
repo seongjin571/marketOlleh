@@ -40,7 +40,7 @@
                     <%= results1[i].coupon_standard %>
                 </div>
                 <div class="period">
-                    <%= results1[i].coupon_due_date %>
+                    <%= results1[i].coupon_count %>
                 </div>
             </div>
             <% } %>
@@ -68,8 +68,8 @@
         <label>사용 기준</label>
         <input type="text" id="coupon_standard" placeholder="ex)5000원 이상 구매 시">
         <br/>
-        <label>사용 기한</label>
-        <input type="text" id="coupon_due_date" placeholder="ex)18-08-20">
+        <label>개수</label>
+        <input type="text" id="coupon_count" placeholder="ex)100">
         <br/>
         <label>쿠폰 비밀번호</label>
         <input type="password" maxlength="4"id="coupon_password" placeholder="쿠폰비밀번호입력(4자리)">
@@ -153,7 +153,7 @@
       var sijang_name = '<%= results[0].sijang_name %>';
       var market_name = '<%= results[0].market_name %>';
       var coupon_standard = $('#coupon_standard').val();
-      var coupon_due_date = $('#coupon_due_date').val();
+      var coupon_count = $('#coupon_count').val();
       var coupon_password = $('#coupon_password').val();
       var test = document.getElementsByClassName('coupon_reward');
       var scr = test[0].selectedIndex;
@@ -173,7 +173,7 @@
         'sijang_name' : sijang_name,
         'market_name' : market_name,
         'coupon_standard' : coupon_standard,
-        'coupon_due_date' : coupon_due_date,
+        'coupon_count' : coupon_count,
         'coupon_password' : coupon_password,
         'coupon_reward' : coupon_reward
       }
