@@ -62,23 +62,23 @@
             </div>
         </br>
         <div id="login_button_user2">
-            <button class="idfind">로그인 상태 유지</button>
-            <button class="idfind">아이디 찾기</button>
-            <button id="loginUser_sign_up">Sign Up</button>
-       </div>
-  
-   <div id="kakao_logo">
-       <div class="login_button_user3">
-           <button type='submit' value='' class="loginUser_insert">로그인</button>
-       </div>
-       <div class="login_button_user3" id="kakaobutton2">
-           <a href='/login/kakao'>
-               <button id="kakaobutton"><img id="kakao_Image" src="/images/kakao_Image.png">카카오톡 시작하기</button>
-           </a>
-       </div>
-   </div>
+                <button class="idfind">로그인 상태 유지</button>
+                <button class="idfind">아이디 찾기</button>
+                <button type="button"id="loginUser_sign_up">Sign Up</button>
+           </div>
+        <div class="login_button_user3">                    
+          <button type='submit' value='' class="loginUser_insert">로그인</button>
+        </div>
       </form>
-           
+            
+       
+        <div id="kakao_logo">
+            <div class="login_button_user4" id="kakaobutton2">
+                <a href='/login/kakao'>
+                    <button id="kakaobutton"><img id="kakao_Image" src="/images/kakao_Image.png">카카오톡 시작하기</button>
+                </a>
+            </div>
+        </div>
     </div>
     <!--loginuser 끝-->
 
@@ -87,12 +87,12 @@
         <div id="top_logo">
                 <img id="loginUser_logo_with_text2" src="/images/logo_with_text.png">
         </div>
-        <form class="formuser" action='/loginmanager' method='POST'>
-            <div class="login_button_user">
-                <input class="inputuser" type='text' id="manager_id" name='manager_id' placeholder='아이디' />
+        <form class="formManager" action='/loginmanager' method='POST'>
+            <div class="login_button_formManager">
+                <input class="inputmanager" type='text' id="manager_id" name='manager_id' placeholder='아이디' />
             </div>
-            <div class="login_button_user">
-                <input class="inputuser" type='password' id="password" name='password' placeholder='비밀번호' />
+            <div class="login_button_formManager">
+                <input class="inputmanager" type='password' id="password" name='password' placeholder='비밀번호' />
             </div>
 
           
@@ -103,7 +103,7 @@
                 <button id="loginmanager_sign_up">Sign Up</button>
         </div>
         <div id="kakao_logo">
-            <div class="login_button_user3">
+            <div class="login_button_user5">
                 <button type='submit' id="loginButton" value='' class="loginUser_insert">로그인</button>
             </div>
         </div>

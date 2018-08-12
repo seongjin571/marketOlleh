@@ -101,13 +101,38 @@ body, html {
 .formuser
 {
     width:100%;
-    height: 60%;
+    height: 40%;
+}
+.formManager{
+    width:100%;
+    height: 20%;
 }
 .login_button_user{
     width:100%;
-    height:50%;
+    height:25%;
     text-align: center;
     color:grey;
+}
+.login_button_formManager{
+    width:100%;
+    height:45%;
+    text-align: center;
+    color:grey;
+}
+.login_button_formManager > .inputmanager{
+    width: 80%;
+    height: 90%;
+    background-color: white;
+    border: double 1px transparent;
+    background-image: linear-gradient(white, white),
+     radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;        
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 1px;
+    border: 0px;
 }
 .login_button_user > .inputuser{
     width: 80%;
@@ -166,7 +191,20 @@ body, html {
 {
     height:20%;
     width: 100%;
-    padding-top:3%;
+    padding-top:10%;
+    text-align: center;
+}
+.login_button_user4
+{
+    height:25%;
+    padding-top:5%;
+    width: 100%;
+    text-align: center;
+}
+.login_button_user5{
+    height:25%;
+    width: 100%;
+    text-align: center;
 }
 .loginUser_insert{
     width: 90%;
@@ -182,7 +220,7 @@ body, html {
    }
 #kakao_logo{
     width:100%;
-    height: 40%;
+    height: 30%;
     text-align: center;
 }
 #kakaobutton{
