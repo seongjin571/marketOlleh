@@ -219,7 +219,8 @@ router.get('/mystampManager', function(req, res){
     else{
       console.log('good');
       res.render('mystampManager', {
-        result: result
+        result: result,
+        admin_name: req.session.authId,
       });
     }
   })
