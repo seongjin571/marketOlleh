@@ -149,6 +149,10 @@ body, html {
     padding-bottom: 1px;
     border: 0px;
 }
+.icon{
+    width:7%;
+    height: auto;
+}
 
 .login_button_user > .login_user{
     width:15%;
@@ -255,55 +259,68 @@ body, html {
     background-color: white;
 }
 #top_signup{
-    background:#63dded;
     position:fixed;
     text-align:center;
     width:100%;
     height:30%;
 }
-#top_signup_logo
+#signuplogo
 {
-    width: 50%;
-    height: 60%;
-    margin:-50px auto;
-    top:50%;
-    position:relative;
+    width:50%;
+    height: auto;
+    margin-top: 18%;
 }
-#signuplogo{
-    width:200px;
-  }
 
-.signuptitle{
-    font-size:20px;
-    margin-top:20px;
-    color:#fff;
-  }
-#signupform{
-    padding-top:250px;
+
+.signupuser_input{
     width:100%;
-    text-align:center;
-  }
-#signupform1{
-    width:300px;
+    height:20%;
+    text-align: center;
+    color:grey;
+}
+  .signupuser_input > .signuptext{
+    width: 80%;
+    height: 90%;
+    background-color: white;
+    border: double 1px transparent;
+    background-image: linear-gradient(white, white),
+     radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;        
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 1px;
+    border: 0px;
+}
+.signupform1{
+    padding-top:60%;
+    width:100%;
+    height: 50%;
     margin:0 auto;
 }
 #signupform2{
     width:300px;
     margin:0 auto;
 }
-.signuptext
-{
-    width:250px;
-    height:35px;
-    border:1px solid #ddd;
-    margin: 7px 0 7px 0;
+.signupuser_input2{
+    width:100%;
+    height:20%;
+    text-align: center;
+    color:grey;
+    margin-top: 20%;
 }
 .signupbutton{
- width:150px;
-    height:50px;
-    border:1px solid #ddd;
-    border-radius:5px;
-    margin:15px 0 15px 0;    
+  width: 90%;
+    height: 100%;
+    padding:0;
+    border:0;
+    border-radius: 50px;
+    color:white;
+    background: -webkit-linear-gradient(left, #17ead9, #6078ea);
+    background: -o-linear-gradient(right, #17ead9, #6078ea);
+    background: -moz-linear-gradient(right, #17ead9, #6078ea);
+    background: linear-gradient(to right, #17ead9 , #6078ea);
 }
 
 
