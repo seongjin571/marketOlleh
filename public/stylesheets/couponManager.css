@@ -10,86 +10,71 @@ html {
 }
 
 #myStamp{
-    width: 100%;
-    height: 35%;
+    width: 79%;
+    margin-left: 11.5%;
+    height: 30%;
     margin-top: 7%;
-}
-.swiper-pagination{
-    bottom:20px !important;
-}
-/* .swiper-container{
-    width: 100%;
-    height: 80%;
-    border-radius: 5px;
-    margin-top:10%;
-}
-
-.swiper-wrapper{
-    width: 100%;
-    margin: 0 auto;
-    height: 100%;
-} */
-
-.swiper-slide{
-    width: 75%;
-    height: 85%;
-    margin-left: 12.5%;
+    margin-bottom: 7%;
     background-image:url('/images/backSample1.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 5px;
     color: white;
 }
-/* .swiper-slide:nth-child(4n-2){
-    width: 70%;
-    height: 85%;
-    margin-top: 3.5%;
-    background-image:url('/images/backSample2.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    border-radius: 5px;
-    color: white;
-}
-.swiper-slide:nth-child(4n-1){
-    width: 70%;
-    height: 85%;
-    margin-top: 3.5%;
-    background-image:url('/images/backSample3.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    border-radius: 5px;
-    color: white;
-}
-.swiper-slide:nth-child(4n){
-    width: 70%;
-    height: 85%;
-    margin-top: 3.5%;
-    background-image:url('/images/backSample4.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    border-radius: 5px;
-    color: white;
-} */
-.store_market_name{
+
+
+#store_market_name{
     width: 86%;
-    height: 18%;
+    height: 22%;
     margin-left: 7%;
-    font-size: 17px;
-    display: inline-flex;
+    line-height: 22%;
+}
+#nameing{
+    position: absolute;
+    top: 8%;
+    margin: 0;
+}
+.stamp_market{
+    width: 90%;
+    margin-left: 5%;
+    height: 20%;
+    display: table
+}
+/* .store_market_verti{
+    width:100%;
+    height:100%;
+    display: table-cell;
+    vertical-align: middle;
+} */
+.stmap_verical{
+    width: 100%;
+    height: 100%;
+    display:table-cell;
+    vertical-align: middle;
 }
 .deadline{
     width: 50%;
     font-size: 15px;
-    margin-left: 7%;
+    margin-left: 4%;
+    font-weight: lighter;
 }
 .count_stamp{
     width: 100%;
     font-size: 40px;
+    font-weight: lighter;
 }
 .my_stamp_count{
     width: 100%;
     height: 55%;
+    font-size:22px;
     display: table;
+    font-weight: lighter;
+}
+.my_stamp_count p{
+    margin: 0;
+}
+.standard_coupon{
+    margin-bottom: 3% !important;
 }
 .stamp_count_vertical{
     width: 100%;
@@ -285,7 +270,7 @@ input,select{
     border: 0px;
 }
 #password_input{
-    color:#48a2eb;
+    color:#63dded;
 }
 .check_input,.check_select{
     visibility: hidden;
@@ -293,4 +278,13 @@ input,select{
 .standard_coupon,.reward_coupon{
     width: 100%;
     text-align: center;
+}
+#password{
+    position: absolute;
+    left: 63%;
+    width: 40%;
+    font-size: 43px;
+    top: 9.5%;
+    margin: 0;
+    font-weight: lighter;
 }
