@@ -251,10 +251,12 @@ label{
     width: 50%;
     font-size: 15px;
     margin-left: 7%;
+    font-weight: lighter;
 }
 .count_stamp{
     width: 100%;
     font-size: 40px;
+    font-weight: bold;
 }
 .stamp_vertical{
     width: 100%;
@@ -305,6 +307,9 @@ label{
     color:gray;
     font-size: 14px;
 }
+.good_count{
+    font-weight: lighter;
+}
 .good_count img,.good_count_market img{
     border: none;
 }
@@ -337,6 +342,7 @@ h3,h4{
     margin-top: 3px;
     color: gray;
     font-size: 13px;
+    font-weight: lighter;
 }
 #nav_sj {
     width: 100%;
