@@ -57,28 +57,24 @@
 
     <div id="make_coupon_div">
         <div id="myStamp">
-            <div class="swiper-slide">
-                <div class="store_market_name">
-                    <p style="width: 60%">a</p>
-                    <p id="password"style="width: 40%"></p>
+                <div id="store_market_name">
+                    <!-- <div class="store_market_verti"> -->
+                        <p id="nameing"style="width: 60%">나현이네 과일가게</p>
+                        <p id="password" style="width: 40%"></p>
+                    <!-- </div> -->
                 </div>
-                <div class="my_stamp_count">
-                    <div class="stamp_count_vertical">
-                        <p class="standard_coupon">
-                            
-                        </p>
-                        <p class="reward_coupon">
-                            
-                            </p>
-                    </div>
+            <div class="my_stamp_count">
+                <div class="stamp_count_vertical">
+                    <p class="standard_coupon">
+                    </p>
+                    <p class="reward_coupon">
+                    </p>
                 </div>
-                <div class="stamp_market">
-                    <div class="stamp_vertical">
-                        <p class="deadline">
-                            
-                        </p>
-
-                    </div>
+            </div>
+            <div class="stamp_market">
+                <div class="stamp_vertical">
+                    <p class="deadline">
+                    </p>
                 </div>
             </div>
         </div>
@@ -192,23 +188,23 @@
     // });
     $('select:eq(0)').change(function () {
         $('.check_select:eq(0)').css('visibility', 'visible');
-        var value3=$(".coupon_reward option:selected").val();
+        var value3 = $(".coupon_reward option:selected").val();
         $('.reward_coupon').html(value3)
     });
     $('select:eq(1)').change(function () {
         $('.check_select:eq(1)').css('visibility', 'visible');
-        var value4=$("#people_number option:selected").val();
-        $('.deadline').html('선착순 : '+value4)
+        var value4 = $("#people_number option:selected").val();
+        $('.deadline').html('선착순 : ' + value4)
     });
     $('input:eq(0)').change(function () {
         $('.check_input:eq(0)').css('visibility', 'visible');
-        var value=$(this).val()
+        var value = $(this).val()
         $('.standard_coupon').html(value);
-        
+
     });
     $('input:eq(1)').change(function () {
         $('.check_input:eq(1)').css('visibility', 'visible');
-        var value2=$(this).val()
+        var value2 = $(this).val()
         $('#password').html('****');
     });
     $('#make_coupon').click(function () {
