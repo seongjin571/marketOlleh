@@ -45,30 +45,8 @@
         <% } %>
         <% if(count == 1) { %>
           <div class="market" id="market_name_id"name="sijang_name">
-              <p><%= result2[j].sijang_name %></p>
-              <% if(cou_result) {%>
-              <% for(var a=0; a<cou_result.length; a++) { %>
-              <% if(result2[j].sijang_name == cou_result[a].sijang_name) { %>
-              <div class="find_coupon_list">
-                  <div class="find_coupon">
-                      <div class="store_and_market">
-                          <div class="store_name"><%= cou_result[a].market_name %></div>
-                          <div class="market_name"><%= cou_result[a].sijang_name %></div>
-                      </div>
-                      <div class="sale_price">
-                          <%= cou_result[a].coupon_reward %>
-                      </div>
-                      <div class="standard">
-                          <%= cou_result[a].coupon_standard %>
-                      </div>
-                      <div class="period">
-                          <%= cou_result[a].coupon_count %>
-                      </div>
-                  </div>
-              </div>
-              <% } %>
-              <% } %>
-              <% } %>
+              <p id="click_coupon"><%= result2[j].sijang_name %></p>
+              
           </div>
 
         <% } %>
@@ -164,12 +142,12 @@
 <script>
 
     $('#go_my_coupon').click(function () {
-        $('#coupon_view').hide(200);
-        $('.my_coupon').show(200);
+        $('#coupon_view').css('display','none');
+        $('.my_coupon').css('display','block');
     })
     $('#go_coupon_view').click(function () {
-        $('#coupon_view').show(200);
-        $('.my_coupon').hide(200);
+        $('#coupon_view').css('display','block');
+        $('.my_coupon').css('display','none');
     })
     $('#myStamp_sj').click(function () {
         location.href = "/myStamp";
@@ -225,6 +203,11 @@
         }
     })
 
+    $('#click_coupon'),click(function(){
+      var asd = ("#click_coupon").val();
+      alert(asd);
+
+    })
 
 
 </script>

@@ -158,7 +158,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
     margin-top: 8%;
 }
 .swiper-pagination{
-    bottom:20px !important;
+    bottom:10px !important;
 }
 .swiper-container{
     width: 96%;
@@ -320,6 +320,24 @@ label{
      border-radius: 5px;
     margin-left: 4.8%;
     margin-bottom: 13px;
+}
+.no_stamp{
+    width: 70%;
+    margin-left: 15%;
+    height: 100%;
+    background-image:url('/images/backSample1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    border-radius: 7px;
+    text-align: center;
+    display: table;
+}
+#no_stamp_verti{
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
 }
 .market_pic{
     width: 100%;

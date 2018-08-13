@@ -289,12 +289,19 @@ router.get('/main', function(req, res){
   });
 });
 
-
-
-router.get('/mainManager', function(req, res){
-  res.render('mainManager', {
-    admin_name: req.session.authId,
-  });
+router.get('/mainManager', function(req, res, next) {
+  var sql='select * from manager where `manager_id`=?;';
+    conn.query(sql,[req.session.authId],function(error,results,fields){
+      if(error){
+        console.log(error);
+      }
+      else{
+        res.render('mainManager', {
+             admin_name: req.session.authId,
+              results : results,
+            });
+          }
+        });
 });
 
 router.get('/mystore', function(req, res){
@@ -605,6 +612,41 @@ router.post('/like/:id', function(req, res) {
   });
 });
 
+router.post('/main_like', function(req, res) {
+  var sijang_name;
+  var market_name;
+  var selectSql = 'select * from `likeMarket` where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
+  var insertSql = 'insert into `likeMarket` (`user_id`, `sijang_name`, `market_name`) values (?, ?, ?) ;';
+  var likeUpdateSql; // update likeMarket query
+
+  conn.query(selectSql, [req.user.id, sijang_name, market_name], function(selectErr, selectRows) {
+    if(selectErr) {
+      console.log(selectErr);
+      console.log('select likeMarket table failed');
+    }
+    else if(selectRows.length) {
+      console.log('likeMarket 조회 성공');
+      // conn.query(likeUpdateSql, [], function(likeErr, likeRows) {});
+      // 업데이트 후 좋아요 수 값 가져오기 select query
+    }
+    else {
+      console.log('likeMarket 조회 성공 but 결과 값 없음');
+      conn.query(insertSql, [req.user.id, sijang_name, market_name], function(insertErr, insertRows) {
+        if(insertErr) {
+          console.log(insertErr);
+          console.log('insert likeMarket table failed');
+        }
+        else {
+          console.log('likeMarket 테이블 삽입 성공');
+          // conn.query(likeSql, [], function(likeErr, likeRows) {});
+        }
+      });
+    }
+  });
+});
+
+
+/* 좋아요 취소 */
 router.post('/cancel_like/:id', function(req, res) {
   var market_name = req.body.market_name;
   var sijang_name = req.body.sijang_name;
@@ -637,7 +679,15 @@ router.post('/cancel_like/:id', function(req, res) {
   });
 });
 
+router.post('/main_dislike', function(req, res) {
+  var selectSql = 'select * from `likeMarket` where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
+  var dislikeUpdateSql;
 
+  // conn.query(dislikeUpdateSql, [], function(likeErr, likeRows) {});
+  // 업데이트 후 좋아요 수 값 가져오기 select query
+});
+
+/* 스탬프 삭제 */
 router.post('/delete_stamp/:id', function(req, res) {
   var sql = 'delete from `stamp` where id=?;';
   conn.query(sql, [req.params.id], function(err, rows) {
