@@ -10,10 +10,10 @@ html {
     overflow: hidden;
 }
 
-.myStamp{
-    width: 85%;
-    margin-left: 7.5%;
-    height: 160px;
+#myStamp{
+    width: 75%;
+    margin-left: 12.5%;
+    height: 30%;
     margin-top: 7%;
     margin-bottom: 7%;
     background-image:url('/images/backSample1.png');
@@ -32,34 +32,30 @@ html {
 }
 .store_and_market_L{
     width: 86%;
-    height: 30px;
+    height: 40px;
     margin-left: 7%;
     display: inline-flex;
+    line-height: 40px;
 }
-#nameing,.nameing_L{
+#nameing{
     position: absolute;
     top: 8%;
     margin: 0;
 }
-.stamp_market,.stamp_market_L{
+.stamp_market{
     width: 90%;
     margin-left: 5%;
     height: 20%;
     display: table
 }
-/* .store_market_verti{
-    width:100%;
-    height:100%;
-    display: table-cell;
-    vertical-align: middle;
-} */
+
 .stmap_verical{
     width: 100%;
     height: 100%;
     display:table-cell;
     vertical-align: middle;
 }
-.deadline,.deadline_L{
+.deadline{
     width: 50%;
     font-size: 15px;
     margin-left: 4%;
@@ -70,7 +66,7 @@ html {
     font-size: 40px;
     font-weight: lighter;
 }
-.my_stamp_count,.my_stamp_count_L{
+.my_stamp_count{
     width: 100%;
     height: 55%;
     font-size:22px;
@@ -80,7 +76,7 @@ html {
 .my_stamp_count p{
     margin: 0;
 }
-.standard_coupon,.standard_coupon_L{
+.standard_coupon{
     margin-bottom: 3% !important;
 }
 .stamp_count_vertical{
@@ -91,8 +87,8 @@ html {
 }
 
 .my_coupon_list{
-    width: 85%;
-    margin-left: 7.5%;
+    width: 75%;
+    margin-left: 12.5%;
     margin-bottom: 80px;
 }
 #make_coupon_div{
@@ -103,21 +99,34 @@ html {
 }
 
 #make_coupon{
-    width: 80%;
-    height: 50px;
-    margin-left: 10%;
+    width: 90%;
+    height: 45px;
+    margin-left: 5%;
     background-image: url('/images/mainBack.png');
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
-    border-radius: 7px;
-    font-size: 20px;
+    border-radius: 30px;
+    font-size: 15px;
     border-style: none;
     margin-top: 20px;
+    font-weight: lighter;
+}
+.stamp_list{
+    width: 100%;
+    height: 160px;
+    background-image:url('/images/backSample1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    border-radius: 7px;
+    margin-top: 20px;
+    line-height: 160px;
+    text-align: center;
 }
 .my_coupon:nth-child(4n-3){
     width: 100%;
-    height: 150px;
+    height: 160px;
     background-image:url('/images/backSample1.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -127,7 +136,7 @@ html {
 }
 .my_coupon:nth-child(4n-2){
     width: 100%;
-    height: 150px;
+    height: 160px;
     background-image:url('/images/backSample2.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -137,7 +146,7 @@ html {
 }
 .my_coupon:nth-child(4n-1){
     width: 100%;
-    height: 150px;
+    height: 160px;
     background-image:url('/images/backSample3.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -147,7 +156,7 @@ html {
 }
 .my_coupon:nth-child(4n){
     width: 100%;
-    height: 150px;
+    height: 160px;
     background-image:url('/images/backSample4.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -155,48 +164,44 @@ html {
     border-radius: 7px;
     margin-top: 20px;
 }
-.store_and_market{
-    width: 90%;
-    margin-left: 5%;
-    display: inline-flex;
-    color: white;
-}
+
 .store_name{
     width: 60%;
-    height: 30px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 40px;
 }
 .market_name{
     width: 40%;
-    height: 30px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
 }
 .sale_price{
-    width: 90%;
-    height: 65px;
-    margin-left: 5%;
-    font-size: 40px;
+    width: 100%;
+    height: 42.5px;
+    font-size:24px;
     color: white;
-    line-height: 65px;
+    line-height: 42.5px;
     text-align: center;
+    font-weight: lighter;
 }
 .standard{
-    width: 90%;
-    height: 20px;
-    margin-left: 5%;
-    font-size: 18px;
+    width: 100%;
+    height: 42.5px;
+    font-size: 24px;
     color: white;
-    line-height: 20px;
+    line-height: 60px;
     text-align: center;
+    font-weight: lighter;
 }
 .period{
-    width: 90%;
-    height: 20px;
+    width: 80%;
+    height: 35px;
     margin-left: 5%;
-    font-size: 20px;
+    font-size: 16px;
     color: white;
-    line-height: 20px;
-    text-align: center;
+    line-height: 35px;
+    font-weight: lighter;
 }
 
 #nav_sj {
