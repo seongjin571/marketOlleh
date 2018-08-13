@@ -526,6 +526,9 @@ router.post('/make_stamp', function(req, res) {
   var stamp_password = req.body.stamp_password;
   var postsql = "select * from `stamp` where user_id = ? and market_name = ? and sijang_name = ?"
   var sql = 'insert into `stamp`(`user_id`,`market_name`,`stamp_count`,`stamp_standard`,`stamp_reward`,`stamp_password`,`sijang_name`) values (?,?,?,?,?,?,?);';
+  var likeInsertSql = 'insert into `likeMarket` (`user_id`, `sijang_name`, `market_name`) values (?, ?, ?) ;';
+  var likeSelectSql = 'select * from `likeMarket` where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
+
   conn.query(postsql, [user_id,market_name,sijang_name], function(error, results){
     if(error) { console.log(error); }
     else if(results.length) {
@@ -534,10 +537,35 @@ router.post('/make_stamp', function(req, res) {
     else{
       conn.query(sql,[user_id,market_name,stamp_count,stamp_standard,stamp_reward,stamp_password,sijang_name],function(error,result,fields){
         if(error){
+          console.log(error);
           console.log('error');
-        }  else{
-            res.send({ result: 'success' });
-          }
+        }
+        else{
+          conn.query(likeSelectSql, [req.user.id, sijang_name, market_name], function(likeSelErr, likeSelRows) {
+            if(likeSelErr) {
+              console.log(likeSelErr);
+              console.log('likeMarket 테이블 조회 실패');
+            }
+            else if(likeSelRows.length) {
+              console.log('likeMarket 테이블 조회 성공');
+              res.send({ result: 'success' });
+            }
+            else {
+              console.log('likeMarket 테이블 조회 성공 but 결과 값 없음');
+              conn.query(likeInsertSql, [req.user.id, sijang_name, market_name], function(likeInsertErr, likeInsertRows) {
+                if(likeInsertErr) {
+                  console.log(likeInsertErr);
+                  console.log('likeMarket 테이블 삽입 실패');
+                }
+                else {
+                  console.log('likeMarket 테이블 삽입 성공');
+                  res.send({ result: 'success' });
+                }
+              });
+              //
+            }
+          });
+        }
       })
     }
   });
