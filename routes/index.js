@@ -137,8 +137,6 @@ router.get('/coupon', function(req, res){
 router.get('/couponManager', function(req, res, next) {
   var sql='select * from manager where `manager_id`=?;';
   var sql2 = 'select * from coupon_manager where `manager_id`=?';
-  var sql3 = 'select coupon_count from coupon_manager where `manager_id`=?';
-  var deletesql = 'delete from coupon_manager where coupon_count =0';
     conn.query(sql,[req.session.authId],function(error,results,fields){
       if(error){
         console.log(error);
@@ -158,37 +156,18 @@ router.get('/couponManager', function(req, res, next) {
               results1 : undefined
             });
           }else{
+            console.log(req.session.authId);
             console.log('발급한 쿠폰이 있는 경우');
-            conn.query(sql3,[req.session.authId],function(error,results2,fields){
-              if(error){
-                console.log('에러부분');
-              }
-              else if(results2 == 0){
-                console.log('쿠폰이0개일경우');
-                conn.query(deletesql,function(error,results3,fields){
-                  console.log('0개인 쿠폰 지움');
-                  res.render('couponManager',{
-                    title:'couponManager_no',
-                    results : results,
-                    results1 : undefined
-                  });
-                })
-              }else{
-                console.log(req.session.authId);
-                console.log('쿠폰이 0개가 아닌경우');
-                res.render('couponManager',{
-                  title:'couponManager_yes',
-                  results : results,
-                  results1 : results1,
-                });
-              }
-            })
+            res.render('couponManager',{
+              title:'couponManager_yes',
+              results : results,
+              results1 : results1
+            });
           }
         });
       }
     });
 });
-
 
 
 router.post('/couponManager', function(req, res) {
