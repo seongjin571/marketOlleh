@@ -263,6 +263,7 @@ body, html {
     text-align:center;
     width:100%;
     height:30%;
+    background-color: white;
 }
 #signuplogo
 {
@@ -278,7 +279,7 @@ body, html {
     text-align: center;
     color:grey;
 }
-  .signupuser_input > .signuptext{
+.signuptext{
     width: 80%;
     height: 90%;
     background-color: white;
@@ -325,8 +326,50 @@ body, html {
 
 
 /*signupuser css finish*/
-
-
+#signupForm2{
+    width:100%;
+    height: 70%;
+    padding-top:53.5%;
+}
+.signupuser_input3{
+    width:100%;
+    height:10%;
+    text-align: center;
+    color:grey;
+}
+.signuptext2{
+    width: 70%;
+    height: 90%;
+    background-color: white;
+    border: double 1px transparent;
+    background-image: linear-gradient(white, white),
+     radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;        
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 1px;
+    border: 0px;
+}
+.signupuser_input4{
+    width:100%;
+    height:10%;
+    text-align: center;
+    color:grey;
+}
+.signupbuttonmanager{
+    width: 90%;
+      height: 100%;
+      padding:0;
+      border:0;
+      border-radius: 50px;
+      color:white;
+      background: -webkit-linear-gradient(left, #17ead9, #6078ea);
+      background: -o-linear-gradient(right, #17ead9, #6078ea);
+      background: -moz-linear-gradient(right, #17ead9, #6078ea);
+      background: linear-gradient(to right, #17ead9 , #6078ea);
+  }
 /*login manager css finish*/
 /*login manager css finish*/
 /*login manager css finish*/

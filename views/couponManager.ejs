@@ -21,13 +21,12 @@
 
 <body>
     <div id="all_coupon_div">
-        <button id="make_coupon">쿠폰 생성</button>
-
+        <button id="make_coupon">새로운 쿠폰 생성</button>
         <div class="my_coupon_list">
             <% if(results1) { %>
                 <% for(var i=0; i<results1.length; i++) { %>
                     <div class="my_coupon">
-                        <div class="store_and_market">
+                        <div class="store_and_market_L">
                             <div class="store_name">
                                 <%= results1[i].market_name %>
                             </div>
@@ -35,20 +34,20 @@
                                 <%= results1[i].sijang_name %>
                             </div>
                         </div>
-                        <div class="sale_price">
-                            <%= results1[i].coupon_reward %>
-                        </div>
                         <div class="standard">
                             <%= results1[i].coupon_standard %>
                         </div>
+                        <div class="sale_price">
+                            <%= results1[i].coupon_reward %>
+                        </div>
                         <div class="period">
-                            <%= results1[i].coupon_count %>
+                           선착순 : <%= results1[i].coupon_count %>
                         </div>
                     </div>
                     <% } %>
                         <% } else { %>
                             <div class='stamp_list'>
-                                <div id="no_stamp">발급받은 쿠폰이 없습니다.</div>
+                                <div id="no_stamp">발급 한 쿠폰이 없습니다.</div>
                             </div>
                             <% } %>
         </div>
@@ -57,12 +56,11 @@
 
     <div id="make_coupon_div">
         <div id="myStamp">
-                <div id="store_market_name">
-                    <!-- <div class="store_market_verti"> -->
-                        <p id="nameing"style="width: 60%">나현이네 과일가게</p>
-                        <p id="password" style="width: 40%"></p>
-                    <!-- </div> -->
-                </div>
+            <div id="store_market_name">
+                <p id="nameing" style="width: 60%">나현이네 과일가게</p>
+                <p id="password" style="width: 40%"></p>
+                <!-- </div> -->
+            </div>
             <div class="my_stamp_count">
                 <div class="stamp_count_vertical">
                     <p class="standard_coupon">
@@ -84,7 +82,7 @@
                 <img class="check_select" src="/images/check.png" width="24px" height="24px">
                 <p class="name">할인금액</p>
                 <select class="coupon_reward" name="coupon_reward">
-                    <option>선택</option>
+                    <option value="1">선택</option>
                     <option>1000원 할인</option>
                     <option>1500원 할인</option>
                     <option>2000원 할인</option>
@@ -100,7 +98,7 @@
                 <img class="check_select" src="/images/check.png" width="24px" height="24px">
                 <p class="name">선착순</p>
                 <select id="people_number" name="coupon_reward">
-                    <option>선택</option>
+                    <option value="1">선택</option>
                     <option>30명</option>
                     <option>50명</option>
                     <option>100명</option>
@@ -170,31 +168,28 @@
             console.log('로그아웃실패');
         }
     })
-    // var swiper = new Swiper('.swiper-container', {
-    //     slidesPerView: 'auto',
-    //     centeredSlides: true,
-    //     spaceBetween: 0,
-    //     pagination: {
-    //         el: '.swiper-pagination',
-    //         dynamicBullets: true,
-    //         clickable: true,
-    //     },
-    //     on: {
-    //         init: function () {
-    //             $('.swiper-slide-active').css('height', '100%')
-    //             $('.swiper-slide-active').css('margin-top', '0%')
-    //         },
-    //     }
-    // });
+
     $('select:eq(0)').change(function () {
-        $('.check_select:eq(0)').css('visibility', 'visible');
-        var value3 = $(".coupon_reward option:selected").val();
-        $('.reward_coupon').html(value3)
+        if ($(this).val() == '1') {
+            $('.check_select:eq(0)').css('visibility', 'hidden');
+            $('.reward_coupon').html("")
+        }
+        else {
+            $('.check_select:eq(0)').css('visibility', 'visible');
+            var value3 = $(".coupon_reward option:selected").val();
+            $('.reward_coupon').html(value3)
+        }
     });
     $('select:eq(1)').change(function () {
-        $('.check_select:eq(1)').css('visibility', 'visible');
-        var value4 = $("#people_number option:selected").val();
-        $('.deadline').html('선착순 : ' + value4)
+        if ($(this).val() == '1') {
+            $('.check_select:eq(1)').css('visibility', 'hidden');
+            $('.deadline').html("")
+        }
+        else {
+            $('.check_select:eq(1)').css('visibility', 'visible');
+            var value4 = $("#people_number option:selected").val();
+            $('.deadline').html('선착순 : ' + value4)
+        }
     });
     $('input:eq(0)').change(function () {
         $('.check_input:eq(0)').css('visibility', 'visible');
@@ -222,9 +217,9 @@
         location.href = '/mystore';
     })
     $('#coupon_make_button').click(function () {
-        var manager_id = '<%= results[0].manager_id %>';
-        var sijang_name = '<%= results[0].sijang_name %>';
-        var market_name = '<%= results[0].market_name %>';
+        var manager_id = 'seongjin11';
+        var sijang_name = '통인시장';
+        var market_name = '한씨네 김밥';
         var coupon_standard = $('#coupon_standard').val();
         var coupon_count = $('#coupon_count').val();
         var coupon_password = $('#coupon_password').val();

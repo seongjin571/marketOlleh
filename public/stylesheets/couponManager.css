@@ -7,11 +7,12 @@ html {
     height: 100%;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
 #myStamp{
-    width: 79%;
-    margin-left: 11.5%;
+    width: 75%;
+    margin-left: 12.5%;
     height: 30%;
     margin-top: 7%;
     margin-bottom: 7%;
@@ -29,6 +30,13 @@ html {
     margin-left: 7%;
     line-height: 22%;
 }
+.store_and_market_L{
+    width: 86%;
+    height: 40px;
+    margin-left: 7%;
+    display: inline-flex;
+    line-height: 40px;
+}
 #nameing{
     position: absolute;
     top: 8%;
@@ -40,12 +48,7 @@ html {
     height: 20%;
     display: table
 }
-/* .store_market_verti{
-    width:100%;
-    height:100%;
-    display: table-cell;
-    vertical-align: middle;
-} */
+
 .stmap_verical{
     width: 100%;
     height: 100%;
@@ -84,8 +87,8 @@ html {
 }
 
 .my_coupon_list{
-    width: 80%;
-    margin-left: 10%;
+    width: 75%;
+    margin-left: 12.5%;
     margin-bottom: 80px;
 }
 #make_coupon_div{
@@ -94,80 +97,111 @@ html {
     display: none;
     margin-top: 20px;
 }
-/* #make_coupon_div button{
-    width: 40%;
-    height: 40px;
-    background-image: url('/images/mainBack.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-left: 7%;
-    color: white;
-    font-size: 20px;
-    border-radius: 7px;
-    border-style: none;
-} */
+
 #make_coupon{
-    width: 80%;
-    height: 50px;
-    margin-left: 10%;
+    width: 90%;
+    height: 45px;
+    margin-left: 5%;
     background-image: url('/images/mainBack.png');
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
-    border-radius: 7px;
-    font-size: 20px;
+    border-radius: 30px;
+    font-size: 15px;
     border-style: none;
     margin-top: 20px;
+    font-weight: lighter;
 }
-.my_coupon{
+.stamp_list{
     width: 100%;
-    height: 130px;
-    background-color: #fb83a5;
+    height: 160px;
+    background-image:url('/images/backSample1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    border-radius: 7px;
+    margin-top: 20px;
+    line-height: 160px;
+    text-align: center;
+}
+.my_coupon:nth-child(4n-3){
+    width: 100%;
+    height: 160px;
+    background-image:url('/images/backSample1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
     border-radius: 7px;
     margin-top: 20px;
 }
-.store_and_market{
-    width: 90%;
-    margin-left: 5%;
-    display: inline-flex;
+.my_coupon:nth-child(4n-2){
+    width: 100%;
+    height: 160px;
+    background-image:url('/images/backSample2.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     color: white;
+    border-radius: 7px;
+    margin-top: 20px;
 }
+.my_coupon:nth-child(4n-1){
+    width: 100%;
+    height: 160px;
+    background-image:url('/images/backSample3.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    border-radius: 7px;
+    margin-top: 20px;
+}
+.my_coupon:nth-child(4n){
+    width: 100%;
+    height: 160px;
+    background-image:url('/images/backSample4.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    border-radius: 7px;
+    margin-top: 20px;
+}
+
 .store_name{
-    width: 70%;
-    height: 25px;
-    line-height: 25px;
+    width: 60%;
+    height: 40px;
+    line-height: 40px;
 }
 .market_name{
-    width: 30%;
-    height: 25px;
-    line-height: 25px;
+    width: 40%;
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
 }
 .sale_price{
-    width: 90%;
-    height: 65px;
-    margin-left: 5%;
-    font-size: 40px;
+    width: 100%;
+    height: 42.5px;
+    font-size:24px;
     color: white;
-    line-height: 65px;
+    line-height: 42.5px;
     text-align: center;
+    font-weight: lighter;
 }
 .standard{
-    width: 90%;
-    height: 20px;
-    margin-left: 5%;
-    font-size: 18px;
+    width: 100%;
+    height: 42.5px;
+    font-size: 24px;
     color: white;
-    line-height: 20px;
+    line-height: 60px;
     text-align: center;
+    font-weight: lighter;
 }
 .period{
-    width: 90%;
-    height: 20px;
+    width: 80%;
+    height: 35px;
     margin-left: 5%;
-    font-size: 20px;
+    font-size: 16px;
     color: white;
-    line-height: 20px;
-    text-align: center;
+    line-height: 35px;
+    font-weight: lighter;
 }
 
 #nav_sj {
@@ -275,11 +309,11 @@ input,select{
 .check_input,.check_select{
     visibility: hidden;
 }
-.standard_coupon,.reward_coupon{
+.standard_coupon,.reward_coupon,.reward_coupon_L{
     width: 100%;
     text-align: center;
 }
-#password{
+#password,.password_L{
     position: absolute;
     left: 63%;
     width: 40%;
