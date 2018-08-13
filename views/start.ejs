@@ -60,24 +60,23 @@
             <div class="login_button_user">
                 <input class="inputuser" type='password' name='userpwd' placeholder='     비밀번호' />
             </div>
-        </br>
-        <div id="login_button_user2">
+            </br>
+            <div id="login_button_user2">
                 <button class="idfind">로그인 상태 유지</button>
                 <button class="idfind">아이디 찾기</button>
-                <button type="button"id="loginUser_sign_up">Sign Up</button>
-           </div>
-        <div class="login_button_user3">                    
-          <button type='submit' value='' class="loginUser_insert">로그인</button>
-        </div>
-      </form>
+                <button type="button" id="loginUser_sign_up">Sign Up</button>
+            </div>
+            <div class="login_button_user3">
+                <button type='submit' value='' class="loginUser_insert">로그인</button>
+            </div>
+        </form>
 
-            
-       
 
         <div id="kakao_logo">
             <div class="login_button_user4" id="kakaobutton2">
                 <a href='/login/kakao'>
-                    <button id="kakaobutton"><img id="kakao_Image" src="/images/kakao_Image.png">카카오톡 시작하기</button>
+                    <button id="kakaobutton">
+                        <img id="kakao_Image" src="/images/kakao_Image.png">카카오톡 시작하기</button>
                 </a>
             </div>
         </div>
@@ -87,7 +86,7 @@
     <!--loginManager 시작-->
     <div id="loginManager">
         <div id="top_logo">
-                <img id="loginUser_logo_with_text2" src="/images/logo_with_text.png">
+            <img id="loginUser_logo_with_text2" src="/images/logo_with_text.png">
         </div>
         <form class="formManager" action='/loginmanager' method='POST'>
             <div class="login_button_formManager">
@@ -96,19 +95,18 @@
             <div class="login_button_formManager">
                 <input class="inputmanager" type='password' id="password" name='password' placeholder='비밀번호' />
             </div>
-
         </form>
         <div id="login_button_user2">
-                <button class="idfind">로그인 상태 유지</button>
-                <button class="idfind">아이디 찾기</button>
-                <button id="loginmanager_sign_up">Sign Up</button>
+            <button class="idfind">로그인 상태 유지</button>
+            <button class="idfind">아이디 찾기</button>
+            <button id="loginmanager_sign_up">Sign Up</button>
         </div>
         <div id="kakao_logo">
             <div class="login_button_user5">
                 <button type='submit' id="loginButton" value='' class="loginUser_insert">로그인</button>
             </div>
         </div>
-</div>
+    </div>
 
 
     <script>
@@ -153,19 +151,19 @@
     <!--signupuser 시작-->
     <div id="signupuser">
         <div id="top_signup">
-                 <img id="signuplogo" src="/images/logo_with_text.png">
+            <img id="signuplogo" src="/images/logo_with_text.png">
         </div>
         <form class='signupform1'>
             <div class="signupuser_input">
                 <img class="icon" src="/images/nameicon.png">
-                <input class="signuptext" type='text' id='username' name='username' placeholder='이름'/>
+                <input class="signuptext" type='text' id='username' name='username' placeholder='이름' />
             </div>
             <div class="signupuser_input">
-                    <img class="icon" src="/images/idicon.png">
+                <img class="icon" src="/images/idicon.png">
                 <input class="signuptext" type='text' id='userid' name='userid' placeholder='아이디' />
             </div>
             <div class="signupuser_input">
-                    <img class="icon" src="/images/passwordicon.png">
+                <img class="icon" src="/images/passwordicon.png">
                 <input class="signuptext" type='password' id='userpwd' name='userpwd' placeholder='비밀번호' />
             </div>
             <div class="signupuser_input2">
@@ -173,38 +171,38 @@
             </div>
         </form>
     </div>
-        <script>
-            $('#signupform1').submit(function (e) {
-                e.preventDefault();
-                var data = {
-                    userid: $('#userid').val(),
-                    username: $('#username').val(),
-                    userpwd: $('#userpwd').val()
-                }
-                console.log(data);
-                $.ajax({
-                    type: "POST",
-                    url: "/signup/signupuser",
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    cache: false,
-                    datatype: "json",
-                    data: data,
-                    success: function (result) {
-                        if (result['result'] == 'success') {
-                            alert('가입 성공');
-                            $(window).attr('location', '/start');
-                        }
-                        else if (result['result'] == 'already') {
-                            alert('이미 존재하는 아이디입니다.');
-                            $('#userid').val('')
-                        }
-                    },
-                    error: function (error) {
-                        alert('가입 실패');
+    <script>
+        $('#signupform1').submit(function (e) {
+            e.preventDefault();
+            var data = {
+                userid: $('#userid').val(),
+                username: $('#username').val(),
+                userpwd: $('#userpwd').val()
+            }
+            console.log(data);
+            $.ajax({
+                type: "POST",
+                url: "/signup/signupuser",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                cache: false,
+                datatype: "json",
+                data: data,
+                success: function (result) {
+                    if (result['result'] == 'success') {
+                        alert('가입 성공');
+                        $(window).attr('location', '/start');
                     }
-                });
+                    else if (result['result'] == 'already') {
+                        alert('이미 존재하는 아이디입니다.');
+                        $('#userid').val('')
+                    }
+                },
+                error: function (error) {
+                    alert('가입 실패');
+                }
             });
-        </script>
+        });
+    </script>
     </div>
 
     <!--signupuser 끝-->
@@ -213,139 +211,140 @@
     <!--signupManager 시작-->
     <div id="signupManager">
         <div id="top_signup">
-            <div id="top_signup_logo">
-                <img src="/images/inline-logo.png" id="signuplogo" />
-                <p class="signuptitle">상인 회원가입</p>
-            </div>
+            <img id="signuplogo" src="/images/logo_with_text.png">
         </div>
 
-        <div id=signupform>
-            <form id='signupForm2'>
-                <input class="signuptext" type="text" id="manager_id" name='manager_id' placeholder="manager_id" style='margin-bottom: 10px;'>
-
-                <input class="signuptext" type="password" id="password" name='password' placeholder="password" style='margin-bottom: 10px;'>
-
-                <input class="signuptext" type="text" id="market_name" name='market_name' placeholder="market_name" style='margin-bottom: 10px;'>
-
-                <input class="signuptext" type="text" id="market_location" name='market_location' placeholder="market_location" style='margin-bottom: 10px;'>
-
-                <input class="signuptext" type="text" placeholder="manager_phone" id="manager_phone" name='manager_phone' style='margin-bottom: 10px;'>
-
-                <input class="signuptext" type="text" placeholder="manager_name" id="manager_name" name='manager_name' style='margin-bottom: 10px;'>
-
-                <select class='stamp_standard' name="stamp_standard">
-                    <option>5</option>
-                    <option>10</option>
-                    </seclect>
-
-                    <input class="signuptext" type="text" placeholder="stamp_reward" id="stamp_reward" name='stamp_reward' style='margin-bottom: 10px;'>
-
-                    <input class="signuptext" type="text" placeholder="stamp_password" id="stamp_password" name='stamp_password' style='margin-bottom: 10px;'>
-
-                    <input class="signuptext" type="text" placeholder="market_promotion" id="market_promotion" name='market_promotion' style='margin-bottom: 10px;'>
-
-                        <input class="signuptext" type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce' style='margin-bottom: 10px;'>
-                        <!--         <input type="text" placeholder="sijang_name" id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'> -->
-                        <label id="sijang_name" name='sijang_name' style='margin-bottom: 10px;'> 시장 찾기 </label>
-                        <input type="button" value="시장찾기" id="modal_display">
-                        <input id="signupbutton" type='submit' value='회원가입' />
-            </form>
-
-            <!-- Modal -->
-            <div id="myModal" class="modal">
-
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span id="modal_close">&times;</span>
-                    <h1>HI</h1>
-                    <div id="Searching">
-                        <select name="filed">
-                            <option value="name" selected="selected">시장이름</option>
-                            <option value="gooname">구</option>
-                            <option value="dongname">동</option>
-                            <option value="newaddress">도로명</option>
-                            <option value="oldaddress">지번</option>
-                        </select>
-                        <input type="text" placeholder="searching" id="search_value">
-                        <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
-                    </div>
-                    <ol id="search_result"></ol>
+        <form id='signupForm2'>
+            <div class="signupuser_input3">
+                <input class="signuptext2" type="text" id="manager_id" name='manager_id' placeholder="manager_id">
+            </div>
+            <div class="signupuser_input3">
+                <input class="signuptext2" type="password" id="password" name='password' placeholder="password">
+            </div>
+            <div class="signupuser_input3">
+                <input class="signuptext2" type="text" id="market_name" name='market_name' placeholder="market_name" >
+            </div>
+            <div class="signupuser_input3">
+                <input class="signuptext2" type="text" id="market_location" name='market_location' placeholder="market_location">
+            </div>
+            <div class="signupuser_input3">
+                <input class="signuptext2" type="text" placeholder="manager_phone" id="manager_phone" name='manager_phone'>
+            </div>
+            <div class="signupuser_input3">
+                <input class="signuptext2" type="text" placeholder="manager_name" id="manager_name" name='manager_name'>
+            </div>
+            <select class='stamp_standard' name="stamp_standard">
+                <option>5</option>
+                <option>10</option>
+                </select>
+                <div class="signupuser_input3">
+                    <input class="signuptext2" type="text" placeholder="stamp_reward" id="stamp_reward" name='stamp_reward' >
                 </div>
+                <div class="signupuser_input3">
+                    <input class="signuptext2" type="text" placeholder="stamp_password" id="stamp_password" name='stamp_password'>
+                </div>
+                <div class="signupuser_input3">
+                    <input class="signuptext2" type="text" placeholder="market_promotion" id="market_promotion" name='market_promotion'>
+                </div>
+                <div class="signupuser_input3">
+                <input class="signuptext2" type="text" placeholder="market_introduce" id="market_introduce" name='market_introduce'>
             </div>
-            <script>
+                <label id="sijang_name" name='sijang_name'> 시장 찾기 </label>
+                <input type="button" value="시장찾기" id="modal_display"/>
+                <div class="signupuser_input4">
+                <input class="signupbuttonmanager" type='submit' value='회원가입' />
+                </div>
+        </form>
 
-                $('#signupForm2').submit(function (e) {
-
-                    e.preventDefault();
-
-                    var manager_id = $('#manager_id').val();
-                    var password = $('#password').val();
-                    var market_name = $('#market_name').val();
-                    var market_location = $('#market_location').val();
-                    var manager_name = $('#manager_name').val();
-                    var manager_phone = $('#manager_phone').val();
-                    var stamp_reward = $('#stamp_reward').val();
-                    var stamp_password = $('#stamp_password').val();
-                    var market_promotion = $('#market_promotion').val();
-                    var market_introduce = $('#market_introduce').val();
-
-                    var test = document.getElementsByClassName('stamp_standard');
-                    var select_stamp_standard = test[0].selectedIndex;
-                    var stamp_standard;
-                    if (select_stamp_standard == 0) {
-                        stamp_standard = 5;
-                    } else if (select_stamp_standard == 1) {
-                        stamp_standard = 10;
-                    }
-
-                    // var sijang_name = sijang_name.innerHTML;
-                    var data = {
-
-                        'manager_id': manager_id,
-                        'password': password,
-                        'market_name': market_name,
-                        'market_location': market_location,
-                        'manager_phone': manager_phone,
-                        'manager_name': manager_name,
-                        'stamp_reward': stamp_reward,
-                        'stamp_password': stamp_password,
-                        'market_promotion': market_promotion,
-                        'market_introduce': market_introduce,
-                        'stamp_standard': stamp_standard,
-                        'sijang_name': sijang_name.innerHTML
-
-                    };
-
-                    $.ajax({
-                        type: "POST",
-                        url: "/signup/signupmanager",
-                        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                        cache: false,
-                        datatype: "json",
-                        data: data,
-                        success: function (result) {
-                            if (result['result'] == 'success') {
-                                alert('가입 성공');
-                                $(window).attr('location', '/mainManager');
-                            }
-                            else if (result['result'] == 'already') {
-                                alert('이미 존재하는 아이디입니다.');
-                                $('#manager_id').val('')
-                            }
-                        },
-                        error: function (error) {
-                            alert('가입 실패');
-                            //$(window).attr('location', '/start');
-                        }
-                    });
-                });
-
-            </script>
-            <script type="text/javascript" src="/javascripts/signupManager.js"></script>
-
-
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span id="modal_close">&times;</span>
+                <h1>modal_display</h1>
+                <div id="Searching">
+                    <select name="filed">
+                        <option value="name" selected="selected">시장이름</option>
+                        <option value="gooname">구</option>
+                        <option value="dongname">동</option>
+                        <option value="newaddress">도로명</option>
+                        <option value="oldaddress">지번</option>
+                    </select>
+                    <input type="text" placeholder="searching" id="search_value">
+                    <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
+                </div>
+                <ol id="search_result"></ol>
+            </div>
         </div>
+        <script>
 
+            $('#signupForm2').submit(function (e) {
+
+                e.preventDefault();
+
+                var manager_id = $('#manager_id').val();
+                var password = $('#password').val();
+                var market_name = $('#market_name').val();
+                var market_location = $('#market_location').val();
+                var manager_name = $('#manager_name').val();
+                var manager_phone = $('#manager_phone').val();
+                var stamp_reward = $('#stamp_reward').val();
+                var stamp_password = $('#stamp_password').val();
+                var market_promotion = $('#market_promotion').val();
+                var market_introduce = $('#market_introduce').val();
+
+                var test = document.getElementsByClassName('stamp_standard');
+                var select_stamp_standard = test[0].selectedIndex;
+                var stamp_standard;
+                if (select_stamp_standard == 0) {
+                    stamp_standard = 5;
+                } else if (select_stamp_standard == 1) {
+                    stamp_standard = 10;
+                }
+
+                // var sijang_name = sijang_name.innerHTML;
+                var data = {
+
+                    'manager_id': manager_id,
+                    'password': password,
+                    'market_name': market_name,
+                    'market_location': market_location,
+                    'manager_phone': manager_phone,
+                    'manager_name': manager_name,
+                    'stamp_reward': stamp_reward,
+                    'stamp_password': stamp_password,
+                    'market_promotion': market_promotion,
+                    'market_introduce': market_introduce,
+                    'stamp_standard': stamp_standard,
+                    'sijang_name': sijang_name.innerHTML
+
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/signup/signupmanager",
+                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                    cache: false,
+                    datatype: "json",
+                    data: data,
+                    success: function (result) {
+                        if (result['result'] == 'success') {
+                            alert('가입 성공');
+                            $(window).attr('location', '/mainManager');
+                        }
+                        else if (result['result'] == 'already') {
+                            alert('이미 존재하는 아이디입니다.');
+                            $('#manager_id').val('')
+                        }
+                    },
+                    error: function (error) {
+                        alert('가입 실패');
+                        //$(window).attr('location', '/start');
+                    }
+                });
+            });
+        </script>
+        <script type="text/javascript" src="/javascripts/signupManager.js"></script>
     </div>
     <!--signupManager 끝-->
 
