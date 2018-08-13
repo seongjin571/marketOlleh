@@ -43,7 +43,7 @@
                                 <%= results1[i].coupon_standard %>
                             </div>
                             <div class="sale_price">
-                                <%= results1[i].coupon_reward %>
+                                <%= results1[i].coupon_reward %>원 할인
                             </div>
                             <div class="period">
                                 선착순 :
@@ -93,7 +93,7 @@
                 <img class="check_select" src="/images/check.png" width="24px" height="24px">
                 <p class="name">할인금액</p>
                 <select class="coupon_reward" name="coupon_reward">
-                    <option value="1">선택</option>
+                    <option value="0">선택</option>
                     <option>1000원 할인</option>
                     <option>1500원 할인</option>
                     <option>2000원 할인</option>
@@ -109,7 +109,7 @@
                 <img class="check_select" src="/images/check.png" width="24px" height="24px">
                 <p class="name">선착순</p>
                 <select id="people_number" name="coupon_reward" class="coupon_count">
-                    <option value="1">선택</option>
+                    <option value="0">선택</option>
                     <option>30명</option>
                     <option>50명</option>
                     <option>100명</option>
@@ -181,7 +181,7 @@
     })
 
     $('select:eq(0)').change(function () {
-        if ($(this).val() == '1') {
+        if ($(this).val() == '0') {
             $('.check_select:eq(0)').css('visibility', 'hidden');
             $('.reward_coupon').html("")
         }
@@ -192,7 +192,7 @@
         }
     });
     $('select:eq(1)').change(function () {
-        if ($(this).val() == '1') {
+        if ($(this).val() == '0') {
             $('.check_select:eq(1)').css('visibility', 'hidden');
             $('.deadline').html("")
         }

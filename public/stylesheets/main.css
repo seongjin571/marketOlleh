@@ -90,7 +90,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
     vertical-align: middle;
 }
 #inline_logo{
-    margin-top: 3%;
+    margin-top: 4%;
     margin-left: 3%;
 }
 #vertical_helper{
@@ -156,6 +156,9 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
 }
 #user_name{
     margin-top: 8%;
+}
+h3{
+    font-size: 17px;
 }
 .swiper-pagination{
     bottom:10px !important;
@@ -256,7 +259,6 @@ label{
 .count_stamp{
     width: 100%;
     font-size: 40px;
-    font-weight: bold;
 }
 .stamp_vertical{
     width: 100%;
@@ -279,14 +281,14 @@ label{
 #hot_store{
     width: 100%;
     /* margin: 0 auto; */
-    height: 1810px;
+    height: 1910px;
     margin-top:9%;
     margin-bottom: 80px;
 }
 #hot_store_market{
     width: 100%;
     /* margin: 0 auto; */
-    height: 875px;
+    height: 925px;
     margin-top:9%;
     margin-bottom: 80px;
 }
@@ -300,7 +302,7 @@ label{
         border-color: #c5c6c7;
         border-width: 0.8px;
 }
-.good_count,.good_count_market{
+.good_count_market{
     height: 20px;
     line-height: 25px;
     display: inline-flex;
@@ -308,6 +310,11 @@ label{
     font-size: 14px;
 }
 .good_count{
+    height: 20px;
+    line-height: 25px;
+    display: inline-flex;
+    color:gray;
+    font-size:12.7px;
     font-weight: lighter;
 }
 .good_count img,.good_count_market img{
@@ -315,7 +322,7 @@ label{
 }
 .hot_store_detail,.hot_store_detail_market{
     width: 43%;
-    height: 165px;
+    height: 175px;
     /* border-style: s; */
      border-radius: 5px;
     margin-left: 4.8%;
@@ -351,7 +358,7 @@ label{
 }
 
 h3,h4{
-    margin-left: 20px;
+    margin-left: 17px;
     margin-top: 0;
     margin-bottom: 10px;
 }
@@ -359,7 +366,7 @@ h3,h4{
 .distance,.good_store_name{
     margin-top: 3px;
     color: gray;
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: lighter;
 }
 #nav_sj {
