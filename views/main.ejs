@@ -320,8 +320,8 @@
                             </div>
                             <% } %>
                                 <% } else { %>
-                                    <div class='stamp_list'>
-                                        <div id="no_stamp">발급받은 쿠폰이 없습니다.</div>
+                                    <div class='no_stamp'>
+                                        <div id="no_stamp_verti">발급받은 스탬프가 없습니다.</div>
                                     </div>
                                     <% } %>
                 </div>
@@ -896,7 +896,7 @@
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 'auto',
             centeredSlides: true,
-            spaceBetween: 0,
+            spaceBetween: 10,
             pagination: {
                 el: '.swiper-pagination',
                 dynamicBullets: true,
