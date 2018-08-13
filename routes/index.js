@@ -356,7 +356,7 @@ router.get('/store_infor', function(req, res) {
 router.get('/myStamp', function(req, res) {
   // var sql = 'select * from `stamp` where `user_id`=?';
   // var sqlJoin = 'SELECT * FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name WHERE user_id=?;';
-  var sqlJoin = 'SELECT * FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id WHERE stamp.user_id=?;';
+  var sqlJoin = 'SELECT stamp.id, stamp.user_id, stamp.sijang_name, stamp.market_name, stamp.stamp_count, stamp.stamp_standard, stamp.stamp_password, stamp.stamp_reward, likeMarket.like_check ,manager.like_count, manager.market_introduce FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id WHERE stamp.user_id=?;';
   var sql2 = 'select * from `review` where `user_id`=?';
   conn.query(sqlJoin, [req.user.id],function(error, result){
     if(error) {
@@ -577,32 +577,27 @@ router.post('/like/:id', function(req, res) {
   var market_name = req.body.market_name;
   var sijang_name = req.body.sijang_name;
   var like_count = req.body.like_count;
-  var sql = 'update `manager` set `like_count`=? where `sijang_name`=? and `market_name`=? ;';
-  conn.query(sql, [like_count ,sijang_name, market_name], function(err, rows) {
+  // var sql = 'update `manager` set `like_count`=? where `sijang_name`=? and `market_name`=? ;';
+  var sql = 'UPDATE stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id SET manager.like_count=?, likeMarket.like_check=? WHERE stamp.user_id=? and stamp.id=? ;';
+
+  conn.query(sql, [like_count, 1, req.user.id, req.params.id], function(err, rows) {
     if(err) {
       console.log(err);
-      console.log('좋아요 실패');
+      console.log('sql failed');
     }
-    else{
-      var sql2 = 'update `stamp` set `like_check`=? where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
-      conn.query(sql2, [1, req.user.id, sijang_name, market_name], function(error, rows2) {
-        if(error){
-          console.log('좋아요 체크 실패');
+    else {
+      console.log('update success');
+      var selectSql = 'SELECT stamp.id, stamp.user_id, likeMarket.like_check ,manager.like_count FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id WHERE stamp.id=? and stamp.user_id=? ;';
+      conn.query(selectSql, [req.params.id, req.user.id], function(error, result) {
+        if(error) {
           console.log(error);
+          console.log('select sql failed');
         }
         else {
-          var sql3 = 'select * from `manager` where `sijang_name`=? and `market_name`=? ;';
-          conn.query(sql3, [sijang_name, market_name], function(err3, rows3) {
-            if(err3) {
-              console.log('좋아요 갯수 가져오기 실패');
-              console.log(err3);
-            }
-            else {
-              res.send({
-                result: 'success',
-                like: rows3[0].like_count
-              });
-            }
+          console.log(result);
+          res.send({
+            result: 'success',
+            like: result[0].like_count
           });
         }
       });
@@ -614,32 +609,27 @@ router.post('/cancel_like/:id', function(req, res) {
   var market_name = req.body.market_name;
   var sijang_name = req.body.sijang_name;
   var like_count = req.body.like_count;
-  var sql = 'update `manager` set `like_count`=? where `sijang_name`=? and `market_name`=? ;';
-  conn.query(sql, [like_count, sijang_name, market_name], function(err, rows) {
+  // var sql = 'update `manager` set `like_count`=? where `sijang_name`=? and `market_name`=? ;';
+  var sql = 'UPDATE stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id SET manager.like_count=?, likeMarket.like_check=? WHERE stamp.user_id=? and stamp.id=? ;';
+
+  conn.query(sql, [like_count, 0, req.user.id, req.params.id], function(err, rows) {
     if(err) {
       console.log(err);
-      console.log('좋아요 취소 실패');
+      console.log('sql failed');
     }
-    else{
-      var sql2 = 'update `stamp` set `like_check`=? where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
-      conn.query(sql2, [0, req.user.id, sijang_name, market_name], function(error, rows2) {
+    else {
+      console.log('update success');
+      var selectSql = 'SELECT stamp.id, stamp.user_id, likeMarket.like_check ,manager.like_count FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id WHERE stamp.id=? and stamp.user_id=? ;';
+      conn.query(selectSql, [req.params.id, req.user.id], function(error, result) {
         if(error) {
           console.log(error);
-          console.log('좋아요 취소 체크 실패');
+          console.log('select sql failed');
         }
         else {
-          var sql3 = 'select * from `manager` where `sijang_name`=? and `market_name`=? ;';
-          conn.query(sql3, [sijang_name, market_name], function(err3, rows3) {
-            if(err3) {
-              console.log(err3);
-              console.log('좋아요 취소 갯수 가져오기 실패');
-            }
-            else {
-              res.send({
-                result: 'success',
-                like: rows3[0].like_count
-              });
-            }
+          console.log(result);
+          res.send({
+            result: 'success',
+            like: result[0].like_count
           });
         }
       });
