@@ -87,8 +87,8 @@ html {
 }
 
 .my_coupon_list{
-    width: 75%;
-    margin-left: 12.5%;
+    width: 85%;
+    margin-left: 7.5%;
     margin-bottom: 80px;
 }
 #make_coupon_div{
@@ -100,7 +100,7 @@ html {
 
 #make_coupon{
     width: 90%;
-    height: 45px;
+    height: 50px;
     margin-left: 5%;
     background-image: url('/images/mainBack.png');
     background-repeat: no-repeat;
