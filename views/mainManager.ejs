@@ -35,11 +35,11 @@
         <div id="table-cell">
             <div id="manager_infor">
                 <div>
-                    <img src="/images/reviewM.png" width="40%" height="auto">
+                    <img src="/images/reviewM.png" width="40%" height="auto" id="review_button">
                     <p>20개</p>
                 </div>
                 <div>
-                    <img src="/images/likeM.png" width="40%" height="auto">
+                    <img src="/images/likeM.png" width="40%" height="auto" id="like_button">
                     <p>212개</p>
                 </div>
                 <div>
@@ -425,6 +425,15 @@
         })
         $('#coupon_sj').click(function () {
             location.href = "/couponManager";
+        })
+        $('#myStamp_sj').click(function () {
+            location.href = "/mystampManager";
+        })
+        $('#review_button').click(function () {
+            location.href = "/mystore";
+        })
+        $('#like_button').click(function () {
+            location.href = "/mystore";
         })
         $('#myStamp_sj').click(function () {
             location.href = "/mystampManager";

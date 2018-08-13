@@ -55,9 +55,11 @@ html {
     vertical-align: middle;
 }
 .deadline{
-    width: 50%;
+    width: 60%;
+    height: 35px;
+    line-height: 35px;
     font-size: 15px;
-    margin-left: 4%;
+    margin-left: 7%;
     font-weight: lighter;
 }
 .count_stamp{
@@ -201,16 +203,24 @@ html {
     text-align: center;
     font-weight: lighter;
 }
-.period{
-    width: 80%;
+.coupon_bottom{
+    width: 100%;
     height: 35px;
-    margin-left: 5%;
+    display: inline-flex;
+}
+.logo_image{
+    width: 33%;
+    height: 100%;
+}
+.period{
+    width: 60%;
+    height: 35px;
+    margin-left: 7%;
     font-size: 16px;
     color: white;
     line-height: 35px;
     font-weight: lighter;
 }
-
 #nav_sj {
     width: 100%;
     height: 8%;
@@ -312,7 +322,6 @@ input,select{
 }
 #coupon_password{
     color:#63dded;
-    font-size: 18px;
     font-family: initial !important;
 }
 .check_input,.check_select{
@@ -326,7 +335,7 @@ input,select{
     position: absolute;
     left: 63%;
     width: 40%;
-    font-size: 43px;
+    font-size: 38px;
     top: 9.5%;
     margin: 0;
     font-weight: lighter;

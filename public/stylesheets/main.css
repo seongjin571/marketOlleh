@@ -28,7 +28,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
 
 #text_logo{
     width: 100%;
-    height: 110px;
+    height: 103px;
     /* margin-left: 5%; */
     background-image: url('/images/mainBack.png');
     background-repeat: no-repeat;
@@ -109,7 +109,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
 }
 #searching_input input{
     border-style: none;
-    width: 90%;
+    width: 88.5%;
 }
 #verti-helper{
     display: table-cell;
@@ -118,7 +118,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
 }
 #navControlButton{
     position: fixed;
-    top: 110px;
+    top: 103px;
     width: 100%;
     height: 22px;
     padding-top: 10px;
@@ -245,28 +245,26 @@ label{
 }
 .stamp_market{
     width: 100%;
-    height: 16%;
+    height: 25%;
     font-size: 20px;
-    display: table;
+    display: inline-flex;
 }
-
+.logo_image{
+    width: 33%;
+    height: 100%;
+}
 .deadline{
-    width: 50%;
+    width: 60%;
     font-size: 15px;
     margin-left: 7%;
     font-weight: lighter;
+    padding-top:1.5%;
 }
 .count_stamp{
     width: 100%;
     font-size: 40px;
 }
-.stamp_vertical{
-    width: 100%;
-    height: 100%;
-    display: table-cell;
-    vertical-align: middle;
 
-}
 
 #near_market{
     display: inline-flex;
