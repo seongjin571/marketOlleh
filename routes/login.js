@@ -24,7 +24,7 @@ router.post('/login', function(req, res, next) {
     // Generate a JSON response reflecting authentication status
     if (! user) {
       return res.send(
-        '<script type="text/javascript">alert("존재하지 않는 아이디나 잘못된 비밀번호 입니다."); document.location.href="/start";</script>'
+        '<script type="text/javascript">alert("존재하지 않는 아이디입니다."); document.location.href="/start";</script>'
       );
     }
     req.login(user, function(err){
