@@ -44,12 +44,39 @@
               <% } %>
         <% } %>
         <% if(count == 1) { %>
-          <div class="market" name="sijang_name">
+          <div class="market" id="market_name_id"name="sijang_name">
               <p><%= result2[j].sijang_name %></p>
+              <% if(cou_result) {%>
+              <% for(var a=0; a<cou_result.length; a++) { %>
+              <% if(result2[j].sijang_name == cou_result[a].sijang_name) { %>
+              <div class="find_coupon_list">
+                  <div class="find_coupon">
+                      <div class="store_and_market">
+                          <div class="store_name"><%= cou_result[a].market_name %></div>
+                          <div class="market_name"><%= cou_result[a].sijang_name %></div>
+                      </div>
+                      <div class="sale_price">
+                          <%= cou_result[a].coupon_reward %>
+                      </div>
+                      <div class="standard">
+                          <%= cou_result[a].coupon_standard %>
+                      </div>
+                      <div class="period">
+                          <%= cou_result[a].coupon_count %>
+                      </div>
+                  </div>
+              </div>
+              <% } %>
+              <% } %>
+              <% } %>
           </div>
+
         <% } %>
         <% count =0; %>
         <% } %>
+
+
+
        <% } else { %>
             <p>비어있음</p>
         <% } %>
@@ -70,44 +97,6 @@
                                                                 </div>
     </div>
 
-    <div class="find_coupon_list">
-
-        <div class="find_coupon">
-            <div class="store_and_market">
-                <div class="store_name">a현이네 과일가게</div>
-                <div class="market_name">a인시장</div>
-            </div>
-            <div class="sale_price">
-                1000원 할인
-            </div>
-            <div class="standard">
-                5000원 이상 구매 시
-            </div>
-            <div class="period">
-                기간:~18.8.20
-            </div>
-        </div>
-
-        <div class="find_coupon">
-            <div class="store_and_market">
-                <div class="store_name">b이네 정육점</div>
-                <div class="market_name">b인시장</div>
-            </div>
-            <div class="sale_price">
-                2000원 할인
-            </div>
-            <div class="standard">
-                10000원 이상 구매 시
-            </div>
-            <div class="period">
-                기간:~18.8.22
-            </div>
-        </div>
-
-
-
-
-    </div>
 
 
     <div class="my_coupon">
@@ -131,7 +120,7 @@
                                 <%= result1[i].coupon_standard %>
                             </div>
                             <div class="period">
-                                <%= result1[i].coupon_due_date %>
+                                <%= result1[i].coupon_count %>
                             </div>
                         </div>
                         <div class="swiper-slide menu">삭제</div>
@@ -191,8 +180,11 @@
     $('#logout').click(function () {
             var logout = confirm("로그아웃 하시겠습니까?");
             if (logout == true) {
+              console.log('로그아웃성공');
+              $(location).attr('href','/logout');
 
             } else {
+              console.log('로그아웃실패');
             }
         })
     var swiper = new Swiper('.swiper-container', {
@@ -219,10 +211,14 @@
     })
     $('.find_coupon').click(function () {
         var index = $(this).index();
+        index = index;
+        var market=document.getElementsByClassName('store_name')[index];
+        var market_name =market.innerHTML;
         down();
         function down() {
             if (confirm(index + '번째 쿠폰을 다운로드 하시겠습니까?')) {
-                alert(index + '번째 쿠폰 다운로드 완료')
+
+                alert(market_name + '번째 쿠폰 다운로드 완료')
             } else {
                 // no click
             }

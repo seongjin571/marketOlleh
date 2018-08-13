@@ -28,7 +28,7 @@
 
     <div id="text_logo">
         <!-- <div id="verti"> -->
-        <img id="inline_logo" src="/images/inline-logo.png" width="40%" height="auto">
+        <img id="inline_logo" src="/images/inline-logo.png" width="25%" height="auto">
         <!-- </div> -->
         <div id="Searching">
             <div id="verti">
@@ -142,7 +142,7 @@
         <!-- searching_marketinfo.js 필 참 -->
         <article id="market_infoText"></article>
         <h2>위치</h2>
-        <div id="map" style="width:80%;height:250px;margin-left: 10%; "></div>
+        <div id="map" style="width:90%;height:250px;margin-left: 5%; "></div>
         <div id="hot_store_market">
             <h3>인기 상점</h3>
             <div class="hot_store_list_market">
@@ -301,17 +301,20 @@
                                 <div class="store_market_name">
                                     <%= myStamps[i].market_name %>
                                 </div>
-                                <div class="stamp_count">
+                                <div class="my_stamp_count">
                                     <div class="stamp_count_vertical">
-                                        <div class="stamp_inline">
-                                            <p class="deadline">
-                                                <%= myStamps[i].sijang_name %>
-                                            </p>
-                                            <p class="count_stamp">
-                                                <%= myStamps[i].stamp_count %>/
-                                                    <%= myStamps[i].stamp_standard %>
-                                            </p>
-                                        </div>
+                                        <p class="count_stamp">
+                                            <%= myStamps[i].stamp_count %>&nbsp/
+                                                <%= myStamps[i].stamp_standard %>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="stamp_market">
+                                    <div class="stamp_vertical">
+                                        <p class="deadline">
+                                            <%= myStamps[i].sijang_name %>
+                                        </p>
+
                                     </div>
                                 </div>
                             </div>
@@ -872,7 +875,7 @@
             <p>로그아웃</p>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+    <script src="/javascripts/swiper.min.js"></script>
     <script>
         $('#myStamp_sj').click(function () {
             location.href = "/myStamp";
@@ -881,24 +884,49 @@
             location.href = "/coupon";
         })
         $('#logout').click(function () {
-                var logout = confirm("로그아웃 하시겠습니까?");
-                if (logout == true) {
-                  console.log('로그아웃성공');
-                  $(location).attr('href','/logout');
+            var logout = confirm("로그아웃 하시겠습니까?");
+            if (logout == true) {
+                console.log('로그아웃성공');
+                $(location).attr('href', '/logout');
 
-                } else {
-                  console.log('로그아웃실패');
-                }
-            })
+            } else {
+                console.log('로그아웃실패');
+            }
+        })
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 'auto',
             centeredSlides: true,
             spaceBetween: 0,
             pagination: {
                 el: '.swiper-pagination',
+                dynamicBullets: true,
                 clickable: true,
             },
+            on: {
+                init: function () {
+                    $('.swiper-slide-active').css('height', '100%')
+                    $('.swiper-slide-active').css('margin-top', '0%')
+                },
+            }
         });
+
+        swiper.on('slideChangeTransitionStart', function () {
+            $(".swiper-slide-active").animate({
+                height: '100%',
+                marginTop: '0%'
+            }, 100);
+            $(".swiper-slide-next").animate({
+                height: '85%',
+                marginTop: '3.5%'
+            }, 100);
+            $(".swiper-slide-prev").animate({
+                height: '85%',
+                marginTop: '3.5%'
+            }, 100);
+        });
+
+
+
 
         $('#go_stamp_sj').click(function () {
             $('#stamp_menu_sj').show(200);
@@ -916,6 +944,8 @@
             $('.store_detail_sj').hide(200);
             $('.store_review_sj').show(200);
         })
+
+
         // for(var i=0; i<3; i++){
         //     document.getElementsByClassName('swiper-slide').style.backgroundImage="url('images/backSample'i'')"
         // }

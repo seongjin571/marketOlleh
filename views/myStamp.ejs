@@ -247,7 +247,7 @@
             });
 
 
-            var stamp_kind = '<%= myStamps[i].stamp_kind %>';
+
             var stamp_count<%= myStamps[i].id %> = parseInt('<%= myStamps[i].stamp_count %>');
             var stamp_standard<%= myStamps[i].id %> = '<%= myStamps[i].stamp_standard %>';
             var reset_stamp_count = 0;
@@ -255,15 +255,6 @@
             console.log(stamp_count<%= myStamps[i].id %>);
 
             /* 스탬프 테마 적용 */
-            if (stamp_kind == 1) {
-              $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
-            }
-            else if (stamp_kind == 2) {
-              $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample2.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
-            }
-            else if (stamp_kind == 3) {
-              $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample3.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
-            }
 
             /*  적립해놓은 스탬프 색칠  */
             if (stamp_standard<%= myStamps[i].id %> == 5) {
@@ -740,7 +731,7 @@
                           })
                       </script>
 
-                      <!--stamp_kind 불러와야함-->
+                    
                       <!--stamp_count 불러와야함-->
                       <!--stamp_standard 불러와야함-->
                       <!-- <script src="/javascripts/stamp.js"></script> -->

@@ -18,7 +18,7 @@ router.get('/coupon', function(req, res){
   var user_id = req.user.id;
   var mycoupon = 'select * from `coupon_customer` where `user_id` = ?';
   var couponlist = 'select * from `coupon_manager`';
-  conn.query(couponlist,function(err,cou_result){
+  conn.query(couponlist,function(err,cou_result,fields){
     if(err){
       console.log('시작부터에러');
     }else if(! cou_result.length){
@@ -41,7 +41,8 @@ router.get('/coupon', function(req, res){
                 cou_result : undefined
               })
             }else{
-              console.log('발급받은 스탬프 있음');
+              console.log('발급받은 스탬프 있음1');
+              console.log('cou_result');
               res.render('coupon', {
                 title : '발급받은쿠폰없고 스탬프 있고',
                 result1 : undefined,
@@ -95,6 +96,7 @@ router.get('/coupon', function(req, res){
               })
             }else{
               console.log('발급받은 스탬프 있음');
+              console.log(cou_result);
               res.render('coupon', {
                 title : '발급받은쿠폰없고 스탬프 있고',
                 result1 : undefined,
@@ -117,6 +119,7 @@ router.get('/coupon', function(req, res){
               })
             }else{
               console.log('발급받은 스탬프 있음');
+              console.log('cou_result');
               res.render('coupon',{
                 title : '쿠폰있고 스탬프 있고',
                 result1 : result1,
@@ -134,6 +137,8 @@ router.get('/coupon', function(req, res){
 router.get('/couponManager', function(req, res, next) {
   var sql='select * from manager where `manager_id`=?;';
   var sql2 = 'select * from coupon_manager where `manager_id`=?';
+  var sql3 = 'select coupon_count from coupon_manager where `manager_id`=?';
+  var deletesql = 'delete from coupon_manager where coupon_count =0';
     conn.query(sql,[req.session.authId],function(error,results,fields){
       if(error){
         console.log(error);
@@ -153,13 +158,31 @@ router.get('/couponManager', function(req, res, next) {
               results1 : undefined
             });
           }else{
-            console.log(req.session.authId);
             console.log('발급한 쿠폰이 있는 경우');
-            res.render('couponManager',{
-              title:'couponManager_yes',
-              results : results,
-              results1 : results1
-            });
+            conn.query(sql3,[req.session.authId],function(error,results2,fields){
+              if(error){
+                console.log('에러부분');
+              }
+              else if(results2 == 0){
+                console.log('쿠폰이0개일경우');
+                conn.query(deletesql,function(error,results3,fields){
+                  console.log('0개인 쿠폰 지움');
+                  res.render('couponManager',{
+                    title:'couponManager_no',
+                    results : results,
+                    results1 : undefined
+                  });
+                })
+              }else{
+                console.log(req.session.authId);
+                console.log('쿠폰이 0개가 아닌경우');
+                res.render('couponManager',{
+                  title:'couponManager_yes',
+                  results : results,
+                  results1 : results1,
+                });
+              }
+            })
           }
         });
       }
@@ -167,16 +190,17 @@ router.get('/couponManager', function(req, res, next) {
 });
 
 
+
 router.post('/couponManager', function(req, res) {
   var market_name = req.body.market_name;
   var manager_id = req.body.manager_id;
   var sijang_name = req.body.sijang_name;
   var coupon_standard = req.body.coupon_standard;
-  var coupon_due_date = req.body.coupon_due_date;
+  var coupon_count = req.body.coupon_count;
   var coupon_password = req.body.coupon_password;
   var coupon_reward = req.body.coupon_reward;
-  var sql = 'insert into `coupon_manager`(`manager_id`,`market_name`,`sijang_name`,`coupon_standard`,`coupon_reward`,`coupon_password`,`coupon_due_date`) values (?,?,?,?,?,?,?);';
-  conn.query(sql, [manager_id, market_name, sijang_name, coupon_standard, coupon_reward, coupon_password, coupon_due_date], function(error, result){
+  var sql = 'insert into `coupon_manager`(`manager_id`,`market_name`,`sijang_name`,`coupon_standard`,`coupon_reward`,`coupon_password`,`coupon_count`) values (?,?,?,?,?,?,?);';
+  conn.query(sql, [manager_id, market_name, sijang_name, coupon_standard, coupon_reward, coupon_password, coupon_count], function(error, result){
     if(error){
       console.log(error);
     }else {
@@ -195,7 +219,8 @@ router.get('/mystampManager', function(req, res){
     else{
       console.log('good');
       res.render('mystampManager', {
-        result: result
+        result: result,
+        admin_name: req.session.authId,
       });
     }
   })
@@ -322,7 +347,6 @@ router.get('/store_infor', function(req, res) {
             sijang_name : result1[0].sijang_name,
             market_name : result1[0].market_name,
             stamp_standard : result1[0].stamp_standard,
-            stamp_kind : result1[0].stamp_kind,
             stamp_reward : result1[0].stamp_reward,
             stamp_password : result1[0].stamp_password
           });
@@ -340,7 +364,6 @@ router.get('/store_infor', function(req, res) {
             sijang_name : result1[0].sijang_name,
             market_name : result1[0].market_name,
             stamp_standard : result1[0].stamp_standard,
-            stamp_kind : result1[0].stamp_kind,
             stamp_reward : result1[0].stamp_reward,
             stamp_password : result1[0].stamp_password
           });
@@ -501,21 +524,48 @@ router.post('/make_stamp', function(req, res) {
   var stamp_standard = req.body.stamp_standard;
   var stamp_reward = req.body.stamp_reward;
   var stamp_password = req.body.stamp_password;
-  var stamp_kind = req.body.stamp_kind;
   var postsql = "select * from `stamp` where user_id = ? and market_name = ? and sijang_name = ?"
-  var sql = 'insert into `stamp`(`user_id`,`market_name`,`stamp_count`,`stamp_standard`,`stamp_reward`,`stamp_password`,`stamp_kind`,`sijang_name`) values (?,?,?,?,?,?,?,?);';
+  var sql = 'insert into `stamp`(`user_id`,`market_name`,`stamp_count`,`stamp_standard`,`stamp_reward`,`stamp_password`,`sijang_name`) values (?,?,?,?,?,?,?);';
+  var likeInsertSql = 'insert into `likeMarket` (`user_id`, `sijang_name`, `market_name`) values (?, ?, ?) ;';
+  var likeSelectSql = 'select * from `likeMarket` where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
+
   conn.query(postsql, [user_id,market_name,sijang_name], function(error, results){
     if(error) { console.log(error); }
     else if(results.length) {
       res.send({ result: 'already' });
     }
     else{
-      conn.query(sql,[user_id,market_name,stamp_count,stamp_standard,stamp_reward,stamp_password,stamp_kind,sijang_name],function(error,result,fields){
+      conn.query(sql,[user_id,market_name,stamp_count,stamp_standard,stamp_reward,stamp_password,sijang_name],function(error,result,fields){
         if(error){
+          console.log(error);
           console.log('error');
-        }  else{
-            res.send({ result: 'success' });
-          }
+        }
+        else{
+          conn.query(likeSelectSql, [req.user.id, sijang_name, market_name], function(likeSelErr, likeSelRows) {
+            if(likeSelErr) {
+              console.log(likeSelErr);
+              console.log('likeMarket 테이블 조회 실패');
+            }
+            else if(likeSelRows.length) {
+              console.log('likeMarket 테이블 조회 성공');
+              res.send({ result: 'success' });
+            }
+            else {
+              console.log('likeMarket 테이블 조회 성공 but 결과 값 없음');
+              conn.query(likeInsertSql, [req.user.id, sijang_name, market_name], function(likeInsertErr, likeInsertRows) {
+                if(likeInsertErr) {
+                  console.log(likeInsertErr);
+                  console.log('likeMarket 테이블 삽입 실패');
+                }
+                else {
+                  console.log('likeMarket 테이블 삽입 성공');
+                  res.send({ result: 'success' });
+                }
+              });
+              //
+            }
+          });
+        }
       })
     }
   });

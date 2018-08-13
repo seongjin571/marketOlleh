@@ -1,5 +1,5 @@
-@import url('//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
-body, h1, h2, h3, h4, h5, h6, li, p, span, div {font-family: 'NanumSquareRound',sans-serif;}
+@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family: 'NanumSquare',sans-serif;}
 
 body,
 html {
@@ -13,13 +13,15 @@ html {
     width: 100%;
     display: inline-flex;
     height: 50px;
+    background-image: url('/images/mainBack.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #menu div {
     width: 50%;
     height: 100%;
     text-align: center;
-    background-color: #fb83a5;
     line-height: 50px;
     color: white;
 }

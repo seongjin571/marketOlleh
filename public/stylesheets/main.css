@@ -1,5 +1,5 @@
-@import url('//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
-body, h1, h2, h3, h4, h5, h6, li, p, span, div {font-family: 'NanumSquareRound',sans-serif;}
+@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family: 'NanumSquare',sans-serif;}
 
     body,
         html {
@@ -178,70 +178,53 @@ label{
     color:black;
 }
 
-.swiper-slide:nth-child(5n-4){
+.swiper-slide:nth-child(4n-3){
     width: 70%;
-    height: 100%;
-    background-image:url('/images/backSample2.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    border-radius: 5px;
-    color: white;
-}
-.swiper-slide:nth-child(5n-3){
-    width: 70%;
-    height: 100%;
-    background-image:url('/images/backSample4.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    border-radius: 5px;
-    color: white;
-}
-.swiper-slide:nth-child(5n-2){
-    width: 70%;
-    height: 100%;
+    height: 85%;
+    margin-top: 3.5%;
     background-image:url('/images/backSample1.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 5px;
     color: white;
 }
-.swiper-slide:nth-child(5n-1){
+.swiper-slide:nth-child(4n-2){
     width: 70%;
-    height: 100%;
+    height: 85%;
+    margin-top: 3.5%;
+    background-image:url('/images/backSample2.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 5px;
+    color: white;
+}
+.swiper-slide:nth-child(4n-1){
+    width: 70%;
+    height: 85%;
+    margin-top: 3.5%;
     background-image:url('/images/backSample3.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 5px;
     color: white;
 }
-.swiper-slide:nth-child(5n){
+.swiper-slide:nth-child(4n){
     width: 70%;
-    height: 100%;
-    background-image:url('/images/backSample5.png');
+    height: 85%;
+    margin-top: 3.5%;
+    background-image:url('/images/backSample4.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    /* margin-left: 10%; */
     border-radius: 5px;
     color: white;
-    /* display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center; */
 }
+
 .store_market_name{
     width: 86%;
-    height: 30%;
+    height: 18%;
     margin-left: 7%;
-    margin-top: 20px;
-    font-size: 23px;
+    margin-top: 6%;
+    font-size: 17px;
 }
 .market_name{
     font-size: 14px;
@@ -251,32 +234,36 @@ label{
     font-size: 15px;
     margin-top: 5px;
 }
-.stamp_count{
+.my_stamp_count{
     width: 100%;
-    height: 60%;
-    font-size: 25px;
+    height: 49%;
+    text-align: center;
     display: table;
 }
-.stamp_inline{
-    display: inline-flex;
+.stamp_market{
     width: 100%;
+    height: 16%;
+    font-size: 20px;
+    display: table;
 }
+
 .deadline{
-    padding-top: 15px;
-    width: 40%;
+    width: 50%;
     font-size: 15px;
-    margin-left: 5%;
+    margin-left: 7%;
+    font-weight: lighter;
 }
 .count_stamp{
-    width: 55%;
-    font-size: 30px;
+    width: 100%;
+    font-size: 40px;
+    font-weight: bold;
 }
-.stamp_count_vertical{
+.stamp_vertical{
     width: 100%;
     height: 100%;
     display: table-cell;
     vertical-align: middle;
-    text-align: center;
+
 }
 
 #near_market{
@@ -292,7 +279,7 @@ label{
 #hot_store{
     width: 100%;
     /* margin: 0 auto; */
-    height: 1750px;
+    height: 1810px;
     margin-top:9%;
     margin-bottom: 80px;
 }
@@ -320,6 +307,9 @@ label{
     color:gray;
     font-size: 14px;
 }
+.good_count{
+    font-weight: lighter;
+}
 .good_count img,.good_count_market img{
     border: none;
 }
@@ -329,7 +319,7 @@ label{
     /* border-style: s; */
      border-radius: 5px;
     margin-left: 4.8%;
-    margin-bottom: 7px;
+    margin-bottom: 13px;
 }
 .market_pic{
     width: 100%;
@@ -352,6 +342,7 @@ h3,h4{
     margin-top: 3px;
     color: gray;
     font-size: 13px;
+    font-weight: lighter;
 }
 #nav_sj {
     width: 100%;
