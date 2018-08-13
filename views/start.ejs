@@ -172,7 +172,7 @@
         </form>
     </div>
     <script>
-        $('#signupform1').submit(function (e) {
+        $('.signupform1').submit(function (e) {
             e.preventDefault();
             var data = {
                 userid: $('#userid').val(),
@@ -190,7 +190,7 @@
                 success: function (result) {
                     if (result['result'] == 'success') {
                         alert('가입 성공');
-                        $(window).attr('location', '/start');
+                      //  $(window).attr('location', '/start');
                     }
                     else if (result['result'] == 'already') {
                         alert('이미 존재하는 아이디입니다.');
