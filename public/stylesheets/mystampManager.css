@@ -172,4 +172,6 @@ input,textarea{
 }
 #password_input{
     color:#63dded;
+    font-size: 18px;
+    font-family: initial !important;
 }

@@ -289,12 +289,19 @@ router.get('/main', function(req, res){
   });
 });
 
-
-
-router.get('/mainManager', function(req, res){
-  res.render('mainManager', {
-    admin_name: req.session.authId,
-  });
+router.get('/mainManager', function(req, res, next) {
+  var sql='select * from manager where `manager_id`=?;';
+    conn.query(sql,[req.session.authId],function(error,results,fields){
+      if(error){
+        console.log(error);
+      }
+      else{
+        res.render('mainManager', {
+             admin_name: req.session.authId,
+              results : results,
+            });
+          }
+        });
 });
 
 router.get('/mystore', function(req, res){

@@ -303,8 +303,10 @@ input,select{
     padding: 1px;
     border: 0px;
 }
-#password_input{
+#coupon_password{
     color:#63dded;
+    font-size: 18px;
+    font-family: initial !important;
 }
 .check_input,.check_select{
     visibility: hidden;
@@ -313,7 +315,7 @@ input,select{
     width: 100%;
     text-align: center;
 }
-#password,.password_L{
+#password{
     position: absolute;
     left: 63%;
     width: 40%;
