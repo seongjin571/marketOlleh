@@ -137,8 +137,6 @@ router.get('/coupon', function(req, res){
 router.get('/couponManager', function(req, res, next) {
   var sql='select * from manager where `manager_id`=?;';
   var sql2 = 'select * from coupon_manager where `manager_id`=?';
-  var sql3 = 'select coupon_count from coupon_manager where `manager_id`=?';
-  var deletesql = 'delete from coupon_manager where coupon_count =0';
     conn.query(sql,[req.session.authId],function(error,results,fields){
       if(error){
         console.log(error);
@@ -158,37 +156,18 @@ router.get('/couponManager', function(req, res, next) {
               results1 : undefined
             });
           }else{
+            console.log(req.session.authId);
             console.log('발급한 쿠폰이 있는 경우');
-            conn.query(sql3,[req.session.authId],function(error,results2,fields){
-              if(error){
-                console.log('에러부분');
-              }
-              else if(results2 == 0){
-                console.log('쿠폰이0개일경우');
-                conn.query(deletesql,function(error,results3,fields){
-                  console.log('0개인 쿠폰 지움');
-                  res.render('couponManager',{
-                    title:'couponManager_no',
-                    results : results,
-                    results1 : undefined
-                  });
-                })
-              }else{
-                console.log(req.session.authId);
-                console.log('쿠폰이 0개가 아닌경우');
-                res.render('couponManager',{
-                  title:'couponManager_yes',
-                  results : results,
-                  results1 : results1,
-                });
-              }
-            })
+            res.render('couponManager',{
+              title:'couponManager_yes',
+              results : results,
+              results1 : results1
+            });
           }
         });
       }
     });
 });
-
 
 
 router.post('/couponManager', function(req, res) {
@@ -526,6 +505,9 @@ router.post('/make_stamp', function(req, res) {
   var stamp_password = req.body.stamp_password;
   var postsql = "select * from `stamp` where user_id = ? and market_name = ? and sijang_name = ?"
   var sql = 'insert into `stamp`(`user_id`,`market_name`,`stamp_count`,`stamp_standard`,`stamp_reward`,`stamp_password`,`sijang_name`) values (?,?,?,?,?,?,?);';
+  var likeInsertSql = 'insert into `likeMarket` (`user_id`, `sijang_name`, `market_name`) values (?, ?, ?) ;';
+  var likeSelectSql = 'select * from `likeMarket` where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
+
   conn.query(postsql, [user_id,market_name,sijang_name], function(error, results){
     if(error) { console.log(error); }
     else if(results.length) {
@@ -534,10 +516,35 @@ router.post('/make_stamp', function(req, res) {
     else{
       conn.query(sql,[user_id,market_name,stamp_count,stamp_standard,stamp_reward,stamp_password,sijang_name],function(error,result,fields){
         if(error){
+          console.log(error);
           console.log('error');
-        }  else{
-            res.send({ result: 'success' });
-          }
+        }
+        else{
+          conn.query(likeSelectSql, [req.user.id, sijang_name, market_name], function(likeSelErr, likeSelRows) {
+            if(likeSelErr) {
+              console.log(likeSelErr);
+              console.log('likeMarket 테이블 조회 실패');
+            }
+            else if(likeSelRows.length) {
+              console.log('likeMarket 테이블 조회 성공');
+              res.send({ result: 'success' });
+            }
+            else {
+              console.log('likeMarket 테이블 조회 성공 but 결과 값 없음');
+              conn.query(likeInsertSql, [req.user.id, sijang_name, market_name], function(likeInsertErr, likeInsertRows) {
+                if(likeInsertErr) {
+                  console.log(likeInsertErr);
+                  console.log('likeMarket 테이블 삽입 실패');
+                }
+                else {
+                  console.log('likeMarket 테이블 삽입 성공');
+                  res.send({ result: 'success' });
+                }
+              });
+              //
+            }
+          });
+        }
       })
     }
   });
