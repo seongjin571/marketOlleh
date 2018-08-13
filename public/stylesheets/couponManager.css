@@ -7,48 +7,101 @@ html {
     height: 100%;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
-#menu {
-    width: 100%;
-    height: 50px;
-    text-align: center;
-    background-image: url('/images/mainBack.png');
+.myStamp{
+    width: 85%;
+    margin-left: 7.5%;
+    height: 160px;
+    margin-top: 7%;
+    margin-bottom: 7%;
+    background-image:url('/images/backSample1.png');
     background-repeat: no-repeat;
-    background-size: cover;
-    line-height: 50px;
+    background-size: 100% 100%;
+    border-radius: 5px;
     color: white;
+}
+
+
+#store_market_name{
+    width: 86%;
+    height: 22%;
+    margin-left: 7%;
+    line-height: 22%;
+}
+.store_and_market_L{
+    width: 86%;
+    height: 30px;
+    margin-left: 7%;
+    display: inline-flex;
+}
+#nameing,.nameing_L{
+    position: absolute;
+    top: 8%;
+    margin: 0;
+}
+.stamp_market,.stamp_market_L{
+    width: 90%;
+    margin-left: 5%;
+    height: 20%;
+    display: table
+}
+/* .store_market_verti{
+    width:100%;
+    height:100%;
+    display: table-cell;
+    vertical-align: middle;
+} */
+.stmap_verical{
+    width: 100%;
+    height: 100%;
+    display:table-cell;
+    vertical-align: middle;
+}
+.deadline,.deadline_L{
+    width: 50%;
+    font-size: 15px;
+    margin-left: 4%;
+    font-weight: lighter;
+}
+.count_stamp{
+    width: 100%;
+    font-size: 40px;
+    font-weight: lighter;
+}
+.my_stamp_count,.my_stamp_count_L{
+    width: 100%;
+    height: 55%;
+    font-size:22px;
+    display: table;
+    font-weight: lighter;
+}
+.my_stamp_count p{
+    margin: 0;
+}
+.standard_coupon,.standard_coupon_L{
+    margin-bottom: 3% !important;
+}
+.stamp_count_vertical{
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .my_coupon_list{
-    width: 80%;
-    margin-left: 10%;
+    width: 85%;
+    margin-left: 7.5%;
     margin-bottom: 80px;
 }
 #make_coupon_div{
-    width: 80%;
-    margin-left: 10%;
+    width: 100%;
+    height: 100%;
     display: none;
     margin-top: 20px;
 }
-#make_coupon_div button{
-    width: 40%;
-    height: 40px;
-    background-image: url('/images/mainBack.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-left: 7%;
-    color: white;
-    font-size: 20px;
-    border-radius: 7px;
-    border-style: none;
-}
-#make_coupon_div input,#make_coupon_div select{
-    width: 70%;
-    height: 40px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+
 #make_coupon{
     width: 80%;
     height: 50px;
@@ -62,10 +115,43 @@ html {
     border-style: none;
     margin-top: 20px;
 }
-.my_coupon{
+.my_coupon:nth-child(4n-3){
     width: 100%;
-    height: 130px;
-    background-color: #fb83a5;
+    height: 150px;
+    background-image:url('/images/backSample1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    border-radius: 7px;
+    margin-top: 20px;
+}
+.my_coupon:nth-child(4n-2){
+    width: 100%;
+    height: 150px;
+    background-image:url('/images/backSample2.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    border-radius: 7px;
+    margin-top: 20px;
+}
+.my_coupon:nth-child(4n-1){
+    width: 100%;
+    height: 150px;
+    background-image:url('/images/backSample3.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    border-radius: 7px;
+    margin-top: 20px;
+}
+.my_coupon:nth-child(4n){
+    width: 100%;
+    height: 150px;
+    background-image:url('/images/backSample4.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
     border-radius: 7px;
     margin-top: 20px;
 }
@@ -76,14 +162,14 @@ html {
     color: white;
 }
 .store_name{
-    width: 70%;
-    height: 25px;
-    line-height: 25px;
+    width: 60%;
+    height: 30px;
+    line-height: 30px;
 }
 .market_name{
-    width: 30%;
-    height: 25px;
-    line-height: 25px;
+    width: 40%;
+    height: 30px;
+    line-height: 30px;
 }
 .sale_price{
     width: 90%;
@@ -139,4 +225,95 @@ html {
 #nav_text{
     color: #63dded;
 }
+#make_coupon_form{
+    width: 85%;
+    height: 65%;
+    margin-left: 7.5%
+}
+.inputLine{
+    width: 100%;
+    display: inline-flex;
+}
 
+.name{
+    width: 29%;
+    height: 24px;
+    line-height: 24px;
+    margin:0;
+    margin-left: 3%;
+    font-size: 15px;
+}
+input,select{
+    width:52%;
+    margin-left: 8%;
+    margin-bottom: 7%;
+    font-size: 14px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    border-bottom-style: solid;
+   border-color: #9c9c9c;
+   border-width: 1.35px;
+    padding: 4px;
+    color: #9c9c9c;
+ }
+ select{
+    -webkit-appearance: none; 
+    -moz-appearance: none;    
+    appearance: none;
+    background: url('/images/down_arrow.png') no-repeat 95% 50%; /* 화살표 아이콘 추가 */
+    background-size: 10%;       
+
+ }
+ input{
+    height: 24px;
+ }
+#make_coupon_form button{
+    margin-top: 5%;
+}
+#coupon_make_button{
+    font-size: 17px;
+    width: 45%;
+    height: 48px;
+    background-image: url('/images/mainBack.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    border-style: none;
+    border-radius: 50px;
+    margin-left: 8%;
+    padding: 0 !important;
+}
+#cancel{
+    font-size: 17px;
+    color:#9c9c9c;
+    width: 45%;
+    height: 48px;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+    radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    border: 0px;
+}
+#password_input{
+    color:#63dded;
+}
+.check_input,.check_select{
+    visibility: hidden;
+}
+.standard_coupon,.reward_coupon,.reward_coupon_L{
+    width: 100%;
+    text-align: center;
+}
+#password,.password_L{
+    position: absolute;
+    left: 63%;
+    width: 40%;
+    font-size: 43px;
+    top: 9.5%;
+    margin: 0;
+    font-weight: lighter;
+}

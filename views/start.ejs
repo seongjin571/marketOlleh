@@ -61,18 +61,21 @@
                 <input class="inputuser" type='password' name='userpwd' placeholder='     비밀번호' />
             </div>
         </br>
+        <div id="login_button_user2">
+                <button class="idfind">로그인 상태 유지</button>
+                <button class="idfind">아이디 찾기</button>
+                <button type="button"id="loginUser_sign_up">Sign Up</button>
+           </div>
+        <div class="login_button_user3">                    
+          <button type='submit' value='' class="loginUser_insert">로그인</button>
+        </div>
       </form>
-            <div id="login_button_user2">
-                 <button class="idfind">로그인 상태 유지</button>
-                 <button class="idfind">아이디 찾기</button>
-                 <button id="loginUser_sign_up">Sign Up</button>
-            </div>
+
+            
+       
 
         <div id="kakao_logo">
-            <div class="login_button_user3">
-                <button type='submit' value='' class="loginUser_insert">로그인</button>
-            </div>
-            <div class="login_button_user3" id="kakaobutton2">
+            <div class="login_button_user4" id="kakaobutton2">
                 <a href='/login/kakao'>
                     <button id="kakaobutton"><img id="kakao_Image" src="/images/kakao_Image.png">카카오톡 시작하기</button>
                 </a>
@@ -86,14 +89,13 @@
         <div id="top_logo">
                 <img id="loginUser_logo_with_text2" src="/images/logo_with_text.png">
         </div>
-        <form class="formuser" action='/loginmanager' method='POST'>
-            <div class="login_button_user">
-                <input class="inputuser" type='text' id="manager_id" name='manager_id' placeholder='아이디' />
+        <form class="formManager" action='/loginmanager' method='POST'>
+            <div class="login_button_formManager">
+                <input class="inputmanager" type='text' id="manager_id" name='manager_id' placeholder='아이디' />
             </div>
-            <div class="login_button_user">
-                <input class="inputuser" type='password' id="password" name='password' placeholder='비밀번호' />
+            <div class="login_button_formManager">
+                <input class="inputmanager" type='password' id="password" name='password' placeholder='비밀번호' />
             </div>
-
 
         </form>
         <div id="login_button_user2">
@@ -102,7 +104,7 @@
                 <button id="loginmanager_sign_up">Sign Up</button>
         </div>
         <div id="kakao_logo">
-            <div class="login_button_user3">
+            <div class="login_button_user5">
                 <button type='submit' id="loginButton" value='' class="loginUser_insert">로그인</button>
             </div>
         </div>
@@ -110,7 +112,6 @@
 
 
     <script>
-
         $('#loginButton').click(function (e) {
             e.preventDefault();
             var manager_id = $('#manager_id').val();
@@ -152,23 +153,26 @@
     <!--signupuser 시작-->
     <div id="signupuser">
         <div id="top_signup">
-            <div id="top_signup_logo">
-                <img src="/images/inline-logo.png" id="signuplogo" />
-                <p class="signuptitle">고객 회원가입</p>
+                 <img id="signuplogo" src="/images/logo_with_text.png">
+        </div>
+        <form class='signupform1'>
+            <div class="signupuser_input">
+                <img class="icon" src="/images/nameicon.png">
+                <input class="signuptext" type='text' id='username' name='username' placeholder='이름'/>
             </div>
-        </div>
-        <div id=signupform>
-            <form id='signupform1'>
-                <input class="signuptext" type='text' id='userid' name='userid' placeholder='아이디' style='margin-bottom: 30px;' />
-                <br/>
-                <input class="signuptext" type='text' id='username' name='username' placeholder='이름' style='margin-bottom: 30px;' />
-                <br/>
-                <input class="signuptext" type='password' id='userpwd' name='userpwd' placeholder='비밀번호' style='margin-bottom: 30px;' />
-                <br/>
-                <input class="signupbutton" id="userfinish" type='submit' value='회원가입' />
-                <br/>
-            </form>
-        </div>
+            <div class="signupuser_input">
+                    <img class="icon" src="/images/idicon.png">
+                <input class="signuptext" type='text' id='userid' name='userid' placeholder='아이디' />
+            </div>
+            <div class="signupuser_input">
+                    <img class="icon" src="/images/passwordicon.png">
+                <input class="signuptext" type='password' id='userpwd' name='userpwd' placeholder='비밀번호' />
+            </div>
+            <div class="signupuser_input2">
+                <input class="signupbutton" id="userfinish" type='submit' value='고객 회원가입' />
+            </div>
+        </form>
+    </div>
         <script>
             $('#signupform1').submit(function (e) {
                 e.preventDefault();
@@ -201,10 +205,6 @@
                 });
             });
         </script>
-        <!-- <div style='margin-bottom: 10px;'>
-                <a href='/login/kakao'>
-                    <button>Kakao Login</button>
-                </a> -->
     </div>
 
     <!--signupuser 끝-->
