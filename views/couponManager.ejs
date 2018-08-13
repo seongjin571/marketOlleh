@@ -37,14 +37,15 @@
                                     <%= results1[i].sijang_name %>
                                 </div>
                             </div>
-                            <div class="sale_price">
-                                <%= results1[i].coupon_reward %>
-                            </div>
                             <div class="standard">
                                 <%= results1[i].coupon_standard %>
                             </div>
+                            <div class="sale_price">
+                                <%= results1[i].coupon_reward %>
+                            </div>
                             <div class="period">
-                                선착순 : <%= results1[i].coupon_count %>
+                                선착순 :
+                                <%= results1[i].coupon_count %>
                             </div>
                         </div>
                         <% } %>
@@ -63,7 +64,9 @@
     <div id="make_coupon_div">
         <div id="myStamp">
             <div id="store_market_name">
-                <p id="nameing" style="width: 60%"><%= results[0].market_name %></p>
+                <p id="nameing" style="width: 60%">
+                    <%= results[0].market_name %>
+                </p>
                 <p id="password" style="width: 40%"></p>
                 <!-- </div> -->
             </div>
@@ -204,9 +207,15 @@
 
     });
     $('input:eq(1)').change(function () {
-        $('.check_input:eq(1)').css('visibility', 'visible');
-        var value2 = $(this).val()
-        $('#password').html('****');
+        var password_L = $(this).val().length;
+        if (password_L == 4) {
+            $('.check_input:eq(1)').css('visibility', 'visible');
+            var value2 = $(this).val()
+            $('#password').html('****');
+        }
+        else {
+            alert('비밀번호를 4자리 입력하세요')
+        }
     });
     $('#make_coupon').click(function () {
         $('#all_coupon_div').css('display', 'none');
