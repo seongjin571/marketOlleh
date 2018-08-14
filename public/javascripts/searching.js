@@ -21,6 +21,7 @@ function turningBack() {
 		deleteNewGooTable();
 		// document.getElementById('aaa').style.display = "none";
 	} else if (document.getElementById('Goomap').style.display == 'block') {
+		$("body").scrollTop(0);
 		console.log("Turn back");
 		navControl();
 	} // Goomap이 표출된 상태에선 뒤로가기 기능
@@ -224,6 +225,7 @@ function navControl(event) {
 		document.getElementById('text_logo').style.display = "block";
 		document.getElementById('navControlButton').style.display = "table";
 		document.getElementById('back_div').style.display = "none";
+		$("body").scrollTop(0);
 	} else { // Goomap / 비활성화 되어있을때 else --> block
 		deleteNewSearchList(); // 검색후 navControl 버튼 눌렀을때 고려
 		document.getElementById('navControlButton').style.display = "none";
@@ -232,6 +234,7 @@ function navControl(event) {
 		document.getElementById('aaa').style.display = "none";
 		document.getElementById('text_logo').style.display = "none";
 		document.getElementById('back_div').style.display = "block";
+		$("body").scrollTop(0);
 	}
 	deleteNewGooTable();
 }
