@@ -267,6 +267,7 @@
                       html += '<div class="standard1">'+coupon_name[i].coupon_standard+'</div>';
                       html += '<div class="sale_price1">'+coupon_name[i].coupon_reward+'원 할인</div>';
                       html += '<div class="coupon_bottom">';
+                      html += '<div class="cp" style="display:none;">'+coupon_name[i].coupon_password +'</div>';
                       html += '<div class="period1">선착순 : '+coupon_name[i].coupon_count+'</div>';
                       html += '<div class="logo_image"><img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;"></div>';
                       html += '</div>';
@@ -293,13 +294,55 @@
         var market_name =market.innerHTML;
         var sijang = document.getElementsByClassName('market_name1')[list];
         var sijang_name = sijang.innerHTML;
-        alert(market_name +'+'+sijang_name);
+        var password = document.getElementsByClassName('cp')[list];
+        var coupon_password = password.innerHTML;
+        var reward = document.getElementsByClassName('sale_price1')[list];
+        var coupon_reward = reward.innerHTML;
+        var standard = document.getElementsByClassName('sale_price1')[list];
+        var coupon_standard = standard.innerHTML;
+        console.log(coupon_password);
+        var user_id = '<%= user_id %>'
+        console.log(user_id);
+        alert(market_name +'+'+sijang_name+'+'+coupon_password);
         down();
         function down() {
             if (confirm(list+1 + '번째 쿠폰을 다운로드 하시겠습니까?')) {
+              var data = {
+                'user_id' : user_id,
+                'sijang_name' : sijang_name,
+                'market_name' : market_name,
+                'coupon_password' : coupon_password,
+                'coupon_reward' : coupon_reward,
+                'coupon_standard' : coupon_standard
+              }
+              console.log(data);
+              $.ajax({
+                  type: "POST",
+                  url: "/coupon_customer",
+                  contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                  cache: false,
+                  datatype: "json",
+                  data: data,
+                  success: function (result) {
+                      if (result['result'] == 'success') {
+                          alert("쿠폰발급완료");
+                          location.reload();
+                      }
+                      else if(result['result']=='fail'){
+                          alert('이미쿠폰이 있습니다');
 
-                alert(market_name + '쿠폰 다운로드 완료')
+                      }else {
+                        alert('쿠폰등록실패1');
+                        location.reload();
+                      }
+                  },
+                  error: function (error) {
+                      alert('쿠폰등록실패2');
+                  }
+              });
+
             } else {
+              alert("여기잘못됨");
             }
         }
     })
