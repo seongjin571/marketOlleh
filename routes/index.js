@@ -178,14 +178,23 @@ router.post('/couponManager', function(req, res) {
   var coupon_count = req.body.coupon_count;
   var coupon_password = req.body.coupon_password;
   var coupon_reward = req.body.coupon_reward;
+  var judge_coupon = 'select * from coupon_manager where `sijang_name`=? and `market_name`=?;';
   var sql = 'insert into `coupon_manager`(`manager_id`,`market_name`,`sijang_name`,`coupon_standard`,`coupon_reward`,`coupon_password`,`coupon_count`) values (?,?,?,?,?,?,?);';
-  conn.query(sql, [manager_id, market_name, sijang_name, coupon_standard, coupon_reward, coupon_password, coupon_count], function(error, result){
-    if(error){
-      console.log(error);
-    }else {
-        res.send({ result: 'success' });
+  conn.query(judge_coupon,[sijang_name,market_name],function(err,results){
+    if(err){
+      console.log('judge_coupon error');
+    }else if(results.length){
+      res.send({ result: 'fail' });
+    }else{
+      conn.query(sql, [manager_id, market_name, sijang_name, coupon_standard, coupon_reward, coupon_password, coupon_count], function(error, result){
+        if(error){
+          console.log(error);
+        }else {
+            res.send({ result: 'success' });
+        }
+      });
     }
-  });
+  })
 });
 
 router.get('/mystampManager', function(req, res){
