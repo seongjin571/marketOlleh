@@ -749,5 +749,21 @@ router.post('/manager_reform_stamp',function(req,res,next){//접수 버튼 클�
     }
   });
 });
+//쿠폰센드
 
+router.post('/send_sijang_name', function(req, res) {
+  var sql = 'select * from coupon_manager where sijang_name = ?;';
+  var sijang_name = req.body.sijang_name;
+  conn.query(sql, [sijang_name], function(err, results) {
+    if(err) {
+      console.log('센드시장에러');
+    }
+    else{
+      res.send({
+        result: 'success',
+        results : results,
+       });
+    }
+  });
+});
 module.exports = router;
