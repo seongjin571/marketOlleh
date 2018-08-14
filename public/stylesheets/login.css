@@ -402,11 +402,11 @@ body, html {
     height: 100%;
     position: fixed;
     top: 0px;
-    background-color: ivory;
+    background-color: white;
 }
 #text_logo{
     width: 100%;
-    height: 110px;
+    height: 103px;
     /* margin-left: 5%; */
     background-image: url('/images/mainBack.png');
     background-repeat: no-repeat;
@@ -417,15 +417,42 @@ body, html {
     z-index: 2;
 }
 #inline_logo{
-    margin-top: 3%;
+    margin-top: 4%;
     margin-left: 3%;
 }
-#Searching{
+#Searchingtap{
     width: 93%;
     margin: 0 auto;
     height: 40px;
     display: table;
     margin-top: 5px;
+}
+#Searching
+{
+    display: inline-flex;
+    width: 100%;
+    height: 40px;
+    box-shadow: 4px 4px 10px grey;
+    border-color: white;
+    background-color: white;
+}
+#filed{
+    border: 0px;
+    padding: 0px;
+    border-radius: 50px;
+    background-color: white;
+}
+#search_value{
+    border: 0px;
+    padding: 0px;
+}
+#searchingButton{
+    margin-top: 6px;
+    margin-left: 70px;
+    background-color: white;
+    border: 0px;
+    padding: 0px;
+    border-radius: 50px;
 }
 #verti{
     width: 100%;
@@ -446,8 +473,10 @@ body, html {
     border-color: white;
     background-color: white;
 }
-#searchingButton{
-    margin-top: 10px;
-    background-color: white;
+
+.modal-content{
+    height: 100%;
+    width: 100%;
+    margin-top: 30%;
 }
 /*modal layout finish*/
