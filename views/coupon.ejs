@@ -45,7 +45,7 @@
         <% } %>
         <% if(count == 1) { %>
           <div class="market" id="market_name_id"name="sijang_name">
-              <p id="click_coupon" value="<%= result2[j].sijang_name %>"><%= result2[j].sijang_name %></p>
+              <p id="click_coupon" class="click_coupon"value="<%= result2[j].sijang_name %>"><%= result2[j].sijang_name %></p>
               <% if(cou_result) {%>
               <% for(var a=0; a<cou_result.length; a++) { %>
               <% if(result2[j].sijang_name == cou_result[a].sijang_name) { %>
@@ -198,8 +198,8 @@
     var index = -1;
     var next_index = 0;
     $('.market').click(function () {
-      var data = document.getElementById('click_coupon').textContent;
-      
+      var data = document.getElementsByClassName('click_coupon').textContent;
+      alert(data);
         next_index = $(this).index();
         if (index != next_index) {
             $('.market:eq(index)').children('div').remove();
