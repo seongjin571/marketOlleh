@@ -392,6 +392,10 @@ body, html {
 /*login manager css finish*/
 /*login manager css finish*/
 /*login manager css finish*/
+
+
+
+/*modal layout start*/
 #myModal{
     display: none;
     width: 100%;
@@ -399,6 +403,51 @@ body, html {
     position: fixed;
     top: 0px;
     background-color: ivory;
-
-
 }
+#text_logo{
+    width: 100%;
+    height: 110px;
+    /* margin-left: 5%; */
+    background-image: url('/images/mainBack.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 2%;
+    position: fixed;
+    top:0;
+    z-index: 2;
+}
+#inline_logo{
+    margin-top: 3%;
+    margin-left: 3%;
+}
+#Searching{
+    width: 93%;
+    margin: 0 auto;
+    height: 40px;
+    display: table;
+    margin-top: 5px;
+}
+#verti{
+    width: 100%;
+    height: 30px;
+    display: table-cell;
+    vertical-align: middle;
+}
+#vertical_helper{
+    width: 100%;
+    height: 40px;
+    display: inline-flex;
+}
+#searching_input{
+    display: inline-flex;
+    width: 100%;
+    height: 40px;
+    box-shadow: 4px 4px 10px grey;
+    border-color: white;
+    background-color: white;
+}
+#searchingButton{
+    margin-top: 10px;
+    background-color: white;
+}
+/*modal layout finish*/
