@@ -175,22 +175,19 @@
 
 
 
-    var index = -1;
     var next_index = 0;
+    var index=-1;
+    var count=0;
     $('.market').click(function () {
         next_index = $(this).index();
-        var sijang_name=document.getElementsByClassName('click_coupon')[next_index-1].innerHTML;
-
-        // if (index != next_index) {
-        //     $('.market:eq(index)').children('div').remove();
-        //     $('.find_coupon_list').fadeIn(100);
-        //     $(this).append($('.find_coupon_list'));
-        //     index = $(this).index();
-        // }
-        // else {
-        //     $('.find_coupon_list').fadeOut(100);
-        //     index = -1;
-        // }
+        if(next_index ==index){
+            if(count==1){
+            $('.find_coupon_list1').remove();
+            index=next_index;
+            count=0;
+            }
+            else{
+                var sijang_name=document.getElementsByClassName('click_coupon')[next_index-1].innerHTML;
         var data={
           'sijang_name' : sijang_name
         }
@@ -224,8 +221,9 @@
 
 
                   find_coupon_list_div.innerHTML = html;
-                  document.getElementsByClassName('market')[0].appendChild(find_coupon_list_div);
-
+                  document.getElementsByClassName('market')[next_index-1].appendChild(find_coupon_list_div)
+                  index=next_index;
+                  count=1;
                 }
 
               }else{
@@ -234,14 +232,66 @@
             }
           }
         })
+            }
+        }
+        else{
+            $('.find_coupon_list1').remove();
+        var sijang_name=document.getElementsByClassName('click_coupon')[next_index-1].innerHTML;
+        var data={
+          'sijang_name' : sijang_name
+        }
+
+        $.ajax({
+          type : 'post',
+          url : '/send_sijang_name',
+          contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+          cache: false,
+          data: data,
+          datatype: "json",
+          success : function(result) {
+            if(result['result']=='success'){
+              var coupon_name = result['results'];
+              console.log(coupon_name);
+              if(coupon_name.length){
+                for(var i =0; i<coupon_name.length;i++){
+                  var find_coupon_list_div = document.createElement("div");
+                  find_coupon_list_div.setAttribute("class","find_coupon_list1");
+
+
+                  var html = '<div class="find_coupon1" style="background-color : skyblue;margin : 30px;">';
+                      html += '<div class="store_and_market1">';
+                      html += '<div class="store_name1">'+coupon_name[i].market_name +'</div>';
+                      html += '<div class="market_name1">'+coupon_name[i].sijang_name+'</div>';
+                      html += '<div class="sale_price1">'+coupon_name[i].coupon_reward+'</div>';
+                      html += '<div class="standard1">'+coupon_name[i].coupon_standard+'</div>';
+                      html += '<div class="period1">'+coupon_name[i].coupon_count+'</div>';
+                      html += '</div>';
+                      html += '</div>';
+
+
+                  find_coupon_list_div.innerHTML = html;
+                  document.getElementsByClassName('market')[next_index-1].after(find_coupon_list_div)
+                  index=next_index;
+                  count=1;
+                }
+
+              }else{
+                alert('해당 시장에 쿠폰이 없습니다.');
+              }
+            }
+          }
+        })
+    }
     })
-    $('.find_coupon_list').click(function () {
-        var index = $(this).index()-1;
-        var market=document.getElementsByClassName('store_name')[index];
+
+    $('.find_coupon_list1').click(function () {
+        alert('a')
+        var list = $(this).index()-1;
+        var market=document.getElementsByClassName('store_name1')[list];
         var market_name =market.innerHTML;
         down();
         function down() {
-            if (confirm(index + '번째 쿠폰을 다운로드 하시겠습니까?')) {
+            if (confirm(list + '번째 쿠폰을 다운로드 하시겠습니까?')) {
 
                 alert(market_name + '번째 쿠폰 다운로드 완료')
             } else {
