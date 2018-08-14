@@ -289,12 +289,14 @@
     })
     $(document).on("click",'.find_coupon_list1',function(event){
         var list = $('.find_coupon_list1').index(this);
-        alert(list)
         var market=document.getElementsByClassName('store_name1')[list];
         var market_name =market.innerHTML;
+        var sijang = document.getElementsByClassName('market_name1')[list];
+        var sijang_name = sijang.innerHTML;
+        alert(market_name +'+'+sijang_name);
         down();
         function down() {
-            if (confirm(list + '번째 쿠폰을 다운로드 하시겠습니까?')) {
+            if (confirm(list+1 + '번째 쿠폰을 다운로드 하시겠습니까?')) {
 
                 alert(market_name + '쿠폰 다운로드 완료')
             } else {
@@ -302,7 +304,7 @@
         }
     })
 
-  
+
 
 
 </script>

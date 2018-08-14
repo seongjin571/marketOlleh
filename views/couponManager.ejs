@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-  
+
 
     <div id="make_coupon_form">
         <div class="inputLine">
@@ -293,9 +293,12 @@
                     alert("쿠폰 등록");
                     location.reload();
                 }
-                else {
-                    alert('쿠폰등록실패1');
+                else if(result['result']=='fail'){
+                    alert('이미쿠폰이 있습니다');
                     location.reload();
+                }else {
+                  alert('쿠폰등록실패1');
+                  location.reload();
                 }
             },
             error: function (error) {

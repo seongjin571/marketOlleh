@@ -220,10 +220,10 @@
 
         <form id='signupForm2'>
             <div class="signupuser_input3">
-                <input class="signuptext2" type="text" id="manager_id" name='manager_id' placeholder="manager_id">
+                <input class="signuptext2" type="text" id="manager_id_jh" name='manager_id' placeholder="manager_id">
             </div>
             <div class="signupuser_input3">
-                <input class="signuptext2" type="password" id="password" name='password' placeholder="password">
+                <input class="signuptext2" type="password" id="password_jh" name='password' placeholder="password">
             </div>
             <div class="signupuser_input3">
                 <input class="signuptext2" type="text" id="market_name" name='market_name' placeholder="market_name" >
@@ -255,7 +255,7 @@
                 <input type="button" value="시장찾기" id="modal_display"/>
             </div>
                 <div class="signuser_coupon2">
-                        <span>쿠폰 개수 선택 </span>
+                        <span>스탬프 개수 선택 </span>
                         <select class='stamp_standard' name="stamp_standard">
                         <option>5</option>
                         <option>10</option>
@@ -304,8 +304,8 @@
 
                 e.preventDefault();
 
-                var manager_id = $('#manager_id').val();
-                var password = $('#password').val();
+                var manager_id = $('#manager_id_jh').val();
+                var password = $('#password_jh').val();
                 var market_name = $('#market_name').val();
                 var market_location = $('#market_location').val();
                 var manager_name = $('#manager_name').val();
@@ -341,7 +341,7 @@
                     'sijang_name': sijang_name.innerHTML
 
                 };
-
+                console.log(data);
                 $.ajax({
                     type: "POST",
                     url: "/signup/signupmanager",
@@ -352,7 +352,7 @@
                     success: function (result) {
                         if (result['result'] == 'success') {
                             alert('가입 성공');
-                            $(window).attr('location', '/mainManager');
+                            window.reloard();
                         }
                         else if (result['result'] == 'already') {
                             alert('이미 존재하는 아이디입니다.');
