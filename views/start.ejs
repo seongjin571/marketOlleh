@@ -266,46 +266,38 @@
                 </div>
         </form>
 
-        <!-- Modal -->
-        <div id="myModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span id="modal_close">&times;</span>
-
-
+           <!-- Modal -->
+           <div id="myModal" class="modal">
+                <!-- Modal content -->
                 <div id="text_logo">
                         <!-- <div id="verti"> -->
-                        <img id="inline_logo" src="/images/inline-logo.png" width="25%" height="auto">
+                        <img id="inline_logo" src="/images/inline-logo.png" width="21%" height="auto">
                         <!-- </div> -->
-                        <div id="Searching">
+                        <div id="Searchingtap">
                             <div id="verti">
                                 <div id="vertical_helper">
-                                    <div id="searching_input">
-                                        <input type="text" id="search_value">
-                                        <img src="/images/search3.png" value="검색" id="searchingButton" width="20px" height="20px">
-                                    </div>
+                                        <div id="Searching">
+                                                <select id="filed" name="filed">
+                                                    <option value="name" selected="selected">시장이름</option>
+                                                    <option value="gooname">구</option>
+                                                    <option value="dongname">동</option>
+                                                    <option value="newaddress">도로명</option>
+                                                    <option value="oldaddress">지번</option>
+                                                </select>
+                                                <input type="text" placeholder="searching" id="search_value">
+                                                <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
+                                            </div>
                                 </div>
                             </div>
                         </div>
                     </div>
- 
 
-
-                <h1>modal_display</h1>
-                <div id="Searching">
-                    <select name="filed">
-                        <option value="name" selected="selected">시장이름</option>
-                        <option value="gooname">구</option>
-                        <option value="dongname">동</option>
-                        <option value="newaddress">도로명</option>
-                        <option value="oldaddress">지번</option>
-                    </select>
-                    <input type="text" placeholder="searching" id="search_value">
-                    <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
+                <div class="modal-content">
+                    <span id="modal_close">&times;</span>
+                    <h1>시장리스트</h1>
+                    <ol id="search_result"></ol>
                 </div>
-                <ol id="search_result"></ol>
             </div>
-        </div>
         <script>
 
             $('#signupForm2').submit(function (e) {
