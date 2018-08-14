@@ -308,6 +308,7 @@ router.get('/mainManager', function(req, res, next) {
   var count_review = 'select count(*) as cnt from review where `market_name`=? and `sijang_name`=?;';
   var count_stamp = 'select count(*) as cnt2 from stamp where `market_name`=? and `sijang_name`=?;';
   var marketSql = 'SELECT * FROM `manager` ORDER BY like_count DESC ;';
+
     conn.query(sql,[req.session.authId],function(error,results,fields){
       if(error){
         console.log(error);
