@@ -21,14 +21,14 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
 }
 #aaa{
     position: absolute;
-    top:155px;
+    top:152px;
 }
 
 /* △ main ~ display △ */
 
 #text_logo{
     width: 100%;
-    height: 110px;
+    height: 103px;
     /* margin-left: 5%; */
     background-image: url('/images/mainBack.png');
     background-repeat: no-repeat;
@@ -90,7 +90,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
     vertical-align: middle;
 }
 #inline_logo{
-    margin-top: 3%;
+    margin-top: 4%;
     margin-left: 3%;
 }
 #vertical_helper{
@@ -109,7 +109,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
 }
 #searching_input input{
     border-style: none;
-    width: 90%;
+    width: 88.5%;
 }
 #verti-helper{
     display: table-cell;
@@ -118,7 +118,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
 }
 #navControlButton{
     position: fixed;
-    top: 110px;
+    top: 103px;
     width: 100%;
     height: 22px;
     padding-top: 10px;
@@ -157,6 +157,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
 #user_name{
     margin-top: 8%;
 }
+
 .swiper-pagination{
     bottom:10px !important;
 }
@@ -242,29 +243,26 @@ label{
 }
 .stamp_market{
     width: 100%;
-    height: 16%;
+    height: 25%;
     font-size: 20px;
-    display: table;
+    display: inline-flex;
 }
-
+.logo_image{
+    width: 33%;
+    height: 100%;
+}
 .deadline{
-    width: 50%;
+    width: 60%;
     font-size: 15px;
     margin-left: 7%;
     font-weight: lighter;
+    padding-top:1.5%;
 }
 .count_stamp{
     width: 100%;
     font-size: 40px;
-    font-weight: bold;
 }
-.stamp_vertical{
-    width: 100%;
-    height: 100%;
-    display: table-cell;
-    vertical-align: middle;
 
-}
 
 #near_market{
     display: inline-flex;
@@ -279,14 +277,14 @@ label{
 #hot_store{
     width: 100%;
     /* margin: 0 auto; */
-    height: 1810px;
+    height: 1910px;
     margin-top:9%;
     margin-bottom: 80px;
 }
 #hot_store_market{
     width: 100%;
     /* margin: 0 auto; */
-    height: 875px;
+    height: 925px;
     margin-top:9%;
     margin-bottom: 80px;
 }
@@ -300,7 +298,7 @@ label{
         border-color: #c5c6c7;
         border-width: 0.8px;
 }
-.good_count,.good_count_market{
+.good_count_market{
     height: 20px;
     line-height: 25px;
     display: inline-flex;
@@ -308,6 +306,11 @@ label{
     font-size: 14px;
 }
 .good_count{
+    height: 20px;
+    line-height: 25px;
+    display: inline-flex;
+    color:gray;
+    font-size:12.7px;
     font-weight: lighter;
 }
 .good_count img,.good_count_market img{
@@ -315,7 +318,7 @@ label{
 }
 .hot_store_detail,.hot_store_detail_market{
     width: 43%;
-    height: 165px;
+    height: 175px;
     /* border-style: s; */
      border-radius: 5px;
     margin-left: 4.8%;
@@ -351,15 +354,16 @@ label{
 }
 
 h3,h4{
-    margin-left: 20px;
+    margin-left: 17px;
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 17px;
 }
 
 .distance,.good_store_name{
     margin-top: 3px;
     color: gray;
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: lighter;
 }
 #nav_sj {

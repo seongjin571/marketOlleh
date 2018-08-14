@@ -68,7 +68,7 @@ label{
 
 #hot_store{
     width: 100%;
-    height: 1810px;
+    height: 1910px;
     margin-top:270px;
     margin-bottom: 80px;
 }
@@ -88,7 +88,7 @@ label{
 }
 .hot_store_detail{
     width: 43%;
-    height: 165px;
+    height: 175px;
     /* border-style: s; */
      border-radius: 5px;
     margin-left: 4.8%;
@@ -98,24 +98,29 @@ label{
     margin-top: 3px;
     color: gray;
     font-size: 13px;
+    font-weight: lighter;
 }
 .good_count{
     height: 20px;
     line-height: 25px;
     display: inline-flex;
     color:gray;
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: lighter
 }
 .good_count img{
     border: none;
 }
+.good_market_name{
+    font-size: 15px;
+}
 #table{
-    width: 37%;
+    width: 41%;
     height: 50px;
     display: table;
     position: fixed;
     top: 215px;
-    left: 60%;
+    left: 55%;
     z-index: 3;
     border-radius: 30px;
     background-color: white;
