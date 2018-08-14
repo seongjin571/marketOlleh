@@ -38,7 +38,8 @@ router.get('/coupon', function(req, res){
                 title : '발급받은쿠폰없고 스탬프 없고',
                 result1 : undefined,
                 result2 : undefined,
-                cou_result : undefined
+                cou_result : undefined,
+                user_id : user_id,
               })
             }else{
               console.log('발급받은 스탬프 있음1');
@@ -47,7 +48,8 @@ router.get('/coupon', function(req, res){
                 title : '발급받은쿠폰없고 스탬프 있고',
                 result1 : undefined,
                 result2 : result2,
-                cou_result : undefined
+                cou_result : undefined,
+                user_id : user_id,
               })
             }
           })
@@ -61,7 +63,8 @@ router.get('/coupon', function(req, res){
                 title : '쿠폰있고 스탬프 없고',
                 result1 : result1,
                 result2 : undefined,
-                cou_result : undefined
+                cou_result : undefined,
+                user_id : user_id,
               })
             }else{
               console.log('발급받은 스탬프 있음');
@@ -69,7 +72,8 @@ router.get('/coupon', function(req, res){
                 title : '쿠폰있고 스탬프 있고',
                 result1 : result1,
                 result2 : result2,
-                cou_result : undefined
+                cou_result : undefined,
+                user_id : user_id,
               })
             }
           })
@@ -92,7 +96,8 @@ router.get('/coupon', function(req, res){
                 title : '발급받은쿠폰없고 스탬프 없고',
                 result1 : undefined,
                 result2 : undefined,
-                cou_result : cou_result
+                cou_result : cou_result,
+                user_id : user_id,
               })
             }else{
               console.log('발급받은 스탬프 있음');
@@ -101,7 +106,8 @@ router.get('/coupon', function(req, res){
                 title : '발급받은쿠폰없고 스탬프 있고',
                 result1 : undefined,
                 result2 : result2,
-                cou_result : cou_result
+                cou_result : cou_result,
+                user_id : user_id,
               })
             }
           })
@@ -115,7 +121,8 @@ router.get('/coupon', function(req, res){
                 title : '쿠폰있고 스탬프 없고',
                 result1 : result1,
                 result2 : undefined,
-                cou_result : cou_result
+                cou_result : cou_result,
+                user_id : user_id,
               })
             }else{
               console.log('발급받은 스탬프 있음');
@@ -124,7 +131,8 @@ router.get('/coupon', function(req, res){
                 title : '쿠폰있고 스탬프 있고',
                 result1 : result1,
                 result2 : result2,
-                cou_result : cou_result
+                cou_result : cou_result,
+                user_id : user_id,
               })
             }
           })
@@ -809,6 +817,37 @@ router.post('/send_sijang_name', function(req, res) {
         result: 'success',
         results : results,
        });
+    }
+  });
+});
+
+//
+
+router.post('/coupon_customer', function(req, res) {
+  var market_name = req.body.market_name;
+  var sijang_name = req.body.sijang_name;
+  var user_id = req.body.user_id;
+  var coupon_password = req.body.coupon_password;
+  var coupon_reward = req.body.coupon_reward;
+  var coupon_standard = req.body.coupon_standard;
+  var sql1 = "select * from coupon_customer where sijang_name=? and market_name =? and user_id=?;";
+  var sql2 = "insert into `coupon_customer` (`user_id`, `sijang_name`, `market_name`,`coupon_password`, `coupon_reward`, `coupon_standard`) values (?, ?, ?, ?, ?, ?) ;"
+  conn.query(sql1, [sijang_name, market_name, user_id], function(err, result) {
+    if(err) {
+      console.log('센드시장에러');
+    }else if(result.length){
+      res.send({
+        result : 'fail',
+        results : undefined
+      })
+    }
+    else{
+      conn.query(sql2, [user_id,sijang_name,market_name,coupon_password,coupon_reward,coupon_standard],function(error,results){
+        res.send({
+          result: 'success',
+          results : results,
+         });
+      })
     }
   });
 });
