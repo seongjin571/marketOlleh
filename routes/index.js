@@ -305,17 +305,45 @@ router.get('/main', function(req, res){
 
 router.get('/mainManager', function(req, res, next) {
   var sql='select * from manager where `manager_id`=?;';
+  var count_review = 'select count(*) as cnt from review where `market_name`=? and `sijang_name`=?;';
+  var count_stamp = 'select count(*) as cnt2 from stamp where `market_name`=? and `sijang_name`=?;';
+  var marketSql = 'SELECT * FROM `manager` ORDER BY like_count DESC ;';
     conn.query(sql,[req.session.authId],function(error,results,fields){
       if(error){
         console.log(error);
       }
       else{
-        res.render('mainManager', {
-             admin_name: req.session.authId,
-              results : results,
+        conn.query(count_review,[results[0].market_name,results[0].sijang_name],function(err,results2,fields){
+          if(err){
+            console.log('mainMananger error');
+          }else{
+            conn.query(count_stamp,[results[0].market_name,results[0].sijang_name],function(errr,results3,fields){
+              if(errr){
+                console.log('mainmanager errr');
+              }else{
+                conn.query(marketSql, function(marketErr, marketRows) {
+                  if(marketErr) {
+                    console.log(marketErr);
+                    console.log('marketSql err');
+                  }
+                  else {
+                    console.log(results2);
+                    res.render('mainManager', {
+                      admin_name: req.session.authId,
+                      results : results,
+                      results2 : results2[0],
+                      results3 : results3[0],
+                      market: marketRows
+                    });
+                  }
+                });
+                  }
+              })
+              }
             });
           }
-        });
+        })
+
 });
 
 router.get('/mystore', function(req, res){
@@ -749,5 +777,21 @@ router.post('/manager_reform_stamp',function(req,res,next){//접수 버튼 클�
     }
   });
 });
+//쿠폰센드
 
+router.post('/send_sijang_name', function(req, res) {
+  var sql = 'select * from coupon_manager where sijang_name = ?;';
+  var sijang_name = req.body.sijang_name;
+  conn.query(sql, [sijang_name], function(err, results) {
+    if(err) {
+      console.log('센드시장에러');
+    }
+    else{
+      res.send({
+        result: 'success',
+        results : results,
+       });
+    }
+  });
+});
 module.exports = router;

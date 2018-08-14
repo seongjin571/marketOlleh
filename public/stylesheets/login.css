@@ -101,7 +101,7 @@ body, html {
 .formuser
 {
     width:100%;
-    height: 40%;
+    height: 45%;
 }
 .formManager{
     width:100%;
@@ -193,7 +193,7 @@ body, html {
 }
 .login_button_user3
 {
-    height:20%;
+    height:50px;
     width: 100%;
     padding-top:12%;
     text-align: center;
@@ -223,12 +223,15 @@ body, html {
    }
 #kakao_logo{
     width:100%;
-    height: 30%;
+    height: 25%;
     text-align: center;
 }
 #kakaobutton{
+    text-align: center;
+    display: inline-flex;
     width: 90%;
-    height: 100%;
+    height: 50px;
+    line-height: 50px;
     color: grey;
     background-color: white;
     border: double 1px transparent;
@@ -240,10 +243,16 @@ body, html {
     padding: 1px;
     border: 0px;
 }
+#kakaobutton p{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
 #kakao_Image{
-    width: 8%;
-    height: 50%;
-    margin-right: 4%;
+    width: 50px;
+    height: 50px;
+    margin-right: 1%;
 
 }
 
@@ -392,6 +401,10 @@ body, html {
 /*login manager css finish*/
 /*login manager css finish*/
 /*login manager css finish*/
+
+
+
+/*modal layout start*/
 #myModal{
     display: none;
     width: 100%;
@@ -399,6 +412,51 @@ body, html {
     position: fixed;
     top: 0px;
     background-color: ivory;
-
-
 }
+#text_logo{
+    width: 100%;
+    height: 110px;
+    /* margin-left: 5%; */
+    background-image: url('/images/mainBack.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 2%;
+    position: fixed;
+    top:0;
+    z-index: 2;
+}
+#inline_logo{
+    margin-top: 3%;
+    margin-left: 3%;
+}
+#Searching{
+    width: 93%;
+    margin: 0 auto;
+    height: 40px;
+    display: table;
+    margin-top: 5px;
+}
+#verti{
+    width: 100%;
+    height: 30px;
+    display: table-cell;
+    vertical-align: middle;
+}
+#vertical_helper{
+    width: 100%;
+    height: 40px;
+    display: inline-flex;
+}
+#searching_input{
+    display: inline-flex;
+    width: 100%;
+    height: 40px;
+    box-shadow: 4px 4px 10px grey;
+    border-color: white;
+    background-color: white;
+}
+#searchingButton{
+    margin-top: 10px;
+    background-color: white;
+}
+/*modal layout finish*/
