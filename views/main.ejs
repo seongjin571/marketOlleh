@@ -357,7 +357,51 @@
 
         <div id="hot_store">
             <h3>서울시 좋아요순 상점</h3>
-            <div class="hot_store_list">
+            <% for(var i=0; i<=market.length-1; i+=2) { %>
+              <div class="hot_store_list">
+                  <div class="hot_store_detail">
+                      <div>
+                          <img src="/images/fruit.jpg" width="100%" height="110px">
+                      </div>
+                      <div class="good_market_name">
+                          <%= market[i].sijang_name %>
+                      </div>
+                      <div class="good_store_name">
+                          <%= market[i].market_name %>
+                      </div>
+                      <div class="good_count">
+                          <img src="/images/good.png" width="20px" height="20px">
+                          <p><%= market[i].like_count %></p>
+                      </div>
+                  </div>
+
+                  <%
+                    if(i >= market.length-1) {
+                  %>
+                      </div>
+                  <%
+                        break;
+                      }
+                  %>
+
+                  <div class="hot_store_detail">
+                      <div>
+                          <img src="/images/market2.jpg" width="100%" height="110px">
+                      </div>
+                      <div class="good_market_name">
+                          <%= market[i+1].sijang_name %>
+                      </div>
+                      <div class="good_store_name">
+                          <%= market[i+1].market_name %>
+                      </div>
+                      <div class="good_count">
+                          <img src="/images/good.png" width="20px" height="20px">
+                          <p><%= market[i+1].like_count %></p>
+                      </div>
+                  </div>
+              </div>
+            <% } %>
+            <!-- <div class="hot_store_list">
                 <div class="hot_store_detail">
                     <div>
                         <img src="/images/fruit.jpg" width="100%" height="110px">
@@ -696,7 +740,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!--△─────────────────────aaa 태그 묶음 끝────────────────────△-->
 
     <!-- ▽ STORE INFO // store_infor.ejs 참조 ▽ -->
