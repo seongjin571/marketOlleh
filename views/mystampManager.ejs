@@ -34,7 +34,7 @@
         <div class="inputLine">
             <img src="/images/mulUserM.png" width="24px" height="24px">
             <p class="name">사용자수</p>
-            <input readonly value="21"></input>
+            <input readonly value="<%= results3.cnt2 %>"></input>
         </div>
         <div class="inputLine">
             <img src="/images/stampM.png" width="24px" height="24px">
@@ -54,7 +54,7 @@
         <div class="inputLine">
             <img src="/images/lockM.png" width="24px" height="24px">
             <p class="name">비밀번호</p>
-            <input class="input_content" id="password_input"type="password" maxlength="4" id="stamp_password" readonly value="<%= result[0].stamp_password %>">
+            <input class="input_content" id="password_input"type="password" maxlength="4"  readonly value="<%= result[0].stamp_password %>">
         </div>
         <div id="reform">
             <button id="stamp_reform_cancel" style="margin-right: 10%">취소</button>
@@ -138,10 +138,11 @@
         })
         $('#mystore_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
         $('#stamp_reform_button').click(function () {
+
             var market_name = '<%= result[0].market_name %>';
             var sijang_name = '<%= result[0].sijang_name %>';
             var stamp_reward = $('#stamp_reward').val();
-            var stamp_password = $('#stamp_password').val();
+            var stamp_password = $('#password_input').val();
             var market_promotion = $('#market_promotion').val();
             var market_introduce = $('#market_introduce').val();
 
@@ -153,7 +154,7 @@
                 'market_promotion': market_promotion,
                 'market_introduce': market_introduce
             }
-
+            console.log(data);
             $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
                 type: 'POST',
                 url: '/manager_reform_stamp',

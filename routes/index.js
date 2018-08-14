@@ -191,16 +191,24 @@ router.post('/couponManager', function(req, res) {
 router.get('/mystampManager', function(req, res){
   var manager_id = req.session.authId;
   var sql = 'select * from manager where manager_id = ?';
+  var count_stamp = 'select count(*) as cnt2 from stamp where `market_name`=? and `sijang_name`=?;';
   conn.query(sql,[manager_id],function(error,result){
     if(error){
       console.log(error);
     }
     else{
-      console.log('good');
-      res.render('mystampManager', {
-        result: result,
-        admin_name: req.session.authId,
-      });
+      conn.query(count_stamp,[result[0].market_name,result[0].sijang_name],function(errr,results3,fields){
+        if(errr){
+          console.log('mainmanager errr');
+        }else{
+          console.log('good');
+          res.render('mystampManager', {
+              result: result,
+              admin_name: req.session.authId,
+              results3 : results3[0],
+            });
+          }
+        })
     }
   })
 });
