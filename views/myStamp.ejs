@@ -25,23 +25,26 @@
     <!-- <label>내 스탬프</label> -->
     <% if(myStamps) { %>
       <% for(var i=0; i<myStamps.length; i++) { %>
-        <div class="stamp_list" id='stamp_list<%= myStamps[i].id %>'>
-          <div class="stamp_name">
-            <div style="width: 70%">
-              <%= myStamps[i].market_name %>
+        <div class="swiper-slide" id='stamp_list<%= myStamps[i].id %>'>
+            <div class="store_market_name">
+                <%= myStamps[i].market_name %>
             </div>
-            <div style="width: 30%" class="market_name">
-              <%= myStamps[i].sijang_name %>
+            <div class="my_stamp_count">
+                <div class="stamp_count_vertical">
+                    <p class="count_stamp">
+                        <%= myStamps[i].stamp_count %>&nbsp/
+                            <%= myStamps[i].stamp_standard %>
+                    </p>
+                </div>
             </div>
-          </div>
-          <div class="stamp_count">
-            <div class="stamp_count_vertical" id='stamp_count_vertical<%= myStamps[i].id %>'>
-              <p>
-                <%= myStamps[i].stamp_count %> /
-                <%= myStamps[i].stamp_standard %>
-              </p>
+            <div class="stamp_market">
+                    <p class="deadline">
+                        <%= myStamps[i].sijang_name %>
+                    </p>
+                    <div class="logo_image">
+                    <img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;">
+                </div>
             </div>
-          </div>
         </div>
         <% } %>
         <% } else { %>
@@ -232,7 +235,6 @@
                 </div>
               </div>
             </div>
-
             <script>
             var number1 = "";
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
@@ -245,7 +247,6 @@
               $('.back_div<%= myStamps[i].id %>').css('display', 'none');
               $('#myStamp').css('display', 'block');
             });
-
 
 
             var stamp_count<%= myStamps[i].id %> = parseInt('<%= myStamps[i].stamp_count %>');

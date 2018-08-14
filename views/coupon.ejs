@@ -45,14 +45,37 @@
         <% } %>
         <% if(count == 1) { %>
           <div class="market" id="market_name_id"name="sijang_name">
-              <p id="click_coupon"><%= result2[j].sijang_name %></p>
-              
+
+              <p id="click_coupon" class="click_coupon"value="<%= result2[j].sijang_name %>"><%= result2[j].sijang_name %></p>
+
+              <% if(cou_result) {%>
+              <% for(var a=0; a<cou_result.length; a++) { %>
+              <% if(result2[j].sijang_name == cou_result[a].sijang_name) { %>
+              <div class="find_coupon_list">
+                  <div class="find_coupon">
+                      <div class="store_and_market">
+                          <div class="store_name"><%= cou_result[a].market_name %></div>
+                          <div class="market_name"><%= cou_result[a].sijang_name %></div>
+                      </div>
+                      <div class="sale_price">
+                          <%= cou_result[a].coupon_reward %>
+                      </div>
+                      <div class="standard">
+                          <%= cou_result[a].coupon_standard %>
+                      </div>
+                      <div class="period">
+                          <%= cou_result[a].coupon_count %>
+                      </div>
+                  </div>
+              </div>
+              <% } %>
+              <% } %>
+              <% } %>
           </div>
 
         <% } %>
         <% count =0; %>
         <% } %>
-
 
 
        <% } else { %>
@@ -142,12 +165,12 @@
 <script>
 
     $('#go_my_coupon').click(function () {
-        $('#coupon_view').css('display','none');
-        $('.my_coupon').css('display','block');
+        $('#coupon_view').hide(200);
+        $('.my_coupon').show(200);
     })
     $('#go_coupon_view').click(function () {
-        $('#coupon_view').css('display','block');
-        $('.my_coupon').css('display','none');
+        $('#coupon_view').show(200);
+        $('.my_coupon').hide(200);
     })
     $('#myStamp_sj').click(function () {
         location.href = "/myStamp";
@@ -171,10 +194,19 @@
         resistanceRatio: 0.5,
         slideToClickedSlide: true,
     });
+
+
+
     var index = -1;
     var next_index = 0;
     $('.market').click(function () {
+
+      var data = document.getElementsByClassName('click_coupon').textContent;
+      alert(data);
+
         next_index = $(this).index();
+        var b=document.getElementsByClassName('click_coupon')[next_index-1].innerHTML;
+        alert(b)
         if (index != next_index) {
             $('.market:eq(index)').children('div').remove();
             $('.find_coupon_list').fadeIn(100);
@@ -187,9 +219,8 @@
         }
 
     })
-    $('.find_coupon').click(function () {
-        var index = $(this).index();
-        index = index;
+    $('.find_coupon_list').click(function () {
+        var index = $(this).index()-1;
         var market=document.getElementsByClassName('store_name')[index];
         var market_name =market.innerHTML;
         down();
@@ -198,15 +229,8 @@
 
                 alert(market_name + '번째 쿠폰 다운로드 완료')
             } else {
-                // no click
             }
         }
-    })
-
-    $('#click_coupon'),click(function(){
-      var asd = ("#click_coupon").val();
-      alert(asd);
-
     })
 
 

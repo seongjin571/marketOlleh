@@ -21,7 +21,9 @@
 
 <body>
     <div id="all_coupon_div">
-        <button id="make_coupon">쿠폰 생성</button>
+        <div id="make_coupon_button">
+            <button id="make_coupon">새로운 쿠폰 생성</button>
+        </div>
 
         <div class="my_coupon_list">
 
@@ -41,11 +43,16 @@
                                 <%= results1[i].coupon_standard %>
                             </div>
                             <div class="sale_price">
-                                <%= results1[i].coupon_reward %>
+                                <%= results1[i].coupon_reward %>원 할인
                             </div>
-                            <div class="period">
-                                선착순 :
-                                <%= results1[i].coupon_count %>
+                            <div class="coupon_bottom">
+                                <div class="period">
+                                    선착순 :
+                                    <%= results1[i].coupon_count %>
+                                </div>
+                                <div class="logo_image">
+                                    <img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;">
+                                </div>
                             </div>
                         </div>
                         <% } %>
@@ -78,51 +85,53 @@
                     </p>
                 </div>
             </div>
-            <div class="stamp_market">
-                <div class="stamp_vertical">
-                    <p class="deadline">
-                    </p>
+            <div class="coupon_bottom">
+                <div class="deadline">
+                </div>
+                <div class="logo_image">
+                    <img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;">
                 </div>
             </div>
         </div>
+  
 
-        <div id="make_coupon_form">
-            <div class="inputLine">
-                <img class="check_select" src="/images/check.png" width="24px" height="24px">
-                <p class="name">할인금액</p>
-                <select class="coupon_reward" name="coupon_reward">
-                    <option value="1">선택</option>
-                    <option>1000원 할인</option>
-                    <option>1500원 할인</option>
-                    <option>2000원 할인</option>
-                    <option>3000원 할인</option>
-                </select>
-            </div>
-            <div class="inputLine">
-                <img class="check_input" src="/images/check.png" width="24px" height="24px">
-                <p class="name">사용기준</p>
-                <input class="input_content" type="text" id="coupon_standard" placeholder="ex)5000원 이상 구매시">
-            </div>
-            <div class="inputLine">
-                <img class="check_select" src="/images/check.png" width="24px" height="24px">
-                <p class="name">선착순</p>
-                <select id="people_number" name="coupon_reward" class="coupon_count">
-                    <option value="1">선택</option>
-                    <option>30명</option>
-                    <option>50명</option>
-                    <option>100명</option>
-                    <option>200명</option>
-                    <option>300명</option>
-                </select>
-            </div>
-            <div class="inputLine">
-                <img class="check_input" src="/images/check.png" width="24px" height="24px">
-                <p class="name">쿠폰비밀번호</p>
-                <input class="input_content" id="coupon_password" type="password" maxlength="4" id="stamp_password">
-            </div>
-            <button id="cancel">취소</button>
-            <button id="coupon_make_button">생성</button>
+    <div id="make_coupon_form">
+        <div class="inputLine">
+            <img class="check_select" src="/images/check.png" width="24px" height="24px">
+            <p class="name">할인금액</p>
+            <select class="coupon_reward" name="coupon_reward">
+                <option value="0">선택</option>
+                <option>1000원 할인</option>
+                <option>1500원 할인</option>
+                <option>2000원 할인</option>
+                <option>3000원 할인</option>
+            </select>
         </div>
+        <div class="inputLine">
+            <img class="check_input" src="/images/check.png" width="24px" height="24px">
+            <p class="name">사용기준</p>
+            <input class="input_content" type="text" id="coupon_standard" placeholder="ex)5000원 이상 구매시">
+        </div>
+        <div class="inputLine">
+            <img class="check_select" src="/images/check.png" width="24px" height="24px">
+            <p class="name">선착순</p>
+            <select id="people_number" name="coupon_reward" class="coupon_count">
+                <option value="0">선택</option>
+                <option>30명</option>
+                <option>50명</option>
+                <option>100명</option>
+                <option>200명</option>
+                <option>300명</option>
+            </select>
+        </div>
+        <div class="inputLine">
+            <img class="check_input" src="/images/check.png" width="24px" height="24px">
+            <p class="name">쿠폰비밀번호</p>
+            <input class="input_content" id="coupon_password" type="password" maxlength="4" id="stamp_password" placeholder="ex)1234">
+        </div>
+        <button id="cancel">취소</button>
+        <button id="coupon_make_button">생성</button>
+    </div>
     </div>
 
     <div id="nav_sj">
@@ -179,7 +188,7 @@
     })
 
     $('select:eq(0)').change(function () {
-        if ($(this).val() == '1') {
+        if ($(this).val() == '0') {
             $('.check_select:eq(0)').css('visibility', 'hidden');
             $('.reward_coupon').html("")
         }
@@ -190,7 +199,7 @@
         }
     });
     $('select:eq(1)').change(function () {
-        if ($(this).val() == '1') {
+        if ($(this).val() == '0') {
             $('.check_select:eq(1)').css('visibility', 'hidden');
             $('.deadline').html("")
         }
@@ -252,16 +261,16 @@
         var test1 = document.getElementsByClassName("coupon_count");
         var src = test1[0].selectedIndex;
         var coupon_count;
-        if(src==0){
-          coupon_count = 30;
-        }else if(src == 1){
-          coupon_count = 50;
-        }else if(src == 2){
-          coupon_count = 100;
-        }else if(src == 3){
-          coupon_count = 200;
-        }else {
-          coupon_count = 300;
+        if (src == 0) {
+            coupon_count = 30;
+        } else if (src == 1) {
+            coupon_count = 50;
+        } else if (src == 2) {
+            coupon_count = 100;
+        } else if (src == 3) {
+            coupon_count = 200;
+        } else {
+            coupon_count = 300;
         }
         var data = {
             'manager_id': manager_id,

@@ -269,22 +269,36 @@ router.post('/searching/gooname', function(req, res){
 
 router.get('/main', function(req, res){
   var stampSql = 'select * from `stamp` where `user_id`=?;';
+  var marketSql = 'SELECT * FROM `manager` ORDER BY like_count DESC ;';
   conn.query(stampSql, [req.user.id], function(error, results) {
     if(error) { console.log(error); }
     else {
-      if(! results.length) {
-        console.log(results);
-        res.render('main', {
-          user: req.user,
-          myStamps: undefined,
-        });
-      }
-      else {
-        res.render('main', {
-          user: req.user,
-          myStamps: results,
-        });
-      }
+      conn.query(marketSql, function(marketErr, marketRows) {
+        if(marketErr) {
+          console.log(marketErr);
+          console.log('marketSql err');
+        }
+        else {
+          //
+          console.log(marketRows);
+          if(! results.length) {
+            console.log(results);
+            res.render('main', {
+              user: req.user,
+              myStamps: undefined,
+              market: marketRows
+            });
+          }
+          else {
+            res.render('main', {
+              user: req.user,
+              myStamps: results,
+              market: marketRows
+            });
+          }
+          //
+        }
+      });
     }
   });
 });
