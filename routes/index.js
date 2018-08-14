@@ -305,17 +305,35 @@ router.get('/main', function(req, res){
 
 router.get('/mainManager', function(req, res, next) {
   var sql='select * from manager where `manager_id`=?;';
+  var count_review = 'select count(*) as cnt from review where `market_name`=? and `sijang_name`=?;';
+  var count_stamp = 'select count(*) as cnt2 from stamp where `market_name`=? and `sijang_name`=?;';
     conn.query(sql,[req.session.authId],function(error,results,fields){
       if(error){
         console.log(error);
       }
       else{
-        res.render('mainManager', {
-             admin_name: req.session.authId,
-              results : results,
+        conn.query(count_review,[results[0].market_name,results[0].sijang_name],function(err,results2,fields){
+          if(err){
+            console.log('mainMananger error');
+          }else{
+            conn.query(count_stamp,[results[0].market_name,results[0].sijang_name],function(errr,results3,fields){
+              if(errr){
+                console.log('mainmanager errr');
+              }else{
+                console.log(results2);
+                res.render('mainManager', {
+                     admin_name: req.session.authId,
+                      results : results,
+                      results2 : results2[0],
+                      results3 : results3[0],
+                    });
+                  }
+              })
+              }
             });
           }
-        });
+        })
+
 });
 
 router.get('/mystore', function(req, res){
