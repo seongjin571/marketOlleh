@@ -1,0 +1,177 @@
+
+@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family: 'NanumSquare',sans-serif;}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#text_logo{
+    width: 100%;
+    height:200px;
+    /* margin-left: 5%; */
+    background-image: url('/images/backSample5.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    top:0;
+    z-index: 2;
+}
+#mystore_div{
+    width: 50%;
+    margin-left: 25%;
+    height: 170px;
+    margin-top: 20px;
+    text-align: center;
+}
+#mystore_image{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    margin:0 auto;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-color: white;
+    border-width: 4px;
+}
+#my_id,#mystore_name{
+    height: 25px;
+    color: white;
+}
+#my_id{
+    font-size: 18px;
+}
+#mystore_name{
+    font-size: 14px;
+}
+
+
+#nav_sj {
+    width: 100%;
+    height: 8%;
+    background: white;
+    display: inline-flex;
+    position: fixed;
+    top: 92%;
+    z-index: 1;
+    border-top-style: solid;
+    border-top-width: 1px;
+    /* border-left-style: none */
+}
+
+#nav_sj div {
+    padding: 5px;
+    width: 20%;
+    font-size: 10px;
+    color: #9c9c9c;
+    text-align: center;
+}
+
+#nav_sj p {
+    margin: 0;
+}
+
+#nav_text {
+    color: #63dded;
+}
+label{
+    /* margin-left: 18%; */
+    font-size: 18px;
+    height:24px;
+    line-height: 24px;
+}
+.name{
+    width: 23%;
+    height: 24px;
+    line-height: 24px;
+    margin:0;
+    margin-left: 3%;
+    font-size: 15px;
+}
+.inputLine{
+    width: 100%;
+    display: inline-flex;
+}
+input,textarea{
+    width:58%;
+    margin-left: 8%;
+    margin-bottom: 7%;
+    font-size: 14px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    border-bottom-style: solid;
+   border-color: #9c9c9c;
+   border-width: 1.35px;
+    padding: 2px;
+    color: #9c9c9c;
+ }
+ input{
+    height: 24px;
+ }
+
+
+
+
+#stamp_reform{
+    font-size: 17px;
+    width: 45%;
+    margin-left: 27.5%;
+    height: 45px;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+    radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    border: 0px;
+    color:#9c9c9c;
+}
+#stamp_detail{
+    position: absolute;
+    top: 225px;
+    margin-bottom: 17%;
+    width: 85%;
+    margin-left: 7.5%;
+}
+#reform{
+    display: inline-flex;
+    width: 67%;
+    margin-left: 16.5%;
+    height: 50px;
+    display: none;
+}
+#stamp_reform_button{
+    font-size: 17px;
+    width: 45%;
+    height: 45px;
+    background-image: url('/images/mainBack.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    border-style: none;
+    border-radius: 50px;
+}
+#stamp_reform_cancel{
+    font-size: 17px;
+    color:#9c9c9c;
+    width: 45%;
+    height: 45px;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+    radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    border: 0px;
+}
+#password_input{
+    color:#63dded;
+    font-size: 18px;
+    font-family: initial !important;
+}

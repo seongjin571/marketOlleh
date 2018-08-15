@@ -1,11 +1,12 @@
 /*start css*/
+@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family: 'NanumSquare',sans-serif;}
 body, html {
     width: 100%;
     height: 100%;
     padding: 0;
     margin: 0;
-    background-color: #63dded;
-    overflow: hidden;
+    background-color: white;
 }
 
 #all_body {
@@ -16,61 +17,65 @@ body, html {
 #intro_image_div{
     width: 100%;
     height: 100%;
-    display: table;
-    background-color: #63dded;
+    position:fixed;
 }
 
-#intro_image_vertical{
-    width: 100%;
-    height: 100%;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-}
+
 #intro_image{
-    margin-bottom: 25%;
-    width:45%;
+    width:100%;
     height:auto;
 }
 #top_part {
     display: table;
     width: 100%;
-    height: 60%;         
+    height: 50%;         
 }
 #top_vertical_helper {
+    padding-top:50%;
     width: 100%;
     height: 100%;
-    display: table-cell;
-    vertical-align: middle;
     text-align: center;
 }
 #startlogo{
     width: 50%;
      height:auto;
+     padding-bottom: 10%;
 }
 #bottom_part {
     width: 100%;
-    height: 40%;
+    height: 50%;
 }
 .login_button{
     width: 100%;
-    height: 30%;
-    margin-left:15%;
+    height: 15%;
+    margin-bottom: 7%;
+    text-align: center;
 }
-#user_login,
+#user_login{
+    width: 70%;
+    height: 100%;
+    background-color: white;
+    border: double 1px transparent;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+     radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;    
+    padding: 1px;
+    border: 0px;
+}
+
 #seller_login {
-    width: 50%;
-    height: 80%;
-    padding: 0;
-    border: 0;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    background-color:white;
-    float:left;
-}
-.start_image{
-    width: 20%;
-    height: 80%;
+    width: 70%;
+    height: 100%;
+    padding:0;
+    border:0;
+    border-radius: 50px;
+    color:white;
+    background: -webkit-linear-gradient(left, #17ead9, #6078ea);
+    background: -o-linear-gradient(right, #17ead9, #6078ea);
+    background: -moz-linear-gradient(right, #17ead9, #6078ea);
+    background: linear-gradient(to right, #17ead9 , #6078ea);
 }
 
 /*start css finish*/
@@ -84,136 +89,403 @@ body, html {
 #top_logo
 {
     width:100%;
-    height: 25%;
+    height: 30%;
+    text-align: center;
 }
 #loginUser_logo_with_text2
 {
-    width:60%;
+    width:50%;
     height: auto;
-    padding-top:30%;
-    padding-left: 20%;
+    margin-top: 18%;
 }
-
-
 .formuser
 {
-    margin-top: 10%;
     width:100%;
-    height: 50%;
+    height: 45%;
+}
+.formManager{
+    width:100%;
+    height: 20%;
 }
 .login_button_user{
-    padding-left: 5%;
-    padding-bottom: 3%;
     width:100%;
-    height:15%;
+    height:20%;
+    text-align: center;
+    color:grey;
+}
+.login_button_formManager{
+    width:100%;
+    height:45%;
+    text-align: center;
+    color:grey;
+}
+.login_button_formManager > .inputmanager{
+    width: 80%;
+    height: 90%;
+    background-color: white;
+    border: double 1px transparent;
+    background-image: linear-gradient(white, white),
+     radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;        
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 1px;
+    border: 0px;
+}
+#userpassword{
+    font-family: initial !important;
+}
+#password{
+    font-family: initial !important;
 }
 .login_button_user > .inputuser{
-    width:75%;
-    height:100%;
-    float:left;
-    border: 0;
-    outline:0;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    width: 80%;
+    height: 90%;
     background-color: white;
+    border: double 1px transparent;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
+}
+.icon{
+    width:7%;
+    height: auto;
 }
 
 .login_button_user > .login_user{
-    float:left;
     width:15%;
     height:100%;
 }
+
 #login_button_user2{
-   padding-left: 10%;
    height: 10%;
    width: 100%;
-    
-}
-.id_check
-{
-    width: 5%;
-    height:50%;
-}
-#font{
-    padding-left: 5%;
-    color:grey;
-    font-size: 70%;
-}
 
-#login_button_user3
-{
-    height: 15%;
-    width: 100%;
-}
-.loginUser_insert{
-    background-image: url('/images/loginbutton.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    width: 90%;
-    height: 100%;
-    border: 0px;
-    padding: 0;
-    margin-left: 5%;
-    background-color: #63dded;
-   }
-#login_button_user4
-{
-    height: 15%;
-    width: 100%;
-    padding-top: 5%;
-    padding-left: 25%;
 }
 .idfind{
-    background-color: #63dded;
+    background-color: white;
     color:grey;
-    font-size: 70%;
-    height: 15%;
-    width: 20%;
     border :0px;
-    padding: 0px;
-    float: left;
+    width:30%;
+    height: 100%;
+    font-size: 5%;
     
 }
 #loginUser_sign_up{
-    background-color: #63dded;
+    background-color: white;
     color:grey;
-    font-size: 70%;
-    height: 15%;
-    width: 20%;
     border :0px;
-    padding: 0px;
-    float: left;
+    width:30%;
+    height: 100%;
+    font-size: 5%;
 }
 #loginmanager_sign_up
 {
-    background-color: #63dded;
+    background-color: white;
     color:grey;
     font-size: 70%;
     height: 15%;
     width: 20%;
     border :0px;
     padding: 0px;
-    float: left;
 }
+.login_button_user3
+{
+    height:50px;
+    width: 100%;
+    padding-top:12%;
+    text-align: center;
+}
+.login_button_user4
+{
+    height:25%;
+    width: 100%;
+    text-align: center;
+}
+.login_button_user5{
+    height:25%;
+    width: 100%;
+    text-align: center;
+}
+.loginUser_insert{
+    width: 90%;
+    height: 100%;
+    padding:0;
+    border:0;
+    border-radius: 50px;
+    color:white;
+    background: -webkit-linear-gradient(left, #17ead9, #6078ea);
+    background: -o-linear-gradient(right, #17ead9, #6078ea);
+    background: -moz-linear-gradient(right, #17ead9, #6078ea);
+    background: linear-gradient(to right, #17ead9 , #6078ea);
+   }
 #kakao_logo{
     width:100%;
     height: 25%;
     text-align: center;
-    
 }
-/*  
 #kakaobutton{
-    
+    text-align: center;
+    display: inline-flex;
+    width: 90%;
+    height: 50px;
+    line-height: 50px;
+    color: grey;
+    background-color: white;
+    border: double 1px transparent;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+     radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;    
+    padding: 1px;
+    border: 0px;
 }
-*/
+#kakaobutton p{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+#kakao_Image{
+    width: 50px;
+    height: 50px;
+    margin-right: 1%;
+
+}
+
 /*loginuser css finish*/
 /*login manager css start*/
    
 /*signupuser css start*/
-#signupuser{
+#signupManager,#signupuser{
     display: none;
+    width:100%;
+    height:100%;
+    background-color: white;
+}
+#top_signup{
+    position:fixed;
+    text-align:center;
+    width:100%;
+    height:30%;
+    background-color: white;
+}
+#signuplogo
+{
+    width:50%;
+    height: auto;
+    margin-top: 18%;
+}
+
+
+.signupuser_input{
+    width:100%;
+    height:20%;
+    text-align: center;
+    color:grey;
+}
+.signuptext{
+    width: 80%;
+    height: 90%;
+    background-color: white;
+    border: double 1px transparent;
+    background-image: linear-gradient(white, white),
+     radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;        
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 1px;
+    border: 0px;
+}
+.signupform1{
+    padding-top:60%;
+    width:100%;
+    height: 50%;
+    margin:0 auto;
+}
+#signupform2{
+    width:300px;
+    margin:0 auto;
+}
+.signupuser_input2{
+    width:100%;
+    height:20%;
+    text-align: center;
+    color:grey;
+    margin-top: 20%;
+}
+.signupbutton{
+  width: 90%;
+    height: 100%;
+    padding:0;
+    border:0;
+    border-radius: 50px;
+    color:white;
+    background: -webkit-linear-gradient(left, #17ead9, #6078ea);
+    background: -o-linear-gradient(right, #17ead9, #6078ea);
+    background: -moz-linear-gradient(right, #17ead9, #6078ea);
+    background: linear-gradient(to right, #17ead9 , #6078ea);
+}
+
+#userpwd{
+    font-family: initial !important;
+}
+#managerpwd{
+    font-family: initial !important;
 }
 /*signupuser css finish*/
+#signupForm2{
+    width:100%;
+    height: 70%;
+    padding-top:53.5%;
+}
+.signupuser_input3{
+    width:100%;
+    height:10%;
+    text-align: center;
+    color:grey;
+}
+.signuptext2{
+    width: 70%;
+    height: 90%;
+    background-color: white;
+    border: double 1px transparent;
+    background-image: linear-gradient(white, white),
+     radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;        
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 1px;
+    border: 0px;
+}
+.signupuser_input4{
+    width:100%;
+    height:10%;
+    padding-bottom:20%;
+    text-align: center;
+    color:grey;
+}
+.signupbuttonmanager{
+    width: 90%;
+      height: 100%;
+      padding:0;
+      border:0;
+      border-radius: 50px;
+      color:white;
+      background: -webkit-linear-gradient(left, #17ead9, #6078ea);
+      background: -o-linear-gradient(right, #17ead9, #6078ea);
+      background: -moz-linear-gradient(right, #17ead9, #6078ea);
+      background: linear-gradient(to right, #17ead9 , #6078ea);
+  }
+  .signuser_coupon1{
+    padding-top:5%;
+    width:100%;
+    height:8%;
+    padding-left:15%;
+    color:grey;
+  }
+  .signuser_coupon2{
+    padding-top:2%;
+    width:100%;
+    height:8%;
+    padding-left:15%;
+    color:grey;
+  }
 /*login manager css finish*/
 /*login manager css finish*/
 /*login manager css finish*/
+
+
+
+/*modal layout start*/
+#myModal{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    background-color: white;
+}
+#text_logo{
+    width: 100%;
+    height: 103px;
+    /* margin-left: 5%; */
+    background-image: url('/images/mainBack.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 2%;
+    position: fixed;
+    top:0;
+    z-index: 2;
+}
+#inline_logo{
+    margin-top: 4%;
+    margin-left: 3%;
+}
+#Searchingtap{
+    width: 93%;
+    margin: 0 auto;
+    height: 40px;
+    display: table;
+    margin-top: 5px;
+}
+#Searching
+{
+    display: inline-flex;
+    width: 100%;
+    height: 40px;
+    box-shadow: 4px 4px 10px grey;
+    border-color: white;
+    background-color: white;
+}
+#filed{
+    border: 0px;
+    padding: 0px;
+    border-radius: 50px;
+    background-color: white;
+}
+#search_value{
+    border: 0px;
+    padding: 0px;
+}
+#searchingButton{
+    margin-top: 6px;
+    margin-left: 70px;
+    background-color: white;
+    border: 0px;
+    padding: 0px;
+    border-radius: 50px;
+}
+#verti{
+    width: 100%;
+    height: 30px;
+    display: table-cell;
+    vertical-align: middle;
+}
+#vertical_helper{
+    width: 100%;
+    height: 40px;
+    display: inline-flex;
+}
+#searching_input{
+    display: inline-flex;
+    width: 100%;
+    height: 40px;
+    box-shadow: 4px 4px 10px grey;
+    border-color: white;
+    background-color: white;
+}
+
+.modal-content{
+    height: 100%;
+    width: 100%;
+    margin-top: 30%;
+}
+/*modal layout finish*/

@@ -1,5 +1,6 @@
-@import url('//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
-body, h1, h2, h3, h4, h5, h6, li, p, span, div {font-family: 'NanumSquareRound',sans-serif;}
+/* @import url('//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css'); */
+@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family: 'NanumSquare',sans-serif;}
         body,
         html {
     width: 100%;
@@ -8,15 +9,47 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div {font-family: 'NanumSquareRound',
     margin: 0;
     /* overflow: hidden; */
 }
+#logo{
+    width: 100%;
+    height:35px;
+}
 #text_logo{
     width: 100%;
-    height: 40px;
+    height:240px;
     /* margin-left: 5%; */
-    background-color: #63dded;
-    margin-bottom: 2%;
+    background-image: url('/images/backSample5.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     position: fixed;
     top:0;
     z-index: 2;
+}
+#mystore_div{
+    width: 50%;
+    margin-left: 25%;
+    height: 195px;
+    margin-top: 10px;
+    text-align: center;
+}
+#mystore_image{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    margin:0 auto;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-color: white;
+    border-width: 4px;
+}
+#my_id,#mystore_name{
+    height: 25px;
+    color: white;
+}
+#my_id{
+    font-size: 18px;
+}
+#mystore_name{
+    font-size: 14px;
 }
 
 label{
@@ -32,16 +65,15 @@ label{
     margin-top:60px;
     text-align: center;
 }
-#mystore h3{
-    text-align: left;
-    margin: 0;
-}
 
 #hot_store{
     width: 100%;
-    height: 1750px;
-    margin-top:9%;
+    height: 1910px;
+    margin-top:270px;
     margin-bottom: 80px;
+}
+#hot_store h3{
+    margin-left: 4.8%;
 }
 
 .hot_store_list{
@@ -56,26 +88,67 @@ label{
 }
 .hot_store_detail{
     width: 43%;
-    height: 165px;
+    height: 175px;
     /* border-style: s; */
      border-radius: 5px;
     margin-left: 4.8%;
-    margin-bottom: 7px;
+    margin-bottom: 13px;
 }
 .good_store_name{
     margin-top: 3px;
     color: gray;
     font-size: 13px;
+    font-weight: lighter;
 }
 .good_count{
     height: 20px;
     line-height: 25px;
     display: inline-flex;
     color:gray;
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: lighter
 }
 .good_count img{
     border: none;
+}
+.good_market_name{
+    font-size: 15px;
+}
+#table{
+    width: 41%;
+    height: 50px;
+    display: table;
+    position: fixed;
+    top: 215px;
+    left: 55%;
+    z-index: 3;
+    border-radius: 30px;
+    background-color: white;
+    font-size: 11px;
+    color: #b1afaf;
+    text-align: center;
+    box-shadow:3px 3px 10px gray;
+}
+#table-cell{
+    width: 100%;
+    height: 50px;
+    display: table-cell;
+    vertical-align: middle;
+}
+#manager_infor{
+    display: inline-flex;
+    width: 100%;
+    height: 30px;
+   
+}
+#manager_infor div{
+    display: block;
+    width: 33.3%;
+    height: 80%;
+    text-align: center;
+}
+#manager_infor p{
+    margin: 0;
 }
 .good_count p{
     margin:0;

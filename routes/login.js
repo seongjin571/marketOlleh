@@ -9,19 +9,33 @@ var NaverStrategy = require('passport-naver').Strategy;
 
 var conn = mysql.createConnection(dbconfig);
 
-router.get('/loginUser', function (req, res) {
-  res.render('loginUser');
+/*  local login  */
+// router.post('/login', passport.authenticate('local', {
+//   successRedirect: '/main',
+//   failureRedirect: '/start',
+//   failureFlash: true
+// }));
+
+router.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) {
+      return next(err); // will generate a 500 error
+    }
+    // Generate a JSON response reflecting authentication status
+    if (! user) {
+      return res.send(
+        '<script type="text/javascript">alert("존재하지 않는 아이디입니다."); document.location.href="/start";</script>'
+      );
+    }
+    req.login(user, function(err){
+      if(err){
+        return next(err);
+      }
+      return res.redirect('/main');
+    });
+  })(req, res, next);
 });
 
-router.get('/loginManager', function (req, res) {
-  res.render('loginManager');
-});
-/*  local login  */
-router.post('/login', passport.authenticate('local', {
-  successRedirect: '/main',
-  failureRedirect: '/loginUser',
-  failureFlash: true
-}));
 
 passport.serializeUser((user, done) => {
   console.log(user);
@@ -45,14 +59,15 @@ passport.use('local', new LocalStrategy({
         return done(error, false);
       }
       else if (!rows.length) {
+        console.log('no id or wrong pwd');
         return done(error, false);
       }
       else {
-        var user = {
-          id: rows[0].user_id,
-          username: rows[0].user_name
-        }
-        return done(null, user);
+          var user = {
+            id: rows[0].user_id,
+            username: rows[0].user_name
+          }
+          return done(null, user);
       }
     });
   })
@@ -91,26 +106,7 @@ passport.use('kakao-login', new KakaoStrategy({
 
 router.get('/oauth/kakao/callback', passport.authenticate('kakao-login', {
   successRedirect: '/main',
-  failureRedirect: '/loginUser'
-}));
-
-
-/*  naver login  */
-router.get('/login/naver', passport.authenticate('naver-login'));
-
-passport.use('naver-login', new NaverStrategy({
-  clientID: 'IQjUiLAFjfZQGiW55NnF',
-  clientSecret: 'fxNo5EE8xE',
-  callbackURL: 'http://13.209.89.231:3000/oauth/naver/callback'
-},
-  function (accessToken, refreshToken, profile, done) {
-    return done(null, profile);
-  }
-));
-
-router.get('/oauth/naver/callback', passport.authenticate('naver-login', {
-  successRedirect: '/main',
-  failureRedirect: '/loginUser'
+  failureRedirect: '/start'
 }));
 
 
@@ -118,7 +114,7 @@ router.get('/oauth/naver/callback', passport.authenticate('naver-login', {
 router.get('/logout', function (req, res) {
   delete req.session.usestamp_market_name;
   req.logout();
-  res.redirect('/loginUser');
+  res.redirect('/start');
 });
 
 
@@ -129,7 +125,7 @@ router.post('/loginmanager', function (req, res, next) {
   var sql = "select * from manager where manager_id=?";
   conn.query(sql, [id], function (error, results, fields) {
     if (error) {
-      console.log(id);
+      console.log('id');
 
     } else {
       var user = results[0];
@@ -138,6 +134,8 @@ router.post('/loginmanager', function (req, res, next) {
         res.send({ result: 'error' });
       } else if (password == user.password) {
         req.session.authId = id;
+        console.log(id);
+        console.log('asdad');
         req.session.save(function () {
           res.send({ result: 'success' });
         });
@@ -151,6 +149,6 @@ router.post('/loginmanager', function (req, res, next) {
 
 router.get('/logoutmanager', function (req, res) {
   delete req.session.authId;
-  res.redirect('/loginmanager');
+  res.redirect('/start');
 });
 module.exports = router;

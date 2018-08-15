@@ -25,23 +25,26 @@
     <!-- <label>내 스탬프</label> -->
     <% if(myStamps) { %>
       <% for(var i=0; i<myStamps.length; i++) { %>
-        <div class="stamp_list" id='stamp_list<%= myStamps[i].id %>'>
-          <div class="stamp_name">
-            <div style="width: 70%">
-              <%= myStamps[i].market_name %>
+        <div class="swiper-slide" id='stamp_list<%= myStamps[i].id %>'>
+            <div class="store_market_name">
+                <%= myStamps[i].market_name %>
             </div>
-            <div style="width: 30%" class="market_name">
-              <%= myStamps[i].sijang_name %>
+            <div class="my_stamp_count">
+                <div class="stamp_count_vertical">
+                    <p class="count_stamp">
+                        <%= myStamps[i].stamp_count %>&nbsp/
+                            <%= myStamps[i].stamp_standard %>
+                    </p>
+                </div>
             </div>
-          </div>
-          <div class="stamp_count">
-            <div class="stamp_count_vertical" id='stamp_count_vertical<%= myStamps[i].id %>'>
-              <p>
-                <%= myStamps[i].stamp_count %> /
-                <%= myStamps[i].stamp_standard %>
-              </p>
+            <div class="stamp_market">
+                    <p class="deadline">
+                        <%= myStamps[i].sijang_name %>
+                    </p>
+                    <div class="logo_image">
+                    <img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;">
+                </div>
             </div>
-          </div>
         </div>
         <% } %>
         <% } else { %>
@@ -53,6 +56,7 @@
 
 
         <% if(myStamps) { %>
+          <div id='stamp_details'>
           <% for(var i=0; i<myStamps.length; i++) { %>
             <div class='selected_stamp' id="selected_stamp<%= myStamps[i].id %>">
                 <div class="back_div<%= myStamps[i].id %>" id="back_div">
@@ -85,10 +89,8 @@
               </div>
               <div class='stamp_menu_sj' id="stamp_menu_sj<%= myStamps[i].id %>">
                 <div class='stamp_sj' id="stamp_sj<%= myStamps[i].id %>">
-
                   <div class='tenControls_sj' id="tenControls_sj<%= myStamps[i].id %>">
                     <div class='tenStamp_sj' id="tenStamp_sj<%= myStamps[i].id %>">
-
                       <div class='tenStamp_top_sj' id="tenStamp_top_sj<%= myStamps[i].id %>">
                         <div class="ten_sj <%= myStamps[i].id %>">
                           <p>1</p>
@@ -106,7 +108,6 @@
                           <p>5</p>
                         </div>
                       </div>
-
                       <div class='tenStamp_bottom_sj' id="tenStamp_bottom_sj<%= myStamps[i].id %>">
                         <div class="ten_sj <%= myStamps[i].id %>">
                           <p>6</p>
@@ -124,10 +125,8 @@
                           <p>10</p>
                         </div>
                       </div>
-
                     </div>
                   </div>
-
                   <div class='fiveControls_sj' id="fiveControls_sj<%= myStamps[i].id %>">
                     <div class='fiveStamp_sj' id="fiveStamp_sj<%= myStamps[i].id %>">
                       <div class="five_sj <%= myStamps[i].id %>">
@@ -147,22 +146,16 @@
                       </div>
                     </div>
                   </div>
-
                 </div>
                 <div id="stamp_infor_sj">
                   <p>기준:5000원 이상</p>
                   <p>보상:
                     <%= myStamps[i].stamp_reward %>
-
                   </p>
                 </div>
-
-                <button class='button_sj' id="button_sj<%= myStamps[i].id %>">삭제</button>
+                <button class='button_sj' id="delete_button_sj<%= myStamps[i].id %>">삭제</button>
               </div>
-
-
               <div class='password_number_div_sj' id="password_number_div_sj<%= myStamps[i].id %>">
-
                 <div class="password_line_sj <%= myStamps[i].id %>">
                   <div class="password_number_sj <%= myStamps[i].id %>"></div>
                   <div class="password_number_sj <%= myStamps[i].id %>"></div>
@@ -183,22 +176,14 @@
                   <div class="password_number_sj <%= myStamps[i].id %>"></div>
                   <div class='password_ok' id="password_ok<%= myStamps[i].id %>"></div>
                 </div>
-
               </div>
-
-
-
-
-
               <div class='store_detail_sj' id="store_detail_sj<%= myStamps[i].id %>">
                 <h2>상점 소개</h2>
-                <p>저희 과일 가게는 항상 신선한 유기농 과일만을 공수해 옵니다. </p>
+                <p><%= myStamps[i].market_introduce %> </p>
                 <img src="/images/fruit.jpg" width="100%">
-
                 <h2>위치</h2>
                 <img src="/images/han.png" width="100%">
               </div>
-
               <div class='store_review_sj' id="store_review_sj<%= myStamps[i].id %>">
                 <button class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">리뷰 등록</button>
                 <% if(review) {%>
@@ -222,7 +207,6 @@
                   </div>
                   <% } %>
               </div>
-
               <div class='review_write_sj' id="review_write_sj<%= myStamps[i].id %>">
                 <textarea class="review_textarea<%= myStamps[i].id %>" rows="6"></textarea>
                 <div class='write_button_div_sj' id="write_button_div_sj<%= myStamps[i].id %>">
@@ -231,7 +215,6 @@
                 </div>
               </div>
             </div>
-
             <script>
             var number1 = "";
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
@@ -244,26 +227,13 @@
               $('.back_div<%= myStamps[i].id %>').css('display', 'none');
               $('#myStamp').css('display', 'block');
             });
-
-
-            var stamp_kind = '<%= myStamps[i].stamp_kind %>';
             var stamp_count<%= myStamps[i].id %> = parseInt('<%= myStamps[i].stamp_count %>');
             var stamp_standard<%= myStamps[i].id %> = '<%= myStamps[i].stamp_standard %>';
             var reset_stamp_count = 0;
             var new_stamp_count = parseInt(stamp_count<%= myStamps[i].id %>) + 1;
             console.log(stamp_count<%= myStamps[i].id %>);
-
+            console.log('<%= myStamps[i].id %>');
             /* 스탬프 테마 적용 */
-            if (stamp_kind == 1) {
-              $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample1.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
-            }
-            else if (stamp_kind == 2) {
-              $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample2.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
-            }
-            else if (stamp_kind == 3) {
-              $('#stamp_sj<%= myStamps[i].id %>').css({ "background": "url(/images/backSample3.png)", 'background-repeat': 'no-repeat', 'background-size': 'cover' });
-            }
-
             /*  적립해놓은 스탬프 색칠  */
             if (stamp_standard<%= myStamps[i].id %> == 5) {
               $('#fiveControls_sj<%= myStamps[i].id %>').css('display', 'table');
@@ -278,9 +248,7 @@
                 var check = document.getElementsByClassName('ten_sj <%= myStamps[i].id %>')[i];
                 check.style.backgroundColor = "#232323";
               }
-
             }
-
             /*  가게 상세정보 각 탭 및 버튼 클릭 이벤트  */
             $('#go_stamp_sj<%= myStamps[i].id %>').click(function () {
               $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
@@ -313,7 +281,6 @@
               $('#review_write_sj<%= myStamps[i].id %>').hide(200);
               $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
             })
-
             /*  좋아요  */
             var good<%= myStamps[i].id %> = document.getElementById('goodCount_sj<%= myStamps[i].id %>');
             $('#noGood_Button_sj<%= myStamps[i].id %>').click(function () {
@@ -322,7 +289,6 @@
                 'sijang_name' : '<%= myStamps[i].sijang_name %>',
                 'like_count' : parseInt(good<%= myStamps[i].id %>.textContent) + 1
               }
-
               $.ajax({
                 type: 'post',
                 url: '/like/<%= myStamps[i].id %>',
@@ -343,7 +309,6 @@
                 }
               });
             });
-
             /* 좋아요 취소 */
             $('#yesGood_Button_sj<%= myStamps[i].id %>').click(function () {
               var data = {
@@ -351,7 +316,6 @@
                 'sijang_name' : '<%= myStamps[i].sijang_name %>',
                 'like_count' : parseInt(good<%= myStamps[i].id %>.textContent) - 1
               }
-
               $.ajax({
                 type: 'post',
                 url: '/cancel_like/<%= myStamps[i].id %>',
@@ -371,11 +335,8 @@
                 }
               });
             });
-
-
             /* 비밀번호 키패드 섞는 함수 */
             var password_number_array_sj = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-
             function shuffle(a) {
               var j, x, i;
               for (i = a.length; i; i -= 1) {
@@ -385,7 +346,6 @@
                 a[j] = x;
               }
             }
-
             /* 리뷰 작성 버튼 */
             $('.write_ok_button<%= myStamps[i].id %>').click(function(){
               var user_id = '<%= myStamps[i].user_id %>';
@@ -405,7 +365,6 @@
               var post_date = leadingZeros(now.getYear()-100,2)+ '-'+
                   leadingZeros(now.getMonth()+1,2)+'-' +
                   leadingZeros(now.getDate(),2);
-
               var sijang_name = '<%= myStamps[i].sijang_name %>';
               var data = {
                 'market_name' : market_name,
@@ -439,13 +398,10 @@
                 }
               });
             });
-
-
             /*  스탬프 적립  */
             $('#stamp_sj<%= myStamps[i].id %>').click(function () {
               var count = 0; //쿠폰 클릭시 이벤트 발생
               var result = 1;
-
               alert("시작");
               $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
               $('#password_number_div_sj<%= myStamps[i].id %>').show(200);
@@ -471,7 +427,6 @@
                       if (result['password'] == number1) {
                         console.log(result['password']);
                         alert('비밀번호 일치');
-
                         if (parseInt('<%= myStamps[i].stamp_standard %>') >= stamp_count<%= myStamps[i].id %> + 1) {
                           var data = {
                             'stamp_count': stamp_count<%= myStamps[i].id %> + 1,
@@ -504,7 +459,6 @@
                                     check.style.backgroundColor = "#232323";
                                   }
                                 }
-
                                 $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p>'+ (parseInt(stamp_count<%= myStamps[i].id %>)) +' / <%= myStamps[i].stamp_standard %></p>');
                                 $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
                                 $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
@@ -532,7 +486,6 @@
                                 alert('초기화');
                                 number1 = "";
                                 stamp_count<%= myStamps[i].id %> = 0;
-
                                 if (parseInt('<%= myStamps[i].stamp_standard %>') == 5) {
                                   $('#fiveControls_sj<%= myStamps[i].id %>').css('display', 'table');
                                   for (var i = 0; i < 5; i++) {
@@ -547,13 +500,10 @@
                                     check.style.backgroundColor = "rgb(202, 199, 199)";
                                   }
                                 }
-
                                 $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p>'+ (reset_stamp_count) +' / <%= myStamps[i].stamp_standard %></p>');
                                 $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
                                 $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-
                                 // $(window).attr('location', '/myStamp');
-
                               }
                             },
                             error: function (error) {
@@ -561,32 +511,52 @@
                             }
                           });
                         }
-
                         //
                       } else {
                         console.log(result['password']);
                         console.log(number1);
                         alert('비밀번호가 일치하지 않습니다. 다시 입력해주세요.');
                         number1 = "";
-
                       }
                     },
                     error: function (error) {
                       console.log('error');
                     }
                   });
-
                 }
               })
-
             });
-
             /* 비밀번호 키패드에서 취소 버튼 눌렀을 때 */
             $('#password_cancel<%= myStamps[i].id %>').click(function(){
               $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
               $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
             });
-
+            /*  발급 받은 스탬프 삭제  */
+            $("#delete_button_sj<%= myStamps[i].id %>").click(function() {
+              // delete ajax
+              $.ajax({
+                type: 'post',
+                url: '/delete_stamp/<%= myStamps[i].id %>',
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                cache: false,
+                datatype: 'json',
+                success: function(result) {
+                  if (result['result']=='success'){
+                    alert('해당 스탬프의 삭제가 완료되었습니다.');
+                    // delete stamp list
+                    var stamp = document.getElementById('stamp_list<%= myStamps[i].id %>');
+                    stamp.parentNode.removeChild(stamp);
+                    // delete selected stamp
+                    var selected_stamp = document.getElementById('selected_stamp<%= myStamps[i].id %>');
+                    selected_stamp.parentNode.removeChild(selected_stamp);
+                    $('#myStamp').css('display', 'block');
+                  }
+                },
+                error: function(error){
+                  alert('삭제 실패');
+                }
+              });
+            });
             // function stamp_count_password(number4) {
             //   // var data = {
             //   //   'market_name': market_name,
@@ -664,8 +634,8 @@
             //     });
             //   }
             // }
-
             </script>
+          </div>
             <% } %>
             <% } %>
 
@@ -682,9 +652,10 @@
                 <div id="myStamp_sj">
                     <img src="/images/stamp2.png" width="40%">
                     <p id="nav_text">내 스탬프</p></div>
-                <div id="my_sj">
-                    <img src="/images/my.png" width="40%">
-                    <p>MyPage</p></div>
+                    <div id="logout">
+                        <img src="/images/logout.png" width="40%">
+                        <p>로그아웃</p>
+                    </div>
             </div>
 
                       <script>
@@ -694,9 +665,18 @@
                       $('#coupon_sj').click(function () {
                         location.href = "/coupon";
                       })
+                      $('#logout').click(function () {
+                              var logout = confirm("로그아웃 하시겠습니까?");
+                              if (logout == true) {
+                                console.log('로그아웃성공');
+                                $(location).attr('href','/logout');
+                              } else {
+                                console.log('로그아웃실패');
+                              }
+                          })
                       </script>
 
-                      <!--stamp_kind 불러와야함-->
+
                       <!--stamp_count 불러와야함-->
                       <!--stamp_standard 불러와야함-->
                       <!-- <script src="/javascripts/stamp.js"></script> -->

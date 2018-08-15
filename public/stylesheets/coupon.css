@@ -1,5 +1,5 @@
-@import url('//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
-body, h1, h2, h3, h4, h5, h6, li, p, span, div {font-family: 'NanumSquareRound',sans-serif;}
+@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family: 'NanumSquare',sans-serif;}
 
 body,
 html {
@@ -13,13 +13,15 @@ html {
     width: 100%;
     display: inline-flex;
     height: 50px;
+    background-image: url('/images/mainBack.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #menu div {
     width: 50%;
     height: 100%;
     text-align: center;
-    background-color: #fb83a5;
     line-height: 50px;
     color: white;
 }
@@ -64,7 +66,18 @@ html {
     font-size: 25px;
     text-align: center;
 }
-
+.stamp_list{
+    width: 100%;
+    height: 160px;
+    background-image:url('/images/backSample1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    border-radius: 7px;
+    margin-top: 20px;
+    line-height: 160px;
+    text-align: center;
+}
 .download{
     background-color: rgb(12, 141, 12);
     border-radius: 7px;
@@ -74,49 +87,108 @@ html {
     font-size: 30px;
     text-align: center;
 }
-.store_and_market{
-    width: 90%;
-    margin-left: 5%;
+
+
+
+.find_coupon_list1:nth-child(4n-3){
+    width: 75%;
+    margin-left:12.5%; 
+    height: 160px;
+    background-image:url('/images/backSample1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    border-radius: 7px;
+    margin-top: 20px;
+}
+.find_coupon_list1:nth-child(4n-2){
+    width: 75%;
+    margin-left:12.5%; 
+    height: 160px;
+    background-image:url('/images/backSample2.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    border-radius: 7px;
+    margin-top: 20px;
+}
+.find_coupon_list1:nth-child(4n-1){
+    width: 75%;
+    margin-left:12.5%; 
+    height: 160px;
+    background-image:url('/images/backSample3.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    border-radius: 7px;
+    margin-top: 20px;
+}
+.find_coupon_list1:nth-child(4n){
+    width: 75%;
+    margin-left:12.5%; 
+    height: 160px;
+    background-image:url('/images/backSample4.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    border-radius: 7px;
+    margin-top: 20px;
+}
+.store_and_market1{
+    width: 86%;
+    height: 40px;
+    margin-left: 7%;
     display: inline-flex;
+    line-height: 40px;
+}
+.store_name1{
+    width: 60%;
+    height: 40px;
+    line-height: 40px;
+}
+.market_name1{
+    width: 40%;
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
+}
+.sale_price1{
+    width: 100%;
+    height: 42.5px;
+    font-size:24px;
     color: white;
-}
-.store_name{
-    width: 70%;
-    height: 25px;
-    line-height: 25px;
-}
-.market_name{
-    width: 30%;
-    height: 25px;
-    line-height: 25px;
-}
-.sale_price{
-    width: 90%;
-    height: 55px;
-    margin-left: 5%;
-    font-size: 40px;
-    color: white;
-    line-height: 65px;
+    line-height: 42.5px;
     text-align: center;
+    font-weight: lighter;
 }
-.standard{
-    width: 90%;
-    height: 20px;
-    margin-left: 5%;
-    font-size: 18px;
+.standard1{
+    width: 100%;
+    height: 42.5px;
+    font-size: 24px;
     color: white;
-    line-height: 20px;
+    line-height: 60px;
     text-align: center;
+    font-weight: lighter;
 }
-.period{
-    width: 90%;
-    height: 20px;
-    margin-left: 5%;
-    font-size: 20px;
+.coupon_bottom{
+    width: 100%;
+    height: 35px;
+    display: inline-flex;
+}
+.logo_image{
+    width: 33%;
+    height: 100%;
+}
+.period1{
+    width: 60%;
+    height: 35px;
+    margin-left: 7%;
+    font-size: 16px;
     color: white;
-    line-height: 20px;
-    text-align: center;
+    line-height: 35px;
+    font-weight: lighter;
 }
+
 
 #nav_sj {
     width: 100%;

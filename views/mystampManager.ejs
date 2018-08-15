@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mystampManager.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
@@ -16,79 +17,50 @@
             FastClick.attach(document.body);
         }, false);
     </script>
-    <style>
-        @font-face {
-            font-family: 'LotteMartDream';
-            font-style: normal;
-            font-weight: 800;
-            src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
-        }
 
-        @font-face {
-            font-family: 'LotteMartDream';
-            font-style: normal;
-            font-weight: 700;
-            src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff') format('woff');
-        }
-
-        @font-face {
-            font-family: 'LotteMartDream';
-            font-style: normal;
-            font-weight: 200;
-            src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff') format('woff');
-        }
-
-        body,
-        html {
-            font-family: 'LotteMartDream', sans-serif;
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
-
-        #menu {
-            width: 100%;
-            height: 50px;
-            text-align: center;
-            background-color: #63dded;
-            line-height: 50px;
-            color: white;
-        }
-
-        #nav_sj {
-            width: 100%;
-            height: 8%;
-            background: white;
-            display: inline-flex;
-            position: fixed;
-            top: 92%;
-            z-index: 1;
-            border-top-style: solid;
-            border-top-width: 1px;
-            /* border-left-style: none */
-        }
-
-        #nav_sj div {
-            padding: 5px;
-            width: 20%;
-            font-size: 10px;
-            color: #9c9c9c;
-            text-align: center;
-        }
-
-        #nav_sj p {
-            margin: 0;
-        }
-
-        #nav_text {
-            color: #63dded;
-        }
-    </style>
 </head>
 
 <body>
-    <div id="menu">내 스탬프
+    <div id="text_logo">
+        <div id="mystore_div">
+            <div id="mystore_image"></div>
+            <div id="my_id">
+                <%= admin_name %>님 상점</div>
+            <div id="mystore_name">나현이네 과일과게</div>
+        </div>
+    </div>
+
+    <div id="stamp_detail">
+        <div class="inputLine">
+            <img src="/images/mulUserM.png" width="24px" height="24px">
+            <p class="name">사용자수</p>
+            <input readonly value="<%= results3.cnt2 %>"></input>
+        </div>
+        <div class="inputLine">
+            <img src="/images/stampM.png" width="24px" height="24px">
+            <p class="name">지급 기준</p>
+            <input class="input_content" type="text" id="market_promotion" readonly value="<%= result[0].market_promotion %>">
+        </div>
+        <div class="inputLine">
+            <img src="/images/stampM.png" width="24px" height="24px">
+            <p class="name">보상</p>
+            <input class="input_content" type="text" id="stamp_reward" readonly value="<%= result[0].stamp_reward %>">
+        </div>
+        <div class="inputLine">
+            <img src="/images/storeM.png" width="24px" height="24px">
+            <p class="name">상점 소개</p>
+            <textarea readonly type="text" id="market_introduce" rows="4"><%= result[0].market_introduce %></textarea>
+        </div>
+        <div class="inputLine">
+            <img src="/images/lockM.png" width="24px" height="24px">
+            <p class="name">비밀번호</p>
+            <input class="input_content" id="password_input"type="password" maxlength="4"  readonly value="<%= result[0].stamp_password %>">
+        </div>
+        <div id="reform">
+            <button id="stamp_reform_cancel" style="margin-right: 10%">취소</button>
+            <button id="stamp_reform_button">확인</button>
+        </div>
+        <button id="stamp_reform">수정</button>
     </div>
     <div id="nav_sj">
         <div id="home">
@@ -107,12 +79,13 @@
             <img src="/images/mystore.png" width="40%">
             <p>내 상점</p>
         </div>
-        <div id="mypage_sj">
-            <img src="/images/my.png" width="40%">
-            <p>MyPage</p>
+        <div id="logout">
+            <img src="/images/logout.png" width="40%">
+            <p>로그아웃</p>
         </div>
     </div>
     <script>
+        var change = 0;
         $('#home').click(function () {
             location.href = "/mainManager";
         })
@@ -122,6 +95,84 @@
         $('#mystore_sj').click(function () {
             location.href = "/mystore";
         })
+        $('#logout').click(function () {
+            var logout = confirm("로그아웃 하시겠습니까?");
+            if (logout == true) {
+                console.log('로그아웃성공');
+                $(location).attr('href', '/logoutmanager');
+
+            } else {
+                console.log('로그아웃실패');
+            }
+        })
+        $('#stamp_reform').click(function () {
+            $(this).css('display', 'none');
+            $('#reform').css('display', 'inline-flex');
+            $('.input_content').attr('readonly', false);
+            $('textarea').attr('readonly', false);
+            $('.input_content').css('border-image', 'linear-gradient(to right, #01c9ca 0%, #3886FF 50%)').css('border-image-slice', '1').css('border-image-width', '0 0 1.5px 0').css('border-top','0');
+            $('textarea').css('border-image', 'linear-gradient(to right, #01c9ca 0%, #3886FF 50%)').css('border-image-slice', '1').css('border-image-width', '0 0 1.5px 0').css('border-top','0');
+            $('input').change(function () {
+                $(this).css('color', 'red');
+                change = 1;
+            })
+            $('textarea').change(function () {
+                $(this).css('color', 'red');
+                change = 1;
+            })
+        })
+        $('#stamp_reform_cancel').click(function () {
+            if (change == 1) {
+                location.reload();
+            }
+            else {
+
+                $('#reform').css('display', 'none');
+                $('#stamp_reform').css('display', 'block');
+                $('.input_content').attr('readonly', true).css('border-image','none');
+                $('textarea').attr('readonly', true).css('border-image','none');
+                $('input').css('color', '#9c9c9c');
+                $('textarea').css('color', '#9c9c9c');
+                $('#password_input').css('color','#48a2eb');
+            }
+        })
+        $('#mystore_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
+        $('#stamp_reform_button').click(function () {
+
+            var market_name = '<%= result[0].market_name %>';
+            var sijang_name = '<%= result[0].sijang_name %>';
+            var stamp_reward = $('#stamp_reward').val();
+            var stamp_password = $('#password_input').val();
+            var market_promotion = $('#market_promotion').val();
+            var market_introduce = $('#market_introduce').val();
+
+            var data = {
+                'market_name': market_name,
+                'sijang_name': sijang_name,
+                'stamp_reward': stamp_reward,
+                'stamp_password': stamp_password,
+                'market_promotion': market_promotion,
+                'market_introduce': market_introduce
+            }
+            console.log(data);
+            $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
+                type: 'POST',
+                url: '/manager_reform_stamp',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                cache: false,
+                dataType: 'json',
+                data: data,
+                success: function (result) {
+                    if (result['success'] == 'success') {
+                        alert('수정되었습니다.');
+                        location.reload();
+                    }//result if
+                },
+                error: function (error) {
+                    console.log('erer');
+                }
+            });
+        });
     </script>
 </body>
 

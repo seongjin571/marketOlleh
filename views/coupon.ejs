@@ -44,12 +44,18 @@
               <% } %>
         <% } %>
         <% if(count == 1) { %>
-          <div class="market" name="sijang_name">
-              <p><%= result2[j].sijang_name %></p>
+          <div class="market" id="market_name_id"name="sijang_name">
+              <p id="click_coupon" class="click_coupon"value="<%= result2[j].sijang_name %>"><%= result2[j].sijang_name %></p>
+              <% if(cou_result) {%>
+
+              <% } %>
           </div>
+
         <% } %>
         <% count =0; %>
         <% } %>
+
+
        <% } else { %>
             <p>비어있음</p>
         <% } %>
@@ -70,90 +76,6 @@
                                                                 </div>
     </div>
 
-    <div class="find_coupon_list">
-
-        <div class="find_coupon">
-            <div class="store_and_market">
-                <div class="store_name">a현이네 과일가게</div>
-                <div class="market_name">a인시장</div>
-            </div>
-            <div class="sale_price">
-                1000원 할인
-            </div>
-            <div class="standard">
-                5000원 이상 구매 시
-            </div>
-            <div class="period">
-                기간:~18.8.20
-            </div>
-        </div>
-
-        <div class="find_coupon">
-            <div class="store_and_market">
-                <div class="store_name">b이네 정육점</div>
-                <div class="market_name">b인시장</div>
-            </div>
-            <div class="sale_price">
-                2000원 할인
-            </div>
-            <div class="standard">
-                10000원 이상 구매 시
-            </div>
-            <div class="period">
-                기간:~18.8.22
-            </div>
-        </div>
-
-        <div class="find_coupon">
-            <div class="store_and_market">
-                <div class="store_name">c현이네 과일가게</div>
-                <div class="market_name">c인시장</div>
-            </div>
-            <div class="sale_price">
-                1000원 할인
-            </div>
-            <div class="standard">
-                5000원 이상 구매 시
-            </div>
-            <div class="period">
-                기간:~18.8.20
-            </div>
-        </div>
-
-        <div class="find_coupon">
-            <div class="store_and_market">
-                <div class="store_name">d이네 정육점</div>
-                <div class="market_name">d인시장</div>
-            </div>
-            <div class="sale_price">
-                2000원 할인
-            </div>
-            <div class="standard">
-                10000원 이상 구매 시
-            </div>
-            <div class="period">
-                기간:~18.8.22
-            </div>
-        </div>
-
-        <div class="find_coupon">
-            <div class="store_and_market">
-                <div class="store_name">e현이네 과일가게</div>
-                <div class="market_name">e인시장</div>
-            </div>
-            <div class="sale_price">
-                1000원 할인
-            </div>
-            <div class="standard">
-                5000원 이상 구매 시
-            </div>
-            <div class="period">
-                기간:~18.8.20
-            </div>
-        </div>
-
-
-    </div>
 
 
     <div class="my_coupon">
@@ -177,7 +99,7 @@
                                 <%= result1[i].coupon_standard %>
                             </div>
                             <div class="period">
-                                <%= result1[i].coupon_due_date %>
+                                <%= result1[i].coupon_count %>
                             </div>
                         </div>
                         <div class="swiper-slide menu">삭제</div>
@@ -211,9 +133,9 @@
             <img src="/images/stamp.png" width="40%">
             <p>내 스탬프</p>
         </div>
-        <div id="my_sj">
-            <img src="/images/my.png" width="40%">
-            <p>MyPage</p>
+        <div id="logout">
+            <img src="/images/logout.png" width="40%">
+            <p>로그아웃</p>
         </div>
     </div>
 </body>
@@ -234,39 +156,197 @@
     $('#home_sj').click(function () {
         location.href = "/main";
     })
+    $('#logout').click(function () {
+            var logout = confirm("로그아웃 하시겠습니까?");
+            if (logout == true) {
+              console.log('로그아웃성공');
+              $(location).attr('href','/logout');
+
+            } else {
+              console.log('로그아웃실패');
+            }
+        })
     var swiper = new Swiper('.swiper-container', {
         slidesPerView: 'auto',
         initialSlide: 0,
         resistanceRatio: 0.5,
         slideToClickedSlide: true,
     });
-    var index = -1;
+
+
+
     var next_index = 0;
+    var index=-1;
+    var count=0;
     $('.market').click(function () {
         next_index = $(this).index();
-        if (index != next_index) {
-            $('.market:eq(index)').children('div').remove();
-            $('.find_coupon_list').fadeIn(100);
-            $(this).append($('.find_coupon_list'));
-            index = $(this).index();
-        }
-        else {
-            $('.find_coupon_list').fadeOut(100);
-            index = -1;
+        if(next_index ==index){
+            if(count==1){
+            $('.find_coupon_list1').remove();
+            index=next_index;
+            count=0;
+            }
+            else{
+                var sijang_name=document.getElementsByClassName('click_coupon')[next_index-1].innerHTML;
+        var data={
+          'sijang_name' : sijang_name
         }
 
+        $.ajax({
+          type : 'post',
+          url : '/send_sijang_name',
+          contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+          cache: false,
+          data: data,
+          datatype: "json",
+          success : function(result) {
+            if(result['result']=='success'){
+              var coupon_name = result['results'];
+              console.log(coupon_name);
+              if(coupon_name.length){
+                for(var i =0; i<coupon_name.length;i++){
+                  var find_coupon_list_div = document.createElement("div");
+                  find_coupon_list_div.setAttribute("class","find_coupon_list1");
+
+
+                 var html = '<div class="find_coupon1">';
+                      html += '<div class="store_and_market1">';
+                      html += '<div class="store_name1">'+coupon_name[i].market_name +'</div>';
+                      html += '<div class="market_name1">'+coupon_name[i].sijang_name+'</div></div>';
+                      html += '<div class="standard1">'+coupon_name[i].coupon_standard+'</div>';
+                      html += '<div class="sale_price1">'+coupon_name[i].coupon_reward+'원 할인</div>';
+                      html += '<div class="coupon_bottom">';
+                      html += '<div class="period1">선착순 : '+coupon_name[i].coupon_count+'</div>';
+                      html += '<div class="logo_image"><img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;"></div>';
+                      html += '</div>';
+                      html += '</div>';
+
+
+                  find_coupon_list_div.innerHTML = html;
+                  document.getElementsByClassName('market')[next_index-1].appendChild(find_coupon_list_div)
+                  index=next_index;
+                  count=1;
+                }
+
+              }else{
+                alert('해당 시장에 쿠폰이 없습니다.');
+              }
+            }
+          }
+        })
+            }
+        }
+        else{
+            $('.find_coupon_list1').remove();
+        var sijang_name=document.getElementsByClassName('click_coupon')[next_index-1].innerHTML;
+        var data={
+          'sijang_name' : sijang_name
+        }
+
+        $.ajax({
+          type : 'post',
+          url : '/send_sijang_name',
+          contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+          cache: false,
+          data: data,
+          datatype: "json",
+          success : function(result) {
+            if(result['result']=='success'){
+              var coupon_name = result['results'];
+              console.log(coupon_name);
+              if(coupon_name.length){
+                for(var i =0; i<coupon_name.length;i++){
+                  var find_coupon_list_div = document.createElement("div");
+                  find_coupon_list_div.setAttribute("class","find_coupon_list1");
+
+
+                  var html = '<div class="find_coupon1">';
+                      html += '<div class="store_and_market1">';
+                      html += '<div class="store_name1">'+coupon_name[i].market_name +'</div>';
+                      html += '<div class="market_name1">'+coupon_name[i].sijang_name+'</div></div>';
+                      html += '<div class="standard1">'+coupon_name[i].coupon_standard+'</div>';
+                      html += '<div class="sale_price1">'+coupon_name[i].coupon_reward+'원 할인</div>';
+                      html += '<div class="coupon_bottom">';
+                      html += '<div class="cp" style="display:none;">'+coupon_name[i].coupon_password +'</div>';
+                      html += '<div class="period1">선착순 : '+coupon_name[i].coupon_count+'</div>';
+                      html += '<div class="logo_image"><img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;"></div>';
+                      html += '</div>';
+                      html += '</div>';
+
+
+                  find_coupon_list_div.innerHTML = html;
+                  document.getElementsByClassName('market')[next_index-1].after(find_coupon_list_div)
+                  index=next_index;
+                  count=1;
+                }
+
+              }else{
+                alert('해당 시장에 쿠폰이 없습니다.');
+              }
+            }
+          }
+        })
+    }
     })
-    $('.find_coupon').click(function () {
-        var index = $(this).index();
+    $(document).on("click",'.find_coupon_list1',function(event){
+        var list = $('.find_coupon_list1').index(this);
+        var market=document.getElementsByClassName('store_name1')[list];
+        var market_name =market.innerHTML;
+        var sijang = document.getElementsByClassName('market_name1')[list];
+        var sijang_name = sijang.innerHTML;
+        var password = document.getElementsByClassName('cp')[list];
+        var coupon_password = password.innerHTML;
+        var reward = document.getElementsByClassName('sale_price1')[list];
+        var coupon_reward = reward.innerHTML;
+        var standard = document.getElementsByClassName('sale_price1')[list];
+        var coupon_standard = standard.innerHTML;
+        console.log(coupon_password);
+        var user_id = '<%= user_id %>'
+        console.log(user_id);
+        alert(market_name +'+'+sijang_name+'+'+coupon_password);
         down();
         function down() {
-            if (confirm(index + '번째 쿠폰을 다운로드 하시겠습니까?')) {
-                alert(index + '번째 쿠폰 다운로드 완료')
+            if (confirm(list+1 + '번째 쿠폰을 다운로드 하시겠습니까?')) {
+              var data = {
+                'user_id' : user_id,
+                'sijang_name' : sijang_name,
+                'market_name' : market_name,
+                'coupon_password' : coupon_password,
+                'coupon_reward' : coupon_reward,
+                'coupon_standard' : coupon_standard
+              }
+              console.log(data);
+              $.ajax({
+                  type: "POST",
+                  url: "/coupon_customer",
+                  contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                  cache: false,
+                  datatype: "json",
+                  data: data,
+                  success: function (result) {
+                      if (result['result'] == 'success') {
+                          alert("쿠폰발급완료");
+                          location.reload();
+                      }
+                      else if(result['result']=='fail'){
+                          alert('이미쿠폰이 있습니다');
+
+                      }else {
+                        alert('쿠폰등록실패1');
+                        location.reload();
+                      }
+                  },
+                  error: function (error) {
+                      alert('쿠폰등록실패2');
+                  }
+              });
+
             } else {
-                // no click
+              alert("여기잘못됨");
             }
         }
     })
+
 
 
 

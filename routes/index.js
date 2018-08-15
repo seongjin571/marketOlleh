@@ -17,49 +17,124 @@ router.get('/coupon', function(req, res){
   var find_stamp = 'select * from `stamp` where `user_id` =?';
   var user_id = req.user.id;
   var mycoupon = 'select * from `coupon_customer` where `user_id` = ?';
-  conn.query(mycoupon,[user_id],function(error,result1,fields){
-    if(error){
-      console.log('error1');
-    }
-    else if(! result1.length){
-      console.log('발급받은쿠폰없음');
-      conn.query(find_stamp,[user_id],function(error,result2,fields){
+  var couponlist = 'select * from `coupon_manager`';
+  conn.query(couponlist,function(err,cou_result,fields){
+    if(err){
+      console.log('시작부터에러');
+    }else if(! cou_result.length){
+      conn.query(mycoupon,[user_id],function(error,result1,fields){
         if(error){
-          console.log('error2');
+          console.log('error1');
         }
-        else if(! result2.length){
-          console.log('발급받은 스탬프 없음');
-          res.render('coupon', {
-            title : '발급받은쿠폰없고 스탬프 없고',
-            result1 : undefined,
-            result2 : undefined
+        else if(! result1.length){
+          console.log('발급받은쿠폰없음');
+          conn.query(find_stamp,[user_id],function(error,result2,fields){
+            if(error){
+              console.log('error2');
+            }
+            else if(! result2.length){
+              console.log('발급받은 스탬프 없음');
+              res.render('coupon', {
+                title : '발급받은쿠폰없고 스탬프 없고',
+                result1 : undefined,
+                result2 : undefined,
+                cou_result : undefined,
+                user_id : user_id,
+              })
+            }else{
+              console.log('발급받은 스탬프 있음1');
+              console.log('cou_result');
+              res.render('coupon', {
+                title : '발급받은쿠폰없고 스탬프 있고',
+                result1 : undefined,
+                result2 : result2,
+                cou_result : undefined,
+                user_id : user_id,
+              })
+            }
           })
-        }else{
-          console.log('발급받은 스탬프 있음');
-          res.render('coupon', {
-            title : '발급받은쿠폰없고 스탬프 있고',
-            result1 : undefined,
-            result2 : result2
+        }
+        else{
+          console.log('발급받은쿠폰이있는경우');
+          conn.query(find_stamp,[user_id],function(error,result2,fields){
+            if(! result2.length){
+              console.log('발급받은 스탬프 없음');
+              res.render('coupon',{
+                title : '쿠폰있고 스탬프 없고',
+                result1 : result1,
+                result2 : undefined,
+                cou_result : undefined,
+                user_id : user_id,
+              })
+            }else{
+              console.log('발급받은 스탬프 있음');
+              res.render('coupon',{
+                title : '쿠폰있고 스탬프 있고',
+                result1 : result1,
+                result2 : result2,
+                cou_result : undefined,
+                user_id : user_id,
+              })
+            }
           })
         }
       })
-    }
-    else{
-      console.log('발급받은쿠폰이있는경우');
-      conn.query(find_stamp,[user_id],function(error,result2,fields){
-        if(! result2.length){
-          console.log('발급받은 스탬프 없음');
-          res.render('coupon',{
-            title : '쿠폰있고 스탬프 없고',
-            result1 : result1,
-            result2 : undefined
+    }else{
+      conn.query(mycoupon,[user_id],function(error,result1,fields){
+        if(error){
+          console.log('error1');
+        }
+        else if(! result1.length){
+          console.log('발급받은쿠폰없음');
+          conn.query(find_stamp,[user_id],function(error,result2,fields){
+            if(error){
+              console.log('error2');
+            }
+            else if(! result2.length){
+              console.log('발급받은 스탬프 없음');
+              res.render('coupon', {
+                title : '발급받은쿠폰없고 스탬프 없고',
+                result1 : undefined,
+                result2 : undefined,
+                cou_result : cou_result,
+                user_id : user_id,
+              })
+            }else{
+              console.log('발급받은 스탬프 있음');
+              console.log(cou_result);
+              res.render('coupon', {
+                title : '발급받은쿠폰없고 스탬프 있고',
+                result1 : undefined,
+                result2 : result2,
+                cou_result : cou_result,
+                user_id : user_id,
+              })
+            }
           })
-        }else{
-          console.log('발급받은 스탬프 있음');
-          res.render('coupon',{
-            title : '쿠폰있고 스탬프 있고',
-            result1 : result1,
-            result2 : result2
+        }
+        else{
+          console.log('발급받은쿠폰이있는경우');
+          conn.query(find_stamp,[user_id],function(error,result2,fields){
+            if(! result2.length){
+              console.log('발급받은 스탬프 없음');
+              res.render('coupon',{
+                title : '쿠폰있고 스탬프 없고',
+                result1 : result1,
+                result2 : undefined,
+                cou_result : cou_result,
+                user_id : user_id,
+              })
+            }else{
+              console.log('발급받은 스탬프 있음');
+              console.log('cou_result');
+              res.render('coupon',{
+                title : '쿠폰있고 스탬프 있고',
+                result1 : result1,
+                result2 : result2,
+                cou_result : cou_result,
+                user_id : user_id,
+              })
+            }
           })
         }
       })
@@ -108,21 +183,51 @@ router.post('/couponManager', function(req, res) {
   var manager_id = req.body.manager_id;
   var sijang_name = req.body.sijang_name;
   var coupon_standard = req.body.coupon_standard;
-  var coupon_due_date = req.body.coupon_due_date;
+  var coupon_count = req.body.coupon_count;
   var coupon_password = req.body.coupon_password;
   var coupon_reward = req.body.coupon_reward;
-  var sql = 'insert into `coupon_manager`(`manager_id`,`market_name`,`sijang_name`,`coupon_standard`,`coupon_reward`,`coupon_password`,`coupon_due_date`) values (?,?,?,?,?,?,?);';
-  conn.query(sql, [manager_id, market_name, sijang_name, coupon_standard, coupon_reward, coupon_password, coupon_due_date], function(error, result){
-    if(error){
-      console.log(error);
-    }else {
-        res.send({ result: 'success' });
+  var judge_coupon = 'select * from coupon_manager where `sijang_name`=? and `market_name`=?;';
+  var sql = 'insert into `coupon_manager`(`manager_id`,`market_name`,`sijang_name`,`coupon_standard`,`coupon_reward`,`coupon_password`,`coupon_count`) values (?,?,?,?,?,?,?);';
+  conn.query(judge_coupon,[sijang_name,market_name],function(err,results){
+    if(err){
+      console.log('judge_coupon error');
+    }else if(results.length){
+      res.send({ result: 'fail' });
+    }else{
+      conn.query(sql, [manager_id, market_name, sijang_name, coupon_standard, coupon_reward, coupon_password, coupon_count], function(error, result){
+        if(error){
+          console.log(error);
+        }else {
+            res.send({ result: 'success' });
+        }
+      });
     }
-  });
+  })
 });
 
 router.get('/mystampManager', function(req, res){
-  res.render('mystampManager');
+  var manager_id = req.session.authId;
+  var sql = 'select * from manager where manager_id = ?';
+  var count_stamp = 'select count(*) as cnt2 from stamp where `market_name`=? and `sijang_name`=?;';
+  conn.query(sql,[manager_id],function(error,result){
+    if(error){
+      console.log(error);
+    }
+    else{
+      conn.query(count_stamp,[result[0].market_name,result[0].sijang_name],function(errr,results3,fields){
+        if(errr){
+          console.log('mainmanager errr');
+        }else{
+          console.log('good');
+          res.render('mystampManager', {
+              result: result,
+              admin_name: req.session.authId,
+              results3 : results3[0],
+            });
+          }
+        })
+    }
+  })
 });
 
 router.get('/searching', function(req, res) {
@@ -189,32 +294,82 @@ router.post('/searching/gooname', function(req, res){
 
 router.get('/main', function(req, res){
   var stampSql = 'select * from `stamp` where `user_id`=?;';
+  var marketSql = 'SELECT * FROM `manager` ORDER BY like_count DESC ;';
   conn.query(stampSql, [req.user.id], function(error, results) {
     if(error) { console.log(error); }
     else {
-      if(! results.length) {
-        console.log(results);
-        res.render('main', {
-          user: req.user,
-          myStamps: undefined,
-        });
-      }
-      else {
-        res.render('main', {
-          user: req.user,
-          myStamps: results,
-        });
-      }
+      conn.query(marketSql, function(marketErr, marketRows) {
+        if(marketErr) {
+          console.log(marketErr);
+          console.log('marketSql err');
+        }
+        else {
+          //
+          console.log(marketRows);
+          if(! results.length) {
+            console.log(results);
+            res.render('main', {
+              user: req.user,
+              myStamps: undefined,
+              market: marketRows
+            });
+          }
+          else {
+            res.render('main', {
+              user: req.user,
+              myStamps: results,
+              market: marketRows
+            });
+          }
+          //
+        }
+      });
     }
   });
 });
 
+router.get('/mainManager', function(req, res, next) {
+  var sql='select * from manager where `manager_id`=?;';
+  var count_review = 'select count(*) as cnt from review where `market_name`=? and `sijang_name`=?;';
+  var count_stamp = 'select count(*) as cnt2 from stamp where `market_name`=? and `sijang_name`=?;';
+  var marketSql = 'SELECT * FROM `manager` ORDER BY like_count DESC ;';
 
+    conn.query(sql,[req.session.authId],function(error,results,fields){
+      if(error){
+        console.log(error);
+      }
+      else{
+        conn.query(count_review,[results[0].market_name,results[0].sijang_name],function(err,results2,fields){
+          if(err){
+            console.log('mainMananger error');
+          }else{
+            conn.query(count_stamp,[results[0].market_name,results[0].sijang_name],function(errr,results3,fields){
+              if(errr){
+                console.log('mainmanager errr');
+              }else{
+                conn.query(marketSql, function(marketErr, marketRows) {
+                  if(marketErr) {
+                    console.log(marketErr);
+                    console.log('marketSql err');
+                  }
+                  else {
+                    console.log(results2);
+                    res.render('mainManager', {
+                      admin_name: req.session.authId,
+                      results : results,
+                      results2 : results2[0],
+                      results3 : results3[0],
+                      market: marketRows
+                    });
+                  }
+                });
+                  }
+              })
+              }
+            });
+          }
+        })
 
-router.get('/mainManager', function(req, res){
-  res.render('mainManager', {
-    admin_name: req.session.authId,
-  });
 });
 
 router.get('/mystore', function(req, res){
@@ -246,7 +401,6 @@ router.get('/store_infor', function(req, res) {
             sijang_name : result1[0].sijang_name,
             market_name : result1[0].market_name,
             stamp_standard : result1[0].stamp_standard,
-            stamp_kind : result1[0].stamp_kind,
             stamp_reward : result1[0].stamp_reward,
             stamp_password : result1[0].stamp_password
           });
@@ -264,7 +418,6 @@ router.get('/store_infor', function(req, res) {
             sijang_name : result1[0].sijang_name,
             market_name : result1[0].market_name,
             stamp_standard : result1[0].stamp_standard,
-            stamp_kind : result1[0].stamp_kind,
             stamp_reward : result1[0].stamp_reward,
             stamp_password : result1[0].stamp_password
           });
@@ -277,7 +430,8 @@ router.get('/store_infor', function(req, res) {
 
 router.get('/myStamp', function(req, res) {
   // var sql = 'select * from `stamp` where `user_id`=?';
-  var sqlJoin = 'SELECT * FROM stamp INNER JOIN likeMarket ON stamp.sijang_name=likeMarket.sijang_name and stamp.market_name=likeMarket.market_name WHERE user_id=?;';
+  // var sqlJoin = 'SELECT * FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name WHERE user_id=?;';
+  var sqlJoin = 'SELECT stamp.id, stamp.user_id, stamp.sijang_name, stamp.market_name, stamp.stamp_count, stamp.stamp_standard, stamp.stamp_password, stamp.stamp_reward, likeMarket.like_check ,manager.like_count, manager.market_introduce FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id WHERE stamp.user_id=?;';
   var sql2 = 'select * from `review` where `user_id`=?';
   conn.query(sqlJoin, [req.user.id],function(error, result){
     if(error) {
@@ -424,21 +578,48 @@ router.post('/make_stamp', function(req, res) {
   var stamp_standard = req.body.stamp_standard;
   var stamp_reward = req.body.stamp_reward;
   var stamp_password = req.body.stamp_password;
-  var stamp_kind = req.body.stamp_kind;
   var postsql = "select * from `stamp` where user_id = ? and market_name = ? and sijang_name = ?"
-  var sql = 'insert into `stamp`(`user_id`,`market_name`,`stamp_count`,`stamp_standard`,`stamp_reward`,`stamp_password`,`stamp_kind`,`sijang_name`) values (?,?,?,?,?,?,?,?);';
+  var sql = 'insert into `stamp`(`user_id`,`market_name`,`stamp_count`,`stamp_standard`,`stamp_reward`,`stamp_password`,`sijang_name`) values (?,?,?,?,?,?,?);';
+  var likeInsertSql = 'insert into `likeMarket` (`user_id`, `sijang_name`, `market_name`) values (?, ?, ?) ;';
+  var likeSelectSql = 'select * from `likeMarket` where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
+
   conn.query(postsql, [user_id,market_name,sijang_name], function(error, results){
     if(error) { console.log(error); }
     else if(results.length) {
       res.send({ result: 'already' });
     }
     else{
-      conn.query(sql,[user_id,market_name,stamp_count,stamp_standard,stamp_reward,stamp_password,stamp_kind,sijang_name],function(error,result,fields){
+      conn.query(sql,[user_id,market_name,stamp_count,stamp_standard,stamp_reward,stamp_password,sijang_name],function(error,result,fields){
         if(error){
+          console.log(error);
           console.log('error');
-        }  else{
-            res.send({ result: 'success' });
-          }
+        }
+        else{
+          conn.query(likeSelectSql, [req.user.id, sijang_name, market_name], function(likeSelErr, likeSelRows) {
+            if(likeSelErr) {
+              console.log(likeSelErr);
+              console.log('likeMarket 테이블 조회 실패');
+            }
+            else if(likeSelRows.length) {
+              console.log('likeMarket 테이블 조회 성공');
+              res.send({ result: 'success' });
+            }
+            else {
+              console.log('likeMarket 테이블 조회 성공 but 결과 값 없음');
+              conn.query(likeInsertSql, [req.user.id, sijang_name, market_name], function(likeInsertErr, likeInsertRows) {
+                if(likeInsertErr) {
+                  console.log(likeInsertErr);
+                  console.log('likeMarket 테이블 삽입 실패');
+                }
+                else {
+                  console.log('likeMarket 테이블 삽입 성공');
+                  res.send({ result: 'success' });
+                }
+              });
+              //
+            }
+          });
+        }
       })
     }
   });
@@ -471,32 +652,27 @@ router.post('/like/:id', function(req, res) {
   var market_name = req.body.market_name;
   var sijang_name = req.body.sijang_name;
   var like_count = req.body.like_count;
-  var sql = 'update `likeMarket` set `like_count`=? where `sijang_name`=? and `market_name`=? ;';
-  conn.query(sql, [like_count ,sijang_name, market_name], function(err, rows) {
+  // var sql = 'update `manager` set `like_count`=? where `sijang_name`=? and `market_name`=? ;';
+  var sql = 'UPDATE stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id SET manager.like_count=?, likeMarket.like_check=? WHERE stamp.user_id=? and stamp.id=? ;';
+
+  conn.query(sql, [like_count, 1, req.user.id, req.params.id], function(err, rows) {
     if(err) {
       console.log(err);
-      console.log('좋아요 실패');
+      console.log('sql failed');
     }
-    else{
-      var sql2 = 'update `stamp` set `like_check`=? where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
-      conn.query(sql2, [1, req.user.id, sijang_name, market_name], function(error, rows2) {
-        if(error){
-          console.log('좋아요 체크 실패');
+    else {
+      console.log('update success');
+      var selectSql = 'SELECT stamp.id, stamp.user_id, likeMarket.like_check ,manager.like_count FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id WHERE stamp.id=? and stamp.user_id=? ;';
+      conn.query(selectSql, [req.params.id, req.user.id], function(error, result) {
+        if(error) {
           console.log(error);
+          console.log('select sql failed');
         }
         else {
-          var sql3 = 'select * from `likeMarket` where `sijang_name`=? and `market_name`=? ;';
-          conn.query(sql3, [sijang_name, market_name], function(err3, rows3) {
-            if(err3) {
-              console.log('좋아요 갯수 가져오기 실패');
-              console.log(err3);
-            }
-            else {
-              res.send({
-                result: 'success',
-                like: rows3[0].like_count
-              });
-            }
+          console.log(result);
+          res.send({
+            result: 'success',
+            like: result[0].like_count
           });
         }
       });
@@ -504,36 +680,66 @@ router.post('/like/:id', function(req, res) {
   });
 });
 
+router.post('/main_like', function(req, res) {
+  var sijang_name;
+  var market_name;
+  var selectSql = 'select * from `likeMarket` where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
+  var insertSql = 'insert into `likeMarket` (`user_id`, `sijang_name`, `market_name`) values (?, ?, ?) ;';
+  var likeUpdateSql; // update likeMarket query
+
+  conn.query(selectSql, [req.user.id, sijang_name, market_name], function(selectErr, selectRows) {
+    if(selectErr) {
+      console.log(selectErr);
+      console.log('select likeMarket table failed');
+    }
+    else if(selectRows.length) {
+      console.log('likeMarket 조회 성공');
+      // conn.query(likeUpdateSql, [], function(likeErr, likeRows) {});
+      // 업데이트 후 좋아요 수 값 가져오기 select query
+    }
+    else {
+      console.log('likeMarket 조회 성공 but 결과 값 없음');
+      conn.query(insertSql, [req.user.id, sijang_name, market_name], function(insertErr, insertRows) {
+        if(insertErr) {
+          console.log(insertErr);
+          console.log('insert likeMarket table failed');
+        }
+        else {
+          console.log('likeMarket 테이블 삽입 성공');
+          // conn.query(likeSql, [], function(likeErr, likeRows) {});
+        }
+      });
+    }
+  });
+});
+
+
+/* 좋아요 취소 */
 router.post('/cancel_like/:id', function(req, res) {
   var market_name = req.body.market_name;
   var sijang_name = req.body.sijang_name;
   var like_count = req.body.like_count;
-  var sql = 'update `likeMarket` set `like_count`=? where `sijang_name`=? and `market_name`=? ;';
-  conn.query(sql, [like_count, sijang_name, market_name], function(err, rows) {
+  // var sql = 'update `manager` set `like_count`=? where `sijang_name`=? and `market_name`=? ;';
+  var sql = 'UPDATE stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id SET manager.like_count=?, likeMarket.like_check=? WHERE stamp.user_id=? and stamp.id=? ;';
+
+  conn.query(sql, [like_count, 0, req.user.id, req.params.id], function(err, rows) {
     if(err) {
       console.log(err);
-      console.log('좋아요 취소 실패');
+      console.log('sql failed');
     }
-    else{
-      var sql2 = 'update `stamp` set `like_check`=? where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
-      conn.query(sql2, [0, req.user.id, sijang_name, market_name], function(error, rows2) {
+    else {
+      console.log('update success');
+      var selectSql = 'SELECT stamp.id, stamp.user_id, likeMarket.like_check ,manager.like_count FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id WHERE stamp.id=? and stamp.user_id=? ;';
+      conn.query(selectSql, [req.params.id, req.user.id], function(error, result) {
         if(error) {
           console.log(error);
-          console.log('좋아요 취소 체크 실패');
+          console.log('select sql failed');
         }
         else {
-          var sql3 = 'select * from `likeMarket` where `sijang_name`=? and `market_name`=? ;';
-          conn.query(sql3, [sijang_name, market_name], function(err3, rows3) {
-            if(err3) {
-              console.log(err3);
-              console.log('좋아요 취소 갯수 가져오기 실패');
-            }
-            else {
-              res.send({
-                result: 'success',
-                like: rows3[0].like_count
-              });
-            }
+          console.log(result);
+          res.send({
+            result: 'success',
+            like: result[0].like_count
           });
         }
       });
@@ -541,5 +747,108 @@ router.post('/cancel_like/:id', function(req, res) {
   });
 });
 
+router.post('/main_dislike', function(req, res) {
+  var selectSql = 'select * from `likeMarket` where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
+  var dislikeUpdateSql;
 
+  // conn.query(dislikeUpdateSql, [], function(likeErr, likeRows) {});
+  // 업데이트 후 좋아요 수 값 가져오기 select query
+});
+
+/* 스탬프 삭제 */
+router.post('/delete_stamp/:id', function(req, res) {
+  var sql = 'delete from `stamp` where id=?;';
+  conn.query(sql, [req.params.id], function(err, rows) {
+    if(err) {
+      console.log('스탬프 삭제 실패');
+      console.log(err);
+    }
+    else{
+      res.send({ result: 'success' });
+    }
+  });
+});
+
+router.post('/manager_reform_stamp',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
+  var manager_id = req.session.authId;
+  var market_name = req.body.market_name;
+  var sijang_name = req.body.sijang_name;
+  var stamp_reward = req.body.stamp_reward;
+  var stamp_password = req.body.stamp_password;
+  var market_introduce = req.body.market_introduce;
+  var market_promotion = req.body.market_promotion;
+
+  var update_manager_sql = 'update manager set stamp_reward = ?, stamp_password = ?, market_introduce =?, market_promotion =? where manager_id = ?';
+  var update_stamp_sql ='update stamp set stamp_reward = ?,stamp_password = ? where sijang_name = ? and market_name =?';
+  conn.query(update_manager_sql,[stamp_reward, stamp_password, market_introduce, market_promotion,manager_id],function(error,result,fields){
+    if(error){
+      console.log(error);
+      console.log('no1');
+    }
+    else{
+      conn.query(update_stamp_sql,[stamp_reward, stamp_password, sijang_name,market_name],function(error,result2,fields){
+        if(error){
+          console.log(error);
+          console.log('no2');
+        }
+        else{
+          console.log(result);
+          res.send({
+            result : result,
+            result2 : result2,
+            success : 'success'
+          });
+        }
+      });
+    }
+  });
+});
+//쿠폰센드
+
+router.post('/send_sijang_name', function(req, res) {
+  var sql = 'select * from coupon_manager where sijang_name = ?;';
+  var sijang_name = req.body.sijang_name;
+  conn.query(sql, [sijang_name], function(err, results) {
+    if(err) {
+      console.log('센드시장에러');
+    }
+    else{
+      res.send({
+        result: 'success',
+        results : results,
+       });
+    }
+  });
+});
+
+//
+
+router.post('/coupon_customer', function(req, res) {
+  var market_name = req.body.market_name;
+  var sijang_name = req.body.sijang_name;
+  var user_id = req.body.user_id;
+  var coupon_password = req.body.coupon_password;
+  var coupon_reward = req.body.coupon_reward;
+  var coupon_standard = req.body.coupon_standard;
+  var sql1 = "select * from coupon_customer where sijang_name=? and market_name =? and user_id=?;";
+  var sql2 = "insert into `coupon_customer` (`user_id`, `sijang_name`, `market_name`,`coupon_password`, `coupon_reward`, `coupon_standard`) values (?, ?, ?, ?, ?, ?) ;"
+  conn.query(sql1, [sijang_name, market_name, user_id], function(err, result) {
+    if(err) {
+      console.log('센드시장에러');
+    }else if(result.length){
+      res.send({
+        result : 'fail',
+        results : undefined
+      })
+    }
+    else{
+      conn.query(sql2, [user_id,sijang_name,market_name,coupon_password,coupon_reward,coupon_standard],function(error,results){
+        res.send({
+          result: 'success',
+          results : results,
+         });
+      })
+    }
+  });
+});
 module.exports = router;
