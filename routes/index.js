@@ -851,4 +851,41 @@ router.post('/coupon_customer', function(req, res) {
     }
   });
 });
+
+router.post('/decreasecoupon', function(req, res) {
+  var sql = 'select coupon_count from coupon_manager where sijang_name = ? and market_name = ?;';
+  var sijang_name = req.body.sijang_name;
+  var market_name = req.body.market_name;
+  var decrease_coupon_count = 'update coupon_manager set coupon_count = coupon_count -1 where sijang_name = ? and market_name = ?;';
+  var delete_coupon_count = 'delete from coupon_manager where sijang_name = ? and market_name = ?;';
+  conn.query(sql, [sijang_name,market_name], function(err, results) {
+    if(err) {
+      console.log('decreasecouponcount error');
+    }
+    else if(results[0].coupon_count == 1){
+      conn.query(delete_coupon_count,[sijang_name,market_name],function(error,results2){
+        console.log('sql = delete_coupon_count');
+        res.send({
+          result: 'delete',
+          results : results,
+          results2 : results
+         });
+      })
+    }
+    else {
+      conn.query(decrease_coupon_count,[sijang_name, market_name],function(error, results3){
+        console.log('sql = decrease_coupon_count');
+        console.log(results[0].coupon_count);
+        res.send({
+          result: 'decrease',
+          results : results,
+          results3 : results,
+         });
+      })
+    }
+  });
+});
+
+
+
 module.exports = router;
