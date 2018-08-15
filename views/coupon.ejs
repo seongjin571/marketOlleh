@@ -326,7 +326,32 @@
                   success: function (result) {
                       if (result['result'] == 'success') {
                           alert("쿠폰발급완료");
-                          location.reload();
+                          var data={
+                            'sijang_name' : sijang_name,
+                            'market_name' : market_name
+                          }
+                          console.log(data);
+                          $.ajax({
+                            type: "POST",
+                            url: "/decreasecoupon",
+                            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                            cache: false,
+                            datatype: "json",
+                            data: data,
+                            success: function (result) {
+                              if (result['result'] == 'decrease') {
+                                alert('뻄1');
+                                location.reload()
+                              }
+                              else if (result['result'] == 'delete') {
+                                alert('뺌2');
+                                location.reload()
+                              }
+                            },
+                            error: function (error) {
+                              alert('에러');
+                            }
+                          });
                       }
                       else if(result['result']=='fail'){
                           alert('이미쿠폰이 있습니다');
