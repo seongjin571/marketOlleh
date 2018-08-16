@@ -46,3 +46,17 @@ function marketInfoLi_event(market_arr) {
 
 }
 
+function managerInfoLi_event(market_arr) {
+
+    $('#store_infor').css('display', 'block');
+    $('#market_infor').css('display', 'none');
+    console.log(market_arr);
+    var manager_id = market_arr.manager_id;
+    var market_name = market_arr.market_name;
+    var introduce = market_arr.market_introduce;
+    var stamp_reward = market_arr.stamp_reward;
+    var market_promotion = market_arr.market_promotion;
+    var like_count = market_arr.like_count;
+    alert(manager_id);
+    
+}

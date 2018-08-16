@@ -299,11 +299,8 @@
                 </div>
             </div>
         <script>
-
             $('#signupForm2').submit(function (e) {
-
                 e.preventDefault();
-
                 var manager_id = $('#manager_id_jh').val();
                 var password = $('#password_jh').val();
                 var market_name = $('#market_name').val();
@@ -314,7 +311,6 @@
                 var stamp_password = $('#stamp_password').val();
                 var market_promotion = $('#market_promotion').val();
                 var market_introduce = $('#market_introduce').val();
-
                 var test = document.getElementsByClassName('stamp_standard');
                 var select_stamp_standard = test[0].selectedIndex;
                 var stamp_standard;
@@ -323,10 +319,8 @@
                 } else if (select_stamp_standard == 1) {
                     stamp_standard = 10;
                 }
-
                 // var sijang_name = sijang_name.innerHTML;
                 var data = {
-
                     'manager_id': manager_id,
                     'password': password,
                     'market_name': market_name,
@@ -339,7 +333,6 @@
                     'market_introduce': market_introduce,
                     'stamp_standard': stamp_standard,
                     'sijang_name': sijang_name.innerHTML
-
                 };
                 console.log(data);
                 $.ajax({
@@ -412,8 +405,6 @@
         $('#signupManager').fadeOut(300)
         $('#loginManager').fadeIn(300)
     })
-
-
 </script>
 
 </html>
