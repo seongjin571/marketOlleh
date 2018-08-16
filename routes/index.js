@@ -142,6 +142,39 @@ router.get('/coupon', function(req, res){
   })
 });
 
+/* 쿠폰 비밀번호 비교 */
+router.post('/coupon_password/:id', function(req, res) {
+  var sql = 'select `coupon_password` from `coupon_customer` where `id`=? ;';
+  conn.query(sql, [req.params.id], function(err, rows) {
+    if(err) {
+      console.log(err);
+      console.log('쿠폰 비밀번호 쿼리문 에러');
+    }
+    else {
+      res.send({
+        result: 'success',
+        password: rows[0].coupon_password
+      });
+    }
+  });
+});
+
+
+/* coupon_customer 테이블에서 데이터 삭제 */
+router.post('/del_coupon_customer/:id', function(req, res) {
+  var sql = 'delete from `coupon_customer` where `id`=? ;';
+  conn.query(sql, [req.params.id], function(err, rows) {
+    if(err) {
+      console.log(err);
+      console.log('사용자가 발급 받은 쿠폰 삭제 실패');
+    }
+    else {
+      res.send({ result: 'success' });
+    }
+  });
+});
+
+
 router.get('/couponManager', function(req, res, next) {
   var sql='select * from manager where `manager_id`=?;';
   var sql2 = 'select * from coupon_manager where `manager_id`=?';

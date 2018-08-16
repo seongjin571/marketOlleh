@@ -82,28 +82,136 @@
         <% if(result1) { %>
             <% for(var i=0; i<result1.length; i++) { %>
                 <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide content">
-                            <div class="store_and_market">
-                                <div class="store_name">
+                    <div class="swiper-wrapper" id='swiper-wrapper<%= result1[i].id %>'>
+                        <div class="swiper-slide content" id='swiper-slide-content<%= result1[i].id %>'>
+                            <div class="store_and_market" id='store_and_market<%= result1[i].id %>'>
+                                <div class="store_name" id='store_name<%= result1[i].id %>'>
                                     <%= result1[i].market_name %>
                                 </div>
-                                <div class="market_name">
+                                <div class="market_name" id='market_name<%= result1[i].id %>'>
                                     <%= result1[i].sijang_name %>
                                 </div>
                             </div>
-                            <div class="standard">
+                            <div class="standard" id='standard<%= result1[i].id %>'>
                               <%= result1[i].coupon_standard %>
                             </div>
-                            <div class="sale_price">
+                            <div class="sale_price" id='sale_price<%= result1[i].id %>'>
                                 <%= result1[i].coupon_reward %>
                             </div>
                             <!-- <div class="period">
                                 <%= result1[i].coupon_count %>
                             </div> -->
                         </div>
-                        <div class="swiper-slide menu">삭제</div>
+                        <div class="swiper-slide menu" id='swiper-slide-menu<%= result1[i].id %>'>삭제</div>
                     </div>
+
+                    <div class='password_number_div_sj' id="password_number_div_sj<%= result1[i].id %>">
+                      <div class="password_line_sj <%= result1[i].id %>">
+                        <div class="password_number_sj <%= result1[i].id %>"></div>
+                        <div class="password_number_sj <%= result1[i].id %>"></div>
+                        <div class="password_number_sj <%= result1[i].id %>"></div>
+                      </div>
+                      <div class="password_line_sj <%= result1[i].id %>">
+                        <div class="password_number_sj <%= result1[i].id %>"></div>
+                        <div class="password_number_sj <%= result1[i].id %>"></div>
+                        <div class="password_number_sj <%= result1[i].id %>"></div>
+                      </div>
+                      <div class="password_line_sj <%= result1[i].id %>">
+                        <div class="password_number_sj <%= result1[i].id %>"></div>
+                        <div class="password_number_sj <%= result1[i].id %>"></div>
+                        <div class="password_number_sj <%= result1[i].id %>"></div>
+                      </div>
+                      <div class="password_line_sj <%= result1[i].id %>">
+                        <div class='password_cancel' id="password_cancel<%= result1[i].id %>">취소</div>
+                        <div class="password_number_sj <%= result1[i].id %>"></div>
+                        <div class='password_ok' id="password_ok<%= result1[i].id %>"></div>
+                      </div>
+                    </div>
+
+                    <script>
+                      /* 비밀번호 키패드 섞는 함수 */
+                      var password_number_array_sj = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+                      function shuffle(a) {
+                        var j, x, i;
+                        for (i = a.length; i; i -= 1) {
+                          j = Math.floor(Math.random() * i);
+                          x = a[i - 1];
+                          a[i - 1] = a[j];
+                          a[j] = x;
+                        }
+                      }
+
+                      /*  쿠폰 클릭했을 때  */
+                      $('#swiper-slide-content<%= result1[i].id %>').click(function() {
+                        shuffle(password_number_array_sj);
+                        for (var i = 0; i < 10; i++) {
+                          document.getElementsByClassName('password_number_sj <%= result1[i].id %>')[i].innerHTML = password_number_array_sj[i];
+                         }
+
+                        $('#swiper-slide-content<%= result1[i].id %>').hide(200);
+                        $('#swiper-slide-menu<%= result1[i].id %>').hide(200);
+                        $('#password_number_div_sj<%= result1[i].id %>').show(200);
+
+                        /*  키패드 번호 클릭 시  */
+                        var count = 0;
+                        // var result = 1;
+                        var number1 = "";
+                        $('.password_number_sj').off().on('click',function(){
+                          number1 += $(this).html();
+                          count++;
+                          console.log(number1);
+                          console.log("count"+count);
+                          if(count == 4){
+                            count=0;
+                            $.ajax({
+                              type: 'POST',
+                              url: '/coupon_password/<%= result1[i].id %>',
+                              contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                              cache: false,
+                              dataType: 'json',
+                              success: function(result) {
+                                if(result['password'] == number1) {
+                                  number1 = "";
+                                  alert('일치');
+                                  $.ajax({
+                                    type: 'POST',
+                                    url: '/del_coupon_customer/<%= result1[i].id %>',
+                                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                                    cache: false,
+                                    dataType: 'json',
+                                    success: function(result) {
+                                      if(result['result'] == 'success') {
+                                        alert('쿠폰 사용이 완료되었습니다.');
+                                        location.reload();
+                                      }
+                                    },
+                                    error: function(error) {
+                                      console.log(error);
+                                      console.log('쿠폰 비밀번호 입력후 테이블 삭제 실패');
+                                    }
+                                  });
+                                }
+                                else {
+                                  number1 = "";
+                                  alert('비밀번호가 일치하지 않습니다.');
+                                }
+                              },
+                              error: function(error) {
+                                console.log(error);
+                                console.log('쿠폰 비밀번호 일치 실패');
+                              }
+                            });
+                          }
+                        });
+                      });
+
+                      /* 비밀번호 키패드에서 취소 버튼 눌렀을 때 */
+                      $('#password_cancel<%= result1[i].id %>').click(function(){
+                        $('#password_number_div_sj<%= result1[i].id %>').hide(200);
+                        $('#swiper-slide-content<%= result1[i].id %>').show(200);
+                        $('#swiper-slide-menu<%= result1[i].id %>').show(200);
+                      });
+                    </script>
                     <% } %>
                         <% } else { %>
                             <div class='stamp_list'>
