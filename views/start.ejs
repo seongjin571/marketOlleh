@@ -220,10 +220,10 @@
 
         <form id='signupForm2'>
             <div class="signupuser_input3">
-                <input class="signuptext2" type="text" id="manager_id" name='manager_id' placeholder="manager_id">
+                <input class="signuptext2" type="text" id="manager_id_jh" name='manager_id' placeholder="manager_id">
             </div>
             <div class="signupuser_input3">
-                <input class="signuptext2" type="password" id="password" name='password' placeholder="password">
+                <input class="signuptext2" type="password" id="password_jh" name='password' placeholder="password">
             </div>
             <div class="signupuser_input3">
                 <input class="signuptext2" type="text" id="market_name" name='market_name' placeholder="market_name" >
@@ -255,7 +255,7 @@
                 <input type="button" value="시장찾기" id="modal_display"/>
             </div>
                 <div class="signuser_coupon2">
-                        <span>쿠폰 개수 선택 </span>
+                        <span>스탬프 개수 선택 </span>
                         <select class='stamp_standard' name="stamp_standard">
                         <option>5</option>
                         <option>10</option>
@@ -266,54 +266,46 @@
                 </div>
         </form>
 
-        <!-- Modal -->
-        <div id="myModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span id="modal_close">&times;</span>
-
-
+           <!-- Modal -->
+           <div id="myModal" class="modal">
+                <!-- Modal content -->
                 <div id="text_logo">
                         <!-- <div id="verti"> -->
-                        <img id="inline_logo" src="/images/inline-logo.png" width="25%" height="auto">
+                        <img id="inline_logo" src="/images/inline-logo.png" width="21%" height="auto">
                         <!-- </div> -->
-                        <div id="Searching">
+                        <div id="Searchingtap">
                             <div id="verti">
                                 <div id="vertical_helper">
-                                    <div id="searching_input">
-                                        <input type="text" id="search_value">
-                                        <img src="/images/search3.png" value="검색" id="searchingButton" width="20px" height="20px">
-                                    </div>
+                                        <div id="Searching">
+                                                <select id="filed" name="filed">
+                                                    <option value="name" selected="selected">시장이름</option>
+                                                    <option value="gooname">구</option>
+                                                    <option value="dongname">동</option>
+                                                    <option value="newaddress">도로명</option>
+                                                    <option value="oldaddress">지번</option>
+                                                </select>
+                                                <input type="text" placeholder="searching" id="search_value">
+                                                <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
+                                            </div>
                                 </div>
                             </div>
                         </div>
                     </div>
- 
 
-
-                <h1>modal_display</h1>
-                <div id="Searching">
-                    <select name="filed">
-                        <option value="name" selected="selected">시장이름</option>
-                        <option value="gooname">구</option>
-                        <option value="dongname">동</option>
-                        <option value="newaddress">도로명</option>
-                        <option value="oldaddress">지번</option>
-                    </select>
-                    <input type="text" placeholder="searching" id="search_value">
-                    <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
+                <div class="modal-content">
+                    <span id="modal_close">&times;</span>
+                    <h1>시장리스트</h1>
+                    <ol id="search_result"></ol>
                 </div>
-                <ol id="search_result"></ol>
             </div>
-        </div>
         <script>
 
             $('#signupForm2').submit(function (e) {
 
                 e.preventDefault();
 
-                var manager_id = $('#manager_id').val();
-                var password = $('#password').val();
+                var manager_id = $('#manager_id_jh').val();
+                var password = $('#password_jh').val();
                 var market_name = $('#market_name').val();
                 var market_location = $('#market_location').val();
                 var manager_name = $('#manager_name').val();
@@ -349,7 +341,7 @@
                     'sijang_name': sijang_name.innerHTML
 
                 };
-
+                console.log(data);
                 $.ajax({
                     type: "POST",
                     url: "/signup/signupmanager",
@@ -360,7 +352,7 @@
                     success: function (result) {
                         if (result['result'] == 'success') {
                             alert('가입 성공');
-                            $(window).attr('location', '/mainManager');
+                            location.reload()
                         }
                         else if (result['result'] == 'already') {
                             alert('이미 존재하는 아이디입니다.');

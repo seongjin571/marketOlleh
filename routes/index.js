@@ -38,7 +38,8 @@ router.get('/coupon', function(req, res){
                 title : '발급받은쿠폰없고 스탬프 없고',
                 result1 : undefined,
                 result2 : undefined,
-                cou_result : undefined
+                cou_result : undefined,
+                user_id : user_id,
               })
             }else{
               console.log('발급받은 스탬프 있음1');
@@ -47,7 +48,8 @@ router.get('/coupon', function(req, res){
                 title : '발급받은쿠폰없고 스탬프 있고',
                 result1 : undefined,
                 result2 : result2,
-                cou_result : undefined
+                cou_result : undefined,
+                user_id : user_id,
               })
             }
           })
@@ -61,7 +63,8 @@ router.get('/coupon', function(req, res){
                 title : '쿠폰있고 스탬프 없고',
                 result1 : result1,
                 result2 : undefined,
-                cou_result : undefined
+                cou_result : undefined,
+                user_id : user_id,
               })
             }else{
               console.log('발급받은 스탬프 있음');
@@ -69,7 +72,8 @@ router.get('/coupon', function(req, res){
                 title : '쿠폰있고 스탬프 있고',
                 result1 : result1,
                 result2 : result2,
-                cou_result : undefined
+                cou_result : undefined,
+                user_id : user_id,
               })
             }
           })
@@ -92,7 +96,8 @@ router.get('/coupon', function(req, res){
                 title : '발급받은쿠폰없고 스탬프 없고',
                 result1 : undefined,
                 result2 : undefined,
-                cou_result : cou_result
+                cou_result : cou_result,
+                user_id : user_id,
               })
             }else{
               console.log('발급받은 스탬프 있음');
@@ -101,7 +106,8 @@ router.get('/coupon', function(req, res){
                 title : '발급받은쿠폰없고 스탬프 있고',
                 result1 : undefined,
                 result2 : result2,
-                cou_result : cou_result
+                cou_result : cou_result,
+                user_id : user_id,
               })
             }
           })
@@ -115,7 +121,8 @@ router.get('/coupon', function(req, res){
                 title : '쿠폰있고 스탬프 없고',
                 result1 : result1,
                 result2 : undefined,
-                cou_result : cou_result
+                cou_result : cou_result,
+                user_id : user_id,
               })
             }else{
               console.log('발급받은 스탬프 있음');
@@ -124,7 +131,8 @@ router.get('/coupon', function(req, res){
                 title : '쿠폰있고 스탬프 있고',
                 result1 : result1,
                 result2 : result2,
-                cou_result : cou_result
+                cou_result : cou_result,
+                user_id : user_id,
               })
             }
           })
@@ -178,29 +186,46 @@ router.post('/couponManager', function(req, res) {
   var coupon_count = req.body.coupon_count;
   var coupon_password = req.body.coupon_password;
   var coupon_reward = req.body.coupon_reward;
+  var judge_coupon = 'select * from coupon_manager where `sijang_name`=? and `market_name`=?;';
   var sql = 'insert into `coupon_manager`(`manager_id`,`market_name`,`sijang_name`,`coupon_standard`,`coupon_reward`,`coupon_password`,`coupon_count`) values (?,?,?,?,?,?,?);';
-  conn.query(sql, [manager_id, market_name, sijang_name, coupon_standard, coupon_reward, coupon_password, coupon_count], function(error, result){
-    if(error){
-      console.log(error);
-    }else {
-        res.send({ result: 'success' });
+  conn.query(judge_coupon,[sijang_name,market_name],function(err,results){
+    if(err){
+      console.log('judge_coupon error');
+    }else if(results.length){
+      res.send({ result: 'fail' });
+    }else{
+      conn.query(sql, [manager_id, market_name, sijang_name, coupon_standard, coupon_reward, coupon_password, coupon_count], function(error, result){
+        if(error){
+          console.log(error);
+        }else {
+            res.send({ result: 'success' });
+        }
+      });
     }
-  });
+  })
 });
 
 router.get('/mystampManager', function(req, res){
   var manager_id = req.session.authId;
   var sql = 'select * from manager where manager_id = ?';
+  var count_stamp = 'select count(*) as cnt2 from stamp where `market_name`=? and `sijang_name`=?;';
   conn.query(sql,[manager_id],function(error,result){
     if(error){
       console.log(error);
     }
     else{
-      console.log('good');
-      res.render('mystampManager', {
-        result: result,
-        admin_name: req.session.authId,
-      });
+      conn.query(count_stamp,[result[0].market_name,result[0].sijang_name],function(errr,results3,fields){
+        if(errr){
+          console.log('mainmanager errr');
+        }else{
+          console.log('good');
+          res.render('mystampManager', {
+              result: result,
+              admin_name: req.session.authId,
+              results3 : results3[0],
+            });
+          }
+        })
     }
   })
 });
@@ -308,6 +333,7 @@ router.get('/mainManager', function(req, res, next) {
   var count_review = 'select count(*) as cnt from review where `market_name`=? and `sijang_name`=?;';
   var count_stamp = 'select count(*) as cnt2 from stamp where `market_name`=? and `sijang_name`=?;';
   var marketSql = 'SELECT * FROM `manager` ORDER BY like_count DESC ;';
+
     conn.query(sql,[req.session.authId],function(error,results,fields){
       if(error){
         console.log(error);
@@ -794,4 +820,72 @@ router.post('/send_sijang_name', function(req, res) {
     }
   });
 });
+
+//
+
+router.post('/coupon_customer', function(req, res) {
+  var market_name = req.body.market_name;
+  var sijang_name = req.body.sijang_name;
+  var user_id = req.body.user_id;
+  var coupon_password = req.body.coupon_password;
+  var coupon_reward = req.body.coupon_reward;
+  var coupon_standard = req.body.coupon_standard;
+  var sql1 = "select * from coupon_customer where sijang_name=? and market_name =? and user_id=?;";
+  var sql2 = "insert into `coupon_customer` (`user_id`, `sijang_name`, `market_name`,`coupon_password`, `coupon_reward`, `coupon_standard`) values (?, ?, ?, ?, ?, ?) ;"
+  conn.query(sql1, [sijang_name, market_name, user_id], function(err, result) {
+    if(err) {
+      console.log('센드시장에러');
+    }else if(result.length){
+      res.send({
+        result : 'fail',
+        results : undefined
+      })
+    }
+    else{
+      conn.query(sql2, [user_id,sijang_name,market_name,coupon_password,coupon_reward,coupon_standard],function(error,results){
+        res.send({
+          result: 'success',
+          results : results,
+         });
+      })
+    }
+  });
+});
+
+router.post('/decreasecoupon', function(req, res) {
+  var sql = 'select coupon_count from coupon_manager where sijang_name = ? and market_name = ?;';
+  var sijang_name = req.body.sijang_name;
+  var market_name = req.body.market_name;
+  var decrease_coupon_count = 'update coupon_manager set coupon_count = coupon_count -1 where sijang_name = ? and market_name = ?;';
+  var delete_coupon_count = 'delete from coupon_manager where sijang_name = ? and market_name = ?;';
+  conn.query(sql, [sijang_name,market_name], function(err, results) {
+    if(err) {
+      console.log('decreasecouponcount error');
+    }
+    else if(results[0].coupon_count == 1){
+      conn.query(delete_coupon_count,[sijang_name,market_name],function(error,results2){
+        console.log('sql = delete_coupon_count');
+        res.send({
+          result: 'delete',
+          results : results,
+          results2 : results
+         });
+      })
+    }
+    else {
+      conn.query(decrease_coupon_count,[sijang_name, market_name],function(error, results3){
+        console.log('sql = decrease_coupon_count');
+        console.log(results[0].coupon_count);
+        res.send({
+          result: 'decrease',
+          results : results,
+          results3 : results,
+         });
+      })
+    }
+  });
+});
+
+
+
 module.exports = router;
