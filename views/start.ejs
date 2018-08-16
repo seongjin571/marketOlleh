@@ -92,14 +92,14 @@
         <div id="top_logo">
             <img id="loginUser_logo_with_text2" src="/images/logo_with_text.png">
         </div>
-        <form class="formManager" action='/loginmanager' method='POST'>
+        <div class="formManager" >
             <div class="login_button_formManager">
                 <input class="inputmanager" type='text' id="manager_id" name='manager_id' placeholder='아이디' />
             </div>
             <div class="login_button_formManager">
                 <input class="inputmanager" type='password' id="password" name='password' placeholder='비밀번호' />
             </div>
-        </form>
+        </div>
         <div id="login_button_user2">
             <button class="idfind">로그인 상태 유지</button>
             <button class="idfind">아이디 찾기</button>
@@ -352,7 +352,7 @@
                     success: function (result) {
                         if (result['result'] == 'success') {
                             alert('가입 성공');
-                            $(window).attr('location', '/mainManager');
+                            $(window).attr('location', '/main');
                         }
                         else if (result['result'] == 'already') {
                             alert('이미 존재하는 아이디입니다.');
