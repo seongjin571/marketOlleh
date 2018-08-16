@@ -61,19 +61,19 @@
         <% } %>
 
 
-                                                                <h2 id="near_market_list">
-                                                                    주변 시장들
-                                                                </h2>
+        <h2 id="near_market_list">
+            주변 시장들
+        </h2>
 
-                                                                <div class="market">
-                                                                    <p>통인 시장</p>
-                                                                </div>
-                                                                <div class="market">
-                                                                    <p>서울관광 시장</p>
-                                                                </div>
-                                                                <div class="market">
-                                                                    <p>모란 시장</p>
-                                                                </div>
+        <div class="market">
+            <p>통인 시장</p>
+        </div>
+        <div class="market">
+            <p>서울관광 시장</p>
+        </div>
+        <div class="market">
+            <p>모란 시장</p>
+        </div>
     </div>
 
 
@@ -92,15 +92,15 @@
                                     <%= result1[i].sijang_name %>
                                 </div>
                             </div>
+                            <div class="standard">
+                              <%= result1[i].coupon_standard %>
+                            </div>
                             <div class="sale_price">
                                 <%= result1[i].coupon_reward %>
                             </div>
-                            <div class="standard">
-                                <%= result1[i].coupon_standard %>
-                            </div>
-                            <div class="period">
+                            <!-- <div class="period">
                                 <%= result1[i].coupon_count %>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="swiper-slide menu">삭제</div>
                     </div>
@@ -298,7 +298,7 @@
         var coupon_password = password.innerHTML;
         var reward = document.getElementsByClassName('sale_price1')[list];
         var coupon_reward = reward.innerHTML;
-        var standard = document.getElementsByClassName('sale_price1')[list];
+        var standard = document.getElementsByClassName('standard1')[list];
         var coupon_standard = standard.innerHTML;
         console.log(coupon_password);
         var user_id = '<%= user_id %>'
