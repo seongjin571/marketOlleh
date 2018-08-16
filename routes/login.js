@@ -24,7 +24,7 @@ router.post('/login', function(req, res, next) {
     // Generate a JSON response reflecting authentication status
     if (! user) {
       return res.send(
-        '<script type="text/javascript">alert("존재하지 않는 아이디입니다."); document.location.href="/start";</script>'
+        '<script type="text/javascript">alert("아이디 혹은 비밀번호가 틀렸습니다."); document.location.href="/start";</script>'
       );
     }
     req.login(user, function(err){
@@ -113,6 +113,7 @@ router.get('/oauth/kakao/callback', passport.authenticate('kakao-login', {
 /*  logout  */
 router.get('/logout', function (req, res) {
   delete req.session.usestamp_market_name;
+  delete req.session.usestamp_sijang_name;
   req.logout();
   res.redirect('/start');
 });
