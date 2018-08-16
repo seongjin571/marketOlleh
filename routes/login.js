@@ -113,6 +113,7 @@ router.get('/oauth/kakao/callback', passport.authenticate('kakao-login', {
 /*  logout  */
 router.get('/logout', function (req, res) {
   delete req.session.usestamp_market_name;
+  delete req.session.usestamp_sijang_name;
   req.logout();
   res.redirect('/start');
 });
