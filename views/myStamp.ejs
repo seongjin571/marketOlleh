@@ -10,8 +10,9 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
     <script src="/javascripts/spin.js"></script>
+    <link rel="stylesheet" href="/stylesheets/swiper.min.css">
   <link rel="stylesheet" type="text/css" href="/stylesheets/stamp.css" />
-  <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
+  <!-- <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script> -->
   <!-- <script>
   window.addEventListener('load', function () {
     FastClick.attach(document.body);
@@ -25,7 +26,7 @@
     <!-- <label>내 스탬프</label> -->
     <% if(myStamps) { %>
       <% for(var i=0; i<myStamps.length; i++) { %>
-        <div class="swiper-slide" id='stamp_list<%= myStamps[i].id %>'>
+        <div class="stamp_one" id='stamp_list<%= myStamps[i].id %>'>
             <div class="store_market_name">
                 <%= myStamps[i].market_name %>
             </div>
@@ -87,6 +88,11 @@
                 <p class='go_store_detail_sj' id="go_store_detail_sj<%= myStamps[i].id %>">상점 정보</p>
                 <p class='go_store_review_sj' id="go_store_review_sj<%= myStamps[i].id %>">리뷰</p>
               </div>
+              
+<!--               
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"> -->
               <div class='stamp_menu_sj' id="stamp_menu_sj<%= myStamps[i].id %>">
                 <div class='stamp_sj' id="stamp_sj<%= myStamps[i].id %>">
                   <div class='tenControls_sj' id="tenControls_sj<%= myStamps[i].id %>">
@@ -215,6 +221,7 @@
                 </div>
               </div>
             </div>
+
             <script>
             var number1 = "";
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
@@ -635,8 +642,8 @@
             //   }
             // }
             </script>
-          </div>
             <% } %>
+          </div>
             <% } %>
 
             <div id="nav_sj">
@@ -657,8 +664,17 @@
                         <p>로그아웃</p>
                     </div>
             </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
 
-                      <script>
+            <script>
+                var swiper = new Swiper('.swiper-container', {
+                    autoHeight: true,
+                    scrollbar: {
+                        el: '.swiper-scrollbar',
+                        hide: true,
+                    },
+                });
+                      
                       $('#home_sj').click(function () {
                         location.href = "/main";
                       })
@@ -675,14 +691,6 @@
                               }
                           })
                       </script>
-
-
-                      <!--stamp_count 불러와야함-->
-                      <!--stamp_standard 불러와야함-->
-                      <!-- <script src="/javascripts/stamp.js"></script> -->
-                      <!-- stamp 기능적인 부분 js-->
-                      <!-- <script src="/javascripts/myStamp.js"></script> -->
-                      <!-- myStamp 메뉴 관련 js -->
 
 
                     </body>
