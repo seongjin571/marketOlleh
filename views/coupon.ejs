@@ -212,6 +212,27 @@
                         });
                       });
 
+                      /* 쿠폰 밀어서 삭제 버튼 클릭 시 */
+                      $('#swiper-slide-menu<%= result1[i].id %>').click(function() {
+                        $.ajax({
+                          type: 'POST',
+                          url: '/del_coupon_customer/<%= result1[i].id %>',
+                          contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                          cache: false,
+                          dataType: 'json',
+                          success: function(result) {
+                            if(result['result'] == 'success') {
+                              alert('쿠폰 삭제가 완료되었습니다.');
+                              location.reload();
+                            }
+                          },
+                          error: function(error) {
+                            console.log(error);
+                            console.log('쿠폰 삭제버큰 클릭 후 테이블 삭제 실패');
+                          }
+                        });
+                      });
+
                       /* 비밀번호 키패드에서 취소 버튼 눌렀을 때 */
                       $('#password_cancel<%= result1[i].id %>').click(function(){
                         $('#password_number_div_sj<%= result1[i].id %>').css('display','none');
