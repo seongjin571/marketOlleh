@@ -59,10 +59,12 @@
         <% if(myStamps) { %>
           <div id='stamp_details'>
           <% for(var i=0; i<myStamps.length; i++) { %>
+            
             <div class='selected_stamp' id="selected_stamp<%= myStamps[i].id %>">
                 <div class="back_div<%= myStamps[i].id %>" id="back_div">
                     <img id="tableControl<%= myStamps[i].id %>" src="/images/backButton.png" width="20px" height="20px">
                 </div>
+               
               <div id="name_sj">
                 <p id="store_name_sj">
                   <%= myStamps[i].market_name %>
@@ -89,10 +91,9 @@
                 <p class='go_store_review_sj' id="go_store_review_sj<%= myStamps[i].id %>">리뷰</p>
               </div>
               
-<!--               
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"> -->
+              <div class="swiper-container" id="<%= myStamps[i].id %>">
+                  <div class="swiper-wrapper" id="<%= myStamps[i].id %>">
+            <div class="swiper-slide" id="swiper1<%= myStamps[i].id %>">
               <div class='stamp_menu_sj' id="stamp_menu_sj<%= myStamps[i].id %>">
                 <div class='stamp_sj' id="stamp_sj<%= myStamps[i].id %>">
                   <div class='tenControls_sj' id="tenControls_sj<%= myStamps[i].id %>">
@@ -161,6 +162,7 @@
                 </div>
                 <button class='button_sj' id="delete_button_sj<%= myStamps[i].id %>">삭제</button>
               </div>
+
               <div class='password_number_div_sj' id="password_number_div_sj<%= myStamps[i].id %>">
                 <div class="password_line_sj <%= myStamps[i].id %>">
                   <div class="password_number_sj <%= myStamps[i].id %>"></div>
@@ -183,6 +185,11 @@
                   <div class='password_ok' id="password_ok<%= myStamps[i].id %>"></div>
                 </div>
               </div>
+              <!-- </div> -->
+          </div>
+
+
+              <div class="swiper-slide" id="swiper2<%= myStamps[i].id %>"> 
               <div class='store_detail_sj' id="store_detail_sj<%= myStamps[i].id %>">
                 <h2>상점 소개</h2>
                 <p><%= myStamps[i].market_introduce %> </p>
@@ -190,6 +197,9 @@
                 <h2>위치</h2>
                 <img src="/images/han.png" width="100%">
               </div>
+              </div>
+
+              <div class="swiper-slide" id="swiper3<%= myStamps[i].id %>">
               <div class='store_review_sj' id="store_review_sj<%= myStamps[i].id %>">
                 <button class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">리뷰 등록</button>
                 <% if(review) {%>
@@ -220,6 +230,8 @@
                   <button class="write_ok_button<%= myStamps[i].id %>" style="margin-left:5%">등록</button>
                 </div>
               </div>
+            </div>
+            </div>
             </div>
 
             <script>
@@ -669,6 +681,8 @@
             <script>
                 var swiper = new Swiper('.swiper-container', {
                     autoHeight: true,
+                    observer: true,
+                    observeParents: true,
                     scrollbar: {
                         el: '.swiper-scrollbar',
                         hide: true,
