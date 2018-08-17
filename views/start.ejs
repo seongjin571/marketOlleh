@@ -47,6 +47,7 @@
     </div>
     <!--start div 끝-->
 
+
     <!--loginuser 시작-->
     <div id="loginuser">
         <div id="top_logo">
@@ -62,9 +63,9 @@
             </div>
             </br>
             <div id="login_button_user2">
-                <button class="idfind">로그인 상태 유지</button>
+                <!-- <img id="Login_M" onclick="login_maintain()" src="/images/login_off.png"> -->
                 <button class="idfind">아이디 찾기</button>
-                <button type="button" id="loginUser_sign_up">Sign Up</button>
+                <button type="button" id="loginUser_sign_up">회원가입</button>
             </div>
             <div class="login_button_user3">
                 <button type='submit' value='' class="loginUser_insert">로그인</button>
@@ -85,7 +86,18 @@
             </div>
         </div>
     </div>
+    <!-- <script>
+            function login_maintain() {
+                var dama = document.getElementById('Login_M');
+                if (dama.src.match("login_on")) {
+                    dama.src = "/images/login_off.png";
+                } else {
+                    dama.src = "/images/login_on.png";
+                }
+            }
+    </script> -->
     <!--loginuser 끝-->
+
 
     <!--loginManager 시작-->
     <div id="loginManager">
@@ -111,8 +123,6 @@
             </div>
         </div>
     </div>
-
-
     <script>
         $('#loginButton').click(function (e) {
             e.preventDefault();
@@ -145,11 +155,7 @@
             });
         });
     </script>
-
     <!--loginManager 끝-->
-
-
-
 
 
     <!--signupuser 시작-->

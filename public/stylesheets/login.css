@@ -9,10 +9,11 @@ body, html {
     background-color: white;
 }
 
-#all_body {
+#start,#all_body {
     width: 100%;
     height: 100%;
     position: absolute;
+    overflow: hidden;
 }
 #intro_image_div{
     width: 100%;
@@ -27,7 +28,7 @@ body, html {
 #top_part {
     display: table;
     width: 100%;
-    height: 50%;         
+    height: 35%;         
 }
 #top_vertical_helper {
     padding-top:50%;
@@ -48,7 +49,7 @@ body, html {
 .login_button{
     width: 100%;
     height: 15%;
-    margin-bottom: 7%;
+    margin-bottom: 5%;
     text-align: center;
     
 }
@@ -104,7 +105,7 @@ body, html {
 .formuser
 {
     width:100%;
-    height: 45%;
+    height: 40%;
 }
 .formManager{
     width:100%;
@@ -174,7 +175,17 @@ body, html {
     width:30%;
     height: 100%;
     font-size: 5%;
-    
+}
+#idfind1{
+    background-color: white;
+    color:grey;
+    border :0px;
+    width:30%;
+    height: 100%;
+    font-size: 5%;
+}
+#Login_M{
+
 }
 #loginUser_sign_up{
 
