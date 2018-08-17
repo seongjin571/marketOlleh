@@ -16,7 +16,8 @@ router.get('/coupon', function(req, res){
   var find_coupon_manager = 'select * from `manager`';
   var find_stamp = 'select * from `stamp` where `user_id` =?';
   var user_id = req.user.id;
-  var mycoupon = 'select * from `coupon_customer` where `user_id` = ?';
+  // var mycoupon = 'select * from `coupon_customer` where `user_id` = ?';
+  var mycoupon = 'SELECT coupon_customer.id, coupon_customer.user_id, coupon_customer.sijang_name, coupon_customer.market_name, coupon_customer.coupon_password, coupon_customer.coupon_reward, coupon_customer.coupon_standard, coupon_manager.coupon_count FROM coupon_customer INNER JOIN coupon_manager ON coupon_customer.sijang_name=coupon_manager.sijang_name and coupon_customer.market_name=coupon_manager.market_name WHERE coupon_customer.user_id=?;';
   var couponlist = 'select * from `coupon_manager`';
   conn.query(couponlist,function(err,cou_result,fields){
     if(err){
