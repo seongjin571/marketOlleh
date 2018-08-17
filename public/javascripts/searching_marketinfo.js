@@ -7,6 +7,8 @@ function NewGoomapLi_css() {
 
 function marketInfoLi_event(market_arr) {
 	
+	$('#hot_store_list_market > div').remove();
+	
 	// 태그 동적으로 생성하기
 	var tempString = new Array();
 	var fullString = '';
@@ -82,8 +84,9 @@ function managerInfoLi_event(market_arr) {
 
 function marketInfoLi_event_likelist(result_rows) {
 
+	// 좋아요 순서로 
 	result_rows.sort(function (a, b) {
-		return a.like_count < b.like_count ? -1 : a.like_count > b.like_count ? 1 : 0;
+		return a.like_count < b.like_count ? 1 : a.like_count > b.like_count ? -1 : 0;
 	});
 
 	// 태그 동적으로 생성하기
@@ -91,7 +94,10 @@ function marketInfoLi_event_likelist(result_rows) {
 	var fullString = '';
 
 	for (var i = 0; i < result_rows.length; i++) {
-		tempString[i] = '<div class="hot_store_detail_market"><div><img src="/images/market2.jpg" width="100%" height="100px"> </div> <div class="good_store_name_market">'+result_rows[i].market_name+'</div><div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>201</p></div>';		
+		tempString[i] = '<div class="hot_store_detail_market">';
+		tempString[i] += '<div><img src="/images/market2.jpg" width="100%" height="100px"> </div>';
+		tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
+		tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div></div>';		
 	}
 
 	// 임시 배열 text 하나로 합치고 넣기
