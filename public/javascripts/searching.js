@@ -28,19 +28,18 @@ function turningBack() {
 
 	// 검색 후 뒤돌아가기 기능
 	if (temp_serch.hasChildNodes() && document.getElementById('aaa').style.display == "none") {
-		if ($('#market_infoText > div').length > 0) { // 첫 검색이 아닌 경우
+		if ($('#market_infoText > div').length > 0) { // 검색후 시장 클릭을 한 상태에서 뒤로가기
 			document.getElementById('market_infor').style.display = "none";
 			document.getElementById('store_infor').style.display = "none";
 			$('#search_result').css('display', 'block');
 			store_infor.style.display = "none";
-		} else {
+		} else { // 검색만 하고 뒤로가기
 			deleteNewSearchList();
 			document.getElementById('aaa').style.display = "block";
 			$('#navControlButton').css('display', 'table');
 			document.getElementById('text_logo').style.display = "block";
 			document.getElementById('back_div').style.display = "none";
 			document.getElementById('Searching').style.display = "table";
-			$('article').css('display', 'block');
 			document.getElementById('market_infor').style.display = "none";
 			document.getElementById('store_infor').style.display = "none";			
 		} // inner else ~ if
@@ -127,6 +126,10 @@ function makeSearchList(searchResult, listCounter) {
 
 	// 검색 결과 생성전, li 존재하면 정리
 	deleteNewSearchList();
+	if (search_result.style.display == "none") {
+		search_result.style.display = "block";
+	}
+
 	var tempString = new Array();
 	var fullString = '\0';
 	var isManager = false;
@@ -144,8 +147,9 @@ function makeSearchList(searchResult, listCounter) {
 
 	// 검색 결과 li 태그로 제어 + 이벤트 추가하기
 	$('#search_result').html(fullString);
+
+	// 검색 결과 시장 리스트. 클릭 이벤트 - searching_marketinfo.js 필참
 	$('#search_result > li').click(function (event) {
-		// $('#store_infor').css('display', 'block');
 		$('#search_result').css('display', 'none');
 		$('#Searching').css('display', 'none');
 		document.getElementById('market_infor').style.display = "block";
@@ -161,7 +165,7 @@ function makeSearchList(searchResult, listCounter) {
 		} // for
 
 	}); // click function
-} // makerSearchList --> articlr태그 부분
+} // makerSearchList --> article태그 부분
 
 function gooAjax(event) {
 	$('.Goomap_inner>span').css('color','black');
@@ -238,15 +242,6 @@ function navControl(event) {
 	}
 	deleteNewGooTable();
 }
-
-function store_inforDisplay(){
-	if (store_infor.style.display == "none") {
-		store_infor.style.display = "block";
-	}else {
-		store_infor.style.display = "none";
-	}
-}
-
 
 //////////////////////addEventListener//////////////////////
 

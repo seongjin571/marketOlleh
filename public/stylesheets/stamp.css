@@ -17,6 +17,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             width: 100%;
             height:100%;
             display: none;
+            /* visibility: hidden; */
         }
         .stamp_list{
             width: 80%;
@@ -78,7 +79,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             vertical-align: middle;
             text-align: center;
         }
-        .swiper-slide:nth-child(4n-3){
+        .stamp_one:nth-child(4n-3){
             width: 68%;
             margin-left: 16%;
             height: 140px;
@@ -89,7 +90,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             border-radius: 5px;
             color: white;
         }
-        .swiper-slide:nth-child(4n-2){
+        .stamp_one:nth-child(4n-2){
             width: 68%;
             height: 140px;
             margin-left: 16%;
@@ -100,7 +101,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             border-radius: 5px;
             color: white;
         }
-        .swiper-slide:nth-child(4n-1){
+        .stamp_one:nth-child(4n-1){
             width: 68%;
             margin-left: 16%;
             height: 140px;
@@ -111,7 +112,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             border-radius: 5px;
             color: white;
         }
-        .swiper-slide:nth-child(4n){
+        .stamp_one:nth-child(4n){
             width: 68%;
             margin-left: 16%;
             height: 140px;
@@ -316,7 +317,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             margin-bottom: 10px;
         }
         .store_detail_sj,.store_review_sj{
-            display: none;
+            /* display: none; */
             position: absolute;
             top: 42%;
             margin-bottom: 12%;
@@ -429,3 +430,18 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         .password_number_sj:hover{
             background-color: rgb(185, 184, 184);
         }
+
+        .swiper-container {
+            position: absolute;
+            top: 170px;
+            width: 100%;
+            height: 100%;
+            margin-bottom: 15%;
+          }
+
+          .swiper-scrollbar{
+              opacity: 1 !important;
+              transition-duration: 0 !important;
+              position: fixed !important;
+              top: 160px !important;
+          }

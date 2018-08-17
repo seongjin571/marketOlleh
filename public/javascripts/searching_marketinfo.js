@@ -6,8 +6,8 @@ function NewGoomapLi_css() {
 }
 
 function marketInfoLi_event(market_arr) {
-
-	console.log(market_arr);
+	
+	$('#hot_store_list_market > div').remove();
 	
 	// 태그 동적으로 생성하기
 	var tempString = new Array();
@@ -44,5 +44,66 @@ function marketInfoLi_event(market_arr) {
 	relayout();
 	changeCenter(market_arr.coordinateX, market_arr.coordinateY);
 
-}
+	// 인기 상점 찾기
+	$.ajax({
+		url: "/searching/marketList",
+		dataType: 'json',
+		type: 'POST',
+		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+		data: { "name": market_arr.name },
+		success: function (result) {
+			console.log(result);
+			if (result.rows.length > 0) {
+				marketInfoLi_event_likelist(result.rows);
+			} else {
+				console.log("현재 해당하는 시장에 등록된 상점이 없음");
+			}
+		},
+		error: function (e) {
+			alert("Error!");
+			console.log('process error : ', e);
+		}
+	}); // ajax	
 
+} // marketInfoLi_event
+
+function managerInfoLi_event(market_arr) {
+
+    $('#store_infor').css('display', 'block');
+    $('#market_infor').css('display', 'none');
+    console.log(market_arr);
+    var manager_id = market_arr.manager_id;
+    var market_name = market_arr.market_name;
+    var introduce = market_arr.market_introduce;
+    var stamp_reward = market_arr.stamp_reward;
+    var market_promotion = market_arr.market_promotion;
+    var like_count = market_arr.like_count;
+    alert(manager_id);
+    
+} // managerInfoLi_event
+
+function marketInfoLi_event_likelist(result_rows) {
+
+	// 좋아요 순서로 
+	result_rows.sort(function (a, b) {
+		return a.like_count < b.like_count ? 1 : a.like_count > b.like_count ? -1 : 0;
+	});
+
+	// 태그 동적으로 생성하기
+	var tempString = new Array();
+	var fullString = '';
+
+	for (var i = 0; i < result_rows.length; i++) {
+		tempString[i] = '<div class="hot_store_detail_market">';
+		tempString[i] += '<div><img src="/images/market2.jpg" width="100%" height="100px"> </div>';
+		tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
+		tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div></div>';		
+	}
+
+	// 임시 배열 text 하나로 합치고 넣기
+	for (var index in tempString) {
+		fullString += tempString[index];
+	} // for in 
+
+	hot_store_list_market.innerHTML = fullString;	
+}
