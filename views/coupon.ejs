@@ -109,6 +109,7 @@
                         </div>
                         <div class="swiper-slide menu" id='swiper-slide-menu<%= result1[i].id %>'>삭제</div>
                     </div>
+                    <div class="swiper-pagination"></div>
 
                     <div class='password_number_div_sj' id="password_number_div_sj<%= result1[i].id %>">
                       <div class="password_line_sj <%= result1[i].id %>">
@@ -153,9 +154,10 @@
                           document.getElementsByClassName('password_number_sj <%= result1[i].id %>')[i].innerHTML = password_number_array_sj[i];
                          }
 
-                        $('#swiper-slide-content<%= result1[i].id %>').hide(200);
-                        $('#swiper-slide-menu<%= result1[i].id %>').hide(200);
-                        $('#password_number_div_sj<%= result1[i].id %>').show(200);
+                        $('#swiper-slide-content<%= result1[i].id %>').css('display','none');
+                        $('#swiper-slide-menu<%= result1[i].id %>').css('display','none');
+                        $('.swiper-pagination').css('display','none');
+                        $('#password_number_div_sj<%= result1[i].id %>').css('display','block');
 
                         /*  키패드 번호 클릭 시  */
                         var count = 0;
@@ -212,9 +214,10 @@
 
                       /* 비밀번호 키패드에서 취소 버튼 눌렀을 때 */
                       $('#password_cancel<%= result1[i].id %>').click(function(){
-                        $('#password_number_div_sj<%= result1[i].id %>').hide(200);
-                        $('#swiper-slide-content<%= result1[i].id %>').show(200);
-                        $('#swiper-slide-menu<%= result1[i].id %>').show(200);
+                        $('#password_number_div_sj<%= result1[i].id %>').css('display','none');
+                        $('#swiper-slide-content<%= result1[i].id %>').css('display','block');
+                        $('.swiper-pagination').css('display','block');
+                        $('#swiper-slide-menu<%= result1[i].id %>').css('display','block');
                       });
                     </script>
                     <% } %>
@@ -284,8 +287,10 @@
       initialSlide: 0,
       resistanceRatio: 0,
       slideToClickedSlide: true,
-      on: {
-      }
+      pagination: {
+        el: '.swiper-pagination',
+        dynamicBullets: true,
+      },
     });
 
 
