@@ -283,24 +283,6 @@ router.post('/searching/gooname', function(req, res){
       return res.send({ rows: rows });
     });// conn.query
   } else if(filed&&search_value){ // searching ~ 에서 접속 DB 부분
-    /*
-    // main.ejs ~ Searching ~ select 에서 뭘 선택했냐에 따라
-    if (filed == "market_name") { // 상점 이름으로 검색 ~ manager table
-      var sql = "SELECT * FROM `manager` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
-      conn.query(sql, function(error, rows, fileds) {
-      return res.send({ rows: rows });
-      }); // conn.query
-
-    } else { // 시장 이름으로 검색 ~ market table
-      console.log("시장 이름 으로 검색");
-      console.log(filed);
-      var sql = "SELECT * FROM `market` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
-      conn.query(sql, function(error, rows, fileds) {
-      return res.send({ rows: rows });
-      }); // conn.query
-
-    } else { // 시장 이름으로 검색 ~ market table
-    */
       // X --> 시장이름 뿐 아니라 상점이름으로 까지 같이 동작
       var sql_first = "SELECT * FROM `market` WHERE `"+filed+"` LIKE '%"+search_value+"%'";
       conn.query(sql_first, function(error, rows_first, fileds) {
@@ -316,13 +298,24 @@ router.post('/searching/gooname', function(req, res){
           return res.send({ rows: rows_first });
         }); // inner conn.query
       }); // conn.query
-    /*
-    } // inner else
-    */
-  }// else if
+  } // else ~ if
 
 }); // post /searching/gooname
 
+
+// 검색후 리스트 클릭 ~ 인기 상점 뿌려주기 위한 라우팅
+router.post('/searching/marketList', function(req, res){
+
+  var name = req.body.name;
+
+  if(name){ // NewGoo ~ table에서 구 선택시 오는 부분
+    var sql = "SELECT * FROM `manager` WHERE `sijang_name` LIKE '"+name+"'";
+    conn.query(sql, function(error, rows, fileds) {
+      return res.send({ rows: rows });
+    });// conn.query
+  }
+
+}); // post /searching/marketList
 
 
 router.get('/main', function(req, res){
