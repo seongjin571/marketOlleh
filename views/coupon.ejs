@@ -98,9 +98,14 @@
                             <div class="sale_price" id='sale_price<%= result1[i].id %>'>
                                 <%= result1[i].coupon_reward %>
                             </div>
-                            <!-- <div class="period">
-                                <%= result1[i].coupon_count %>
-                            </div> -->
+                            <div class="coupon_bottom">
+                                    <div class="period">
+                                        선착순 :
+                                    </div>
+                                    <div class="logo_image">
+                                        <img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;">
+                                    </div>
+                                </div>
                         </div>
                         <div class="swiper-slide menu" id='swiper-slide-menu<%= result1[i].id %>'>삭제</div>
                     </div>
@@ -274,11 +279,13 @@
               console.log('로그아웃실패');
             }
         })
-    var swiper = new Swiper('.swiper-container', {
-        slidesPerView: 'auto',
-        initialSlide: 0,
-        resistanceRatio: 0.5,
-        slideToClickedSlide: true,
+        var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 'auto',
+      initialSlide: 0,
+      resistanceRatio: 0,
+      slideToClickedSlide: true,
+      on: {
+      }
     });
 
 
