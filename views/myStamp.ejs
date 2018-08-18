@@ -150,13 +150,13 @@
                   <div class='fiveControls_sj' id="fiveControls_sj<%= myStamps[i].id %>">
                     <div class='fiveStamp_sj' id="fiveStamp_sj<%= myStamps[i].id %>">
                       <div class="five_sj <%= myStamps[i].id %>">
-                        <!-- <p>1</p> -->
+                        <p>1</p>
                       </div>
                       <div class="five_sj <%= myStamps[i].id %>">
                         <p>2</p>
                       </div>
                       <div class="five_sj <%= myStamps[i].id %>">
-                        <!-- <p>3</p> -->
+                        <p>3</p>
                       </div>
                       <div class="five_sj <%= myStamps[i].id %>">
                         <p>4</p>
@@ -217,7 +217,7 @@
                       <div id="introduce">
                           <img src="/images/storeM.png" width="30px" height="30px">
                           <div class="name">상점소개</div>
-                          <div id="intro_content">우리 가게는 어느 가게보다 고객의 만족을 우선으로 생각하며 아침마다 신선한 재료를 공수해옵니다.</div>
+                          <div id="intro_content"><%= myStamps[i].market_introduce %></div>
                       </div>
                       <div id="map">
                               <img src="/images/map.png" width="30px" height="30px">
