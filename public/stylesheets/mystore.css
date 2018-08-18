@@ -46,12 +46,12 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             border-radius: 100px;
         }
         #name_sj {
-            width: 60%;
-            height: 110px;
+            width: 55%;
+            height: 85px;
         }
         #menu_infor{
             width: 100%;
-            height: 160px;
+            height: 135px;
             position: fixed;
             background-color: white;
             z-index: 2;
@@ -59,21 +59,21 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         #top_infor{
             width: 100%;
             display: inline-flex;
-            height: 110px;
+            height: 85px;
 
         }
         #store_name_sj {
             width: 80%;
-            font-size: 22px;
-            height: 70px;
-            line-height: 90px;
+            font-size: 20px;
+            height: 55px;
+            line-height: 75px;
             margin-left: 10%;
             font-weight: bold;
 
         }
         #market_name_sj {
             font-size: 15px;
-            height: 40px;
+            height: 30px;
             line-height: 5px;
             color: gray;
             font-weight: lighter;
@@ -85,8 +85,8 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             display: block;
         }
         #sns_sj {
-            width: 40%;
-            height: 110px;
+            width: 45%;
+            height: 85px;
             display: inline-flex;
             text-align: center;
             background-color: white;
@@ -144,10 +144,10 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             text-align: center;
             height: 40px;
             color: #9c9c9c;
-            padding-top: 5px;
+            padding-top: 3px;
         }
         .top_image{
-            padding-top:25px;
+            padding-top:23px;
         }
 
         #menu_sj p {
@@ -242,7 +242,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
 
         .swiper-container {
             position: absolute;
-            top: 170px;
+            top: 155px;
             width: 100%;
             height: 100%;
             margin-bottom: 15%;
@@ -261,7 +261,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
               opacity: 1 !important;
               transition-duration: 0 !important;
               position: fixed !important;
-              top: 160px !important;
+              top: 135px !important;
           }
           #introduce,#map{
               display: inline-flex;

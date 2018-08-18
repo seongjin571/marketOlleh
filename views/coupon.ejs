@@ -81,7 +81,7 @@
     <div class="my_coupon">
         <% if(result1) { %>
             <% for(var i=0; i<result1.length; i++) { %>
-                <div class="swiper-container">
+                <div class="swiper-container" id='swiper-container<%= result1[i].id %>'>
                     <div class="swiper-wrapper" id='swiper-wrapper<%= result1[i].id %>'>
                         <div class="swiper-slide content" id='swiper-slide-content<%= result1[i].id %>'>
                             <div class="store_and_market" id='store_and_market<%= result1[i].id %>'>
@@ -98,8 +98,8 @@
                             <div class="sale_price" id='sale_price<%= result1[i].id %>'>
                                 <%= result1[i].coupon_reward %>
                             </div>
-                            <div class="coupon_bottom">
-                                    <div class="period">
+                            <div class="coupon_bottom" id='coupon_bottom<%= result1[i].id %>'>
+                                    <div class="period id='period<%= result1[i].id %>'">
                                         선착순 : <%= result1[i].coupon_count %>
                                     </div>
                                     <div class="logo_image">
@@ -109,7 +109,9 @@
                         </div>
                         <div class="swiper-slide menu" id='swiper-slide-menu<%= result1[i].id %>'>삭제</div>
                     </div>
-                    <div class="swiper-pagination"></div>
+                </div>
+
+                    <!-- <div class="swiper-pagination"></div> -->
 
                     <div class='password_number_div_sj' id="password_number_div_sj<%= result1[i].id %>">
                       <div class="password_line_sj <%= result1[i].id %>">
@@ -156,6 +158,7 @@
 
                         $('#swiper-slide-content<%= result1[i].id %>').css('display','none');
                         $('#swiper-slide-menu<%= result1[i].id %>').css('display','none');
+                        $('.swiper-container').css('display', 'none');
                         $('.swiper-pagination').css('display','none');
                         $('#password_number_div_sj<%= result1[i].id %>').css('display','block');
 
@@ -236,18 +239,19 @@
                       /* 비밀번호 키패드에서 취소 버튼 눌렀을 때 */
                       $('#password_cancel<%= result1[i].id %>').click(function(){
                         $('#password_number_div_sj<%= result1[i].id %>').css('display','none');
+                        $('.swiper-container').css('display', 'block');
                         $('#swiper-slide-content<%= result1[i].id %>').css('display','block');
                         $('.swiper-pagination').css('display','block');
                         $('#swiper-slide-menu<%= result1[i].id %>').css('display','block');
                       });
                     </script>
+
                     <% } %>
                         <% } else { %>
                             <div class='stamp_list'>
                                 <div id="no_stamp">발급받은 쿠폰이 없습니다.</div>
                             </div>
                             <% } %>
-                </div>
 
     </div>
 

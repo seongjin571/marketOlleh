@@ -7,8 +7,8 @@
     <title>Page Title</title>
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
     <link rel="stylesheet" type="text/css" href="//cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/store_infor.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
     <link rel="stylesheet" href="/stylesheets/swiper.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
@@ -148,7 +148,7 @@
             <h3>인기 상점</h3>
             <div id="hot_store_list_market">
 
-<!--                 <div class="hot_store_detail_market">
+<!--            <div class="hot_store_detail_market">
                     <div>
                         <img src="/images/fruit.jpg" width="100%" height="100px">
                     </div>
@@ -290,10 +290,8 @@
                           <p><%= market[i+1].like_count %></p>
                       </div>
                   </div>
-              </div>
+              </div> <!-- hot_store_list 닫는 div -->
             <% } %>
-            
-
         </div>
     </div>
     <!--△─────────────────────aaa 태그 묶음 끝────────────────────△-->
@@ -302,17 +300,14 @@
 
     <div id="store_infor">
         <div class="name_sj">
-            <p class="store_name_sj">
-            </p>
-            <p class="market_name_sj">
-
-            </p>
+            <p id="store_name_sj"></p>
+            <p id="market_name_sj"></p>
         </div>
 
         <div id="sns_sj">
             <img id="noGood_Button_sj" src="/images/noGood.png" width="16%" height="auto">
             <img id="yesGood_Button_sj" src="/images/yesGood.png" width="16%" height="auto">
-            <p id="goodCount_sj">215</p>
+            <p id="goodCount_sj"></p>
             <img src="/images/ka.png" width="16%" height="auto">
             <img src="/images/face.png" width="16%" height="auto">
         </div>
@@ -387,16 +382,13 @@
                 </div>
 
             </div>
-            <div id="stamp_infor_sj">
-                <p>기준:5000원 이상</p>
-                <p>보상:
-
-                </p>
-            </div>
+            <!-- [ 스탬프 기준, 보상 ] 표현해주는 div-->
+            <div id="stamp_infor_sj"></div>
 
             <button class="button_sj">다운받기</button>
         </div>
 
+        <!-- [ 상점 소개 ] 해주는 div -->
         <div class="store_detail_sj">
             <h2>상점 소개</h2>
             <p>저희 과일 가게는 항상 신선한 유기농 과일만을 공수해 옵니다. </p>
