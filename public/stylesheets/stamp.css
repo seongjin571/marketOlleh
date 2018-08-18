@@ -251,6 +251,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         }
         .stamp_menu_sj{
             width: 100%;
+            margin-top: 30px;
             /* height: 50%; */
         }
 
@@ -335,14 +336,14 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         .ten_sj {
             display: inline-flex;
             width: 15%;
-            height: 55px;
+            height: 41px;
             border-radius: 200px;
             margin-left: 3%;
             background-color: rgb(202, 199, 199);
             text-align: center;
             color: white;
-            font-size: 30px;
-            line-height: 55px;
+            font-size: 20px;
+            line-height: 41px;
 
         }
 
@@ -467,7 +468,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
 
         .swiper-container {
             position: absolute;
-            top: 205px;
+            top: 173px;
             width: 100%;
             /* height: 100%; */
             margin-bottom: 15%;
@@ -479,6 +480,9 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             position: fixed !important;
             top: 173px !important;
         }
+        /* .swiper-slide{
+            margin-top: 30px;
+        } */
         #introduce,#map,.stamp_infor{
             display: inline-flex;
             width: 90%;
@@ -514,7 +518,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             width: 170px;
             height: 170px;
             margin: 0 auto;
-            margin-top: 5px;
+            margin-top: 30px;
             margin-bottom: 30px;
             border-radius: 100px;
         }
