@@ -100,7 +100,7 @@
                             </div>
                             <div class="coupon_bottom">
                                     <div class="period">
-                                        선착순 :
+                                        선착순 : <%= result1[i].coupon_count %>
                                     </div>
                                     <div class="logo_image">
                                         <img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;">
@@ -208,6 +208,27 @@
                                 console.log('쿠폰 비밀번호 일치 실패');
                               }
                             });
+                          }
+                        });
+                      });
+
+                      /* 쿠폰 밀어서 삭제 버튼 클릭 시 */
+                      $('#swiper-slide-menu<%= result1[i].id %>').click(function() {
+                        $.ajax({
+                          type: 'POST',
+                          url: '/del_coupon_customer/<%= result1[i].id %>',
+                          contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                          cache: false,
+                          dataType: 'json',
+                          success: function(result) {
+                            if(result['result'] == 'success') {
+                              alert('쿠폰 삭제가 완료되었습니다.');
+                              location.reload();
+                            }
+                          },
+                          error: function(error) {
+                            console.log(error);
+                            console.log('쿠폰 삭제버큰 클릭 후 테이블 삭제 실패');
                           }
                         });
                       });
