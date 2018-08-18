@@ -27,6 +27,7 @@
     <% if(myStamps) { %>
       <% for(var i=0; i<myStamps.length; i++) { %>
         <div class="stamp_one" id='stamp_list<%= myStamps[i].id %>'>
+          
             <div class="store_market_name">
                 <%= myStamps[i].market_name %>
             </div>
@@ -64,32 +65,44 @@
                 <div class="back_div<%= myStamps[i].id %>" id="back_div">
                     <img id="tableControl<%= myStamps[i].id %>" src="/images/backButton.png" width="20px" height="20px">
                 </div>
-               
-              <div id="name_sj">
-                <p id="store_name_sj">
-                  <%= myStamps[i].market_name %>
-                </p>
-                <p id="market_name_sj">
-                  <%= myStamps[i].sijang_name %>
-                </p>
-              </div>
-              <div id="sns_sj">
-                <% if(! myStamps[i].like_check) { %>
-                  <img class='noGood_Button_sj' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/noGood.png" width="16%" height="auto">
-                  <img class='yesGood_Button_sj' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/yesGood.png" style='display: none;' width="16%" height="auto">
-                <% } else { %>
-                  <img class='yesGood_Button_sj' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/yesGood.png" width="16%" height="auto">
-                  <img class='noGood_Button_sj' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/noGood.png" style='display: none;' width="16%" height="auto">
-                <% } %>
-                <p class='goodCount_sj' id="goodCount_sj<%= myStamps[i].id %>"><%= myStamps[i].like_count %></p>
-                <img src="/images/ka.png" width="16%" height="auto">
-                <img src="/images/face.png" width="16%" height="auto">
-              </div>
-              <div class='menu_sj' id="menu_sj<%= myStamps[i].id %>">
-                <p class='go_stamp_sj' id="go_stamp_sj<%= myStamps[i].id %>">스탬프</p>
-                <p class='go_store_detail_sj' id="go_store_detail_sj<%= myStamps[i].id %>">상점 정보</p>
-                <p class='go_store_review_sj' id="go_store_review_sj<%= myStamps[i].id %>">리뷰</p>
-              </div>
+                <div id="menu_infor">
+                <div id="top_infor">
+                  <div id="name_sj">
+                    <p id="store_name_sj">
+                      <%= myStamps[i].market_name %>
+                    </p>
+                    <p id="market_name_sj">
+                      <%= myStamps[i].sijang_name %>
+                    </p>
+                  </div>
+                  <div id="sns_sj">
+                    <div id="good">
+                      <% if(! myStamps[i].like_check) { %>
+                        <img class='top_image' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/nolikeM.png" width="30px" height="30px">
+                        <% } else { %>
+                          <img class='top_image' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/likeM.png" width="30px" height="30px">
+                          <% } %>
+                            <p class="top_font" id="goodCount_sj">
+                              <%= myStamps[i].like_count %>
+                            </p>
+                    </div>
+                    <div id="kakao">
+                      <img class="top_image" src="/images/kakao_bic.png" width="30px" height="30px">
+                      <p class="top_font">공유하기</p>
+                    </div>
+                    <div id="face">
+                      <img class="top_image" src="/images/face.png" width="30px" height="30px">
+                      <p class="top_font">공유하기</p>
+                    </div>
+                  </div>
+                </div>
+                <div id="bottom_infor">
+                  <p id="go_store_detail_sj">스탬프</p>
+                  <p id="go_store_detail_sj">상점 정보</p>
+                  <p id="go_store_review_sj">리뷰</p>
+                </div>
+        </div>
+    
               
               <div class="swiper-container" id="<%= myStamps[i].id %>">
                   <div class="swiper-wrapper" id="<%= myStamps[i].id %>">
@@ -154,12 +167,21 @@
                     </div>
                   </div>
                 </div>
-                <div id="stamp_infor_sj">
-                  <p>기준:5000원 이상</p>
-                  <p>보상:
-                    <%= myStamps[i].stamp_reward %>
-                  </p>
+
+                <div class="stamp_infor">
+                    <img src="/images/standard.png" width="30px" height="30px">
+                    <div class="name">적립기준</div>
+                    <div class="stamp_infor_content"><%= myStamps[i].stamp_promotion %></div>
                 </div>
+
+                <div class="stamp_infor">
+                    <img src="/images/rewardM.png" width="30px" height="30px">
+                    <div class="name">보상기준</div>
+                    <div class="stamp_infor_content"><%= myStamps[i].stamp_reward %></div>
+                </div>
+
+
+
                 <button class='button_sj' id="delete_button_sj<%= myStamps[i].id %>">삭제</button>
               </div>
 
@@ -190,13 +212,19 @@
 
 
               <div class="swiper-slide" id="swiper2<%= myStamps[i].id %>"> 
-              <div class='store_detail_sj' id="store_detail_sj<%= myStamps[i].id %>">
-                <h2>상점 소개</h2>
-                <p><%= myStamps[i].market_introduce %> </p>
-                <img src="/images/fruit.jpg" width="100%">
-                <h2>위치</h2>
-                <img src="/images/han.png" width="100%">
-              </div>
+                  <div id="store_detail_sj">
+                      <div class="store_image"></div>
+                      <div id="introduce">
+                          <img src="/images/storeM.png" width="30px" height="30px">
+                          <div class="name">상점소개</div>
+                          <div id="intro_content">우리 가게는 어느 가게보다 고객의 만족을 우선으로 생각하며 아침마다 신선한 재료를 공수해옵니다.</div>
+                      </div>
+                      <div id="map">
+                              <img src="/images/map.png" width="30px" height="30px">
+                              <div id="name">위치</div>
+                      </div>
+                      <img src="/images/han.png" width="80%" style="margin-left: 10%;margin-top: 5%;">
+                  </div>
               </div>
 
               <div class="swiper-slide" id="swiper3<%= myStamps[i].id %>">
@@ -231,6 +259,8 @@
                 </div>
               </div>
             </div>
+            </div>
+            <div class="swiper-scrollbar"></div>
             </div>
             </div>
 
@@ -576,83 +606,7 @@
                 }
               });
             });
-            // function stamp_count_password(number4) {
-            //   // var data = {
-            //   //   'market_name': market_name,
-            //   //   'user_id': user_id
-            //   // }
-            //   $.ajax({
-            //     type: 'POST',
-            //     url: '/stamp_count_password/<%= myStamps[i].id %>',
-            //     contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            //     cache: false,
-            //     dataType: 'json',
-            //     success: function (result) {
-            //       if (result['password'] == number4) {
-            //         console.log(result['password']);
-            //         alert('비밀번호 일치');
-            //         //coupon_count();
-            //       } else {
-            //         console.log(result['password']);
-            //         alert('비밀번호 불일치');
-            //         //location.reload();
-            //       }
-            //     },
-            //     error: function (error) {
-            //       console.log('error');
-            //     }
-            //   });
-            // }
-            // function coupon_count() {
-            //   if (parseInt(stamp_standard) >= parseInt(new_stamp_count)) {
-            //     // var data = {
-            //     //   'stamp_count': new_stamp_count,
-            //     //   'market_name': market_name,
-            //     //   'user_id': user_id
-            //     // };
-            //     $.ajax({
-            //       type: 'POST',
-            //       url: '/aboutstamp_count',
-            //       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            //       cache: false,
-            //       dataType: 'json',
-            //       data: data,
-            //       success: function (result) {
-            //         if (result['result'] == 'success') {
-            //           alert('스탬프추가');
-            //           $(window).attr('location', '/myStamp');
-            //         }
-            //       },
-            //       error: function (error) {
-            //         console.log('error');
-            //       }
-            //     });
-            //   }
-            //   else {
-            //     // var data = {
-            //     //   'stamp_count': reset_stamp_count,
-            //     //   'market_name': market_name,
-            //     //   'user_id': user_id
-            //     // };
-            //     $.ajax({
-            //       type: 'POST',
-            //       url: '/reset_aboutstamp_count',
-            //       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            //       cache: false,
-            //       dataType: 'json',
-            //       data: data,
-            //       success: function (result) {
-            //         if (result['result'] == 'successs') {
-            //           alert('초기화');
-            //           $(window).attr('location', '/myStamp');
-            //         }
-            //       },
-            //       error: function (error) {
-            //         console.log('error');
-            //       }
-            //     });
-            //   }
-            // }
+           
             </script>
             <% } %>
           </div>
@@ -688,7 +642,7 @@
                         hide: true,
                     },
                 });
-                      
+                $('.store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
                       $('#home_sj').click(function () {
                         location.href = "/main";
                       })
