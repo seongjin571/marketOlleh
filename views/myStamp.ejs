@@ -220,8 +220,8 @@
                           <div id="intro_content"><%= myStamps[i].market_introduce %></div>
                       </div>
                       <div id="map">
-                              <img src="/images/map.png" width="30px" height="30px">
-                              <div id="name">위치</div>
+                              <img src="/images/location2.png" width="30px" height="30px">
+                              <div class="name">위치</div>
                       </div>
                       <img src="/images/han.png" width="80%" style="margin-left: 10%;margin-top: 5%;">
                   </div>
@@ -229,7 +229,32 @@
 
               <div class="swiper-slide" id="swiper3<%= myStamps[i].id %>">
               <div class='store_review_sj' id="store_review_sj<%= myStamps[i].id %>">
-                <button class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">리뷰 등록</button>
+                <!-- <button class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">리뷰 등록</button> -->
+                <div id="review_rate">
+                  <div id="review_star">
+                    <div>
+                      <img class="star_gray" src="/images/star_gray.png" width="40px" height="40px">
+                      <img class="star_yellow" src="/images/star_yellow.png" width="40px" height="40px" style="display: none">
+                    </div>
+                    <div>
+                        <img class="star_gray" src="/images/star_gray.png" width="40px" height="40px">
+                        <img class="star_yellow" src="/images/star_yellow.png" width="40px" height="40px" style="display: none">
+                    </div>
+                    <div>
+                        <img class="star_gray" src="/images/star_gray.png" width="40px" height="40px">
+                        <img class="star_yellow" src="/images/star_yellow.png" width="40px" height="40px" style="display: none">
+                    </div>
+                    <div>
+                        <img class="star_gray" src="/images/star_gray.png" width="40px" height="40px">
+                        <img class="star_yellow" src="/images/star_yellow.png" width="40px" height="40px" style="display: none">
+                    </div>
+                    <div>
+                        <img class="star_gray" src="/images/star_gray.png" width="40px" height="40px">
+                        <img class="star_yellow" src="/images/star_yellow.png" width="40px" height="40px" style="display: none">
+                    </div>
+                  </div>
+
+                </div>
                 <% if(review) {%>
                   <% for(var j=0; j<review.length; j++) { %>
                     <% if(review[j].market_name == myStamps[i].market_name) {%>
