@@ -72,14 +72,32 @@ function managerInfoLi_event(market_arr) {
     $('#store_infor').css('display', 'block');
     $('#market_infor').css('display', 'none');
     console.log(market_arr);
-    var manager_id = market_arr.manager_id;
-    var market_name = market_arr.market_name;
-    var introduce = market_arr.market_introduce;
-    var stamp_reward = market_arr.stamp_reward;
-    var market_promotion = market_arr.market_promotion;
-    var like_count = market_arr.like_count;
-    alert(manager_id);
     
+    // manager DB ~ 상점 DB 내용 뿌려주기
+    $('#store_name_sj').text(market_arr.market_name);
+    $('#market_name_sj').text(market_arr.sijang_name);
+    $('#goodCount_sj').text(market_arr.like_count);
+
+    // 스탬프 관련 내용
+    var temp = '<p>기준 : '+market_arr.market_promotion+'</p>'
+    temp += '<p>보상 : '+market_arr.stamp_reward+'</p>'
+    $('#stamp_infor_sj').html(temp);
+
+
+    // 스탬프 부분 표현
+    if (market_arr.stamp_standard == 5) { // 쿠폰 개수 5개
+    	$('.tenControls_sj').css('display', 'none');
+    	$('.fiveControls_sj').css('display', 'table');
+    }else { // 쿠폰 개수 10개
+    	$('.fiveControls_sj').css('display', 'none');
+    	$('.tenControls_sj').css('display', 'table');
+    }
+
+    // 상점 소개와 위치
+
+
+    // 리뷰
+
 } // managerInfoLi_event
 
 function marketInfoLi_event_likelist(result_rows) {
@@ -97,7 +115,8 @@ function marketInfoLi_event_likelist(result_rows) {
 		tempString[i] = '<div class="hot_store_detail_market">';
 		tempString[i] += '<div><img src="/images/market2.jpg" width="100%" height="100px"> </div>';
 		tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
-		tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div></div>';		
+		tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
+		tempString[i] += '</div>';
 	}
 
 	// 임시 배열 text 하나로 합치고 넣기
