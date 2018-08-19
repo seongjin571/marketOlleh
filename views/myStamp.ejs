@@ -270,7 +270,7 @@
                 </div>
                 <% if(review) {%>
                   <% for(var j=0; j<review.length; j++) { %>
-                    <% if(review[j].market_name == myStamps[i].market_name) {%>
+                    <% if(review[j].market_name == myStamps[i].market_name && review[j].sijang_name == myStamps[i].sijang_name) {%>
                 <div class="review_div_sj">
                     <div class="review_star_customer">
                         <div>
@@ -303,7 +303,6 @@
                     </div>
                   </div>
                   <p><%= review[j].review %></p>
-                  
                   <div class="line">
                     </div>
                 </div>
