@@ -27,12 +27,12 @@
     <% if(myStamps) { %>
       <% for(var i=0; i<myStamps.length; i++) { %>
         <div class="stamp_one" id='stamp_list<%= myStamps[i].id %>'>
-          
+
             <div class="store_market_name">
                 <%= myStamps[i].market_name %>
             </div>
             <div class="my_stamp_count">
-                <div class="stamp_count_vertical">
+                <div class="stamp_count_vertical" id='stamp_count_vertical<%= myStamps[i].id %>'>
                     <p class="count_stamp">
                         <%= myStamps[i].stamp_count %>&nbsp/
                             <%= myStamps[i].stamp_standard %>
@@ -60,7 +60,7 @@
         <% if(myStamps) { %>
           <div id='stamp_details'>
           <% for(var i=0; i<myStamps.length; i++) { %>
-            
+
             <div class='selected_stamp' id="selected_stamp<%= myStamps[i].id %>">
                 <div class="back_div<%= myStamps[i].id %>" id="back_div">
                     <img id="tableControl<%= myStamps[i].id %>" src="/images/backButton.png" width="20px" height="20px">
@@ -102,8 +102,8 @@
                   <p id="go_store_review_sj">리뷰</p>
                 </div>
         </div>
-    
-              
+
+
               <div class="swiper-container" id="<%= myStamps[i].id %>">
                   <div class="swiper-wrapper" id="<%= myStamps[i].id %>">
             <div class="swiper-slide" id="swiper1<%= myStamps[i].id %>">
@@ -211,7 +211,7 @@
           </div>
 
 
-              <div class="swiper-slide" id="swiper2<%= myStamps[i].id %>"> 
+              <div class="swiper-slide" id="swiper2<%= myStamps[i].id %>">
                   <div id="store_detail_sj">
                       <div class="store_image"></div>
                       <div id="introduce">
@@ -241,7 +241,7 @@
                     </div>
                     <div>
                       <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
-                      <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px" style="display: none">  
+                      <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px" style="display: none">
                     </div>
                     <div>
                         <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
@@ -261,7 +261,7 @@
                         <%= myStamps[i].market_name %> 상점을 이용하는 고객들의 리뷰입니다.
                     </p>
                   </div>
-                  <div class="line"> 
+                  <div class="line">
 
                   </div>
 
@@ -301,7 +301,8 @@
                     </div>
                   </div>
                   <p><%= review[j].review %></p>
-                  <div class="line"> 
+                  
+                  <div class="line">
                     </div>
                 </div>
                   <% } else {%>
@@ -339,18 +340,23 @@
               $('.back_div<%= myStamps[i].id %>').css('display', 'block');
               $('#myStamp').css('display', 'none');
             });
+
             $('.back_div<%= myStamps[i].id %>').click(function () {
               $('#selected_stamp<%= myStamps[i].id %>').css('display', 'none');
               $('.back_div<%= myStamps[i].id %>').css('display', 'none');
               $('#myStamp').css('display', 'block');
             });
+
             var stamp_count<%= myStamps[i].id %> = parseInt('<%= myStamps[i].stamp_count %>');
             var stamp_standard<%= myStamps[i].id %> = '<%= myStamps[i].stamp_standard %>';
             var reset_stamp_count = 0;
             var new_stamp_count = parseInt(stamp_count<%= myStamps[i].id %>) + 1;
             console.log(stamp_count<%= myStamps[i].id %>);
             console.log('<%= myStamps[i].id %>');
+
             /* 스탬프 테마 적용 */
+
+
             /*  적립해놓은 스탬프 색칠  */
             if (stamp_standard<%= myStamps[i].id %> == 5) {
               $('#fiveControls_sj<%= myStamps[i].id %>').css('display', 'table');
@@ -366,6 +372,8 @@
                 check.style.backgroundColor = "#232323";
               }
             }
+
+
             /*  가게 상세정보 각 탭 및 버튼 클릭 이벤트  */
             $('#go_stamp_sj<%= myStamps[i].id %>').click(function () {
               $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
@@ -398,6 +406,8 @@
               $('#review_write_sj<%= myStamps[i].id %>').hide(200);
               $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
             })
+
+
             /*  좋아요  */
             var good<%= myStamps[i].id %> = document.getElementById('goodCount_sj<%= myStamps[i].id %>');
             $('#noGood_Button_sj<%= myStamps[i].id %>').click(function () {
@@ -426,6 +436,8 @@
                 }
               });
             });
+
+
             /* 좋아요 취소 */
             $('#yesGood_Button_sj<%= myStamps[i].id %>').click(function () {
               var data = {
@@ -452,6 +464,8 @@
                 }
               });
             });
+
+
             /* 비밀번호 키패드 섞는 함수 */
             var password_number_array_sj = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
             function shuffle(a) {
@@ -463,6 +477,8 @@
                 a[j] = x;
               }
             }
+
+
             /* 리뷰 작성 버튼 */
             $('.write_ok_button<%= myStamps[i].id %>').click(function(){
               var user_id = '<%= myStamps[i].user_id %>';
@@ -515,6 +531,8 @@
                 }
               });
             });
+
+
             /*  스탬프 적립  */
             $('#stamp_sj<%= myStamps[i].id %>').click(function () {
               var count = 0; //쿠폰 클릭시 이벤트 발생
@@ -522,10 +540,13 @@
               alert("시작");
               $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
               $('#password_number_div_sj<%= myStamps[i].id %>').show(200);
+
               shuffle(password_number_array_sj);
+
               for (var i = 0; i < 10; i++) {
                 document.getElementsByClassName('password_number_sj <%= myStamps[i].id %>')[i].innerHTML = password_number_array_sj[i];
                }
+
               $('.password_number_sj').off().on('click',function(){
                 console.log('<%= myStamps[i].stamp_count %>')
                 number1 += $(this).html();
@@ -576,7 +597,7 @@
                                     check.style.backgroundColor = "#232323";
                                   }
                                 }
-                                $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p>'+ (parseInt(stamp_count<%= myStamps[i].id %>)) +' / <%= myStamps[i].stamp_standard %></p>');
+                                $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p class="count_stamp">'+ (stamp_count<%= myStamps[i].id %>) +' / <%= myStamps[i].stamp_standard %></p>');
                                 $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
                                 $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
                                 // $(window).attr('location', '/myStamp');
@@ -617,7 +638,7 @@
                                     check.style.backgroundColor = "rgb(202, 199, 199)";
                                   }
                                 }
-                                $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p>'+ (reset_stamp_count) +' / <%= myStamps[i].stamp_standard %></p>');
+                                $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p class="count_stamp">'+ (reset_stamp_count) +' / <%= myStamps[i].stamp_standard %></p>');
                                 $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
                                 $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
                                 // $(window).attr('location', '/myStamp');
@@ -643,11 +664,15 @@
                 }
               })
             });
+
+
             /* 비밀번호 키패드에서 취소 버튼 눌렀을 때 */
             $('#password_cancel<%= myStamps[i].id %>').click(function(){
               $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
               $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
             });
+
+
             /*  발급 받은 스탬프 삭제  */
             $("#delete_button_sj<%= myStamps[i].id %>").click(function() {
               // delete ajax
@@ -674,7 +699,7 @@
                 }
               });
             });
-           
+
             </script>
             <% } %>
           </div>
@@ -738,7 +763,7 @@
                   //   document.getElementsByClassName('star_yellow_customer')[i].style.display='block';
                   // }
                   // }//댓글 갯수 만큼 for 반복->각 고객이 남긴 리뷰의 index값의 start_count로 별 개수 처리
-                  
+
                       </script>
 
 
