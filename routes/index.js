@@ -460,7 +460,7 @@ router.get('/myStamp', function(req, res) {
   // var sql = 'select * from `stamp` where `user_id`=?';
   // var sqlJoin = 'SELECT * FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name WHERE user_id=?;';
   var sqlJoin = 'SELECT stamp.id, stamp.user_id, stamp.sijang_name, stamp.market_name, stamp.stamp_count, stamp.stamp_standard, stamp.stamp_password, stamp.stamp_reward, likeMarket.like_check ,manager.like_count, manager.market_introduce, manager.market_promotion FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id WHERE stamp.user_id=?;';
-  var sql2 = 'select * from `review` where `user_id`=?';
+  var sql2 = 'select * from `review` ;';
   conn.query(sqlJoin, [req.user.id],function(error, result){
     if(error) {
        console.log(error);
@@ -474,7 +474,7 @@ router.get('/myStamp', function(req, res) {
         });
       }
       else {
-        conn.query(sql2, [req.user.id],function(error2, results){
+        conn.query(sql2, function(error2, results){
         if(error2) { console.log(error2); }
         else {
           console.log(result);
