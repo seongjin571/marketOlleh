@@ -78,11 +78,13 @@
                   <div id="sns_sj">
                     <div id="good">
                       <% if(! myStamps[i].like_check) { %>
-                        <img class='top_image' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/nolikeM.png" width="30px" height="30px">
-                        <% } else { %>
-                          <img class='top_image' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/likeM.png" width="30px" height="30px">
-                          <% } %>
-                            <p class="top_font" id="goodCount_sj">
+                        <img class='top_image' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/nolikeM.png" width="30px" height="30px" style='display: block;'>
+                        <img class='top_image' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/likeM.png" width="30px" height="30px" style='display: none;'>
+                      <% } else { %>
+                        <img class='top_image' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/likeM.png" width="30px" height="30px" style='display: block;'>
+                        <img class='top_image' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/nolikeM.png" width="30px" height="30px" style='display: none;'>
+                      <% } %>
+                            <p class="top_font" id="goodCount_sj<%= myStamps[i].id %>">
                               <%= myStamps[i].like_count %>
                             </p>
                     </div>
