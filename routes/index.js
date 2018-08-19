@@ -327,6 +327,7 @@ router.get('/main', function(req, res){
     else {
       conn.query(marketSql, function(marketErr, marketRows) {
         if(marketErr) {
+          // console.log(req.user);
           console.log(marketErr);
           console.log('marketSql err');
         }

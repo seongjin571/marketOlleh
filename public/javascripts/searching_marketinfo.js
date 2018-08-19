@@ -93,10 +93,52 @@ function managerInfoLi_event(market_arr) {
     	$('.tenControls_sj').css('display', 'table');
     }
 
-    // 상점 소개와 위치
+    // 다운 받기
+	$('.button_sj').click(function(){
 
+		var data = {
+		'market_name' : market_arr.market_name,
+		'sijang_name' : market_arr.sijang_name,
+		'user_id' : user_id, // 전역변수 user_id
+		'stamp_count' : 0,
+		'stamp_standard' : market_arr.stamp_standard,
+		'stamp_reward' : market_arr.stamp_reward,
+		'stamp_password' : market_arr.stamp_password,
+		};
+
+		$.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
+			type: 'POST',
+			url: '/make_stamp',
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+			cache: false,
+			dataType: 'json',
+			data: data,
+			success: function (result) {
+			  if (result['result'] == 'success') {
+			    alert('스탬프생성');
+			    location.reload();
+			  } else if(result['result']=='already'){
+			    alert('스탬프 이미 존재');
+			    location.reload();
+			  }
+			},
+			error: function (error) {
+			  console.log('erer');
+			}
+		});
+	}); // download button function
+
+    // 상점 소개와 위치
+    $('.store_detail_sj > p').text(market_arr.market_introduce);
 
     // 리뷰
+    temp = '<div class="review_div_sj">';
+    temp += '<div class="review_content_sj">';
+    temp += '<div class="review_content_id_sj"><b>simson94</b></div>';
+    temp += '<div class="review_content_date_sj">18-07-13</div></div>';
+    temp += '<p>이 집에서 멜론 사먹어봤는데 진짜 엄청 달더라고요ㅋㅋ 다음에 와이프 데리고 한번 더 사러 가겠습니다. 번창하세요!</p>';
+    temp += '</div>';
+    $('.store_review_sj').html(temp);
 
 } // managerInfoLi_event
 
