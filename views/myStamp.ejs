@@ -271,29 +271,20 @@
                 <% if(review) {%>
                   <% for(var j=0; j<review.length; j++) { %>
                     <% if(review[j].market_name == myStamps[i].market_name && review[j].sijang_name == myStamps[i].sijang_name) {%>
-                <div class="review_div_sj">
+                <div class="review_div_sj" id='review_div_sj<%= myStamps[i].id %>'>
                     <div class="review_star_customer">
+                        <% for(var k=0; k<review[j].rate; k++) { %>
                         <div>
-                          <img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">
-                          <img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px" style="display: none">
+                            <img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">
                         </div>
-                        <div>
-                            <img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">
-                            <img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px" style="display: none">
-                        </div>
-                        <div>
-                            <img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">
-                            <img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px" style="display: none">
-                        </div>
-                        <div>
-                            <img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">
-                            <img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px" style="display: none">
-                        </div>
-                        <div>
-                        <img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">
-                        <img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px" style="display: none">
-                        </div>
-                      </div>
+                        <% } %>
+
+                        <% for(var k2=0; k2<5-review[j].rate; k2++) { %>
+                          <div>
+                              <img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">
+                          </div>
+                        <% } %>
+                    </div>
                   <div class="review_content_sj">
                     <div class="review_content_id_sj">
                       <%= review[j].user_id %>
