@@ -273,19 +273,19 @@ label{
     margin-left: 2%;
 }
 .good_market_name{
-    font-size: 15px;
+    font-size: 16px;
 }
 #hot_store{
     width: 100%;
     /* margin: 0 auto; */
-    height: 1910px;
+    height: 2200px;
     margin-top:10px;
     margin-bottom: 80px;
 }
 #hot_store_market{
     width: 100%;
     /* margin: 0 auto; */
-    height: 925px;
+    height: 1100px;
     margin-top:9%;
     margin-bottom: 80px;
 }
@@ -325,11 +325,11 @@ label{
 }
 .hot_store_detail,.hot_store_detail_market{
     width: 45%;
-    height: 175px;
+    height: 210px;
     /* border-style: s; */
      border-radius: 5px;
     margin-left: 3.3%;
-    margin-bottom: 13px;
+    margin-bottom: 5px;
 }
 .no_stamp{
     width: 70%;
@@ -361,16 +361,16 @@ label{
 }
 
 h3,h4{
-    margin-left: 17px;
+    margin-left: 15px;
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     font-size: 18px;
 }
 
 .distance,.good_store_name{
     margin-top: 3px;
     color: gray;
-    font-size: 13.5px;
+    font-size: 14px;
     font-weight: lighter;
 }
 #nav_sj {
