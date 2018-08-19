@@ -13,7 +13,6 @@ function marketInfoLi_event(market_arr) {
 	var tempString = new Array();
 	var fullString = '';
 
-	// tempString[0] = '<div class="market_infoText_li">'+market_arr.coordinateX+', '+market_arr.coordinateY+'</div>';
 	tempString[0] = '<div class="market_infoText_li"> <h2>'+market_arr.name+'</h2></div>';
 		// 시장 img URL 존재 하면 표시
 		if (market_arr.imgurl) {
@@ -28,8 +27,6 @@ function marketInfoLi_event(market_arr) {
 	// tempString[7] = '<div class="market_infoText_li"> 시장 대표 품목 : '+market_arr.representative+'</div>';
 	tempString[5] = '<div class="market_infoText_li"> <p>시장 교통편 : '+market_arr.nearinfo+'</p></div>';
 
-
-	
 	// 임시 배열 text 하나로 합치고 넣기
 	for (var index in tempString) {
 		fullString += tempString[index];
@@ -93,16 +90,70 @@ function managerInfoLi_event(market_arr) {
     	$('.tenControls_sj').css('display', 'table');
     }
 
-    // 상점 소개와 위치
+    // 다운 받기
+	$('.button_sj').click(function(){
 
+		var data = {
+		'market_name' : market_arr.market_name,
+		'sijang_name' : market_arr.sijang_name,
+		'user_id' : user_id, // 전역변수 user_id
+		'stamp_count' : 0,
+		'stamp_standard' : market_arr.stamp_standard,
+		'stamp_reward' : market_arr.stamp_reward,
+		'stamp_password' : market_arr.stamp_password,
+		};
+
+		$.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
+			type: 'POST',
+			url: '/make_stamp',
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+			cache: false,
+			dataType: 'json',
+			data: data,
+			success: function (result) {
+			  if (result['result'] == 'success') {
+			    alert('스탬프생성');
+			    location.reload();
+			  } else if(result['result']=='already'){
+			    alert('스탬프 이미 존재');
+			    location.reload();
+			  }
+			},
+			error: function (error) {
+			  console.log('erer');
+			}
+		}); // ajax
+	}); // download button function
+
+    // 상점 소개와 위치
+    $('.store_detail_sj > p').text(market_arr.market_introduce);
 
     // 리뷰
+	$.ajax({
+		url: "/myStamp",
+		dataType: 'json',
+		type: 'POST',
+		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+		data: { "market_name": market_arr.market_name },
+		success: function (result) {
+			console.log(result);
+			if (result.rows.length > 0) {
+				managerInfoLi_event_review(result.rows);
+			} else {
+				console.log("현재 해당하는 시장에 등록된 리뷰가 없음");
+			}
+		},
+		error: function (e) {
+			alert("Error!");
+			console.log('process error : ', e);
+		}
+	}); // ajax	
 
 } // managerInfoLi_event
 
 function marketInfoLi_event_likelist(result_rows) {
 
-	// 좋아요 순서로 
+	// 좋아요 순서로 정렬
 	result_rows.sort(function (a, b) {
 		return a.like_count < b.like_count ? 1 : a.like_count > b.like_count ? -1 : 0;
 	});
@@ -111,6 +162,7 @@ function marketInfoLi_event_likelist(result_rows) {
 	var tempString = new Array();
 	var fullString = '';
 
+	// [ main.ejs ] 의 [ id = hot_store_list_market ] 참고 
 	for (var i = 0; i < result_rows.length; i++) {
 		tempString[i] = '<div class="hot_store_detail_market">';
 		tempString[i] += '<div><img src="/images/market2.jpg" width="100%" height="100px"> </div>';
@@ -125,4 +177,33 @@ function marketInfoLi_event_likelist(result_rows) {
 	} // for in 
 
 	hot_store_list_market.innerHTML = fullString;	
-}
+} // marketInfoLi_event_likelist
+
+function managerInfoLi_event_review(review_arr) {
+
+	// 날짜 순서로 정렬
+	review_arr.sort(function (a, b) {
+		return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
+	});
+
+	// 태그 동적으로 생성하기
+	var tempString = new Array();
+	var fullString = '';
+
+	for( var i = 0; i<review_arr.length; i++){
+		tempString[i] = '<div class="review_div_sj">';
+	    tempString[i] += '<div class="review_content_sj">';
+	    tempString[i] += '<div class="review_content_id_sj"><b>'+review_arr[i].user_id+'</b></div>';
+	    tempString[i] += '<div class="review_content_date_sj">'+review_arr[i].date+'</div></div>';
+	    tempString[i] += '<p>'+review_arr[i].review+'</p>';
+	    tempString[i] += '</div>';		
+	}
+
+	// 임시 배열 text 하나로 합치고 넣기
+	for (var index in tempString) {
+		fullString += tempString[index];
+	} // for in 	
+
+    $('.store_review_sj').html(fullString);
+
+} // managerInfoLi_event_review

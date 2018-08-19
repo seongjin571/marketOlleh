@@ -148,7 +148,7 @@
             <h3>인기 상점</h3>
             <div id="hot_store_list_market">
 
-<!--            <div class="hot_store_detail_market">
+<!--        <div class="hot_store_detail_market">
                     <div>
                         <img src="/images/fruit.jpg" width="100%" height="100px">
                     </div>
@@ -159,20 +159,7 @@
                         <img src="/images/good.png" width="20px" height="20px">
                         <p>213</p>
                     </div>
-                </div>
-
-                <div class="hot_store_detail_market">
-                    <div>
-                        <img src="/images/market2.jpg" width="100%" height="100px">
-                    </div>
-                    <div class="good_store_name_market">
-                        꽃분이네
-                    </div>
-                    <div class="good_count_market">
-                        <img src="/images/good.png" width="20px" height="20px">
-                        <p>201</p>
-                    </div>
-                </div> -->
+            </div> -->
 
             </div>
         </div>
@@ -399,47 +386,18 @@
 
         <!-- [ 상점 소개 ] 해주는 div -->
         <div class="store_detail_sj">
-            <h2>상점 소개</h2>
-            <p>저희 과일 가게는 항상 신선한 유기농 과일만을 공수해 옵니다. </p>
+            <h2>상점 소개</h2>            
+            <p></p>  <!-- market_arr.market_introduce -->
             <img src="/images/fruit.jpg" width="100%">
 
             <h2>위치</h2>
             <img src="/images/han.png" width="100%">
         </div>
 
+        <!-- [ 상점 리뷰 ] div ~ review table 참조 -->
         <div class="store_review_sj">
-            <div class="review_div_sj">
 
-                <div class="review_content_sj">
-                    <div class="review_content_id_sj">
-                        <b>gkstjdwls11</b>
-                    </div>
-                    <div class="review_content_date_sj">18-07-12</div>
-                </div>
-                <p>과일이 굉장히 신선하고 좋았습니다! 사장님도 굉장히 친절하셔요</p>
-            </div>
-
-            <div class="review_div_sj">
-                <div class="review_content_sj">
-                    <div class="review_content_id_sj">
-                        <b>kingkw</b>
-                    </div>
-                    <div class="review_content_date_sj">18-07-13</div>
-                </div>
-                <p>사장님이 굉장히 친절하시다던데..누가 그런말은 하는건지 완전 불친절ㅡㅡ</p>
-            </div>
-
-            <div class="review_div_sj">
-                <div class="review_content_sj">
-                    <div class="review_content_id_sj">
-                        <b>simson94</b>
-                    </div>
-                    <div class="review_content_date_sj">18-07-13</div>
-                </div>
-                <p>이 집에서 멜론 사먹어봤는데 진짜 엄청 달더라고요ㅋㅋ 다음에 와이프 데리고 한번 더 사러 가겠습니다. 번창하세요!</p>
-            </div>
-
-            <div class="review_div_sj">
+<!--        <div class="review_div_sj">
                 <div class="review_content_sj">
                     <div class="review_content_id_sj">
                         <b>jungjaeho1115</b>
@@ -447,10 +405,11 @@
                     <div class="review_content_date_sj">18-07-14</div>
                 </div>
                 <p>사과가 다른 가게보다 좀 비싼 감이 있었지만 다른 과일들은 모두 저렴하고 상품도 좋네요!</p>
-            </div>
-        </div>
-    </div>
+            </div> -->
 
+        </div>
+
+    </div>
     <!-- △ STORE INFO // store_infor.ejs 참조 △ -->
 
     <div id="nav_sj">
@@ -555,6 +514,9 @@
 
     <!-------------------- KAKAO MAP API ---------------------->
     <script type="text/javascript">
+        // 전역 변수 TEST
+        var user_id = '<%= user.id %>';
+
         // 지도를 표시할 div (id)
         var mapContainer = document.getElementById('map'),
             mapOption = {
