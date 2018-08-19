@@ -75,6 +75,9 @@ label{
 #hot_store h3{
     margin-left: 4.8%;
 }
+h3{
+    font-size: 18px;
+}
 
 .hot_store_list{
     width: 100%;
