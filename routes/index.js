@@ -502,6 +502,19 @@ router.get('/myStamp', function(req, res) {
   });
 });
 
+router.post('/myStamp', function(req, res) {
+
+  var market_name = req.body.market_name;
+
+  if(market_name){ // NewGoo ~ table에서 구 선택시 오는 부분
+    var sql = "SELECT * FROM `review` WHERE `market_name` LIKE '"+market_name+"'";
+    conn.query(sql, function(error, rows, fileds) {
+      return res.send({ rows: rows });
+    });// conn.query
+  }
+
+}); // myStamp ~ post 라우팅
+
 router.post('/managerlistnextpage', function(req, res) {
   var market_name = req.body.market_name;
   var sijang_name = req.body.sijang_name;

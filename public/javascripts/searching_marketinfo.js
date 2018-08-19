@@ -13,7 +13,6 @@ function marketInfoLi_event(market_arr) {
 	var tempString = new Array();
 	var fullString = '';
 
-	// tempString[0] = '<div class="market_infoText_li">'+market_arr.coordinateX+', '+market_arr.coordinateY+'</div>';
 	tempString[0] = '<div class="market_infoText_li"> <h2>'+market_arr.name+'</h2></div>';
 		// 시장 img URL 존재 하면 표시
 		if (market_arr.imgurl) {
@@ -28,8 +27,6 @@ function marketInfoLi_event(market_arr) {
 	// tempString[7] = '<div class="market_infoText_li"> 시장 대표 품목 : '+market_arr.representative+'</div>';
 	tempString[5] = '<div class="market_infoText_li"> <p>시장 교통편 : '+market_arr.nearinfo+'</p></div>';
 
-
-	
 	// 임시 배열 text 하나로 합치고 넣기
 	for (var index in tempString) {
 		fullString += tempString[index];
@@ -125,26 +122,38 @@ function managerInfoLi_event(market_arr) {
 			error: function (error) {
 			  console.log('erer');
 			}
-		});
+		}); // ajax
 	}); // download button function
 
     // 상점 소개와 위치
     $('.store_detail_sj > p').text(market_arr.market_introduce);
 
     // 리뷰
-    temp = '<div class="review_div_sj">';
-    temp += '<div class="review_content_sj">';
-    temp += '<div class="review_content_id_sj"><b>simson94</b></div>';
-    temp += '<div class="review_content_date_sj">18-07-13</div></div>';
-    temp += '<p>이 집에서 멜론 사먹어봤는데 진짜 엄청 달더라고요ㅋㅋ 다음에 와이프 데리고 한번 더 사러 가겠습니다. 번창하세요!</p>';
-    temp += '</div>';
-    $('.store_review_sj').html(temp);
+	$.ajax({
+		url: "/myStamp",
+		dataType: 'json',
+		type: 'POST',
+		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+		data: { "market_name": market_arr.market_name },
+		success: function (result) {
+			console.log(result);
+			if (result.rows.length > 0) {
+				managerInfoLi_event_review(result.rows);
+			} else {
+				console.log("현재 해당하는 시장에 등록된 리뷰가 없음");
+			}
+		},
+		error: function (e) {
+			alert("Error!");
+			console.log('process error : ', e);
+		}
+	}); // ajax	
 
 } // managerInfoLi_event
 
 function marketInfoLi_event_likelist(result_rows) {
 
-	// 좋아요 순서로 
+	// 좋아요 순서로 정렬
 	result_rows.sort(function (a, b) {
 		return a.like_count < b.like_count ? 1 : a.like_count > b.like_count ? -1 : 0;
 	});
@@ -153,6 +162,7 @@ function marketInfoLi_event_likelist(result_rows) {
 	var tempString = new Array();
 	var fullString = '';
 
+	// [ main.ejs ] 의 [ id = hot_store_list_market ] 참고 
 	for (var i = 0; i < result_rows.length; i++) {
 		tempString[i] = '<div class="hot_store_detail_market">';
 		tempString[i] += '<div><img src="/images/market2.jpg" width="100%" height="100px"> </div>';
@@ -167,4 +177,33 @@ function marketInfoLi_event_likelist(result_rows) {
 	} // for in 
 
 	hot_store_list_market.innerHTML = fullString;	
-}
+} // marketInfoLi_event_likelist
+
+function managerInfoLi_event_review(review_arr) {
+
+	// 날짜 순서로 정렬
+	review_arr.sort(function (a, b) {
+		return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
+	});
+
+	// 태그 동적으로 생성하기
+	var tempString = new Array();
+	var fullString = '';
+
+	for( var i = 0; i<review_arr.length; i++){
+		tempString[i] = '<div class="review_div_sj">';
+	    tempString[i] += '<div class="review_content_sj">';
+	    tempString[i] += '<div class="review_content_id_sj"><b>'+review_arr[i].user_id+'</b></div>';
+	    tempString[i] += '<div class="review_content_date_sj">'+review_arr[i].date+'</div></div>';
+	    tempString[i] += '<p>'+review_arr[i].review+'</p>';
+	    tempString[i] += '</div>';		
+	}
+
+	// 임시 배열 text 하나로 합치고 넣기
+	for (var index in tempString) {
+		fullString += tempString[index];
+	} // for in 	
+
+    $('.store_review_sj').html(fullString);
+
+} // managerInfoLi_event_review
