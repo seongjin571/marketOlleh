@@ -85,43 +85,93 @@
 
             <div class="swiper-slide">
                 <div id="store_review_sj">
+                    <div class="review_rate">
+                        <div class="review_star">
+                            <% if(review) { %>
+                                <% for(var j=0; j<avgOfRate.length; j++) { %>
+                                    <% if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name && avgOfRate[j].rateCnt) { %>
+                                        <% for(var k=0; k<avgOfRate[j].avgRate; k++) { %>
+                                            <div>
+                                                <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px">
+                                            </div>
+                                            <% } %>
+
+                                                <% for(var k=0; k<5-avgOfRate[j].avgRate; k++) { %>
+                                                    <div>
+                                                        <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
+                                                    </div>
+                                                    <% } %>
+                                                        <% } else if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name && ! avgOfRate[j].rateCnt) { %>
+                                                            <% for(var k=0; k<5; k++) { %>
+                                                                <div>
+                                                                    <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
+                                                                </div>
+                                                                <% } %>
+                                                                    <% } %>
+                                                                        <% } %>
+                                                                            <% } else { %>
+                                                                                <% for(var k=0; k<5; k++) { %>
+                                                                                    <div>
+                                                                                        <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
+                                                                                    </div>
+                                                                                    <% } %>
+                                                                                        <% } %>
+                        </div>
+                        <div class="review_count">
+
+                            <!-- <p style="font-size: 20px; color: #9c9c9c;">리뷰</p> -->
+                            <% if(review) { %>
+                                <% for(var j=0; j<avgOfRate.length; j++) { %>
+                                    <% if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name && avgOfRate[j].rateCnt) { %>
+                                        <p class="review_count_content">
+                                            <%= avgOfRate[j].rateCnt %>
+                                        </p>
+                                        <p style="font-size: 20px; color: #9c9c9c;">개의 리뷰가 있습니다.</p>
+                                        <% } else if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name && ! avgOfRate[j].rateCnt) { %>
+                                            <p style="font-size: 20px; color: #9c9c9c;">작성된 리뷰가 없습니다.</p>
+                                            <% } %>
+                                                <% } %>
+                                                    <% } else { %>
+                                                        <p style="font-size: 20px; color: #9c9c9c;">작성된 리뷰가 없습니다.</p>
+                                                        <% } %>
+
+                        </div>
+
+                        <div id="intro">
+                            <p>
+                                <%= myStamps[i].market_name %> 상점을 이용하는 고객들의 리뷰입니다.
+                            </p>
+                        </div>
+                        <div class="line">
+
+                        </div>
+
+                    </div>
+
 
                     <% if(review) {%>
-                      <div class="review_star">
-                        <% for(var k=0; k<avgRows.rateAvg; k++) { %>
-                          <div>
-                            <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px">
-                          </div>
-                        <% } %>
-
-                        <% for(var k=0; k<5-avgRows.rateAvg; k++) { %>
-                          <div>
-                            <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
-                          </div>
-                        <% } %>
-                      </div>
                         <% for(var j=0; j<review.length; j++) { %>
-                            <% if(review[j].market_name == result1[0].market_name && review[j].sijang_name == result1[0].sijang_name) {%>
+                            <% if(review[j].market_name == myStamps[i].market_name && review[j].sijang_name == myStamps[i].sijang_name) { %>
+
                                 <div class="review_div_sj">
-                                  <div class="review_star_customer">
-                                    <% for(var k=0; k<review[j].rate; k++) { %>
-                                    <div>
-                                        <img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">
-                                    </div>
-                                    <% } %>
+                                    <div class="review_star_customer">
+                                        <% for(var k=0; k<review[j].rate; k++) { %>
+                                            <div>
+                                                <img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">
+                                            </div>
+                                            <% } %>
 
-                                    <% for(var k=0; k<5-review[j].rate; k++) { %>
-                                    <div>
-                                        <img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">
+                                                <% if(review[j].user_id != '사장님') {%>
+                                                    <% for(var k2=0; k2<5-review[j].rate; k2++) { %>
+                                                        <div>
+                                                            <img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">
+                                                        </div>
+                                                        <% } %>
+                                                            <% } %>
                                     </div>
-                                    <% } %>
-                                  </div>
-
                                     <div class="review_content_sj">
                                         <div class="review_content_id_sj">
-                                            <b>
-                                                <%= review[j].user_id %>
-                                            </b>
+                                            <%= review[j].user_id %>
                                         </div>
                                         <div class="review_content_date_sj">
                                             <%= review[j].date %>
@@ -130,29 +180,28 @@
                                     <p>
                                         <%= review[j].review %>
                                     </p>
+                                    <div class="line">
+                                    </div>
                                 </div>
-                                <% } %>
+                                <% } else {%>
                                     <% } %>
-                                        <% } else {%>
-                                            <div class='stamp_list'>
-                                                <div id="no_stamp">리뷰가 없습니다.</div>
-                                            </div>
-                                            <% } %>
-
+                                        <% } %>
+                                            <% } else { %>
+                                                <% } %>
                 </div>
             </div>
-            <div class="swiper-slide">
-                <div id="review_write_sj">
-                    <div class='review_write_sj'>
-                        <div id="write_div">리뷰 작성</div>
-                        <textarea id="review_textarea_sj" rows="6"></textarea>
-                        <button id="write_ok_button">등록</button>
-                    </div>
+        <div class="swiper-slide">
+            <div id="review_write_sj">
+                <div class='review_write_sj'>
+                    <div id="write_div">리뷰 작성</div>
+                    <textarea id="review_textarea_sj" rows="6"></textarea>
+                    <button id="write_ok_button">등록</button>
                 </div>
             </div>
-
         </div>
-        <div class="swiper-scrollbar"></div>
+
+    </div>
+    <div class="swiper-scrollbar"></div>
     </div>
 
     <div id="nav_sj">
