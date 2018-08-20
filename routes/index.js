@@ -676,7 +676,6 @@ router.post('/make_stamp', function(req, res) {
   });
 });
 
-
 router.post('/review',function(req,res,next){
   var user_id = req.body.user_id;
   var market_name = req.body.market_name;
