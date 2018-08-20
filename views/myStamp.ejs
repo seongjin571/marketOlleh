@@ -256,6 +256,12 @@
                           <% } %>
                         <% } %>
                       <% } %>
+                    <% } else { %>
+                      <% for(var k=0; k<5; k++) { %>
+                        <div>
+                          <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
+                        </div>
+                      <% } %>
                     <% } %>
                   </div>
                   <div class="review_count">
@@ -270,6 +276,8 @@
                           <p style="font-size: 20px; color: #9c9c9c;">작성된 리뷰가 없습니다.</p>
                         <% } %>
                       <% } %>
+                    <% } else { %>
+                      <p style="font-size: 20px; color: #9c9c9c;">작성된 리뷰가 없습니다.</p>
                     <% } %>
 
                   </div>
@@ -322,9 +330,9 @@
                     <% } %>
                     <% } %>
                 <% } else { %>
-                  <div class='stamp_list'>
+                  <!-- <div class='stamp_list'>
                     <div id="no_stamp">리뷰가 없습니다.</div>
-                  </div>
+                  </div> -->
                   <% } %>
               </div>
 </div>
