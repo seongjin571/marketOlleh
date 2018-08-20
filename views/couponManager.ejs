@@ -247,11 +247,11 @@
         var test = document.getElementsByClassName('coupon_reward');
         var scr = test[0].selectedIndex;
         var coupon_reward;
-        if (scr == 0) {
+        if (scr == 1) {
             coupon_reward = 1000;
-        } else if (scr == 1) {
-            coupon_reward = 1500;
         } else if (scr == 2) {
+            coupon_reward = 1500;
+        } else if (scr == 3) {
             coupon_reward = 2000;
         } else {
             coupon_reward = 3000;
@@ -259,13 +259,13 @@
         var test1 = document.getElementsByClassName("coupon_count");
         var src = test1[0].selectedIndex;
         var coupon_count;
-        if (src == 0) {
+        if (src == 1) {
             coupon_count = 30;
-        } else if (src == 1) {
-            coupon_count = 50;
         } else if (src == 2) {
-            coupon_count = 100;
+            coupon_count = 50;
         } else if (src == 3) {
+            coupon_count = 100;
+        } else if (src == 4) {
             coupon_count = 200;
         } else {
             coupon_count = 300;
@@ -295,7 +295,7 @@
                 }
                 else if(result['result']=='fail'){
                     alert('이미쿠폰이 있습니다');
-                    
+
                 }else {
                   alert('쿠폰등록실패1');
                   location.reload();
