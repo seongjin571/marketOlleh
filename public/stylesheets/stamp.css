@@ -89,8 +89,8 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             text-align: center;
         }
         #bottom_infor p{
-            font-size: 20px;
-            width: 50%;
+            font-size: 18px;
+            width: 25%;
         }
         .stamp_list{
             width: 80%;
@@ -237,9 +237,10 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         #back_div{
             width: 100%;
             height: 38px;
-            background: url('/images/backSample5.png');
+            background-color: white;
+            /* background: url('/images/backSample5.png');
             background-repeat: no-repeat;
-            background-size: 100% 100%;
+            background-size: 100% 100%; */
             position: fixed;
             top:0;
             display: none;
@@ -306,7 +307,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         }
 
         .menu_sj p {
-            width: 33.333%;
+            width: 25%;
             text-align: center;
             font-size: 25px;
         }
@@ -362,15 +363,25 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             font-size: 20px;
         }
         .review_button_sj{
-            width: 70%;
-            /* position: fixed; */
-            height: 40px;
-            /* top: 50%;
-            left: 75%; */
-           background-image:url('/images/backSample1.png');
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            font-size: 25px;
+            width: 85%;
+            margin-left: 7.5%;
+            height: 45px;
+            font-size: 15px;
+            text-align: center;
+            color: #9c9c9c;
+            background-color: white;
+             border: double 1px transparent;
+             border-radius: 50px;
+             background-image: linear-gradient(white, white),
+             radial-gradient(circle at top left, #17ead9,#6078ea);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            padding: 1px;
+            border: 0px;
+            line-height: 45px;
+            margin-bottom: 10px;
+            box-shadow: 5px 5px 3px #efefef;
+            opacity: 0.85;
         }
         .review_content_sj{
             height: 20px;
@@ -401,30 +412,33 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         }
         .review_write_sj{
             width: 100%;
-            display: none;
-            position: absolute;
-            top: 42%;
+
         }
         .write_button_div_sj{
             width: 100%;
             display: inline-flex;
         }
         textarea{
+            width: 100%;
+            height: 150px;
+            font-size: 20px;
+            background-color:#f6f8f9;
+            border-style: none;
+        }
+        .review_write_sj button{
             width: 80%;
             margin-left: 10%;
-            font-size: 23px;
-        }
-        .write_button_div_sj button{
-            width: 35%;
             height: 50px;
-            /* background-color:  */
-            background-color:  #fb83a5;
-            border-color: #fb83a5;
-            border-radius: 5px;
+            border-radius: 50px;
+            background: url('/images/backSample5.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            margin-top: 15px;
+            border-style: none;
             color: white;
-            font-size: 25px;
-            margin-top: 20px;
+            font-size:17px;
         }
+
         .password_number_div_sj{
             display: none;
             width: 80%;
@@ -520,7 +534,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         .review_rate{
             margin-top: 20px;
             width: 100%;
-            height: 153px;
+            height: 118px;
         }
         .review_star{
             display: inline-flex;
@@ -562,4 +576,28 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             width: 100%;
             height: 8px;
             background-color:#f6f8f9;
+        }
+        #star_upload{
+            width: 100%;
+            margin: 0 auto;
+            display: inline-flex;
+            height: 40px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        #intro_star{
+            width: 100%;
+            font-size: 14px;
+            text-align: center;
+            color: #9c9c9c;
+            height: 20px;
+            line-height: 20px;
+            margin-bottom: 10px;
+        }
+        #write_div{
+            text-align: center;
+            width: 100%;
+            height: 50px;
+            color: #9c9c9c;
+            line-height: 50px;
         }
