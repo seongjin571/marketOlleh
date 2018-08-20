@@ -427,9 +427,20 @@ router.get('/mystore', function(req, res){
           });
         }else{
           console.log("해당가게 리뷰 있음");
-          res.render('mystore',{
-            result1 : result1,
-            review : result2
+          var rateAvgSql = 'select sijang_name, market_name, round(avg(rate),0) as rateAvg from review where sijang_name=? and market_name=? group by sijang_name, market_name;' ;
+          conn.query(rateAvgSql, [result1[0].sijang_name, result1[0].market_name], function(avgErr, avgRows) {
+            if(avgErr) {
+              console.log(avgErr);
+              console.log('해당 가게 리뷰 평균 에러');
+            }
+            else {
+              console.log(avgRows);
+              res.render('mystore',{
+                result1 : result1,
+                review : result2,
+                avgRows: avgRows[0]
+              });
+            }
           });
         }
       })
@@ -522,13 +533,15 @@ router.get('/myStamp', function(req, res) {
           }
           else {
             console.log("stamp,review값이 모두 있는 경우");
-            var rateAvgSql = 'select sijang_name, market_name, round(avg(rate),0) as avgRateInt, round(avg(rate),1) as avgRate, count(*) as rateCnt from review group by sijang_name, market_name ;';
-            conn.query(rateAvgSql, function(avgErr, avgRows) {
+            // var rateAvgSql = 'select sijang_name, market_name, round(avg(rate),0) as avgRateInt, round(avg(rate),1) as avgRate, count(*) as rateCnt from review group by sijang_name, market_name ;';
+            var rateAvgSql = 'SELECT stamp.sijang_name, stamp.market_name, IFNULL(round(avg(rate),0), 0) as avgRate, count(rate) as rateCnt FROM stamp LEFT OUTER JOIN review ON stamp.sijang_name=review.sijang_name and stamp.market_name=review.market_name WHERE stamp.user_id=? GROUP BY stamp.sijang_name, stamp.market_name ;' ;
+            conn.query(rateAvgSql, [req.user.id], function(avgErr, avgRows) {
               if(avgErr) {
                 console.log(avgErr);
                 console.log('평점 평균 쿼리 에러');
               }
               else {
+                console.log(avgRows);
                 res.render('myStamp', {
                   user: req.user,
                   myStamps: result,
@@ -715,10 +728,11 @@ router.post('/review',function(req,res,next){
   var sijang_name = req.body.sijang_name;
   var date = req.body.date;
   var review = req.body.review;
-  var sql = 'insert into `review`(`user_id`,`market_name`,`sijang_name`,`review`,`date`) values (?,?,?,?,?);';
+  var rate = req.body.rate;
+  var sql = 'insert into `review`(`user_id`,`market_name`,`sijang_name`,`review`,`date`, `rate`) values (?,?,?,?,?,?);';
   // var sql = 'select * from stamp where user_id =? and market_name = ?';
   console.log(user_id);
-  conn.query(sql,[user_id,market_name,sijang_name,review,date],function(error,results,fields){
+  conn.query(sql,[user_id, market_name, sijang_name, review, date, rate],function(error,results,fields){
     if(error){
       console.log('er');
     }else{
