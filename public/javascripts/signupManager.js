@@ -52,6 +52,12 @@ function makeSearchList(searchResult, listCounter) {
 
 function searchingAjax(event) {
 
+  // search_value 값 공백일때 서버 에러 처리
+  if(!search_value.value){
+    alert("검색어를 확인하세요!")
+    return;
+  } 
+
   // 전달하려는 json 변수
   var params = {
     filed: $('#Searching > select').val(),
