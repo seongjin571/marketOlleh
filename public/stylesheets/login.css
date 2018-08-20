@@ -190,7 +190,25 @@ body, html {
     color:grey;
     padding:0px;
     border :0px;
-    width:50%;
+    width:33.3%;
+    height: 100%;
+    font-size: 5%;
+}
+#password_find1{
+    background-color: white;
+    color:grey;
+    padding:0px;
+    border :0px;
+    width:33.3%;
+    height: 100%;
+    font-size: 5%;
+}
+#password_find2{
+    background-color: white;
+    color:grey;
+    padding:0px;
+    border :0px;
+    width:33.3%;
     height: 100%;
     font-size: 5%;
 }
@@ -199,7 +217,7 @@ body, html {
     background-color: white;
     color:grey;
     border :0px;
-    width:50%;
+    width:33.3%;
     height: 100%;
     font-size: 5%;
 }
@@ -209,7 +227,7 @@ body, html {
     color:grey;
     padding:0px;
     border :0px;
-    width:50%;
+    width:33.3%;
     height: 100%;
     font-size: 5%;
 }
