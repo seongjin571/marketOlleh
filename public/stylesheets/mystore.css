@@ -170,29 +170,23 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             width: 100%;
             font-size: 20px;
         }
-        #review_button_sj{
-            width: 80%;
-            margin: 20px 0;
-            margin-left: 10%;
-            height:45px;
-           
-            background-color:#fb83a5;
-            border-color: #fb83a5;
-            border-radius: 5px;
-            color: white;
-            font-size: 25px;
-        }
         .review_content_sj{
-            width: 80%;
-            margin-left: 10%;
+            height: 20px;
+            line-height: 20px;
+            width: 90%;
+            margin-left: 5%;
             /* text-align: center; */
             display: inline-flex;
         }
         .review_content_id_sj{
-            width: 60%;
+            font-size: 16px;
+            width: 30%;
         }
         .review_content_date_sj{
-            width: 40%;
+            color: #9c9c9c;
+            font-size: 14px;
+            width: 30%;
+            font-weight: lighter;
         }
         .review_div_sj p{
             margin-top: 10px;
