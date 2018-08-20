@@ -22,10 +22,11 @@ function turningBack() {
 	// 새로운 구(NewGoomap > table) 테이블에 시장정보 있다면
 	if (temp_goo.hasChildNodes()) {
 		deleteNewGooTable();
-		// document.getElementById('aaa').style.display = "none";
+		return;
 	} else if (document.getElementById('Goomap').style.display == 'block') {
 		console.log("Turn back");
 		navControl();
+		return;
 	} // Goomap이 표출된 상태에선 뒤로가기 기능
 
 	// 검색 후 뒤돌아가기 기능
@@ -34,7 +35,7 @@ function turningBack() {
 			document.getElementById('market_infor').style.display = "none";
 			document.getElementById('store_infor').style.display = "none";
 			$('#search_result').css('display', 'block');
-			store_infor.style.display = "none";
+			document.getElementById('store_infor').style.display = "none";
 		} else { // 검색만 하고 뒤로가기
 			deleteNewSearchList();
 			document.getElementById('aaa').style.display = "block";
@@ -43,9 +44,17 @@ function turningBack() {
 			document.getElementById('back_div').style.display = "none";
 			document.getElementById('Searching').style.display = "table";
 			document.getElementById('market_infor').style.display = "none";
-			document.getElementById('store_infor').style.display = "none";			
+			document.getElementById('store_infor').style.display = "none";	
 		} // inner else ~ if
-	} // if
+	} else if (!temp_goo.hasChildNodes()) { // store_infor 가 바로 실행될 경우
+		document.getElementById('aaa').style.display = "block";
+		$('#navControlButton').css('display', 'table');
+		document.getElementById('text_logo').style.display = "block";
+		document.getElementById('back_div').style.display = "none";
+		document.getElementById('Searching').style.display = "table";
+		document.getElementById('market_infor').style.display = "none";
+		document.getElementById('store_infor').style.display = "none";
+	} // if ~ else
 
 	$('#market_infoText > div').remove();
 }
@@ -251,9 +260,6 @@ function navControl(event) {
 }
 
 //////////////////////addEventListener//////////////////////
-
-// 스크롤 조절 
-window.scrollTo(0, 0);
 
 // 초기 기본 세팅
 TableSetting();
