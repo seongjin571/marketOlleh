@@ -52,8 +52,9 @@
 
 
         <div id="bottom_infor">
-            <p id="go_store_detail_sj">상점 정보</p>
+            <p id="go_store_detail_sj">상점정보</p>
             <p id="go_store_review_sj">리뷰</p>
+            <p id="go_store_review_sj">리뷰작성</p>
         </div>
     </div>
 
@@ -67,11 +68,13 @@
                     <div id="introduce">
                         <img src="/images/storeM.png" width="30px" height="30px">
                         <div id="name">상점소개</div>
-                        <div id="intro_content"><%= result1[0].market_introduce %></div>
+                        <div id="intro_content">
+                            <%= result1[0].market_introduce %>
+                        </div>
                     </div>
                     <div id="map">
-                            <img src="/images/map.png" width="30px" height="30px">
-                            <div id="name">위치</div>
+                        <img src="/images/map.png" width="30px" height="30px">
+                        <div id="name">위치</div>
                     </div>
                     <img src="/images/han.png" width="80%" style="margin-left: 10%;margin-top: 5%;">
                 </div>
@@ -82,41 +85,47 @@
 
             <div class="swiper-slide">
                 <div id="store_review_sj">
-                    <button id="review_button_sj">리뷰 등록</button>
+
 
                     <% if(review) {%>
-                      <% for(var j=0; j<review.length; j++) { %>
-                        <% if(review[j].market_name == result1[0].market_name && review[j].sijang_name == result1[0].sijang_name) {%>
-                    <div class="review_div_sj">
+                        <% for(var j=0; j<review.length; j++) { %>
+                            <% if(review[j].market_name == result1[0].market_name && review[j].sijang_name == result1[0].sijang_name) {%>
+                                <div class="review_div_sj">
 
-                        <div class="review_content_sj">
-                            <div class="review_content_id_sj">
-                                <b><%= review[j].user_id %></b>
-                            </div>
-                            <div class="review_content_date_sj"><%= review[j].date %></div>
-                        </div>
-                        <p><%= review[j].review %></p>
-                    </div>
-                    <% } %>
-                 <% } %>
-                <% } else {%>
-                  <div class='stamp_list'>
-                    <div id="no_stamp">리뷰가 없습니다.</div>
-                  </div>
-                  <% } %>
-
+                                    <div class="review_content_sj">
+                                        <div class="review_content_id_sj">
+                                            <b>
+                                                <%= review[j].user_id %>
+                                            </b>
+                                        </div>
+                                        <div class="review_content_date_sj">
+                                            <%= review[j].date %>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <%= review[j].review %>
+                                    </p>
+                                </div>
+                                <% } %>
+                                    <% } %>
+                                        <% } else {%>
+                                            <div class='stamp_list'>
+                                                <div id="no_stamp">리뷰가 없습니다.</div>
+                                            </div>
+                                            <% } %>
 
                 </div>
-
-                <div id="review_write_sj">
-                    <textarea rows="7" id="review_textarea_sj"></textarea>
-                    <div id="write_button_div_sj">
-                        <button id="write_cancel_sj" style="margin-left: 12.5%">취소</button>
-                        <button id="write_ok_button" style="margin-left:5%">등록</button>
-                    </div>
-                </div>
-
             </div>
+            <div class="swiper-slide">
+                <div id="review_write_sj">
+                    <div class='review_write_sj'>
+                        <div id="write_div">리뷰 작성</div>
+                        <textarea id="review_textarea_sj" rows="6"></textarea>
+                        <button id="write_ok_button">등록</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="swiper-scrollbar"></div>
     </div>
@@ -173,56 +182,56 @@
                 console.log('로그아웃실패');
             }
         })
-        $('#write_ok_button').click(function(){
-          var user_id='사장님';
-          var market_name = '<%= result1[0].market_name %>';
-          var sijang_name = '<%= result1[0].sijang_name %>';
-          var text = $('#review_textarea_sj').val();
-          var now = new Date();
-          function leadingZeros(n, digits){
-            var zero='';
-            n = n.toString();
-            if(n.length < digits){
-              for(i = 0 ; i < digits - n.length; i++){
-                zero += '0';
-              }
+        $('#write_ok_button').click(function () {
+            var user_id = '사장님';
+            var market_name = '<%= result1[0].market_name %>';
+            var sijang_name = '<%= result1[0].sijang_name %>';
+            var text = $('#review_textarea_sj').val();
+            var now = new Date();
+            function leadingZeros(n, digits) {
+                var zero = '';
+                n = n.toString();
+                if (n.length < digits) {
+                    for (i = 0; i < digits - n.length; i++) {
+                        zero += '0';
+                    }
+                }
+                return zero + n;
             }
-            return zero + n;
-          }
-          var post_date = leadingZeros(now.getYear()-100,2)+ '-'+
-              leadingZeros(now.getMonth()+1,2)+'-' +
-              leadingZeros(now.getDate(),2);
-          var data = {
-            'market_name' : market_name,
-            'user_id' : user_id,
-            'date' : post_date,
-            'review' : text,
-            'sijang_name' : sijang_name
-          }
-          console.log(data);
-          $.ajax({
-            type: 'post',
-            url: '/review_manager',
-            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-            cache: false,
-            data: data,
-            datatype: 'json',
-            success: function(result) {
-              if (result['result']=='success'){
-                // console.log(result);
-                alert('등록완료');
-                location.reload();
-              }
-              else{
-                console.log(result);
-                alert('등록실패1');
-              }
-            },
-            error: function(error){
-              alert('등록실패2');
-              location.reload();
+            var post_date = leadingZeros(now.getYear() - 100, 2) + '-' +
+                leadingZeros(now.getMonth() + 1, 2) + '-' +
+                leadingZeros(now.getDate(), 2);
+            var data = {
+                'market_name': market_name,
+                'user_id': user_id,
+                'date': post_date,
+                'review': text,
+                'sijang_name': sijang_name
             }
-          });
+            console.log(data);
+            $.ajax({
+                type: 'post',
+                url: '/review_manager',
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                cache: false,
+                data: data,
+                datatype: 'json',
+                success: function (result) {
+                    if (result['result'] == 'success') {
+                        // console.log(result);
+                        alert('등록완료');
+                        location.reload();
+                    }
+                    else {
+                        console.log(result);
+                        alert('등록실패1');
+                    }
+                },
+                error: function (error) {
+                    alert('등록실패2');
+                    location.reload();
+                }
+            });
         })
         $('#store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
     </script>
