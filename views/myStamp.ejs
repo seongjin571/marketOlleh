@@ -233,30 +233,16 @@
               <div class='store_review_sj' id="store_review_sj<%= myStamps[i].id %>">
                 <div class="review_rate">
                   <div class="review_star">
-                    <div>
-                      <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
-                      <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px" style="display: none">
-                    </div>
-                    <div>
-                      <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
-                      <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px" style="display: none">
-                    </div>
-                    <div>
-                      <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
-                      <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px" style="display: none">
-                    </div>
-                    <div>
-                        <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
-                        <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px" style="display: none">
-                    </div>
-                    <div>
-                        <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
-                      <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px" style="display: none">
-                    </div>
+
+                      <div>
+                        <!-- <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px"> -->
+                        <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px">
+                      </div>
+
                   </div>
                   <div class="review_count">
                     <p style="font-size: 20px; color: #9c9c9c;">리뷰</p>
-                    <p class="review_count_content">123</p>
+                      <p class="review_count_content" id='review_count_content<%= myStamps[i].id %>'>0</p>
                   </div>
                   <div id="intro">
                     <p>
@@ -315,7 +301,7 @@
                 <textarea class="review_textarea <%= myStamps[i].id %>" id='review_textarea<%= myStamps[i].id %>' rows="6"></textarea>
                 <div class='write_button_div_sj' id="write_button_div_sj<%= myStamps[i].id %>">
                   <button class='write_cancel_sj' id="write_cancel_sj<%= myStamps[i].id %>" style="margin-left: 12.5%">취소</button>
-                  <button class="write_ok_button<%= myStamps[i].id %>" id='write_ok_button<%= myStamps[i].id %>' style="margin-left:5%">등록</button>
+                  <button class="write_ok_button <%= myStamps[i].id %>" id='write_ok_button<%= myStamps[i].id %>' style="margin-left:5%">등록</button>
                 </div>
               </div>
             </div>
@@ -472,10 +458,10 @@
 
 
             /* 리뷰 작성 버튼 */
-            $('.write_ok_button<%= myStamps[i].id %>').click(function(){
+            $('#write_ok_button<%= myStamps[i].id %>').click(function(){
               var user_id = '<%= myStamps[i].user_id %>';
               var market_name = '<%= myStamps[i].market_name %>';
-              var text=$('.review_textarea<%= myStamps[i].id %>').val();
+              var text=$('#review_textarea<%= myStamps[i].id %>').val();
               var now = new Date();
               function leadingZeros(n, digits){
                 var zero='';
@@ -744,11 +730,11 @@
                               }
                           })
 
-                  var star_count=3;//평균 별점의 반올림 한 값.
-                  for(var i=0; i<star_count; i++){
-                    document.getElementsByClassName('star_gray')[i].style.display='none';
-                    document.getElementsByClassName('star_yellow')[i].style.display='block';
-                  }
+                  // var star_count=3;//평균 별점의 반올림 한 값.
+                  // for(var i=0; i<star_count; i++){
+                  //   document.getElementsByClassName('star_gray')[i].style.display='none';
+                  //   document.getElementsByClassName('star_yellow')[i].style.display='block';
+                  // }
                   // for(var j=0; j<review.length; j++){
                   //   for(var i=0; i<star_count; i++){
                   //   document.getElementsByClassName('star_gray_customer')[i].style.display='none';
