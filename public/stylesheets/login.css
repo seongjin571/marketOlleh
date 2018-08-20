@@ -1,4 +1,3 @@
-/*start css*/
 @import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
 body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family: 'NanumSquare',sans-serif;}
 body, html {
@@ -116,6 +115,7 @@ body, html {
     height:23%;
     text-align: center;
     color:grey;
+    margin-bottom: 3px;
 }
 .login_button_formManager{
     width:100%;
@@ -148,22 +148,27 @@ body, html {
     border-bottom-style: solid;
 }
 .icon_div{
-  width: 10%;
-  height: 100%;
-  display: inline-flex;
+  width: 50px;
+  height: 50px;
+  float: left;
 }
 #icon1{
-    width:70%;
-    height: 40%;
-    
+    width:40px;
+    height: 40px;
+    float: left;
+    padding-top: 17%;
 }
 #icon2{
-    width:80%;
-    height: 35%;
+    width:40px;
+    height: 40px;
+    float: left;
+    padding-top: 17%;
 }
 #icon3{
-    width:75%;
-    height: 56%;
+    width:40px;
+    height: 40px;
+    float: left;
+    padding-top: 17%;
 }
 .login_button_user > .login_user{
     width:15%;
@@ -240,13 +245,13 @@ body, html {
     background: linear-gradient(to right, #17ead9 , #6078ea);
    }
 #kakao_logo{
-    margin-top:3%;
+    padding-top: 3%;
     width:100%;
     height: 25%;
     text-align: center;
 }
 #kakao_logo2{
-    margin-top: 30px;
+    margin-top: 6%;
     width:100%;
     height: 31%;
     text-align: center;
@@ -311,11 +316,11 @@ a{
     width:100%;
     height:20%;
     color:grey;
+    padding-left: 5%
 }
 .signuptext{
-    width: 80%;
-    height: 90%;
-
+    width: 70%;
+    height: 50px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
