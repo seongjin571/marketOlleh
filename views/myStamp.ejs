@@ -527,6 +527,9 @@
                 a[j] = x;
               }
             }
+
+            /*  리뷰 등록 시 별점 클릭 이벤트  */
+            var starRate<%= myStamps[i].id %>;
             $('.star<%= myStamps[i].id %>').click(function(){
                 $('.yellow<%= myStamps[i].id %>').css('display','none')
                   $('.gray<%= myStamps[i].id %>').css('display','block')
@@ -538,7 +541,8 @@
 
 
                 }
-                alert(star_index+1)
+                // alert(star_index+1)
+                starRate<%= myStamps[i].id %> = star_index + 1;
               })
 
             /* 리뷰 작성 버튼 */
@@ -566,7 +570,8 @@
                 'user_id' : user_id,
                 'date' : post_date,
                 'review' : text,
-                'sijang_name' : sijang_name
+                'sijang_name' : sijang_name,
+                'rate': starRate<%= myStamps[i].id %>
               }
               console.log(data);
               $.ajax({
