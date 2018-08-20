@@ -27,10 +27,10 @@
         <div id="top_infor">
             <div id="name_sj">
                 <p id="store_name_sj">
-                    나현이네 과일가게
+                    <%= result1[0].market_name %>
                 </p>
                 <p id="market_name_sj">
-                    통인시장
+                    <%= result1[0].sijang_name %>
                 </p>
             </div>
             <div id="sns_sj">
@@ -67,7 +67,7 @@
                     <div id="introduce">
                         <img src="/images/storeM.png" width="30px" height="30px">
                         <div id="name">상점소개</div>
-                        <div id="intro_content">우리 가게는 어느 가게보다 고객의 만족을 우선으로 생각하며 아침마다 신선한 재료를 공수해옵니다.</div>
+                        <div id="intro_content"><%= result1[0].market_introduce %></div>
                     </div>
                     <div id="map">
                             <img src="/images/map.png" width="30px" height="30px">
@@ -83,56 +83,36 @@
             <div class="swiper-slide">
                 <div id="store_review_sj">
                     <button id="review_button_sj">리뷰 등록</button>
+
+                    <% if(review) {%>
+                      <% for(var j=0; j<review.length; j++) { %>
+                        <% if(review[j].market_name == result1[0].market_name && review[j].sijang_name == result1[0].sijang_name) {%>
                     <div class="review_div_sj">
 
                         <div class="review_content_sj">
                             <div class="review_content_id_sj">
-                                <b>gkstjdwls11</b>
+                                <b><%= review[j].user_id %></b>
                             </div>
-                            <div class="review_content_date_sj">18-07-12</div>
+                            <div class="review_content_date_sj"><%= review[j].date %></div>
                         </div>
-                        <p>과일이 굉장히 신선하고 좋았습니다! 사장님도 굉장히 친절하셔요</p>
+                        <p><%= review[j].review %></p>
                     </div>
-
-                    <div class="review_div_sj">
-                        <div class="review_content_sj">
-                            <div class="review_content_id_sj">
-                                <b>kingkw</b>
-                            </div>
-                            <div class="review_content_date_sj">18-07-13</div>
-                        </div>
-                        <p>사장님이 굉장히 친절하시다던데..누가 그런말은 하는건지 완전 불친절ㅡㅡ</p>
-                    </div>
-
-                    <div class="review_div_sj">
-                        <div class="review_content_sj">
-                            <div class="review_content_id_sj">
-                                <b>simson94</b>
-                            </div>
-                            <div class="review_content_date_sj">18-07-13</div>
-                        </div>
-                        <p>이 집에서 멜론 사먹어봤는데 진짜 엄청 달더라고요ㅋㅋ 다음에 와이프 데리고 한번 더 사러 가겠습니다. 번창하세요!</p>
-                    </div>
-
-                    <div class="review_div_sj">
-                        <div class="review_content_sj">
-                            <div class="review_content_id_sj">
-                                <b>jungjaeho1115</b>
-                            </div>
-                            <div class="review_content_date_sj">18-07-14</div>
-                        </div>
-                        <p>사과가 다른 가게보다 좀 비싼 감이 있었지만 다른 과일들은 모두 저렴하고 상품도 좋네요!</p>
-                    </div>
-
+                    <% } %>
+                 <% } %>
+                <% } else {%>
+                  <div class='stamp_list'>
+                    <div id="no_stamp">리뷰가 없습니다.</div>
+                  </div>
+                  <% } %>
 
 
                 </div>
 
                 <div id="review_write_sj">
-                    <textarea rows="7"></textarea>
+                    <textarea rows="7" id="review_textarea_sj"></textarea>
                     <div id="write_button_div_sj">
                         <button id="write_cancel_sj" style="margin-left: 12.5%">취소</button>
-                        <button style="margin-left:5%">등록</button>
+                        <button id="write_ok_button" style="margin-left:5%">등록</button>
                     </div>
                 </div>
 
@@ -193,9 +173,60 @@
                 console.log('로그아웃실패');
             }
         })
+        $('#write_ok_button').click(function(){
+          var user_id='사장님';
+          var market_name = '<%= result1[0].market_name %>';
+          var sijang_name = '<%= result1[0].sijang_name %>';
+          var text = $('#review_textarea_sj').val();
+          var now = new Date();
+          function leadingZeros(n, digits){
+            var zero='';
+            n = n.toString();
+            if(n.length < digits){
+              for(i = 0 ; i < digits - n.length; i++){
+                zero += '0';
+              }
+            }
+            return zero + n;
+          }
+          var post_date = leadingZeros(now.getYear()-100,2)+ '-'+
+              leadingZeros(now.getMonth()+1,2)+'-' +
+              leadingZeros(now.getDate(),2);
+          var data = {
+            'market_name' : market_name,
+            'user_id' : user_id,
+            'date' : post_date,
+            'review' : text,
+            'sijang_name' : sijang_name
+          }
+          console.log(data);
+          $.ajax({
+            type: 'post',
+            url: '/review_manager',
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            cache: false,
+            data: data,
+            datatype: 'json',
+            success: function(result) {
+              if (result['result']=='success'){
+                // console.log(result);
+                alert('등록완료');
+                location.reload();
+              }
+              else{
+                console.log(result);
+                alert('등록실패1');
+              }
+            },
+            error: function(error){
+              alert('등록실패2');
+              location.reload();
+            }
+          });
+        })
         $('#store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
     </script>
-    <!-- <script src="/javascripts/mystore.js"></script> -->
+    <script src="/javascripts/mystore.js"></script>
 
 
 </body>

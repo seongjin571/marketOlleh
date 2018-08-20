@@ -401,7 +401,31 @@ router.get('/mainManager', function(req, res, next) {
 });
 
 router.get('/mystore', function(req, res){
-  res.render('mystore');
+  var sql='select * from manager where `manager_id`=?;';
+  var sql_stamp = 'select * from review where `market_name`=? and `sijang_name`=?;';
+  conn.query(sql,[req.session.authId],function(error,result1,fields){
+    if(error){
+      console.log(error);
+    }else{
+      conn.query(sql_stamp,[result1[0].market_name, result1[0].sijang_name],function(err,result2,fields){
+        if(err){
+          console.log(err);
+        }else if(! result2.length){
+          console.log("해당 가게 리뷰가 없는 경우");
+          res.render('mystore',{
+            result1 : result1,
+            review : undefined
+          });
+        }else{
+          console.log("해당가게 리뷰 있음");
+          res.render('mystore',{
+            result1 : result1,
+            review : result2
+          });
+        }
+      })
+    }
+  })
 });
 
 
@@ -489,13 +513,15 @@ router.get('/myStamp', function(req, res) {
           }
           else {
             console.log("stamp,review값이 모두 있는 경우");
-            var rateAvgSql = 'select sijang_name, market_name, round(avg(rate),0) as avgRateInt, round(avg(rate),1) as avgRate, count(*) as rateCnt from review group by sijang_name, market_name ;';
-            conn.query(rateAvgSql, function(avgErr, avgRows) {
+            // var rateAvgSql = 'select sijang_name, market_name, round(avg(rate),0) as avgRateInt, round(avg(rate),1) as avgRate, count(*) as rateCnt from review group by sijang_name, market_name ;';
+            var rateAvgSql = 'SELECT stamp.sijang_name, stamp.market_name, IFNULL(round(avg(rate),0), 0) as avgRate, count(rate) as rateCnt FROM stamp LEFT OUTER JOIN review ON stamp.sijang_name=review.sijang_name and stamp.market_name=review.market_name WHERE stamp.user_id=? GROUP BY stamp.sijang_name, stamp.market_name ;' ;
+            conn.query(rateAvgSql, [req.user.id], function(avgErr, avgRows) {
               if(avgErr) {
                 console.log(avgErr);
                 console.log('평점 평균 쿼리 에러');
               }
               else {
+                console.log(avgRows);
                 res.render('myStamp', {
                   user: req.user,
                   myStamps: result,
@@ -676,7 +702,6 @@ router.post('/make_stamp', function(req, res) {
   });
 });
 
-
 router.post('/review',function(req,res,next){
   var user_id = req.body.user_id;
   var market_name = req.body.market_name;
@@ -697,6 +722,25 @@ router.post('/review',function(req,res,next){
   })
 });
 
+router.post('/review_manager',function(req,res,next){
+  var user_id = req.body.user_id;
+  var market_name = req.body.market_name;
+  var sijang_name = req.body.sijang_name;
+  var date = req.body.date;
+  var review = req.body.review;
+  var sql = 'insert into `review`(`user_id`,`market_name`,`sijang_name`,`review`,`date`) values (?,?,?,?,?);';
+  // var sql = 'select * from stamp where user_id =? and market_name = ?';
+  console.log(user_id);
+  conn.query(sql,[user_id,market_name,sijang_name,review,date],function(error,results,fields){
+    if(error){
+      console.log('er');
+    }else{
+      res.send({
+        result : 'success'
+      });
+    }
+  })
+});
 
 /* 좋아요 */
 router.post('/like/:id', function(req, res) {

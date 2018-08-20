@@ -63,7 +63,7 @@
 
             <div class='selected_stamp' id="selected_stamp<%= myStamps[i].id %>">
                 <div class="back_div<%= myStamps[i].id %>" id="back_div">
-                    <img id="tableControl<%= myStamps[i].id %>" src="/images/backButton.png" width="20px" height="20px">
+                    <img id="tableControl<%= myStamps[i].id %>" src="/images/backButton_blue.png" width="20px" height="20px">
                 </div>
                 <div id="menu_infor">
                 <div id="top_infor">
@@ -100,8 +100,9 @@
                 </div>
                 <div id="bottom_infor">
                   <p id="go_store_detail_sj">스탬프</p>
-                  <p id="go_store_detail_sj">상점 정보</p>
+                  <p id="go_store_detail_sj">상점정보</p>
                   <p id="go_store_review_sj">리뷰</p>
+                  <p id="go_store_review_sj">리뷰작성</p>
                 </div>
         </div>
 
@@ -232,24 +233,22 @@
               <div class="swiper-slide" id="swiper3<%= myStamps[i].id %>">
               <div class='store_review_sj' id="store_review_sj<%= myStamps[i].id %>">
                 <div class="review_rate">
-                    <div class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">
-                      </div>
                   <div class="review_star">
                     <% if(review) { %>
                       <% for(var j=0; j<avgOfRate.length; j++) { %>
-                        <% if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name) { %>
-                          <% for(var k=0; k<avgOfRate[j].avgRateInt; k++) { %>
+                        <% if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name && avgOfRate[j].rateCnt) { %>
+                          <% for(var k=0; k<avgOfRate[j].avgRate; k++) { %>
                             <div>
                               <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px">
                             </div>
                           <% } %>
 
-                          <% for(var k=0; k<5-avgOfRate[j].avgRateInt; k++) { %>
+                          <% for(var k=0; k<5-avgOfRate[j].avgRate; k++) { %>
                             <div>
                               <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
                             </div>
                           <% } %>
-                        <% } else { %>
+                        <% } else if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name && ! avgOfRate[j].rateCnt) { %>
                           <% for(var k=0; k<5; k++) { %>
                             <div>
                               <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
@@ -264,10 +263,10 @@
                     <!-- <p style="font-size: 20px; color: #9c9c9c;">리뷰</p> -->
                     <% if(review) { %>
                       <% for(var j=0; j<avgOfRate.length; j++) { %>
-                        <% if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name) { %>
+                        <% if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name && avgOfRate[j].rateCnt) { %>
                           <p class="review_count_content" id='review_count_content<%= myStamps[i].id %>'><%= avgOfRate[j].rateCnt %></p>
                           <p style="font-size: 20px; color: #9c9c9c;">개의 리뷰가 있습니다.</p>
-                        <% } else { %>
+                        <% } else if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name && ! avgOfRate[j].rateCnt) { %>
                           <p style="font-size: 20px; color: #9c9c9c;">작성된 리뷰가 없습니다.</p>
                         <% } %>
                       <% } %>
@@ -290,6 +289,7 @@
                 <% if(review) {%>
                   <% for(var j=0; j<review.length; j++) { %>
                     <% if(review[j].market_name == myStamps[i].market_name && review[j].sijang_name == myStamps[i].sijang_name) { %>
+
                 <div class="review_div_sj" id='review_div_sj<%= myStamps[i].id %>'>
                     <div class="review_star_customer">
                         <% for(var k=0; k<review[j].rate; k++) { %>
@@ -298,10 +298,12 @@
                         </div>
                         <% } %>
 
+                        <% if(review[j].user_id != '사장님') {%>
                         <% for(var k2=0; k2<5-review[j].rate; k2++) { %>
                           <div>
                               <img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">
                           </div>
+                        <% } %>
                         <% } %>
                     </div>
                   <div class="review_content_sj">
@@ -324,16 +326,43 @@
                     <div id="no_stamp">리뷰가 없습니다.</div>
                   </div>
                   <% } %>
-
               </div>
+</div>
+              <div class="swiper-slide" id="swiper3<%= myStamps[i].id %>">
               <div class='review_write_sj' id="review_write_sj<%= myStamps[i].id %>">
-                <textarea class="review_textarea <%= myStamps[i].id %>" id='review_textarea<%= myStamps[i].id %>' rows="6"></textarea>
-                <div class='write_button_div_sj' id="write_button_div_sj<%= myStamps[i].id %>">
-                  <button class='write_cancel_sj' id="write_cancel_sj<%= myStamps[i].id %>" style="margin-left: 12.5%">취소</button>
-                  <button class="write_ok_button <%= myStamps[i].id %>" id='write_ok_button<%= myStamps[i].id %>' style="margin-left:5%">등록</button>
+                <div id="star_upload">
+                  <div class="star<%= myStamps[i].id %>">
+                    <img class="gray<%= myStamps[i].id %>" id="gray1<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
+                    <img class="yellow<%= myStamps[i].id %>" id="yellow1<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
+                  </div>
+                  <div class="star<%= myStamps[i].id %>">
+                      <img class="gray<%= myStamps[i].id %>" id="gray2<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
+                    <img class="yellow<%= myStamps[i].id %>" id="yellow2<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
+                  </div>
+                  <div class="star<%= myStamps[i].id %>">
+                      <img class="gray<%= myStamps[i].id %>" id="gray3<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
+                      <img class="yellow<%= myStamps[i].id %>" id="yellow3<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
+                  </div>
+                  <div class="star<%= myStamps[i].id %>">
+                      <img class="gray<%= myStamps[i].id %>" id="gray4<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
+                      <img class="yellow<%= myStamps[i].id %>" id="yellow4<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
+                  </div>
+                  <div class="star<%= myStamps[i].id %>">
+                      <img class="gray<%= myStamps[i].id %>" id="gray5<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
+                      <img class="yellow<%= myStamps[i].id %>" id="yellow5<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
+                  </div>
                 </div>
+                <p id="intro_star">만족도만큼 별을 클릭해 주세요</p>
+                <div class="line"></div>
+                <div id="write_div">리뷰 작성</div>
+
+                <textarea class="review_textarea <%= myStamps[i].id %>" id='review_textarea<%= myStamps[i].id %>' rows="6"></textarea>
+                <!-- <div class='write_button_div_sj' id="write_button_div_sj<%= myStamps[i].id %>"> -->
+                  <button class="write_ok_button <%= myStamps[i].id %>" id='write_ok_button<%= myStamps[i].id %>'>등록</button>
+                <!-- </div> -->
               </div>
             </div>
+
             </div>
 
             <div class="swiper-scrollbar"></div>
@@ -352,11 +381,6 @@
                     },
                 });
 
-            //     swiper.on('reachEnd', function () {
-            //       if(swiper.activeIndex==1){
-            //       alert('aaa')
-            //     }
-            // });
             </script>
             <script>
             var number1 = "";
@@ -502,7 +526,19 @@
                 a[j] = x;
               }
             }
+            $('.star<%= myStamps[i].id %>').click(function(){
+                $('.yellow<%= myStamps[i].id %>').css('display','none')
+                  $('.gray<%= myStamps[i].id %>').css('display','block')
+                var star_index=$(this).index();
+                for(var i=0; i<star_index+1; i++){
 
+                  document.getElementsByClassName('gray<%= myStamps[i].id %>')[i].style.display='none';
+                  document.getElementsByClassName('yellow<%= myStamps[i].id %>')[i].style.display='block';
+
+
+                }
+                alert(star_index+1)
+              })
 
             /* 리뷰 작성 버튼 */
             $('#write_ok_button<%= myStamps[i].id %>').click(function(){
@@ -767,17 +803,7 @@
                               }
                           })
 
-                  // var star_count=3;//평균 별점의 반올림 한 값.
-                  // for(var i=0; i<star_count; i++){
-                  //   document.getElementsByClassName('star_gray')[i].style.display='none';
-                  //   document.getElementsByClassName('star_yellow')[i].style.display='block';
-                  // }
-                  // for(var j=0; j<review.length; j++){
-                  //   for(var i=0; i<star_count; i++){
-                  //   document.getElementsByClassName('star_gray_customer')[i].style.display='none';
-                  //   document.getElementsByClassName('star_yellow_customer')[i].style.display='block';
-                  // }
-                  // }//댓글 갯수 만큼 for 반복->각 고객이 남긴 리뷰의 index값의 start_count로 별 개수 처리
+
 
                       </script>
 
