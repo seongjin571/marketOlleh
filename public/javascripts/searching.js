@@ -252,9 +252,6 @@ function navControl(event) {
 
 //////////////////////addEventListener//////////////////////
 
-// 스크롤 조절 
-window.scrollTo(0, 0);
-
 // 초기 기본 세팅
 TableSetting();
 document.getElementById('navControlButton').addEventListener('click', navControl, false);

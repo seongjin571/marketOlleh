@@ -154,6 +154,7 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 
 function marketInfoLi_event_likelist(result_rows) {
 
+	console.log(result_rows);
 	// 좋아요 순서로 정렬
 	result_rows.sort(function (a, b) {
 		return a.like_count < b.like_count ? 1 : a.like_count > b.like_count ? -1 : 0;
@@ -177,7 +178,19 @@ function marketInfoLi_event_likelist(result_rows) {
 		fullString += tempString[index];
 	} // for in 
 
-	hot_store_list_market.innerHTML = fullString;	
+	hot_store_list_market.innerHTML = fullString;
+
+	// 인기 상점 click ~ managerInfoLi_event ~ 상점 정보 (스탬프)
+	$('.hot_store_detail_market').click(function (event) {
+		for (var i = 0; i < result_rows.length; i++) {
+			if (result_rows[i].market_name == this.childNodes[1].innerText) {
+				managerInfoLi_event(result_rows[i]);
+				break;
+			} // inner if
+		} // for
+	}); // class ~ arr ~ click fun dv
+
+
 } // marketInfoLi_event_likelist
 
 function managerInfoLi_event_review(review_arr) {
