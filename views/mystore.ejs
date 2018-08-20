@@ -101,6 +101,8 @@
                           </div>
                         <% } %>
                       </div>
+                      <p style="font-size: 20px;"><%= avgRows.rateCnt %></p>
+                      <p style="font-size: 20px; color: #9c9c9c;">개의 리뷰가 있습니다.</p>
                         <% for(var j=0; j<review.length; j++) { %>
                             <% if(review[j].market_name == result1[0].market_name && review[j].sijang_name == result1[0].sijang_name) {%>
                                 <div class="review_div_sj">
@@ -135,9 +137,10 @@
                                 <% } %>
                                     <% } %>
                                         <% } else {%>
-                                            <div class='stamp_list'>
+                                            <!-- <div class='stamp_list'>
                                                 <div id="no_stamp">리뷰가 없습니다.</div>
-                                            </div>
+                                            </div> -->
+                                            <p style="font-size: 20px; color: #9c9c9c;">작성된 리뷰가 없습니다.</p>
                                             <% } %>
 
                 </div>

@@ -427,7 +427,7 @@ router.get('/mystore', function(req, res){
           });
         }else{
           console.log("해당가게 리뷰 있음");
-          var rateAvgSql = 'select sijang_name, market_name, round(avg(rate),0) as rateAvg from review where sijang_name=? and market_name=? group by sijang_name, market_name;' ;
+          var rateAvgSql = 'select sijang_name, market_name, round(avg(rate),0) as rateAvg, count(*) as rateCnt from review where sijang_name=? and market_name=? group by sijang_name, market_name;' ;
           conn.query(rateAvgSql, [result1[0].sijang_name, result1[0].market_name], function(avgErr, avgRows) {
             if(avgErr) {
               console.log(avgErr);
