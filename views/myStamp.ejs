@@ -232,14 +232,27 @@
               <div class="swiper-slide" id="swiper3<%= myStamps[i].id %>">
               <div class='store_review_sj' id="store_review_sj<%= myStamps[i].id %>">
                 <div class="review_rate">
+                    <div class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">
+                      </div>
                   <div class="review_star">
                     <% if(review) { %>
                       <% for(var j=0; j<avgOfRate.length; j++) { %>
                         <% if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name) { %>
                           <% for(var k=0; k<avgOfRate[j].avgRateInt; k++) { %>
                             <div>
-                              <!-- <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px"> -->
                               <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px">
+                            </div>
+                          <% } %>
+
+                          <% for(var k=0; k<5-avgOfRate[j].avgRateInt; k++) { %>
+                            <div>
+                              <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
+                            </div>
+                          <% } %>
+                        <% } else { %>
+                          <% for(var k=0; k<5; k++) { %>
+                            <div>
+                              <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
                             </div>
                           <% } %>
                         <% } %>
@@ -247,6 +260,7 @@
                     <% } %>
                   </div>
                   <div class="review_count">
+
                     <!-- <p style="font-size: 20px; color: #9c9c9c;">리뷰</p> -->
                     <% if(review) { %>
                       <% for(var j=0; j<avgOfRate.length; j++) { %>
@@ -254,11 +268,13 @@
                           <p class="review_count_content" id='review_count_content<%= myStamps[i].id %>'><%= avgOfRate[j].rateCnt %></p>
                           <p style="font-size: 20px; color: #9c9c9c;">개의 리뷰가 있습니다.</p>
                         <% } else { %>
-                          <p style="font-size: 20px; color: #9c9c9c;">리뷰가 없습니다.</p>
+                          <p style="font-size: 20px; color: #9c9c9c;">작성된 리뷰가 없습니다.</p>
                         <% } %>
                       <% } %>
                     <% } %>
+
                   </div>
+
                   <div id="intro">
                     <p>
                         <%= myStamps[i].market_name %> 상점을 이용하는 고객들의 리뷰입니다.
@@ -269,6 +285,8 @@
                   </div>
 
                 </div>
+
+
                 <% if(review) {%>
                   <% for(var j=0; j<review.length; j++) { %>
                     <% if(review[j].market_name == myStamps[i].market_name && review[j].sijang_name == myStamps[i].sijang_name) { %>
@@ -306,12 +324,8 @@
                     <div id="no_stamp">리뷰가 없습니다.</div>
                   </div>
                   <% } %>
-                  <div class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">
-                      <div id="review_upload"></div>
-                      <p>리뷰를 남겨 주세요</p>
-                    </div>
-              </div>
 
+              </div>
               <div class='review_write_sj' id="review_write_sj<%= myStamps[i].id %>">
                 <textarea class="review_textarea <%= myStamps[i].id %>" id='review_textarea<%= myStamps[i].id %>' rows="6"></textarea>
                 <div class='write_button_div_sj' id="write_button_div_sj<%= myStamps[i].id %>">
@@ -325,7 +339,25 @@
             <div class="swiper-scrollbar"></div>
             </div>
             </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
 
+            <script>
+                var swiper = new Swiper('.swiper-container', {
+                    autoHeight: true,
+                    observer: true,
+                    observeParents: true,
+                    scrollbar: {
+                        el: '.swiper-scrollbar',
+                        hide: true,
+                    },
+                });
+
+            //     swiper.on('reachEnd', function () {
+            //       if(swiper.activeIndex==1){
+            //       alert('aaa')
+            //     }
+            // });
+            </script>
             <script>
             var number1 = "";
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
@@ -716,18 +748,8 @@
                         <p>로그아웃</p>
                     </div>
             </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
-
             <script>
-                var swiper = new Swiper('.swiper-container', {
-                    autoHeight: true,
-                    observer: true,
-                    observeParents: true,
-                    scrollbar: {
-                        el: '.swiper-scrollbar',
-                        hide: true,
-                    },
-                });
+
                 $('.store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
                       $('#home_sj').click(function () {
                         location.href = "/main";
@@ -758,7 +780,6 @@
                   // }//댓글 갯수 만큼 for 반복->각 고객이 남긴 리뷰의 index값의 start_count로 별 개수 처리
 
                       </script>
-
 
                     </body>
 
