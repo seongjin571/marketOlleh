@@ -66,6 +66,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 
 function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 
+	// 시장 정보 vs 상인 정보 
     $('#store_infor').css('display', 'block');
     $('#market_infor').css('display', 'none');
     console.log(market_arr);
@@ -129,6 +130,11 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
     // 상점 소개와 위치
     $('.store_detail_sj > p').text(market_arr.market_introduce);
 
+	// 리뷰, 앞에 있던 정보들 초기화
+	if ($('.review_div_sj > div')) {
+		$('.review_div_sj').remove();	
+	}
+	
     // 리뷰 ajax
 	$.ajax({
 		url: "/myStamp",
@@ -154,11 +160,10 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 
 function marketInfoLi_event_likelist(result_rows) {
 
-	console.log(result_rows);
-	// 좋아요 순서로 정렬
-	result_rows.sort(function (a, b) {
-		return a.like_count < b.like_count ? 1 : a.like_count > b.like_count ? -1 : 0;
-	});
+	// 좋아요 순서로 정렬 --> SQL에서 ORDER ~ DESC 로 수정
+	// result_rows.sort(function (a, b) {
+	// 	return a.like_count < b.like_count ? 1 : a.like_count > b.like_count ? -1 : 0;
+	// });
 
 	// 태그 동적으로 생성하기
 	var tempString = new Array();
@@ -195,10 +200,10 @@ function marketInfoLi_event_likelist(result_rows) {
 
 function managerInfoLi_event_review(review_arr) {
 
-	// 날짜 순서로 정렬
-	review_arr.sort(function (a, b) {
-		return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
-	});
+	// 날짜 순서로 정렬 --> SQL에서 ORDER ~ DESC 로 수정
+	// review_arr.sort(function (a, b) {
+	// 	return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
+	// });
 
 	// 태그 동적으로 생성하기
 	var tempString = new Array();
