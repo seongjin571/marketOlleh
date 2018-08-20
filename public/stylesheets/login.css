@@ -128,15 +128,9 @@ body, html {
     height: 90%;
     background-color: white;
     border: double 1px transparent;
-    background-image: linear-gradient(white, white),
-     radial-gradient(circle at top left, #17ead9,#6078ea);
-    background-origin: border-box;
-    background-clip: content-box, border-box;        
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
-    padding-bottom: 1px;
-    border: 0px;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
 }
 #userpassword{
     font-family: initial !important;
