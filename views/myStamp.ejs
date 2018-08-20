@@ -233,16 +233,31 @@
               <div class='store_review_sj' id="store_review_sj<%= myStamps[i].id %>">
                 <div class="review_rate">
                   <div class="review_star">
-
-                      <div>
-                        <!-- <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px"> -->
-                        <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px">
-                      </div>
-
+                    <% if(review) { %>
+                      <% for(var j=0; j<avgOfRate.length; j++) { %>
+                        <% if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name) { %>
+                          <% for(var k=0; k<avgOfRate[j].avgRateInt; k++) { %>
+                            <div>
+                              <!-- <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px"> -->
+                              <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px">
+                            </div>
+                          <% } %>
+                        <% } %>
+                      <% } %>
+                    <% } %>
                   </div>
                   <div class="review_count">
-                    <p style="font-size: 20px; color: #9c9c9c;">리뷰</p>
-                      <p class="review_count_content" id='review_count_content<%= myStamps[i].id %>'>0</p>
+                    <!-- <p style="font-size: 20px; color: #9c9c9c;">리뷰</p> -->
+                    <% if(review) { %>
+                      <% for(var j=0; j<avgOfRate.length; j++) { %>
+                        <% if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name) { %>
+                          <p class="review_count_content" id='review_count_content<%= myStamps[i].id %>'><%= avgOfRate[j].rateCnt %></p>
+                          <p style="font-size: 20px; color: #9c9c9c;">개의 리뷰가 있습니다.</p>
+                        <% } else { %>
+                          <p style="font-size: 20px; color: #9c9c9c;">리뷰가 없습니다.</p>
+                        <% } %>
+                      <% } %>
+                    <% } %>
                   </div>
                   <div id="intro">
                     <p>
@@ -256,7 +271,7 @@
                 </div>
                 <% if(review) {%>
                   <% for(var j=0; j<review.length; j++) { %>
-                    <% if(review[j].market_name == myStamps[i].market_name && review[j].sijang_name == myStamps[i].sijang_name) {%>
+                    <% if(review[j].market_name == myStamps[i].market_name && review[j].sijang_name == myStamps[i].sijang_name) { %>
                 <div class="review_div_sj" id='review_div_sj<%= myStamps[i].id %>'>
                     <div class="review_star_customer">
                         <% for(var k=0; k<review[j].rate; k++) { %>
