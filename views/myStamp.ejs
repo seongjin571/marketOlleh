@@ -236,19 +236,19 @@
                   <div class="review_star">
                     <% if(review) { %>
                       <% for(var j=0; j<avgOfRate.length; j++) { %>
-                        <% if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name) { %>
-                          <% for(var k=0; k<avgOfRate[j].avgRateInt; k++) { %>
+                        <% if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name && avgOfRate[j].rateCnt) { %>
+                          <% for(var k=0; k<avgOfRate[j].avgRate; k++) { %>
                             <div>
                               <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px">
                             </div>
                           <% } %>
 
-                          <% for(var k=0; k<5-avgOfRate[j].avgRateInt; k++) { %>
+                          <% for(var k=0; k<5-avgOfRate[j].avgRate; k++) { %>
                             <div>
                               <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
                             </div>
                           <% } %>
-                        <% } else { %>
+                        <% } else if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name && ! avgOfRate[j].rateCnt) { %>
                           <% for(var k=0; k<5; k++) { %>
                             <div>
                               <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
@@ -263,10 +263,10 @@
                     <!-- <p style="font-size: 20px; color: #9c9c9c;">리뷰</p> -->
                     <% if(review) { %>
                       <% for(var j=0; j<avgOfRate.length; j++) { %>
-                        <% if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name) { %>
+                        <% if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name && avgOfRate[j].rateCnt) { %>
                           <p class="review_count_content" id='review_count_content<%= myStamps[i].id %>'><%= avgOfRate[j].rateCnt %></p>
                           <p style="font-size: 20px; color: #9c9c9c;">개의 리뷰가 있습니다.</p>
-                        <% } else { %>
+                        <% } else if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name && ! avgOfRate[j].rateCnt) { %>
                           <p style="font-size: 20px; color: #9c9c9c;">작성된 리뷰가 없습니다.</p>
                         <% } %>
                       <% } %>
@@ -363,8 +363,9 @@
               </div>
             </div>
 
+
             </div>
-        
+
             <div class="swiper-scrollbar"></div>
             </div>
             </div>
@@ -531,7 +532,7 @@
                   $('.gray<%= myStamps[i].id %>').css('display','block')
                 var star_index=$(this).index();
                 for(var i=0; i<star_index+1; i++){
-                 
+
                   document.getElementsByClassName('gray<%= myStamps[i].id %>')[i].style.display='none';
                   document.getElementsByClassName('yellow<%= myStamps[i].id %>')[i].style.display='block';
 
@@ -785,7 +786,7 @@
                     </div>
             </div>
             <script>
-    
+
                 $('.store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
                       $('#home_sj').click(function () {
                         location.href = "/main";

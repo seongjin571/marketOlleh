@@ -513,13 +513,15 @@ router.get('/myStamp', function(req, res) {
           }
           else {
             console.log("stamp,review값이 모두 있는 경우");
-            var rateAvgSql = 'select sijang_name, market_name, round(avg(rate),0) as avgRateInt, round(avg(rate),1) as avgRate, count(*) as rateCnt from review group by sijang_name, market_name ;';
-            conn.query(rateAvgSql, function(avgErr, avgRows) {
+            // var rateAvgSql = 'select sijang_name, market_name, round(avg(rate),0) as avgRateInt, round(avg(rate),1) as avgRate, count(*) as rateCnt from review group by sijang_name, market_name ;';
+            var rateAvgSql = 'SELECT stamp.sijang_name, stamp.market_name, IFNULL(round(avg(rate),0), 0) as avgRate, count(rate) as rateCnt FROM stamp LEFT OUTER JOIN review ON stamp.sijang_name=review.sijang_name and stamp.market_name=review.market_name WHERE stamp.user_id=? GROUP BY stamp.sijang_name, stamp.market_name ;' ;
+            conn.query(rateAvgSql, [req.user.id], function(avgErr, avgRows) {
               if(avgErr) {
                 console.log(avgErr);
                 console.log('평점 평균 쿼리 에러');
               }
               else {
+                console.log(avgRows);
                 res.render('myStamp', {
                   user: req.user,
                   myStamps: result,
