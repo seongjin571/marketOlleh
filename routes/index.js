@@ -418,9 +418,20 @@ router.get('/mystore', function(req, res){
           });
         }else{
           console.log("해당가게 리뷰 있음");
-          res.render('mystore',{
-            result1 : result1,
-            review : result2
+          var rateAvgSql = 'select sijang_name, market_name, round(avg(rate),0) as rateAvg from review where sijang_name=? and market_name=? group by sijang_name, market_name;' ;
+          conn.query(rateAvgSql, [result1[0].sijang_name, result1[0].market_name], function(avgErr, avgRows) {
+            if(avgErr) {
+              console.log(avgErr);
+              console.log('해당 가게 리뷰 평균 에러');
+            }
+            else {
+              console.log(avgRows);
+              res.render('mystore',{
+                result1 : result1,
+                review : result2,
+                avgRows: avgRows[0]
+              });
+            }
           });
         }
       })
