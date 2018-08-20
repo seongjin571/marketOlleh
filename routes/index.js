@@ -401,7 +401,31 @@ router.get('/mainManager', function(req, res, next) {
 });
 
 router.get('/mystore', function(req, res){
-  res.render('mystore');
+  var sql='select * from manager where `manager_id`=?;';
+  var sql_stamp = 'select * from review where `market_name`=? and `sijang_name`=?;';
+  conn.query(sql,[req.session.authId],function(error,result1,fields){
+    if(error){
+      console.log(error);
+    }else{
+      conn.query(sql_stamp,[result1[0].market_name, result1[0].sijang_name],function(err,result2,fields){
+        if(err){
+          console.log(err);
+        }else if(! result2.length){
+          console.log("해당 가게 리뷰가 없는 경우");
+          res.render('mystore',{
+            result1 : result1,
+            review : undefined
+          });
+        }else{
+          console.log("해당가게 리뷰 있음");
+          res.render('mystore',{
+            result1 : result1,
+            review : result2
+          });
+        }
+      })
+    }
+  })
 });
 
 
@@ -687,6 +711,25 @@ router.post('/review',function(req,res,next){
   })
 });
 
+router.post('/review_manager',function(req,res,next){
+  var user_id = req.body.user_id;
+  var market_name = req.body.market_name;
+  var sijang_name = req.body.sijang_name;
+  var date = req.body.date;
+  var review = req.body.review;
+  var sql = 'insert into `review`(`user_id`,`market_name`,`sijang_name`,`review`,`date`) values (?,?,?,?,?);';
+  // var sql = 'select * from stamp where user_id =? and market_name = ?';
+  console.log(user_id);
+  conn.query(sql,[user_id,market_name,sijang_name,review,date],function(error,results,fields){
+    if(error){
+      console.log('er');
+    }else{
+      res.send({
+        result : 'success'
+      });
+    }
+  })
+});
 
 /* 좋아요 */
 router.post('/like/:id', function(req, res) {
