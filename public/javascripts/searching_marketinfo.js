@@ -5,7 +5,7 @@ function NewGoomapLi_css() {
 	$(".market_infoText_li > img").css('width', '100%');
 }
 
-function marketInfoLi_event(market_arr) {
+function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 	
 	$('#hot_store_list_market > div').remove();
 	
@@ -64,7 +64,7 @@ function marketInfoLi_event(market_arr) {
 
 } // marketInfoLi_event
 
-function managerInfoLi_event(market_arr) {
+function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 
     $('#store_infor').css('display', 'block');
     $('#market_infor').css('display', 'none');
@@ -90,7 +90,7 @@ function managerInfoLi_event(market_arr) {
     	$('.tenControls_sj').css('display', 'table');
     }
 
-    // 다운 받기
+    // 다운 받기 버튼 ~ 스탬프 있으면 버튼 안보이게
 	$('.button_sj').click(function(){
 
 		var data = {
@@ -123,12 +123,13 @@ function managerInfoLi_event(market_arr) {
 			  console.log('erer');
 			}
 		}); // ajax
+
 	}); // download button function
 
     // 상점 소개와 위치
     $('.store_detail_sj > p').text(market_arr.market_introduce);
 
-    // 리뷰
+    // 리뷰 ajax
 	$.ajax({
 		url: "/myStamp",
 		dataType: 'json',
