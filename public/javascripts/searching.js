@@ -13,6 +13,9 @@ function TableSetting() {
 
 function turningBack() {
 
+	// 스크롤 조절 
+	window.scrollTo(0, 0);
+
 	var temp_goo = document.getElementById('NewGoomap');
 	var temp_serch = document.getElementById('search_result');
 
@@ -21,7 +24,6 @@ function turningBack() {
 		deleteNewGooTable();
 		// document.getElementById('aaa').style.display = "none";
 	} else if (document.getElementById('Goomap').style.display == 'block') {
-		$("body").scrollTop(0);
 		console.log("Turn back");
 		navControl();
 	} // Goomap이 표출된 상태에선 뒤로가기 기능
@@ -116,6 +118,9 @@ function makeGooTable(tableValue, gooCounter) {
 } // makeGooTable
 
 function makeSearchList(searchResult, listCounter) {
+
+	// 스크롤 조절 
+	window.scrollTo(0, 0);
 
 	// 검색하면 aaa div 부분 none 하기
 	// 검색하면 뒤로가기 버튼 blcok 하기 (turningBack 함수 참조)
@@ -229,7 +234,8 @@ function navControl(event) {
 		document.getElementById('text_logo').style.display = "block";
 		document.getElementById('navControlButton').style.display = "table";
 		document.getElementById('back_div').style.display = "none";
-		$("body").scrollTop(0);
+		// 스크롤 조절 
+		window.scrollTo(0, 0);		
 	} else { // Goomap / 비활성화 되어있을때 else --> block
 		deleteNewSearchList(); // 검색후 navControl 버튼 눌렀을때 고려
 		document.getElementById('navControlButton').style.display = "none";
@@ -238,13 +244,18 @@ function navControl(event) {
 		document.getElementById('aaa').style.display = "none";
 		document.getElementById('text_logo').style.display = "none";
 		document.getElementById('back_div').style.display = "block";
-		$("body").scrollTop(0);
+		// 스크롤 조절 
+		window.scrollTo(0, 0);	
 	}
 	deleteNewGooTable();
 }
 
 //////////////////////addEventListener//////////////////////
 
+// 스크롤 조절 
+window.scrollTo(0, 0);
+
+// 초기 기본 세팅
 TableSetting();
 document.getElementById('navControlButton').addEventListener('click', navControl, false);
 document.getElementById('back_div').addEventListener('click', turningBack, false);
