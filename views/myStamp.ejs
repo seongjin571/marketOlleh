@@ -232,32 +232,38 @@
               <div class="swiper-slide" id="swiper3<%= myStamps[i].id %>">
               <div class='store_review_sj' id="store_review_sj<%= myStamps[i].id %>">
                 <div class="review_rate">
+                    <div class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">
+                      </div>
                   <div class="review_star">
-                    <div>
-                      <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
-                      <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px" style="display: none">
-                    </div>
-                    <div>
-                      <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
-                      <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px" style="display: none">
-                    </div>
-                    <div>
-                      <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
-                      <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px" style="display: none">
-                    </div>
-                    <div>
-                        <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
-                        <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px" style="display: none">
-                    </div>
-                    <div>
-                        <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
-                      <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px" style="display: none">
-                    </div>
+                    <% if(review) { %>
+                      <% for(var j=0; j<avgOfRate.length; j++) { %>
+                        <% if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name) { %>
+                          <% for(var k=0; k<avgOfRate[j].avgRateInt; k++) { %>
+                            <div>
+                              <!-- <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px"> -->
+                              <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px">
+                            </div>
+                          <% } %>
+                        <% } %>
+                      <% } %>
+                    <% } %>
                   </div>
                   <div class="review_count">
-                    <p style="font-size: 20px; color: #9c9c9c;">리뷰</p>
-                    <p class="review_count_content">123</p>
+
+                    <!-- <p style="font-size: 20px; color: #9c9c9c;">리뷰</p> -->
+                    <% if(review) { %>
+                      <% for(var j=0; j<avgOfRate.length; j++) { %>
+                        <% if(avgOfRate[j].market_name == myStamps[i].market_name && avgOfRate[j].sijang_name == myStamps[i].sijang_name) { %>
+                          <p class="review_count_content" id='review_count_content<%= myStamps[i].id %>'><%= avgOfRate[j].rateCnt %></p>
+                          <p style="font-size: 20px; color: #9c9c9c;">개의 리뷰가 있습니다.</p>
+                        <% } else { %>
+                          <p style="font-size: 20px; color: #9c9c9c;">리뷰가 없습니다.</p>
+                        <% } %>
+                      <% } %>
+                    <% } %>
+
                   </div>
+             
                   <div id="intro">
                     <p>
                         <%= myStamps[i].market_name %> 상점을 이용하는 고객들의 리뷰입니다.
@@ -268,9 +274,11 @@
                   </div>
 
                 </div>
+
+
                 <% if(review) {%>
                   <% for(var j=0; j<review.length; j++) { %>
-                    <% if(review[j].market_name == myStamps[i].market_name && review[j].sijang_name == myStamps[i].sijang_name) {%>
+                    <% if(review[j].market_name == myStamps[i].market_name && review[j].sijang_name == myStamps[i].sijang_name) { %>
                 <div class="review_div_sj" id='review_div_sj<%= myStamps[i].id %>'>
                     <div class="review_star_customer">
                         <% for(var k=0; k<review[j].rate; k++) { %>
@@ -305,17 +313,13 @@
                     <div id="no_stamp">리뷰가 없습니다.</div>
                   </div>
                   <% } %>
-                  <div class='review_button_sj' id="review_button_sj<%= myStamps[i].id %>">
-                      <div id="review_upload"></div>
-                      <p>리뷰를 남겨 주세요</p>
-                    </div>
+              
               </div>
-
               <div class='review_write_sj' id="review_write_sj<%= myStamps[i].id %>">
                 <textarea class="review_textarea <%= myStamps[i].id %>" id='review_textarea<%= myStamps[i].id %>' rows="6"></textarea>
                 <div class='write_button_div_sj' id="write_button_div_sj<%= myStamps[i].id %>">
                   <button class='write_cancel_sj' id="write_cancel_sj<%= myStamps[i].id %>" style="margin-left: 12.5%">취소</button>
-                  <button class="write_ok_button<%= myStamps[i].id %>" id='write_ok_button<%= myStamps[i].id %>' style="margin-left:5%">등록</button>
+                  <button class="write_ok_button <%= myStamps[i].id %>" id='write_ok_button<%= myStamps[i].id %>' style="margin-left:5%">등록</button>
                 </div>
               </div>
             </div>
@@ -324,7 +328,25 @@
             <div class="swiper-scrollbar"></div>
             </div>
             </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
 
+            <script>
+                var swiper = new Swiper('.swiper-container', {
+                    autoHeight: true,
+                    observer: true,
+                    observeParents: true,
+                    scrollbar: {
+                        el: '.swiper-scrollbar',
+                        hide: true,
+                    },
+                });
+            
+            //     swiper.on('reachEnd', function () {
+            //       if(swiper.activeIndex==1){
+            //       alert('aaa')
+            //     }
+            // });
+            </script>
             <script>
             var number1 = "";
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
@@ -472,10 +494,10 @@
 
 
             /* 리뷰 작성 버튼 */
-            $('.write_ok_button<%= myStamps[i].id %>').click(function(){
+            $('#write_ok_button<%= myStamps[i].id %>').click(function(){
               var user_id = '<%= myStamps[i].user_id %>';
               var market_name = '<%= myStamps[i].market_name %>';
-              var text=$('.review_textarea<%= myStamps[i].id %>').val();
+              var text=$('#review_textarea<%= myStamps[i].id %>').val();
               var now = new Date();
               function leadingZeros(n, digits){
                 var zero='';
@@ -715,18 +737,8 @@
                         <p>로그아웃</p>
                     </div>
             </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
-
             <script>
-                var swiper = new Swiper('.swiper-container', {
-                    autoHeight: true,
-                    observer: true,
-                    observeParents: true,
-                    scrollbar: {
-                        el: '.swiper-scrollbar',
-                        hide: true,
-                    },
-                });
+               
                 $('.store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
                       $('#home_sj').click(function () {
                         location.href = "/main";
@@ -744,11 +756,11 @@
                               }
                           })
 
-                  var star_count=3;//평균 별점의 반올림 한 값.
-                  for(var i=0; i<star_count; i++){
-                    document.getElementsByClassName('star_gray')[i].style.display='none';
-                    document.getElementsByClassName('star_yellow')[i].style.display='block';
-                  }
+                  // var star_count=3;//평균 별점의 반올림 한 값.
+                  // for(var i=0; i<star_count; i++){
+                  //   document.getElementsByClassName('star_gray')[i].style.display='none';
+                  //   document.getElementsByClassName('star_yellow')[i].style.display='block';
+                  // }
                   // for(var j=0; j<review.length; j++){
                   //   for(var i=0; i<star_count; i++){
                   //   document.getElementsByClassName('star_gray_customer')[i].style.display='none';
@@ -758,7 +770,6 @@
 
                       </script>
 
-
                     </body>
-
+                 
                     </html>

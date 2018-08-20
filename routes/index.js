@@ -489,10 +489,20 @@ router.get('/myStamp', function(req, res) {
           }
           else {
             console.log("stamp,review값이 모두 있는 경우");
-            res.render('myStamp', {
-              user: req.user,
-              myStamps: result,
-              review : results
+            var rateAvgSql = 'select sijang_name, market_name, round(avg(rate),0) as avgRateInt, round(avg(rate),1) as avgRate, count(*) as rateCnt from review group by sijang_name, market_name ;';
+            conn.query(rateAvgSql, function(avgErr, avgRows) {
+              if(avgErr) {
+                console.log(avgErr);
+                console.log('평점 평균 쿼리 에러');
+              }
+              else {
+                res.render('myStamp', {
+                  user: req.user,
+                  myStamps: result,
+                  review : results,
+                  avgOfRate: avgRows
+                });
+              }
             });
           }
         }
