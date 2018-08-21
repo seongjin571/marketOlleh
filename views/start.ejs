@@ -64,7 +64,8 @@
             </br>
             <div id="login_button_user2">
                 <!-- <img id="Login_M" onclick="login_maintain()" src="/images/login_off.png"> -->
-                <button class="idfind">아이디 찾기</button>
+
+                <button class="idfind" id='idfind'>아이디 찾기</button>
                 <button id="password_find1">비밀번호찾기</button>
                 <button type="button" id="loginUser_sign_up">회원가입</button>
             </div>
@@ -72,6 +73,12 @@
                 <button type='submit' value='' class="loginUser_insert">로그인</button>
             </div>
         </form>
+        <script>
+        $('#idfind').click(function(e) {
+          e.preventDefault();
+          $(window).attr('location', '/findid');
+        });
+        </script>
 
 
         <div id="kakao_logo">
@@ -105,7 +112,8 @@
             </div>
         </div>
         <div id="login_button_manager">
-            <button class="idfind">아이디 찾기</button>
+
+            <button class="idfind" id="idfindmanager">아이디 찾기</button>
             <button id="password_find2">아이디 찾기</button>
             <button id="loginmanager_sign_up">회원가입</button>
         </div>
@@ -116,6 +124,10 @@
         </div>
     </div>
     <script>
+      $('#idfindmanager').click(function(e) {
+        e.preventDefault();
+        $(window).attr('location', '/findidmanager');
+      });
         $('#loginButton').click(function (e) {
             e.preventDefault();
             var manager_id = $('#manager_id').val();
@@ -153,6 +165,7 @@
             };
         });
     </script>
+
     <!--loginManager 끝-->
 
 
@@ -423,7 +436,9 @@
         $('#signupManager').fadeOut(300)
         $('#loginManager').fadeIn(300)
     })
-
+    $('.ididid').click(function(){
+      alert('재호');
+    });
 </script>
 
 </html>
