@@ -503,7 +503,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             margin-top: 20px;
         }
         #map{
-            margin-top: 25%;
+            margin-top: 22%;
         }
         .name{
             width: 23%;
@@ -516,7 +516,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             margin-left: 8%;
             font-weight: lighter;
             color: #9c9c9c;
-            line-height: 24px;
+            line-height: 30px;
         }
         .stamp_infor_content{
             line-height: 30px;
