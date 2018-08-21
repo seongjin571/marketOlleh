@@ -50,6 +50,7 @@
 
     <!--loginuser 시작-->
     <div id="loginuser">
+            <button id="back_loginuser">X</button>
         <div id="top_logo">
             <img id="loginUser_logo_with_text2" src="/images/logo_with_text.png">
         </div>
@@ -93,6 +94,7 @@
 
     <!--loginManager 시작-->
     <div id="loginManager">
+        <button id="back_loginManager">X</button>
         <div id="top_logo">
             <img id="loginUser_logo_with_text2" src="/images/logo_with_text.png">
         </div>
@@ -158,6 +160,7 @@
 
     <!--signupuser 시작-->
     <div id="signupuser">
+            <button id="back_signupuser">X</button>
         <div id="top_signup">
             <img id="signuplogo" src="/images/logo_with_text.png">
         </div>
@@ -236,10 +239,10 @@
 
     <!--signupManager 시작-->
     <div id="signupManager">
+            <button id="back_signupManager">X</button>
         <div id="top_signup">
             <img id="signuplogo" src="/images/logo_with_text.png">
         </div>
-
         <form id='signupForm2'>
             <div class="signupuser_input3">
                 <input class="signuptext2" type="text" id="manager_id_jh" name='manager_id' placeholder=" 상인 아이디">
@@ -433,6 +436,26 @@
         $('#loginManager').fadeIn(300)
     })
 
+    // 뒤로가기 고객로그인부분
+    $('#back_loginuser').click(function () {
+        $('#loginuser').fadeOut(300)
+        $('#start').fadeIn(300)
+    })
+    // 뒤로가기 상인로그인부분
+    $('#back_loginmanager').click(function () {
+        $('#loginManager').fadeOut(300)
+        $('#start').fadeIn(300)
+    })
+    // 뒤로가기 고객회원가입부분
+    $('#back_signupuser').click(function () {
+        $('#signupuser').fadeOut(300)
+        $('#loginuser').fadeIn(300)
+    })
+    // 뒤로가기 상인회원가입부분
+    $('#back_signupManager').click(function () {
+        $('#signupManager').fadeOut(300)
+        $('#loginManager').fadeIn(300)
+    })
 </script>
 
 </html>
