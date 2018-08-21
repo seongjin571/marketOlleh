@@ -36,6 +36,7 @@ function turningBack() {
 			document.getElementById('store_infor').style.display = "none";
 			$('#search_result').css('display', 'block');
 			document.getElementById('store_infor').style.display = "none";
+			setStyle_search_result();
 		} else { // 검색만 하고 뒤로가기
 			deleteNewSearchList();
 			document.getElementById('aaa').style.display = "block";
@@ -72,9 +73,9 @@ function deleteNewGooTable() {
 }
 
 function deleteNewSearchList() {
-	if ($('#search_result > li')) {
+	if ($('#search_result > div > li')) {
 		// 동적으로 New 검색 결과 리스트 삭제 
-		$('#search_result > li').remove();
+		$('#search_result > div > li').remove();
 	}
 }
 
@@ -144,27 +145,54 @@ function makeSearchList(searchResult, listCounter) {
 		search_result.style.display = "block";
 	}
 
+	// 변수 선언
 	var tempString = new Array();
 	var fullString = '\0';
 	var isManager = false;
+	var half_listCounter = parseInt(listCounter/2)+1;
+	if (listCounter <= 2) {
+		half_listCounter = parseInt(listCounter/2);
+	}
 
 	// 시장, 상점 통합 검색
 	for (var i = 0; i < parseInt(listCounter); i++){
 		if (searchResult.rows[i].name) { // 시장 API 검색 이면
-			tempString[i] = '<li>' + searchResult.rows[i].name + '</li>'
+			
+			if (i%half_listCounter == 0) {
+				if (i == 0) { // 처음 실행 ~ div 닫기 태그 X
+				  tempString[i] = '<div><li>' + searchResult.rows[i].name + '</li>'  
+				} else {
+				  tempString[i] = '</div><div><li>' + searchResult.rows[i].name + '</li>'
+				} // inner if ~ else
+			} else {
+				tempString[i] = '<li>' + searchResult.rows[i].name + '</li>'       
+			}
 			fullString += tempString[i];
+
 		} else { // manager DB에서 결과라면
-			tempString[i] = '<li>' + searchResult.rows[i].market_name + '</li>'
+
+			if (i%half_listCounter == 0) {
+				if (i == 0) { // 처음 실행 ~ div 닫기 태그 X
+				  tempString[i] = '<div><li>' + searchResult.rows[i].market_name + '</li>'  
+				} else {
+				  tempString[i] = '</div><div><li>' + searchResult.rows[i].market_name + '</li>'
+				} // inner if ~ else
+			} else {
+				tempString[i] = '<li>' + searchResult.rows[i].market_name + '</li>'       
+			}
 			fullString += tempString[i];
 		}
 	}
+	fullString += '</div>'
 
-	// 검색 결과 li 태그로 제어 + 이벤트 추가하기
+	// 검색 결과 li css 제어 + 이벤트 추가하기
 	$('#search_result').html(fullString);
+	 setStyle_search_result();
 
 	// 검색 결과 시장 리스트. 클릭 이벤트 - searching_marketinfo.js 필참
-	$('#search_result > li').click(function (event) {
-		$('#search_result').css('display', 'none');
+	$('#search_result > div > li').click(function (event) {
+		window.scrollTo(0, 0); // 스크롤 맨위로 끌올
+		$('#search_result').parent().css('display', 'none');
 		$('#Searching').css('display', 'none');
 		document.getElementById('market_infor').style.display = "block";
 
@@ -246,6 +274,7 @@ function navControl(event) {
 		// 스크롤 조절 
 		window.scrollTo(0, 0);		
 	} else { // Goomap / 비활성화 되어있을때 else --> block
+		$('#search_result').parent().css('display', 'none');
 		deleteNewSearchList(); // 검색후 navControl 버튼 눌렀을때 고려
 		document.getElementById('navControlButton').style.display = "none";
 		document.getElementById('Searching').style.display = "none";
@@ -258,6 +287,20 @@ function navControl(event) {
 	}
 	deleteNewGooTable();
 }
+
+function setStyle_search_result() {
+  
+  $('#search_result').parent().css('display', 'flex');
+  $('#search_result').css('display', 'flex'); 
+  $('#search_result').css('list-style', 'none');  
+
+  // flex설정후 word-break
+  $('#search_result > div').css('width', '140px');
+  $('#search_result > div').css('word-break', 'break-all');
+  $('#search_result > div').css('margin-left', '5%');
+  $('#search_result > div > li').css('margin-top', '5%');
+  
+} // setStyle_search_result
 
 //////////////////////addEventListener//////////////////////
 
