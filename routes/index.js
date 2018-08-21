@@ -10,6 +10,13 @@ router.get('/start', function(req, res){
   res.render('start');
 });
 
+router.get('/findid', function(req, res){
+  res.render('findid');
+});
+
+router.get('/findidmanager', function(req, res){
+  res.render('findidmanager');
+});
 router.get('/coupon', function(req, res){
   //resullt1은 발급쿠폰 결과
   //result2는 발급받은 스탬프
@@ -311,7 +318,7 @@ router.post('/searching/marketList', function(req, res){
   var name = req.body.name;
   // 상점 이름
   var market_name = req.body.market_name;
-  
+
 
   if(name){ // 해당하는 같은 시장, 상점 모두 가져오기
     var sql = "SELECT * FROM `manager` WHERE `sijang_name` LIKE '"+name+"' ORDER BY `like_count` DESC";
