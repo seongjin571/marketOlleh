@@ -134,7 +134,7 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 	}); // download button function
 
     // 상점 소개와 위치
-    $('.store_detail_sj > p').text(market_arr.market_introduce);
+    $('#intro_content').text(market_arr.market_introduce);
 
 	// 리뷰, 앞에 있던 정보들 초기화
 	if ($('.review_div_sj > div')) {
@@ -178,19 +178,45 @@ function marketInfoLi_event_likelist(result_rows) {
 
 	// [ main.ejs ] 의 [ id = hot_store_list_market ] 참고
 	for (var i = 0; i < result_rows.length; i++) {
-		tempString[i] = '<div class="hot_store_detail_market">';
-		tempString[i] += '<div><img src="/images/market2.jpg" width="100%" height="100px"> </div>';
-		tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
-		tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
-		tempString[i] += '</div>';
-	}
+
+		// 2개씩 div 태그로 묶어주기
+		if (i%2 == 0) {
+			if (i == 0) { // 처음 실행 ~ div 닫기 태그 X
+				tempString[i] = '<div>';
+				tempString[i] += '<div class="hot_store_detail_market">';
+				tempString[i] += '<div><img src="/images/market2.jpg" width="100%" height="100px"> </div>';
+				tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
+				tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
+				tempString[i] += '</div>';
+			} else {
+				tempString[i] = '</div><div>';
+				tempString[i] += '<div class="hot_store_detail_market">';
+				tempString[i] += '<div><img src="/images/market2.jpg" width="100%" height="100px"> </div>';
+				tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
+				tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
+				tempString[i] += '</div>';
+			} // inner if ~ else
+		} else {
+			tempString[i] = '<div class="hot_store_detail_market">';
+			tempString[i] += '<div><img src="/images/market2.jpg" width="100%" height="100px"> </div>';
+			tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
+			tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
+			tempString[i] += '</div>';     
+		} // if ~ else
+
+	} // for
 
 	// 임시 배열 text 하나로 합치고 넣기
 	for (var index in tempString) {
 		fullString += tempString[index];
 	} // for in
 
+	// last close of div tag
+	fullString += '</div>'
+
+	// 만든 동적 String tag / 배열 삽입, 태그 HTML + CSS 수정
 	hot_store_list_market.innerHTML = fullString;
+	$('#hot_store_list_market > div').css('display', 'flex');
 
 	// 인기 상점 click ~ managerInfoLi_event ~ 상점 정보 (스탬프)
 	$('.hot_store_detail_market').click(function (event) {
@@ -218,14 +244,16 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt) {
 
 
 	if(! review_arr) {
+		fullString += '<div class="review_rate">';
 		fullString += '<div class="review_star">';
 
 		for(var j=0; j< 5; j++) {
 			fullString += '<div>';
-			fullString += '<img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">';
+			fullString += '<img class="star_gray_customer" src="/images/star_gray.png" width="30px" height="30px">';
 			fullString += '</div>';
 		}
-		fullString += '</div>';
+		fullString += '</div></div>';
+		
 
 		fullString += '<div class="review_count">';
 		fullString += '<p style="font-size: 20px; color: #9c9c9c;"> 작성된 리뷰가 없습니다. </p>';
@@ -233,16 +261,16 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt) {
 	}
 
 	else {
-		//
+		fullString += '<div class="review_rate">';
 		fullString += '<div class="review_star">';
 		for(var j=0; j< avg_and_cnt.rateAvg; j++) {
 			fullString += '<div>';
-			fullString += '<img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">';
+			fullString += '<img class="star_yellow_customer" src="/images/star_yellow.png" width="30px" height="30px">';
 			fullString += '</div>';
 		}
 		for(var j=0; j< 5-avg_and_cnt.rateAvg; j++) {
 			fullString += '<div>';
-			fullString += '<img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">';
+			fullString += '<img class="star_gray_customer" src="/images/star_gray.png" width="30px" height="30px">';
 			fullString += '</div>';
 		}
 		fullString += '</div>';
@@ -250,6 +278,9 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt) {
 		fullString += '<div class="review_count">';
 		fullString += '<p class="review_count_content">' + avg_and_cnt.rateCnt + '</p>';
 		fullString += '<p style="font-size: 20px; color: #9c9c9c;"> 개의 리뷰가 있습니다 </p>';
+		fullString += '</div>';
+		fullString += '<div id="intro"><p>상점을 이용하는 고객들의 리뷰입니다.</p></div>';
+		fullString += '<div class="line"></div>';
 		fullString += '</div>';
 
 
@@ -275,6 +306,7 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt) {
 			tempString[i] += '<div class="review_content_id_sj"><b>'+review_arr[i].user_id+'</b></div>';
 			tempString[i] += '<div class="review_content_date_sj">'+review_arr[i].date+'</div></div>';
 			tempString[i] += '<p>'+review_arr[i].review+'</p>';
+			tempString[i] += '<div class="line"></div>';
 			tempString[i] += '</div>';
 		}
 
