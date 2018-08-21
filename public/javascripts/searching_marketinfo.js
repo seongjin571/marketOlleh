@@ -134,7 +134,7 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 	}); // download button function
 
     // 상점 소개와 위치
-    $('.store_detail_sj > p').text(market_arr.market_introduce);
+    $('#intro_content').text(market_arr.market_introduce);
 
 	// 리뷰, 앞에 있던 정보들 초기화
 	if ($('.review_div_sj > div')) {

@@ -194,7 +194,7 @@
 
                 <div class="stamp_infor">
                     <img src="/images/rewardM.png" width="30px" height="30px">
-                    <div class="name">보상</div>
+                    <div class="name">보상기준</div>
                     <div class="stamp_infor_content"><%= myStamps[i].stamp_reward %></div>
                 </div>
 
@@ -310,7 +310,7 @@
 
 
                 <% if(review) {%>
-                  <% for(var j=0; j<review.length; j++) { %>
+                  <% for(var j=review.length-1; j>=0; j--) { %>
                     <% if(review[j].market_name == myStamps[i].market_name && review[j].sijang_name == myStamps[i].sijang_name) { %>
 
                 <div class="review_div_sj" id='review_div_sj<%= myStamps[i].id %>'>
@@ -562,10 +562,11 @@
                   document.getElementsByClassName('gray<%= myStamps[i].id %>')[i].style.display='none';
                   document.getElementsByClassName('yellow<%= myStamps[i].id %>')[i].style.display='block';
 
-
                 }
+
                 // alert(star_index+1)
                 starRate<%= myStamps[i].id %> = star_index + 1;
+
               })
 
             /* 리뷰 작성 버튼 */
@@ -587,7 +588,18 @@
               var post_date = leadingZeros(now.getYear()-100,2)+ '-'+
                   leadingZeros(now.getMonth()+1,2)+'-' +
                   leadingZeros(now.getDate(),2);
+
               var sijang_name = '<%= myStamps[i].sijang_name %>';
+
+              if(! text) {
+                alert('내용을 입력해주세요 !');
+                return false;
+              }
+
+              if(! starRate<%= myStamps[i].id %>) {
+                starRate<%= myStamps[i].id %> = 0;
+              }
+
               var data = {
                 'market_name' : market_name,
                 'user_id' : user_id,
