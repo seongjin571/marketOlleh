@@ -50,7 +50,12 @@
     z-index: 1;
     top: 8%;
 }
-
+.name{
+    width: 23%;
+    margin-left: 3%;
+    height: 30px;
+    line-height: 30px;
+}
 
 #name_sj {
     width: 55%;
@@ -111,7 +116,22 @@
     background-color: white;
     z-index: 1;
 }
-
+#introduce,#map{
+    display: inline-flex;
+    width: 90%;
+    height: 30px;
+    margin-left: 5%;
+}
+#map{
+    margin-top: 22%;
+}
+#intro_content{
+    width: 58%;
+    margin-left: 8%;
+    font-weight: lighter;
+    color: #9c9c9c;
+    line-height: 30px;
+}
 #bottom_infor {
     width: 100%;
     height: 50px;
@@ -123,9 +143,9 @@
 }
 #bottom_infor p{
     font-size: 18px;
-    width: 25%;
+    width: 33.3%;
 }
-.stamp_menu_sj{
+#stamp_menu_sj{
     width: 100%;
     margin-top: 30px;
     /* height: 50%; */
@@ -135,7 +155,10 @@
     margin-left: 8%;
     font-weight: lighter;
     color: #9c9c9c;
-    line-height: 24px;
+    line-height: 30px;
+    border-bottom-style: solid;
+    border-bottom-color: #cecdcd;
+    border-width: 1px;
 }
 .stamp_sj{
     width: 77%;
@@ -149,12 +172,14 @@
 }
 
 #stamp_infor_sj {
-    width: 95%;
-    height: 20%;
-    font-size: 20px;
-    line-height: 32px;
-    margin-left: 5%
-
+    width: 100%;
+}
+.stamp_infor{
+    display: inline-flex;
+    width: 90%;
+    height: 30px;
+    margin-left: 5%;
+    margin-top: 20px;
 }
 
 p {
@@ -174,14 +199,18 @@ h2{
     margin-bottom: 20px;
 }
 .button_sj {
-    width: 100%;
-    height: 20%;
-
-    background-color: #fb83a5;
-    border-color: #fb83a5;
-
+    width: 80%;
+    height: 45px;
+    margin-left: 10%;
+    margin-top: 20px;
+    border-radius: 20px;
+    background: url(/images/backSample5.png);
+    background-repeat: no-repeat;
+    border-style: none;
+    background-size: 100% 100%;
     color: white;
-    font-size: 25px;
+    font-size: 18px;
+    font-weight: lighter;
 }
 
 #yesGood_Button_sj {
@@ -229,14 +258,14 @@ h2{
 .ten_sj {
     display: inline-flex;
     width: 15%;
-    height: 55px;
+    height: 41px;
     border-radius: 200px;
     margin-left: 3%;
     background-color: rgb(202, 199, 199);
     text-align: center;
     color: white;
-    font-size: 30px;
-    line-height: 55px;
+    font-size: 20px;
+    line-height: 41px;
 
 }
 
@@ -245,10 +274,7 @@ h2{
     margin-bottom: 10px;
 }
 .store_detail_sj,.store_review_sj{
-    display: none;
-    position: absolute;
-    top: 36%;
-
+ 
     margin-bottom: 12%;
 }
 .review_div_sj{
@@ -301,4 +327,12 @@ h2{
     transition-duration: 0 !important;
     position: fixed !important;
     top: 173px !important;
+}
+.store_image{
+    width: 170px;
+    height: 170px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 100px;
 }
