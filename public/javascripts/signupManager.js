@@ -55,14 +55,23 @@ function makeSearchList(searchResult, listCounter) {
 
   // 검색 결과 출력
   $('#search_result').html(fullString);
+  setStyle_search_result();
 
-  // li 태그로 제어 + 이벤트 추가하기
-  $('#search_result > li').click(function (event) {
-    var temp = $(this).text();
-    console.log(temp);
-    sijang_name.innerHTML = temp;
-    myModal.style.display = 'none';
-  }); // click function
+  // li 태그들 클릭 (focus 함수) ~ CSS 제어
+  $('#search_result > div > li').focus(function(){
+    alert("포커스 함수 실시");
+    $(this).css('background-color', 'red');
+    $(this).css('transition', '1s');  
+  });
+  // // li 태그로 제어 + 이벤트 추가하기
+  // $('#search_result > div > li').click(function (event) {
+  //   var temp = $(this).text();
+  //   console.log(temp);
+  //   // 시장 이름 출력해주는 label에 this값 삽입 
+  //   sijang_name.innerHTML = temp;
+
+  //   // myModal.style.display = 'none';
+  // }); // click function
 } // makerSearchList --> articlr태그 부분
 
 function searchingAjax(event) {
@@ -91,15 +100,23 @@ function searchingAjax(event) {
       if (result.rows.length > 0) {
         makeSearchList(result, result.rows.length);
       } else {
-        alert("검색어를 확인하세요!")
+        alert("검색어를 확인하세요!");
       }
     },
     error: function (e) {
-      alert("Error!");
+      alert("검색어를 확인하세요!");
       console.log('process error : ', e);
+      return;
     }
   });
 } // searchingAjax
+
+function setStyle_search_result() {
+  $('#search_result > div').css('width', '125px');
+  $('#search_result > div').css('word-break', 'break-all');
+  $('#search_result > div').css('margin-left', '7%');
+
+} // setStyle_search_result
 
 $("#search_value").keyup(function (event) {
   // Enter 처리

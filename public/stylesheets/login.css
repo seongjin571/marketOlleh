@@ -557,7 +557,26 @@ a{
     width: 100%;
     overflow:scroll;
     height: 42%;
+    display: flex;
 }
+
+/* modal_result 안에 동적으로 생기는 ol태그 id*/
+#search_result {
+    display: flex;
+    width: 100%;
+    list-style: none;
+    padding-left: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* ol tag ~ div/li CSS value (나중에 적용되야 할 CSS값 테스팅) */
+#search_result > div {
+    width: 125px;
+    word-break: break-all;
+    margin-left: 7%;
+}
+
 #modal_result2{
     position: fixed;
     margin-left: 5%;
@@ -570,7 +589,7 @@ a{
     width: 80%;
     height: 40px;
     padding:0;
-    margin-top: 10px;
+    margin-top: 5px;
     border:0;
     border-radius: 50px;
     color:white;
