@@ -1,4 +1,7 @@
 
+// 전역 변수
+var insert_sijang = '';
+
 // 현우가 건든 부분 ~ 모달창 제어
 
 modal_display.addEventListener('click', function(event) {
@@ -29,7 +32,7 @@ function makeSearchList(searchResult, listCounter) {
   deleteNewSearchList();
   var tempString = new Array();
   var fullString = '\0';
-  var half_listCounter = parseInt(listCounter/2); 
+  var half_listCounter = parseInt(listCounter/2)+1; 
 
   for (var i = 0; i < parseInt(listCounter); i++) {
     // index.js에서 DB 두개 동시에 불러와서 이부분도 수정
@@ -53,25 +56,10 @@ function makeSearchList(searchResult, listCounter) {
 
   fullString += '</div>'
 
-  // 검색 결과 출력
+  // 검색 결과 출력 + CSS 후첨 사항 설정
   $('#search_result').html(fullString);
   setStyle_search_result();
 
-  // li 태그들 클릭 (focus 함수) ~ CSS 제어
-  $('#search_result > div > li').focus(function(){
-    alert("포커스 함수 실시");
-    $(this).css('background-color', 'red');
-    $(this).css('transition', '1s');  
-  });
-  // // li 태그로 제어 + 이벤트 추가하기
-  // $('#search_result > div > li').click(function (event) {
-  //   var temp = $(this).text();
-  //   console.log(temp);
-  //   // 시장 이름 출력해주는 label에 this값 삽입 
-  //   sijang_name.innerHTML = temp;
-
-  //   // myModal.style.display = 'none';
-  // }); // click function
 } // makerSearchList --> articlr태그 부분
 
 function searchingAjax(event) {
@@ -112,11 +100,26 @@ function searchingAjax(event) {
 } // searchingAjax
 
 function setStyle_search_result() {
+  
   $('#search_result > div').css('width', '125px');
   $('#search_result > div').css('word-break', 'break-all');
   $('#search_result > div').css('margin-left', '7%');
 
+  // li 태그들 클릭 (focus / blur 함수) ~ CSS 제어
+  $('#search_result > div > li').click(function(){
+    alert("focus 함수 실시");
+    $('#search_result > div > li').css('background-color', 'white');
+    $(this).css('background-color', 'red');
+    $(this).css('transition', '1s');
+    insert_sijang = $(this).text();
+  });
+  
 } // setStyle_search_result
+
+function click_modalbutton() {
+  sijang_name.innerHTML = insert_sijang; // 전역변수 이용
+  myModal.style.display = 'none';
+}
 
 $("#search_value").keyup(function (event) {
   // Enter 처리
@@ -128,3 +131,4 @@ $("#search_value").keyup(function (event) {
 //──────────────────────addEventListener──────────────────────//
 
 searchingButton.addEventListener('click', searchingAjax, false);
+modalbutton.addEventListener('click', click_modalbutton, false);
