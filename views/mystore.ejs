@@ -37,7 +37,7 @@
                 <div id="good">
                     <img class="top_image" id="noGood_Button_sj" src="/images/nolikeM.png" width="30px" height="30px">
                     <img class="top_image" id="yesGood_Button_sj" src="/images/likeM.png" width="30px" height="30px">
-                    <p class="top_font" id="goodCount_sj">215</p>
+                    <p class="top_font" id="goodCount_sj"><%= result1[0].like_count %></p>
                 </div>
                 <div id="kakao">
                     <img class="top_image" src="/images/kakao_bic.png" width="30px" height="30px">
@@ -88,6 +88,7 @@
 
 
                     <% if(review) {%>
+                        <div class="review_rate">
                       <div class="review_star">
                         <% for(var k=0; k<avgRows.rateAvg; k++) { %>
                           <div>
@@ -101,8 +102,17 @@
                           </div>
                         <% } %>
                       </div>
-                      <p style="font-size: 20px;"><%= avgRows.rateCnt %></p>
+                      <div class="review_count">
+                      <p class="review_count_content" style="font-size: 20px;"><%= avgRows.rateCnt %></p>
                       <p style="font-size: 20px; color: #9c9c9c;">개의 리뷰가 있습니다.</p>
+                    </div>
+                    <div id="intro">
+                            <p>
+                               <%= result1[0].market_name %> 상점을 이용하는 고객들의 리뷰입니다.
+                            </p>
+                          </div>
+                </div>
+                    <div class="line"></div>
                         <% for(var j=0; j<review.length; j++) { %>
                             <% if(review[j].market_name == result1[0].market_name && review[j].sijang_name == result1[0].sijang_name) {%>
                                 <div class="review_div_sj">
@@ -122,9 +132,7 @@
 
                                     <div class="review_content_sj">
                                         <div class="review_content_id_sj">
-                                            <b>
                                                 <%= review[j].user_id %>
-                                            </b>
                                         </div>
                                         <div class="review_content_date_sj">
                                             <%= review[j].date %>
@@ -133,6 +141,7 @@
                                     <p>
                                         <%= review[j].review %>
                                     </p>
+                                    <div class="line"></div>
                                 </div>
                                 <% } %>
                                     <% } %>
