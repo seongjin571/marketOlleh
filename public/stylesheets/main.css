@@ -179,7 +179,7 @@ label{
     color:black;
 }
 
-.swiper-slide:nth-child(4n-3){
+.swiper1:nth-child(4n-3){
     width: 70%;
     height: 85%;
     margin-top: 3.5%;
@@ -189,7 +189,7 @@ label{
     border-radius: 5px;
     color: white;
 }
-.swiper-slide:nth-child(4n-2){
+.swiper1:nth-child(4n-2){
     width: 70%;
     height: 85%;
     margin-top: 3.5%;
@@ -199,7 +199,7 @@ label{
     border-radius: 5px;
     color: white;
 }
-.swiper-slide:nth-child(4n-1){
+.swiper1:nth-child(4n-1){
     width: 70%;
     height: 85%;
     margin-top: 3.5%;
@@ -209,7 +209,7 @@ label{
     border-radius: 5px;
     color: white;
 }
-.swiper-slide:nth-child(4n){
+.swiper1:nth-child(4n){
     width: 70%;
     height: 85%;
     margin-top: 3.5%;
@@ -278,14 +278,14 @@ label{
 #hot_store{
     width: 100%;
     /* margin: 0 auto; */
-    height: 2200px;
+    height: 2050px;
     margin-top:10px;
     margin-bottom: 80px;
 }
 #hot_store_market{
     width: 100%;
     /* margin: 0 auto; */
-    height: 1100px;
+    height: 1025px;
     margin-top:9%;
     margin-bottom: 80px;
 }
@@ -325,7 +325,7 @@ label{
 }
 .hot_store_detail,.hot_store_detail_market{
     width: 45%;
-    height: 210px;
+    height: 200px;
     /* border-style: s; */
      border-radius: 5px;
     margin-left: 3.3%;

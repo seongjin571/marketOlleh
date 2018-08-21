@@ -77,8 +77,14 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
     $('#goodCount_sj').text(market_arr.like_count);
 
     // 스탬프 관련 내용
-    var temp = '<p>기준 : '+market_arr.market_promotion+'</p>'
-    temp += '<p>보상 : '+market_arr.stamp_reward+'</p>'
+	var temp ='<div class="stamp_infor">'
+	temp += '<img src="/images/standard.png" width="30px" height="30px">'
+	temp +='<div class="name">적립기준</div>'
+	temp +='<div class="stamp_infor_content">'+market_arr.market_promotion+'</div></div>'
+	temp +='<div class="stamp_infor">'
+	temp += '<img src="/images/rewardM.png" width="30px" height="30px">'
+	temp +='<div class="name">보상</div>'
+	temp +='<div class="stamp_infor_content">'+market_arr.stamp_reward+'</div></div>'
     $('#stamp_infor_sj').html(temp);
 
 
