@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
+    <title></title>
+  </head>
+  <body>
+    <input type='text' id="find_user_id_to_password"  placeholder='비밀번호' />
+    <input type='text' id="find_user_id_to_email"  placeholder='이메일' />
+    <button id="find_user_id_bt">찾기</button>
+    <script>
+      $('#find_user_id_bt').click(function(){
+        var password = $('#find_user_id_to_password').val();
+        var email = $('#find_user_id_to_email').val();
+        var data = {
+          'password' : password,
+          'email' : email
+        }
+        console.log(data);
+      })
+    </script>
+  </body>
+</html>
