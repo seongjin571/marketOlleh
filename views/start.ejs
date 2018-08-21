@@ -433,6 +433,68 @@
         $('#loginManager').fadeIn(300)
     })
 
+
+
+    var pwd1,pwd2,pwd3,pwd4=0;
+    $('#userpwd').change(function(){
+      pwd1=$(this).val();
+      
+      if( $('#userpwdcheck').val() ){
+        if(pwd1==pwd2){
+            alert('ok')
+        }
+        else{
+                alert('비밀번호가 다릅니다.')
+                $(this).val('');
+                $('#userpwdcheck').val('');
+            }
+      }
+    })
+     
+    $('#userpwdcheck').change(function(){
+        pwd2=$(this).val();
+        if( $('#userpwd').val() ){
+        if(pwd1==pwd2){
+            alert('ok')
+        }
+        else{
+                alert('비밀번호가 다릅니다.')
+                $(this).val('');
+                $('#userpwd').val('');
+            }
+      }
+        })
+
+         $('#password_jh').change(function(){
+      pwd3=$(this).val();
+      
+      if( $('#password_jh_check').val() ){
+        if(pwd3==pwd4){
+            alert('ok')
+        }
+        else{
+                alert('비밀번호가 다릅니다.')
+                $(this).val('');
+                $('#password_jh_check').val('');
+            }
+      }
+    })
+     
+    $('#password_jh_check').change(function(){
+        pwd4=$(this).val();
+        if( $('#password_jh').val() ){
+        if(pwd3==pwd4){
+            alert('ok')
+        }
+        else{
+                alert('비밀번호가 다릅니다.')
+                $(this).val('');
+                $('#password_jh').val('');
+            }
+      }
+        })
+    
+
 </script>
 
 </html>
