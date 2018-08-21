@@ -168,6 +168,56 @@ router.post('/coupon_password/:id', function(req, res) {
 });
 
 
+//아이디찾기
+router.post('/findid', function(req, res) {
+  var password = req.body.password;
+  var email = req.body.email;
+  var sql = 'select * from `user` where `password`=? and `email`=?;';
+  conn.query(sql, [password, email], function(err, results) {
+    if(err) {
+      console.log(err);
+      console.log('아이디찾기 에러');
+    }
+    else if(results.length){
+      res.send({
+        result : 'success',
+        results: results
+      });
+    }else{
+      res.send({
+        result : 'fail',
+        results : undefined
+      });
+    }
+  });
+});
+
+
+
+router.post('/findidmanager', function(req, res) {
+  var password = req.body.password;
+  var sijang_name = req.body.sijang_name;
+  var market_name = req.body.market_name;
+  var sql = 'select * from `manager` where `password`=? and `sijang_name`=? and `market_name`=?;';
+  conn.query(sql, [password, sijang_name, market_name], function(err, results) {
+    if(err) {
+      console.log(err);
+      console.log('아이디찾기 에러');
+    }
+    else if(results.length){
+      res.send({
+        result : 'success',
+        results: results
+      });
+    }else{
+      res.send({
+        result : 'fail',
+        results : undefined
+      });
+    }
+  });
+});
+
 /* coupon_customer 테이블에서 데이터 삭제 */
 router.post('/del_coupon_customer/:id', function(req, res) {
   var sql = 'delete from `coupon_customer` where `id`=? ;';
