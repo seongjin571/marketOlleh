@@ -10,6 +10,13 @@ router.get('/start', function(req, res){
   res.render('start');
 });
 
+router.get('/findid', function(req, res){
+  res.render('findid');
+});
+
+router.get('/findidmanager', function(req, res){
+  res.render('findidmanager');
+});
 router.get('/coupon', function(req, res){
   //resullt1은 발급쿠폰 결과
   //result2는 발급받은 스탬프
@@ -161,6 +168,56 @@ router.post('/coupon_password/:id', function(req, res) {
 });
 
 
+//아이디찾기
+router.post('/findid', function(req, res) {
+  var password = req.body.password;
+  var email = req.body.email;
+  var sql = 'select * from `user` where `password`=? and `email`=?;';
+  conn.query(sql, [password, email], function(err, results) {
+    if(err) {
+      console.log(err);
+      console.log('아이디찾기 에러');
+    }
+    else if(results.length){
+      res.send({
+        result : 'success',
+        results: results
+      });
+    }else{
+      res.send({
+        result : 'fail',
+        results : undefined
+      });
+    }
+  });
+});
+
+
+
+router.post('/findidmanager', function(req, res) {
+  var password = req.body.password;
+  var sijang_name = req.body.sijang_name;
+  var market_name = req.body.market_name;
+  var sql = 'select * from `manager` where `password`=? and `sijang_name`=? and `market_name`=?;';
+  conn.query(sql, [password, sijang_name, market_name], function(err, results) {
+    if(err) {
+      console.log(err);
+      console.log('아이디찾기 에러');
+    }
+    else if(results.length){
+      res.send({
+        result : 'success',
+        results: results
+      });
+    }else{
+      res.send({
+        result : 'fail',
+        results : undefined
+      });
+    }
+  });
+});
+
 /* coupon_customer 테이블에서 데이터 삭제 */
 router.post('/del_coupon_customer/:id', function(req, res) {
   var sql = 'delete from `coupon_customer` where `id`=? ;';
@@ -307,13 +364,22 @@ router.post('/searching/gooname', function(req, res){
 // 검색후 리스트 클릭 ~ 인기 상점 뿌려주기 위한 라우팅
 router.post('/searching/marketList', function(req, res){
 
+  // 시장 이름
   var name = req.body.name;
+  // 상점 이름
+  var market_name = req.body.market_name;
 
-  if(name){ // NewGoo ~ table에서 구 선택시 오는 부분
-    var sql = "SELECT * FROM `manager` WHERE `sijang_name` LIKE '"+name+"'";
+
+  if(name){ // 해당하는 같은 시장, 상점 모두 가져오기
+    var sql = "SELECT * FROM `manager` WHERE `sijang_name` LIKE '"+name+"' ORDER BY `like_count` DESC";
     conn.query(sql, function(error, rows, fileds) {
       return res.send({ rows: rows });
     });// conn.query
+  } else if(market_name) { // 해당하는 시장은 유일
+    var sql = "SELECT * FROM `manager` WHERE `market_name` LIKE '"+market_name+"'";
+    conn.query(sql, function(error, rows, fileds) {
+      return res.send({ rows: rows });
+    });
   }
 
 }); // post /searching/marketList
@@ -554,7 +620,7 @@ router.post('/myStamp', function(req, res) {
   var market_name = req.body.market_name;
 
   if(market_name){ // NewGoo ~ table에서 구 선택시 오는 부분
-    var sql = "SELECT * FROM `review` WHERE `market_name` LIKE '"+market_name+"'";
+    var sql = "SELECT * FROM `review` WHERE `market_name` LIKE '"+market_name+"' ORDER BY `date` DESC";
     conn.query(sql, function(error, rows, fileds) {
       return res.send({ rows: rows });
     });// conn.query

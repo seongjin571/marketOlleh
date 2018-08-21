@@ -21,6 +21,21 @@
 </head>
 
 <body>
+  <script>
+    window.onload = function() {
+      if(localStorage.getItem('reviewTab')) {
+        var review_tab = 'store_review_sj' + localStorage.getItem('reviewTab');
+        var stamp_detail = 'selected_stamp' + localStorage.getItem('reviewTab');
+        var back = 'back_div' + localStorage.getItem('reviewTab');
+        console.log(review_tab);
+        document.getElementById('myStamp').style.display = 'none';
+        document.getElementsByClassName(back)[0].style.display = 'block';
+        document.getElementById(stamp_detail).style.display = 'block';
+        document.getElementById(review_tab).style.display = 'block';
+        localStorage.clear();
+      }
+    }
+  </script>
 
   <div id="myStamp">
     <!-- <label>내 스탬프</label> -->
@@ -593,6 +608,7 @@
                   if (result['result']=='success'){
                     // console.log(result);
                     alert('등록완료');
+                    localStorage.setItem('reviewTab', '<%= myStamps[i].id %>');
                     location.reload();
                   }
                   else{

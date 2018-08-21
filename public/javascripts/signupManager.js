@@ -29,19 +29,34 @@ function makeSearchList(searchResult, listCounter) {
   deleteNewSearchList();
   var tempString = new Array();
   var fullString = '\0';
+  var half_listCounter = parseInt(listCounter/2); 
 
   for (var i = 0; i < parseInt(listCounter); i++) {
     // index.js에서 DB 두개 동시에 불러와서 이부분도 수정
-    if (searchResult.rows[i].market_name){ 
+    if (searchResult.rows[i].market_name){ // manager DB의 market_name는 pass만
       continue;
     } else {
-      tempString[i] = '<li>' + searchResult.rows[i].name + '</li>'
+
+      if (i%half_listCounter == 0) {
+        if (i == 0) { // 처음 실행 ~ div 닫기 태그 X
+          tempString[i] = '<div><li>' + searchResult.rows[i].name + '</li>'  
+        } else {
+          tempString[i] = '</div><div><li>' + searchResult.rows[i].name + '</li>'
+        } // inner if ~ else
+      } else {
+        tempString[i] = '<li>' + searchResult.rows[i].name + '</li>'       
+      }
+
       fullString += tempString[i];
-    }
+    } // if ~ else : 실제 핵심 구간
   } // for    
 
-  // 검색 결과 li 태그로 제어 + 이벤트 추가하기
+  fullString += '</div>'
+
+  // 검색 결과 출력
   $('#search_result').html(fullString);
+
+  // li 태그로 제어 + 이벤트 추가하기
   $('#search_result > li').click(function (event) {
     var temp = $(this).text();
     console.log(temp);
@@ -51,6 +66,12 @@ function makeSearchList(searchResult, listCounter) {
 } // makerSearchList --> articlr태그 부분
 
 function searchingAjax(event) {
+
+  // search_value 값 공백일때 서버 에러 처리
+  if(!search_value.value){
+    alert("검색어를 확인하세요!")
+    return;
+  } 
 
   // 전달하려는 json 변수
   var params = {

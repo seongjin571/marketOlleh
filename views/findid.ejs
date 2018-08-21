@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
+    <title></title>
+  </head>
+  <body>
+    <input type='text' id="find_user_id_to_password"  placeholder='비밀번호' />
+    <input type='text' id="find_user_id_to_email"  placeholder='이메일' />
+    <button id="find_user_id_bt">찾기</button>
+    <div class="fdd"></div>
+    <script>
+      $('#find_user_id_bt').click(function(){
+        var password = $('#find_user_id_to_password').val();
+        var email = $('#find_user_id_to_email').val();
+        var data = {
+          'password' : password,
+          'email' : email
+        }
+        console.log(data);
+        $.ajax({
+            type: "POST",
+            url: "/findid",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            cache: false,
+            datatype: "json",
+            data: data,
+            success: function (result) {
+                if (result['result'] == 'success') {
+                    alert("아이디찾기완료");
+                    var findid_div = document.createElement("div");
+                    findid_div.setAttribute("id","findid_result_div");
+
+                    var html = '<div>'+result['results'][0].user_id+'</div>';
+                    findid_div.innerHTML=html;
+                    document.getElementsByClassName('fdd')[0].after(findid_div)
+                }
+                else if(result['result']=='fail'){
+                    alert('아이디가 없습');
+
+                }else {
+                  alert('실패1');
+                  // location.reload();
+                }
+            },
+            error: function (error) {
+                alert('실패2');
+            }
+        });
+      })
+    </script>
+  </body>
+</html>
