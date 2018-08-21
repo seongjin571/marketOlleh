@@ -622,7 +622,17 @@ router.post('/myStamp', function(req, res) {
   if(market_name){ // NewGoo ~ table에서 구 선택시 오는 부분
     var sql = "SELECT * FROM `review` WHERE `market_name` LIKE '"+market_name+"' ORDER BY `date` DESC";
     conn.query(sql, function(error, rows, fileds) {
-      return res.send({ rows: rows });
+      var avgSql = 'select round(avg(rate),0) as rateAvg, count(*) as rateCnt from review where market_name=? group by sijang_name, market_name ;';
+      conn.query(avgSql, [market_name], function(avgErr, avgRows) {
+        if(avgErr) { console.log(avgErr); }
+        else {
+          console.log(avgRows);
+          return res.send({
+            rows: rows,
+            rateAvgAndCnt: avgRows[0],
+          });
+        }
+      });
     });// conn.query
   }
 
