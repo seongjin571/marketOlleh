@@ -244,14 +244,16 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt) {
 
 
 	if(! review_arr) {
+		fullString += '<div class="review_rate">';
 		fullString += '<div class="review_star">';
 
 		for(var j=0; j< 5; j++) {
 			fullString += '<div>';
-			fullString += '<img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">';
+			fullString += '<img class="star_gray_customer" src="/images/star_gray.png" width="30px" height="30px">';
 			fullString += '</div>';
 		}
-		fullString += '</div>';
+		fullString += '</div></div>';
+		
 
 		fullString += '<div class="review_count">';
 		fullString += '<p style="font-size: 20px; color: #9c9c9c;"> 작성된 리뷰가 없습니다. </p>';
@@ -259,16 +261,16 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt) {
 	}
 
 	else {
-		//
+		fullString += '<div class="review_rate">';
 		fullString += '<div class="review_star">';
 		for(var j=0; j< avg_and_cnt.rateAvg; j++) {
 			fullString += '<div>';
-			fullString += '<img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">';
+			fullString += '<img class="star_yellow_customer" src="/images/star_yellow.png" width="30px" height="30px">';
 			fullString += '</div>';
 		}
 		for(var j=0; j< 5-avg_and_cnt.rateAvg; j++) {
 			fullString += '<div>';
-			fullString += '<img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">';
+			fullString += '<img class="star_gray_customer" src="/images/star_gray.png" width="30px" height="30px">';
 			fullString += '</div>';
 		}
 		fullString += '</div>';
@@ -276,6 +278,9 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt) {
 		fullString += '<div class="review_count">';
 		fullString += '<p class="review_count_content">' + avg_and_cnt.rateCnt + '</p>';
 		fullString += '<p style="font-size: 20px; color: #9c9c9c;"> 개의 리뷰가 있습니다 </p>';
+		fullString += '</div>';
+		fullString += '<div id="intro"><p>상점을 이용하는 고객들의 리뷰입니다.</p></div>';
+		fullString += '<div class="line"></div>';
 		fullString += '</div>';
 
 
@@ -301,6 +306,7 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt) {
 			tempString[i] += '<div class="review_content_id_sj"><b>'+review_arr[i].user_id+'</b></div>';
 			tempString[i] += '<div class="review_content_date_sj">'+review_arr[i].date+'</div></div>';
 			tempString[i] += '<p>'+review_arr[i].review+'</p>';
+			tempString[i] += '<div class="line"></div>';
 			tempString[i] += '</div>';
 		}
 
