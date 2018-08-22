@@ -8,11 +8,7 @@ body, html {
     background-color: white;
 }
 
-#wrapper{
-    width: 100%;
-    height: 100%;
-    position: absolute6\.;
-}
+
 #start,#all_body {
     width: 100%;
     height: 100%;
@@ -402,6 +398,9 @@ a{
     font-family: initial !important;
 }
 #password_jh_check{
+    font-family: initial !important;
+}
+#password_jh{
     font-family: initial !important;
 }
 #userpwdcheck{
