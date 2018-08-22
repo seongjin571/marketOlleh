@@ -198,8 +198,8 @@
         </div>
         <form class='signupform1'>
             <div class="signupuser_input">
-                <div class="icon_div_2">
-                    <img id="icon1" src="/images/nameicon.png">
+                <div class="check_div">
+                    <img id="check1" src="/images/check.png" width="35px" height="35px">
                 </div>
                 <div class="icon_div">
                     <img id="icon1" src="/images/nameicon.png">
@@ -207,8 +207,8 @@
                 <input class="signuptext" type='text' id='username' name='username' placeholder='이름' />
             </div>
             <div class="signupuser_input">
-                <div class="icon_div_2">
-                    <img id="icon2" src="/images/idicon.png">
+                <div class="check_div">
+                    <img id="check2" src="/images/check.png" width="35px" height="35px">
                 </div>
                 <div class="icon_div">
                     <img id="icon2" src="/images/idicon.png">
@@ -216,8 +216,8 @@
                 <input class="signuptext" type='text' id='userid' name='userid' placeholder='아이디' />
             </div>
             <div class="signupuser_input">
-                <div class="icon_div_2">
-                    <img id="icon3" src="/images/passwordicon.png">
+                <div class="check_div">
+                    <img id="check3" src="/images/check.png" width="35px" height="35px">
                 </div>
                 <div class="icon_div">
                     <img id="icon3" src="/images/passwordicon.png">
@@ -225,20 +225,20 @@
                 <input class="signuptext" type='password' id='userpwd' name='userpwd' placeholder='비밀번호' />
             </div>
             <div class="signupuser_input">
-                <div class="icon_div_2">
-                    <img id="icon3" src="/images/passwordicon.png">
+                <div class="check_div">
+                    <img id="check4" src="/images/check.png" width="35px" height="35px">
                 </div>
                 <div class="icon_div">
-                    <img id="icon3" src="/images/passwordicon.png">
+                    <img id="icon4" src="/images/passwordicon.png">
                 </div>
                 <input class="signuptext" type='password' id='userpwdcheck' name='userpwd' placeholder='비밀번호확인' />
             </div>
             <div class="signupuser_input">
-                <div class="icon_div_2">
-                    <img id="icon3" src="/images/passwordicon.png">
+                <div class="check_div">
+                    <img id="check5" src="/images/check.png" width="35px" height="35px">
                 </div>
                 <div class="icon_div">
-                    <img id="icon3" src="/images/passwordicon.png">
+                    <img id="icon5" src="/images/passwordicon.png">
                 </div>
                 <div>
                     <input class="signuptext" type='text' id='e_mail' name='e_mail' placeholder='이메일' />
@@ -251,7 +251,14 @@
     </div>
     <script>
         $('.signupform1').submit(function (e) {
+            var signcount=0
             e.preventDefault();
+            for(var i=0; i<5; i++){
+                if($('.check_div').eq(i).is(':visible')){
+                    signcount+=1;
+                }
+            }
+            if(signcount==5){
             var data = {
                 userid: $('#userid').val(),
                 username: $('#username').val(),
@@ -280,6 +287,10 @@
                     alert('이상한부분');
                 }
             });
+        }
+        else{
+            alert('오류ㄴ')
+        }
         });
     </script>
     </div>
@@ -449,18 +460,98 @@
     setTimeout(function () {
         $('#intro_image_div').fadeOut('500');
     }, 2000);
-</script>
-<!--start script 끝-->
-<!--loginuser script 시작-->
-<!--loginuser script 끝-->
-<!--loginmanager script 시작-->
-<!--loginmanager script 끝-->
+    var name2=/^[가-힣]+$/;
+    var id = /^[a-z0-9_]{6,15}$/;
+    var password = /^[a-zA-Z0-9]{6,15}$/;
+    var email = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
-<!--signupuser script 시작-->
-<!--signupuser script 끝-->
-<!--signupManager script 시작-->
-<!--signupManager script 끝-->
-<script>
+    $('.signuptext').eq(0).change(function(){
+        var name_check=$(this).val();
+        var true_or_false = name2.test(name_check);
+        if(true_or_false) {
+            $('.check_div').eq(0).css('visibility','visible');
+        }
+        else{
+            $('.check_div').eq(0).css('visibility','hidden');
+            alert('이름을 확인해 주세요.');
+
+        }
+    })
+    $('.signuptext').eq(4).change(function(){
+        var email_check=$(this).val();
+        var true_or_false = email.test(email_check);
+        if(true_or_false) {
+            $('.check_div').eq(4).css('visibility','visible');
+        }
+        else{
+            $('.check_div').eq(4).css('visibility','hidden');
+            alert('이메일을 확인해 주세요.');
+            $(this).val('');
+        }
+    })
+    $('.signuptext').eq(1).change(function(){
+        var id_check=$(this).val();
+        var true_or_false = id.test(id_check);
+        if(true_or_false) {
+            $('.check_div').eq(1).css('visibility','visible');
+        }
+        else{
+            $('.check_div').eq(1).css('visibility','hidden');
+            alert('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
+        }
+    })
+
+     var pwd1, pwd2, pwd3, pwd4 = 0;
+    $('#userpwd').change(function () {
+        pwd1 = $(this).val();
+        var true_or_false = password.test(pwd1);
+        if(true_or_false){
+        if ($('#userpwdcheck').val()) {
+            if (pwd1 == pwd2) {
+                $('.check_div').eq(2).css('visibility','visible');
+                $('.check_div').eq(3).css('visibility','visible');
+            }
+            else {
+                alert('비밀번호가 다릅니다.')
+                $(this).val('');
+                $('#userpwdcheck').val('');
+                $('.check_div').eq(2).css('visibility','hidden');
+                $('.check_div').eq(3).css('visibility','hidden');
+            }
+        }
+    }
+    else{
+        alert('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
+
+        $(this).val('');
+    }
+    })
+
+    $('#userpwdcheck').change(function () {
+        pwd2 = $(this).val();
+        var true_or_false = password.test(pwd2);
+        if(true_or_false){
+        if ($('#userpwd').val()) {
+            if (pwd1 == pwd2) {
+                $('.check_div').eq(2).css('visibility','visible');
+                $('.check_div').eq(3).css('visibility','visible');
+            }
+            else {
+                alert('비밀번호가 다릅니다.')
+                $(this).val('');
+                $('#userpwd').val('');
+                $('.check_div').eq(2).css('visibility','hidden');
+                $('.check_div').eq(3).css('visibility','hidden');
+            }
+        }
+    }
+    else{
+        alert('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
+        $(this).val('');
+    }
+    })
+
+
     $('#user_login').click(function () {
         $('#start').fadeOut(300)
         $('#loginuser').fadeIn(300)
@@ -510,35 +601,7 @@
 
 
 
-    var pwd1, pwd2, pwd3, pwd4 = 0;
-    $('#userpwd').change(function () {
-        pwd1 = $(this).val();
-
-        if ($('#userpwdcheck').val()) {
-            if (pwd1 == pwd2) {
-                alert('ok')
-            }
-            else {
-                alert('비밀번호가 다릅니다.')
-                $(this).val('');
-                $('#userpwdcheck').val('');
-            }
-        }
-    })
-
-    $('#userpwdcheck').change(function () {
-        pwd2 = $(this).val();
-        if ($('#userpwd').val()) {
-            if (pwd1 == pwd2) {
-                alert('ok')
-            }
-            else {
-                alert('비밀번호가 다릅니다.')
-                $(this).val('');
-                $('#userpwd').val('');
-            }
-        }
-    })
+   
 
     $('#password_jh').change(function () {
         pwd3 = $(this).val();
