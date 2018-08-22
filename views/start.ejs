@@ -243,7 +243,8 @@
             var data = {
                 userid: $('#userid').val(),
                 username: $('#username').val(),
-                userpwd: $('#userpwd').val()
+                userpwd: $('#userpwd').val(),
+                email : $('#e_mail').val()
             }
             console.log(data);
             $.ajax({
@@ -264,7 +265,7 @@
                     }
                 },
                 error: function (error) {
-                    alert('가입 실패');
+                    alert('이상한부분');
                 }
             });
         });
