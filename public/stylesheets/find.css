@@ -1,0 +1,19 @@
+@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family: 'NanumSquare',sans-serif;}
+body, html {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+}
+
+#back_loginuser{
+    width: 30px;
+    height: 30px;
+    background: white;
+    margin-top: 10px;
+    margin-left: 5px;
+    position: fixed;
+    z-index: 1;
+}
