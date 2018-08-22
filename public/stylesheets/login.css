@@ -660,3 +660,10 @@ a{
     position: fixed;
     z-index: 1;
 }
+.icon_div_2{
+    visibility:  hidden;
+    width: 35px;
+    height: 35px;
+    float: left;
+    padding-top: 10px;
+  }
