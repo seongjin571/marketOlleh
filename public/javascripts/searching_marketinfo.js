@@ -74,7 +74,8 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
     $('#market_infor').css('display', 'none');
     console.log(market_arr);
 
-    // manager DB ~ 상점 DB 내용 뿌려주기
+    // manager DB ~ 상점 DB 내용 뿌려주기 
+    // 시장 이름, 상점 이름, 좋아요 카운트
     $('#store_name_sj').text(market_arr.market_name);
     $('#market_name_sj').text(market_arr.sijang_name);
     $('#goodCount_sj').text(market_arr.like_count);
@@ -326,3 +327,32 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt) {
     $('.store_review_sj').html(fullString);
 
 } // managerInfoLi_event_review
+
+// function likeCount_function(argument) {
+
+//     $('#store_name_sj').text(market_arr.market_name);
+//     $('#market_name_sj').text(market_arr.sijang_name);
+
+//     // 리뷰 ajax
+// 	$.ajax({
+// 		url: "/myStamp",
+// 		dataType: 'json',
+// 		type: 'POST',
+// 		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+// 		data: { "market_name": market_arr.market_name },
+// 		success: function (result) {
+// 			console.log(result);
+// 			if (result.rows.length > 0) {
+// 				managerInfoLi_event_review(result.rows, result.rateAvgAndCnt);
+// 			} else {
+// 				console.log("현재 해당하는 시장에 등록된 리뷰가 없음");
+// 				managerInfoLi_event_review(0, 0);
+// 			}
+// 		},
+// 		error: function (e) {
+// 			alert("Error!");
+// 			console.log('process error : ', e);
+// 		}
+// 	}); // ajax
+
+// }

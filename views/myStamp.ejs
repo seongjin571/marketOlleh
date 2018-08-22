@@ -415,6 +415,8 @@
             <script>
             var number1 = "";
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
+              // 스크롤 조절 
+              window.scrollTo(0, 0);
               $('#selected_stamp<%= myStamps[i].id %>').css('display', 'block');
               $('.back_div<%= myStamps[i].id %>').css('display', 'block');
               $('#myStamp').css('display', 'none');
