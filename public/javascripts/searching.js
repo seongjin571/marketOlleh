@@ -151,7 +151,7 @@ function makeSearchList(searchResult, listCounter) {
 	var isManager = false;
 	var half_listCounter = parseInt(listCounter/2)+1;
 	if (listCounter <= 2) {
-		half_listCounter = parseInt(listCounter/2);
+		half_listCounter = 1;
 	}
 
 	// 시장, 상점 통합 검색

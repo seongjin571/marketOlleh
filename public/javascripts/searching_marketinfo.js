@@ -66,6 +66,9 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 
 function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 
+	// 스크롤 조절 
+	window.scrollTo(0, 0);
+		
 	// 시장 정보 vs 상인 정보 
     $('#store_infor').css('display', 'block');
     $('#market_infor').css('display', 'none');
