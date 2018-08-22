@@ -1,8 +1,8 @@
 // 만들어 진 후 CSS 동적 제어
 function NewGoomapLi_css() {
 	$("#market_infor > article").css('display', 'block');
-	$(".market_infoText_li").css('margin', '10px');
-	$(".market_infoText_li > img").css('width', '100%');
+	// $(".market_infoText_li").css('margin', '10px');
+	$(".market_main_image >img").css('width', '90%').css('margin-left','5%');
 }
 
 function marketInfoLi_event(market_arr) { // market_arr는 market DB값
@@ -13,19 +13,19 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 	var tempString = new Array();
 	var fullString = '';
 
-	tempString[0] = '<div class="market_infoText_li"> <h2>'+market_arr.name+'</h2></div>';
+	tempString[0] = '<div> <h3>'+market_arr.name+'</h3></div>';
 		// 시장 img URL 존재 하면 표시
 		if (market_arr.imgurl) {
-			tempString[1] = '<div class="market_infoText_li" id="market_image"> <img src="'+market_arr.imgurl+'"></div>';
+			tempString[1] = '<div  class="market_main_image"> <img src="'+market_arr.imgurl+'"></div><div class="line"></div>';
 		} else { // 존재 안하면 디폴트 이미지
-			tempString[1] = '<div class="market_infoText_li" id="market_image"> <img src="/images/market_default.jpg"></div>';
+			tempString[1] = '<div class="market_main_image"> <img src="/images/market_default.jpg"></div><div class="line"></div>';
 		}
-	tempString[2] = '<div class="market_infoText_li"> <p>시장 유형 : '+market_arr.shape+','+market_arr.dealing+'</p></div>';
+	tempString[2] = '<div class="market_infoText_li"><img src="/images/type.png" width="30px" height="30px"><p class="naming">유형</p><div class="content_div">'+market_arr.shape+','+market_arr.dealing+'</div></div>';
 	// tempString[4] = '<div class="market_infoText_li"> <a href='+market_arr.web+'>시장 링크</a></div>';
-	tempString[3] = '<div class="market_infoText_li"> <p>시장 주소 : '+market_arr.oldaddress+'</p></div>';
-	tempString[4] = '<div class="market_infoText_li"> <p>시장 전화번호 : '+market_arr.callnum+'</p></div>';
+	tempString[3] = '<div class="market_infoText_li"><img src="/images/type.png" width="30px" height="30px"><p class="naming">주소</p><div class="content_div">'+market_arr.oldaddress+'</div></div>';
+	tempString[4] = '<div class="market_infoText_li"><img src="/images/phone.png" width="30px" height="30px"><p class="naming">전화번호</p><div class="content_div">'+market_arr.callnum+'</div></div>';
 	// tempString[7] = '<div class="market_infoText_li"> 시장 대표 품목 : '+market_arr.representative+'</div>';
-	tempString[5] = '<div class="market_infoText_li"> <p>시장 교통편 : '+market_arr.nearinfo+'</p></div>';
+	tempString[5] = '<div class="market_infoText_li"><img src="/images/traffic.png" width="30px" height="30px"><p class="naming">교통편</p><div class="content_div">'+market_arr.nearinfo+'</div></div><div class="line"></div>';
 
 	// 임시 배열 text 하나로 합치고 넣기
 	for (var index in tempString) {
