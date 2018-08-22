@@ -17,6 +17,13 @@ router.get('/findid', function(req, res){
 router.get('/findidmanager', function(req, res){
   res.render('findidmanager');
 });
+router.get('/findpassword_user', function(req, res){
+  res.render('findpassword_user');
+});
+router.get('/findpassword_manager', function(req, res){
+  res.render('findpassword_manager');
+});
+
 router.get('/coupon', function(req, res){
   //resullt1은 발급쿠폰 결과
   //result2는 발급받은 스탬프
@@ -172,7 +179,7 @@ router.post('/coupon_password/:id', function(req, res) {
 router.post('/findid', function(req, res) {
   var password = req.body.password;
   var email = req.body.email;
-  var sql = 'select * from `user` where `password`=? and `email`=?;';
+  var sql = 'select * from `user` where `user_name`=? and `email`=?;';
   conn.query(sql, [password, email], function(err, results) {
     if(err) {
       console.log(err);
@@ -193,16 +200,66 @@ router.post('/findid', function(req, res) {
 });
 
 
+//비밀번호 찾기
+router.post('/findpw', function(req, res) {
+  var id = req.body.id;
+  var email = req.body.email;
+  var sql = 'select * from `user` where `user_id`=? and `email`=?;';
+  conn.query(sql, [id, email], function(err, results) {
+    if(err) {
+      console.log(err);
+      console.log('비번 에러');
+    }
+    else if(results.length){
+      res.send({
+        result : 'success',
+        results: results
+      });
+    }else{
+      res.send({
+        result : 'fail',
+        results : undefined
+      });
+    }
+  });
+});
 
+//상인아이디찾기
 router.post('/findidmanager', function(req, res) {
   var password = req.body.password;
   var sijang_name = req.body.sijang_name;
   var market_name = req.body.market_name;
-  var sql = 'select * from `manager` where `password`=? and `sijang_name`=? and `market_name`=?;';
+  var sql = 'select * from `manager` where `manager_name`=? and `sijang_name`=? and `market_name`=?;';
   conn.query(sql, [password, sijang_name, market_name], function(err, results) {
     if(err) {
       console.log(err);
       console.log('아이디찾기 에러');
+    }
+    else if(results.length){
+      res.send({
+        result : 'success',
+        results: results
+      });
+    }else{
+      res.send({
+        result : 'fail',
+        results : undefined
+      });
+    }
+  });
+});
+
+
+//상인비번찾기
+router.post('/findpwmanager', function(req, res) {
+  var password = req.body.password;
+  var sijang_name = req.body.sijang_name;
+  var market_name = req.body.market_name;
+  var sql = 'select * from `manager` where `manager_id`=? and `sijang_name`=? and `market_name`=?;';
+  conn.query(sql, [password, sijang_name, market_name], function(err, results) {
+    if(err) {
+      console.log(err);
+      console.log('비번찾기 에러');
     }
     else if(results.length){
       res.send({
