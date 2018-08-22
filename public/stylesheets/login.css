@@ -154,15 +154,16 @@ body, html {
     border-bottom-style: solid;
 }
 .icon_div{
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   float: left;
+  padding-top: 10px;
 }
 #icon1{
-    width:40px;
-    height: 40px;
+    width:30px;
+    height: 30px;
     float: left;
-    padding-top: 17%;
+    
 }
 #icon2{
     width:40px;
@@ -270,7 +271,7 @@ body, html {
     background: linear-gradient(to right, #17ead9 , #6078ea);
    }
 #kakao_logo{
-    padding-top: 8%;
+    padding-top: 5%;
     width:100%;
     height: 25%;
     text-align: center;
@@ -349,7 +350,7 @@ a{
     padding-left: 5%
 }
 .signuptext{
-    width: 70%;
+    width: 60%;
     height: 50px;
     background-color: white;
     border: double 1px transparent;
@@ -413,7 +414,7 @@ a{
     color:grey;
 }
 .signuptext2{
-    width: 70%;
+    width: 60%;
     height: 90%;
     background-color: white;
     border: double 1px transparent;
@@ -624,6 +625,7 @@ a{
     background: white;
     margin-top: 10px;
     margin-left: 5px;
+    position: fixed;
     z-index: 1;
 }
 #back_loginManager{
@@ -632,6 +634,7 @@ a{
     background: white;
     margin-top: 10px;
     margin-left: 5px;
+    position: fixed;
     z-index: 1;
 }
 #back_signupuser{
@@ -640,6 +643,7 @@ a{
     background: white;
     margin-top: 10px;
     margin-left: 5px;
+    position: fixed;
     z-index: 1;
 }
 #back_signupManager{
