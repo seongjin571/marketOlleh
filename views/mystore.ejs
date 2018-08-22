@@ -113,7 +113,7 @@
                           </div>
                 </div>
                     <div class="line"></div>
-                        <% for(var j=0; j<review.length; j++) { %>
+                        <% for(var j=review.length -1; j>= 0; j--) { %>
                             <% if(review[j].market_name == result1[0].market_name && review[j].sijang_name == result1[0].sijang_name) {%>
                                 <div class="review_div_sj">
                                   <div class="review_star_customer">
@@ -131,9 +131,26 @@
                                   </div>
 
                                     <div class="review_content_sj">
-                                        <div class="review_content_id_sj">
-                                                <%= review[j].user_id %>
-                                        </div>
+                                      <div class="review_content_id_sj" id='review_content_id_sj<%= review[j].user_id %>'>
+                                        <script>
+                                        var temp = '<%= review[j].user_id %>';
+                                        var secret = '***';
+                                        var l = temp.length;
+                                        var f = l-3;
+                                        //console.log(f);
+                                        //console.log(l);
+                                        var temp2 = temp.substring(0,f);
+                                        var result3 = temp2.concat(secret);
+                                        if(result3 == '***'){
+                                          $('#review_content_id_sj<%= review[j].user_id %>').html('사장님');
+                                        }else{
+                                          $('#review_content_id_sj<%= review[j].user_id %>').html(result3);
+                                        }
+                                        //  console.log("아래");
+                                        //  console.log(result3);
+                                        </script>
+
+                                      </div>
                                         <div class="review_content_date_sj">
                                             <%= review[j].date %>
                                         </div>
@@ -144,13 +161,10 @@
                                     <div class="line"></div>
                                 </div>
                                 <% } %>
-                                    <% } %>
-                                        <% } else {%>
-                                            <!-- <div class='stamp_list'>
-                                                <div id="no_stamp">리뷰가 없습니다.</div>
-                                            </div> -->
-                                            <p style="font-size: 20px; color: #9c9c9c;">작성된 리뷰가 없습니다.</p>
-                                            <% } %>
+                              <% } %>
+                          <% } else {%>
+                              <p style="font-size: 20px; color: #9c9c9c;">작성된 리뷰가 없습니다.</p>
+                          <% } %>
 
                 </div>
             </div>
