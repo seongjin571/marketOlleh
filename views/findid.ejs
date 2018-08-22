@@ -3,10 +3,19 @@
   <head>
     <meta charset="utf-8">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-
-    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
   </head>
+
+
   <body>
+    <img id="back_loginuser" src="/images/backButton_blue.png" />
+    <br>
     <input type='text' id="find_user_id_to_password"  placeholder='이름' />
     <input type='text' id="find_user_id_to_email"  placeholder='이메일' />
     <button id="find_user_id_bt">찾기</button>
@@ -50,6 +59,9 @@
             }
         });
       })
+      router.get('/back_loginuser', function(req, res){
+     res.render('back_loginuser');
+     });
     </script>
   </body>
 </html>

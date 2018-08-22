@@ -209,7 +209,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             border-radius: 5px;
             color: white;
         }
-        
+
         #nav_sj {
             width: 100%;
             height: 8%;
@@ -234,7 +234,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             color: #63dded;
         }
 
-        #back_div{
+        .back_div{
             width: 100%;
             height: 38px;
             background-color: white;
@@ -246,7 +246,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             display: none;
             z-index: 2;
         }
-        #back_div img{
+        .back_div img{
             margin-top: 10px;
             margin-left:10px;
         }
@@ -443,7 +443,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         .password_number_div_sj{
             display: none;
             width: 100%;
-            height: 100%;
+            height: 400px;
             background-color: #f6f8f9;
             color: #b9b9b9;
             font-size: 20px;
@@ -456,9 +456,9 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         }
         .password_check{
             width: 100%;
-            height: 15%;
-            padding-top: 5%;
-            padding-bottom: 10%;
+            height: 60px;
+            padding-top: 15px;
+            padding-bottom: 25px;
             /* background-color: red; */
             display: inline-flex;
             background-color: white !important;
@@ -477,19 +477,19 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             border-bottom-color: #d3d3d3;
             border-bottom-width: 4px;
             /* box-shadow: 5px 5px 5px #888888; */
-            
         }
         .password_line_sj{
             display: inline-flex;
             width: 100%;
-            height: 17.5%;
+            height: 75px;
         }
         .password_line_sj div{
             width: 33.33%;
-            height: 100%;
+            height: 75px;
             border-style: solid;
             border-width: 1px;
             border-color: white;
+            line-height: 75px;
         }
         .password_cancel{
             background-color: rgb(241, 37, 37);
@@ -505,7 +505,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             top: 173px;
             width: 100%;
             margin-bottom: 15%;
-            min-height: 450px !important;
+            min-height: 70% !important;
           }
 
           .swiper-scrollbar{
