@@ -92,15 +92,19 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             font-size: 18px;
             width: 25%;
         }
-        /* .stamp_list{
-            width: 80%;
-            height: 100px;
-            background-color: #fb83a5;
-            margin-left: 10%;
+        .stamp_list{
+            width: 68%;
+            margin-left: 16%;
+            height: 140px;
+            margin-top: 4%;
+            background-image:url('/images/backSample1.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
             border-radius: 5px;
             color: white;
-            margin-top: 15px;
-        } */
+            text-align: center;
+            line-height: 140px;
+        }
         .store_market_name{
             width: 86%;
             height: 30px;
