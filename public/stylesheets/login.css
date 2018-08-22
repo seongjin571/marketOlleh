@@ -13,6 +13,7 @@ body, html {
     height: 100%;
     position: absolute;
     overflow: hidden;
+
 }
 #intro_image_div{
     width: 100%;
@@ -89,7 +90,9 @@ body, html {
     height: 100%;
     display: none;
     overflow: hidden;
+    position: fixed;
 }
+
 #top_logo
 {
     width:100%;
@@ -195,7 +198,7 @@ body, html {
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 5%;
+    font-size: 10.5px;
 }
 #password_find1{
     background-color: white;
@@ -204,7 +207,7 @@ body, html {
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 5%;
+    font-size: 10.5px;
 }
 #password_find2{
     background-color: white;
@@ -213,8 +216,9 @@ body, html {
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 5%;
+    font-size: 10.5px;
 }
+
 #loginUser_sign_up{
     padding:0px;
     background-color: white;
@@ -222,7 +226,7 @@ body, html {
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 5%;
+    font-size: 10.5px;
 }
 #loginmanager_sign_up
 {
@@ -232,7 +236,7 @@ body, html {
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 5%;
+    font-size: 10.5px;
 }
 .login_button_user3
 {
@@ -310,6 +314,9 @@ a{
 }
 
 /*loginuser css finish*/
+
+
+
 /*login manager css start*/
    
 /*signupuser css start*/
@@ -385,6 +392,12 @@ a{
     font-family: initial !important;
 }
 #managerpwd{
+    font-family: initial !important;
+}
+#password_jh_check{
+    font-family: initial !important;
+}
+#userpwdcheck{
     font-family: initial !important;
 }
 /*signupuser css finish*/
@@ -604,3 +617,37 @@ a{
 }
 
 /*modal layout finish*/
+/* 뒤로가기 버튼 */
+#back_loginuser{
+    width: 30px;
+    height: 30px;
+    background: white;
+    margin-top: 10px;
+    margin-left: 5px;
+    z-index: 1;
+}
+#back_loginManager{
+    width: 30px;
+    height: 30px;
+    background: white;
+    margin-top: 10px;
+    margin-left: 5px;
+    z-index: 1;
+}
+#back_signupuser{
+    width: 30px;
+    height: 30px;
+    background: white;
+    margin-top: 10px;
+    margin-left: 5px;
+    z-index: 1;
+}
+#back_signupManager{
+    width: 30px;
+    height: 30px;
+    background: white;
+    margin-top: 10px;
+    margin-left: 5px;
+    position: fixed;
+    z-index: 1;
+}
