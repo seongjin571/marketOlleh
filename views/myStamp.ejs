@@ -805,12 +805,13 @@
                   if (result['result']=='success'){
                     alert('해당 스탬프의 삭제가 완료되었습니다.');
                     // delete stamp list
-                    var stamp = document.getElementById('stamp_list<%= myStamps[i].id %>');
-                    stamp.parentNode.removeChild(stamp);
+                    // var stamp = document.getElementById('stamp_list<%= myStamps[i].id %>');
+                    // stamp.parentNode.removeChild(stamp);
                     // delete selected stamp
-                    var selected_stamp = document.getElementById('selected_stamp<%= myStamps[i].id %>');
-                    selected_stamp.parentNode.removeChild(selected_stamp);
-                    $('#myStamp').css('display', 'block');
+                    // var selected_stamp = document.getElementById('selected_stamp<%= myStamps[i].id %>');
+                    // selected_stamp.parentNode.removeChild(selected_stamp);
+                    // $('#myStamp').css('display', 'block');
+                    location.reload();
                   }
                 },
                 error: function(error){
