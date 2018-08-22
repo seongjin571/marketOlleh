@@ -6,9 +6,9 @@ function NewGoomapLi_css() {
 }
 
 function marketInfoLi_event(market_arr) { // market_arr는 market DB값
-	
+
 	$('#hot_store_list_market > div').remove();
-	
+
 	// 태그 동적으로 생성하기
 	var tempString = new Array();
 	var fullString = '';
@@ -16,7 +16,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 	tempString[0] = '<div class="market_infoText_li"> <h2>'+market_arr.name+'</h2></div>';
 		// 시장 img URL 존재 하면 표시
 		if (market_arr.imgurl) {
-			tempString[1] = '<div class="market_infoText_li" id="market_image"> <img src="'+market_arr.imgurl+'"></div>';	
+			tempString[1] = '<div class="market_infoText_li" id="market_image"> <img src="'+market_arr.imgurl+'"></div>';
 		} else { // 존재 안하면 디폴트 이미지
 			tempString[1] = '<div class="market_infoText_li" id="market_image"> <img src="/images/market_default.jpg"></div>';
 		}
@@ -30,7 +30,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 	// 임시 배열 text 하나로 합치고 넣기
 	for (var index in tempString) {
 		fullString += tempString[index];
-	} // for in 
+	} // for in
 
 	market_infoText.innerHTML = fullString;
 
@@ -60,7 +60,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 			alert("Error!");
 			console.log('process error : ', e);
 		}
-	}); // ajax	
+	}); // ajax
 
 } // marketInfoLi_event
 
@@ -73,7 +73,7 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
     $('#store_infor').css('display', 'block');
     $('#market_infor').css('display', 'none');
     console.log(market_arr);
-    
+
     // manager DB ~ 상점 DB 내용 뿌려주기
     $('#store_name_sj').text(market_arr.market_name);
     $('#market_name_sj').text(market_arr.sijang_name);
@@ -141,9 +141,9 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 
 	// 리뷰, 앞에 있던 정보들 초기화
 	if ($('.review_div_sj > div')) {
-		$('.review_div_sj').remove();	
+		$('.review_div_sj').remove();
 	}
-	
+
     // 리뷰 ajax
 	$.ajax({
 		url: "/myStamp",
@@ -154,16 +154,17 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 		success: function (result) {
 			console.log(result);
 			if (result.rows.length > 0) {
-				managerInfoLi_event_review(result.rows);
+				managerInfoLi_event_review(result.rows, result.rateAvgAndCnt);
 			} else {
 				console.log("현재 해당하는 시장에 등록된 리뷰가 없음");
+				managerInfoLi_event_review(0, 0);
 			}
 		},
 		error: function (e) {
 			alert("Error!");
 			console.log('process error : ', e);
 		}
-	}); // ajax	
+	}); // ajax
 
 } // managerInfoLi_event
 
@@ -178,7 +179,7 @@ function marketInfoLi_event_likelist(result_rows) {
 	var tempString = new Array();
 	var fullString = '';
 
-	// [ main.ejs ] 의 [ id = hot_store_list_market ] 참고 
+	// [ main.ejs ] 의 [ id = hot_store_list_market ] 참고
 	for (var i = 0; i < result_rows.length; i++) {
 
 		// 2개씩 div 태그로 묶어주기
@@ -211,7 +212,7 @@ function marketInfoLi_event_likelist(result_rows) {
 	// 임시 배열 text 하나로 합치고 넣기
 	for (var index in tempString) {
 		fullString += tempString[index];
-	} // for in 
+	} // for in
 
 	// last close of div tag
 	fullString += '</div>'
@@ -233,7 +234,7 @@ function marketInfoLi_event_likelist(result_rows) {
 
 } // marketInfoLi_event_likelist
 
-function managerInfoLi_event_review(review_arr) {
+function managerInfoLi_event_review(review_arr, avg_and_cnt) {
 
 	// 날짜 순서로 정렬 --> SQL에서 ORDER ~ DESC 로 수정
 	// review_arr.sort(function (a, b) {
@@ -244,19 +245,83 @@ function managerInfoLi_event_review(review_arr) {
 	var tempString = new Array();
 	var fullString = '';
 
-	for( var i = 0; i<review_arr.length; i++){
-		tempString[i] = '<div class="review_div_sj">';
-	    tempString[i] += '<div class="review_content_sj">';
-	    tempString[i] += '<div class="review_content_id_sj"><b>'+review_arr[i].user_id+'</b></div>';
-	    tempString[i] += '<div class="review_content_date_sj">'+review_arr[i].date+'</div></div>';
-	    tempString[i] += '<p>'+review_arr[i].review+'</p>';
-	    tempString[i] += '</div>';		
+
+	if(! review_arr) {
+		fullString += '<div class="review_rate">';
+		fullString += '<div class="review_star">';
+
+		for(var j=0; j< 5; j++) {
+			fullString += '<div>';
+			fullString += '<img class="star_gray_customer" src="/images/star_gray.png" width="30px" height="30px">';
+			fullString += '</div>';
+		}
+		fullString += '</div></div>';
+		
+
+		fullString += '<div class="review_count">';
+		fullString += '<p style="font-size: 20px; color: #9c9c9c;"> 작성된 리뷰가 없습니다. </p>';
+		fullString += '</div>';
 	}
 
-	// 임시 배열 text 하나로 합치고 넣기
-	for (var index in tempString) {
-		fullString += tempString[index];
-	} // for in 	
+	else {
+		fullString += '<div class="review_rate">';
+		fullString += '<div class="review_star">';
+		for(var j=0; j< avg_and_cnt.rateAvg; j++) {
+			fullString += '<div>';
+			fullString += '<img class="star_yellow_customer" src="/images/star_yellow.png" width="30px" height="30px">';
+			fullString += '</div>';
+		}
+		for(var j=0; j< 5-avg_and_cnt.rateAvg; j++) {
+			fullString += '<div>';
+			fullString += '<img class="star_gray_customer" src="/images/star_gray.png" width="30px" height="30px">';
+			fullString += '</div>';
+		}
+		fullString += '</div>';
+
+		fullString += '<div class="review_count">';
+		fullString += '<p class="review_count_content">' + avg_and_cnt.rateCnt + '</p>';
+		fullString += '<p style="font-size: 20px; color: #9c9c9c;"> 개의 리뷰가 있습니다 </p>';
+		fullString += '</div>';
+		fullString += '<div id="intro"><p>상점을 이용하는 고객들의 리뷰입니다.</p></div>';
+		fullString += '<div class="line"></div>';
+		fullString += '</div>';
+
+
+		for( var i = 0; i<review_arr.length; i++){
+			tempString[i] = '<div class="review_div_sj">';
+
+
+			tempString[i] += '<div class="review_star_customer">';
+			for(var j=0; j< review_arr[i].rate; j++) {
+				tempString[i] += '<div>';
+				tempString[i] += '<img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">';
+				tempString[i] += '</div>';
+			}
+
+			for(var j=0; j< 5-review_arr[i].rate; j++) {
+				tempString[i] += '<div>';
+				tempString[i] += '<img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">';
+				tempString[i] += '</div>';
+			}
+
+			tempString[i] += '</div>';
+			tempString[i] += '<div class="review_content_sj">';
+			tempString[i] += '<div class="review_content_id_sj"><b>'+review_arr[i].user_id+'</b></div>';
+			tempString[i] += '<div class="review_content_date_sj">'+review_arr[i].date+'</div></div>';
+			tempString[i] += '<p>'+review_arr[i].review+'</p>';
+			tempString[i] += '<div class="line"></div>';
+			tempString[i] += '</div>';
+		}
+
+		// 임시 배열 text 하나로 합치고 넣기
+		for (var index in tempString) {
+			fullString += tempString[index];
+		} // for in
+	}
+
+
+
+
 
     $('.store_review_sj').html(fullString);
 

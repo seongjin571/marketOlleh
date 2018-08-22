@@ -17,6 +17,11 @@ router.get('/findid', function(req, res){
 router.get('/findidmanager', function(req, res){
   res.render('findidmanager');
 });
+router.get('/findpassword_user', function(req, res){
+  res.render('findpassword_user');
+});
+
+
 router.get('/coupon', function(req, res){
   //resullt1은 발급쿠폰 결과
   //result2는 발급받은 스탬프
@@ -622,7 +627,17 @@ router.post('/myStamp', function(req, res) {
   if(market_name){ // NewGoo ~ table에서 구 선택시 오는 부분
     var sql = "SELECT * FROM `review` WHERE `market_name` LIKE '"+market_name+"' ORDER BY `date` DESC";
     conn.query(sql, function(error, rows, fileds) {
-      return res.send({ rows: rows });
+      var avgSql = 'select round(avg(rate),0) as rateAvg, count(*) as rateCnt from review where market_name=? group by sijang_name, market_name ;';
+      conn.query(avgSql, [market_name], function(avgErr, avgRows) {
+        if(avgErr) { console.log(avgErr); }
+        else {
+          console.log(avgRows);
+          return res.send({
+            rows: rows,
+            rateAvgAndCnt: avgRows[0],
+          });
+        }
+      });
     });// conn.query
   }
 
@@ -853,12 +868,11 @@ router.post('/like/:id', function(req, res) {
   });
 });
 
-router.post('/main_like', function(req, res) {
-  var sijang_name;
-  var market_name;
+router.post('/main_like/:manager_id', function(req, res) {
+  var like_count
   var selectSql = 'select * from `likeMarket` where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
   var insertSql = 'insert into `likeMarket` (`user_id`, `sijang_name`, `market_name`) values (?, ?, ?) ;';
-  var likeUpdateSql; // update likeMarket query
+  var likeUpdateSql = 'UPDATE manager INNER JOIN likeMarket ON likeMarket.sijang_name=manager.sijang_name and likeMarket.market_name=manager.market_name SET likeMarket.like_check=?, manager.like_count=? WHERE likeMarket.user_id=? and manager.manager_id=? ;'; // update likeMarket query
 
   conn.query(selectSql, [req.user.id, sijang_name, market_name], function(selectErr, selectRows) {
     if(selectErr) {
@@ -867,8 +881,20 @@ router.post('/main_like', function(req, res) {
     }
     else if(selectRows.length) {
       console.log('likeMarket 조회 성공');
-      // conn.query(likeUpdateSql, [], function(likeErr, likeRows) {});
-      // 업데이트 후 좋아요 수 값 가져오기 select query
+      conn.query(likeUpdateSql, [1,like_count,req.user.id, req.params.manager_id], function(likeErr, likeRows) {
+        if(likeErr) { console.log(likeErr); }
+        else {
+          var likeCountSql = 'select * from `manager` where `manager_id`=? ;';
+          conn.query(likeCountSql, [req.params.manager_id], function(lCErr, lCRows) {
+            if(lCErr) { console.log(lCErr); }
+            else {
+              res.send({
+                like_count: lCRows[0].like_count
+              });
+            }
+          }); // likeCountSql
+        }
+      }); // likeUpdateSql
     }
     else {
       console.log('likeMarket 조회 성공 but 결과 값 없음');
@@ -879,11 +905,24 @@ router.post('/main_like', function(req, res) {
         }
         else {
           console.log('likeMarket 테이블 삽입 성공');
-          // conn.query(likeSql, [], function(likeErr, likeRows) {});
+          conn.query(likeUpdateSql, [1,like_count,req.user.id, req.params.manager_id], function(likeErr, likeRows) {
+            if(likeErr) { console.log(likeErr); }
+            else {
+              var likeCountSql = 'select * from `manager` where `manager_id`=? ;';
+              conn.query(likeCountSql, [req.params.manager_id], function(lCErr, lCRows) {
+                if(lCErr) { console.log(lCErr); }
+                else {
+                  res.send({
+                    like_count: lCRows[0].like_count
+                  });
+                }
+              }); // likeCountSql
+            }
+          }); // likeUpdateSql
         }
-      });
+      }); // insertSql
     }
-  });
+  }); // selectSql
 });
 
 
@@ -920,12 +959,21 @@ router.post('/cancel_like/:id', function(req, res) {
   });
 });
 
-router.post('/main_dislike', function(req, res) {
-  var selectSql = 'select * from `likeMarket` where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
-  var dislikeUpdateSql;
+router.post('/main_dislike/:manager_id', function(req, res) {
+  var like_count;
+  var dislikeUpdateSql = 'UPDATE manager INNER JOIN likeMarket ON likeMarket.sijang_name=manager.sijang_name and likeMarket.market_name=manager.market_name SET likeMarket.like_check=?, manager.like_count=? WHERE likeMarket.user_id=? and manager.manager_id=? ;';
 
-  // conn.query(dislikeUpdateSql, [], function(likeErr, likeRows) {});
-  // 업데이트 후 좋아요 수 값 가져오기 select query
+  conn.query(dislikeUpdateSql, [0,like_count,req.user.id, req.params.manager_id], function(likeErr, likeRows) {
+    if(likeErr) { console.log(likeErr); }
+    else {
+      var selectSql = 'select * from `manager` where `manager_id`=? ;';
+      conn.query(selectSql, [req.params.id], function(selErr, selRows) {
+        res.send({
+          like_count: selRows[0].like_count
+        });
+      }); // selectSql
+    }
+  }); // dislikeUpdateSql
 });
 
 /* 스탬프 삭제 */
