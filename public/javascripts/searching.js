@@ -55,6 +55,8 @@ function turningBack() {
 		document.getElementById('Searching').style.display = "table";
 		document.getElementById('market_infor').style.display = "none";
 		document.getElementById('store_infor').style.display = "none";
+		$('#noGood_Button_sj').off();
+		$('#yesGood_Button_sj').off();
 	} // if ~ else
 
 	$('#market_infoText > div').remove();
@@ -205,6 +207,7 @@ function makeSearchList(searchResult, listCounter) {
 				managerInfoLi_event(searchResult.rows[i]);
 			} // if ~ else
 		} // for
+		searchResult = ''; // 후처리, 겹치는 에러 방지
 
 	}); // click function
 } // makerSearchList --> article태그 부분
