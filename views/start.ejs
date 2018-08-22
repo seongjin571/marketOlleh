@@ -73,6 +73,20 @@
                 <button type='submit' value='' class="loginUser_insert">로그인</button>
             </div>
         </form>
+
+        <script>
+        $('#idfind').click(function(e) {
+          e.preventDefault();
+          $(window).attr('location', '/findid');
+        });
+        $('#password_find1').click(function(e) {
+          e.preventDefault();
+          $(window).attr('location', '/findpassword_user');
+        });
+        </script>
+
+
+
         <div id="kakao_logo">
             <div class="login_button_user4" id="kakaobutton2">
                 <a href='/login/kakao'>
