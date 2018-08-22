@@ -12,7 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
-
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <script>
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
@@ -50,7 +50,7 @@
 
     <!--loginuser 시작-->
     <div id="loginuser">
-            <img id="back_loginuser"src="/images/backButton_blue.png">
+        <img id="back_loginuser" src="/images/backButton_blue.png" />
         <div id="top_logo">
             <img id="loginUser_logo_with_text2" src="/images/logo_with_text.png">
         </div>
@@ -62,7 +62,7 @@
             <div class="login_button_user">
                 <input id="userpassword" class="inputuser" type='password' name='userpwd' placeholder=' 비밀번호' />
             </div>
-            </br>
+            <br>
             <div id="login_button_user2">
                 <!-- <img id="Login_M" onclick="login_maintain()" src="/images/login_off.png"> -->
                 <button class="idfind">아이디 찾기</button>
@@ -73,8 +73,6 @@
                 <button type='submit' value='' class="loginUser_insert">로그인</button>
             </div>
         </form>
-
-
         <div id="kakao_logo">
             <div class="login_button_user4" id="kakaobutton2">
                 <a href='/login/kakao'>
@@ -88,13 +86,25 @@
             </div>
         </div>
     </div>
+    <script>
+        $(function () {
+            $("input").each(function () {
+                $(this).bind("focus", function () {
+                    $(".header").css("position", "absolute");
+                });
+                $(this).bind("blur", function () {
+                    $(".header").css("position", "fixed");
+                });
+            });
+        });
 
+    </script>
     <!--loginuser 끝-->
 
 
     <!--loginManager 시작-->
     <div id="loginManager">
-        <img id="back_loginManager"src="/images/backButton_blue.png">
+        <img id="back_loginManager" src="/images/backButton_blue.png">
         <div id="top_logo">
             <img id="loginUser_logo_with_text2" src="/images/logo_with_text.png">
         </div>
@@ -160,7 +170,7 @@
 
     <!--signupuser 시작-->
     <div id="signupuser">
-            <img id="back_signupuser"src="/images/backButton_blue.png">
+        <img id="back_signupuser" src="/images/backButton_blue.png">
         <div id="top_signup">
             <img id="signuplogo" src="/images/logo_with_text.png">
         </div>
@@ -184,17 +194,17 @@
                 <input class="signuptext" type='password' id='userpwd' name='userpwd' placeholder='비밀번호' />
             </div>
             <div class="signupuser_input">
-                    <div class="icon_div">
-                        <img id="icon3" src="/images/passwordicon.png">
-                    </div>
-                    <input class="signuptext" type='password' id='userpwdcheck' name='userpwd' placeholder='비밀번호확인' />
+                <div class="icon_div">
+                    <img id="icon3" src="/images/passwordicon.png">
                 </div>
+                <input class="signuptext" type='password' id='userpwdcheck' name='userpwd' placeholder='비밀번호확인' />
+            </div>
             <div class="signupuser_input">
-                    <div class="icon_div">
-                        <img id="icon3" src="/images/passwordicon.png">
-                    </div>
-                    <input class="signuptext" type='password' id='e_mail' name='userpwd' placeholder='이메일' />
+                <div class="icon_div">
+                    <img id="icon3" src="/images/passwordicon.png">
                 </div>
+                <input class="signuptext" type='password' id='e_mail' name='userpwd' placeholder='이메일' />
+            </div>
             <div class="signupuser_input2">
                 <input class="signupbutton" id="userfinish" type='submit' value='고객 회원가입' />
             </div>
@@ -239,7 +249,7 @@
 
     <!--signupManager 시작-->
     <div id="signupManager">
-            <img id="back_signupManager" src="/images/backButton_blue.png">
+        <img id="back_signupManager" src="/images/backButton_blue.png">
         <div id="top_signup">
             <img id="signuplogo" src="/images/logo_with_text.png">
         </div>
@@ -251,8 +261,8 @@
                 <input class="signuptext2" type="password" id="password_jh" name='password' placeholder=" 비밀번호">
             </div>
             <div class="signupuser_input3">
-                    <input class="signuptext2" type="password" id="password_jh_check" name='password' placeholder=" 비밀번호확인">
-                </div>
+                <input class="signuptext2" type="password" id="password_jh_check" name='password' placeholder=" 비밀번호확인">
+            </div>
             <div class="signupuser_input3">
                 <input class="signuptext2" type="text" id="market_name" name='market_name' placeholder=" 상점 이름">
             </div>
@@ -460,65 +470,65 @@
 
 
 
-    var pwd1,pwd2,pwd3,pwd4=0;
-    $('#userpwd').change(function(){
-      pwd1=$(this).val();
-      
-      if( $('#userpwdcheck').val() ){
-        if(pwd1==pwd2){
-            alert('ok')
-        }
-        else{
+    var pwd1, pwd2, pwd3, pwd4 = 0;
+    $('#userpwd').change(function () {
+        pwd1 = $(this).val();
+
+        if ($('#userpwdcheck').val()) {
+            if (pwd1 == pwd2) {
+                alert('ok')
+            }
+            else {
                 alert('비밀번호가 다릅니다.')
                 $(this).val('');
                 $('#userpwdcheck').val('');
             }
-      }
-    })
-     
-    $('#userpwdcheck').change(function(){
-        pwd2=$(this).val();
-        if( $('#userpwd').val() ){
-        if(pwd1==pwd2){
-            alert('ok')
         }
-        else{
+    })
+
+    $('#userpwdcheck').change(function () {
+        pwd2 = $(this).val();
+        if ($('#userpwd').val()) {
+            if (pwd1 == pwd2) {
+                alert('ok')
+            }
+            else {
                 alert('비밀번호가 다릅니다.')
                 $(this).val('');
                 $('#userpwd').val('');
             }
-      }
-        })
-
-         $('#password_jh').change(function(){
-      pwd3=$(this).val();
-      
-      if( $('#password_jh_check').val() ){
-        if(pwd3==pwd4){
-            alert('ok')
         }
-        else{
+    })
+
+    $('#password_jh').change(function () {
+        pwd3 = $(this).val();
+
+        if ($('#password_jh_check').val()) {
+            if (pwd3 == pwd4) {
+                alert('ok')
+            }
+            else {
                 alert('비밀번호가 다릅니다.')
                 $(this).val('');
                 $('#password_jh_check').val('');
             }
-      }
-    })
-     
-    $('#password_jh_check').change(function(){
-        pwd4=$(this).val();
-        if( $('#password_jh').val() ){
-        if(pwd3==pwd4){
-            alert('ok')
         }
-        else{
+    })
+
+    $('#password_jh_check').change(function () {
+        pwd4 = $(this).val();
+        if ($('#password_jh').val()) {
+            if (pwd3 == pwd4) {
+                alert('ok')
+            }
+            else {
                 alert('비밀번호가 다릅니다.')
                 $(this).val('');
                 $('#password_jh').val('');
             }
-      }
-        })
-    
+        }
+    })
+
 
 
 </script>
