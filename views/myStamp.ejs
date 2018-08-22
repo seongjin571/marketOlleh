@@ -27,11 +27,12 @@
         var review_tab = 'store_review_sj' + localStorage.getItem('reviewTab');
         var stamp_detail = 'selected_stamp' + localStorage.getItem('reviewTab');
         var back = 'back_div' + localStorage.getItem('reviewTab');
-        console.log(review_tab);
-        document.getElementById('myStamp').style.display = 'none';
-        document.getElementsByClassName(back)[0].style.display = 'block';
-        document.getElementById(stamp_detail).style.display = 'block';
-        document.getElementById(review_tab).style.display = 'block';
+
+        $('#myStamp').fadeOut('200');
+        $('#'+stamp_detail).fadeIn('200');
+        $('#'+review_tab).fadeIn('200');
+        $('#'+back).fadeIn('200');
+
         localStorage.clear();
       }
     }
@@ -77,7 +78,7 @@
           <% for(var i=0; i<myStamps.length; i++) { %>
 
             <div class='selected_stamp' id="selected_stamp<%= myStamps[i].id %>">
-                <div class="back_div<%= myStamps[i].id %>" id="back_div">
+                <div class="back_div" id="back_div<%= myStamps[i].id %>">
                     <img id="tableControl<%= myStamps[i].id %>" src="/images/backButton_blue.png" width="20px" height="20px">
                 </div>
                 <div id="menu_infor">
@@ -416,13 +417,13 @@
             var number1 = "";
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
               $('#selected_stamp<%= myStamps[i].id %>').css('display', 'block');
-              $('.back_div<%= myStamps[i].id %>').css('display', 'block');
+              $('#back_div<%= myStamps[i].id %>').css('display', 'block');
               $('#myStamp').css('display', 'none');
             });
 
-            $('.back_div<%= myStamps[i].id %>').click(function () {
+            $('#back_div<%= myStamps[i].id %>').click(function () {
               $('#selected_stamp<%= myStamps[i].id %>').css('display', 'none');
-              $('.back_div<%= myStamps[i].id %>').css('display', 'none');
+              $('#back_div<%= myStamps[i].id %>').css('display', 'none');
               $('#myStamp').css('display', 'block');
             });
 
