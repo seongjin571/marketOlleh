@@ -253,11 +253,14 @@
     </div>
     <script>
         $('.signupform1').submit(function (e) {
-            var signcount=0
+            var signcount=0;
             e.preventDefault();
             for(var i=0; i<5; i++){
-                if($('.check_div').eq(i).is(':visible')){
-                    signcount+=1;
+                if($('.check_div').eq(i).css('visibility') == 'visible'){
+                    signcount++;
+                }
+                else{
+                    continue;
                 }
             }
             if(signcount==5){
