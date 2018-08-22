@@ -648,7 +648,7 @@ router.get('/myStamp', function(req, res) {
           else {
             console.log("stamp,review값이 모두 있는 경우");
             // var rateAvgSql = 'select sijang_name, market_name, round(avg(rate),0) as avgRateInt, round(avg(rate),1) as avgRate, count(*) as rateCnt from review group by sijang_name, market_name ;';
-            var rateAvgSql = 'SELECT stamp.sijang_name, stamp.market_name, IFNULL(round(avg(rate),0), 0) as avgRate, count(rate) as rateCnt FROM stamp LEFT OUTER JOIN review ON stamp.sijang_name=review.sijang_name and stamp.market_name=review.market_name WHERE stamp.user_id=? GROUP BY stamp.sijang_name, stamp.market_name ;' ;
+            var rateAvgSql = 'SELECT stamp.sijang_name, stamp.market_name, IFNULL(round(avg(rate),0), 0) as avgRate, count(*) as rateCnt FROM stamp LEFT OUTER JOIN review ON stamp.sijang_name=review.sijang_name and stamp.market_name=review.market_name WHERE stamp.user_id=? GROUP BY stamp.sijang_name, stamp.market_name ;' ;
             conn.query(rateAvgSql, [req.user.id], function(avgErr, avgRows) {
               if(avgErr) {
                 console.log(avgErr);
@@ -887,6 +887,29 @@ router.post('/review_manager',function(req,res,next){
   })
 });
 
+// hw edit / 상점에 좋아요가 되어 있는지 체크
+router.post('/likeCheck', function(req, res) {
+  var user_id = req.body.user_id;
+  var sijang_name = req.body.sijang_name;
+  var market_name = req.body.market_name;
+  var sql = 'select * from `likeMarket` where user_id = ? and market_name = ? and sijang_name = ?'
+  
+  conn.query(sql, [user_id,market_name,sijang_name], function(error, results){
+    if(error) { 
+      console.log(error); 
+    } else if(results.length) {
+      res.send({ // likeMarket의 like_check컬럼의 값 대조 필요
+        result: 'exist',
+        like_check_val: results[0].like_check 
+      });
+    } else {
+      res.send({ 
+        result: 'not exist' 
+      });
+    }
+  }); // conn.query
+});
+
 /* 좋아요 */
 router.post('/like/:id', function(req, res) {
   var market_name = req.body.market_name;
@@ -919,64 +942,6 @@ router.post('/like/:id', function(req, res) {
     }
   });
 });
-
-router.post('/main_like/:manager_id', function(req, res) {
-  var like_count
-  var selectSql = 'select * from `likeMarket` where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
-  var insertSql = 'insert into `likeMarket` (`user_id`, `sijang_name`, `market_name`) values (?, ?, ?) ;';
-  var likeUpdateSql = 'UPDATE manager INNER JOIN likeMarket ON likeMarket.sijang_name=manager.sijang_name and likeMarket.market_name=manager.market_name SET likeMarket.like_check=?, manager.like_count=? WHERE likeMarket.user_id=? and manager.manager_id=? ;'; // update likeMarket query
-
-  conn.query(selectSql, [req.user.id, sijang_name, market_name], function(selectErr, selectRows) {
-    if(selectErr) {
-      console.log(selectErr);
-      console.log('select likeMarket table failed');
-    }
-    else if(selectRows.length) {
-      console.log('likeMarket 조회 성공');
-      conn.query(likeUpdateSql, [1,like_count,req.user.id, req.params.manager_id], function(likeErr, likeRows) {
-        if(likeErr) { console.log(likeErr); }
-        else {
-          var likeCountSql = 'select * from `manager` where `manager_id`=? ;';
-          conn.query(likeCountSql, [req.params.manager_id], function(lCErr, lCRows) {
-            if(lCErr) { console.log(lCErr); }
-            else {
-              res.send({
-                like_count: lCRows[0].like_count
-              });
-            }
-          }); // likeCountSql
-        }
-      }); // likeUpdateSql
-    }
-    else {
-      console.log('likeMarket 조회 성공 but 결과 값 없음');
-      conn.query(insertSql, [req.user.id, sijang_name, market_name], function(insertErr, insertRows) {
-        if(insertErr) {
-          console.log(insertErr);
-          console.log('insert likeMarket table failed');
-        }
-        else {
-          console.log('likeMarket 테이블 삽입 성공');
-          conn.query(likeUpdateSql, [1,like_count,req.user.id, req.params.manager_id], function(likeErr, likeRows) {
-            if(likeErr) { console.log(likeErr); }
-            else {
-              var likeCountSql = 'select * from `manager` where `manager_id`=? ;';
-              conn.query(likeCountSql, [req.params.manager_id], function(lCErr, lCRows) {
-                if(lCErr) { console.log(lCErr); }
-                else {
-                  res.send({
-                    like_count: lCRows[0].like_count
-                  });
-                }
-              }); // likeCountSql
-            }
-          }); // likeUpdateSql
-        }
-      }); // insertSql
-    }
-  }); // selectSql
-});
-
 
 /* 좋아요 취소 */
 router.post('/cancel_like/:id', function(req, res) {
@@ -1011,16 +976,95 @@ router.post('/cancel_like/:id', function(req, res) {
   });
 });
 
+/* hw edit ~ main에서 동적으로 생성되는 stamp의 like 처리 */
+router.post('/main_like/:manager_id', function(req, res) {
+
+  // body parser values
+  var market_name = req.body.market_name;
+  var sijang_name = req.body.sijang_name;
+  var like_count = req.body.like_count;
+
+  // sql list
+  var selectSql = 'select * from `likeMarket` where `user_id`=? and `sijang_name`=? and `market_name`=? ;';
+  var insertSql = 'insert into `likeMarket` (`user_id`, `sijang_name`, `market_name`) values (?, ?, ?) ;';
+  var likeUpdateSql = 'UPDATE manager INNER JOIN likeMarket ON likeMarket.sijang_name=manager.sijang_name and likeMarket.market_name=manager.market_name SET likeMarket.like_check=?, manager.like_count=? WHERE likeMarket.user_id=? and manager.manager_id=? ;'; // update likeMarket query
+
+  conn.query(selectSql, [req.user.id, sijang_name, market_name], function(selectErr, selectRows) {
+    if(selectErr) { 
+      console.log(selectErr);
+      console.log('select likeMarket table failed');
+    }
+    else if(selectRows.length) { 
+      // 이미 likeMarket DB에 튜플이 존재
+      console.log('likeMarket 조회 성공');
+      conn.query(likeUpdateSql, [1, like_count, req.user.id, req.params.manager_id], function(likeErr, likeRows) {
+        if(likeErr) { console.log(likeErr); }
+        else { 
+          // 조회까지 성공,
+          // 이미 likeMarket에 튜플 존재한 흔적 O --> Update만 해주자
+          var likeCountSql = 'select * from `manager` where `manager_id`=? ;';
+          conn.query(likeCountSql, [req.params.manager_id], function(lCErr, lCRows) {
+            if(lCErr) { console.log(lCErr); }
+            else {
+              console.log('조희 ~ likecount 까지 성공, 리턴값 발사');
+              // 결과 값은 manager DB에서 해당하는 매니저 ID를 가진 튜플의
+              // 좋아요 개수를 가져옴
+              res.send({
+                result: "success",
+                like_count: lCRows[0].like_count
+              });
+            }
+          }); // likeCountSql
+        }
+      }); // likeUpdateSql
+    }
+    else {
+      // likeMarket DB에 튜폴 XXX --> 새로 insert into 해야함
+      console.log('likeMarket 조회 성공 but 결과 값 없음');
+      conn.query(insertSql, [req.user.id, sijang_name, market_name], function(insertErr, insertRows) {
+        if(insertErr) {
+          console.log(insertErr);
+          console.log('insert likeMarket table failed');
+        }
+        else {
+          // insert (데이터 삽입까지 성공)
+          console.log('likeMarket 테이블 삽입 성공');
+          conn.query(likeUpdateSql, [1, like_count, req.user.id, req.params.manager_id], function(likeErr, likeRows) {
+            if(likeErr) { console.log(likeErr); }
+            else {
+              var likeCountSql = 'select * from `manager` where `manager_id`=? ;';
+              conn.query(likeCountSql, [req.params.manager_id], function(lCErr, lCRows) {
+                if(lCErr) { console.log(lCErr); }
+                else {
+                  res.send({
+                    result: "success",
+                    like_count: lCRows[0].like_count
+                  });
+                }
+              }); // likeCountSql
+            }
+          }); // likeUpdateSql
+        }
+      }); // insertSql
+    }
+  }); // selectSql
+});
+
 router.post('/main_dislike/:manager_id', function(req, res) {
-  var like_count;
+
+  // body parser values
+  var like_count = req.body.like_count;
+
+  // sql list  
   var dislikeUpdateSql = 'UPDATE manager INNER JOIN likeMarket ON likeMarket.sijang_name=manager.sijang_name and likeMarket.market_name=manager.market_name SET likeMarket.like_check=?, manager.like_count=? WHERE likeMarket.user_id=? and manager.manager_id=? ;';
 
-  conn.query(dislikeUpdateSql, [0,like_count,req.user.id, req.params.manager_id], function(likeErr, likeRows) {
+  conn.query(dislikeUpdateSql, [0, like_count, req.user.id, req.params.manager_id], function(likeErr, likeRows) {
     if(likeErr) { console.log(likeErr); }
     else {
       var selectSql = 'select * from `manager` where `manager_id`=? ;';
       conn.query(selectSql, [req.params.id], function(selErr, selRows) {
         res.send({
+          result: "success",
           like_count: selRows[0].like_count
         });
       }); // selectSql

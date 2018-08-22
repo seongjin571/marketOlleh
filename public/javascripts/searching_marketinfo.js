@@ -80,6 +80,36 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
     $('#market_name_sj').text(market_arr.sijang_name);
     $('#goodCount_sj').text(market_arr.like_count);
 
+    // 지금 이 함수를 불러오게 하는 user_id가 
+    // 그 스탬프(상점)의 따봉을 눌렀는지(likeMarket에 존재하는지) 테스트 
+	$.ajax({
+		type: 'POST',
+		url: '/likeCheck',
+		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+		cache: false,
+		dataType: 'json',
+		data: {
+			'market_name' : market_arr.market_name,
+			'sijang_name' : market_arr.sijang_name,
+			'user_id' : user_id, // 전역변수 user_id
+		},
+		success: function (result) {
+		  if (result['result'] == 'exist' && result['like_check_val'] == 1) {
+		  	$('#noGood_Button_sj').css('display', 'none');
+	        $('#yesGood_Button_sj').css('display', 'block');
+		  } else if(result['result']=='not exist' || result['like_check_val'] == 0){
+		  	$('#yesGood_Button_sj').css('display', 'none');
+		  	$('#noGood_Button_sj').css('display', 'block');
+		  }
+		},
+		error: function (error) {
+		  console.log('erer');
+		}
+	}); // ajax
+
+    // 좋아요 기능, click 함수 추가
+    likeCount_function(market_arr);
+
     // 스탬프 관련 내용
 	var temp ='<div class="stamp_infor">'
 	temp += '<img src="/images/standard.png" width="30px" height="30px">'
@@ -168,6 +198,71 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 	}); // ajax
 
 } // managerInfoLi_event
+
+function likeCount_function(market_arr) {
+
+	// 한글 꺠짐 문제 방지 (차후 문제)
+	var managerID = market_arr.manager_id;
+
+    /*  좋아요  */
+    $('#noGood_Button_sj').click(function () {
+      var getNow_likeCount = goodCount_sj.innerText;
+      var data = {
+        'market_name' : market_arr.market_name,
+        'sijang_name' : market_arr.sijang_name,
+        'like_count' : parseInt(getNow_likeCount)+1
+      };
+
+	  $.ajax({
+		type: 'post',
+	 	url: '/main_like/'+managerID, // user_id는 전역변수
+	    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+	    cache: false,
+	    data: data,
+	    datatype: 'json',
+	    success: function(result) {
+	      if (result['result'] == 'success'){
+	        $('#noGood_Button_sj').css('display', 'none');
+	        $('#yesGood_Button_sj').css('display', 'block');
+	        $('#goodCount_sj').text(result['like_count']);
+	      }
+	    },
+	    error: function(error){
+	      console.log(error);
+	      console.log('좋아요 실패');
+	    }
+	  });
+	});
+
+    /* 좋아요 취소 */
+    $('#yesGood_Button_sj').click(function () {
+      var getNow_likeCount = goodCount_sj.innerText;
+      var data = {
+        'like_count' : parseInt(getNow_likeCount)-1
+      };
+
+      $.ajax({
+        type: 'post',
+        url: '/main_dislike/'+managerID, // user_id는 전역변수
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        cache: false,
+        data: data,
+        datatype: 'json',
+        success: function(result) {
+	      if (result['result'] == 'success'){
+	        $('#noGood_Button_sj').css('display', 'block');
+	        $('#yesGood_Button_sj').css('display', 'none');
+	        $('#goodCount_sj').text(result['like_count']);
+	      }
+        },
+        error: function(error){
+	      console.log(error);        	
+          console.log('좋아요 취소 실패');
+        }
+      });
+    });
+
+} // likeCount_function
 
 function marketInfoLi_event_likelist(result_rows) {
 
@@ -327,32 +422,3 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt) {
     $('.store_review_sj').html(fullString);
 
 } // managerInfoLi_event_review
-
-// function likeCount_function(argument) {
-
-//     $('#store_name_sj').text(market_arr.market_name);
-//     $('#market_name_sj').text(market_arr.sijang_name);
-
-//     // 리뷰 ajax
-// 	$.ajax({
-// 		url: "/myStamp",
-// 		dataType: 'json',
-// 		type: 'POST',
-// 		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-// 		data: { "market_name": market_arr.market_name },
-// 		success: function (result) {
-// 			console.log(result);
-// 			if (result.rows.length > 0) {
-// 				managerInfoLi_event_review(result.rows, result.rateAvgAndCnt);
-// 			} else {
-// 				console.log("현재 해당하는 시장에 등록된 리뷰가 없음");
-// 				managerInfoLi_event_review(0, 0);
-// 			}
-// 		},
-// 		error: function (e) {
-// 			alert("Error!");
-// 			console.log('process error : ', e);
-// 		}
-// 	}); // ajax
-
-// }
