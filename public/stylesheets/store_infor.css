@@ -319,6 +319,8 @@ h2{
     top: 173px !important;
     width: 100% !important;
     /* height: 100%; */
+    
+    min-height: 70% !important;
     margin-bottom: 15% !important;
   }
 
