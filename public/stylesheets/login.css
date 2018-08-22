@@ -156,28 +156,13 @@ body, html {
     border-bottom-style: solid;
 }
 .icon_div{
-  width: 35px;
+  width: 15%;
   height: 35px;
   float: left;
-  padding-top: 10px;
 }
-#icon1{
-    width:30px;
-    height: 30px;
-    float: left;
-    
-}
-#icon2{
-    width:40px;
-    height: 40px;
-    float: left;
-    padding-top: 17%;
-}
-#icon3{
-    width:40px;
-    height: 40px;
-    float: left;
-    padding-top: 17%;
+.icon_div img{
+    width:35px;
+    height: 35px;
 }
 .login_button_user > .login_user{
     width:15%;
@@ -340,20 +325,20 @@ a{
 #signuplogo
 {
     width:50%;
-    height: auto;
+    height: auto; 
     margin-top: 18%;
 }
 
 
 .signupuser_input{
     width:100%;
-    height:20%;
+    height:40px;
     color:grey;
-    padding-left: 5%
+    margin-top: 15px;
 }
 .signuptext{
     width: 60%;
-    height: 50px;
+    height: 35px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
@@ -362,9 +347,9 @@ a{
 }
 .signupform1{
     padding-top:60%;
-    width:100%;
+    width:90%;
     height: 50%;
-    margin:0 auto;
+    margin-left: 5%;
 }
 #signupform2{
     width:300px;
@@ -660,10 +645,9 @@ a{
     position: fixed;
     z-index: 1;
 }
-.icon_div_2{
+.check_div{
     visibility:  hidden;
-    width: 35px;
+    width: 12%;
     height: 35px;
     float: left;
-    padding-top: 10px;
   }
