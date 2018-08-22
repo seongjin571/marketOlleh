@@ -21,6 +21,21 @@
 </head>
 
 <body>
+  <script>
+    window.onload = function() {
+      if(localStorage.getItem('reviewTab')) {
+        var review_tab = 'store_review_sj' + localStorage.getItem('reviewTab');
+        var stamp_detail = 'selected_stamp' + localStorage.getItem('reviewTab');
+        var back = 'back_div' + localStorage.getItem('reviewTab');
+        console.log(review_tab);
+        document.getElementById('myStamp').style.display = 'none';
+        document.getElementsByClassName(back)[0].style.display = 'block';
+        document.getElementById(stamp_detail).style.display = 'block';
+        document.getElementById(review_tab).style.display = 'block';
+        localStorage.clear();
+      }
+    }
+  </script>
 
   <div id="myStamp">
     <!-- <label>내 스탬프</label> -->
@@ -187,8 +202,14 @@
 
                 <button class='button_sj' id="delete_button_sj<%= myStamps[i].id %>">삭제</button>
               </div>
-
+            </div>
               <div class='password_number_div_sj' id="password_number_div_sj<%= myStamps[i].id %>">
+                <div class="password_check" id="password_check<%= myStamps[i].id %>">
+                  <div class="check<%= myStamps[i].id %>"></div>
+                  <div class="check<%= myStamps[i].id %>"></div>
+                  <div class="check<%= myStamps[i].id %>"></div>
+                  <div class="check<%= myStamps[i].id %>"></div>
+                </div>
                 <div class="password_line_sj <%= myStamps[i].id %>">
                   <div class="password_number_sj <%= myStamps[i].id %>"></div>
                   <div class="password_number_sj <%= myStamps[i].id %>"></div>
@@ -211,7 +232,7 @@
                 </div>
               </div>
               <!-- </div> -->
-          </div>
+          
 
 
               <div class="swiper-slide" id="swiper2<%= myStamps[i].id %>">
@@ -295,7 +316,7 @@
 
 
                 <% if(review) {%>
-                  <% for(var j=0; j<review.length; j++) { %>
+                  <% for(var j=review.length-1; j>=0; j--) { %>
                     <% if(review[j].market_name == myStamps[i].market_name && review[j].sijang_name == myStamps[i].sijang_name) { %>
 
                 <div class="review_div_sj" id='review_div_sj<%= myStamps[i].id %>'>
@@ -547,10 +568,11 @@
                   document.getElementsByClassName('gray<%= myStamps[i].id %>')[i].style.display='none';
                   document.getElementsByClassName('yellow<%= myStamps[i].id %>')[i].style.display='block';
 
-
                 }
+
                 // alert(star_index+1)
                 starRate<%= myStamps[i].id %> = star_index + 1;
+
               })
 
             /* 리뷰 작성 버튼 */
@@ -572,7 +594,18 @@
               var post_date = leadingZeros(now.getYear()-100,2)+ '-'+
                   leadingZeros(now.getMonth()+1,2)+'-' +
                   leadingZeros(now.getDate(),2);
+
               var sijang_name = '<%= myStamps[i].sijang_name %>';
+
+              if(! text) {
+                alert('내용을 입력해주세요 !');
+                return false;
+              }
+
+              if(! starRate<%= myStamps[i].id %>) {
+                starRate<%= myStamps[i].id %> = 0;
+              }
+
               var data = {
                 'market_name' : market_name,
                 'user_id' : user_id,
@@ -593,6 +626,7 @@
                   if (result['result']=='success'){
                     // console.log(result);
                     alert('등록완료');
+                    localStorage.setItem('reviewTab', '<%= myStamps[i].id %>');
                     location.reload();
                   }
                   else{
@@ -612,7 +646,6 @@
             $('#stamp_sj<%= myStamps[i].id %>').click(function () {
               var count = 0; //쿠폰 클릭시 이벤트 발생
               var result = 1;
-              alert("시작");
               $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
               $('#password_number_div_sj<%= myStamps[i].id %>').show(200);
 
@@ -625,7 +658,11 @@
               $('.password_number_sj').off().on('click',function(){
                 console.log('<%= myStamps[i].stamp_count %>')
                 number1 += $(this).html();
+                $('.check<%= myStamps[i].id %>').eq(count).html('*')
+                // document.getElementsByClassName('check<%= myStamps[i].id %>')[count].style.innerHTML='*';
+                // $('.check:eq(count)').html('*')
                 count++;
+                
                 console.log(number1);
                 console.log("count"+count);
                 if(count == 4){
@@ -656,6 +693,7 @@
                               if (result['result'] == 'success') {
                                 alert('스탬프추가');
                                 number1 = "";
+                                $('.check<%= myStamps[i].id %>').html('');
                                 console.log(result);
                                 stamp_count<%= myStamps[i].id %> = parseInt(result['new_stamp_count']);
                                 if (parseInt('<%= myStamps[i].stamp_standard %>') == 5) {
@@ -716,6 +754,7 @@
                                 $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p class="count_stamp">'+ (reset_stamp_count) +' / <%= myStamps[i].stamp_standard %></p>');
                                 $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
                                 $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+                                $('.check<%= myStamps[i].id %>').html('');
                                 // $(window).attr('location', '/myStamp');
                               }
                             },
@@ -730,6 +769,7 @@
                         console.log(number1);
                         alert('비밀번호가 일치하지 않습니다. 다시 입력해주세요.');
                         number1 = "";
+                        $('.check<%= myStamps[i].id %>').html('');
                       }
                     },
                     error: function (error) {
@@ -743,6 +783,7 @@
 
             /* 비밀번호 키패드에서 취소 버튼 눌렀을 때 */
             $('#password_cancel<%= myStamps[i].id %>').click(function(){
+              $('.check<%= myStamps[i].id %>').html('');
               $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
               $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
             });

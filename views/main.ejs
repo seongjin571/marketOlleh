@@ -171,12 +171,12 @@
     <div id="aaa">
         <h3>내 스탬프</h3>
         <div id="myStamp">
-            <div class="swiper-container">
+            <div class="swiper-container s1">
                 <div class="swiper-wrapper">
                     <!-- <label>내 스탬프</label> -->
                     <% if(myStamps) { %>
                         <% for(var i=0; i<myStamps.length; i++) { %>
-                            <div class="swiper-slide">
+                            <div class="swiper-slide swiper1">
                                 <div class="store_market_name">
                                     <%= myStamps[i].market_name %>
                                 </div>
@@ -245,7 +245,7 @@
               <div class="hot_store_list">
                   <div class="hot_store_detail">
                       <div>
-                          <img src="/images/fruit.jpg" width="100%" height="140px">
+                          <img src="/images/fruit.jpg" width="100%" height="125px">
                       </div>
                       <div class="good_market_name">
                           <%= market[i].sijang_name %>
@@ -271,7 +271,7 @@
 
                   <div class="hot_store_detail">
                       <div>
-                          <img src="/images/market2.jpg" width="100%" height="140px">
+                          <img src="/images/market2.jpg" width="100%" height="125px">
                       </div>
                       <div class="good_market_name">
                           <%= market[i+1].sijang_name %>
@@ -295,23 +295,45 @@
     <!-- ▽ STORE INFO // store_infor.ejs 참조 ▽ -->
 
     <div id="store_infor">
-        <div class="name_sj">
-            <p id="store_name_sj"></p>
-            <p id="market_name_sj"></p>
+
+        <div id="menu_infor">
+                <div id="top_infor">
+                  <div id="name_sj">
+                    <p id="store_name_sj">
+                    </p>
+                    <p id="market_name_sj">
+                    </p>
+                  </div>
+                  <div id="sns_sj">
+                    <div id="good">
+                        <img class='top_image' id="noGood_Button_sj" src="/images/nolikeM.png" width="30px" height="30px" style='display: block;'>
+                        <img class='top_image' id="yesGood_Button_sj" src="/images/likeM.png" width="30px" height="30px" style='display: none;'>
+                     
+
+                            <p class="top_font" id="goodCount_sj">
+                                20
+                            </p>
+                    </div>
+                    <div id="kakao">
+                      <img class="top_image" src="/images/kakao_bic.png" width="30px" height="30px">
+                      <p class="top_font">공유하기</p>
+                    </div>
+                    <div id="face">
+                      <img class="top_image" src="/images/face.png" width="30px" height="30px">
+                      <p class="top_font">공유하기</p>
+                    </div>
+                  </div>
+                </div>
+                <div id="bottom_infor">
+                  <p id="go_store_detail_sj">스탬프</p>
+                  <p id="go_store_detail_sj">상점정보</p>
+                  <p id="go_store_review_sj">리뷰</p>
+                </div>
         </div>
 
-        <div id="sns_sj">
-            <img id="noGood_Button_sj" src="/images/noGood.png" width="16%" height="auto">
-            <img id="yesGood_Button_sj" src="/images/yesGood.png" width="16%" height="auto">
-            <p id="goodCount_sj"></p>
-            <img src="/images/ka.png" width="16%" height="auto">
-            <img src="/images/face.png" width="16%" height="auto">
-        </div>
-        <div id="menu_sj">
-            <p id="go_stamp_sj">스탬프</p>
-            <p id="go_store_detail_sj">상점 정보</p>
-            <p id="go_store_review_sj">리뷰</p>
-        </div>
+        <div class="swiper-container s2">
+                <div class="swiper-wrapper">
+                        <div class="swiper-slide">
         <div id="stamp_menu_sj">
             <div class="stamp_sj">
 
@@ -379,34 +401,40 @@
 
             </div>
             <!-- [ 스탬프 기준, 보상 ] 표현해주는 div-->
-            <div id="stamp_infor_sj"></div>
-
+            <div id="stamp_infor_sj">
+            </div>
             <button class="button_sj">다운받기</button>
         </div>
+        </div>
 
-        <!-- [ 상점 소개 ] 해주는 div -->
+        <div class="swiper-slide">
         <div class="store_detail_sj">
-            <h2>상점 소개</h2>            
-            <p></p>  <!-- market_arr.market_introduce -->
-            <img src="/images/fruit.jpg" width="100%">
+                <div class="store_image"></div>
+                <div id="introduce">
+                    <img src="/images/storeM.png" width="30px" height="30px">
+                    <div class="name">상점소개</div>
+                    <div id="intro_content"></div>
+                </div>
+                <div id="map">
+                        <img src="/images/location2.png" width="30px" height="30px">
+                        <div class="name">위치</div>
+                </div>
+                <img src="/images/han.png" width="80%" style="margin-left: 10%;margin-top: 5%;">
+            </div>
 
-            <h2>위치</h2>
-            <img src="/images/han.png" width="100%">
+
+
         </div>
 
         <!-- [ 상점 리뷰 ] div ~ review table 참조 -->
+        <div class="swiper-slide">
         <div class="store_review_sj">
 
-<!--        <div class="review_div_sj">
-                <div class="review_content_sj">
-                    <div class="review_content_id_sj">
-                        <b>jungjaeho1115</b>
-                    </div>
-                    <div class="review_content_date_sj">18-07-14</div>
-                </div>
-                <p>사과가 다른 가게보다 좀 비싼 감이 있었지만 다른 과일들은 모두 저렴하고 상품도 좋네요!</p>
-            </div> -->
-
+            </div>
+        </div>
+    </div>
+        
+        <div class="swiper-scrollbar"></div>
         </div>
 
     </div>
@@ -436,6 +464,7 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
     <script>
+          $('.store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
         $('#myStamp_sj').click(function () {
             location.href = "/myStamp";
         })
@@ -452,7 +481,7 @@
                 console.log('로그아웃실패');
             }
         })
-        var swiper = new Swiper('.swiper-container', {
+        var swiper = new Swiper('.s1', {
             slidesPerView: 'auto',
             centeredSlides: true,
             spaceBetween: 10,
@@ -483,31 +512,16 @@
                 marginTop: '3.5%'
             }, 100);
         });
+        var swiper = new Swiper('.s2', {
+            autoHeight: true,
+            observer: true,
+            observeParents: true,
+            scrollbar: {
+                el: '.swiper-scrollbar',
+                hide: true,
+            },
 
-
-
-
-        $('#go_stamp_sj').click(function () {
-            $('#stamp_menu_sj').show(200);
-            $('.store_detail_sj').hide(200);
-            $('.store_review_sj').hide(200);
-        })
-        $('#go_store_detail_sj').click(function () {
-            $('#stamp_menu_sj').hide(200);
-            $('.store_detail_sj').show(200);
-            $('.store_review_sj').hide(200);
-
-        })
-        $('#go_store_review_sj').click(function () {
-            $('#stamp_menu_sj').hide(200);
-            $('.store_detail_sj').hide(200);
-            $('.store_review_sj').show(200);
-        })
-
-
-        // for(var i=0; i<3; i++){
-        //     document.getElementsByClassName('swiper-slide').style.backgroundImage="url('images/backSample'i'')"
-        // }
+        });
 
     </script>
 
