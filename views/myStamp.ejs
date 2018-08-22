@@ -203,8 +203,14 @@
 
                 <button class='button_sj' id="delete_button_sj<%= myStamps[i].id %>">삭제</button>
               </div>
-
+            </div>
               <div class='password_number_div_sj' id="password_number_div_sj<%= myStamps[i].id %>">
+                <div class="password_check" id="password_check<%= myStamps[i].id %>">
+                  <div class="check<%= myStamps[i].id %>"></div>
+                  <div class="check<%= myStamps[i].id %>"></div>
+                  <div class="check<%= myStamps[i].id %>"></div>
+                  <div class="check<%= myStamps[i].id %>"></div>
+                </div>
                 <div class="password_line_sj <%= myStamps[i].id %>">
                   <div class="password_number_sj <%= myStamps[i].id %>"></div>
                   <div class="password_number_sj <%= myStamps[i].id %>"></div>
@@ -227,7 +233,7 @@
                 </div>
               </div>
               <!-- </div> -->
-          </div>
+          
 
 
               <div class="swiper-slide" id="swiper2<%= myStamps[i].id %>">
@@ -641,7 +647,6 @@
             $('#stamp_sj<%= myStamps[i].id %>').click(function () {
               var count = 0; //쿠폰 클릭시 이벤트 발생
               var result = 1;
-              alert("시작");
               $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
               $('#password_number_div_sj<%= myStamps[i].id %>').show(200);
 
@@ -654,7 +659,11 @@
               $('.password_number_sj').off().on('click',function(){
                 console.log('<%= myStamps[i].stamp_count %>')
                 number1 += $(this).html();
+                $('.check<%= myStamps[i].id %>').eq(count).html('*')
+                // document.getElementsByClassName('check<%= myStamps[i].id %>')[count].style.innerHTML='*';
+                // $('.check:eq(count)').html('*')
                 count++;
+                
                 console.log(number1);
                 console.log("count"+count);
                 if(count == 4){
@@ -685,6 +694,7 @@
                               if (result['result'] == 'success') {
                                 alert('스탬프추가');
                                 number1 = "";
+                                $('.check<%= myStamps[i].id %>').html('');
                                 console.log(result);
                                 stamp_count<%= myStamps[i].id %> = parseInt(result['new_stamp_count']);
                                 if (parseInt('<%= myStamps[i].stamp_standard %>') == 5) {
@@ -745,6 +755,7 @@
                                 $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p class="count_stamp">'+ (reset_stamp_count) +' / <%= myStamps[i].stamp_standard %></p>');
                                 $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
                                 $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+                                $('.check<%= myStamps[i].id %>').html('');
                                 // $(window).attr('location', '/myStamp');
                               }
                             },
@@ -759,6 +770,7 @@
                         console.log(number1);
                         alert('비밀번호가 일치하지 않습니다. 다시 입력해주세요.');
                         number1 = "";
+                        $('.check<%= myStamps[i].id %>').html('');
                       }
                     },
                     error: function (error) {
@@ -772,6 +784,7 @@
 
             /* 비밀번호 키패드에서 취소 버튼 눌렀을 때 */
             $('#password_cancel<%= myStamps[i].id %>').click(function(){
+              $('.check<%= myStamps[i].id %>').html('');
               $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
               $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
             });

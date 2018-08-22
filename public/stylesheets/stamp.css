@@ -477,7 +477,6 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             border-bottom-color: #d3d3d3;
             border-bottom-width: 4px;
             /* box-shadow: 5px 5px 5px #888888; */
-
         }
         .password_line_sj{
             display: inline-flex;
