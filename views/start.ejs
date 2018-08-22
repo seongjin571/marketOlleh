@@ -12,7 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
-    
+
     <script>
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
@@ -75,14 +75,14 @@
         </form>
 
         <script>
-        $('#idfind').click(function(e) {
-          e.preventDefault();
-          $(window).attr('location', '/findid');
-        });
-        $('#password_find1').click(function(e) {
-          e.preventDefault();
-          $(window).attr('location', '/findpassword_user');
-        });
+            $('#idfind').click(function (e) {
+                e.preventDefault();
+                $(window).attr('location', '/findid');
+            });
+            $('#password_find1').click(function (e) {
+                e.preventDefault();
+                $(window).attr('location', '/findpassword_user');
+            });
         </script>
 
 
@@ -178,13 +178,13 @@
                 $("#loginButton").trigger("click");
             };
         });
-        $('#idfind_manager').click(function(e) {
-          e.preventDefault();
-          $(window).attr('location', '/findidmanager');
+        $('#idfind_manager').click(function (e) {
+            e.preventDefault();
+            $(window).attr('location', '/findidmanager');
         });
-        $('#password_find2').click(function(e) {
-          e.preventDefault();
-          $(window).attr('location', '/findpassword_manager');
+        $('#password_find2').click(function (e) {
+            e.preventDefault();
+            $(window).attr('location', '/findpassword_manager');
         });
     </script>
     <!--loginManager 끝-->
@@ -198,7 +198,7 @@
         </div>
         <form class='signupform1'>
             <div class="signupuser_input">
-                <div class="icon_div">
+                <div class="icon_div_2">
                     <img id="icon1" src="/images/nameicon.png">
                 </div>
                 <div class="icon_div">
@@ -207,31 +207,43 @@
                 <input class="signuptext" type='text' id='username' name='username' placeholder='이름' />
             </div>
             <div class="signupuser_input">
+                <div class="icon_div_2">
+                    <img id="icon2" src="/images/idicon.png">
+                </div>
                 <div class="icon_div">
                     <img id="icon2" src="/images/idicon.png">
                 </div>
                 <input class="signuptext" type='text' id='userid' name='userid' placeholder='아이디' />
             </div>
             <div class="signupuser_input">
+                <div class="icon_div_2">
+                    <img id="icon3" src="/images/passwordicon.png">
+                </div>
                 <div class="icon_div">
                     <img id="icon3" src="/images/passwordicon.png">
                 </div>
                 <input class="signuptext" type='password' id='userpwd' name='userpwd' placeholder='비밀번호' />
             </div>
             <div class="signupuser_input">
+                <div class="icon_div_2">
+                    <img id="icon3" src="/images/passwordicon.png">
+                </div>
                 <div class="icon_div">
                     <img id="icon3" src="/images/passwordicon.png">
                 </div>
                 <input class="signuptext" type='password' id='userpwdcheck' name='userpwd' placeholder='비밀번호확인' />
             </div>
             <div class="signupuser_input">
+                <div class="icon_div_2">
+                    <img id="icon3" src="/images/passwordicon.png">
+                </div>
                 <div class="icon_div">
                     <img id="icon3" src="/images/passwordicon.png">
                 </div>
                 <div>
-                <input class="signuptext" type='text' id='e_mail' name='e_mail' placeholder='이메일' />
+                    <input class="signuptext" type='text' id='e_mail' name='e_mail' placeholder='이메일' />
+                </div>
             </div>
-          </div>
             <div class="signupuser_input2">
                 <input class="signupbutton" id="userfinish" type='submit' value='고객 회원가입' />
             </div>
@@ -243,7 +255,8 @@
             var data = {
                 userid: $('#userid').val(),
                 username: $('#username').val(),
-                userpwd: $('#userpwd').val()
+                userpwd: $('#userpwd').val(),
+                email : $('#e_mail').val()
             }
             console.log(data);
             $.ajax({
@@ -264,7 +277,7 @@
                     }
                 },
                 error: function (error) {
-                    alert('가입 실패');
+                    alert('이상한부분');
                 }
             });
         });

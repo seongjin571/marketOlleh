@@ -10,8 +10,9 @@ router.post('/signupuser', function(req, res) {
   var userId = req.body.userid;
   var userName = req.body.username;
   var password = req.body.userpwd;
+  var email = req.body.email;
   var selectSql = 'select * from `user` where `user_id`=?';
-  var insertSql = 'insert into `user`(`user_id`, `password`, `user_name`) values (?,?,?);';
+  var insertSql = 'insert into `user`(`user_id`, `password`, `user_name`,`email`) values (?,?,?,?);';
 
   conn.query(selectSql, [userId], function(error, results){
     if(error) { console.log(error); }
@@ -20,7 +21,7 @@ router.post('/signupuser', function(req, res) {
       res.send({ result: 'already' });
     }
     else{
-      conn.query(insertSql, [userId, password, userName], function(err, rows){
+      conn.query(insertSql, [userId, password, userName,email], function(err, rows){
         if(err){ console.log(err); }
         else{
           console.log('er 1');
