@@ -110,6 +110,8 @@ body, html {
 }
 .formuser
 {
+    position: fixed;
+    padding-top:20%;
     width:100%;
     height: 35%;
     
@@ -124,6 +126,26 @@ body, html {
     text-align: center;
     color:grey;
     margin-bottom: 3px;
+    position: fixed;
+    top:10%;
+}
+.login_button_user_1{
+    width:360px;
+    height:30px;
+    text-align: center;
+    color:grey;
+    margin-bottom: 3px;
+    position: fixed;
+    top:170px;
+}
+.login_button_user_2{
+    width:360px;
+    height:30px;
+    text-align: center;
+    color:grey;
+    margin-bottom: 3px;
+    position: fixed;
+    top:220px;
 }
 .login_button_formManager{
     width:100%;
@@ -147,8 +169,26 @@ body, html {
     font-family: initial !important;
 }
 .login_button_user > .inputuser{
-    width: 80%;
-    height: 90%;
+    width: 288px;
+    height: 46px;
+    background-color: white;
+    border: double 1px transparent;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
+}
+.login_button_user_1 > .inputuser{
+    width: 288px;
+    height: 46px;
+    background-color: white;
+    border: double 1px transparent;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
+}
+.login_button_user_2 > .inputuser{
+    width: 288px;
+    height: 46px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
@@ -171,8 +211,10 @@ body, html {
 
 #login_button_user2{
    display: inline-flex;
-   height: 10%;
-   width: 100%;
+   height: 64px;
+   width: 360px;
+   position: fixed;
+   top: 340px;
 }
 #login_button_manager{
     display: inline-flex;
@@ -230,8 +272,9 @@ body, html {
 {
     height:50px;
     width: 100%;
-    padding-top:8%;
     text-align: center;
+    position: fixed;
+    top:300px;
 }
 .login_button_user4
 {
@@ -258,10 +301,11 @@ body, html {
     background: linear-gradient(to right, #17ead9 , #6078ea);
    }
 #kakao_logo{
-    padding-top: 5%;
     width:100%;
     height: 25%;
     text-align: center;
+    position:fixed;
+    top: 520px;
     
 }
 #kakao_logo2{
