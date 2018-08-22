@@ -1062,7 +1062,7 @@ router.post('/main_dislike/:manager_id', function(req, res) {
     if(likeErr) { console.log(likeErr); }
     else {
       var selectSql = 'select * from `manager` where `manager_id`=? ;';
-      conn.query(selectSql, [req.params.id], function(selErr, selRows) {
+      conn.query(selectSql, [req.params.manager_id], function(selErr, selRows) {
         res.send({
           result: "success",
           like_count: selRows[0].like_count
