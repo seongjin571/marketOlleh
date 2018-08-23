@@ -32,6 +32,14 @@
           document.getElementById('loginuser').style.display = 'block';
           localStorage.clear();
         }
+
+        else if(localStorage.getItem('introFlag') == 2) {
+          // document.getElementById('intro_image_div').style.display = 'none';
+          document.getElementById('all_body').style.display = 'none';
+          document.getElementById('loginManager').style.display = 'block';
+          localStorage.clear();
+        }
+
         else if(! localStorage.getItem('introFlag')){
           document.getElementById('all_body').style.display = 'block';
           document.getElementById('intro_image_div').style.display = 'block';
@@ -479,6 +487,7 @@
                     success: function (result) {
                         if (result['result'] == 'success') {
                             alert('회원가입이 완료되었습니다 !');
+                            localStorage.setItem('introFlag', 2);
                             location.reload();
                         }
                         else if (result['result'] == 'already') {
