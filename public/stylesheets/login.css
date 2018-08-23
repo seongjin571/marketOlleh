@@ -117,8 +117,10 @@ body, html {
     
 }
 .formManager{
+    position: fixed;
+    padding-top:20%;
     width:100%;
-    height: 20%;
+    height: 35%;
 }
 .login_button_user{
     width:100%;
@@ -147,11 +149,23 @@ body, html {
     position: fixed;
     top:220px;
 }
-.login_button_formManager{
-    width:100%;
-    height:45%;
+.login_button_formManager1{
+    width: 360px;
+    height: 30px;
     text-align: center;
-    color:grey;
+    color: grey;
+    margin-bottom: 3px;
+    position: fixed;
+    top: 170px;
+}
+.login_button_formManager2{
+    width: 360px;
+    height: 30px;
+    text-align: center;
+    color: grey;
+    margin-bottom: 3px;
+    position: fixed;
+    top: 220px;
 }
 .login_button_formManager > .inputmanager{
     width: 80%;
@@ -169,6 +183,7 @@ body, html {
     font-family: initial !important;
 }
 .login_button_user > .inputuser{
+    outline:none;
     width: 288px;
     height: 46px;
     background-color: white;
@@ -178,6 +193,7 @@ body, html {
     border-bottom-style: solid;
 }
 .login_button_user_1 > .inputuser{
+    outline:none;
     width: 288px;
     height: 46px;
     background-color: white;
@@ -187,6 +203,7 @@ body, html {
     border-bottom-style: solid;
 }
 .login_button_user_2 > .inputuser{
+    outline:none;
     width: 288px;
     height: 46px;
     background-color: white;
@@ -218,8 +235,10 @@ body, html {
 }
 #login_button_manager{
     display: inline-flex;
-    height: 4%;
-    width: 100%;
+    height: 64px;
+    width: 360px;
+    position: fixed;
+    top: 340px;
 }
 .idfind{
     background-color: white;
@@ -283,9 +302,11 @@ body, html {
     text-align: center;
 }
 .login_button_user5{
-    height:25%;
+    height:50px;
     width: 100%;
     text-align: center;
+    position: fixed;
+    top:300px;
 }
 .loginUser_insert{
     box-shadow: 5px 5px 3px #efefef;
@@ -309,10 +330,11 @@ body, html {
     
 }
 #kakao_logo2{
-    margin-top: 6%;
-    width:100%;
-    height: 31%;
+    height: 50px;
+    width: 100%;
     text-align: center;
+    position: fixed;
+    top: 300px;
 }
 #kakaobutton{
     box-shadow: 5px 5px 3px #efefef;
