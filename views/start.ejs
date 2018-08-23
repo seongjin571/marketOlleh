@@ -171,17 +171,17 @@
         </div>
     </div>
     <script>
-      var doubleSubmitFlag = false;
-      function doubleSubmitCheck(){
-        if(doubleSubmitFlag){
-          return doubleSubmitFlag;
-        }else{
-          doubleSubmitFlag = true;
-          return false;
+        var doubleSubmitFlag = false;
+        function doubleSubmitCheck() {
+            if (doubleSubmitFlag) {
+                return doubleSubmitFlag;
+            } else {
+                doubleSubmitFlag = true;
+                return false;
+            }
         }
-      }
         $('#loginButton').click(function (e) {
-            if(doubleSubmitCheck()) return;
+            if (doubleSubmitCheck()) return;
 
 
             e.preventDefault();
@@ -342,47 +342,95 @@
     <!--signupManager 시작-->
     <div id="signupManager">
         <img id="back_signupManager" src="/images/backButton_blue.png">
+        <div class="menu">
+            <div>회원정보</div>
+            <div>상점정보</div>
+            <div>스탬프정보</div>
+        </div>
 
         <form id='signupForm2'>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="signupuser_input3">
-                            <input class="signuptext2" type="text" placeholder=" 이름" id="manager_name" name='manager_name'>
+                            <div class="manager_check_div">
+                                <img src="/images/check.png" width="30px" height="30px">
+                            </div>
+                            <div class="manager_signup_name">이름</div>
+                            <input class="signuptext2" type="text" placeholder="ex)홍길동" id="manager_name" name='manager_name'>
                         </div>
                         <div class="signupuser_input3">
-                            <input class="signuptext2" type="text" id="manager_id_jh" name='manager_id' placeholder=" 상인 아이디">
+                            <div class="manager_check_div">
+                                <img src="/images/check.png" width="30px" height="30px">
+                            </div>
+                            <div class="manager_signup_name">아이디</div>
+                            <input class="signuptext2" type="text" id="manager_id_jh" name='manager_id' placeholder="ex)manager123">
                         </div>
                         <div class="signupuser_input3">
-                            <input class="signuptext2" type="password" id="password_jh" name='password' placeholder=" 비밀번호">
+                            <div class="manager_check_div">
+                                <img src="/images/check.png" width="30px" height="30px">
+                            </div>
+                            <div class="manager_signup_name">비밀번호</div>
+                            <input class="signuptext2" type="password" id="password_jh" name='password' placeholder="비밀번호">
                         </div>
                         <div class="signupuser_input3">
+                            <div class="manager_check_div">
+                                <img src="/images/check.png" width="30px" height="30px">
+                            </div>
+                            <div class="manager_signup_name">비밀번호확인</div>
                             <input class="signuptext2" type="password" id="password_jh_check" name='password' placeholder=" 비밀번호확인">
+                        </div>
+                        <div class="signupuser_input3">
+                            <div class="manager_check_div">
+                                <img src="/images/check.png" width="30px" height="30px">
+                            </div>
+                            <div class="manager_signup_name">전화번호</div>
+                            <input class="signuptext2" type="text" placeholder=" 상인 번호" id="manager_phone" name='manager_phone'>
                         </div>
                     </div>
 
 
                     <div class="swiper-slide">
                         <div class="signupuser_input3">
-                            <input class="signuptext2" type="text" id="market_name" name='market_name' placeholder=" 상점 이름">
+                            <div class="manager_check_div">
+                                <img src="/images/check.png" width="30px" height="30px">
+                            </div>
+                            <div class="manager_signup_name">상점이름</div>
+                            <input class="signuptext2" type="text" id="market_name" name='market_name' placeholder="">
                         </div>
                         <div class="signupuser_input3">
-                            <input class="signuptext2" type="text" id="market_location" name='market_location' placeholder=" 상점 위치">
+                            <div class="manager_check_div">
+                                <img src="/images/check.png" width="30px" height="30px">
+                            </div>
+                            <div class="manager_signup_name">상점위치</div>
+                            <input class="signuptext2" type="text" id="market_location" name='market_location' placeholder="상점 위치">
                         </div>
+
                         <div class="signupuser_input3">
-                            <input class="signuptext2" type="text" placeholder=" 상인 번호" id="manager_phone" name='manager_phone'>
+                            <div class="manager_check_div">
+                                <img src="/images/check.png" width="30px" height="30px">
+                            </div>
+                            <div class="manager_signup_name">상점소개</div>
+                            <textarea class="signuptext2" type="text" id="market_introduce" name='market_introduce'></textarea>
                         </div>
-                        <div class="signupuser_input3">
-                            <input class="signuptext2" type="text" placeholder=" 상점 소개" id="market_introduce" name='market_introduce'>
-                        </div>
-                        <div class="signuser_coupon1">
-                            <label id="sijang_name" name='sijang_name'> 시장 찾기 </label>
+                        <div class="signuser_coupon1" id="find_market">
+                            <div class="manager_check_div">
+                                <img src="/images/check.png" width="30px" height="30px">
+                            </div>
+                            <div id="sijang_name" name='sijang_name'>시장선택</div>
                             <input type="button" value="시장찾기" id="modal_display" />
                         </div>
+                        <div class="signuser_coupon1" id="store_picture">
+                            <div class="manager_check_div">
+                                <img src="/images/check.png" width="30px" height="30px">
+                            </div>
+                            <div id="sijang_picture" name='sijang_name'>상점사진</div>
+                            <input type='file' name='manager_img' id='manager_img' />
                         </div>
+                    </div>
 
 
-                        <div class="swiper-slide">
+                    <div class="swiper-slide">
                         <div class="signupuser_input3">
                             <input class="signuptext2" type="text" placeholder=" 보상" id="stamp_reward" name='stamp_reward'>
                         </div>
@@ -401,16 +449,14 @@
                                 <option>10</option>
                             </select>
                         </div>
-                        <div>
-                            <input type='file' name='manager_img' id='manager_img' />
-                        </div>
+
                         <div class="signupuser_input4">
                             <input class="signupbuttonmanager" type='submit' value='회원가입' />
                         </div>
-                        </div>
                     </div>
-                    <div class="swiper-scrollbar"></div>
                 </div>
+                <div class="swiper-scrollbar"></div>
+            </div>
         </form>
         <!-- Modal -->
         <div id="myModal" class="modal">
@@ -530,8 +576,8 @@
             });
         </script>
         <script type="text/javascript" src="/javascripts/signupManager.js"></script>
-        </div>
-        <!--signupManager 끝-->
+    </div>
+    <!--signupManager 끝-->
 
 </body>
 <!--start script  시작-->
