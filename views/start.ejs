@@ -24,11 +24,26 @@
 
 <body>
 
+    <script>
+      window.onload = function() {
+        if(localStorage.getItem('introFlag')) {
+          document.getElementById('intro_image_div').style.display = 'none';
+          localStorage.clear();
+        }
+        else {
+          document.getElementById('intro_image_div').style.display = 'block';
+          setTimeout(function () {
+              $('#intro_image_div').fadeOut('500');
+          }, 2000);
+        }
+      }
+    </script>
+
     <!--start div 시작-->
 
     <div id="start">
         <div id="all_body">
-            <div id="intro_image_div">
+            <div id="intro_image_div" style='display: none;'>
                 <img id="intro_image" src="/images/intro.jpg">
             </div>
             <div id="top_part">
@@ -459,9 +474,10 @@
 </body>
 <!--start script  시작-->
 <script>
-    setTimeout(function () {
-        $('#intro_image_div').fadeOut('500');
-    }, 2000);
+    // setTimeout(function () {
+    //     $('#intro_image_div').fadeOut('500');
+    // }, 2000);
+
     var name2=/^[가-힣]+$/;
     var id = /^[a-z0-9_]{6,15}$/;
     var password = /^[a-zA-Z0-9]{6,15}$/;
@@ -601,9 +617,6 @@
         $('#loginManager').fadeIn(300)
     })
 
-
-
-   
 
     $('#password_jh').change(function () {
         pwd3 = $(this).val();
