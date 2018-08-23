@@ -171,7 +171,19 @@
         </div>
     </div>
     <script>
+      var doubleSubmitFlag = false;
+      function doubleSubmitCheck(){
+        if(doubleSubmitFlag){
+          return doubleSubmitFlag;
+        }else{
+          doubleSubmitFlag = true;
+          return false;
+        }
+      }
         $('#loginButton').click(function (e) {
+            if(doubleSubmitCheck()) return;
+
+
             e.preventDefault();
             var manager_id = $('#manager_id').val();
             var password = $('#password').val();
@@ -193,7 +205,7 @@
                         $(window).attr('location', '/mainManager');
                     } else {
                         alert('로그인실패');
-                        //$(window).attr('location', '/start');
+                        $(window).attr('location', '/start');
                     }
                 },
                 error: function (error) {

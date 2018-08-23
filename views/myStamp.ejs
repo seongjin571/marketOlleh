@@ -598,7 +598,19 @@
               })
 
             /* 리뷰 작성 버튼 */
+            var doubleSubmitFlag = false;
+            function doubleSubmitCheck(){
+              if(doubleSubmitFlag){
+                return doubleSubmitFlag;
+              }else{
+                doubleSubmitFlag = true;
+                return false;
+              }
+            }
+
             $('#write_ok_button<%= myStamps[i].id %>').click(function(){
+              if(doubleSubmitCheck()) return;
+
               var user_id = '<%= myStamps[i].user_id %>';
               var market_name = '<%= myStamps[i].market_name %>';
               var text=$('#review_textarea<%= myStamps[i].id %>').val();
