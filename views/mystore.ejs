@@ -131,7 +131,7 @@
                                   </div>
 
                                     <div class="review_content_sj">
-                                      <div class="review_content_id_sj" id='review_content_id_sj<%= review[j].user_id %>'>
+                                      <div class="review_content_id_sj" id='review_content_id_sj<%= review[j].id %>'>
                                         <script>
                                         var temp = '<%= review[j].user_id %>';
                                         var secret = '***';
@@ -142,9 +142,9 @@
                                         var temp2 = temp.substring(0,f);
                                         var result3 = temp2.concat(secret);
                                         if(result3 == '***'){
-                                          $('#review_content_id_sj<%= review[j].user_id %>').html('사장님');
+                                          $('#review_content_id_sj<%= review[j].id %>').html('사장님');
                                         }else{
-                                          $('#review_content_id_sj<%= review[j].user_id %>').html(result3);
+                                          $('#review_content_id_sj<%= review[j].id %>').html(result3);
                                         }
                                         //  console.log("아래");
                                         //  console.log(result3);
