@@ -234,7 +234,19 @@
                 console.log('로그아웃실패');
             }
         })
+        var doubleSubmitFlag = false;
+        function doubleSubmitCheck(){
+          if(doubleSubmitFlag){
+            return doubleSubmitFlag;
+          }else{
+            doubleSubmitFlag = true;
+            return false;
+          }
+        }
+
         $('#write_ok_button').click(function () {
+            if(doubleSubmitCheck()) return;
+            
             var user_id = '사장님';
             var market_name = '<%= result1[0].market_name %>';
             var sijang_name = '<%= result1[0].sijang_name %>';
