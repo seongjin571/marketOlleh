@@ -354,7 +354,7 @@
                 <input class="signuptext2" type="text" placeholder="스탬프 비밀번호" id="stamp_password" name='stamp_password'>
             </div>
             <div class="signupuser_input3">
-                <input class="signuptext2" type="text" placeholder="정립기준" id="market_promotion" name='market_promotion'>
+                <input class="signuptext2" type="text" placeholder="적립기준" id="market_promotion" name='market_promotion'>
             </div>
             <div class="signupuser_input3">
                 <input class="signuptext2" type="text" placeholder=" 상점 소개" id="market_introduce" name='market_introduce'>
@@ -369,6 +369,9 @@
                     <option>5</option>
                     <option>10</option>
                 </select>
+            </div>
+            <div>
+              <input type='file' name='manager_img' id='manager_img'/>
             </div>
             <div class="signupuser_input4">
                 <input class="signupbuttonmanager" type='submit' value='회원가입' />
@@ -445,18 +448,33 @@
                     'stamp_standard': stamp_standard,
                     'sijang_name': sijang_name.innerHTML
                 };
+
+                var data2 = new FormData();
+                data2.append('manager_id', manager_id);
+                data2.append('password', password);
+                data2.append('market_name', market_name);
+                data2.append('market_location', market_location);
+                data2.append('manager_phone', manager_phone);
+                data2.append('manager_name', manager_name);
+                data2.append('stamp_reward', stamp_reward);
+                data2.append('stamp_password', stamp_password);
+                data2.append('market_promotion', market_promotion);
+                data2.append('market_introduce', market_introduce);
+                data2.append('stamp_standard', stamp_standard);
+                data2.append('sijang_name', sijang_name.innerHTML);
+                data2.append('manager_img', $('input[name=manager_img]')[0].files[0]);
+
                 console.log(data);
                 $.ajax({
                     type: "POST",
                     url: "/signup/signupmanager",
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    cache: false,
-                    datatype: "json",
-                    data: data,
+                    contentType:false,
+                    processData: false,
+                    data: data2,
                     success: function (result) {
                         if (result['result'] == 'success') {
-                            alert('가입 성공');
-                            location.reload()
+                            alert('회원가입이 완료되었습니다 !');
+                            location.reload();
                         }
                         else if (result['result'] == 'already') {
                             alert('이미 존재하는 아이디입니다.');
@@ -480,7 +498,6 @@
     // setTimeout(function () {
     //     $('#intro_image_div').fadeOut('500');
     // }, 2000);
-
     var name2=/^[가-힣]+$/;
     var id = /^[a-z0-9_]{6,15}$/;
     var password = /^[a-zA-Z0-9]{6,15}$/;
@@ -619,6 +636,9 @@
         $('#signupManager').fadeOut(300)
         $('#loginManager').fadeIn(300)
     })
+
+
+
 
 
     $('#password_jh').change(function () {
