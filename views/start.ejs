@@ -26,11 +26,14 @@
 
     <script>
       window.onload = function() {
-        if(localStorage.getItem('introFlag')) {
-          document.getElementById('intro_image_div').style.display = 'none';
+        if(localStorage.getItem('introFlag') == 1) {
+          // document.getElementById('intro_image_div').style.display = 'none';
+          document.getElementById('all_body').style.display = 'none';
+          document.getElementById('loginuser').style.display = 'block';
           localStorage.clear();
         }
-        else {
+        else if(! localStorage.getItem('introFlag')){
+          document.getElementById('all_body').style.display = 'block';
           document.getElementById('intro_image_div').style.display = 'block';
           setTimeout(function () {
               $('#intro_image_div').fadeOut('500');
@@ -42,7 +45,7 @@
     <!--start div 시작-->
 
     <div id="start">
-        <div id="all_body">
+        <div id="all_body" style='display:none;'>
             <div id="intro_image_div" style='display: none;'>
                 <img id="intro_image" src="/images/intro.jpg">
             </div>
