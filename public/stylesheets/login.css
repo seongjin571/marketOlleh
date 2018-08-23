@@ -110,13 +110,17 @@ body, html {
 }
 .formuser
 {
+    position: fixed;
+    padding-top:20%;
     width:100%;
     height: 35%;
     
 }
 .formManager{
+    position: fixed;
+    padding-top:20%;
     width:100%;
-    height: 20%;
+    height: 35%;
 }
 .login_button_user{
     width:100%;
@@ -124,16 +128,59 @@ body, html {
     text-align: center;
     color:grey;
     margin-bottom: 3px;
+    position: fixed;
+    top:10%;
 }
-.login_button_formManager{
-    width:100%;
-    height:45%;
+.login_button_user_1{
+    width:360px;
+    height:30px;
     text-align: center;
     color:grey;
+    margin-bottom: 3px;
+    position: fixed;
+    top:170px;
 }
-.login_button_formManager > .inputmanager{
-    width: 80%;
-    height: 90%;
+.login_button_user_2{
+    width:360px;
+    height:30px;
+    text-align: center;
+    color:grey;
+    margin-bottom: 3px;
+    position: fixed;
+    top:220px;
+}
+.login_button_formManager1{
+    width: 360px;
+    height: 30px;
+    text-align: center;
+    color: grey;
+    margin-bottom: 3px;
+    position: fixed;
+    top: 170px;
+}
+.login_button_formManager2{
+    width: 360px;
+    height: 30px;
+    text-align: center;
+    color: grey;
+    margin-bottom: 3px;
+    position: fixed;
+    top: 220px;
+}
+.login_button_formManager1 > .inputmanager{
+    outline:none;
+    width: 288px;
+    height: 46px;
+    background-color: white;
+    border: double 1px transparent;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
+}
+.login_button_formManager2 > .inputmanager{
+    outline:none;
+    width: 288px;
+    height: 46px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
@@ -147,8 +194,29 @@ body, html {
     font-family: initial !important;
 }
 .login_button_user > .inputuser{
-    width: 80%;
-    height: 90%;
+    outline:none;
+    width: 288px;
+    height: 46px;
+    background-color: white;
+    border: double 1px transparent;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
+}
+.login_button_user_1 > .inputuser{
+    outline:none;
+    width: 288px;
+    height: 46px;
+    background-color: white;
+    border: double 1px transparent;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
+}
+.login_button_user_2 > .inputuser{
+    outline:none;
+    width: 288px;
+    height: 46px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
@@ -156,28 +224,13 @@ body, html {
     border-bottom-style: solid;
 }
 .icon_div{
-  width: 35px;
+  width: 15%;
   height: 35px;
   float: left;
-  padding-top: 10px;
 }
-#icon1{
-    width:30px;
-    height: 30px;
-    float: left;
-    
-}
-#icon2{
-    width:40px;
-    height: 40px;
-    float: left;
-    padding-top: 17%;
-}
-#icon3{
-    width:40px;
-    height: 40px;
-    float: left;
-    padding-top: 17%;
+.icon_div img{
+    width:35px;
+    height: 35px;
 }
 .login_button_user > .login_user{
     width:15%;
@@ -186,13 +239,17 @@ body, html {
 
 #login_button_user2{
    display: inline-flex;
-   height: 10%;
-   width: 100%;
+   height: 64px;
+   width: 360px;
+   position: fixed;
+   top: 340px;
 }
 #login_button_manager{
     display: inline-flex;
-    height: 4%;
-    width: 100%;
+    height: 64px;
+    width: 360px;
+    position: fixed;
+    top: 340px;
 }
 .idfind{
     background-color: white;
@@ -245,8 +302,9 @@ body, html {
 {
     height:50px;
     width: 100%;
-    padding-top:8%;
     text-align: center;
+    position: fixed;
+    top:300px;
 }
 .login_button_user4
 {
@@ -255,9 +313,11 @@ body, html {
     text-align: center;
 }
 .login_button_user5{
-    height:25%;
+    height:50px;
     width: 100%;
     text-align: center;
+    position: fixed;
+    top:300px;
 }
 .loginUser_insert{
     box-shadow: 5px 5px 3px #efefef;
@@ -273,17 +333,19 @@ body, html {
     background: linear-gradient(to right, #17ead9 , #6078ea);
    }
 #kakao_logo{
-    padding-top: 5%;
     width:100%;
     height: 25%;
     text-align: center;
+    position:fixed;
+    top: 520px;
     
 }
 #kakao_logo2{
-    margin-top: 6%;
-    width:100%;
-    height: 31%;
+    height: 50px;
+    width: 100%;
     text-align: center;
+    position: fixed;
+    top: 300px;
 }
 #kakaobutton{
     box-shadow: 5px 5px 3px #efefef;
@@ -340,43 +402,46 @@ a{
 #signuplogo
 {
     width:50%;
-    height: auto;
+    height: auto; 
     margin-top: 18%;
 }
 
 
 .signupuser_input{
     width:100%;
-    height:20%;
+    height:40px;
     color:grey;
-    padding-left: 5%
+    margin-top: 15px;
 }
 .signuptext{
     width: 60%;
-    height: 50px;
+    height: 35px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
     border-top: 0px;
     border-bottom-style: solid;
+    outline:none;
 }
 .signupform1{
-    padding-top:60%;
-    width:100%;
+    padding-top:10%;
+    width:90%;
     height: 50%;
-    margin:0 auto;
+    margin-left: 5%;
 }
 #signupform2{
     width:300px;
     margin:0 auto;
 }
 .signupuser_input2{
-    width:100%;
-    height:15.7%;
+    height:50px;
+    width: 100%;
     text-align: center;
-    color:grey;
-    margin-top: 5%;
+    position: fixed;
+    top:330px;
+    left: 0px;
 }
+
 .signupbutton{
     box-shadow: 5px 5px 3px #efefef;
   width: 90%;
@@ -660,10 +725,9 @@ a{
     position: fixed;
     z-index: 1;
 }
-.icon_div_2{
+.check_div{
     visibility:  hidden;
-    width: 35px;
+    width: 12%;
     height: 35px;
     float: left;
-    padding-top: 10px;
   }
