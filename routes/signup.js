@@ -47,7 +47,7 @@ router.post('/signupmanager', function(req, res) {
   var market_introduce = req.body.market_introduce;
   var sijang_name = req.body.sijang_name;
   var selectSql = 'select * from `manager` where `manager_id`=?';
-  var insertSql = 'insert into `manager`(`manager_id`, `password`, `market_name`,`market_location`,`manager_phone`,`manager_name`,`stamp_standard`,`stamp_reward`,`stamp_password`,`market_promotion`,`market_introduce`,`sijang_name`) values (?,?,?,?,?,?,?,?,?,?,?,?);';
+  var insertSql = 'insert into `manager`(`manager_id`, `password`, `market_name`,`market_location`,`manager_phone`,`manager_name`,`stamp_standard`,`stamp_reward`,`stamp_password`,`market_promotion`,`market_introduce`,`sijang_name`, `manager_image`) values (?,?,?,?,?,?,?,?,?,?,?,?,?);';
 
   conn.query(selectSql, [manager_id], function(error, results){
     if(error) { console.log(error); }
@@ -55,12 +55,29 @@ router.post('/signupmanager', function(req, res) {
       res.send({ result: 'already' });
     }
     else{
-      conn.query(insertSql, [manager_id, password, market_name,market_location,manager_phone,manager_name,stamp_standard,stamp_reward,stamp_password,market_promotion,market_introduce,sijang_name], function(err, rows){
-        if(err){ console.log(err); }
-        else{
-          res.send({ result: 'success' });
-        }
-      });
+      if(req.files) {
+        var file = req.files.manager_img;
+        var filename = file.name;
+        file.mv(__dirname.replace('/routes','')+'/public/files/'+filename, function(fileErr) {
+          if(fileErr) {
+            console.log(fileErr);
+            console.log('file upload error');
+          }
+          else {
+            conn.query(insertSql, [manager_id, password, market_name,market_location,manager_phone,manager_name,stamp_standard,stamp_reward,stamp_password,market_promotion,market_introduce,sijang_name, filename], function(err, rows){
+              if(err){ console.log(err); }
+              else{
+                res.send({ result: 'success' });
+              }
+            }); // insertSql
+          }
+        }); // file.mv
+      } // if (req.files)
+      else {
+        console.log('no files');
+      } // ! req.files
+
+
     }
   });
 });
