@@ -167,9 +167,20 @@ body, html {
     position: fixed;
     top: 220px;
 }
-.login_button_formManager > .inputmanager{
-    width: 80%;
-    height: 90%;
+.login_button_formManager1 > .inputmanager{
+    outline:none;
+    width: 288px;
+    height: 46px;
+    background-color: white;
+    border: double 1px transparent;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
+}
+.login_button_formManager2 > .inputmanager{
+    outline:none;
+    width: 288px;
+    height: 46px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
