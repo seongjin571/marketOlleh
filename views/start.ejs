@@ -449,6 +449,11 @@
                     'sijang_name': sijang_name.innerHTML
                 };
 
+                if(! $('input[name=manager_img]')[0].files[0]) {
+                  alert('이미지를 등록해주세요 !');
+                  return false;
+                }
+
                 var data2 = new FormData();
                 data2.append('manager_id', manager_id);
                 data2.append('password', password);
