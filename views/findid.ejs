@@ -5,7 +5,7 @@
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/find.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/user_findid.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -19,12 +19,20 @@
     </script>
 
     <div id="all_body">
+    <div id="back_button">
     <img id="back_loginuser" src="/images/backButton_blue.png"onClick="history.back()" />
+  </div>
+    <div id="idfind_top">
+        <span>아이디찾기</span>
+      </div>
+
     <div id="findid_form">
     <input type='text' id="find_user_id_to_password"  placeholder='이름' />
     <input type='text' id="find_user_id_to_email"  placeholder='이메일' />
-    <button id="find_user_id_bt">찾기</button>
+    <img id="find_user_id_bt" src="/images/search.png">
     <div class="fdd"></div>
+    </div>
+    <div id="idfind_bottom">
     </div>
   </div>
     <script>
@@ -49,22 +57,20 @@
                     var findid_div = document.createElement("div");
                     findid_div.setAttribute("id","findid_result_div");
 
-                    var html = '<div>'+result['results'][0].user_id+'</div>';
+                    var html = '<div id="">'+result['results'][0].user_id+'</div>';
                     findid_div.innerHTML=html;
                     document.getElementsByClassName('fdd')[0].after(findid_div)
                 }
                 else if(result['result']=='fail'){
-                    alert('해당 정보와 일치하는 아이디가 없습니다.');
+                    alert('아이디가 없습');
 
                 }else {
-                  alert('다시입력해주세요.');
-                  window.reload();
+                  alert('실패1');
                   // location.reload();
                 }
             },
             error: function (error) {
-              alert('다시입력해주세요.');
-              window.reload();
+                alert('실패2');
             }
         });
       })

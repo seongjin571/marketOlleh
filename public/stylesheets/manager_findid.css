@@ -48,7 +48,7 @@ body, html {
     top:60px;
     margin-left:15%;
 }
-#find_user_id_to_password{
+#find_manager_id_to_password{
     outline:none;
     width: 200px;
     height: 46px;
@@ -57,13 +57,13 @@ body, html {
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
     border-top: 0px;
     border-bottom-style: solid;
-    color: gray;
+    
 }
 ::placeholder {
     color: grey;
     opacity: 1;
 }
-#find_user_id_to_email{
+#find_manager_id_to_sijangname{
     outline:none;
     width: 200px;
     height: 46px;
@@ -72,9 +72,20 @@ body, html {
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
     border-top: 0px;
     border-bottom-style: solid;
-    color: gray;
+    
 }
-#find_user_id_bt{
+#find_manager_id_to_marketname{
+    outline:none;
+    width: 200px;
+    height: 46px;
+    background-color: white;
+    border: double 1px transparent;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
+    
+}
+#find_manager_id_bt{
     width: 20px;
     height: 20px;
     margin-top: 10px;

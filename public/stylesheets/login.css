@@ -8,13 +8,11 @@ body, html {
     background-color: white;
 }
 
-
 #start,#all_body {
     width: 100%;
     height: 100%;
     position: absolute;
     overflow: hidden;
-
 }
 #intro_image_div{
     width: 100%;
@@ -68,6 +66,7 @@ body, html {
     background-clip: content-box, border-box;    
     padding: 1px;
     border: 0px;
+    color: gray;
 }
 
 #seller_login {
@@ -486,12 +485,13 @@ a{
     display: inline-flex;
 }
 .manager_signup_name{
-    width: 28%;
+    width: 35%;
     margin-left: 3%;
     height: 30px;
     line-height: 30px;
     color: black;
 }
+
 .manager_signup_name2{
     width: 35%;
     margin-left: 3%;
@@ -499,6 +499,7 @@ a{
     line-height: 30px;
     color: black;
 }
+
 .signuptext2{
     width: 53%;
     margin-left: 8%;
@@ -788,6 +789,11 @@ select{
     width: 12%;
     height: 35px;
     float: left;
+  }
+  .manager_check_div{
+    visibility:  hidden;
+    width: 12%;
+    height: 30px;
   }
   .menu{
       width: 100%;
