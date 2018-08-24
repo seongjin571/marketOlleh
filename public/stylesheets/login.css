@@ -847,9 +847,7 @@ select{
     height:115px;
     display: none;
 }
-.tenControls_sj{
-    display: table;
-}
+
 .tenStamp_sj {
     width: 100%;
     height: 56px;
@@ -884,7 +882,7 @@ select{
     line-height: 35px;
 }
  
-.five_sj,.ten_sj p{
+.five_sj p,.ten_sj p{
     margin: 0;
     padding-left: 12px;
 }
