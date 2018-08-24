@@ -14,6 +14,15 @@
     <div class="fdd"></div>
   </body>
   <script>
+  var doubleSubmitFlag = false;
+  function doubleSubmitCheck(){
+    if(doubleSubmitFlag){
+      return doubleSubmitFlag;
+    }else{
+      doubleSubmitFlag = true;
+      return false;
+    }
+  }
   $('#find_manager_id_bt').click(function(){
     var password = $('#find_manager_id_to_password').val();
     var sijang_name = $('#find_manager_id_to_sijangname').val();
@@ -35,6 +44,8 @@
         success: function (result) {
             if (result['result'] == 'success') {
                 alert("아이디찾기완료");
+                if(doubleSubmitCheck()) return;
+
                 var findid_div = document.createElement("div");
                 findid_div.setAttribute("id","findid_result_div");
 
