@@ -14,14 +14,14 @@ modal_close.addEventListener('click', function(event) {
 
 // 언제든지 ESC키 누르면 모달창 닫을수 있게
 window.onkeydown = function (event) {
-  if(event.keyCode == 27) { 
-    myModal.style.display = 'none'; 
+  if(event.keyCode == 27) {
+    myModal.style.display = 'none';
   }
 };
 
 function deleteNewSearchList() {
   if ($('#search_result > li')) {
-    // 동적으로 New 검색 결과 리스트 삭제 
+    // 동적으로 New 검색 결과 리스트 삭제
     $('#search_result > li').remove();
   }
 }
@@ -32,7 +32,7 @@ function makeSearchList(searchResult, listCounter) {
   deleteNewSearchList();
   var tempString = new Array();
   var fullString = '\0';
-  var half_listCounter = parseInt(listCounter/2)+1; 
+  var half_listCounter = parseInt(listCounter/2)+1;
 
   for (var i = 0; i < parseInt(listCounter); i++) {
     // index.js에서 DB 두개 동시에 불러와서 이부분도 수정
@@ -42,17 +42,17 @@ function makeSearchList(searchResult, listCounter) {
 
       if (i%half_listCounter == 0) {
         if (i == 0) { // 처음 실행 ~ div 닫기 태그 X
-          tempString[i] = '<div><li>' + searchResult.rows[i].name + '</li>'  
+          tempString[i] = '<div><li>' + searchResult.rows[i].name + '</li>'
         } else {
           tempString[i] = '</div><div><li>' + searchResult.rows[i].name + '</li>'
         } // inner if ~ else
       } else {
-        tempString[i] = '<li>' + searchResult.rows[i].name + '</li>'       
+        tempString[i] = '<li>' + searchResult.rows[i].name + '</li>'
       }
 
       fullString += tempString[i];
     } // if ~ else : 실제 핵심 구간
-  } // for    
+  } // for
 
   fullString += '</div>'
 
@@ -68,7 +68,7 @@ function searchingAjax(event) {
   if(!search_value.value){
     alert("검색어를 확인하세요!")
     return;
-  } 
+  }
 
   // 전달하려는 json 변수
   var params = {
@@ -100,20 +100,19 @@ function searchingAjax(event) {
 } // searchingAjax
 
 function setStyle_search_result() {
-  
+
   $('#search_result > div').css('width', '125px');
   $('#search_result > div').css('word-break', 'break-all');
   $('#search_result > div').css('margin-left', '7%');
 
   // li 태그들 클릭 (focus / blur 함수) ~ CSS 제어
   $('#search_result > div > li').click(function(){
-    alert("focus 함수 실시");
     $('#search_result > div > li').css('background-color', 'white');
     $(this).css('background-color', 'red');
     $(this).css('transition', '1s');
     insert_sijang = $(this).text();
   });
-  
+
 } // setStyle_search_result
 
 function click_modalbutton() {
