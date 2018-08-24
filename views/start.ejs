@@ -436,21 +436,27 @@
                             <div class="manager_check_div">
                                 <img src="/images/check.png" width="30px" height="30px">
                             </div>
-                            <div class="manager_signup_name2">적립기준</div>
+
+                            <div class="manager_signup_name">적립기준</div>
+
                             <input class="signuptext5" type="text" placeholder="ex)3000원 이상 구매시" id="market_promotion" name='market_promotion'>
                         </div>
                         <div class="signupuser_input3">
                             <div class="manager_check_div">
                                 <img src="/images/check.png" width="30px" height="30px">
                             </div>
-                            <div class="manager_signup_name2">스탬프보상</div>
+
+                            <div class="manager_signup_name">스탬프보상</div>
+
                             <input class="signuptext5" type="text" placeholder="ex)채소 2000원 어치 제공" id="stamp_reward" name='stamp_reward'>
                         </div>
                         <div class="signupuser_input3">
                             <div class="manager_check_div">
                                 <img src="/images/check.png" width="30px" height="30px">
                             </div>
-                            <div class="manager_signup_name2">스탬프비밀번호</div>
+
+                            <div class="manager_signup_name">스탬프비밀번호</div>
+
                             <input class="signuptext5" type="text" placeholder="ex)4자리 숫자" id="stamp_password" name='stamp_password'>
                         </div>
 
@@ -460,7 +466,9 @@
                                 <div class="manager_check_div">
                                 <img src="/images/check.png" width="30px" height="30px">
                                     </div>
-                            <div class="manager_signup_name2">스탬프개수</div>
+
+                            <div class="manager_signup_name">스탬프개수</div>
+
                             <select class='stamp_standard' name="stamp_standard">
                                 <option>선택</option>
                                 <option>5</option>
@@ -731,6 +739,7 @@
         }
     })
     var pwd1, pwd2, pwd3, pwd4 = 0;
+    var pwd1_M,pwd2_M,pwd3_M,pwd4_M=0;
     $('#userpwd').change(function () {
         pwd1 = $(this).val();
         var true_or_false = password.test(pwd1);

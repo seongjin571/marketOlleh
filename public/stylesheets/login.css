@@ -484,12 +484,13 @@ a{
     display: inline-flex;
 }
 .manager_signup_name{
-    width: 28%;
+    width: 35%;
     margin-left: 3%;
     height: 30px;
     line-height: 30px;
     color: black;
 }
+
 .manager_signup_name2{
     width: 35%;
     margin-left: 3%;
@@ -497,6 +498,7 @@ a{
     line-height: 30px;
     color: black;
 }
+
 .signuptext2{
     width: 53%;
     margin-left: 8%;
@@ -786,6 +788,11 @@ select{
     width: 12%;
     height: 35px;
     float: left;
+  }
+  .manager_check_div{
+    visibility:  hidden;
+    width: 12%;
+    height: 30px;
   }
   .menu{
       width: 100%;
