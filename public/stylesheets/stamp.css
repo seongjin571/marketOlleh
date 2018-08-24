@@ -362,6 +362,9 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         .store_review_sj{
             width: 100%;
         }
+        #ten{
+            margin-left: 24% !important;
+        }
         .review_div_sj{
             width: 100%;
             font-size: 20px;

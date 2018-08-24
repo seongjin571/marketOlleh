@@ -13,7 +13,7 @@ function TableSetting() {
 
 function turningBack() {
 
-	// 스크롤 조절 
+	// 스크롤 조절
 	window.scrollTo(0, 0);
 
 	var temp_goo = document.getElementById('NewGoomap');
@@ -45,7 +45,7 @@ function turningBack() {
 			document.getElementById('back_div').style.display = "none";
 			document.getElementById('Searching').style.display = "table";
 			document.getElementById('market_infor').style.display = "none";
-			document.getElementById('store_infor').style.display = "none";	
+			document.getElementById('store_infor').style.display = "none";
 		} // inner else ~ if
 	} else if (!temp_goo.hasChildNodes()) { // store_infor 가 바로 실행될 경우
 		document.getElementById('aaa').style.display = "block";
@@ -71,12 +71,12 @@ function deleteNewGooTable() {
 	// 지도 표출후 다시 original Goomap 으로 가는 상황 고려
 	$('#market_infor').hide();
 	$('#store_infor').hide();
-	
+
 }
 
 function deleteNewSearchList() {
 	if ($('#search_result > div > li')) {
-		// 동적으로 New 검색 결과 리스트 삭제 
+		// 동적으로 New 검색 결과 리스트 삭제
 		$('#search_result > div > li').remove();
 	}
 }
@@ -96,7 +96,7 @@ function makeGooTable(tableValue, gooCounter) {
 
 	for (var index in tempString) {
 		fullString += tempString[index];
-	} // for in 
+	} // for in
 
 	// 같은 구 클릭했는지 검사
 	if ($('#NewGoomap > div')) {
@@ -131,7 +131,7 @@ function makeGooTable(tableValue, gooCounter) {
 
 function makeSearchList(searchResult, listCounter) {
 
-	// 스크롤 조절 
+	// 스크롤 조절
 	window.scrollTo(0, 0);
 
 	// 검색하면 aaa div 부분 none 하기
@@ -159,15 +159,15 @@ function makeSearchList(searchResult, listCounter) {
 	// 시장, 상점 통합 검색
 	for (var i = 0; i < parseInt(listCounter); i++){
 		if (searchResult.rows[i].name) { // 시장 API 검색 이면
-			
+
 			if (i%half_listCounter == 0) {
 				if (i == 0) { // 처음 실행 ~ div 닫기 태그 X
-				  tempString[i] = '<div><li>' + searchResult.rows[i].name + '</li>'  
+				  tempString[i] = '<div><li>' + searchResult.rows[i].name + '</li>'
 				} else {
 				  tempString[i] = '</div><div><li>' + searchResult.rows[i].name + '</li>'
 				} // inner if ~ else
 			} else {
-				tempString[i] = '<li>' + searchResult.rows[i].name + '</li>'       
+				tempString[i] = '<li>' + searchResult.rows[i].name + '</li>'
 			}
 			fullString += tempString[i];
 
@@ -175,12 +175,12 @@ function makeSearchList(searchResult, listCounter) {
 
 			if (i%half_listCounter == 0) {
 				if (i == 0) { // 처음 실행 ~ div 닫기 태그 X
-				  tempString[i] = '<div><li>' + searchResult.rows[i].market_name + '</li>'  
+				  tempString[i] = '<div><li>' + searchResult.rows[i].market_name + '</li>'
 				} else {
 				  tempString[i] = '</div><div><li>' + searchResult.rows[i].market_name + '</li>'
 				} // inner if ~ else
 			} else {
-				tempString[i] = '<li>' + searchResult.rows[i].market_name + '</li>'       
+				tempString[i] = '<li>' + searchResult.rows[i].market_name + '</li>'
 			}
 			fullString += tempString[i];
 		}
@@ -226,7 +226,7 @@ function gooAjax(event) {
 			makeGooTable(result, result.rows.length);
 		},
 		error: function (e) {
-			alert("Error!");
+			alert("searching.js 에러");
 			console.log('process error : ', e);
 		}
 	});
@@ -242,7 +242,7 @@ function searchingAjax(event) {
     if(!search_value.value){
       alert("검색어를 확인하세요!")
       return;
-    } 
+    }
 
 	// 전달하려는 json 변수
 	var params = {
@@ -270,7 +270,7 @@ function searchingAjax(event) {
 	});
 } // searchingAjax
 
-// 지도로 찾기 버튼 이벤트 
+// 지도로 찾기 버튼 이벤트
 function navControl(event) {
 	// Goomap / 활성화 되어있을때 if --> 다시 none으로
 	if (document.getElementById('Goomap').style.display == "block") {
@@ -280,8 +280,8 @@ function navControl(event) {
 		document.getElementById('text_logo').style.display = "block";
 		document.getElementById('navControlButton').style.display = "table";
 		document.getElementById('back_div').style.display = "none";
-		// 스크롤 조절 
-		window.scrollTo(0, 0);		
+		// 스크롤 조절
+		window.scrollTo(0, 0);
 	} else { // Goomap / 비활성화 되어있을때 else --> block
 		$('#search_result').parent().css('display', 'none');
 		deleteNewSearchList(); // 검색후 navControl 버튼 눌렀을때 고려
@@ -291,24 +291,24 @@ function navControl(event) {
 		document.getElementById('aaa').style.display = "none";
 		document.getElementById('text_logo').style.display = "none";
 		document.getElementById('back_div').style.display = "block";
-		// 스크롤 조절 
-		window.scrollTo(0, 0);	
+		// 스크롤 조절
+		window.scrollTo(0, 0);
 	}
 	deleteNewGooTable();
 }
 
 function setStyle_search_result() {
-  
+
   $('#search_result').parent().css('display', 'flex');
-  $('#search_result').css('display', 'flex'); 
-  $('#search_result').css('list-style', 'none');  
+  $('#search_result').css('display', 'flex');
+  $('#search_result').css('list-style', 'none');
 
   // flex설정후 word-break
   $('#search_result > div').css('width', '140px');
   $('#search_result > div').css('word-break', 'break-all');
   $('#search_result > div').css('margin-left', '5%');
   $('#search_result > div > li').css('margin-top', '5%');
-  
+
 } // setStyle_search_result
 
 //////////////////////addEventListener//////////////////////
@@ -324,4 +324,3 @@ $("#search_value").keyup(function (event) {
 		$("#searchingButton").trigger("click");
 	};
 });
-
