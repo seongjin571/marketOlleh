@@ -48,7 +48,7 @@ body, html {
     top:60px;
     margin-left:15%;
 }
-#find_user_id_to_id{
+#find_user_id_to_password{
     outline:none;
     width: 200px;
     height: 46px;
@@ -74,7 +74,7 @@ body, html {
     border-bottom-style: solid;
     
 }
-#find_user_pw_bt{
+#find_user_id_bt{
     width: 20px;
     height: 20px;
     margin-top: 10px;
