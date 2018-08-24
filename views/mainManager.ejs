@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
-    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/store_infor.css" />    
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/store_infor.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mainManager.css" />
     <link rel="stylesheet" href="/stylesheets/swiper.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -319,7 +319,8 @@
                 console.log('로그아웃실패');
             }
         })
-        // $('#mystore_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
+
+        // $('.store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
 
         document.getElementById('store_infor').style.display = "none";
 
@@ -355,21 +356,21 @@
 
         function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 
-          // 스크롤 조절 
+          // 스크롤 조절
           window.scrollTo(0, 0);
-            
-          // 시장 정보 vs 상인 정보 
+
+          // 시장 정보 vs 상인 정보
           $('#store_infor').css('display', 'block');
           $('#market_infor').css('display', 'none');
           console.log(market_arr);
 
-          // manager DB ~ 상점 DB 내용 뿌려주기 
+          // manager DB ~ 상점 DB 내용 뿌려주기
           // 시장 이름, 상점 이름, 좋아요 카운트
           $('#store_name_sj').text(market_arr.market_name);
           $('#market_name_sj').text(market_arr.sijang_name);
           $('#goodCount_sj').text(market_arr.like_count);
 
-          // 스탬프 관련 내용    
+          // 스탬프 관련 내용
           var temp ='<div class="stamp_infor">'
           temp += '<img src="/images/standard.png" width="30px" height="30px">'
           temp +='<div class="name">적립기준</div>'
@@ -392,6 +393,7 @@
 
           // 상점 소개와 위치
           $('#intro_content').text(market_arr.market_introduce);
+          $('.store_image').css({ "background": "url(/files/"+ market_arr.manager_image +")", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
 
           // 리뷰, 앞에 있던 정보들 초기화
           if ($('.review_div_sj > div')) {
@@ -439,7 +441,7 @@
               fullString += '</div>';
             } // for
             fullString += '</div></div>';
-            
+
 
             fullString += '<div class="review_count">';
             fullString += '<p style="font-size: 20px; color: #9c9c9c;"> 작성된 리뷰가 없습니다. </p>';
@@ -458,7 +460,7 @@
               fullString += '<div>';
               fullString += '<img class="star_gray_customer" src="/images/star_gray.png" width="30px" height="30px">';
               fullString += '</div>';
-            } // inner for 
+            } // inner for
             fullString += '</div>';
 
             fullString += '<div class="review_count">';
@@ -506,14 +508,14 @@
 
         } // managerInfoLi_event_review
 
-        // 뒤로 가기 버튼의 클릭 이벤트 
+        // 뒤로 가기 버튼의 클릭 이벤트
         $('#tableControl').click(function (event) {
           document.getElementById('hot_store').style.display = "block";
           document.getElementById('text_logo').style.display = "block";
           $('#table').css('display', 'block');
           document.getElementById('back_div').style.display = "none";
           $('#store_infor').css('display', 'none');
-          $('#market_infor').css('display', 'block');          
+          $('#market_infor').css('display', 'block');
         });
 
     </script>
