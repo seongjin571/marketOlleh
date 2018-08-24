@@ -33,14 +33,12 @@
                 document.getElementById('loginuser').style.display = 'block';
                 localStorage.clear();
             }
-
             else if (localStorage.getItem('introFlag') == 2) {
                 // document.getElementById('intro_image_div').style.display = 'none';
                 document.getElementById('all_body').style.display = 'none';
                 document.getElementById('loginManager').style.display = 'block';
                 localStorage.clear();
             }
-
             else if (!localStorage.getItem('introFlag')) {
                 document.getElementById('all_body').style.display = 'block';
                 document.getElementById('intro_image_div').style.display = 'block';
@@ -48,8 +46,6 @@
                     $('#intro_image_div').fadeOut('500');
                 }, 2000);
             }
-
-
             $('#back_loginuser').click(function() {
               document.getElementById('all_body').style.display = 'block';
             });
@@ -145,7 +141,6 @@
                 });
             });
         });
-
     </script>
     <!--loginuser 끝-->
 
@@ -187,8 +182,6 @@
         }
         $('#loginButton').click(function (e) {
             if (doubleSubmitCheck()) return;
-
-
             e.preventDefault();
             var manager_id = $('#manager_id').val();
             var password = $('#password').val();
@@ -547,12 +540,10 @@
                     'stamp_standard': stamp_standard,
                     'sijang_name': sijang_name.innerHTML
                 };
-
                 if (!$('input[name=manager_img]')[0].files[0]) {
                     alert('이미지를 등록해주세요 !');
                     return false;
                 }
-
                 var data2 = new FormData();
                 data2.append('manager_id', manager_id);
                 data2.append('password', password);
@@ -567,7 +558,6 @@
                 data2.append('stamp_standard', stamp_standard);
                 data2.append('sijang_name', sijang_name.innerHTML);
                 data2.append('manager_img', $('input[name=manager_img]')[0].files[0]);
-
                 console.log(data);
                 $.ajax({
                     type: "POST",
@@ -611,7 +601,6 @@
             hide: true,
         },
     });
-
     // setTimeout(function () {
     //     $('#intro_image_div').fadeOut('500');
     // }, 2000);
@@ -619,7 +608,6 @@
     var id = /^[a-z0-9_]{6,15}$/;
     var password = /^[a-zA-Z0-9]{6,15}$/;
     var email = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-
     $('.signuptext').eq(0).change(function () {
         var name_check = $(this).val();
         var true_or_false = name2.test(name_check);
@@ -629,7 +617,6 @@
         else {
             $('.check_div').eq(0).css('visibility', 'hidden');
             alert('이름을 확인해 주세요.');
-
         }
     })
     $('.signuptext').eq(4).change(function () {
@@ -655,7 +642,6 @@
             alert('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
         }
     })
-
     var pwd1, pwd2, pwd3, pwd4 = 0;
     $('#userpwd').change(function () {
         pwd1 = $(this).val();
@@ -677,11 +663,9 @@
         }
         else {
             alert('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
-
             $(this).val('');
         }
     })
-
     $('#userpwdcheck').change(function () {
         pwd2 = $(this).val();
         var true_or_false = password.test(pwd2);
@@ -705,8 +689,6 @@
             $(this).val('');
         }
     })
-
-
     $('#user_login').click(function () {
         $('#start').fadeOut(300)
         $('#loginuser').fadeIn(300)
@@ -731,8 +713,6 @@
         $('#signupManager').fadeOut(300)
         $('#loginManager').fadeIn(300)
     })
-
-
     // 뒤로가기 고객로그인부분
     $('#back_loginuser').click(function () {
         $('#loginuser').fadeOut(300)
@@ -753,14 +733,8 @@
         $('#signupManager').fadeOut(300)
         $('#loginManager').fadeIn(300)
     })
-
-
-
-
-
     $('#password_jh').change(function () {
         pwd3 = $(this).val();
-
         if ($('#password_jh_check').val()) {
             if (pwd3 == pwd4) {
                 alert('ok')
@@ -772,7 +746,6 @@
             }
         }
     })
-
     $('#password_jh_check').change(function () {
         pwd4 = $(this).val();
         if ($('#password_jh').val()) {
@@ -786,9 +759,6 @@
             }
         }
     })
-
-
-
 </script>
 
 </html>

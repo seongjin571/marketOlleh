@@ -57,7 +57,7 @@ router.post('/signupmanager', function(req, res) {
     else{
       if(req.files) {
         var file = req.files.manager_img;
-        var filename = file.name;
+        var filename = manager_id + '_' + file.name;
         file.mv(__dirname.replace('/routes','')+'/public/files/'+filename, function(fileErr) {
           if(fileErr) {
             console.log(fileErr);
