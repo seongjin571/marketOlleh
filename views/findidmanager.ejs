@@ -43,15 +43,17 @@
                 document.getElementsByClassName('fdd')[0].after(findid_div)
             }
             else if(result['result']=='fail'){
-                alert('아이디가 없습');
+                alert('해당 정보와 일치하는 아이디가 없습니다.');
 
             }else {
-              alert('실패1');
+              alert('다시입력해주세요.');
+              window.reload();
               // location.reload();
             }
         },
         error: function (error) {
-            alert('실패2');
+          alert('다시입력해주세요.');
+          window.reload();
         }
     });
   })
