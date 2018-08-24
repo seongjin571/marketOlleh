@@ -238,6 +238,12 @@ function gooAjax(event) {
 
 function searchingAjax(event) {
 
+    // search_value 값 공백일때 서버 에러 처리
+    if(!search_value.value){
+      alert("검색어를 확인하세요!")
+      return;
+    } 
+
 	// 전달하려는 json 변수
 	var params = {
 		filed: "name",
@@ -258,7 +264,7 @@ function searchingAjax(event) {
 			}
 		},
 		error: function (e) {
-			alert("Error!");
+			alert("검색어를 확인하세요!");
 			console.log('process error : ', e);
 		}
 	});
@@ -319,4 +325,3 @@ $("#search_value").keyup(function (event) {
 	};
 });
 
-////////////////////KAKAO MAP API SECTIOn////////////////////
