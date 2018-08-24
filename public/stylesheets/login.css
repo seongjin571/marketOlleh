@@ -530,7 +530,7 @@ a{
   }
 
 #find_market{
-     margin-top:40px;
+     margin-top:50px;
   }
 #store_picture{
     /* position: fixed !important;
@@ -778,7 +778,7 @@ a{
       line-height: 50px;
   }
   .swiper-container{
-      min-height: 400px;
+      min-height: 450px;
   }
   .swiper-scrollbar{
     opacity: 1 !important;
