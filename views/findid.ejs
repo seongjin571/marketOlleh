@@ -19,12 +19,20 @@
     </script>
 
     <div id="all_body">
+    <div id="back_button">
     <img id="back_loginuser" src="/images/backButton_blue.png"onClick="history.back()" />
+  </div>
+    <div id="idfind_top">
+        <span>아이디찾기</span>
+      </div>
+      
     <div id="findid_form">
     <input type='text' id="find_user_id_to_password"  placeholder='이름' />
     <input type='text' id="find_user_id_to_email"  placeholder='이메일' />
-    <button id="find_user_id_bt">찾기</button>
+    <img id="find_user_id_bt" src="/images/search.png">
     <div class="fdd"></div>
+    </div>
+    <div id="idfind_bottom">
     </div>
   </div>
     <script>
@@ -47,9 +55,9 @@
                 if (result['result'] == 'success') {
                     alert("아이디찾기완료");
                     var findid_div = document.createElement("div");
-                    findid_div.setAttribute("id","findid_result_div");
+                    findid_div.setAttribute("id","findid_result_div");//id값 findid_result_div
 
-                    var html = '<div>'+result['results'][0].user_id+'</div>';
+                    var html = '<div id="">'+result['results'][0].user_id+'</div>';
                     findid_div.innerHTML=html;
                     document.getElementsByClassName('fdd')[0].after(findid_div)
                 }
