@@ -462,7 +462,7 @@
                                     </div>
                             <div class="manager_signup_name">스탬프개수</div>
                             <select class='stamp_standard' name="stamp_standard">
-                                <option>선택</option>
+                                <option value="0">선택</option>
                                 <option>5</option>
                                 <option>10</option>
                             </select>
@@ -482,7 +482,7 @@
                             </div>
                             <div class="my_stamp_count">
                                 <div class='tenControls_sj'>
-                                    <div class='tenStamp_sj'> 
+                                    <div class='tenStamp_sj'>
                                         <div class='tenStamp_top_sj'>
                                             <div class="ten_sj">
                                                 <p>1</p>
@@ -540,7 +540,7 @@
                                 </div>
                             </div>
 
-              
+
                             <div class="logo_image">
                                 <img src="/images/inline-logo.png" width="55px" height="auto" style="padding-left: 8%;">
                             </div>
@@ -608,9 +608,9 @@
                 var test = document.getElementsByClassName('stamp_standard');
                 var select_stamp_standard = test[0].selectedIndex;
                 var stamp_standard;
-                if (select_stamp_standard == 0) {
+                if (select_stamp_standard == 1) {
                     stamp_standard = 5;
-                } else if (select_stamp_standard == 1) {
+                } else if (select_stamp_standard == 2) {
                     stamp_standard = 10;
                 }
                 // var sijang_name = sijang_name.innerHTML;
