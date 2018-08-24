@@ -66,6 +66,7 @@ body, html {
     background-clip: content-box, border-box;    
     padding: 1px;
     border: 0px;
+    color: gray;
 }
 
 #seller_login {
@@ -484,6 +485,14 @@ a{
     display: inline-flex;
 }
 .manager_signup_name{
+    width: 35%;
+    margin-left: 3%;
+    height: 30px;
+    line-height: 30px;
+    color: black;
+}
+
+.manager_signup_name2{
     width: 35%;
     margin-left: 3%;
     height: 30px;
