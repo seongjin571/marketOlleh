@@ -491,6 +491,14 @@ a{
     color: black;
 }
 
+.manager_signup_name2{
+    width: 35%;
+    margin-left: 3%;
+    height: 30px;
+    line-height: 30px;
+    color: black;
+}
+
 .signuptext2{
     width: 53%;
     margin-left: 8%;

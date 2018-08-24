@@ -5,7 +5,7 @@
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/find.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/user_findid.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -25,7 +25,7 @@
     <div id="idfind_top">
         <span>아이디찾기</span>
       </div>
-      
+
     <div id="findid_form">
     <input type='text' id="find_user_id_to_password"  placeholder='이름' />
     <input type='text' id="find_user_id_to_email"  placeholder='이메일' />
@@ -65,7 +65,7 @@
                     alert("아이디찾기완료");
                     if(doubleSubmitCheck()) return;
                     var findid_div = document.createElement("div");
-                    findid_div.setAttribute("id","findid_result_div");//id값 findid_result_div
+                    findid_div.setAttribute("id","findid_result_div");
 
                     var html = '<div id="">'+result['results'][0].user_id+'</div>';
                     findid_div.innerHTML=html;
