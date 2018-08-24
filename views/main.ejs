@@ -15,7 +15,7 @@
     <script src="/javascripts/spin.js"></script>
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/searching.css" />
-    
+
     <!--     <script>
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
@@ -195,7 +195,7 @@
             </div>
         </div>
         <div class="line">
-            
+
         </div>
         <h3 id="user_name">
             <%= user.username %>님 근처 시장
@@ -232,7 +232,7 @@
               <div class="hot_store_list">
                   <div class="hot_store_detail">
                       <div>
-                          <img src="/images/fruit.jpg" width="100%" height="125px">
+                          <img src="/files/<%= market[i].manager_image %>" width="100%" height="125px">
                       </div>
                       <div class="good_market_name">
                           <%= market[i].sijang_name %>
@@ -249,7 +249,7 @@
                   <%
                     if(i >= market.length-1) {
                   %>
-                 
+
                       </div>
                   <%
                         break;
@@ -271,7 +271,7 @@
                           <p><%= market[i+1].like_count %></p>
                       </div>
                   </div>
-                  
+
               </div> <!-- hot_store_list 닫는 div -->
               <!-- <div class="line_light"></div> -->
             <% } %>
@@ -417,7 +417,7 @@
             </div>
         </div>
     </div>
-        
+
         <div class="swiper-scrollbar"></div>
         </div>
 
@@ -515,7 +515,7 @@
         // 전역 변수
         var user_id = '<%= user.id %>';
 
-        // 스크롤 조절 
+        // 스크롤 조절
         window.scrollTo(0, 0);
 
         // 지도를 표시할 div (id)
@@ -601,7 +601,7 @@
                     alert("Error!");
                     console.log('process error : ', e);
                 }
-            }); // ajax 
+            }); // ajax
         }); // click event
 
 

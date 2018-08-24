@@ -238,7 +238,7 @@
 
               <div class="swiper-slide" id="swiper2<%= myStamps[i].id %>">
                   <div id="store_detail_sj">
-                      <div class="store_image"></div>
+                      <div class="store_image" style="background: url('/files/<%= myStamps[i].manager_image %>'); background-repeat: no-repeat; background-position: center center;"></div>
                       <div id="introduce">
                           <img src="/images/storeM.png" width="30px" height="30px">
                           <div class="name">상점소개</div>
@@ -876,7 +876,7 @@
             </div>
             <script>
 
-                $('.store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
+                // $('.store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
                       $('#home_sj').click(function () {
                         location.href = "/main";
                       })

@@ -64,7 +64,7 @@
 
             <div class="swiper-slide">
                 <div id="store_detail_sj">
-                    <div id="store_image"></div>
+                    <div id="store_image" style="background: url('/files/<%= result1[0].manager_image %>'); background-repeat: no-repeat; background-position: center center;"></div>
                     <div id="introduce">
                         <img src="/images/storeM.png" width="30px" height="30px">
                         <div id="name">상점소개</div>
@@ -246,7 +246,7 @@
 
         $('#write_ok_button').click(function () {
             if(doubleSubmitCheck()) return;
-            
+
             var user_id = '사장님';
             var market_name = '<%= result1[0].market_name %>';
             var sijang_name = '<%= result1[0].sijang_name %>';
@@ -297,7 +297,7 @@
                 }
             });
         })
-        $('#store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
+        // $('#store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
     </script>
     <script src="/javascripts/mystore.js"></script>
 
