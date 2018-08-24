@@ -490,6 +490,13 @@ a{
     line-height: 30px;
     color: black;
 }
+.manager_signup_name2{
+    width: 35%;
+    margin-left: 3%;
+    height: 30px;
+    line-height: 30px;
+    color: black;
+}
 .signuptext2{
     width: 53%;
     margin-left: 8%;
@@ -500,10 +507,29 @@ a{
     border-top: 0px;
     border-bottom-style: solid;
 }
+.signuptext5,.stamp_standard{
+    width: 53%;
+    height: 30px;
+    background-color: white;
+    border: double 1px transparent;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
+}
+select{
+    color: grey;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(/images/down_arrow.png) no-repeat 95% 50%;
+    background-size: 10%;
+}
 .signupuser_input4{
-    width:100%;
-    height:10%;
-    padding-bottom:20%;
+    position: fixed;
+    top: 400px;
+    width:90%;
+    margin-left: 5%;
+    height:50px;
     text-align: center;
     color:grey;
 }
@@ -548,11 +574,10 @@ a{
       height: 80px !important;
   }
   .signuser_coupon2{
-    padding-top:2%;
-    width:100%;
-    height:8%;
-    padding-left:15%;
-    color:grey;
+    width:90%;
+    margin-left: 5%;
+    height:50px;
+    display: inline-flex;
   }
 /*login manager css finish*/
 /*login manager css finish*/
@@ -783,4 +808,91 @@ a{
     transition-duration: 0 !important;
     position: fixed !important;
     top: 80px !important;
+}
+#myStamp{
+    position: fixed;
+    top:200px;
+    width: 75%;
+    margin-left: 12.5%;
+    height: 180px;
+    background-image:url('/images/backSample4.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 5px;
+    color: white;
+}
+#store_market_name{
+    width: 86%; 
+    height: 40px;
+    margin-left: 7%;
+    display: inline-flex;
+    line-height: 40px;
+}
+#store_market_name p{
+
+    margin: 0;
+}
+#password_star{
+    font-size: 25px;
+}
+
+.my_stamp_count{
+    width: 95%;
+    margin-left: 2.5%;
+    height: 115px;
+    display: table;
+}
+
+.fiveControls_sj,.tenControls_sj{
+    width: 100%;
+    height:115px;
+    display: none;
+}
+.tenControls_sj{
+    display: table;
+}
+.tenStamp_sj {
+    width: 100%;
+    height: 56px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.fiveStamp_sj {
+    width: 100%;
+    height: 115px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.logo_image{
+    height: 25px;
+    width: 10%;
+    margin-left: 75%;
+}
+
+
+.five_sj,
+.ten_sj {
+    display: inline-flex;
+    width: 15%;
+    height: 36px;
+    border-radius: 200px;
+    margin-left: 3%;
+    background-color: rgb(202, 199, 199);
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    line-height: 35px;
+}
+ 
+.five_sj,.ten_sj p{
+    margin: 0;
+    padding-left: 12px;
+}
+#ten{
+    padding-left: 7px !important;
+}
+.tenStamp_top_sj,
+.tenStamp_bottom_sj {
+    margin-bottom: 10px;
 }

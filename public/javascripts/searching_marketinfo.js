@@ -57,7 +57,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 			}
 		},
 		error: function (e) {
-			alert("Error!");
+			alert("searching_marketinfo.js 에러");
 			console.log('process error : ', e);
 		}
 	}); // ajax
@@ -66,22 +66,22 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 
 function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 
-	// 스크롤 조절 
+	// 스크롤 조절
 	window.scrollTo(0, 0);
-		
-	// 시장 정보 vs 상인 정보 
+
+	// 시장 정보 vs 상인 정보
     $('#store_infor').css('display', 'block');
     $('#market_infor').css('display', 'none');
     console.log(market_arr);
 
-    // manager DB ~ 상점 DB 내용 뿌려주기 
+    // manager DB ~ 상점 DB 내용 뿌려주기
     // 시장 이름, 상점 이름, 좋아요 카운트
     $('#store_name_sj').text(market_arr.market_name);
     $('#market_name_sj').text(market_arr.sijang_name);
     $('#goodCount_sj').text(market_arr.like_count);
 
-    // 지금 이 함수를 불러오게 하는 user_id가 
-    // 그 스탬프(상점)의 따봉을 눌렀는지(likeMarket에 존재하는지) 테스트 
+    // 지금 이 함수를 불러오게 하는 user_id가
+    // 그 스탬프(상점)의 따봉을 눌렀는지(likeMarket에 존재하는지) 테스트
 	$.ajax({
 		type: 'POST',
 		url: '/likeCheck',
@@ -256,7 +256,7 @@ function likeCount_function(market_arr) {
 	      }
         },
         error: function(error){
-	      console.log(error);        	
+	      console.log(error);
           console.log('좋아요 취소 실패');
         }
       });
@@ -283,24 +283,24 @@ function marketInfoLi_event_likelist(result_rows) {
 			if (i == 0) { // 처음 실행 ~ div 닫기 태그 X
 				tempString[i] = '<div>';
 				tempString[i] += '<div class="hot_store_detail_market">';
-				tempString[i] += '<div><img src="/images/market2.jpg" width="100%" height="100px"> </div>';
+				tempString[i] += '<div><img src="/files/'+ result_rows[i].manager_image +'" width="100%" height="100px"> </div>';
 				tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
 				tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
 				tempString[i] += '</div>';
 			} else {
 				tempString[i] = '</div><div>';
 				tempString[i] += '<div class="hot_store_detail_market">';
-				tempString[i] += '<div><img src="/images/market2.jpg" width="100%" height="100px"> </div>';
+				tempString[i] += '<div><img src="/files/'+ result_rows[i].manager_image +'" width="100%" height="100px"> </div>';
 				tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
 				tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
 				tempString[i] += '</div>';
 			} // inner if ~ else
 		} else {
 			tempString[i] = '<div class="hot_store_detail_market">';
-			tempString[i] += '<div><img src="/images/market2.jpg" width="100%" height="100px"> </div>';
+			tempString[i] += '<div><img src="/files/'+ result_rows[i].manager_image +'" width="100%" height="100px"> </div>';
 			tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
 			tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
-			tempString[i] += '</div>';     
+			tempString[i] += '</div>';
 		} // if ~ else
 
 	} // for
@@ -352,7 +352,7 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt) {
 			fullString += '</div>';
 		}
 		fullString += '</div></div>';
-		
+
 
 		fullString += '<div class="review_count">';
 		fullString += '<p style="font-size: 20px; color: #9c9c9c;"> 작성된 리뷰가 없습니다. </p>';
