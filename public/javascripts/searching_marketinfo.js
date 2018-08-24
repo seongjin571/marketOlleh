@@ -57,7 +57,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 			}
 		},
 		error: function (e) {
-			alert("Error!");
+			alert("searching_marketinfo.js 에러");
 			console.log('process error : ', e);
 		}
 	}); // ajax
