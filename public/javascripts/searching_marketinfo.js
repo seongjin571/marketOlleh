@@ -185,10 +185,10 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 		success: function (result) {
 			console.log(result);
 			if (result.rows.length > 0) {
-				managerInfoLi_event_review(result.rows, result.rateAvgAndCnt);
+				managerInfoLi_event_review(result.rows, result.rateAvgAndCnt, market_arr.market_name);
 			} else {
 				console.log("현재 해당하는 시장에 등록된 리뷰가 없음");
-				managerInfoLi_event_review(0, 0);
+				managerInfoLi_event_review(0, 0, market_arr.market_name);
 			}
 		},
 		error: function (e) {
@@ -330,19 +330,19 @@ function marketInfoLi_event_likelist(result_rows) {
 
 } // marketInfoLi_event_likelist
 
-function managerInfoLi_event_review(review_arr, avg_and_cnt) {
+function managerInfoLi_event_review(review_arr, avg_and_cnt, MarketName) {
 
 	// 날짜 순서로 정렬 --> SQL에서 ORDER ~ DESC 로 수정
 	// review_arr.sort(function (a, b) {
 	// 	return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
 	// });
-
+	// console.log(review_arr[0].market_name);
 	// 태그 동적으로 생성하기
 	var tempString = new Array();
 	var fullString = '';
 
 
-	if(! review_arr) {
+	if(! review_arr) { // 리뷰가 없을때 
 		fullString += '<div class="review_rate">';
 		fullString += '<div class="review_star">';
 
@@ -355,11 +355,13 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt) {
 
 
 		fullString += '<div class="review_count">';
-		fullString += '<p style="font-size: 20px; color: #9c9c9c;"> 작성된 리뷰가 없습니다. </p>';
+		fullString += '<p style="font-size: 20px; color: #9c9c9c;">작성된 리뷰가 없습니다. </p>';
 		fullString += '</div>';
+		fullString += '<div id="intro"><p> '+MarketName+' 상점을 이용하는 고객들의 리뷰입니다.</p></div>';
+		fullString += '<div class="line"></div>'; // 그리드 라인표시 div
 	}
 
-	else {
+	else { // 리뷰가 존재할때
 		fullString += '<div class="review_rate">';
 		fullString += '<div class="review_star">';
 		for(var j=0; j< avg_and_cnt.rateAvg; j++) {
@@ -378,8 +380,8 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt) {
 		fullString += '<p class="review_count_content">' + avg_and_cnt.rateCnt + '</p>';
 		fullString += '<p style="font-size: 20px; color: #9c9c9c;"> 개의 리뷰가 있습니다 </p>';
 		fullString += '</div>';
-		fullString += '<div id="intro"><p>상점을 이용하는 고객들의 리뷰입니다.</p></div>';
-		fullString += '<div class="line"></div>';
+		fullString += '<div id="intro"><p> '+MarketName+' 상점을 이용하는 고객들의 리뷰입니다.</p></div>';
+		fullString += '<div class="line"></div>'; // 그리드 라인표시 div
 		fullString += '</div>';
 
 
