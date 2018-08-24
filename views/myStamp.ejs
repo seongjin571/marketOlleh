@@ -238,7 +238,7 @@
 
               <div class="swiper-slide" id="swiper2<%= myStamps[i].id %>">
                   <div id="store_detail_sj">
-                      <div class="store_image"></div>
+                      <div class="store_image" style="background: url('/files/<%= myStamps[i].manager_image %>'); background-repeat: no-repeat; background-position: center center;"></div>
                       <div id="introduce">
                           <img src="/images/storeM.png" width="30px" height="30px">
                           <div class="name">상점소개</div>
@@ -337,8 +337,27 @@
                         <% } %>
                     </div>
                   <div class="review_content_sj">
-                    <div class="review_content_id_sj">
-                      <%= review[j].user_id %>
+                    <div class="review_content_id_sj" id='review_content_id_sj<%= review[j].id %>'>
+                      <script>
+                      var temp = '<%= review[j].user_id %>';
+                      var secret = '***';
+                      var l = temp.length;
+                      var f = l-3;
+                      //console.log(f);
+                      //console.log(l);
+                      var temp2 = temp.substring(0,f);
+                      var result3 = temp2.concat(secret);
+
+                      if(result3 == '***'){
+                        $('#review_content_id_sj<%= review[j].id %>').html('사장님');
+                      }else{
+                        $('#review_content_id_sj<%= review[j].id %>').html(result3);
+                        console.log(result3);
+                      }
+                      //  console.log("아래");
+                      //  console.log(result3);
+                      </script>
+
                     </div>
                     <div class="review_content_date_sj">
                       <%= review[j].date %>
@@ -579,7 +598,19 @@
               })
 
             /* 리뷰 작성 버튼 */
+            var doubleSubmitFlag = false;
+            function doubleSubmitCheck(){
+              if(doubleSubmitFlag){
+                return doubleSubmitFlag;
+              }else{
+                doubleSubmitFlag = true;
+                return false;
+              }
+            }
+
             $('#write_ok_button<%= myStamps[i].id %>').click(function(){
+              if(doubleSubmitCheck()) return;
+
               var user_id = '<%= myStamps[i].user_id %>';
               var market_name = '<%= myStamps[i].market_name %>';
               var text=$('#review_textarea<%= myStamps[i].id %>').val();
@@ -845,7 +876,7 @@
             </div>
             <script>
 
-                $('.store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
+                // $('.store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
                       $('#home_sj').click(function () {
                         location.href = "/main";
                       })

@@ -137,7 +137,17 @@
             }
         })
         $('#mystore_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
+        var doubleSubmitFlag = false;
+        function doubleSubmitCheck(){
+          if(doubleSubmitFlag){
+            return doubleSubmitFlag;
+          }else{
+            doubleSubmitFlag = true;
+            return false;
+          }
+        }
         $('#stamp_reform_button').click(function () {
+          if(doubleSubmitCheck()) return;
 
             var market_name = '<%= result[0].market_name %>';
             var sijang_name = '<%= result[0].sijang_name %>';

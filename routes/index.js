@@ -617,7 +617,7 @@ router.get('/store_infor', function(req, res) {
 router.get('/myStamp', function(req, res) {
   // var sql = 'select * from `stamp` where `user_id`=?';
   // var sqlJoin = 'SELECT * FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name WHERE user_id=?;';
-  var sqlJoin = 'SELECT stamp.id, stamp.user_id, stamp.sijang_name, stamp.market_name, stamp.stamp_count, stamp.stamp_standard, stamp.stamp_password, stamp.stamp_reward, likeMarket.like_check ,manager.like_count, manager.market_introduce, manager.market_promotion FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id WHERE stamp.user_id=?;';
+  var sqlJoin = 'SELECT stamp.id, stamp.user_id, stamp.sijang_name, stamp.market_name, stamp.stamp_count, stamp.stamp_standard, stamp.stamp_password, stamp.stamp_reward, likeMarket.like_check ,manager.like_count, manager.market_introduce, manager.market_promotion, manager.manager_image FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id WHERE stamp.user_id=?;';
   var sql2 = 'select * from `review` ;';
   conn.query(sqlJoin, [req.user.id],function(error, result){
     if(error) {
@@ -893,18 +893,18 @@ router.post('/likeCheck', function(req, res) {
   var sijang_name = req.body.sijang_name;
   var market_name = req.body.market_name;
   var sql = 'select * from `likeMarket` where user_id = ? and market_name = ? and sijang_name = ?'
-  
+
   conn.query(sql, [user_id,market_name,sijang_name], function(error, results){
-    if(error) { 
-      console.log(error); 
+    if(error) {
+      console.log(error);
     } else if(results.length) {
       res.send({ // likeMarket의 like_check컬럼의 값 대조 필요
         result: 'exist',
-        like_check_val: results[0].like_check 
+        like_check_val: results[0].like_check
       });
     } else {
-      res.send({ 
-        result: 'not exist' 
+      res.send({
+        result: 'not exist'
       });
     }
   }); // conn.query
@@ -990,16 +990,16 @@ router.post('/main_like/:manager_id', function(req, res) {
   var likeUpdateSql = 'UPDATE manager INNER JOIN likeMarket ON likeMarket.sijang_name=manager.sijang_name and likeMarket.market_name=manager.market_name SET likeMarket.like_check=?, manager.like_count=? WHERE likeMarket.user_id=? and manager.manager_id=? ;'; // update likeMarket query
 
   conn.query(selectSql, [req.user.id, sijang_name, market_name], function(selectErr, selectRows) {
-    if(selectErr) { 
+    if(selectErr) {
       console.log(selectErr);
       console.log('select likeMarket table failed');
     }
-    else if(selectRows.length) { 
+    else if(selectRows.length) {
       // 이미 likeMarket DB에 튜플이 존재
       console.log('likeMarket 조회 성공');
       conn.query(likeUpdateSql, [1, like_count, req.user.id, req.params.manager_id], function(likeErr, likeRows) {
         if(likeErr) { console.log(likeErr); }
-        else { 
+        else {
           // 조회까지 성공,
           // 이미 likeMarket에 튜플 존재한 흔적 O --> Update만 해주자
           var likeCountSql = 'select * from `manager` where `manager_id`=? ;';
@@ -1055,7 +1055,7 @@ router.post('/main_dislike/:manager_id', function(req, res) {
   // body parser values
   var like_count = req.body.like_count;
 
-  // sql list  
+  // sql list
   var dislikeUpdateSql = 'UPDATE manager INNER JOIN likeMarket ON likeMarket.sijang_name=manager.sijang_name and likeMarket.market_name=manager.market_name SET likeMarket.like_check=?, manager.like_count=? WHERE likeMarket.user_id=? and manager.manager_id=? ;';
 
   conn.query(dislikeUpdateSql, [0, like_count, req.user.id, req.params.manager_id], function(likeErr, likeRows) {

@@ -24,7 +24,7 @@
             <img id="inline_logo" src="/images/inline-logo.png"style="width:22%;padding-left:3%;padding-top:10px; height:auto">
         </div>
         <div id="mystore_div">
-            <div id="mystore_image"></div>
+            <div id="mystore_image" style="background: url('/files/<%= results[0].manager_image %>'); background-repeat: no-repeat; background-position: center center;"></div>
             <div id="my_id">
                 <%= admin_name %>님 상점</div>
             <div id="mystore_name"><%= results[0].market_name %></div>
@@ -60,7 +60,7 @@
           <div class="hot_store_list">
               <div class="hot_store_detail">
                   <div>
-                      <img src="/images/fruit.jpg" width="100%" height="125px">
+                      <img src="/files/<%= market[i].manager_image %>" width="100%" height="125px">
                   </div>
                   <div class="good_market_name">
                       <%= market[i].sijang_name %>
@@ -155,7 +155,7 @@
                 console.log('로그아웃실패');
             }
         })
-        $('#mystore_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
+        // $('#mystore_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
 
 
     </script>
