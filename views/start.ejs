@@ -208,6 +208,8 @@
                 },
                 error: function (error) {
                     console.log('erer');
+                    alert('다시 입력해주세요.');
+                    window.reload();
                 }
             });
         });
@@ -324,11 +326,12 @@
                     },
                     error: function (error) {
                         alert('이상한부분');
+                        window.reload();
                     }
                 });
             }
             else {
-                alert('오류ㄴ')
+                alert('다시 입력해주세요.');
             }
         });
     </script>
@@ -577,8 +580,8 @@
                         }
                     },
                     error: function (error) {
-                        alert('가입 실패');
-                        //$(window).attr('location', '/start');
+                        alert('다시 입력해주세요.');
+                        window.reload();
                     }
                 });
             });
@@ -737,7 +740,7 @@
         pwd3 = $(this).val();
         if ($('#password_jh_check').val()) {
             if (pwd3 == pwd4) {
-                alert('ok')
+              console.log('ok');
             }
             else {
                 alert('비밀번호가 다릅니다.')
@@ -750,7 +753,7 @@
         pwd4 = $(this).val();
         if ($('#password_jh').val()) {
             if (pwd3 == pwd4) {
-                alert('ok')
+              console.log('ok');
             }
             else {
                 alert('비밀번호가 다릅니다.')
