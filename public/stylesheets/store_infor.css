@@ -347,7 +347,7 @@ h2{
 .review_rate{
     margin-top: 20px;
     width: 100%;
-    height: 118px;
+    /*height: 118px;*/
 }
 .review_star{
     display: inline-flex;
