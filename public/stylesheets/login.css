@@ -617,7 +617,7 @@ select{
 #Searching
 {
     border-radius: 20px;
-    display: inline-flex;
+    display: flex;
     width: 100%;
     height: 40px;
     border-color: white;
@@ -628,20 +628,23 @@ select{
     padding: 0px;
     border-radius: 50px;
     background-color: white;
+    flex-grow: 0;
+    margin-left: 10px;
 }
 #search_value{
     border: 0px;
     padding: 0px;
+    flex-grow: 1;
+    margin-left: 10px;
 }
 #searchingButton{
     width: 20px;
     height: 20px;
     margin-top: 10px;
-    margin-left: 40px;
+    margin-right: 10px;
     background-color: white;
     border: 0px;
     padding: 0px;
-    
 }
 #verti{
     width: 100%;
@@ -654,7 +657,7 @@ select{
 #vertical_helper{
     width: 100%;
     height: 40px;
-    display: inline-flex;
+    display: flex;
 }
 #searching_input{
     display: inline-flex;
@@ -740,7 +743,7 @@ select{
      margin-left:25%;
 }
 #search-box{
-    width: 324px;
+    /*width: 324px;*/
     height: 40px;
     margin-top: 7%;
 }
