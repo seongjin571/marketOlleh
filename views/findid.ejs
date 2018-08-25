@@ -30,6 +30,9 @@
     <input type='text' id="find_user_id_to_password"  placeholder='이름' />
     <input type='text' id="find_user_id_to_email"  placeholder='이메일' />
     <img id="find_user_id_bt" src="/images/search.png">
+
+    <p id="demo" onclick="myFunction()">확인하세요</p>
+
     <div id="fdd"></div>
     </div>
     <div id="idfind_bottom">
@@ -88,6 +91,11 @@
               $("#find_user_id_bt").trigger("click");
           };
       }); // keyup event      
+
+    //inner html
+      function myFunction() {
+    document.getElementById("demo").innerHTML = "맞았네요";
+}
     </script>
   </body>
 </html>
