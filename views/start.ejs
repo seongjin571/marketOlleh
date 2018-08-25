@@ -602,8 +602,21 @@
         </div>
 
         <script>
+            
             $('#signupForm2').submit(function (e) {
+                var signcount_manager=0;
+        
+            
                 e.preventDefault();
+                for (var i = 0; i < 14; i++) {
+                if ($('.manager_check_div').eq(i).css('visibility') == 'visible') {
+                    signcount_manager++;
+                }
+                else {
+                    continue;
+                }
+            }
+                if (signcount_manager == 14) {
                 var manager_id = $('#manager_id_jh').val();
                 var password = $('#password_jh').val();
                 var market_name = $('#market_name').val();
@@ -678,6 +691,10 @@
                         window.reload();
                     }
                 });
+            }
+            else{
+                alert('가입 정보를 확인 해 주세요.')
+            }
             });
         </script>
         <script type="text/javascript" src="/javascripts/signupManager.js"></script>
@@ -808,6 +825,11 @@
         else{
             $('.manager_check_div').eq(4).css('visibility', 'hidden')
         }
+    })
+
+    $('#manager_img').change(function () {
+        $('.manager_check_div').eq(9).css('visibility', 'visible')
+       
     })
     $('.signuptext2').eq(5).change(function () {
         var naming=$(this).val();
