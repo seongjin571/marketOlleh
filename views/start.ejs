@@ -809,6 +809,10 @@
             $('.manager_check_div').eq(4).css('visibility', 'hidden')
         }
     })
+    $('#manager_img').change(function () {
+        $('.manager_check_div').eq(9).css('visibility', 'visible')
+       
+    })
     $('.signuptext2').eq(5).change(function () {
         var naming=$(this).val();
         if($(this).val()){

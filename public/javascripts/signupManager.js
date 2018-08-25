@@ -110,6 +110,7 @@ function setStyle_search_result() {
     $('#search_result > div > li').css('background-color', 'white');
     $(this).css('background-color', 'red');
     $(this).css('transition', '1s');
+    $('.manager_check_div').eq(8).css('visibility', 'visible')
     insert_sijang = $(this).text();
   });
 
