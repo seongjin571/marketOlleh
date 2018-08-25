@@ -246,10 +246,6 @@
 
         $('#write_ok_button').click(function () {
             if(doubleSubmitCheck()) return;
-            if(! text) {
-              alert('내용을 입력해주세요 !');
-              return false;
-            }
 
             var user_id = '사장님';
             var market_name = '<%= result1[0].market_name %>';
@@ -269,6 +265,12 @@
             var post_date = leadingZeros(now.getYear() - 100, 2) + '-' +
                 leadingZeros(now.getMonth() + 1, 2) + '-' +
                 leadingZeros(now.getDate(), 2);
+
+            if(! text) {
+              alert('내용을 입력해주세요 !');
+              return false;
+            }
+            
             var data = {
                 'market_name': market_name,
                 'user_id': user_id,
