@@ -72,7 +72,6 @@ body, html {
     height: 46px;
     background-color: white;
     border: double 1px transparent;
-    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
     border-top: 0px;
     border-bottom-style: solid;
     margin-left: 0px;

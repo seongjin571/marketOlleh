@@ -527,6 +527,7 @@ select{
     appearance: none;
     background: url(/images/down_arrow.png) no-repeat 95% 50%;
     background-size: 10%;
+    outline: none;
 }
 .signupuser_input4{
     position: fixed;
@@ -632,6 +633,7 @@ select{
     margin-left: 10px;
 }
 #search_value{
+    outline: none;
     border: 0px;
     padding: 0px;
     flex-grow: 1;
@@ -797,6 +799,7 @@ select{
 }
 
 /*modal layout finish*/
+
 /* 뒤로가기 버튼 */
 #back_loginuser{
     width: 30px;
