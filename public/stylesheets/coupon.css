@@ -7,12 +7,13 @@ html {
     height: 100%;
     padding: 0;
     margin: 0;
+    overflow-x: hidden;
 }
 
 #menu {
     width: 100%;
     display: inline-flex;
-    height: 50px;
+    height: 9%;
     background-image: url('/images/mainBack.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -37,8 +38,7 @@ html {
     display: none;
 }
 .my_coupon{
-    width: 70%;
-    margin-left: 15%;
+    width: 100%;
 }
 
 .market p{
@@ -223,7 +223,10 @@ html {
     line-height: 35px;
     font-weight: lighter;
 }
-
+.swiper-container{
+    width: 70%;
+    margin-left: 15%;
+}
 
 #nav_sj {
     width: 100%;
@@ -255,33 +258,59 @@ html {
 .password_number_div_sj{
     display: none;
     width: 100%;
-    margin-top: 25%;
-    height: 50%;
-    background-color: rgb(230, 247, 236);
-    border-radius: 5px;
+    height: 83%;
+    background-color: #f6f8f9;
+    color: #b9b9b9;
     font-size: 20px;
     text-align: center;
      line-height: 70px;
+     position: absolute;
+     /* margin-top: 20%; */
+     display: none;
+     font-weight: lighter;
+}
+.password_check{
+    width: 100%;
+    height: 10%;
+    padding-top: 6%;
+    padding-bottom: 15%;
+    /* background-color: red; */
+    display: inline-flex;
+    background-color: white !important;
+    text-align: center;
+    font-size: 40px;
+    color: #6078ea;
+}
+
+.password_check:nth-child(1){
+    padding-left:24%;
+}
+.password_check div{
+    width: 9%;
+    margin-right: 4%;
+    border-bottom-style: solid;
+    border-bottom-color: #d3d3d3;
+    border-bottom-width: 4px;
+    /* box-shadow: 5px 5px 5px #888888; */
 }
 .password_line_sj{
     display: inline-flex;
     width: 100%;
-    height: 25%;
+    height: 18.75%;
 }
 .password_line_sj div{
     width: 33.33%;
     height: 100%;
     border-style: solid;
-    border-color: rgb(181, 233, 199);
+    border-width: 1px;
+    border-color: white;
+    line-height: 75px;
 }
 .password_cancel{
     background-color: rgb(241, 37, 37);
     color: white;
 }
-.password_ok{
-    background-color: rgb(241, 37, 37);
-    color: white;
-}
+
 .password_number_sj:hover{
-    background-color: rgb(185, 184, 184);
+    background-color: rgb(212, 209, 209);
 }
