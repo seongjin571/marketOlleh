@@ -317,7 +317,7 @@
 
 
                 <% if(review) {%>
-                  <% for(var j=review.length-1; j>=0; j--) { %>
+                  <% for(var j=0; j<review.length; j++) { %>
                     <% if(review[j].market_name == myStamps[i].market_name && review[j].sijang_name == myStamps[i].sijang_name) { %>
 
                 <div class="review_div_sj" id='review_div_sj<%= myStamps[i].id %>'>
