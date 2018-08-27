@@ -44,7 +44,7 @@ body, html {
 #idfind_top{
     width: 100%;
     position: fixed;
-    height: 10%;
+    height: 5%;
     top:60px;
     margin-left:15%;
 }
