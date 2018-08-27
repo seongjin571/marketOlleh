@@ -64,6 +64,7 @@ passport.use('local', new LocalStrategy({
       }
       else {
           var user = {
+            provider: 'marketOlleh',
             id: rows[0].user_id,
             username: rows[0].user_name
           }

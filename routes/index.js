@@ -853,10 +853,12 @@ router.post('/review',function(req,res,next){
   var date = req.body.date;
   var review = req.body.review;
   var rate = req.body.rate;
-  var sql = 'insert into `review`(`user_id`,`market_name`,`sijang_name`,`review`,`date`, `rate`) values (?,?,?,?,?,?);';
+  var provider = req.user.provider;
+  var username = req.user.username;
+  var sql = 'insert into `review`(`user_id`,`market_name`,`sijang_name`,`review`,`date`, `rate`, `username`, `provider`) values (?,?,?,?,?,?,?,?);';
   // var sql = 'select * from stamp where user_id =? and market_name = ?';
   console.log(user_id);
-  conn.query(sql,[user_id, market_name, sijang_name, review, date, rate],function(error,results,fields){
+  conn.query(sql,[user_id, market_name, sijang_name, review, date, rate, username, provider],function(error,results,fields){
     if(error){
       console.log('er');
     }else{
@@ -873,10 +875,12 @@ router.post('/review_manager',function(req,res,next){
   var sijang_name = req.body.sijang_name;
   var date = req.body.date;
   var review = req.body.review;
-  var sql = 'insert into `review`(`user_id`,`market_name`,`sijang_name`,`review`,`date`) values (?,?,?,?,?);';
+  var provier = 'marketOlleh';
+  var username = '사장님';
+  var sql = 'insert into `review`(`user_id`,`market_name`,`sijang_name`,`review`,`date`, `username`, `provider`) values (?,?,?,?,?,?,?);';
   // var sql = 'select * from stamp where user_id =? and market_name = ?';
   console.log(user_id);
-  conn.query(sql,[user_id,market_name,sijang_name,review,date],function(error,results,fields){
+  conn.query(sql,[user_id,market_name,sijang_name,review,date, username, provider],function(error,results,fields){
     if(error){
       console.log('er');
     }else{
