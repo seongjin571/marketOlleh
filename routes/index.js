@@ -525,7 +525,7 @@ router.get('/mainManager', function(req, res, next) {
 
 router.get('/mystore', function(req, res){
   var sql='select * from manager where `manager_id`=?;';
-  var sql_stamp = 'select * from review where `market_name`=? and `sijang_name`=?;';
+  var sql_stamp = 'select * from `review` where `market_name`=? and `sijang_name`=? order by `id` desc ;';
   conn.query(sql,[req.session.authId],function(error,result1,fields){
     if(error){
       console.log(error);
@@ -618,7 +618,7 @@ router.get('/myStamp', function(req, res) {
   // var sql = 'select * from `stamp` where `user_id`=?';
   // var sqlJoin = 'SELECT * FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name WHERE user_id=?;';
   var sqlJoin = 'SELECT stamp.id, stamp.user_id, stamp.sijang_name, stamp.market_name, stamp.stamp_count, stamp.stamp_standard, stamp.stamp_password, stamp.stamp_reward, likeMarket.like_check ,manager.like_count, manager.market_introduce, manager.market_promotion, manager.manager_image FROM stamp INNER JOIN manager ON stamp.sijang_name=manager.sijang_name and stamp.market_name=manager.market_name INNER JOIN likeMarket ON manager.sijang_name=likeMarket.sijang_name and manager.market_name=likeMarket.market_name and stamp.user_id=likeMarket.user_id WHERE stamp.user_id=?;';
-  var sql2 = 'select * from `review` ;';
+  var sql2 = 'select * from `review` order by `id` desc ;';
   conn.query(sqlJoin, [req.user.id],function(error, result){
     if(error) {
        console.log(error);
@@ -677,7 +677,7 @@ router.post('/myStamp', function(req, res) {
   var market_name = req.body.market_name;
 
   if(market_name){ // NewGoo ~ table에서 구 선택시 오는 부분
-    var sql = "SELECT * FROM `review` WHERE `market_name` LIKE '"+market_name+"' ORDER BY `date` DESC";
+    var sql = "SELECT * FROM `review` WHERE `market_name` LIKE '"+market_name+"' ORDER BY `id` DESC";
     conn.query(sql, function(error, rows, fileds) {
       var avgSql = 'select round(avg(rate),0) as rateAvg, count(*) as rateCnt from review where market_name=? group by sijang_name, market_name ;';
       conn.query(avgSql, [market_name], function(avgErr, avgRows) {

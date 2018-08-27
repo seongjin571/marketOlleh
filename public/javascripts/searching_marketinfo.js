@@ -343,7 +343,7 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt, MarketName) {
 	var fullString = '';
 
 
-	if(! review_arr) { // 리뷰가 없을때 
+	if(! review_arr) { // 리뷰가 없을때
 		fullString += '<div class="review_rate">';
 		fullString += '<div class="review_star">';
 
@@ -405,7 +405,25 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt, MarketName) {
 
 			tempString[i] += '</div>';
 			tempString[i] += '<div class="review_content_sj">';
-			tempString[i] += '<div class="review_content_id_sj"><b>'+review_arr[i].user_id+'</b></div>';
+
+			if(review_arr[i].provider == 'kakao') {
+				tempString[i] += '<div class="review_content_id_sj"><b>'+review_arr[i].username+'</b></div>';
+			}
+			else {
+				var temp_ = review_arr[i].user_id;
+				var secret = '***';
+				var l = temp_.length;
+				var f = l-3;
+				var temp2 = temp_.substring(0,f);
+				var result3 = temp2.concat(secret);
+				if(result3 == '***') {
+					tempString[i] += '<div class="review_content_id_sj"><b>사장님</b></div>';
+				}
+				else {
+					tempString[i] += '<div class="review_content_id_sj"><b>'+result3+'</b></div>';
+				}
+			}
+
 			tempString[i] += '<div class="review_content_date_sj">'+review_arr[i].date+'</div></div>';
 			tempString[i] += '<p>'+review_arr[i].review+'</p>';
 			tempString[i] += '<div class="line"></div>';
