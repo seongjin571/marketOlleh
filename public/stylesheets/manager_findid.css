@@ -63,16 +63,18 @@ body, html {
     color: grey;
     opacity: 1;
 }
-#find_manager_id_to_sijangname{
+#searching_div{
+    display: flex;
+}
+#sijang_name{
     outline:none;
     width: 200px;
     height: 46px;
     background-color: white;
     border: double 1px transparent;
-    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
     border-top: 0px;
     border-bottom-style: solid;
-    
+    margin-left: 0px;
 }
 #find_manager_id_to_marketname{
     outline:none;

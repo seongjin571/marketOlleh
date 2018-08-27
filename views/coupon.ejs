@@ -113,6 +113,12 @@
                     <!-- <div class="swiper-pagination"></div> -->
 
                     <div class='password_number_div_sj' id="password_number_div_sj<%= result1[i].id %>">
+                        <div class="password_check" id="password_check<%= result1[i].id %>">
+                            <div class="check<%= result1[i].id %>"></div>
+                            <div class="check<%= result1[i].id %>"></div>
+                            <div class="check<%= result1[i].id %>"></div>
+                            <div class="check<%= result1[i].id %>"></div>
+                          </div>
                       <div class="password_line_sj <%= result1[i].id %>">
                         <div class="password_number_sj <%= result1[i].id %>"></div>
                         <div class="password_number_sj <%= result1[i].id %>"></div>
@@ -167,6 +173,7 @@
                         var number1 = "";
                         $('.password_number_sj').off().on('click',function(){
                           number1 += $(this).html();
+                          $('.check<%= result1[i].id %>').eq(count).html('*')
                           count++;
                           console.log(number1);
                           console.log("count"+count);
@@ -181,6 +188,7 @@
                               success: function(result) {
                                 if(result['password'] == number1) {
                                   number1 = "";
+                                  $('.check<%= result1[i].id %>').html('');
                                   alert('일치');
                                   $.ajax({
                                     type: 'POST',
@@ -191,6 +199,7 @@
                                     success: function(result) {
                                       if(result['result'] == 'success') {
                                         alert('쿠폰 사용이 완료되었습니다.');
+                                        $('.check<%= result1[i].id %>').html('');
                                         location.reload();
                                       }
                                     },
@@ -202,6 +211,7 @@
                                 }
                                 else {
                                   number1 = "";
+                                  $('.check<%= result1[i].id %>').html('');
                                   alert('비밀번호가 일치하지 않습니다.');
                                 }
                               },

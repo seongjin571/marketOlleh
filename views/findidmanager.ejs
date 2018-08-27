@@ -7,6 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/manager_findid.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
@@ -15,30 +16,72 @@
     <title></title>
   </head>
   <body>
-      <script>
+    <script>
           localStorage.setItem('introFlag', 2);
-        </script>
+    </script>
 
-<div id="all_body">
-    <div id="back_button">
-        <img id="back_loginuser" src="/images/backButton_blue.png"onClick="history.back()" />
+  <div id="all_body">
+
+      <div id="back_button">
+          <img id="back_loginuser" src="/images/backButton_blue.png"onClick="history.back()" />
       </div>
 
       <div id="idfind_top">
           <span>아이디찾기</span>
-        </div>
+      </div>
+
       <div id="findid_form">
-    <input type='text' id="find_manager_id_to_password"  placeholder='이름' />
-    <input type='text' id="find_manager_id_to_sijangname"  placeholder='시장이름' />
-    <input type='text' id="find_manager_id_to_marketname"  placeholder='가게이름' />
-    <img id="find_manager_id_bt" src="/images/search.png">
-    <div class="fdd"></div>
+        <div id="searching_div">
+          <div id="sijang_name" name='sijang_name'>시장선택</div>
+          <input type="button" value="시장찾기" id="modal_display" />
+        </div>
+        <input type='text' id="find_manager_id_to_marketname"  placeholder='가게이름' />
+        <img id="find_manager_id_bt" src="/images/search.png">
+        <input type='text' id="find_manager_id_to_password"  placeholder='이름' />
+        <div class="fdd"></div>
+      </div>
+
+      <div id="idfind_bottom"></div>
   </div>
-  <div id="idfind_bottom">
+
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+      <div class="modal-content">
+          <div id="top_modal">
+              <span id="modal_close">&times;</span>
+              <img id="modalstartlogo" src="/images/logo_with_text.png">
+              <div id="search-box">
+                  <div id="Searchingtap">
+                      <div id="verti">
+                          <div id="vertical_helper">
+                              <div id="Searching">
+                                  <select id="filed" name="filed">
+                                      <option id="modal_market_name" value="name" selected="selected">시장 이름</option>
+                                      <option value="gooname">구</option>
+                                      <option value="dongname">동</option>
+                                      <option value="newaddress">도로명</option>
+                                      <option value="oldaddress">지번</option>
+                                  </select>
+                                  <input type="text" placeholder="searching" id="search_value">
+                                  <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div id="modal_result">
+              <ol id="search_result"></ol>
+          </div>
+          <div id="modal_result2">
+              <button id="modalbutton">확인</button>
+          </div>
+      </div>
   </div>
-</div>
   </body>
+  <script type="text/javascript" src="/javascripts/signupManager.js"></script>
   <script>
+  // 1회 실행할때 double~ 변수가 false --> true / 이후엔 무조건 true값 가짐
   var doubleSubmitFlag = false;
   function doubleSubmitCheck(){
     if(doubleSubmitFlag){
@@ -48,9 +91,10 @@
       return false;
     }
   }
+
   $('#find_manager_id_bt').click(function(){
     var password = $('#find_manager_id_to_password').val();
-    var sijang_name = $('#find_manager_id_to_sijangname').val();
+    var sijang_name = $('#sijang_name').text();
     var market_name = $('#find_manager_id_to_marketname').val();
 
     var data ={

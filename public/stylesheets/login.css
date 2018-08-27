@@ -518,6 +518,7 @@ a{
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
     border-top: 0px;
     border-bottom-style: solid;
+    border-bottom: 2px;
 }
 select{
     color: grey;
@@ -526,6 +527,7 @@ select{
     appearance: none;
     background: url(/images/down_arrow.png) no-repeat 95% 50%;
     background-size: 10%;
+    outline: none;
 }
 .signupuser_input4{
     position: fixed;
@@ -616,7 +618,7 @@ select{
 #Searching
 {
     border-radius: 20px;
-    display: inline-flex;
+    display: flex;
     width: 100%;
     height: 40px;
     border-color: white;
@@ -627,20 +629,24 @@ select{
     padding: 0px;
     border-radius: 50px;
     background-color: white;
+    flex-grow: 0;
+    margin-left: 10px;
 }
 #search_value{
+    outline: none;
     border: 0px;
     padding: 0px;
+    flex-grow: 1;
+    margin-left: 10px;
 }
 #searchingButton{
     width: 20px;
     height: 20px;
     margin-top: 10px;
-    margin-left: 40px;
+    margin-right: 10px;
     background-color: white;
     border: 0px;
     padding: 0px;
-    
 }
 #verti{
     width: 100%;
@@ -653,7 +659,7 @@ select{
 #vertical_helper{
     width: 100%;
     height: 40px;
-    display: inline-flex;
+    display: flex;
 }
 #searching_input{
     display: inline-flex;
@@ -676,8 +682,54 @@ select{
     height: 45%;
     width: 100%;
 }
-#modal_display{
+
+#picture_pic
+{ 
+    display: block;
+    text-align: center;
+    box-shadow: 5px 5px 3px #efefef;
+    width: 50%;
+    background-color: white;
+    border: double 1px transparent;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+ radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    border: 0px;
+    color: gray;
     height: 30px;
+    line-height: 30px;
+    font-size: 13px;
+    }
+
+ input[type="file"] { 
+  position: absolute; 
+  width: 1px; 
+  height: 1px; 
+  padding: 0; 
+  margin: -1px;
+   overflow: hidden; 
+   clip:rect(0,0,0,0);
+    border: 0;
+ }
+
+#modal_display{
+    font-size: 13px;
+    box-shadow: 5px 5px 3px #efefef;
+    width: 50%;
+    background-color: white;
+    border: double 1px transparent;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+ radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    border: 0px;
+    color: gray;
+    height: 32px;
 }
 #modal_close{
     font-size:30px;
@@ -693,7 +745,7 @@ select{
      margin-left:25%;
 }
 #search-box{
-    width: 324px;
+    /*width: 324px;*/
     height: 40px;
     margin-top: 7%;
 }
@@ -747,6 +799,7 @@ select{
 }
 
 /*modal layout finish*/
+
 /* 뒤로가기 버튼 */
 #back_loginuser{
     width: 30px;

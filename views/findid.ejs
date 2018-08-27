@@ -30,7 +30,10 @@
     <input type='text' id="find_user_id_to_password"  placeholder='이름' />
     <input type='text' id="find_user_id_to_email"  placeholder='이메일' />
     <img id="find_user_id_bt" src="/images/search.png">
-    <div class="fdd"></div>
+
+    <p id="demo" onclick="myFunction()">확인하세요</p>
+
+    <div id="fdd"></div>
     </div>
     <div id="idfind_bottom">
     </div>
@@ -53,13 +56,20 @@
             data: data,
             success: function (result) {
                 if (result['result'] == 'success') {
-                    alert("아이디찾기완료");
                     var findid_div = document.createElement("div");
                     findid_div.setAttribute("id","findid_result_div");
 
                     var html = '<div id="">'+result['results'][0].user_id+'</div>';
                     findid_div.innerHTML=html;
-                    document.getElementsByClassName('fdd')[0].after(findid_div)
+
+                    if (!fdd.hasChildNodes()) {
+                        $('#fdd').html(findid_div);
+                        alert("아이디찾기완료");
+                        // document.getElementById('fdd').after(findid_div);
+                    } // inner if
+                    else {
+                        alert('아래쪽 아이디를 확인하세요');
+                    }
                 }
                 else if(result['result']=='fail'){
                     alert('아이디가 없습');
@@ -75,6 +85,17 @@
         });
       })
 
+      $("#find_user_id_to_email").keyup(function (event) {
+          // Enter 처리
+          if (event.keyCode == '13') {
+              $("#find_user_id_bt").trigger("click");
+          };
+      }); // keyup event      
+
+    //inner html
+      function myFunction() {
+    document.getElementById("demo").innerHTML = "맞았네요";
+}
     </script>
   </body>
 </html>
