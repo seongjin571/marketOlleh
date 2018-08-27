@@ -790,6 +790,7 @@ select{
     padding:0;
     margin-top: 5px;
     border:0;
+    top:480px;
     border-radius: 50px;
     color:white;
     background: -webkit-linear-gradient(left, #17ead9, #6078ea);
