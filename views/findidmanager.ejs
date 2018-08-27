@@ -115,6 +115,7 @@
         success: function (result) {
             if (result['result'] == 'success') {
                 alert("아이디찾기완료");
+                document.getElementById("demo").innerHTML = "맞았네요";
                 if(doubleSubmitCheck()) return;
 
                 var findid_div = document.createElement("div");
@@ -126,6 +127,7 @@
             }
             else if(result['result']=='fail'){
                 alert('해당 정보와 일치하는 아이디가 없습니다.');
+                document.getElementById("demo").innerHTML = "틀렸네요";
 
             }else {
               alert('다시입력해주세요.');
