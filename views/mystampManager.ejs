@@ -23,7 +23,8 @@
 <body>
     <div id="text_logo">
         <div id="mystore_div">
-            <div id="mystore_image"></div>
+            <!-- <div id="mystore_image"></div> -->
+            <div id="mystore_image" style="background: url('/files/<%= result[0].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 125%;"></div>            
             <div id="my_id">
                 <%= admin_name %>님 상점</div>
             <div id="mystore_name"><%= result[0].market_name %></div>
@@ -136,7 +137,7 @@
                 $('#password_input').css('color','#48a2eb');
             }
         })
-        $('#mystore_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
+        // $('#mystore_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
         var doubleSubmitFlag = false;
         function doubleSubmitCheck(){
           if(doubleSubmitFlag){
