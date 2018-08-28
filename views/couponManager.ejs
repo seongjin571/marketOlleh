@@ -103,7 +103,7 @@
                         <p class="name">쿠폰비밀번호</p>
                         <input class="input_content" id="coupon_password" type="password" maxlength="4" id="stamp_password" placeholder="ex)1234">
                     </div>
-            
+
                 </div>
 
 
@@ -136,7 +136,7 @@
         </div>
 
 
-    
+
     <button id="cancel">취소</button>
     <button id="coupon_make_button">생성</button>
     </div>
@@ -236,7 +236,7 @@
             $('#password').html('')
             $('.check_input:eq(1)').css('visibility', 'hidden')
         }
-        
+
     });
     $('#make_coupon').click(function () {
         $('#all_coupon_div').css('display', 'none');
@@ -311,12 +311,12 @@
                     alert('이미쿠폰이 있습니다');
 
                 }else {
-                  alert('쿠폰등록실패1');
+                  alert('couponManager.ejs에서 확인해봐야함');
                   location.reload();
                 }
             },
             error: function (error) {
-                alert('쿠폰등록실패2');
+                alert('couponManager.ejs에서 확인해봐야함');
             }
         });
     })

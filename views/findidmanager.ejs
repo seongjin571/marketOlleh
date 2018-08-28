@@ -39,7 +39,7 @@
         <input type='text' id="find_manager_id_to_marketname"  placeholder='가게이름' />
         <input type='text' id="find_manager_id_to_password"  placeholder='이름' />
         <img id="find_manager_id_bt" src="/images/search.png">
-    
+
         <p id="demo" onclick="myFunction()">확인하세요</p>
 
         <div class="fdd"></div>
@@ -139,7 +139,7 @@
             }
         },
         error: function (error) {
-          alert('다시입력해주세요.');
+          alert('findidmanager.ejs확인');
           window.reload();
         }
     });
@@ -150,6 +150,6 @@
       if (event.keyCode == '13') {
           $("#find_manager_id_bt").trigger("click");
       };
-  }); // keyup event  
+  }); // keyup event
   </script>
 </html>
