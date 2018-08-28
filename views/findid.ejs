@@ -84,19 +84,19 @@
                     }
                 }
                 else if(result['result']=='fail'){
-                  // alert('아이디가 없습');  
+                  // alert('아이디가 없습');
                   document.getElementById("demo").innerHTML = "틀렸네요";
                   if ($('#findid_result_div > div')) {
                     $('#findid_result_div > div').text('\0');
                   } // inner if
 
                 }else {
-                  alert('실패1');
+                  alert('findid.ejs확인');
                   // location.reload();
                 }
             },
             error: function (error) {
-                alert('실패2');
+                alert('findid.ejs확인');
             }
         });
       })
@@ -106,10 +106,10 @@
           if (event.keyCode == '13') {
               $("#find_user_id_bt").trigger("click");
           };
-      }); // keyup event      
+      }); // keyup event
 
     //inner html
-      
+
     </script>
   </body>
 </html>
