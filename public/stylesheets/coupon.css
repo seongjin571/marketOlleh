@@ -61,7 +61,8 @@ html {
     text-align: center;
 }
 .stamp_list{
-    width: 100%;
+    width: 75%;
+    margin-left: 12.5%;
     height: 160px;
     background-image:url('/images/backSample1.png');
     background-repeat: no-repeat;

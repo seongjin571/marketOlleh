@@ -391,16 +391,19 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt, MarketName) {
 
 
 			tempString[i] += '<div class="review_star_customer">';
-			for(var j=0; j< review_arr[i].rate; j++) {
-				tempString[i] += '<div>';
-				tempString[i] += '<img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">';
-				tempString[i] += '</div>';
-			}
 
-			for(var j=0; j< 5-review_arr[i].rate; j++) {
-				tempString[i] += '<div>';
-				tempString[i] += '<img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">';
-				tempString[i] += '</div>';
+			if(review_arr[i].user_id != '사장님') {
+				for(var j=0; j< review_arr[i].rate; j++) {
+					tempString[i] += '<div>';
+					tempString[i] += '<img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">';
+					tempString[i] += '</div>';
+				}
+
+				for(var j=0; j< 5-review_arr[i].rate; j++) {
+					tempString[i] += '<div>';
+					tempString[i] += '<img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">';
+					tempString[i] += '</div>';
+				}
 			}
 
 			tempString[i] += '</div>';

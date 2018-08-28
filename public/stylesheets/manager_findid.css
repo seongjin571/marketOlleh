@@ -44,7 +44,7 @@ body, html {
 #idfind_top{
     width: 100%;
     position: fixed;
-    height: 10%;
+    height: 5%;
     top:60px;
     margin-left:15%;
 }
@@ -98,5 +98,12 @@ body, html {
 
 }
 #findid_result_div{
-    margin-top:50px;
+    margin-top:20px;
+    font-size: 20px;
+    text-align: center;
+}
+#demo{
+    color: #37caca;
+    text-align: center;
+    margin-top: 40px;
 }
