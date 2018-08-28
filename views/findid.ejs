@@ -39,6 +39,17 @@
     </div>
   </div>
     <script>
+      // 1회 실행할때 double~ 변수가 false --> true / 이후엔 무조건 true값 가짐
+      var doubleSubmitFlag = false;
+      function doubleSubmitCheck(){
+        if(doubleSubmitFlag){
+          return doubleSubmitFlag;
+        }else{
+          doubleSubmitFlag = true;
+          return false;
+        }
+      }
+
       $('#find_user_id_bt').click(function(){
         var password = $('#find_user_id_to_password').val();
         var email = $('#find_user_id_to_email').val();
@@ -62,7 +73,7 @@
                     var html = '<div id="">'+result['results'][0].user_id+'</div>';
                     findid_div.innerHTML=html;
 
-                    if (!fdd.hasChildNodes()) {
+                    if (!fdd.hasChildNodes() || $('#findid_result_div > div').text() == '\0') {
                         $('#fdd').html(findid_div);
                         // alert("아이디찾기완료");
                         document.getElementById("demo").innerHTML = "찾았어요";
@@ -74,8 +85,10 @@
                 }
                 else if(result['result']=='fail'){
                   // alert('아이디가 없습');  
-                   document.getElementById("demo").innerHTML = "틀렸네요";
-
+                  document.getElementById("demo").innerHTML = "틀렸네요";
+                  if ($('#findid_result_div > div')) {
+                    $('#findid_result_div > div').text('\0');
+                  } // inner if
 
                 }else {
                   alert('실패1');

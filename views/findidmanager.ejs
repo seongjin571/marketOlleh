@@ -117,7 +117,7 @@
         success: function (result) {
             if (result['result'] == 'success') {
                 document.getElementById("demo").innerHTML = "찾았어요";
-                if(doubleSubmitCheck()) return;
+                if(doubleSubmitCheck() && $('#findid_result_div > div').text() != '\0') return;
 
                 var findid_div = document.createElement("div");
                 findid_div.setAttribute("id","findid_result_div");
@@ -129,7 +129,9 @@
             else if(result['result']=='fail'){
                 // alert('해당 정보와 일치하는 아이디가 없습니다.');
                 document.getElementById("demo").innerHTML = "틀렸네요";
-
+                if ($('#findid_result_div > div')) {
+                  $('#findid_result_div > div').text('\0');
+                } // inner if
             }else {
               alert('다시입력해주세요.');
               window.reload();
@@ -142,5 +144,12 @@
         }
     });
   })
+
+  $("#find_manager_id_to_password").keyup(function (event) {
+      // Enter 처리
+      if (event.keyCode == '13') {
+          $("#find_manager_id_bt").trigger("click");
+      };
+  }); // keyup event  
   </script>
 </html>
