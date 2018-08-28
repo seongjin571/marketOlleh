@@ -12,6 +12,17 @@ function TableSetting() {
 }
 
 function turningBack() {
+	swiper2.destroy();
+	swiper2 = new Swiper('.s2', {
+		initialSlide: 0,
+		autoHeight: true,
+		observer: true,
+		observeParents: true,
+		scrollbar: {
+			el: '.swiper-scrollbar',
+			hide: true,
+		},
+	});
 
 	// 스크롤 조절 
 	window.scrollTo(0, 0);

@@ -446,6 +446,8 @@
             fullString += '<div class="review_count">';
             fullString += '<p style="font-size: 20px; color: #9c9c9c;"> 작성된 리뷰가 없습니다. </p>';
             fullString += '</div>';
+            fullString += '<div id="intro"><p>상점을 이용하는 고객들의 리뷰입니다.</p></div>';
+            fullString += '<div class="line"></div>';
           } // if
 
           else {
@@ -475,7 +477,7 @@
             for( var i = 0; i<review_arr.length; i++){
               tempString[i] = '<div class="review_div_sj">';
 
-
+            // if(작성자가 사장님이 아닐시) {
               tempString[i] += '<div class="review_star_customer">';
               for(var j=0; j< review_arr[i].rate; j++) {
                 tempString[i] += '<div>';
@@ -488,6 +490,12 @@
                 tempString[i] += '<img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">';
                 tempString[i] += '</div>';
               }
+            // }
+            // else{ 사장님 일시
+            //     tempString[i] += '<div>';
+            //     tempString[i] += '<img class="star_gray_customer"  src="/images/logo_with_text_small.png" width="60px" height="15px">';
+            //     tempString[i] += '</div>';
+            // }
 
               tempString[i] += '</div>';
               tempString[i] += '<div class="review_content_sj">';
@@ -510,6 +518,17 @@
 
         // 뒤로 가기 버튼의 클릭 이벤트
         $('#tableControl').click(function (event) {
+        swiper.destroy();
+	    swiper = new Swiper('.s2', {
+		initialSlide: 0,
+		autoHeight: true,
+		observer: true,
+		observeParents: true,
+		scrollbar: {
+			el: '.swiper-scrollbar',
+			hide: true,
+		},
+	});
           document.getElementById('hot_store').style.display = "block";
           document.getElementById('text_logo').style.display = "block";
           $('#table').css('display', 'block');

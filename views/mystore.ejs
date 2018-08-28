@@ -121,6 +121,7 @@
                             <% if(review[j].market_name == result1[0].market_name && review[j].sijang_name == result1[0].sijang_name) {%>
                                 <div class="review_div_sj">
                                     <div class="review_star_customer">
+                                            <% if(review[j].provider !== '사장님') { %>
                                         <% for(var k=0; k<review[j].rate; k++) { %>
                                             <div>
                                                 <img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">
@@ -132,6 +133,11 @@
                                                         <img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">
                                                     </div>
                                                     <% } %>
+                                                    <% } else{%>
+                                                        <div>
+                                                                <img class="star_gray_customer" src="/images/logo_with_text_small.png" width="60px" height="15px">
+                                                            </div>
+                                                            <% }%>
                                     </div>
 
                                     <div class="review_content_sj">
@@ -330,7 +336,7 @@
         })
         // $('#store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
     </script>
-    <script src="/javascripts/mystore.js"></script>
+    <!-- <script src="/javascripts/mystore.js"></script> -->
 
 
 </body>
