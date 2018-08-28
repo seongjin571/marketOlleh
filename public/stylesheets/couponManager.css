@@ -24,10 +24,11 @@ html {
 
 
 #store_market_name{
+    display: inline-flex;
     width: 86%;
-    height: 22%;
+    padding-top: 5%;
+    height: 17%;
     margin-left: 7%;
-    line-height: 22%;
 }
 .store_and_market_L{
     width: 86%;
@@ -37,8 +38,6 @@ html {
     line-height: 40px;
 }
 #nameing{
-    position: absolute;
-    top: 8%;
     margin: 0;
 }
 .stamp_market{
@@ -249,7 +248,7 @@ html {
 }
 #make_coupon_form{
     width: 85%;
-    height: 65%;
+    height: 210px;
     margin-left: 7.5%
 }
 .inputLine{
@@ -266,9 +265,10 @@ html {
     font-size: 15px;
 }
 input,select{
+    height: 27px;
     width:52%;
     margin-left: 8%;
-    margin-bottom: 7%;
+    margin-bottom: 20px;
     font-size: 14px;
     border-top: 0;
     border-left: 0;
@@ -288,9 +288,7 @@ input,select{
     background-size: 10%;       
 
  }
- input{
-    height: 24px;
- }
+
 #make_coupon_form button{
     margin-top: 5%;
 }
@@ -332,11 +330,8 @@ input,select{
     text-align: center;
 }
 #password{
-    position: absolute;
-    left: 63%;
     width: 40%;
     font-size: 38px;
-    top: 9.5%;
-    margin: 0;
     font-weight: lighter;
+    margin: 0;
 }
