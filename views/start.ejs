@@ -488,7 +488,7 @@
                         <div id="myStamp">
                             <div id="store_market_name">
                                 <p id="nameing" style="width: 60%">
-                                    
+
                                 </p>
                                 <p id="password_star" style="width: 40%"></p>
                                 <!-- </div> -->
@@ -606,11 +606,11 @@
         </div>
 
         <script>
-            
+
             $('#signupForm2').submit(function (e) {
                 var signcount_manager=0;
-        
-            
+
+
                 e.preventDefault();
                 for (var i = 0; i < 14; i++) {
                 if ($('.manager_check_div').eq(i).css('visibility') == 'visible') {
@@ -833,7 +833,7 @@
 
     $('#manager_img').change(function () {
         $('.manager_check_div').eq(9).css('visibility', 'visible')
-       
+
     })
     $('.signuptext2').eq(5).change(function () {
         var naming=$(this).val();
@@ -950,7 +950,7 @@
             $(this).val('');
         }
     })
-    $('.stamp_standard').change(function(){ 
+    $('.stamp_standard').change(function(){
         var stamp_standard_option=$(".stamp_standard option:selected").val();
 
         if (stamp_standard_option==5){
@@ -1016,7 +1016,7 @@
         $('#signupManager').fadeOut(300)
         $('#loginManager').fadeIn(300)
     })
- 
+
 </script>
 
 </html>
