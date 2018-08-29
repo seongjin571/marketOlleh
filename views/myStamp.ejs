@@ -94,10 +94,10 @@
                   <div id="sns_sj">
                     <div id="good">
                       <% if(! myStamps[i].like_check) { %>
-                        <img class='top_image' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/nolikeM.png" width="30px" height="30px" style='display: block;'>
+                        <img class='top_image' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/nolikeM.png" width="30px" height="30px">
                         <img class='top_image' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/likeM.png" width="30px" height="30px" style='display: none;'>
                       <% } else { %>
-                        <img class='top_image' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/likeM.png" width="30px" height="30px" style='display: block;'>
+                        <img class='top_image' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/likeM.png" width="30px" height="30px">
                         <img class='top_image' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/nolikeM.png" width="30px" height="30px" style='display: none;'>
                       <% } %>
                             <p class="top_font" id="goodCount_sj<%= myStamps[i].id %>">
@@ -529,7 +529,7 @@
                   if (result['result']=='success'){
                     console.log(result);
                     $('#noGood_Button_sj<%= myStamps[i].id %>').css('display', 'none');
-                    $('#yesGood_Button_sj<%= myStamps[i].id %>').css('display', 'block');
+                    $('#yesGood_Button_sj<%= myStamps[i].id %>').css('display', 'inline-block');
                     good<%= myStamps[i].id %>.innerHTML = result['like'];
                   }
                 },
@@ -557,7 +557,7 @@
                 success: function(result) {
                   if (result['result']=='success'){
                     $('#yesGood_Button_sj<%= myStamps[i].id %>').css('display', 'none');
-                    $('#noGood_Button_sj<%= myStamps[i].id %>').css('display', 'block');
+                    $('#noGood_Button_sj<%= myStamps[i].id %>').css('display', 'inline-block');
                     good<%= myStamps[i].id %>.innerHTML = result['like'];
                   }
                 },
