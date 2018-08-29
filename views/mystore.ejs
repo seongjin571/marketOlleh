@@ -121,48 +121,46 @@
                             <% if(review[j].market_name == result1[0].market_name && review[j].sijang_name == result1[0].sijang_name) {%>
                                 <div class="review_div_sj">
                                     <div class="review_star_customer">
-                                            <% if(review[j].provider !== '사장님') { %>
-                                        <% for(var k=0; k<review[j].rate; k++) { %>
-                                            <div>
-                                                <img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">
-                                            </div>
-                                            <% } %>
-
-                                                <% for(var k=0; k<5-review[j].rate; k++) { %>
-                                                    <div>
-                                                        <img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">
-                                                    </div>
-                                                    <% } %>
-                                                    <% } else{%>
+                                            <% if(review[j].user_id != '사장님') { %>
+                                                    <% for(var k=0; k<review[j].rate; k++) { %>
                                                         <div>
-                                                                <img class="star_gray_customer" src="/images/logo_with_text_small.png" width="60px" height="15px">
-                                                            </div>
-                                                            <% }%>
+                                                            <img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">
+                                                        </div>
+                                                    <% } %>
+
+                                                    <% for(var k=0; k<5-review[j].rate; k++) { %>
+                                                        <div>
+                                                            <img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">
+                                                        </div>
+                                                    <% } %>
+                                                <% } else {%>
+                                                    <div>
+                                                        <img class="star_gray_customer" src="/images/logo_with_text_small.png" width="60px" height="15px">
+                                                    </div>
+                                                <% } %>
                                     </div>
 
                                     <div class="review_content_sj">
                                         <div class="review_content_id_sj" id='review_content_id_sj<%= review[j].id %>'>
                                             <% if(review[j].provider == 'kakao') { %>
                                                 <%= review[j].username %>
-                                                    <% } else { %>
-                                                        <script>
-                                                            var temp = '<%= review[j].user_id %>';
-                                                            var secret = '***';
-                                                            var l = temp.length;
-                                                            var f = l - 3;
-                                                            //console.log(f);
-                                                            //console.log(l);
-                                                            var temp2 = temp.substring(0, f);
-                                                            var result3 = temp2.concat(secret);
-                                                            if (result3 == '***') {
-                                                                $('#review_content_id_sj<%= review[j].id %>').html('사장님');
-                                                            } else {
-                                                                $('#review_content_id_sj<%= review[j].id %>').html(result3);
-                                                            }
-                                          //  console.log("아래");
-                                          //  console.log(result3);
-                                                        </script>
-                                                        <% } %>
+                                            <% } else { %>
+                                                <script>
+                                                    var temp = '<%= review[j].user_id %>';
+                                                    var secret = '***';
+                                                    var l = temp.length;
+                                                    var f = l - 3;
+                                                    //console.log(f);
+                                                    //console.log(l);
+                                                    var temp2 = temp.substring(0, f);
+                                                    var result3 = temp2.concat(secret);
+                                                    if (result3 == '***') {
+                                                        $('#review_content_id_sj<%= review[j].id %>').html('사장님');
+                                                    } else {
+                                                        $('#review_content_id_sj<%= review[j].id %>').html(result3);
+                                                    }
+                                                </script>
+                                            <% } %>
 
                                         </div>
                                         <div class="review_content_date_sj">
@@ -265,18 +263,18 @@
                 console.log('로그아웃실패');
             }
         })
-        var doubleSubmitFlag = false;
-        function doubleSubmitCheck() {
-            if (doubleSubmitFlag) {
-                return doubleSubmitFlag;
-            } else {
-                doubleSubmitFlag = true;
-                return false;
-            }
-        }
+        // var doubleSubmitFlag = false;
+        // function doubleSubmitCheck() {
+        //     if (doubleSubmitFlag) {
+        //         return doubleSubmitFlag;
+        //     } else {
+        //         doubleSubmitFlag = true;
+        //         return false;
+        //     }
+        // }
 
         $('#write_ok_button').click(function () {
-            if (doubleSubmitCheck()) return;
+            // if (doubleSubmitCheck()) return;
 
             var user_id = '사장님';
             var market_name = '<%= result1[0].market_name %>';
