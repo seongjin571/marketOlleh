@@ -294,7 +294,7 @@ input,select{
 }
 #coupon_make_button{
     font-size: 17px;
-    width: 45%;
+    width: 40%;
     height: 48px;
     background-image: url('/images/mainBack.png');
     background-repeat: no-repeat;
@@ -302,13 +302,14 @@ input,select{
     color: white;
     border-style: none;
     border-radius: 50px;
-    margin-left: 8%;
+    margin-left: 7%;
     padding: 0 !important;
 }
 #cancel{
     font-size: 17px;
     color:#9c9c9c;
-    width: 45%;
+    width: 40%;
+    margin-left: 7%;
     height: 48px;
     border-radius: 50px;
     background-image: linear-gradient(white, white),
