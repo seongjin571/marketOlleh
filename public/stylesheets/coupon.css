@@ -317,6 +317,6 @@ html {
     color: white;
 }
 
-.password_number_sj:hover{
+.password_number_sj:active{
     background-color: rgb(212, 209, 209);
 }

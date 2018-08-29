@@ -157,7 +157,7 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 			    location.reload();
 			  } else if(result['result']=='already'){
 			    alert('스탬프 이미 존재');
-			    location.reload();
+			    // location.reload();
 			  }
 			},
 			error: function (error) {
