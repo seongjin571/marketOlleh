@@ -263,9 +263,12 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
               height: 30px;
               margin-left: 5%;
           }
+          #introduce{
+            height: auto !important;
+          }
 
           #map{
-              margin-top: 25%;
+              margin-top: 20px;
           }
           #name{
               width: 23%;

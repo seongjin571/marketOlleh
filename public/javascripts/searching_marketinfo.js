@@ -96,10 +96,10 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 		success: function (result) {
 		  if (result['result'] == 'exist' && result['like_check_val'] == 1) {
 		  	$('#noGood_Button_sj').css('display', 'none');
-	        $('#yesGood_Button_sj').css('display', 'block');
+	        $('#yesGood_Button_sj').css('display', 'inline-block');
 		  } else if(result['result']=='not exist' || result['like_check_val'] == 0){
 		  	$('#yesGood_Button_sj').css('display', 'none');
-		  	$('#noGood_Button_sj').css('display', 'block');
+		  	$('#noGood_Button_sj').css('display', 'inline-block');
 		  }
 		},
 		error: function (error) {
@@ -224,7 +224,7 @@ function likeCount_function(market_arr) {
 	    success: function(result) {
 	      if (result['result'] == 'success'){
 	        $('#noGood_Button_sj').css('display', 'none');
-	        $('#yesGood_Button_sj').css('display', 'block');
+	        $('#yesGood_Button_sj').css('display', 'inline-block');
 	        $('#goodCount_sj').text(result['like_count']);
 	      }
 	    },
@@ -251,7 +251,7 @@ function likeCount_function(market_arr) {
         datatype: 'json',
         success: function(result) {
 	      if (result['result'] == 'success'){
-	        $('#noGood_Button_sj').css('display', 'block');
+	        $('#noGood_Button_sj').css('display', 'inline-block');
 	        $('#yesGood_Button_sj').css('display', 'none');
 	        $('#goodCount_sj').text(result['like_count']);
 	      }
