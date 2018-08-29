@@ -393,7 +393,7 @@
 
           // 상점 소개와 위치
           $('#intro_content').text(market_arr.market_introduce);
-          $('.store_image').css({ "background": "url(/files/"+ market_arr.manager_image +")", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
+          $('.store_image').css({ "background": "url(/files/"+ market_arr.manager_image +")", 'background-repeat': 'no-repeat', 'background-position': 'center center', 'background-size': '155%' });
 
           // 리뷰, 앞에 있던 정보들 초기화
           if ($('.review_div_sj > div')) {
@@ -477,25 +477,25 @@
             for( var i = 0; i<review_arr.length; i++){
               tempString[i] = '<div class="review_div_sj">';
 
-            if(review_arr[i].user_id != '사장님') {
               tempString[i] += '<div class="review_star_customer">';
-              for(var j=0; j< review_arr[i].rate; j++) {
-                tempString[i] += '<div>';
-                tempString[i] += '<img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">';
-                tempString[i] += '</div>';
-              }
+              if(review_arr[i].user_id != '사장님') {
+                for(var j=0; j< review_arr[i].rate; j++) {
+                  tempString[i] += '<div>';
+                  tempString[i] += '<img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">';
+                  tempString[i] += '</div>';
+                }
 
-              for(var j=0; j< 5-review_arr[i].rate; j++) {
-                tempString[i] += '<div>';
-                tempString[i] += '<img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">';
-                tempString[i] += '</div>';
+                for(var j=0; j< 5-review_arr[i].rate; j++) {
+                  tempString[i] += '<div>';
+                  tempString[i] += '<img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">';
+                  tempString[i] += '</div>';
+                }
               }
-            }
-            else{
-                tempString[i] += '<div>';
-                tempString[i] += '<img class="star_gray_customer"  src="/images/logo_with_text_small.png" width="60px" height="15px">';
-                tempString[i] += '</div>';
-            }
+              else{
+                  tempString[i] += '<div>';
+                  tempString[i] += '<img class="star_gray_customer"  src="/images/logo_with_text_small.png" width="60px" height="15px">';
+                  tempString[i] += '</div>';
+              }
 
               tempString[i] += '</div>';
               tempString[i] += '<div class="review_content_sj">';
