@@ -67,9 +67,11 @@ body, html {
     padding: 1px;
     border: 0px;
     color: gray;
+    outline:none;
 }
 
 #seller_login {
+    outline:none;
     box-shadow: 5px 5px 3px #e5e5e5;
     width: 70%;
     height: 100%;
@@ -258,6 +260,7 @@ body, html {
     width:33.3%;
     height: 100%;
     font-size: 10.5px;
+    outline:none;
 }
 #password_find1{
     background-color: white;
@@ -267,8 +270,10 @@ body, html {
     width:33.3%;
     height: 100%;
     font-size: 10.5px;
+    outline:none;
 }
 #password_find2{
+    outline:none;
     background-color: white;
     color:grey;
     padding:0px;
@@ -279,6 +284,7 @@ body, html {
 }
 
 #loginUser_sign_up{
+    outline:none;
     padding:0px;
     background-color: white;
     color:grey;
@@ -289,6 +295,7 @@ body, html {
 }
 #loginmanager_sign_up
 {
+    outline:none;
     background-color: white;
     color:grey;
     padding:0px;
@@ -319,6 +326,7 @@ body, html {
     top:300px;
 }
 .loginUser_insert{
+    outline:none;
     box-shadow: 5px 5px 3px #efefef;
     width: 90%;
     height: 100%;
@@ -363,6 +371,7 @@ body, html {
     background-clip: content-box, border-box;    
     padding: 1px;
     border: 0px;
+    outline:none;
 }
 #kakaobutton p{
     margin: 0;
