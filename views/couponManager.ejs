@@ -67,6 +67,49 @@
 
 
     <div id="make_coupon_div">
+
+
+            <div id="make_coupon_form">
+                    <div class="inputLine">
+                        <img class="check_select" src="/images/check.png" width="24px" height="24px">
+                        <p class="name">할인금액</p>
+                        <select class="coupon_reward" name="coupon_reward">
+                            <option value="0">선택</option>
+                            <option>1000원 할인</option>
+                            <option>1500원 할인</option>
+                            <option>2000원 할인</option>
+                            <option>3000원 할인</option>
+                        </select>
+                    </div>
+                    <div class="inputLine">
+                        <img class="check_input" src="/images/check.png" width="24px" height="24px">
+                        <p class="name">사용기준</p>
+                        <input class="input_content" type="text" id="coupon_standard" placeholder="ex)5000원 이상 구매시">
+                    </div>
+                    <div class="inputLine">
+                        <img class="check_select" src="/images/check.png" width="24px" height="24px">
+                        <p class="name">선착순</p>
+                        <select id="people_number" name="coupon_reward" class="coupon_count">
+                            <option value="0">선택</option>
+                            <option>30명</option>
+                            <option>50명</option>
+                            <option>100명</option>
+                            <option>200명</option>
+                            <option>300명</option>
+                        </select>
+                    </div>
+                    <div class="inputLine">
+                        <img class="check_input" src="/images/check.png" width="24px" height="24px">
+                        <p class="name">쿠폰비밀번호</p>
+                        <input class="input_content" id="coupon_password" type="password" maxlength="4" id="stamp_password" placeholder="ex)1234">
+                    </div>
+
+                </div>
+
+
+
+
+
         <div id="myStamp">
             <div id="store_market_name">
                 <p id="nameing" style="width: 60%">
@@ -93,43 +136,9 @@
         </div>
 
 
-    <div id="make_coupon_form">
-        <div class="inputLine">
-            <img class="check_select" src="/images/check.png" width="24px" height="24px">
-            <p class="name">할인금액</p>
-            <select class="coupon_reward" name="coupon_reward">
-                <option value="0">선택</option>
-                <option>1000원 할인</option>
-                <option>1500원 할인</option>
-                <option>2000원 할인</option>
-                <option>3000원 할인</option>
-            </select>
-        </div>
-        <div class="inputLine">
-            <img class="check_input" src="/images/check.png" width="24px" height="24px">
-            <p class="name">사용기준</p>
-            <input class="input_content" type="text" id="coupon_standard" placeholder="ex)5000원 이상 구매시">
-        </div>
-        <div class="inputLine">
-            <img class="check_select" src="/images/check.png" width="24px" height="24px">
-            <p class="name">선착순</p>
-            <select id="people_number" name="coupon_reward" class="coupon_count">
-                <option value="0">선택</option>
-                <option>30명</option>
-                <option>50명</option>
-                <option>100명</option>
-                <option>200명</option>
-                <option>300명</option>
-            </select>
-        </div>
-        <div class="inputLine">
-            <img class="check_input" src="/images/check.png" width="24px" height="24px">
-            <p class="name">쿠폰비밀번호</p>
-            <input class="input_content" id="coupon_password" type="password" maxlength="4" id="stamp_password" placeholder="ex)1234">
-        </div>
-        <button id="cancel">취소</button>
-        <button id="coupon_make_button">생성</button>
-    </div>
+
+    <button id="cancel">취소</button>
+    <button id="coupon_make_button">생성</button>
     </div>
 
     <div id="nav_sj">
@@ -157,6 +166,7 @@
 </body>
 <!-- <script src="/javascripts/swiper.min.js"></script> -->
 <script>
+    var password_number=/^[0-9]{4}$/;
     $('#go_my_coupon').click(function () {
         $('#coupon_view').hide(200);
         $('.my_coupon').show(200);
@@ -214,15 +224,19 @@
 
     });
     $('input:eq(1)').change(function () {
-        var password_L = $(this).val().length;
-        if (password_L == 4) {
+        var password_L = $(this).val();
+        var true_or_false = password_number.test(password_L);
+        if(true_or_false){
             $('.check_input:eq(1)').css('visibility', 'visible');
-            var value2 = $(this).val()
-            $('#password').html('****');
+            $('#password').html('****')
         }
-        else {
-            alert('비밀번호를 4자리 입력하세요')
+        else{
+            alert('4자리 숫자로 입력해주세요.')
+            $(this).val('')
+            $('#password').html('')
+            $('.check_input:eq(1)').css('visibility', 'hidden')
         }
+
     });
     $('#make_coupon').click(function () {
         $('#all_coupon_div').css('display', 'none');
@@ -297,12 +311,12 @@
                     alert('이미쿠폰이 있습니다');
 
                 }else {
-                  alert('쿠폰등록실패1');
+                  alert('couponManager.ejs에서 확인해봐야함');
                   location.reload();
                 }
             },
             error: function (error) {
-                alert('쿠폰등록실패2');
+                alert('couponManager.ejs에서 확인해봐야함');
             }
         });
     })

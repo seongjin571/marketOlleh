@@ -875,7 +875,7 @@ router.post('/review_manager',function(req,res,next){
   var sijang_name = req.body.sijang_name;
   var date = req.body.date;
   var review = req.body.review;
-  var provier = 'marketOlleh';
+  var provider = 'marketOlleh';
   var username = '사장님';
   var sql = 'insert into `review`(`user_id`,`market_name`,`sijang_name`,`review`,`date`, `username`, `provider`) values (?,?,?,?,?,?,?);';
   // var sql = 'select * from stamp where user_id =? and market_name = ?';

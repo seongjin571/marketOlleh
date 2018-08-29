@@ -405,6 +405,11 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt, MarketName) {
 					tempString[i] += '</div>';
 				}
 			}
+			else{
+				tempString[i] += '<div>';
+				tempString[i] += '<img class="star_gray_customer" src="/images/logo_with_text_small.png" width="60px" height="15px">';
+				tempString[i] += '</div>';
+			}
 
 			tempString[i] += '</div>';
 			tempString[i] += '<div class="review_content_sj">';

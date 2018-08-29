@@ -448,7 +448,6 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
     <script>
-          $('.store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
         $('#myStamp_sj').click(function () {
             location.href = "/myStamp";
         })
@@ -496,7 +495,9 @@
                 marginTop: '3.5%'
             }, 100);
         });
-        var swiper = new Swiper('.s2', {
+        
+        var swiper2 = new Swiper('.s2', {
+            initialSlide: 0,
             autoHeight: true,
             observer: true,
             observeParents: true,
@@ -598,7 +599,7 @@
                     }
                 },
                 error: function (e) {
-                    alert("Error!");
+                    alert("main.ejs");
                     console.log('process error : ', e);
                 }
             }); // ajax

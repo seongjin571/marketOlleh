@@ -322,19 +322,25 @@
 
                 <div class="review_div_sj" id='review_div_sj<%= myStamps[i].id %>'>
                     <div class="review_star_customer">
+                        <% if(review[j].user_id != '사장님') {%>
+                          
                         <% for(var k=0; k<review[j].rate; k++) { %>
                         <div>
                             <img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">
                         </div>
                         <% } %>
 
-                        <% if(review[j].user_id != '사장님') {%>
                         <% for(var k2=0; k2<5-review[j].rate; k2++) { %>
                           <div>
                               <img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">
                           </div>
                         <% } %>
-                        <% } %>
+                        <% } else {%>
+                          
+                          <div>
+                              <img class="star_gray_customer" src="/images/logo_with_text_small.png" width="60px" height="15px">
+                          </div>
+                          <% }%>
                     </div>
                   <div class="review_content_sj">
                     <div class="review_content_id_sj" id='review_content_id_sj<%= review[j].id %>'>
@@ -425,18 +431,8 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
 
             <script>
-                var swiper = new Swiper('.swiper-container', {
-                    autoHeight: true,
-                    observer: true,
-                    observeParents: true,
-                    scrollbar: {
-                        el: '.swiper-scrollbar',
-                        hide: true,
-                    },
-                });
-
-            </script>
-            <script>
+                
+ 
             var number1 = "";
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
               // 스크롤 조절
@@ -447,6 +443,7 @@
             });
 
             $('#back_div<%= myStamps[i].id %>').click(function () {
+
               $('#selected_stamp<%= myStamps[i].id %>').css('display', 'none');
               $('#back_div<%= myStamps[i].id %>').css('display', 'none');
               $('#myStamp').css('display', 'block');
@@ -669,11 +666,11 @@
                   }
                   else{
                     console.log(result);
-                    alert('등록실패1');
+                    alert('mystamp');
                   }
                 },
                 error: function(error){
-                  alert('등록실패2');
+                  alert('mystamp');
                   location.reload();
                 }
               });
@@ -850,7 +847,7 @@
                   }
                 },
                 error: function(error){
-                  alert('삭제 실패');
+                  alert('mystamp');
                 }
               });
             });
@@ -880,7 +877,6 @@
             </div>
             <script>
 
-                // $('.store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
                       $('#home_sj').click(function () {
                         location.href = "/main";
                       })
@@ -896,8 +892,31 @@
                                 console.log('로그아웃실패');
                               }
                           })
+                          var swiper = new Swiper('.swiper-container', {
+                              initialSlide: 0,
+                              autoHeight: true,
+                              observer: true,
+                              observeParents: true,
+                              scrollbar: {
+                                el: '.swiper-scrollbar',
+                                hide: true,
+                              },
+                            });
 
-
+                          $('.back_div').click(function () {
+                             swiper.destroy();
+                            //  var  swiper = new Swiper('.swiper-container', {
+                            //     initialSlide: 0,
+                            //     autoHeight: true,
+                            //     observer: true,
+                            //     observeParents: true,
+                            //     scrollbar: {
+                            //       el: '.swiper-scrollbar',
+                            //       hide: true,
+                            //     },
+                            //   });
+                            });
+                            
 
                       </script>
 
