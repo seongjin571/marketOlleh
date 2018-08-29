@@ -238,7 +238,7 @@
 
               <div class="swiper-slide" id="swiper2<%= myStamps[i].id %>">
                   <div id="store_detail_sj">
-                      <div class="store_image" style="background: url('/files/<%= myStamps[i].manager_image %>'); background-repeat: no-repeat; background-position: center center;"></div>
+                      <div class="store_image" style="background: url('/files/<%= myStamps[i].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
                       <div id="introduce">
                           <img src="/images/storeM.png" width="30px" height="30px">
                           <div class="name">상점소개</div>
@@ -323,7 +323,7 @@
                 <div class="review_div_sj" id='review_div_sj<%= myStamps[i].id %>'>
                     <div class="review_star_customer">
                         <% if(review[j].user_id != '사장님') {%>
-                          
+
                         <% for(var k=0; k<review[j].rate; k++) { %>
                         <div>
                             <img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">
@@ -336,7 +336,7 @@
                           </div>
                         <% } %>
                         <% } else {%>
-                          
+
                           <div>
                               <img class="star_gray_customer" src="/images/logo_with_text_small.png" width="60px" height="15px">
                           </div>
@@ -431,8 +431,8 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
 
             <script>
-                
- 
+
+
             var number1 = "";
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
               // 스크롤 조절
@@ -916,7 +916,7 @@
                             //     },
                             //   });
                             });
-                            
+
 
                       </script>
 
