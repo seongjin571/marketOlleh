@@ -252,6 +252,7 @@
                         $('#swiper-slide-content<%= result1[i].id %>').css('display','block');
                         $('.swiper-pagination').css('display','block');
                         $('#swiper-slide-menu<%= result1[i].id %>').css('display','block');
+                        $('.check<%= result1[i].id %>').html('')
                       });
                     </script>
 
@@ -509,6 +510,7 @@
                       }
                       else if(result['result']=='fail'){
                           alert('이미쿠폰이 있습니다');
+                          location.reload()
 
                       }else {
                         alert('쿠폰등록실패1');
