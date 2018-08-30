@@ -65,6 +65,7 @@ function turningBack() {
 		document.getElementById('Searching').style.display = "table";
 		document.getElementById('market_infor').style.display = "none";
 		document.getElementById('store_infor').style.display = "none";
+		$('.button_sj').off();
 		$('#noGood_Button_sj').off();
 		$('#yesGood_Button_sj').off();
 	} // if ~ else
