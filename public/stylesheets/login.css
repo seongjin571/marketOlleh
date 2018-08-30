@@ -93,6 +93,9 @@ body, html {
     overflow: hidden;
     position: fixed;
 }
+#loginuser{
+    display: block;
+}
 
 #top_logo
 {
