@@ -252,6 +252,7 @@
                         $('#swiper-slide-content<%= result1[i].id %>').css('display','block');
                         $('.swiper-pagination').css('display','block');
                         $('#swiper-slide-menu<%= result1[i].id %>').css('display','block');
+                        $('.check<%= result1[i].id %>').html('')
                       });
                     </script>
 
@@ -333,10 +334,10 @@
     var index=-1;
     var count=0;
     $('.market').click(function () {
-        next_index = $(this).index();
+        next_index = $(".market").index( this )+1;
         if(next_index ==index){
             if(count==1){
-            $('.find_coupon_list1').remove();
+            $('.find_coupon_list1').css('display','none');
             index=next_index;
             count=0;
             }
@@ -370,6 +371,7 @@
                       html += '<div class="standard1">'+coupon_name[i].coupon_standard+'</div>';
                       html += '<div class="sale_price1">'+coupon_name[i].coupon_reward+'원 할인</div>';
                       html += '<div class="coupon_bottom">';
+                      html += '<div class="cp" style="display:none;">'+coupon_name[i].coupon_password +'</div>';
                       html += '<div class="period1">선착순 : '+coupon_name[i].coupon_count+'</div>';
                       html += '<div class="logo_image"><img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;"></div>';
                       html += '</div>';
@@ -377,7 +379,7 @@
 
 
                   find_coupon_list_div.innerHTML = html;
-                  document.getElementsByClassName('market')[next_index-1].appendChild(find_coupon_list_div)
+                  document.getElementsByClassName('market')[next_index-1].after(find_coupon_list_div)
                   index=next_index;
                   count=1;
                 }
@@ -442,7 +444,11 @@
         })
     }
     })
+    // $(document).off('click', '.find_coupon_list1').on('click', '.find_coupon_list1', function() {
     $(document).on("click",'.find_coupon_list1',function(event){
+      // $(".my-list > li").on("click", function() {
+    // $(this).toggleClass("alternate-background");
+// });
         var list = $('.find_coupon_list1').index(this);
         var market=document.getElementsByClassName('store_name1')[list];
         var market_name =market.innerHTML;
@@ -457,8 +463,9 @@
         console.log(coupon_password);
         var user_id = '<%= user_id %>'
         console.log(user_id);
-        //alert(market_name +'+'+sijang_name+'+'+coupon_password);
+        // alert(market_name +'+'+sijang_name+'+'+coupon_password);
         down();
+
         function down() {
             if (confirm(list+1 + '번째 쿠폰을 다운로드 하시겠습니까?')) {
               var data = {
@@ -509,6 +516,7 @@
                       }
                       else if(result['result']=='fail'){
                           alert('이미쿠폰이 있습니다');
+                          // $('.find_coupon_list1').remove();
 
                       }else {
                         alert('쿠폰등록실패1');
@@ -520,11 +528,12 @@
                   }
               });
 
-            } else {
-              alert("여기잘못됨");
+            }
+            else {
+              // $('.find_coupon_list1').remove();
             }
         }
-    })
+      })
 
 
 

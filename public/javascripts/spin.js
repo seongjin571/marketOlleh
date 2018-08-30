@@ -8,6 +8,7 @@ jQuery(function(){
 window.onbeforeunload = function(e){
     if(e != null && e != undefined){
         jQuery(spinner).css('display','');
+        jQuery(spinner).css('position','fixed');
     }
 };
 

@@ -67,9 +67,11 @@ body, html {
     padding: 1px;
     border: 0px;
     color: gray;
+    outline:none;
 }
 
 #seller_login {
+    outline:none;
     box-shadow: 5px 5px 3px #e5e5e5;
     width: 70%;
     height: 100%;
@@ -92,6 +94,9 @@ body, html {
     display: none;
     overflow: hidden;
     position: fixed;
+}
+#loginuser{
+    display: block;
 }
 
 #top_logo
@@ -258,6 +263,7 @@ body, html {
     width:33.3%;
     height: 100%;
     font-size: 10.5px;
+    outline:none;
 }
 #password_find1{
     background-color: white;
@@ -267,8 +273,10 @@ body, html {
     width:33.3%;
     height: 100%;
     font-size: 10.5px;
+    outline:none;
 }
 #password_find2{
+    outline:none;
     background-color: white;
     color:grey;
     padding:0px;
@@ -279,6 +287,7 @@ body, html {
 }
 
 #loginUser_sign_up{
+    outline:none;
     padding:0px;
     background-color: white;
     color:grey;
@@ -289,6 +298,7 @@ body, html {
 }
 #loginmanager_sign_up
 {
+    outline:none;
     background-color: white;
     color:grey;
     padding:0px;
@@ -319,6 +329,7 @@ body, html {
     top:300px;
 }
 .loginUser_insert{
+    outline:none;
     box-shadow: 5px 5px 3px #efefef;
     width: 90%;
     height: 100%;
@@ -336,7 +347,7 @@ body, html {
     height: 25%;
     text-align: center;
     position:fixed;
-    top: 520px;
+    top: 500px;
     
 }
 #kakao_logo2{
@@ -363,6 +374,7 @@ body, html {
     background-clip: content-box, border-box;    
     padding: 1px;
     border: 0px;
+    outline:none;
 }
 #kakaobutton p{
     margin: 0;
@@ -672,7 +684,7 @@ select{
 
 .modal-content{
     border-radius: 10px;
-    height: 70%;
+    height: 500px;
     width: 90%;
     margin-top: 18%;
     margin-left:5%;
@@ -762,11 +774,13 @@ select{
 /* modal_result 안에 동적으로 생기는 ol태그 id*/
 #search_result {
     display: flex;
+    height: 300px;
     width: 100%;
     list-style: none;
     padding-left: 0px;
     margin-left: 10px;
     margin-right: 10px;
+    margin-top: 0px;
 }
 
 /* ol tag ~ div/li CSS value (나중에 적용되야 할 CSS값 테스팅) */
@@ -790,7 +804,7 @@ select{
     padding:0;
     margin-top: 5px;
     border:0;
-    top:480px;
+    top:500px;
     border-radius: 50px;
     color:white;
     background: -webkit-linear-gradient(left, #17ead9, #6078ea);

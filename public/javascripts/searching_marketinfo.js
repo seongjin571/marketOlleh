@@ -7,8 +7,11 @@ function NewGoomapLi_css() {
 
 function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 
-	$('#hot_store_list_market > div').remove();
-
+	// 좋아요순 상점 흔적 없애기
+	if ($('#hot_store_list_market > div')) {
+		$('#hot_store_list_market > div').remove();	
+	}
+	
 	// 태그 동적으로 생성하기
 	var tempString = new Array();
 	var fullString = '';
@@ -39,6 +42,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 
 	// MAP API
 	relayout();
+	setMarkers(null); // 마커 배열 감추기 
 	changeCenter(market_arr.coordinateX, market_arr.coordinateY);
 
 	// 인기 상점 찾기
@@ -96,10 +100,10 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 		success: function (result) {
 		  if (result['result'] == 'exist' && result['like_check_val'] == 1) {
 		  	$('#noGood_Button_sj').css('display', 'none');
-	        $('#yesGood_Button_sj').css('display', 'block');
+	        $('#yesGood_Button_sj').css('display', 'inline-block');
 		  } else if(result['result']=='not exist' || result['like_check_val'] == 0){
 		  	$('#yesGood_Button_sj').css('display', 'none');
-		  	$('#noGood_Button_sj').css('display', 'block');
+		  	$('#noGood_Button_sj').css('display', 'inline-block');
 		  }
 		},
 		error: function (error) {
@@ -157,7 +161,7 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 			    location.reload();
 			  } else if(result['result']=='already'){
 			    alert('스탬프 이미 존재');
-			    location.reload();
+			    // location.reload();
 			  }
 			},
 			error: function (error) {
@@ -224,7 +228,7 @@ function likeCount_function(market_arr) {
 	    success: function(result) {
 	      if (result['result'] == 'success'){
 	        $('#noGood_Button_sj').css('display', 'none');
-	        $('#yesGood_Button_sj').css('display', 'block');
+	        $('#yesGood_Button_sj').css('display', 'inline-block');
 	        $('#goodCount_sj').text(result['like_count']);
 	      }
 	    },
@@ -251,7 +255,7 @@ function likeCount_function(market_arr) {
         datatype: 'json',
         success: function(result) {
 	      if (result['result'] == 'success'){
-	        $('#noGood_Button_sj').css('display', 'block');
+	        $('#noGood_Button_sj').css('display', 'inline-block');
 	        $('#yesGood_Button_sj').css('display', 'none');
 	        $('#goodCount_sj').text(result['like_count']);
 	      }

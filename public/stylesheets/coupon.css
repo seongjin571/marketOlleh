@@ -12,24 +12,27 @@ html {
 
 #menu {
     width: 100%;
+    position: fixed;
     display: inline-flex;
     height: 9%;
     background-image: url('/images/mainBack.png');
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 10;
 }
 
 #menu div {
     width: 50%;
     height: 100%;
     text-align: center;
-    line-height: 50px;
+    line-height: 57px;
     color: white;
 }
 #coupon_view{
     width: 95%;
     margin-left: 2.5%;
     margin-bottom: 80px;
+    margin-top: 20%;
     display: none;
 }
 .find_coupon_list{
@@ -38,7 +41,9 @@ html {
     display: none;
 }
 .my_coupon{
+    margin-top: 17%;
     width: 100%;
+    margin-bottom: 18%;
 }
 
 .market p{
@@ -264,7 +269,7 @@ html {
     color: #b9b9b9;
     font-size: 20px;
     text-align: center;
-     line-height: 70px;
+     /* line-height: 90px; */
      position: absolute;
      /* margin-top: 20%; */
      display: none;
@@ -272,9 +277,7 @@ html {
 }
 .password_check{
     width: 100%;
-    height: 10%;
-    padding-top: 6%;
-    padding-bottom: 15%;
+    height: 28%;
     /* background-color: red; */
     display: inline-flex;
     background-color: white !important;
@@ -288,6 +291,8 @@ html {
 }
 .password_check div{
     width: 9%;
+    height: 65%;
+    line-height: 130px;
     margin-right: 4%;
     border-bottom-style: solid;
     border-bottom-color: #d3d3d3;
@@ -297,7 +302,7 @@ html {
 .password_line_sj{
     display: inline-flex;
     width: 100%;
-    height: 18.75%;
+    height: 18%;
 }
 .password_line_sj div{
     width: 33.33%;
@@ -305,13 +310,13 @@ html {
     border-style: solid;
     border-width: 1px;
     border-color: white;
-    line-height: 75px;
+    line-height: 95px;
 }
 .password_cancel{
     background-color: rgb(241, 37, 37);
     color: white;
 }
 
-.password_number_sj:hover{
+.password_number_sj:active{
     background-color: rgb(212, 209, 209);
 }
