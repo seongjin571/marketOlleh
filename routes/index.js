@@ -7,7 +7,15 @@ var conn = mysql.createConnection(dbconfig);
 
 
 router.get('/start', function(req, res){
-  res.render('start');
+  if(req.session.authId) {
+    res.redirect('/mainManager');
+  }
+  else if(req.user) {
+    res.redirect('main');
+  }
+  else {
+    res.render('start');
+  }
 });
 
 router.get('/findid', function(req, res){
@@ -445,38 +453,47 @@ router.post('/searching/marketList', function(req, res){
 router.get('/main', function(req, res){
   var stampSql = 'select * from `stamp` where `user_id`=?;';
   var marketSql = 'SELECT * FROM `manager` ORDER BY like_count DESC ;';
-  conn.query(stampSql, [req.user.id], function(error, results) {
-    if(error) { console.log(error); }
-    else {
-      conn.query(marketSql, function(marketErr, marketRows) {
-        if(marketErr) {
-          // console.log(req.user);
-          console.log(marketErr);
-          console.log('marketSql err');
-        }
-        else {
-          //
-          console.log(marketRows);
-          if(! results.length) {
-            console.log(results);
-            res.render('main', {
-              user: req.user,
-              myStamps: undefined,
-              market: marketRows
-            });
+
+  if(! req.user) {
+    res.redirect('/start');
+  }
+  else {
+    console.log('user session',req.user);
+
+    conn.query(stampSql, [req.user.id], function(error, results) {
+      if(error) { console.log(error); }
+      else {
+        conn.query(marketSql, function(marketErr, marketRows) {
+          if(marketErr) {
+            // console.log(req.user);
+            console.log(marketErr);
+            console.log('marketSql err');
           }
           else {
-            res.render('main', {
-              user: req.user,
-              myStamps: results,
-              market: marketRows
-            });
+            //
+            console.log(marketRows);
+            if(! results.length) {
+              console.log(results);
+              res.render('main', {
+                user: req.user,
+                myStamps: undefined,
+                market: marketRows
+              });
+            }
+            else {
+              res.render('main', {
+                user: req.user,
+                myStamps: results,
+                market: marketRows
+              });
+            }
+            //
           }
-          //
-        }
-      });
-    }
-  });
+        });
+      }
+    });
+
+  }
 });
 
 router.get('/mainManager', function(req, res, next) {
@@ -484,6 +501,11 @@ router.get('/mainManager', function(req, res, next) {
   var count_review = 'select count(*) as cnt from review where `market_name`=? and `sijang_name`=?;';
   var count_stamp = 'select count(*) as cnt2 from stamp where `market_name`=? and `sijang_name`=?;';
   var marketSql = 'SELECT * FROM `manager` ORDER BY like_count DESC ;';
+
+  if(! req.session.authId) {
+    res.redirect('/start');
+  }
+  else {
 
     conn.query(sql,[req.session.authId],function(error,results,fields){
       if(error){
@@ -514,12 +536,15 @@ router.get('/mainManager', function(req, res, next) {
                     });
                   }
                 });
-                  }
-              })
               }
-            });
+            })
           }
-        })
+        });
+      }
+    })
+
+  }
+
 
 });
 
