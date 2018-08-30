@@ -513,11 +513,12 @@
 
     <!-------------------- KAKAO MAP API ---------------------->
     <script type="text/javascript">
+         // 스크롤 조절
+        window.scrollTo(0, 0);
+
         // 전역 변수
         var user_id = '<%= user.id %>';
-
-        // 스크롤 조절
-        window.scrollTo(0, 0);
+        var markers = []; // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
 
         // 지도를 표시할 div (id)
         var mapContainer = document.getElementById('map'),
@@ -527,9 +528,6 @@
             };
 
         var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-        // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
-        var markers = [];
 
         // 마커 하나를 지도위에 표시합니다
         addMarker(new daum.maps.LatLng(33.450701, 126.570667));
@@ -549,12 +547,12 @@
             markers.push(marker);
         }
 
-        // 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
+        // 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수
         function setMarkers(map) {
             for (var i = 0; i < markers.length; i++) {
                 markers[i].setMap(map);
-            }
-        }
+            }            
+        }        
 
         function relayout() {
             // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다

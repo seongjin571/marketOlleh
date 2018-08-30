@@ -7,8 +7,11 @@ function NewGoomapLi_css() {
 
 function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 
-	$('#hot_store_list_market > div').remove();
-
+	// 좋아요순 상점 흔적 없애기
+	if ($('#hot_store_list_market > div')) {
+		$('#hot_store_list_market > div').remove();	
+	}
+	
 	// 태그 동적으로 생성하기
 	var tempString = new Array();
 	var fullString = '';
@@ -39,6 +42,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 
 	// MAP API
 	relayout();
+	setMarkers(null); // 마커 배열 감추기 
 	changeCenter(market_arr.coordinateX, market_arr.coordinateY);
 
 	// 인기 상점 찾기

@@ -46,7 +46,6 @@ function turningBack() {
 			document.getElementById('market_infor').style.display = "none";
 			document.getElementById('store_infor').style.display = "none";
 			$('#search_result').css('display', 'block');
-			document.getElementById('store_infor').style.display = "none";
 			setStyle_search_result();
 		} else { // 검색만 하고 뒤로가기
 			deleteNewSearchList();
@@ -126,6 +125,8 @@ function makeGooTable(tableValue, gooCounter) {
 	// jquery, table값제어 / 동적 생성된 td에 클릭함수추가
 	$('#NewGoomap > div').html(fullString);
 	$('#NewGoomap > div > li').click(function (event) {
+        // 스크롤 조절
+        window.scrollTo(0, 0);		
 		// Daum(kakao map api test line)
 		$('#navControlButton').css('display', 'none');
 		$('#Goomap_container').css('display', 'none');
@@ -158,9 +159,6 @@ function makeSearchList(searchResult, listCounter) {
 
 	// 검색 결과 생성전, li 존재하면 정리
 	deleteNewSearchList();
-	if (search_result.style.display == "none") {
-		search_result.style.display = "block";
-	}
 
 	// 변수 선언
 	var tempString = new Array();
@@ -222,8 +220,6 @@ function makeSearchList(searchResult, listCounter) {
 				managerInfoLi_event(searchResult.rows[i]);
 			} // if ~ else
 		} // for
-		searchResult = ''; // 후처리, 겹치는 에러 방지
-
 	}); // click function
 } // makerSearchList --> article태그 부분
 
