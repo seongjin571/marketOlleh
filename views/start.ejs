@@ -4,15 +4,15 @@
 <head>
     <title>login</title>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
     <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <link rel="stylesheet" href="/stylesheets/swiper.min.css">
     <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-    <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta http-equiv="X-UA-Compatible" content="IE=9">
     <meta http-equiv="X-UA-Compatible" content="IE=8">
@@ -28,13 +28,13 @@
     <script>
         window.onload = function () {
             if (localStorage.getItem('introFlag') == 1) {
-                // document.getElementById('intro_image_div').style.display = 'none';
+                document.getElementById('intro_image_div').style.display = 'none';
                 document.getElementById('all_body').style.display = 'none';
                 document.getElementById('loginuser').style.display = 'block';
                 localStorage.clear();
             }
             else if (localStorage.getItem('introFlag') == 2) {
-                // document.getElementById('intro_image_div').style.display = 'none';
+                document.getElementById('intro_image_div').style.display = 'none';
                 document.getElementById('all_body').style.display = 'none';
                 document.getElementById('loginManager').style.display = 'block';
                 localStorage.clear();
@@ -43,7 +43,7 @@
                 document.getElementById('all_body').style.display = 'block';
                 document.getElementById('intro_image_div').style.display = 'block';
                 setTimeout(function () {
-                    $('#intro_image_div').fadeOut('500');
+                    $('#intro_image_div').fadeOut('1000');
                 }, 2000);
             }
             $('#back_loginuser').click(function() {
@@ -58,10 +58,11 @@
     <!--start div 시작-->
 
     <div id="start">
-        <div id="all_body" style='display:none;'>
-            <div id="intro_image_div" style='display: none;'>
-                <img id="intro_image" src="/images/intro.jpg">
-            </div>
+            <div id="intro_image_div">
+                    <img id="intro_image" src="/images/logo_with_text.png">
+                </div>
+        <div id="all_body" >
+           
             <div id="top_part">
                 <div id="top_vertical_helper">
                     <img id="startlogo" src="/images/logo_with_text.png">
@@ -719,9 +720,9 @@
             hide: true,
         },
     });
-    // setTimeout(function () {
-    //     $('#intro_image_div').fadeOut('500');
-    // }, 2000);
+    setTimeout(function () {
+        $('#intro_image_div').fadeOut('1000');
+    }, 2000);
     var name2 = /^[가-힣]+$/;
     var id = /^[a-z0-9_]{6,15}$/;
     var password = /^[a-zA-Z0-9]{6,15}$/;
