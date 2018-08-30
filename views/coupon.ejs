@@ -371,6 +371,7 @@
                       html += '<div class="standard1">'+coupon_name[i].coupon_standard+'</div>';
                       html += '<div class="sale_price1">'+coupon_name[i].coupon_reward+'원 할인</div>';
                       html += '<div class="coupon_bottom">';
+                      html += '<div class="cp" style="display:none;">'+coupon_name[i].coupon_password +'</div>';
                       html += '<div class="period1">선착순 : '+coupon_name[i].coupon_count+'</div>';
                       html += '<div class="logo_image"><img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;"></div>';
                       html += '</div>';
@@ -464,7 +465,7 @@
         console.log(user_id);
         // alert(market_name +'+'+sijang_name+'+'+coupon_password);
         down();
-      
+
         function down() {
             if (confirm(list+1 + '번째 쿠폰을 다운로드 하시겠습니까?')) {
               var data = {
@@ -527,7 +528,7 @@
                   }
               });
 
-            } 
+            }
             else {
               // $('.find_coupon_list1').remove();
             }
