@@ -351,7 +351,7 @@ body, html {
     height: 25%;
     text-align: center;
     position:fixed;
-    top: 520px;
+    top: 500px;
     
 }
 #kakao_logo2{
@@ -688,7 +688,7 @@ select{
 
 .modal-content{
     border-radius: 10px;
-    height: 70%;
+    height: 500px;
     width: 90%;
     margin-top: 18%;
     margin-left:5%;
@@ -778,11 +778,13 @@ select{
 /* modal_result 안에 동적으로 생기는 ol태그 id*/
 #search_result {
     display: flex;
+    height: 300px;
     width: 100%;
     list-style: none;
     padding-left: 0px;
     margin-left: 10px;
     margin-right: 10px;
+    margin-top: 0px;
 }
 
 /* ol tag ~ div/li CSS value (나중에 적용되야 할 CSS값 테스팅) */
@@ -806,7 +808,7 @@ select{
     padding:0;
     margin-top: 5px;
     border:0;
-    top:480px;
+    top:500px;
     border-radius: 50px;
     color:white;
     background: -webkit-linear-gradient(left, #17ead9, #6078ea);
