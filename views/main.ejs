@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/store_infor.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
     <link rel="stylesheet" href="/stylesheets/swiper.min.css">
+    <script src='/cordova/cordova.js'></script>
+    <script srd='/cordova/cordova_plugins.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
     <script src="/javascripts/spin.js"></script>
@@ -495,7 +497,7 @@
                 marginTop: '3.5%'
             }, 100);
         });
-        
+
         var swiper2 = new Swiper('.s2', {
             initialSlide: 0,
             autoHeight: true,
@@ -551,8 +553,8 @@
         function setMarkers(map) {
             for (var i = 0; i < markers.length; i++) {
                 markers[i].setMap(map);
-            }            
-        }        
+            }
+        }
 
         function relayout() {
             // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
