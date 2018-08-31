@@ -17,12 +17,16 @@ body, html {
 #intro_image_div{
     width: 100%;
     height: 100%;
-    position:fixed;
+    background-color: white;
+
+    /* position:fixed; */
 }
 
 #intro_image{
-    width:100%;
+    width:50%;
     height:auto;
+    margin-left: 25%;
+    padding-top: 55%;
 }
 #top_part {
     display: table;
@@ -95,9 +99,9 @@ body, html {
     overflow: hidden;
     position: fixed;
 }
-#loginuser{
+/* #loginuser{
     display: block;
-}
+} */
 
 #top_logo
 {
