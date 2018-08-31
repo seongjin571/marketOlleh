@@ -107,8 +107,7 @@ function setStyle_search_result() {
 
   // li 태그들 클릭 (focus / blur 함수) ~ CSS 제어
   $('#search_result > div > li').click(function(){
-    $('#search_result > div > li').css('background-color', 'white');
-    $(this).css('background-color', 'white');
+    $('#search_result > div > li').css('color', 'black');
     $(this).css('color', '#17ead9');
     $(this).css('transition', '1s');
     $('.manager_check_div').eq(8).css('visibility', 'visible')
