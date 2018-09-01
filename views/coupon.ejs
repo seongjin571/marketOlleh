@@ -31,9 +31,9 @@
 
 
     <div id="coupon_view">
-        <h2 id="good_market_list">
+        <div class="content_title">
             내가 가는 시장들
-        </h2>
+        </div>
 
 
 
@@ -49,7 +49,8 @@
           <div class="market" id="market_name_id"name="sijang_name">
               <div class="market_image"></div>
               <p id="click_coupon" class="click_coupon"value="<%= result2[j].sijang_name %>"><%= result2[j].sijang_name %></p>
-              <img src="/images/backButton1.png" width="20px" height="20px">
+              <img class="gray_button"src="/images/down-arrow.png" width="20px" height="20px">
+              <img class="blue_button"src="/images/down-arrow-blue.png" width="20px" height="20px" style="display: none">
               <% if(cou_result) {%>
 
               <% } %>
@@ -65,19 +66,29 @@
         <% } %>
 
 
-        <h2 id="near_market_list">
+        <div class="content_title">
             주변 시장들
-        </h2>
+        </div>
 
-        <div class="market">
-            <p>통인 시장</p>
+        <div class="market" id="market_name_id" name="sijang_name">
+          <div class="market_image"></div>
+          <p id="click_coupon" class="click_coupon">통인시장</p>
+          <img class="gray_button"src="/images/down-arrow.png" width="20px" height="20px">
+              <img class="blue_button"src="/images/down-arrow-blue.png" width="20px" height="20px" style="display: none">
         </div>
-        <div class="market">
-            <p>서울관광 시장</p>
+        <div class="market" id="market_name_id" name="sijang_name">
+          <div class="market_image"></div>
+          <p id="click_coupon" class="click_coupon">회기시장</p>
+          <img class="gray_button"src="/images/down-arrow.png" width="20px" height="20px">
+              <img class="blue_button"src="/images/down-arrow-blue.png" width="20px" height="20px" style="display: none">
         </div>
-        <div class="market">
-            <p>모란 시장</p>
+        <div class="market" id="market_name_id" name="sijang_name">
+          <div class="market_image"></div>
+          <p id="click_coupon" class="click_coupon">광장시장</p>
+          <img class="gray_button"src="/images/down-arrow.png" width="20px" height="20px">
+              <img class="blue_button"src="/images/down-arrow-blue.png" width="20px" height="20px" style="display: none">
         </div>
+        
     </div>
 
 
@@ -341,12 +352,21 @@
         next_index = $(".market").index( this )+1;
         if(next_index ==index){
             if(count==1){
+            $('.gray_button').eq(next_index-1).css('display','block')
+            $('.blue_button').eq(next_index-1).css('display','none')
+            $('.market').css('color','#9c9c9c');
             $('.find_coupon_list1').css('display','none');
             index=next_index;
             count=0;
             }
             else{
-                var sijang_name=document.getElementsByClassName('click_coupon')[next_index-1].innerHTML;
+              $('.market').css('color', '#9c9c9c');
+              $('.gray_button').css('display', 'block')
+              $('.blue_button').css('display', 'none')
+              $('.gray_button').eq(next_index - 1).css('display', 'none')
+              $('.blue_button').eq(next_index - 1).css('display', 'block')
+              $('.market').eq(next_index - 1).css('color', '#63dded');
+              var sijang_name = document.getElementsByClassName('click_coupon')[next_index - 1].innerHTML;
         var data={
           'sijang_name' : sijang_name
         }
@@ -390,6 +410,9 @@
 
               }else{
                 alert('해당 시장에 쿠폰이 없습니다.');
+                $('.market').css('color', '#9c9c9c');
+              $('.gray_button').css('display', 'block')
+              $('.blue_button').css('display', 'none')
               }
             }
           }
@@ -398,6 +421,13 @@
         }
         else{
             $('.find_coupon_list1').remove();
+
+            $('.gray_button').css('display','block')
+            $('.blue_button').css('display','none')
+            $('.gray_button').eq(next_index-1).css('display','none')
+            $('.blue_button').eq(next_index-1).css('display','block')
+            $('.market').css('color','#9c9c9c');
+            $('.market').eq(next_index-1).css('color','#63dded');
         var sijang_name=document.getElementsByClassName('click_coupon')[next_index-1].innerHTML;
         var data={
           'sijang_name' : sijang_name
@@ -442,6 +472,9 @@
 
               }else{
                 alert('해당 시장에 쿠폰이 없습니다.');
+                $('.market').css('color', '#9c9c9c');
+              $('.gray_button').css('display', 'block')
+              $('.blue_button').css('display', 'none')
               }
             }
           }
