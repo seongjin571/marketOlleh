@@ -9,7 +9,16 @@ html {
     margin: 0;
     overflow-x: hidden;
 }
-
+.content_title{
+    width:85%;
+    margin-left: 7.5%;
+    font-weight: bold;
+    font-size: 21px;
+    border-bottom-style: solid;
+    margin-bottom: 30px;
+    height: 50px;
+    line-height: 50px;
+}
 #menu {
     width: 100%;
     position: fixed;
@@ -35,8 +44,8 @@ html {
     display: none;
 }
 .find_coupon_list{
-    width: 80%;
-    margin-left: 10%;
+    width: 85%;
+    margin-left: 7.5%;
     display: none;
 }
 .my_coupon{
@@ -50,6 +59,7 @@ html {
     height: 40px;
     display: inline-flex;
     margin-bottom: 15px;
+    color: #9c9c9c;
 }
 .market_image{
     width: 40px;
@@ -59,9 +69,8 @@ html {
 }
 .market p{
     height: 40px;
-    font-size: 20px;
+    font-size: 18px;
     width: 40%;
-    color: #9c9c9c;
     margin: 0;
     line-height: 40px;
     margin-left: 5%;
