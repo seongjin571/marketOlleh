@@ -1,0 +1,638 @@
+@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family: 'NanumSquare',sans-serif;}
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            /* overflow: hidden; */
+        }
+        #myStamp{
+            width: 100%;
+            margin-bottom: 18%;
+        }
+        .selected_stamp{
+            width: 100%;
+            height: 100%;
+            display: none;
+            /* visibility: hidden; */
+        }
+        #name_sj {
+            width: 55%;
+            height: 85px;
+        }
+        .top_font{
+            font-size: 11px;
+            font-weight: lighter;
+            text-align: center;
+            height: 40px;
+            color: #9c9c9c;
+            padding-top: 3px;
+        }
+        .top_image{
+            padding-top:23px;
+        }
+        #menu_infor{
+            width: 100%;
+            height: 135px;
+            position: fixed;
+            top:38px;
+            background-color: white;
+            z-index: 2;
+        }
+        #top_infor{
+            width: 100%;
+            display: inline-flex;
+            height: 85px;
+
+        }
+        #store_name_sj {
+            width: 80%;
+            font-size: 20px;
+            height: 55px;
+            line-height: 75px;
+            margin-left: 10%;
+            font-weight: bold;
+
+        }
+        #market_name_sj {
+            font-size: 15px;
+            height: 25px;
+            line-height: 5px;
+            color: gray;
+            font-weight: lighter;
+            margin-left: 10%;
+
+        }
+        #good,#kakao,#face{
+            width: 33%;
+            display: block;
+        }
+        #sns_sj {
+            width: 45%;
+            height: 85px;
+            display: inline-flex;
+            text-align: center;
+            background-color: white;
+            z-index: 1;
+        }
+
+        #bottom_infor {
+            width: 100%;
+            height: 50px;
+            display: inline-flex;
+            background-color: white;
+            line-height: 50px;
+            z-index: 1;
+            text-align: center;
+        }
+        #bottom_infor p{
+            font-size: 18px;
+            width: 25%;
+        }
+        .stamp_list{
+            width: 68%;
+            margin-left: 16%;
+            height: 140px;
+            margin-top: 4%;
+            background-image:url('/images/backSample1.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            border-radius: 5px;
+            color: white;
+            text-align: center;
+            line-height: 140px;
+        }
+        .store_market_name{
+            width: 86%;
+            height: 30px;
+            line-height: 30px;
+            margin-left: 7%;
+            margin-top: 6%;
+            font-size: 17px;
+        }
+        .stamp_name{
+            display: inline-flex;
+            width: 90%;
+            height: 30%;
+            margin-left: 5%;
+            margin-top: 5px;
+        }
+        .my_stamp_count{
+            width: 100%;
+            height: 75px;
+            text-align: center;
+            display: table;
+        }
+        .stamp_market{
+            width: 100%;
+            height: 25px;
+            line-height: 25px;
+            font-size: 20px;
+            display: inline-flex;
+        }
+        .logo_image{
+            width: 33%;
+            height: 100%;
+        }
+        .deadline{
+            width: 60%;
+            font-size: 15px;
+            margin-left: 7%;
+            font-weight: lighter;
+            padding-top:1.5%;
+        }
+        .count_stamp{
+            width: 100%;
+            font-size: 40px;
+        }
+
+        .stamp_count_vertical{
+            width: 100%;
+            height: 100%;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .stamp_one:nth-child(4n-3){
+            width: 68%;
+            margin-left: 16%;
+            height: 140px;
+            margin-top: 4%;
+            background-image:url('/images/backSample1.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            border-radius: 5px;
+            color: white;
+        }
+        .stamp_one:nth-child(4n-2){
+            width: 68%;
+            height: 140px;
+            margin-left: 16%;
+            margin-top: 4%;
+            background-image:url('/images/backSample2.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            border-radius: 5px;
+            color: white;
+        }
+        .stamp_one:nth-child(4n-1){
+            width: 68%;
+            margin-left: 16%;
+            height: 140px;
+            margin-top: 4%;
+            background-image:url('/images/backSample3.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            border-radius: 5px;
+            color: white;
+        }
+        .stamp_one:nth-child(4n){
+            width: 68%;
+            margin-left: 16%;
+            height: 140px;
+            margin-top: 4%;
+            background-image:url('/images/backSample4.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            border-radius: 5px;
+            color: white;
+        }
+
+
+
+        .stamp_sj{
+            width: 77%;
+            height: 180px;
+            margin-left: 11.5%;
+            background-image:url('/images/backSample4.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            border-radius: 5px;
+            color: white;
+        }
+
+        #nav_sj {
+            width: 100%;
+            height: 8%;
+            background: white;
+            display: inline-flex;
+            position: fixed;
+            top: 92%;
+            z-index: 1;
+            border-top-style:solid;
+            border-top-width: 1px;
+            /* border-left-style: none */
+        }
+
+        #nav_sj div {
+            padding: 5px;
+            width: 20%;
+            font-size: 10px;
+            color: #9c9c9c;
+            text-align: center;
+        }
+        #nav_text{
+            color: #63dded;
+        }
+
+        .back_div{
+            width: 100%;
+            height: 38px;
+            background-color: white;
+            /* background: url('/images/backSample5.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%; */
+            position: fixed;
+            top:0;
+            display: none;
+            z-index: 2;
+        }
+        .back_div img{
+            margin-top: 10px;
+            margin-left:10px;
+        }
+        .stamp_menu_sj{
+            width: 100%;
+            margin-top: 30px;
+            /* height: 50%; */
+        }
+
+
+        #stamp_infor_sj {
+            width: 95%;
+            height: 20%;
+            font-size: 20px;
+            line-height: 32px;
+            margin-left: 5%
+
+        }
+
+        p {
+            margin: 0;
+            /* font-size: 18px; */
+        }
+        .ten_sj p,.five_sj p{
+            margin-left: 35%;
+        }
+        h2{
+            margin-left: 20px;
+        }
+        .store_detail_sj p{
+            width: 90%;
+            margin-left: 5%;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .button_sj {
+            width: 80%;
+            height: 45px;
+            margin-left: 10%;
+            margin-top: 20px;
+            border-radius: 20px;
+            background: url('/images/backSample5.png');
+            background-repeat: no-repeat;
+            border-style: none;
+            background-size: 100% 100%;
+            color: white;
+            font-size: 18px;
+            font-weight: lighter;
+        }
+
+        .yesGood_Button_sj {
+            /* display: none; */
+        }
+
+        .goodCount_sj {
+            font-size: 25px;
+            line-height: 70px;
+        }
+
+        .menu_sj p {
+            width: 25%;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        .fiveControls_sj,
+        .tenControls_sj {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .tenStamp_sj {
+            width: 100%;
+            height: 100%;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .fiveStamp_sj {
+            width: 100%;
+            height: 100%;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .five_sj,
+        .ten_sj {
+            display: inline-flex;
+            width: 15%;
+            height: 41px;
+            border-radius: 200px;
+            margin-left: 3%;
+            background-color: rgb(202, 199, 199);
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            line-height: 41px;
+
+        }
+
+        .tenStamp_top_sj,
+        .tenStamp_bottom_sj {
+            margin-bottom: 10px;
+        }
+        .store_detail_sj,.store_review_sj{
+            margin-bottom: 12%;
+        }
+        .store_review_sj{
+            width: 100%;
+        }
+        #ten{
+            margin-left: 24% !important;
+        }
+        .review_div_sj{
+            width: 100%;
+            font-size: 20px;
+        }
+        .review_button_sj{
+            width: 85%;
+            margin-left: 7.5%;
+            height: 45px;
+            font-size: 15px;
+            text-align: center;
+            color: #9c9c9c;
+            background-color: white;
+             border: double 1px transparent;
+             border-radius: 50px;
+             background-image: linear-gradient(white, white),
+             radial-gradient(circle at top left, #17ead9,#6078ea);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            padding: 1px;
+            border: 0px;
+            line-height: 45px;
+            margin-bottom: 10px;
+            box-shadow: 5px 5px 3px #efefef;
+            opacity: 0.85;
+        }
+        .review_content_sj{
+            height: 20px;
+            line-height: 20px;
+            width: 90%;
+            margin-left: 5%;
+            /* text-align: center; */
+            display: inline-flex;
+        }
+        .review_content_id_sj{
+            font-size: 16px;
+            width: 30%;
+        }
+        .review_content_date_sj{
+            color: #9c9c9c;
+            font-size: 14px;
+            width: 30%;
+            font-weight: lighter;
+        }
+        .review_div_sj p{
+            margin-top: 10px;
+            width: 85%;
+            margin-left: 7.5%;
+            background:no-repeat;
+            border-style: none;
+            font-size: 20px;
+            margin-bottom: 20px;
+            word-break: break-all;
+        }
+        .review_write_sj{
+            width: 100%;
+
+        }
+        .write_button_div_sj{
+            width: 100%;
+            display: inline-flex;
+        }
+        textarea{
+            width: 100%;
+            height: 150px;
+            font-size: 20px;
+            background-color:#f6f8f9;
+            border-style: none;
+        }
+        .review_write_sj button{
+            width: 80%;
+            margin-left: 10%;
+            height: 50px;
+            border-radius: 50px;
+            background: url('/images/backSample5.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            margin-top: 15px;
+            border-style: none;
+            color: white;
+            font-size:17px;
+        }
+
+        .password_number_div_sj{
+            display: none;
+            width: 100%;
+            height: 400px;
+            background-color: #f6f8f9;
+            color: #b9b9b9;
+            font-size: 20px;
+            text-align: center;
+             line-height: 70px;
+             position: absolute;
+             /* margin-top: 20%; */
+             display: none;
+             font-weight: lighter;
+        }
+        .password_check{
+            width: 100%;
+            height: 60px;
+            padding-top: 15px;
+            padding-bottom: 25px;
+            /* background-color: red; */
+            display: inline-flex;
+            background-color: white !important;
+            text-align: center;
+            font-size: 40px;
+            color: #6078ea;
+        }
+
+        .password_check:nth-child(1){
+            padding-left:24%;
+        }
+        .password_check div{
+            width: 9%;
+            margin-right: 4%;
+            border-bottom-style: solid;
+            border-bottom-color: #d3d3d3;
+            border-bottom-width: 4px;
+            /* box-shadow: 5px 5px 5px #888888; */
+        }
+        .password_line_sj{
+            display: inline-flex;
+            width: 100%;
+            height: 75px;
+        }
+        .password_line_sj div{
+            width: 33.33%;
+            height: 75px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: white;
+            line-height: 75px;
+        }
+        .password_cancel{
+            background-color: rgb(241, 37, 37);
+            color: white;
+        }
+
+        .password_number_sj:hover{
+            background-color: rgb(212, 209, 209);
+        }
+
+        .swiper-container {
+            position: absolute;
+            top: 173px;
+            width: 100%;
+            margin-bottom: 15%;
+            min-height: 70% !important;
+          }
+
+          .swiper-scrollbar{
+            opacity: 1 !important;
+            transition-duration: 0 !important;
+            position: fixed !important;
+            top: 173px !important;
+        }
+        /* .swiper-slide{
+            margin-top: 30px;
+        } */
+        #introduce,#map,.stamp_infor{
+            display: inline-flex;
+            width: 90%;
+            height: 30px;
+            margin-left: 5%;
+        }
+        #introduce{
+            height: auto !important;
+        }
+        .stamp_infor{
+            margin-top: 20px;
+        }
+        #map{
+            margin-top: 20px;
+        }
+        .name{
+            width: 23%;
+            margin-left: 3%;
+            height: 30px;
+            line-height: 30px;
+        }
+        #intro_content,.stamp_infor_content{
+            width: 58%;
+            margin-left: 8%;
+            font-weight: lighter;
+            color: #9c9c9c;
+            line-height: 30px;
+        }
+        .stamp_infor_content{
+            line-height: 30px;
+            border-bottom-style: solid;
+            border-bottom-color: #cecdcd;
+            border-width: 1px;
+        }
+        .store_image{
+            width: 170px;
+            height: 170px;
+            margin: 0 auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            border-radius: 100px;
+        }
+        .review_rate{
+            margin-top: 20px;
+            width: 100%;
+            height: 118px;
+        }
+        .review_star{
+            display: inline-flex;
+            width: 90%;
+            margin-left: 5%;
+            height: 30px;
+        }
+        .review_star_customer{
+            padding-top: 10px;
+            display: inline-flex;
+            width: 90%;
+            margin-left: 5%;
+            height: 20px;
+        }
+
+        .review_count{
+            display: inline-flex;
+            width: 90%;
+            margin-left: 5%;
+            height: 40px;
+            line-height: 40px;
+        }
+        .review_count_content{
+            margin-left: 10px;
+            color: #63dded;
+            font-size: 20px;
+        }
+        #intro{
+            width: 90%;
+            margin-left: 5%;
+            height: 30px;
+            line-height: 30px;
+            color: #9c9c9c;
+            font-size: 13px;
+            font-weight: lighter;
+            margin-bottom: 5px;
+        }
+        .line{
+            width: 100%;
+            height: 8px;
+            background-color:#f6f8f9;
+        }
+        #star_upload{
+            width: 95%;
+            margin-left: 4%;
+            display: inline-flex;
+            height: 40px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        #intro_star{
+            width: 95%;
+            margin-left: 4%;
+            font-size: 14px;
+            color: #9c9c9c;
+            height: 20px;
+            line-height: 20px;
+            margin-bottom: 10px;
+        }
+        #write_div{
+            text-align: center;
+            width: 100%;
+            height: 50px;
+            color: #9c9c9c;
+            line-height: 50px;
+        }
