@@ -36,7 +36,7 @@
 
   <div class="alert_o" style="display:none">
       <div class="alert_o_content">
-        <div class="alert_image_check">
+        <div class="alert_image">
           <img src="/images/alert_o.png" width="70px" height="70px" > 
         </div> 
         <div class="alert_content">
@@ -44,24 +44,8 @@
       </div>
     </div>
 
-    <div class="alert_check" style="display:none">
-        <div class="alert_o_content">
-          <div class="alert_image_check">
-            <img src="/images/alert_o.png" width="40px" height="40px" > 
-          </div> 
-          <div class="alert_content_check">
-          </div>
-          <div class="alert_check_button">
-            확인
-            </div>
-        </div>
-      </div>
-
       <div class="alert_select"  style="display:none">
           <div class="alert_o_content">
-            <div class="alert_image_check">
-              <img src="/images/alert_o.png" width="40px" height="40px">
-            </div>
             <div class="alert_content_select">
             </div>
             <div class="alert_select_cancel">
@@ -264,7 +248,7 @@
                                       if(result['result'] == 'success') {
                                         $('.alert_o').css('display','block');
                                       $('.alert_content').html('쿠폰 사용이 완료되었습니다.')
-                                      $('.alert_o_check').click(function(){
+                                      $('.alert_o').click(function(){
                                         $('.check<%= result1[i].id %>').html('');
                                         location.reload();
                                       })
@@ -378,16 +362,14 @@
     $('#home_sj').click(function () {
         location.href = "/main";
     })
-    $('#logout').click(function () {
-            var logout = confirm("로그아웃 하시겠습니까?");
-            if (logout == true) {
-              console.log('로그아웃성공');
-              $(location).attr('href','/logout');
-
-            } else {
-              console.log('로그아웃실패');
-            }
+      $('#logout').click(function () {
+        $('.alert_select').css('display', 'block');
+        $('.alert_content_select').html('로그아웃 하시겠습니까?')
+        $('.alert_select_ok').click(function () {
+          $('.alert_select').css('display', 'none');
+          $(location).attr('href', '/logout');
         })
+      })
         var swiper = new Swiper('.swiper-container', {
       slidesPerView: 'auto',
       initialSlide: 0,
@@ -586,7 +568,7 @@
                   if (result['result'] == 'success') {
                     $('.alert_o').css('display', 'block');
                     $('.alert_content').html('쿠폰이 발급 되었습니다.')
-                    $('.alert_o_check').click(function () {
+                    $('.alert_o').click(function () {
                       var data = {
                         'sijang_name': sijang_name,
                         'market_name': market_name
@@ -618,7 +600,6 @@
                       else if(result['result']=='fail'){
                         $('.alert_x').css('display','block');
                         $('.alert_content').html('이미 해당 쿠폰이 있습니다')
-                          // $('.find_coupon_list1').remove();
 
                       }else {
                         alert('쿠폰등록실패1');

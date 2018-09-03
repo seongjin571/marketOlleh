@@ -18,6 +18,7 @@ html {
     margin-bottom: 30px;
     height: 50px;
     line-height: 50px;
+    margin-top: 5px;
 }
 #menu {
     width: 100%;
@@ -58,7 +59,7 @@ html {
     width: 90%;
     height: 40px;
     display: inline-flex;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     color: #9c9c9c;
 }
 .market_image{
@@ -104,15 +105,6 @@ html {
     border-radius: 7px;
     margin-top: 20px;
     line-height: 160px;
-    text-align: center;
-}
-.download{
-    background-color: rgb(12, 141, 12);
-    border-radius: 7px;
-    height: 130px;
-    color:white;
-    line-height: 130px;
-    font-size: 30px;
     text-align: center;
 }
 
@@ -352,20 +344,19 @@ html {
 .password_number_sj:active{
     background-color: rgb(212, 209, 209);
 }
-.alert_x,.alert_o,.alert_check,.alert_select{
+.alert_x,.alert_o,.alert_select{
     width: 100%;
     height: 100%;
-    background-color: #9c9c9c;
-    position: absolute;
+    background-color:  rgba(141, 140, 140, 0.8);
+    position: fixed;
     z-index: 100;
-    opacity: 0.7;
 }
 .alert_x_content,.alert_o_content{
     width: 70%;
     height: 25%;
     background-color: white;
     border-radius: 10px;
-    position: absolute;
+    position: fixed;
     top: 37.5%;
     left:15%;
 }
@@ -380,39 +371,19 @@ html {
     width: 100%;
     height: 40%;
 }
-.alert_image_check{
+.alert_content_select{
     text-align: center;
     width: 100%;
-    height: 25%;
-    padding-top: 5%;
+    height: 60%;
+    line-height: 90px;
 }
-.alert_content_check,.alert_content_select{
-    text-align: center;
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-}
-.alert_check_button{
-    text-align: center;
-    width: 50%;
-    height: 40px;
-    line-height: 40px;
-    margin-left: 25%;
-    padding-top: 4%;
-    border-radius: 50px;
-    background-image: linear-gradient(white, white),
- radial-gradient(circle at top left, #17ead9,#6078ea);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    padding: 1px;
-}
+
 .alert_select_ok{
     text-align: center;
     width: 35%;
     height: 40px;
     line-height: 40px;
     margin-left: 10%;
-    padding-top: 4%;
     border-radius: 50px;
     background-image: linear-gradient(white, white),
  radial-gradient(circle at top left, #17ead9,#6078ea);
@@ -427,7 +398,6 @@ html {
     height: 40px;
     line-height: 40px;
     margin-left: 10%;
-    padding-top: 4%;
     border-radius: 50px;
     background-image:url('/images/backSample5.png');
     background-repeat: no-repeat;
