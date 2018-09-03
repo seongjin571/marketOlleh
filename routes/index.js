@@ -3,7 +3,7 @@ var router = express.Router();
 var mysql = require('mysql');
 var dbconfig = require('../database.js');
 var conn = mysql.createConnection(dbconfig);
-
+var app= express();
 
 
 router.get('/start', function(req, res){
@@ -16,6 +16,9 @@ router.get('/start', function(req, res){
   else {
     res.render('start');
   }
+});
+router.get('/location', function(req, res){
+  res.render('location');
 });
 
 router.get('/findid', function(req, res){
