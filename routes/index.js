@@ -18,6 +18,11 @@ router.get('/start', function(req, res){
   }
 });
 
+router.get('/location',function(req,res){
+    res.render('location');
+})
+
+
 router.get('/findid', function(req, res){
   res.render('findid');
 });
