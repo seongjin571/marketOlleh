@@ -21,6 +21,11 @@ router.get('/location', function(req, res){
   res.render('location');
 });
 
+router.get('/location',function(req,res){
+    res.render('location');
+})
+
+
 router.get('/findid', function(req, res){
   res.render('findid');
 });
