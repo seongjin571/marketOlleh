@@ -9,9 +9,11 @@
 <body>
 	<div id="map" style="width:90%;height:250px;margin-left: 5%; "></div>
 	<input type="button" value="Get GPS" id="GetButton" />
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
-<script type="text/javascript">
-    /*
+    <!-- <script src='/cordova/cordova.js'></script> -->
+    <script srd='/cordova/cordova_plugins.js'></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
+    <script type="text/javascript">
+    
     var markers = []; // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
 
     // 지도를 표시할 div (id)
@@ -56,7 +58,7 @@
         // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
         map.relayout();
     }
-
+    /*
     function changeCenter(mapLat, mapLng) {
         var moveLatLon = new daum.maps.LatLng(mapLat, mapLng);
         relayout();
@@ -85,7 +87,6 @@
 
         Latitude = position.coords.latitude;
         Longitude = position.coords.longitude;
-        console.log(Latitude, Longitude);
 
         getMap(Latitude, Longitude);
     }
@@ -111,6 +112,7 @@
 
         marker.setMap(map); // 마커 찍어주기
         map.setCenter(marker.getPosition()); // 맵 중심 좌표 바꾸기
+        relayout();
     }
 
     // Success callback for watching your changing position
