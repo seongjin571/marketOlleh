@@ -335,7 +335,10 @@
                 dataType: 'json',
                 type: 'POST',
                 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                data: { "market_name": tempText },
+                data: {
+                    "name": this.childNodes[3].innerText,
+                    "market_name": this.childNodes[5].innerText 
+                },
                 success: function (result) {
                     if (result.rows.length > 0) {
                         document.getElementById('hot_store').style.display = "none";
@@ -348,7 +351,7 @@
                     }
                 },
                 error: function (e) {
-                    alert("mainmanager");
+                    alert("main.ejs");
                     console.log('process error : ', e);
                 }
             }); // ajax
