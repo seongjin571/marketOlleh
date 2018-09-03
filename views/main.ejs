@@ -27,7 +27,38 @@
 </head>
 
 <body>
-
+    <div class="alert_x" style="display:none">
+        <div class="alert_x_content">
+          <div class="alert_image">
+            <img src="/images/alert_x.png" width="70px" height="70px" > 
+          </div> 
+          <div class="alert_content">
+          </div>
+        </div>
+      </div>
+      
+      <div class="alert_o" style="display:none">
+          <div class="alert_o_content">
+            <div class="alert_image">
+              <img src="/images/alert_o.png" width="70px" height="70px" > 
+            </div> 
+            <div class="alert_content">
+            </div>
+          </div>
+        </div>
+      
+          <div class="alert_select"  style="display:none">
+              <div class="alert_o_content">
+                <div class="alert_content_select">
+                </div>
+                <div class="alert_select_cancel">
+                  취소
+                </div>
+                <div class="alert_select_ok">
+                    확인
+                  </div>
+              </div>
+            </div>
 
     <div id="text_logo">
         <!-- <div id="verti"> -->
@@ -457,18 +488,16 @@
             location.href = "/coupon";
         })
         $('#location_sj').click(function () {
-         location.href = "/photo";
+         location.href = "/location";
         })
-        $('#logout').click(function () {
-            var logout = confirm("로그아웃 하시겠습니까?");
-            if (logout == true) {
-                console.log('로그아웃성공');
-                $(location).attr('href', '/logout');
-
-            } else {
-                console.log('로그아웃실패');
-            }
-        })
+            $('#logout').click(function () {
+                $('.alert_select').css('display', 'block');
+                $('.alert_content_select').html('로그아웃 하시겠습니까?')
+                $('.alert_select_ok').click(function () {
+                    $('.alert_select').css('display', 'none');
+                    $(location).attr('href', '/logout');
+                })
+            })
         var swiper = new Swiper('.s1', {
             slidesPerView: 'auto',
             centeredSlides: true,
@@ -612,7 +641,15 @@
                 }
             }); // ajax
         }); // click event
-
+        $('.alert_x').click(function () {
+                $(this).css('display', 'none')
+            })
+            $('.alert_o').click(function () {
+                $(this).css('display', 'none')
+            })
+            $('.alert_select_cancel').click(function () {
+                $('.alert_select').css('display', 'none')
+            })
 
     </script>
     <!-------------------- KAKAO MAP API ---------------------->
