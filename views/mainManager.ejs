@@ -312,14 +312,12 @@
             location.href = "/mystampManager";
         })
         $('#logout').click(function () {
-            var logout = confirm("로그아웃 하시겠습니까?");
-            if (logout == true) {
-                console.log('로그아웃성공');
+            $('.alert_select').css('display', 'block');
+            $('.alert_content_select').html('로그아웃 하시겠습니까?')
+            $('.alert_select_ok').click(function () {
+                $('.alert_select').css('display', 'none');
                 $(location).attr('href', '/logoutmanager');
-
-            } else {
-                console.log('로그아웃실패');
-            }
+            })
         })
 
         // $('.store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
