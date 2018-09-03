@@ -32,6 +32,11 @@ router.get('/findpassword_manager', function(req, res){
   res.render('findpassword_manager');
 });
 
+// GeoLocation Test page ( hw edit )
+router.get('/geolo', function(req, res){
+  res.render('cordova_gelocationTest');
+});
+
 router.get('/coupon', function(req, res){
   //resullt1은 발급쿠폰 결과
   //result2는 발급받은 스탬프
