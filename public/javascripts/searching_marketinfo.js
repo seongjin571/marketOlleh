@@ -157,10 +157,14 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 			data: data,
 			success: function (result) {
 			  if (result['result'] == 'success') {
-			    alert('스탬프생성');
-			    location.reload();
+				$('.alert_o').css('display', 'block');
+				$('.alert_content').html('다운받기 완료되었습니다.')
+				$('.alert_o').click(function () {
+				location.reload();
+				});
 			  } else if(result['result']=='already'){
-			    alert('스탬프 이미 존재');
+			    $('.alert_x').css('display', 'block');
+                $('.alert_content').html('이미 해당 스탬프가 있습니다.')
 			    // location.reload();
 			  }
 			},
