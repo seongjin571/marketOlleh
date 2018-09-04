@@ -262,7 +262,9 @@
                 <div class="password_line_sj <%= myStamps[i].id %>">
                   <div class='password_cancel' id="password_cancel<%= myStamps[i].id %>">취소</div>
                   <div class="password_number_sj <%= myStamps[i].id %>"></div>
-                  <div class='password_ok' id="password_ok<%= myStamps[i].id %>"></div>
+                  <div class='password_back' id="password_ok<%= myStamps[i].id %>">
+                      <img src="/images/left-arrow.png" width="22px" height="22px" style="padding-top: 26px;">
+                  </div>
                 </div>
               </div>
               <!-- </div> -->
@@ -510,37 +512,37 @@
 
 
             /*  가게 상세정보 각 탭 및 버튼 클릭 이벤트  */
-            $('#go_stamp_sj<%= myStamps[i].id %>').click(function () {
-              $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
-              $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
-              $('#store_review_sj<%= myStamps[i].id %>').hide(200);
-              $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-              $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-            })
-            $('#go_store_detail_sj<%= myStamps[i].id %>').click(function () {
-              $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
-              $('#store_detail_sj<%= myStamps[i].id %>').show(200);
-              $('#store_review_sj<%= myStamps[i].id %>').hide(200);
-              $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-              $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-            })
-            $('#go_store_review_sj<%= myStamps[i].id %>').click(function () {
-              $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
-              $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
-              $('#store_review_sj<%= myStamps[i].id %>').show(200);
-              $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-              $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-            })
-            $('#review_button_sj<%= myStamps[i].id %>').click(function () {
-              $('#store_review_sj<%= myStamps[i].id %>').hide(200);
-              $('#review_write_sj<%= myStamps[i].id %>').show(200);
-              $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-            })
-            $('#write_cancel_sj<%= myStamps[i].id %>').click(function () {
-              $('#store_review_sj<%= myStamps[i].id %>').show(200);
-              $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-              $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-            })
+            // $('#go_stamp_sj<%= myStamps[i].id %>').click(function () {
+            //   $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
+            //   $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#store_review_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#review_write_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+            // })
+            // $('#go_store_detail_sj<%= myStamps[i].id %>').click(function () {
+            //   $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#store_detail_sj<%= myStamps[i].id %>').show(200);
+            //   $('#store_review_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#review_write_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+            // })
+            // $('#go_store_review_sj<%= myStamps[i].id %>').click(function () {
+            //   $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#store_review_sj<%= myStamps[i].id %>').show(200);
+            //   $('#review_write_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+            // })
+            // $('#review_button_sj<%= myStamps[i].id %>').click(function () {
+            //   $('#store_review_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#review_write_sj<%= myStamps[i].id %>').show(200);
+            //   $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+            // })
+            // $('#write_cancel_sj<%= myStamps[i].id %>').click(function () {
+            //   $('#store_review_sj<%= myStamps[i].id %>').show(200);
+            //   $('#review_write_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+            // })
 
 
             /*  좋아요  */
@@ -724,6 +726,13 @@
                 document.getElementsByClassName('password_number_sj <%= myStamps[i].id %>')[i].innerHTML = password_number_array_sj[i];
                }
 
+               $('.password_back').click(function(){
+                          if(!count==0){
+                          number1 = number1.slice(0,-1);
+                          count--;
+                          $('.check<%= myStamps[i].id %>').eq(count).html('')
+                          }
+                        })
               $('.password_number_sj').off().on('click',function(){
                 console.log('<%= myStamps[i].stamp_count %>')
                 number1 += $(this).html();
