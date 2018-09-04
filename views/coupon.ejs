@@ -184,7 +184,9 @@
                       <div class="password_line_sj <%= result1[i].id %>">
                         <div class='password_cancel' id="password_cancel<%= result1[i].id %>">취소</div>
                         <div class="password_number_sj <%= result1[i].id %>"></div>
-                        <div class='password_ok' id="password_ok<%= result1[i].id %>"></div>
+                        <div class='password_back' id="password_ok<%= result1[i].id %>">
+                          <img src="/images/left-arrow.png" width="22px" height="22px" style="padding-top: 36px;">
+                        </div>
                       </div>
                     </div>
 
@@ -218,6 +220,13 @@
                         var count = 0;
                         // var result = 1;
                         var number1 = "";
+                        $('.password_back').click(function(){
+                          if(!count==0){
+                          number1 = number1.slice(0,-1);
+                          count--;
+                          $('.check<%= result1[i].id %>').eq(count).html('')
+                          }
+                        })
                         $('.password_number_sj').off().on('click',function(){
                           number1 += $(this).html();
                           $('.check<%= result1[i].id %>').eq(count).html('*')

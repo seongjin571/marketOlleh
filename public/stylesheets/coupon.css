@@ -341,7 +341,7 @@ html {
 }
 .password_cancel{
     color: #Ff0055;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .password_number_sj:active{

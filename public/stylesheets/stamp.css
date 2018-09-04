@@ -500,7 +500,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         }
         .password_cancel{
             color: #Ff0055;
-            font-weight: bold;
+            font-weight: normal;
         }
 
         .password_number_sj:hover{
