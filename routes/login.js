@@ -21,10 +21,11 @@ router.post('/login', function(req, res, next) {
     if (err) {
       return next(err); // will generate a 500 error
     }
+    
     // Generate a JSON response reflecting authentication status
     if (! user) {
       return res.send(
-        '<script type="text/javascript">alert("아이디 혹은 비밀번호가 틀렸습니다."); document.location.href="/start";</script>'
+       // '<script> type="text/javascript">alert("아이디 혹은 비밀번호가 틀렸습니다."); document.location.href="/start";</script>'
       );
     }
     req.login(user, function(err){
