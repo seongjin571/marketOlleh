@@ -24,6 +24,18 @@
 </head>
 
 <body>
+        <div class="alert_select" style="display:none">
+                <div class="alert_o_content">
+                    <div class="alert_content_select">
+                    </div>
+                    <div class="alert_select_cancel">
+                        취소
+                    </div>
+                    <div class="alert_select_ok">
+                        확인
+                    </div>
+                </div>
+            </div>
     <div id="text_logo">
         <div id="logo">
             <img id="inline_logo" src="/images/inline-logo.png"style="width:22%;padding-left:3%;padding-top:10px; height:auto">
@@ -218,7 +230,6 @@
             <!-- [ 스탬프 기준, 보상 ] 표현해주는 div-->
             <div id="stamp_infor_sj">
             </div>
-            <button class="button_sj">버튼</button>
         </div>
         </div>
 
@@ -558,7 +569,9 @@
           $('#store_infor').css('display', 'none');
           $('#market_infor').css('display', 'block');
         });
-
+        $('.alert_select_cancel').click(function () {
+                $('.alert_select').css('display', 'none')
+            })
     </script>
 </body>
 

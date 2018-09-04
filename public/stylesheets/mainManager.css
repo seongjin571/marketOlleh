@@ -232,3 +232,66 @@ h3{
     margin-top: 10px;
     margin-left:10px;
 }
+.alert_x,.alert_o,.alert_select{
+    width: 100%;
+    height: 100%;
+    background-color:  rgba(141, 140, 140, 0.8);
+    position: fixed;
+    z-index: 100;
+    top:0;
+}
+.alert_x_content,.alert_o_content{
+    width: 70%;
+    height: 25%;
+    background-color: white;
+    border-radius: 10px;
+    position: fixed;
+    top: 37.5%;
+    left:15%;
+}
+.alert_image{
+    text-align: center;
+    width: 100%;
+    height: 50%;
+    padding-top: 10%;
+}
+.alert_content{
+    text-align: center;
+    width: 100%;
+    height: 40%;
+}
+.alert_content_select{
+    text-align: center;
+    width: 100%;
+    height: 60%;
+    line-height: 90px;
+}
+
+.alert_select_ok{
+    text-align: center;
+    width: 35%;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 10%;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+ radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    display: inline-block;
+}
+.alert_select_cancel{
+    text-align: center;
+    width: 35%;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 10%;
+    border-radius: 50px;
+    background-image:url('/images/backSample5.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 1px;
+    display: inline-block;
+    color: white;
+}

@@ -413,6 +413,7 @@ h3,h4{
     background-color:  rgba(141, 140, 140, 0.8);
     position: fixed;
     z-index: 100;
+    top:0;
 }
 .alert_x_content,.alert_o_content{
     width: 70%;
