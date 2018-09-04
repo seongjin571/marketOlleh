@@ -324,7 +324,7 @@ input,select{
     color:#63dded;
     font-family: initial !important;
 }
-.check_input,.check_select{
+.check_input{
     visibility: hidden;
 }
 .standard_coupon,.reward_coupon,.reward_coupon_L{

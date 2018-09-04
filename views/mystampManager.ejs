@@ -23,6 +23,15 @@
 </head>
 
 <body>
+        <div class="alert_x" style="display:none">
+                <div class="alert_x_content">
+                  <div class="alert_image">
+                    <img src="/images/alert_x.png" width="70px" height="70px" > 
+                  </div> 
+                  <div class="alert_content">
+                  </div>
+                </div>
+              </div>
         <div class="alert_o" style="display:none">
             <div class="alert_o_content">
                 <div class="alert_image">
@@ -209,6 +218,20 @@
                 }
             });
         });
+        var password_number=/^[0-9]{4}$/;
+        $('#password_input').change(function () {
+        var password_L = $(this).val();
+        var true_or_false = password_number.test(password_L);
+        if(true_or_false){
+
+        }
+        else{
+            $('.alert_x').css('display', 'block');
+            $('.alert_content').html('4자리 숫자로 입력해주세요.')
+            $(this).val('')
+        }
+
+    });
         $('.alert_x').click(function () {
                 $(this).css('display', 'none')
             })
