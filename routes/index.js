@@ -4,9 +4,7 @@ var mysql = require('mysql');
 var dbconfig = require('../database.js');
 var conn = mysql.createConnection(dbconfig);
 var app= express();
-router.get('/photo', function(req, res){
-  res.render('photo');
-});
+
 
 router.get('/start', function(req, res){
   if(req.session.authId) {
@@ -20,12 +18,9 @@ router.get('/start', function(req, res){
   }
 });
 router.get('/location', function(req, res){
-  res.render('photo');
+  res.render('location');
 });
 
-router.get('/location',function(req,res){
-    res.render('location');
-})
 
 
 router.get('/findid', function(req, res){
