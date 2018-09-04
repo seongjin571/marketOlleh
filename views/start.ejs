@@ -241,7 +241,7 @@
                 },
                 error: function (error) {
                     console.log('erer');
-                    alert('다시 입력해주세요.');
+                    $('.alert_content').html('아이디 혹은 비밀번호를 다시 입력해주세요.');
                     window.reload();
                 }
             });
@@ -349,22 +349,26 @@
                     data: data,
                     success: function (result) {
                         if (result['result'] == 'success') {
-                            alert('가입 성공');
+                            $('.alert_o').css('display','block');
+                            $('.alert_content').html('로그인 완료')
                             //  $(window).attr('location', '/start');
                         }
                         else if (result['result'] == 'already') {
-                            alert('이미 존재하는 아이디입니다.');
+                            $('.alert_x').css('display','block');
+                        $('.alert_content').html('이미 존재하는 아이디입니다.');
                             $('#userid').val('')
                         }
                     },
                     error: function (error) {
-                        alert('이상한부분');
+                        $('.alert_x').css('display','block');
+                        $('.alert_content').html('이상한부분');
                         window.reload();
                     }
                 });
             }
             else {
-                alert('다시 입력해주세요.');
+                $('.alert_x').css('display','block');
+                        $('.alert_content').html('다시한번 입력해주세요');
             }
         });
     </script>
@@ -682,7 +686,9 @@
                     'sijang_name': sijang_name.innerHTML
                 };
                 if (!$('input[name=manager_img]')[0].files[0]) {
-                    alert('이미지를 등록해주세요 !');
+                    $('.alert_x').css('display','block');
+                        $('.alert_content').html('이미지를 등록해주세요');
+                        window.reload();
                     return false;
                 }
                 var data2 = new FormData();
@@ -708,12 +714,15 @@
                     data: data2,
                     success: function (result) {
                         if (result['result'] == 'success') {
-                            alert('회원가입이 완료되었습니다 !');
+                            $('.alert_o').css('display','block');
+                            $('.alert_content').html('회원가입이 완료되었습니다!');
+                            alert('');
                             localStorage.setItem('introFlag', 2);
                             location.reload();
                         }
                         else if (result['result'] == 'already') {
-                            alert('이미 존재하는 아이디입니다.');
+                            $('.alert_x').css('display','block');
+                            $('.alert_content').html('이미 존재하는 아이디입니다.');
                             $('#manager_id').val('')
                         }
                     },
@@ -762,7 +771,8 @@
         }
         else {
             $('.check_div').eq(0).css('visibility', 'hidden');
-            alert('이름을 확인해 주세요.');
+            $('.alert_x').css('display','block');
+            $('.alert_content').html('이름을 확인해 주세요.');
         }
     })
     $('.signuptext').eq(4).change(function () {
@@ -773,7 +783,8 @@
         }
         else {
             $('.check_div').eq(4).css('visibility', 'hidden');
-            alert('이메일을 확인해 주세요.');
+            $('.alert_x').css('display','block');
+            $('.alert_content').html('이메일을 확인해 주세요.');
             $(this).val('');
         }
     })
@@ -785,7 +796,8 @@
         }
         else {
             $('.check_div').eq(1).css('visibility', 'hidden');
-            alert('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
+            $('.alert_x').css('display','block');
+            $('.alert_content').html('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
         }
     })
     var pwd1, pwd2 = 0;
@@ -800,7 +812,9 @@
                     $('.check_div').eq(3).css('visibility', 'visible');
                 }
                 else {
-                    alert('비밀번호가 다릅니다.')
+                    $('.alert_x').css('display','block');
+                    $('.alert_content').html('비밀번호가 다릅니다.');
+                    
                     $(this).val('');
                     $('#userpwdcheck').val('');
                     $('.check_div').eq(2).css('visibility', 'hidden');
@@ -809,7 +823,8 @@
             }
         }
         else {
-            alert('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
+            $('.alert_x').css('display','block');
+            $('.alert_content').html('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
             $(this).val('');
         }
     })
@@ -823,7 +838,8 @@
                     $('.check_div').eq(3).css('visibility', 'visible');
                 }
                 else {
-                    alert('비밀번호가 다릅니다.')
+                    $('.alert_x').css('display','block');
+                    $('.alert_content').html('비밀번호가 다릅니다.');
                     $(this).val('');
                     $('#userpwd').val('');
                     $('.check_div').eq(2).css('visibility', 'hidden');
@@ -832,7 +848,8 @@
             }
         }
         else {
-            alert('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
+            $('.alert_x').css('display','block');
+            $('.alert_content').html('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
             $(this).val('');
         }
     })
@@ -845,7 +862,8 @@
         }
         else {
             $('.check_div').eq(0).css('visibility', 'hidden');
-            alert('이름을 확인해 주세요.');
+            $('.alert_x').css('display','block');
+            $('.alert_content').html('이름을 확인해 주세요.');
         }
     })
     $('.signuptext2').eq(4).change(function () {
@@ -911,7 +929,8 @@
             $('#password_star').html('****');
         }
         else{
-            alert('4자리 숫자로 입력해주세요.')
+            $('.alert_x').css('display','block');
+            $('.alert_content').html('4자리 숫자로 입력해주세요.');
             $(this).val('')
             $('#password_star').html('');
             $('.manager_check_div').eq(12).css('visibility', 'hidden')
@@ -925,7 +944,8 @@
         }
         else {
             $('.check_div').eq(1).css('visibility', 'hidden');
-            alert('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
+            $('.alert_x').css('display','block');
+            $('.alert_content').html('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
         }
     })
     $('#password_jh').change(function () {
@@ -938,7 +958,8 @@
                     $('.manager_check_div').eq(3).css('visibility', 'visible');
                 }
                 else {
-                    alert('비밀번호가 다릅니다.')
+                    $('.alert_x').css('display','block');
+                    $('.alert_content').html('비밀번호가 다릅니다.');
                     $(this).val('');
                     $('#password_jh_check').val('');
                     $('.manager_check_div').eq(2).css('visibility', 'hidden');
@@ -947,7 +968,8 @@
             }
         }
         else {
-            alert('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
+            $('.alert_x').css('display','block');
+            $('.alert_content').html('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
             $(this).val('');
         }
     })
@@ -961,7 +983,8 @@
                     $('.manager_check_div').eq(3).css('visibility', 'visible');
                 }
                 else {
-                    alert('비밀번호가 다릅니다.')
+                    $('.alert_x').css('display','block');
+                   $('.alert_content').html('비밀번호가 다릅니다.');
                     $(this).val('');
                     $('#password_jh').val('');
                     $('.manager_check_div').eq(2).css('visibility', 'hidden');
@@ -970,7 +993,8 @@
             }
         }
         else {
-            alert('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
+            $('.alert_x').css('display','block');
+            $('.alert_content').html('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
             $(this).val('');
         }
     })
@@ -1037,6 +1061,18 @@
         $('#signupManager').fadeOut(300)
         $('#loginManager').fadeIn(300)
     })
+
+
+    // 클릭 이벤트
+    $('.alert_x').click(function(){
+        $(this).css('display','none')
+      })
+      $('.alert_o').click(function(){
+        $(this).css('display','none')
+      })
+      $('.alert_select_cancel').click(function(){
+        $('.alert_select').css('display','none')
+      })
 </script>
 
 </html>
