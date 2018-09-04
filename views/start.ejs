@@ -27,6 +27,24 @@
 
 <body>
 
+    <div class="alert_o" style="display:none">
+        <div class="alert_o_content">
+          <div class="alert_image_check">
+            <img src="/images/alert_o.png" width="70px" height="70px" > 
+          </div> 
+          <div class="alert_content">
+          </div>
+        </div>
+      </div>
+      <div class="alert_x" style="display:none">
+        <div class="alert_x_content">
+          <div class="alert_image">
+            <img src="/images/alert_x.png" width="70px" height="70px" > 
+          </div> 
+          <div class="alert_content">
+          </div>
+        </div>
+      </div>
     <script>
         window.onload = function () {
             if (localStorage.getItem('introFlag') == 1) {
@@ -205,11 +223,16 @@
                 data: data,
                 success: function (result) {
                     if (result['result'] == 'success') {
-                        alert('ok');
+                        $('.alert_o').css('display','block');
+                        $('.alert_content').html('로그인 완료')
                         $(window).attr('location', '/mainManager');
                     } else {
-                        alert('아이디 혹은 비밀번호를 다시 입력해주세요.');
-                        $(window).attr('location', '/start');
+                        $('.alert_x').css('display','block');
+                        $('.alert_content').html('아이디 혹은 비밀번호를 다시 입력해주세요.');
+                        $('.alert_x').click(function(){
+                            $(window).attr('location', '/start');
+                        })
+                        
                     }
                 },
                 error: function (error) {
