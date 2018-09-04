@@ -24,6 +24,18 @@
 </head>
 
 <body>
+        <div class="alert_select" style="display:none">
+                <div class="alert_o_content">
+                    <div class="alert_content_select">
+                    </div>
+                    <div class="alert_select_cancel">
+                        취소
+                    </div>
+                    <div class="alert_select_ok">
+                        확인
+                    </div>
+                </div>
+            </div>
     <div id="text_logo">
         <div id="logo">
             <img id="inline_logo" src="/images/inline-logo.png"style="width:22%;padding-left:3%;padding-top:10px; height:auto">
@@ -218,7 +230,6 @@
             <!-- [ 스탬프 기준, 보상 ] 표현해주는 div-->
             <div id="stamp_infor_sj">
             </div>
-            <button class="button_sj">버튼</button>
         </div>
         </div>
 
@@ -231,7 +242,7 @@
                     <div id="intro_content"></div>
                 </div>
                 <div id="map">
-                        <img src="/images/location2.png" width="30px" height="30px">
+                        <img src="/images/location3.png" width="30px" height="30px">
                         <div class="name">위치</div>
                 </div>
                 <img src="/images/han.png" width="80%" style="margin-left: 10%;margin-top: 5%;">
@@ -312,14 +323,12 @@
             location.href = "/mystampManager";
         })
         $('#logout').click(function () {
-            var logout = confirm("로그아웃 하시겠습니까?");
-            if (logout == true) {
-                console.log('로그아웃성공');
+            $('.alert_select').css('display', 'block');
+            $('.alert_content_select').html('로그아웃 하시겠습니까?')
+            $('.alert_select_ok').click(function () {
+                $('.alert_select').css('display', 'none');
                 $(location).attr('href', '/logoutmanager');
-
-            } else {
-                console.log('로그아웃실패');
-            }
+            })
         })
 
         // $('.store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
@@ -337,7 +346,10 @@
                 dataType: 'json',
                 type: 'POST',
                 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                data: { "market_name": tempText },
+                data: {
+                    "name": this.childNodes[3].innerText,
+                    "market_name": this.childNodes[5].innerText 
+                },
                 success: function (result) {
                     if (result.rows.length > 0) {
                         document.getElementById('hot_store').style.display = "none";
@@ -350,7 +362,7 @@
                     }
                 },
                 error: function (e) {
-                    alert("mainmanager");
+                    alert("main.ejs");
                     console.log('process error : ', e);
                 }
             }); // ajax
@@ -557,7 +569,9 @@
           $('#store_infor').css('display', 'none');
           $('#market_infor').css('display', 'block');
         });
-
+        $('.alert_select_cancel').click(function () {
+                $('.alert_select').css('display', 'none')
+            })
     </script>
 </body>
 

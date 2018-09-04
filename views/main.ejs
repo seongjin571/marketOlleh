@@ -27,7 +27,38 @@
 </head>
 
 <body>
-
+    <div class="alert_x" style="display:none">
+        <div class="alert_x_content">
+          <div class="alert_image">
+            <img src="/images/alert_x.png" width="70px" height="70px" > 
+          </div> 
+          <div class="alert_content">
+          </div>
+        </div>
+      </div>
+      
+      <div class="alert_o" style="display:none">
+          <div class="alert_o_content">
+            <div class="alert_image">
+              <img src="/images/alert_o.png" width="70px" height="70px" > 
+            </div> 
+            <div class="alert_content">
+            </div>
+          </div>
+        </div>
+      
+          <div class="alert_select"  style="display:none">
+              <div class="alert_o_content">
+                <div class="alert_content_select">
+                </div>
+                <div class="alert_select_cancel">
+                  취소
+                </div>
+                <div class="alert_select_ok">
+                    확인
+                  </div>
+              </div>
+            </div>
 
     <div id="text_logo">
         <!-- <div id="verti"> -->
@@ -402,7 +433,7 @@
                     <div id="intro_content"></div>
                 </div>
                 <div id="map">
-                        <img src="/images/location2.png" width="30px" height="30px">
+                        <img src="/images/location3.png" width="30px" height="30px">
                         <div class="name">위치</div>
                 </div>
                 <img src="/images/han.png" width="80%" style="margin-left: 10%;margin-top: 5%;">
@@ -456,16 +487,17 @@
         $('#coupon_sj').click(function () {
             location.href = "/coupon";
         })
-        $('#logout').click(function () {
-            var logout = confirm("로그아웃 하시겠습니까?");
-            if (logout == true) {
-                console.log('로그아웃성공');
-                $(location).attr('href', '/logout');
-
-            } else {
-                console.log('로그아웃실패');
-            }
+        $('#location_sj').click(function () {
+         location.href = "/location";
         })
+            $('#logout').click(function () {
+                $('.alert_select').css('display', 'block');
+                $('.alert_content_select').html('로그아웃 하시겠습니까?')
+                $('.alert_select_ok').click(function () {
+                    $('.alert_select').css('display', 'none');
+                    $(location).attr('href', '/logout');
+                })
+            })
         var swiper = new Swiper('.s1', {
             slidesPerView: 'auto',
             centeredSlides: true,
@@ -578,7 +610,9 @@
         // 서울시 좋아요순 상점
         $('.hot_store_detail').click(function (event) {
 
-            var tempText = this.childNodes[5].innerText;
+            // var tempText = this.childNodes[5].innerText;
+            // console.log(this.childNodes[3].innerText);
+            // console.log(tempText);
 
             // 인기 상점 찾기
             $.ajax({
@@ -586,7 +620,10 @@
                 dataType: 'json',
                 type: 'POST',
                 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                data: { "market_name": tempText },
+                data: {
+                    "name": this.childNodes[3].innerText,
+                    "market_name": this.childNodes[5].innerText 
+                },
                 success: function (result) {
                     if (result.rows.length > 0) {
                         document.getElementById('aaa').style.display = "none";
@@ -604,7 +641,15 @@
                 }
             }); // ajax
         }); // click event
-
+        $('.alert_x').click(function () {
+                $(this).css('display', 'none')
+            })
+            $('.alert_o').click(function () {
+                $(this).css('display', 'none')
+            })
+            $('.alert_select_cancel').click(function () {
+                $('.alert_select').css('display', 'none')
+            })
 
     </script>
     <!-------------------- KAKAO MAP API ---------------------->

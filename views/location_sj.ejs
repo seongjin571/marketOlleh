@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='/cordova/cordova.js'></script>
+    <script srd='/cordova/cordova_plugins.js'></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+    <script src="/javascripts/spin.js"></script>
+    <link rel="stylesheet" href="/stylesheets/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/location_sj.css" />
+    <!-- <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script> -->
+    <!-- <script>
+  window.addEventListener('load', function () {
+    FastClick.attach(document.body);
+  }, false);
+  </script> -->
+</head>
+
+<body>
+
+
+
+    <div id="nav_sj">
+        <div id="home_sj">
+            <img src="/images/home.png" width="40%">
+            <p>홈</p>
+        </div>
+        <div id="coupon_sj">
+            <img src="/images/coupon.png" width="40%">
+            <p>쿠폰</p>
+        </div>
+        <div id="location_sj">
+            <img src="/images/location.png" width="40%">
+            <p>주변 가맹점</p>
+        </div>
+        <div id="myStamp_sj">
+            <img src="/images/stamp2.png" width="40%">
+            <p id="nav_text">내 스탬프</p>
+        </div>
+        <div id="logout">
+            <img src="/images/logout.png" width="40%">
+            <p>로그아웃</p>
+        </div>
+    </div>
+    <script>
+
+        $('#home_sj').click(function () {
+            location.href = "/main";
+        })
+        $('#coupon_sj').click(function () {
+            location.href = "/coupon";
+        })
+        $('#logout').click(function () {
+                $('.alert_select').css('display', 'block');
+                $('.alert_content_select').html('로그아웃 하시겠습니까?')
+                $('.alert_select_ok').click(function () {
+                    $('.alert_select').css('display', 'none');
+                    $(location).attr('href', '/logout');
+                })
+            })
+        var swiper = new Swiper('.swiper-container', {
+            initialSlide: 0,
+            autoHeight: true,
+            observer: true,
+            observeParents: true,
+            scrollbar: {
+                el: '.swiper-scrollbar',
+                hide: true,
+            },
+        });
+
+        $('.back_div').click(function () {
+            swiper.destroy();
+            //  var  swiper = new Swiper('.swiper-container', {
+            //     initialSlide: 0,
+            //     autoHeight: true,
+            //     observer: true,
+            //     observeParents: true,
+            //     scrollbar: {
+            //       el: '.swiper-scrollbar',
+            //       hide: true,
+            //     },
+            //   });
+        });
+
+
+    </script>
+
+</body>
+
+</html>

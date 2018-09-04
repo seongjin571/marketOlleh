@@ -39,7 +39,38 @@
       }
     }
   </script>
+<div class="alert_x" style="display:none">
+  <div class="alert_x_content">
+    <div class="alert_image">
+      <img src="/images/alert_x.png" width="70px" height="70px" >
+    </div>
+    <div class="alert_content">
+    </div>
+  </div>
+</div>
 
+<div class="alert_o" style="display:none">
+    <div class="alert_o_content">
+      <div class="alert_image">
+        <img src="/images/alert_o.png" width="70px" height="70px" >
+      </div>
+      <div class="alert_content">
+      </div>
+    </div>
+  </div>
+
+    <div class="alert_select"  style="display:none">
+        <div class="alert_o_content">
+          <div class="alert_content_select">
+          </div>
+          <div class="alert_select_cancel">
+            취소
+          </div>
+          <div class="alert_select_ok">
+              확인
+            </div>
+        </div>
+      </div>
   <div id="myStamp">
     <!-- <label>내 스탬프</label> -->
     <% if(myStamps) { %>
@@ -110,7 +141,7 @@
                       <img class="top_image" src="/images/kakao_bic.png" width="30px" height="30px">
                       <p class="top_font">공유하기</p>
                     </div>
-                    <div id="face">
+                    <div id="face" onclick="window.plugins.socialsharing.shareViaFacebook(null, null, null, 'http://13.209.89.231:3000/start')">
                       <img class="top_image" src="/images/face.png" width="30px" height="30px">
                       <p class="top_font">공유하기</p>
                     </div>
@@ -231,7 +262,9 @@
                 <div class="password_line_sj <%= myStamps[i].id %>">
                   <div class='password_cancel' id="password_cancel<%= myStamps[i].id %>">취소</div>
                   <div class="password_number_sj <%= myStamps[i].id %>"></div>
-                  <div class='password_ok' id="password_ok<%= myStamps[i].id %>"></div>
+                  <div class='password_back' id="password_ok<%= myStamps[i].id %>">
+                      <img src="/images/left-arrow.png" width="22px" height="22px" style="padding-top: 26px;">
+                  </div>
                 </div>
               </div>
               <!-- </div> -->
@@ -247,7 +280,7 @@
                           <div id="intro_content"><%= myStamps[i].market_introduce %></div>
                       </div>
                       <div id="map">
-                              <img src="/images/location2.png" width="30px" height="30px">
+                              <img src="/images/location3.png" width="30px" height="30px">
                               <div class="name">위치</div>
                       </div>
                       <img src="/images/han.png" width="80%" style="margin-left: 10%;margin-top: 5%;">
@@ -479,37 +512,37 @@
 
 
             /*  가게 상세정보 각 탭 및 버튼 클릭 이벤트  */
-            $('#go_stamp_sj<%= myStamps[i].id %>').click(function () {
-              $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
-              $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
-              $('#store_review_sj<%= myStamps[i].id %>').hide(200);
-              $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-              $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-            })
-            $('#go_store_detail_sj<%= myStamps[i].id %>').click(function () {
-              $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
-              $('#store_detail_sj<%= myStamps[i].id %>').show(200);
-              $('#store_review_sj<%= myStamps[i].id %>').hide(200);
-              $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-              $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-            })
-            $('#go_store_review_sj<%= myStamps[i].id %>').click(function () {
-              $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
-              $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
-              $('#store_review_sj<%= myStamps[i].id %>').show(200);
-              $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-              $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-            })
-            $('#review_button_sj<%= myStamps[i].id %>').click(function () {
-              $('#store_review_sj<%= myStamps[i].id %>').hide(200);
-              $('#review_write_sj<%= myStamps[i].id %>').show(200);
-              $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-            })
-            $('#write_cancel_sj<%= myStamps[i].id %>').click(function () {
-              $('#store_review_sj<%= myStamps[i].id %>').show(200);
-              $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-              $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-            })
+            // $('#go_stamp_sj<%= myStamps[i].id %>').click(function () {
+            //   $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
+            //   $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#store_review_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#review_write_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+            // })
+            // $('#go_store_detail_sj<%= myStamps[i].id %>').click(function () {
+            //   $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#store_detail_sj<%= myStamps[i].id %>').show(200);
+            //   $('#store_review_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#review_write_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+            // })
+            // $('#go_store_review_sj<%= myStamps[i].id %>').click(function () {
+            //   $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#store_review_sj<%= myStamps[i].id %>').show(200);
+            //   $('#review_write_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+            // })
+            // $('#review_button_sj<%= myStamps[i].id %>').click(function () {
+            //   $('#store_review_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#review_write_sj<%= myStamps[i].id %>').show(200);
+            //   $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+            // })
+            // $('#write_cancel_sj<%= myStamps[i].id %>').click(function () {
+            //   $('#store_review_sj<%= myStamps[i].id %>').show(200);
+            //   $('#review_write_sj<%= myStamps[i].id %>').hide(200);
+            //   $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
+            // })
 
 
             /*  좋아요  */
@@ -595,7 +628,6 @@
 
                 }
 
-                // alert(star_index+1)
                 starRate<%= myStamps[i].id %> = star_index + 1;
 
               })
@@ -634,10 +666,11 @@
 
               var sijang_name = '<%= myStamps[i].sijang_name %>';
 
-              if(! text) {
-                alert('내용을 입력해주세요 !');
-                return false;
-              }
+              if (!text) {
+                $('.alert_x').css('display', 'block');
+                $('.alert_content').html('리뷰를 입력해 주세요')
+                  return false;
+                }
 
               if(! starRate<%= myStamps[i].id %>) {
                 starRate<%= myStamps[i].id %> = 0;
@@ -662,17 +695,18 @@
                 success: function(result) {
                   if (result['result']=='success'){
                     // console.log(result);
-                    alert('등록완료');
+                    $('.alert_o').css('display', 'block');
+                    $('.alert_content').html('리뷰 등록이 완료되었습니다')
+                    $('.alert_o').click(function () {
                     localStorage.setItem('reviewTab', '<%= myStamps[i].id %>');
                     location.reload();
+                    });
                   }
                   else{
                     console.log(result);
-                    alert('mystamp');
                   }
                 },
                 error: function(error){
-                  alert('mystamp');
                   location.reload();
                 }
               });
@@ -692,6 +726,13 @@
                 document.getElementsByClassName('password_number_sj <%= myStamps[i].id %>')[i].innerHTML = password_number_array_sj[i];
                }
 
+               $('.password_back').click(function(){
+                          if(!count==0){
+                          number1 = number1.slice(0,-1);
+                          count--;
+                          $('.check<%= myStamps[i].id %>').eq(count).html('')
+                          }
+                        })
               $('.password_number_sj').off().on('click',function(){
                 console.log('<%= myStamps[i].stamp_count %>')
                 number1 += $(this).html();
@@ -713,7 +754,7 @@
                     success: function (result) {
                       if (result['password'] == number1) {
                         console.log(result['password']);
-                        alert('비밀번호 일치');
+                        // alert('비밀번호 일치');
                         if (parseInt('<%= myStamps[i].stamp_standard %>') >= stamp_count<%= myStamps[i].id %> + 1) {
                           var data = {
                             'stamp_count': stamp_count<%= myStamps[i].id %> + 1,
@@ -728,7 +769,8 @@
                             data: data,
                             success: function (result) {
                               if (result['result'] == 'success') {
-                                alert('스탬프추가');
+                                $('.alert_o').css('display','block');
+                                $('.alert_content').html('스탬프가 추가 되었습니다.')
                                 number1 = "";
                                 $('.check<%= myStamps[i].id %>').html('');
                                 console.log(result);
@@ -771,7 +813,8 @@
                             data: data,
                             success: function (result) {
                               if (result['result'] == 'successs') {
-                                alert('초기화');
+                                      $('.alert_o').css('display','block');
+                                      $('.alert_content').html('스탬프가 사용 되었습니다.')
                                 number1 = "";
                                 stamp_count<%= myStamps[i].id %> = 0;
                                 if (parseInt('<%= myStamps[i].stamp_standard %>') == 5) {
@@ -804,7 +847,8 @@
                       } else {
                         console.log(result['password']);
                         console.log(number1);
-                        alert('비밀번호가 일치하지 않습니다. 다시 입력해주세요.');
+                        $('.alert_x').css('display','block');
+                        $('.alert_content').html('비밀번호가 일치하지 않습니다.')
                         number1 = "";
                         $('.check<%= myStamps[i].id %>').html('');
                       }
@@ -828,6 +872,10 @@
 
             /*  발급 받은 스탬프 삭제  */
             $("#delete_button_sj<%= myStamps[i].id %>").click(function() {
+              $('.alert_select').css('display','block');
+              $('.alert_content_select').html('스탬프를 삭제 하시겠습니까?')
+              $('.alert_select_ok').click(function(){
+              $('.alert_select').css('display','none');
               // delete ajax
               $.ajax({
                 type: 'post',
@@ -837,20 +885,17 @@
                 datatype: 'json',
                 success: function(result) {
                   if (result['result']=='success'){
-                    alert('해당 스탬프의 삭제가 완료되었습니다.');
-                    // delete stamp list
-                    // var stamp = document.getElementById('stamp_list<%= myStamps[i].id %>');
-                    // stamp.parentNode.removeChild(stamp);
-                    // delete selected stamp
-                    // var selected_stamp = document.getElementById('selected_stamp<%= myStamps[i].id %>');
-                    // selected_stamp.parentNode.removeChild(selected_stamp);
-                    // $('#myStamp').css('display', 'block');
+                    $('.alert_o').css('display','block');
+                    $('.alert_content').html('스탬프 삭제가 완료되었습니다.')
+                    $('.alert_o').click(function(){
                     location.reload();
+                    });
                   }
                 },
                 error: function(error){
-                  alert('mystamp');
+                  // alert('mystamp');
                 }
+              });
               });
             });
 
@@ -882,17 +927,19 @@
                       $('#home_sj').click(function () {
                         location.href = "/main";
                       })
+                      $('#location_sj').click(function () {
+                        location.href = "/location";
+                      })
                       $('#coupon_sj').click(function () {
                         location.href = "/coupon";
                       })
                       $('#logout').click(function () {
-                              var logout = confirm("로그아웃 하시겠습니까?");
-                              if (logout == true) {
-                                console.log('로그아웃성공');
+                        $('.alert_select').css('display','block');
+                        $('.alert_content_select').html('로그아웃 하시겠습니까?')
+                        $('.alert_select_ok').click(function () {
+                          $('.alert_select').css('display', 'none');
                                 $(location).attr('href','/logout');
-                              } else {
-                                console.log('로그아웃실패');
-                              }
+                              })
                           })
                           var swiper = new Swiper('.swiper-container', {
                               initialSlide: 0,
@@ -918,6 +965,15 @@
                             //     },
                             //   });
                             });
+                              $('.alert_x').click(function () {
+                                $(this).css('display', 'none')
+                              })
+                              $('.alert_o').click(function () {
+                                $(this).css('display', 'none')
+                              })
+                              $('.alert_select_cancel').click(function () {
+                                $('.alert_select').css('display', 'none')
+                              })
 
 
                       </script>

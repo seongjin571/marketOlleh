@@ -9,7 +9,17 @@ html {
     margin: 0;
     overflow-x: hidden;
 }
-
+.content_title{
+    width:85%;
+    margin-left: 7.5%;
+    font-weight: bold;
+    font-size: 21px;
+    border-bottom-style: solid;
+    margin-bottom: 30px;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 5px;
+}
 #menu {
     width: 100%;
     position: fixed;
@@ -35,8 +45,8 @@ html {
     display: none;
 }
 .find_coupon_list{
-    width: 80%;
-    margin-left: 10%;
+    width: 85%;
+    margin-left: 7.5%;
     display: none;
 }
 .my_coupon{
@@ -44,10 +54,31 @@ html {
     width: 100%;
     margin-bottom: 18%;
 }
-
-.market p{
-    font-size: 20px;
+.market{
+    padding-left: 10%;
+    width: 90%;
+    height: 40px;
+    display: inline-flex;
     margin-top: 10px;
+    margin-bottom: 10px;
+    color: #9c9c9c;
+}
+.market_image{
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    background-color: skyblue;
+}
+.market p{
+    height: 40px;
+    font-size: 16px;
+    width: 55%;
+    margin: 0;
+    line-height: 40px;
+    margin-left: 5%;
+}
+.market img{
+    padding-top: 10px;
 }
 
 
@@ -56,12 +87,12 @@ html {
     height: 160px !important;
     width: 30% !important;
     max-width: 320px !important;
-    background-color: rgb(238, 39, 39);
+    color: #Ff0055;
+    font-weight: lighter;
     margin-top: 20px;
-    color: #fff;
     border-radius: 7px;
     line-height: 160px;
-    font-size: 25px;
+    font-size: 22px;
     text-align: center;
 }
 .stamp_list{
@@ -77,24 +108,17 @@ html {
     line-height: 160px;
     text-align: center;
 }
-.download{
-    background-color: rgb(12, 141, 12);
-    border-radius: 7px;
-    height: 130px;
-    color:white;
-    line-height: 130px;
-    font-size: 30px;
-    text-align: center;
-}
 
 
 .find_coupon_list1{
     width: 100%;
-    height: 180px;
+    height: 160px;
     background-color: rgb(247, 245, 245);
-    padding-top: 20px;
-
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
+
+
 .find_coupon1:nth-child(4n-3){
 
     width: 75%;
@@ -178,11 +202,11 @@ html {
     margin-top: 20px;
 }
 .store_and_market1,.store_and_market{
-    width: 86%;
+    width: 90%;
     height: 40px;
-    margin-left: 7%;
-    display: inline-flex;
+    margin-left: 5%;
     line-height: 40px;
+    display: inline-flex;
 }
 .store_name1,.store_name{
     width: 60%;
@@ -190,10 +214,10 @@ html {
     line-height: 40px;
 }
 .market_name1,.market_name{
-    width: 40%;
-    height: 40px;
-    line-height: 40px;
-    text-align: right;
+    width: 70%;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 5%;
 }
 .sale_price1,.sale_price{
     width: 100%;
@@ -223,12 +247,12 @@ html {
     height: 100%;
 }
 .period1,.period{
-    width: 60%;
-    height: 35px;
-    margin-left: 7%;
+    width: 40%;
+    height: 40px;
+    /* margin-left: 7%; */
     font-size: 16px;
     color: white;
-    line-height: 35px;
+    line-height: 40px;
     font-weight: lighter;
 }
 .swiper-container{
@@ -274,6 +298,7 @@ html {
      /* line-height: 90px; */
      position: absolute;
      /* margin-top: 20%; */
+     top:9%;
      display: none;
      font-weight: lighter;
 }
@@ -315,10 +340,73 @@ html {
     line-height: 95px;
 }
 .password_cancel{
-    background-color: rgb(241, 37, 37);
-    color: white;
+    color: #Ff0055;
+    font-weight: normal;
 }
 
 .password_number_sj:active{
     background-color: rgb(212, 209, 209);
+}
+.alert_x,.alert_o,.alert_select{
+    width: 100%;
+    height: 100%;
+    background-color:  rgba(141, 140, 140, 0.8);
+    position: fixed;
+    z-index: 100;
+    top:0;
+}
+.alert_x_content,.alert_o_content{
+    width: 70%;
+    height: 25%;
+    background-color: white;
+    border-radius: 10px;
+    position: fixed;
+    top: 37.5%;
+    left:15%;
+}
+.alert_image{
+    text-align: center;
+    width: 100%;
+    height: 50%;
+    padding-top: 10%;
+}
+.alert_content{
+    text-align: center;
+    width: 100%;
+    height: 40%;
+}
+.alert_content_select{
+    text-align: center;
+    width: 100%;
+    height: 60%;
+    line-height: 90px;
+}
+
+.alert_select_ok{
+    text-align: center;
+    width: 35%;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 10%;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+ radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    display: inline-block;
+}
+.alert_select_cancel{
+    text-align: center;
+    width: 35%;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 10%;
+    border-radius: 50px;
+    background-image:url('/images/backSample5.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 1px;
+    display: inline-block;
+    color: white;
 }
