@@ -48,14 +48,17 @@ router.get('/geolo', function(req, res){
 });
 
 router.get('/coupon', function(req, res){
-  //resullt1은 발급쿠폰 결과
-  //result2는 발급받은 스탬프
-  var find_coupon_manager = 'select * from `manager`';
-  var find_stamp = 'select * from `stamp` where `user_id` =?';
+
+  // 유저 아이디 세션, 변수값 저장
   var user_id = req.user.id;
-  // var mycoupon = 'select * from `coupon_customer` where `user_id` = ?';
+
+  // SQL 
+  // var find_coupon_customer = 'select * from `coupon_customer` where `user_id` = ?'; 
+  var find_stamp = 'select * from `stamp` where `user_id` =?';
   var mycoupon = 'SELECT coupon_customer.id, coupon_customer.user_id, coupon_customer.sijang_name, coupon_customer.market_name, coupon_customer.coupon_password, coupon_customer.coupon_reward, coupon_customer.coupon_standard, coupon_manager.coupon_count FROM coupon_customer INNER JOIN coupon_manager ON coupon_customer.sijang_name=coupon_manager.sijang_name and coupon_customer.market_name=coupon_manager.market_name WHERE coupon_customer.user_id=?;';
   var couponlist = 'select * from `coupon_manager`';
+  
+  //resullt1은 발급쿠폰 결과, result2는 발급받은 스탬프
   conn.query(couponlist,function(err,cou_result,fields){
     if(err){
       console.log('시작부터에러');
@@ -77,7 +80,7 @@ router.get('/coupon', function(req, res){
                 result1 : undefined,
                 result2 : undefined,
                 cou_result : undefined,
-                user_id : user_id,
+                user_id : user_id
               })
             }else{
               console.log('발급받은 스탬프 있음1');
@@ -87,7 +90,7 @@ router.get('/coupon', function(req, res){
                 result1 : undefined,
                 result2 : result2,
                 cou_result : undefined,
-                user_id : user_id,
+                user_id : user_id
               })
             }
           })
@@ -102,7 +105,7 @@ router.get('/coupon', function(req, res){
                 result1 : result1,
                 result2 : undefined,
                 cou_result : undefined,
-                user_id : user_id,
+                user_id : user_id
               })
             }else{
               console.log('발급받은 스탬프 있음');
@@ -111,7 +114,7 @@ router.get('/coupon', function(req, res){
                 result1 : result1,
                 result2 : result2,
                 cou_result : undefined,
-                user_id : user_id,
+                user_id : user_id
               })
             }
           })
@@ -135,7 +138,7 @@ router.get('/coupon', function(req, res){
                 result1 : undefined,
                 result2 : undefined,
                 cou_result : cou_result,
-                user_id : user_id,
+                user_id : user_id
               })
             }else{
               console.log('발급받은 스탬프 있음');
@@ -145,7 +148,7 @@ router.get('/coupon', function(req, res){
                 result1 : undefined,
                 result2 : result2,
                 cou_result : cou_result,
-                user_id : user_id,
+                user_id : user_id
               })
             }
           })
@@ -160,7 +163,7 @@ router.get('/coupon', function(req, res){
                 result1 : result1,
                 result2 : undefined,
                 cou_result : cou_result,
-                user_id : user_id,
+                user_id : user_id
               })
             }else{
               console.log('발급받은 스탬프 있음');
@@ -170,7 +173,7 @@ router.get('/coupon', function(req, res){
                 result1 : result1,
                 result2 : result2,
                 cou_result : cou_result,
-                user_id : user_id,
+                user_id : user_id
               })
             }
           })
