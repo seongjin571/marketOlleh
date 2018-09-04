@@ -24,6 +24,18 @@
 </head>
 
 <body>
+        <div class="alert_select" style="display:none">
+                <div class="alert_o_content">
+                    <div class="alert_content_select">
+                    </div>
+                    <div class="alert_select_cancel">
+                        취소
+                    </div>
+                    <div class="alert_select_ok">
+                        확인
+                    </div>
+                </div>
+            </div>
     <div id="text_logo">
         <div id="logo">
             <img id="inline_logo" src="/images/inline-logo.png"style="width:22%;padding-left:3%;padding-top:10px; height:auto">
@@ -558,7 +570,9 @@
           $('#store_infor').css('display', 'none');
           $('#market_infor').css('display', 'block');
         });
-
+        $('.alert_select_cancel').click(function () {
+                $('.alert_select').css('display', 'none')
+            })
     </script>
 </body>
 
