@@ -344,12 +344,12 @@
 <script>
 
     $('#go_my_coupon').click(function () {
-        $('#coupon_view').hide(200);
-        $('.my_coupon').show(200);
+        $('#coupon_view').css('display','none')
+        $('.my_coupon').css('display','block')
     })
     $('#go_coupon_view').click(function () {
-        $('#coupon_view').show(200);
-        $('.my_coupon').hide(200);
+        $('#coupon_view').css('display','block')
+        $('.my_coupon').css('display','none')
     })
     $('#location_sj').click(function () {
          location.href = "/location";
