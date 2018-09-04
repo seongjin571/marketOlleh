@@ -22,10 +22,10 @@ router.get('/start', function(req, res){
 router.get('/location', function(req, res){
   res.render('photo');
 });
-//
-// router.get('/location',function(req,res){
-//     res.render('location');
-// })
+
+router.get('/location',function(req,res){
+    res.render('location');
+})
 
 
 router.get('/findid', function(req, res){
@@ -450,13 +450,13 @@ router.post('/searching/marketList', function(req, res){
   var market_name = req.body.market_name;
 
 
-  if(name && !market_name){ // 해당하는 같은 시장, 상점 모두 가져오기
+  if(name){ // 해당하는 같은 시장, 상점 모두 가져오기
     var sql = "SELECT * FROM `manager` WHERE `sijang_name` LIKE '"+name+"' ORDER BY `like_count` DESC";
     conn.query(sql, function(error, rows, fileds) {
       return res.send({ rows: rows });
     });// conn.query
-  } else if(name && market_name) { // 해당하는 시장은 유일
-    var sql = "SELECT * FROM `manager` WHERE `market_name` LIKE '"+market_name+"' AND `sijang_name` LIKE '"+name+"'";
+  } else if(market_name) { // 해당하는 시장은 유일
+    var sql = "SELECT * FROM `manager` WHERE `market_name` LIKE '"+market_name+"'";
     conn.query(sql, function(error, rows, fileds) {
       return res.send({ rows: rows });
     });
