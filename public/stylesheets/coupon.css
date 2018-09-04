@@ -59,7 +59,8 @@ html {
     width: 90%;
     height: 40px;
     display: inline-flex;
-    margin-bottom: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     color: #9c9c9c;
 }
 .market_image{
@@ -70,8 +71,8 @@ html {
 }
 .market p{
     height: 40px;
-    font-size: 18px;
-    width: 40%;
+    font-size: 16px;
+    width: 55%;
     margin: 0;
     line-height: 40px;
     margin-left: 5%;
@@ -86,12 +87,12 @@ html {
     height: 160px !important;
     width: 30% !important;
     max-width: 320px !important;
-    background-color: rgb(238, 39, 39);
+    color: #Ff0055;
+    font-weight: lighter;
     margin-top: 20px;
-    color: #fff;
     border-radius: 7px;
     line-height: 160px;
-    font-size: 25px;
+    font-size: 22px;
     text-align: center;
 }
 .stamp_list{
@@ -111,11 +112,13 @@ html {
 
 .find_coupon_list1{
     width: 100%;
-    height: 180px;
+    height: 160px;
     background-color: rgb(247, 245, 245);
-    padding-top: 20px;
-
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
+
+
 .find_coupon1:nth-child(4n-3){
 
     width: 75%;
@@ -199,11 +202,11 @@ html {
     margin-top: 20px;
 }
 .store_and_market1,.store_and_market{
-    width: 86%;
+    width: 90%;
     height: 40px;
-    margin-left: 7%;
-    display: inline-flex;
+    margin-left: 5%;
     line-height: 40px;
+    display: inline-flex;
 }
 .store_name1,.store_name{
     width: 60%;
@@ -211,10 +214,10 @@ html {
     line-height: 40px;
 }
 .market_name1,.market_name{
-    width: 40%;
-    height: 40px;
-    line-height: 40px;
-    text-align: right;
+    width: 70%;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 5%;
 }
 .sale_price1,.sale_price{
     width: 100%;
@@ -244,12 +247,12 @@ html {
     height: 100%;
 }
 .period1,.period{
-    width: 60%;
-    height: 35px;
-    margin-left: 7%;
+    width: 40%;
+    height: 40px;
+    /* margin-left: 7%; */
     font-size: 16px;
     color: white;
-    line-height: 35px;
+    line-height: 40px;
     font-weight: lighter;
 }
 .swiper-container{
@@ -337,8 +340,8 @@ html {
     line-height: 95px;
 }
 .password_cancel{
-    background-color: rgb(241, 37, 37);
-    color: white;
+    color: #Ff0055;
+    font-weight: bold;
 }
 
 .password_number_sj:active{

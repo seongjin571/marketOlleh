@@ -499,8 +499,8 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             line-height: 75px;
         }
         .password_cancel{
-            background-color: rgb(241, 37, 37);
-            color: white;
+            color: #Ff0055;
+            font-weight: bold;
         }
 
         .password_number_sj:hover{
