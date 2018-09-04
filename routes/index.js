@@ -5,6 +5,12 @@ var dbconfig = require('../database.js');
 var conn = mysql.createConnection(dbconfig);
 var app= express();
 
+router.get('/photo', function(req, res){
+  res.render('photo');
+});
+router.get('/eud_camera', function(req, res){
+  res.render('eud_camera');
+});
 
 router.get('/start', function(req, res){
   if(req.session.authId) {

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+      <script src='/cordova/cordova.js'></script>
+      <script srd='/cordova/cordova_plugins.js'></script>  </head>
+  <body>
+    <div>
+      <input type="button" id="cameraBtn" value="카메라"/>
+      <img src="" id="cameraImg" width = "70%"/>
+    </div>
+    <script>
+      var getPicture = function(){
+        var option = {
+          quality : 50,
+          destinationType : Camera.DestinationType.DATA_URL
+        }
+        navigator.camera.getPicture(this.onSuccess, this.onError, options);
+      }
+
+      var onSuccess = function(imgData){
+        $("#cameraImg").attr("src","data:image/jpeg;base64,"+imgData);
+      }
+      var onError = function(msg){
+        alert(msg);
+      }
+
+      $("#cameraBtn").on("tap",function(){
+        getPicture();
+      });
+    </script>
+    <!--카메라로 부터 이미지를 가져오기 위해서는 navigator.camera.getPicture(->함수)라는 객체를 사용해야함
+    일반적으로 많이 사용하는 안코딩 : base64-encoded 인코딩이미지방식
+
+    getPicture 함수를 호출하면 운영체제(모바일플랫폼 ex)안드로이드)에서 제공하는 카메라앱 또는 이미지 관리 앱이 실행.
+
+    사용자가 사진촬영을 한 이미지파일을 선택하게 되면 이미지 로딩에 성공했을때 와 이미지로딩에 실패했을경우의 두가지 상황이 발생할수 있다.
+
+    getPicture(성공했을때의 콜백함수, 실패했을때의 콜백함수,[options])
+    [options]
+    quality : 이미지 품질을 백분율로 지정한 값. 0 to 100
+    destinationType : 이미지 타입을 지정한다.  이미지 파일 경로를 요청할지 혹은 base64-encoding 형식의 이미지를 요청할 것인지 선택을 할 수 있도록 한다.
+    ->Camera.DestinationType.DATA_URL는 base64인코딩 형식의 이미지를 요청하며, 기본값.
+
+    이 경우의 option설정 -> destinationType : Camera.DestinationType.Data_url로 설정한다.
+    Camera.DestinationType.FILE_URL : 이미지 파일의 경로를 요청하는 방식.
+
+    sourceType : 카메라에서 사진을 촬영하여 가져올 것인지, 혹은 폰에 저장된 이미지파일을 가져올 것인지 선택.
+    Camera.PictureSourceType.PHOTOLIBRARY : 포토라이브러리에서 이미지를 가져오는 경우(기본값)
+    (촬영한 사진을 가져오는 경우)Camera.PictureSourceType.CAMERA
+    (해당 포토앨범에서 가져오는 경우)Camera.PictureSourceType.SAVEDPHOTOALBUM
+
+    allowEdit : 카메라로 촬영한 다음 편집할 것인지를 지정한다.(안드로이드에서는 동작x only 아이폰)
+
+    encodingType : 이미지 압축형식을 지정한다. jpeg, png중에 한가지를 선택한다.
+    .CameraEncodingType.JPEG
+    .CameraEncodingType.png
+
+    targetWidth : 이미지의 폭을 설정
+    targetHeight : 이미지의 높이를 설정
+
+    예 ) navigator.camera.getPicture(onSuccess, onFail, {
+    quality(사진의 품질) : 50, destinationType : Camera.DestinationType.DATA_URL
+  });
+
+  function onSuccess(imageData){
+  var image = document.getElementById("img");
+  image.src = "data:image/jpeg;base64," +(해당 이미지 데이터)imageData;
+}
+    -->
+  </body>
+</html>
