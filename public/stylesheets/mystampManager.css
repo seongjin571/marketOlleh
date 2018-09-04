@@ -10,27 +10,26 @@ html {
     margin: 0;
 }
 
-#text_logo{
+/* #text_logo{
     width: 100%;
-    height:200px;
-    /* margin-left: 5%; */
+    height:50px;
     background-image: url('/images/backSample5.png');
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
     top:0;
     z-index: 2;
-}
-#mystore_div{
+} */
+/* #mystore_div{
     width: 50%;
     margin-left: 25%;
     height: 170px;
     margin-top: 20px;
     text-align: center;
-}
+} */
 #mystore_image{
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     border-radius: 100px;
     margin:0 auto;
     margin-bottom: 10px;
@@ -133,16 +132,25 @@ input,textarea{
     color:#9c9c9c;
 }
 #stamp_detail{
-    position: absolute;
-    top: 225px;
+    /* position: absolute; */
+    top: 60px; 
+    margin-top: 30px;
     margin-bottom: 17%;
     width: 85%;
     margin-left: 7.5%;
 }
+.picture_reform{
+    text-align: center;
+    color: #9c9c9c;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
 #reform{
     display: inline-flex;
-    width: 67%;
-    margin-left: 16.5%;
+    width: 75%;
+    margin-left: 12.5%;
     height: 50px;
     display: none;
 }

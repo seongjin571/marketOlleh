@@ -53,15 +53,7 @@
                 </div>
             </div>
         </div>
-    <div id="text_logo">
-        <div id="mystore_div">
-            <!-- <div id="mystore_image"></div> -->
-            <div id="mystore_image" style="background: url('/files/<%= result[0].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 125%;"></div>
-            <div id="my_id">
-                <%= admin_name %>님 상점</div>
-            <div id="mystore_name"><%= result[0].market_name %></div>
-        </div>
-    </div>
+    
 
     <div id="stamp_detail">
         <div class="inputLine">
@@ -89,12 +81,15 @@
             <p class="name">비밀번호</p>
             <input class="input_content" id="password_input"type="password" maxlength="4"  readonly value="<%= result[0].stamp_password %>">
         </div>
-        <div id="reform">
-            <button id="stamp_reform_cancel" style="margin-right: 10%">취소</button>
-            <button id="stamp_reform_button">확인</button>
-        </div>
+        <div id="mystore_image" style="background: url('/files/<%= result[0].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
+        <div class="picture_reform" style="visibility:hidden">사진을 선택하시면 사진을 수정할 수 있습니다.</div>
         <button id="stamp_reform">수정</button>
+        <div id="reform">
+                <button id="stamp_reform_cancel" style="margin-right: 10%">취소</button>
+                <button id="stamp_reform_button">확인</button>
+            </div>
     </div>
+    
     <div id="nav_sj">
         <div id="home">
             <img src="/images/home.png" width="40%">
@@ -137,6 +132,7 @@
             })
         })
         $('#stamp_reform').click(function () {
+            $('.picture_reform').css('visibility', 'visible');
             $(this).css('display', 'none');
             $('#reform').css('display', 'inline-flex');
             $('.input_content').attr('readonly', false);
@@ -165,6 +161,7 @@
                 $('input').css('color', '#9c9c9c');
                 $('textarea').css('color', '#9c9c9c');
                 $('#password_input').css('color','#48a2eb');
+                $('.picture_reform').css('visibility', 'hidden');
             }
         })
         // $('#mystore_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
