@@ -606,41 +606,7 @@
       $('.alert_select_cancel').click(function(){
         $('.alert_select').css('display','none')
       })
-<<<<<<< HEAD
 
-
-
-
-
-=======
-     function Get_sijanimg() {
-        for (var i = 0; i < $('.market > p').length; i++) {
-          var tempone = $('.market > p')[i].innerText;
-          $.ajax({
-              url: "/searching/gooname",
-              dataType: 'json',
-              type: 'POST',
-              contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-              data: {
-                  "filed": "name",
-                  "search_value": tempone
-              },
-              success: function (result) {
-                  if (result.rows.length > 0) {
-                    var temptwo = "background: url("+result.rows[0].imgurl+");background-repeat: no-repeat; background-position: center center; background-size: 155%;";
-                    console.log(temptwo);
-                    document.getElementsByClassName("market_image")[i].setAttribute("style", temptwo);
-                  } else {
-                    console.log("시장이 하나도 없을리가 없음 ~ 앞 작용 확인");
-                  }
-              },
-              error: function (e) {
-                  console.log('process error : ', e);
-              }
-          }); // ajax
-        } // for
-     }
->>>>>>> 303d7472e8354e7fd7c1cfa718dd020133d6f417
 </script>
 
 </html>
