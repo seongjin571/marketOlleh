@@ -83,7 +83,11 @@
           <% for(var x = 0; x <img_result.length; x++) {%>
             <% if(result2[j].sijang_name == img_result[x].name ) {%>
           <div class="market" id="market_name_id"name="sijang_name">
+            <% if(img_result[x].imgurl != '') {%>
               <div class="market_image" style="background: url(<%= img_result[x].imgurl %>);background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
+                <% } else {%>
+                  <div class="market_image" style="background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
+                  <% } %>
               <p id="click_coupon" class="click_coupon"value="<%= result2[j].sijang_name %>"><%= result2[j].sijang_name %></p>
               <img class="gray_button"src="/images/down-arrow.png" width="20px" height="20px">
               <img class="blue_button"src="/images/down-arrow-blue.png" width="20px" height="20px" style="display: none">
@@ -602,33 +606,7 @@
       $('.alert_select_cancel').click(function(){
         $('.alert_select').css('display','none')
       })
-     function Get_sijanimg() {
-        for (var i = 0; i < $('.market > p').length; i++) {
-          var tempone = $('.market > p')[i].innerText;
-          $.ajax({
-              url: "/searching/gooname",
-              dataType: 'json',
-              type: 'POST',
-              contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-              data: {
-                  "filed": "name",
-                  "search_value": tempone
-              },
-              success: function (result) {
-                  if (result.rows.length > 0) {
-                    var temptwo = "background: url("+result.rows[0].imgurl+");background-repeat: no-repeat; background-position: center center; background-size: 155%;";
-                    console.log(temptwo);
-                    document.getElementsByClassName("market_image")[i].setAttribute("style", temptwo);
-                  } else {
-                    console.log("시장이 하나도 없을리가 없음 ~ 앞 작용 확인");
-                  }
-              },
-              error: function (e) {
-                  console.log('process error : ', e);
-              }
-          }); // ajax
-        } // for
-     }
+
 </script>
 
 </html>
