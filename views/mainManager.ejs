@@ -82,11 +82,11 @@
                   <div>
                       <img src="/files/<%= market[i].manager_image %>" width="100%" height="125px">
                   </div>
-                  <div class="good_market_name">
-                      <%= market[i].sijang_name %>
-                  </div>
                   <div class="good_store_name">
                       <%= market[i].market_name %>
+                  </div>
+                  <div class="good_market_name">
+                      <%= market[i].sijang_name %>
                   </div>
                   <div class="good_count">
                       <img src="/images/good.png" width="17px" height="17px" style="margin-right: 3px">
@@ -107,11 +107,11 @@
                   <div>
                       <img src="/files/<%= market[i+1].manager_image %>" width="100%" height="125px">
                   </div>
-                  <div class="good_market_name">
-                      <%= market[i+1].sijang_name %>
-                  </div>
                   <div class="good_store_name">
                       <%= market[i+1].market_name %>
+                  </div>                  
+                  <div class="good_market_name">
+                      <%= market[i+1].sijang_name %>
                   </div>
                   <div class="good_count">
                       <img src="/images/good.png" width="17px" height="17px" style="margin-right: 3px">
@@ -337,35 +337,37 @@
 
         // 서울시 좋아요순 상점
         $('.hot_store_detail').click(function (event) {
-
-            var tempText = this.childNodes[5].innerText;
-
-            // 인기 상점 찾기
-            $.ajax({
-                url: "/searching/marketList",
-                dataType: 'json',
-                type: 'POST',
-                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                data: {
-                    "name": this.childNodes[3].innerText,
-                    "market_name": this.childNodes[5].innerText 
-                },
-                success: function (result) {
-                    if (result.rows.length > 0) {
-                        document.getElementById('hot_store').style.display = "none";
-                        document.getElementById('text_logo').style.display = "none";
-                        $('#table').css('display', 'none');
-                        document.getElementById('back_div').style.display = "block";
-                        managerInfoLi_event(result.rows[0]);
-                    } else {
-                        console.log("시장이름 존재하지 않음");
-                    }
-                },
-                error: function (e) {
-                    alert("main.ejs");
-                    console.log('process error : ', e);
-                }
-            }); // ajax
+            // 매니저로 로그인한 상인이 좋아요순에서 자기껄 누르면
+            if (mystore_name.innerText == this.childNodes[3].innerText) {
+              window.location.href = '/mystore';
+            } else {
+              // 인기 상점 찾기
+              $.ajax({
+                  url: "/searching/marketList",
+                  dataType: 'json',
+                  type: 'POST',
+                  contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                  data: {
+                      "name": this.childNodes[5].innerText,
+                      "market_name": this.childNodes[3].innerText
+                  },
+                  success: function (result) {
+                      if (result.rows.length > 0) {
+                          document.getElementById('hot_store').style.display = "none";
+                          document.getElementById('text_logo').style.display = "none";
+                          $('#table').css('display', 'none');
+                          document.getElementById('back_div').style.display = "block";
+                          managerInfoLi_event(result.rows[0]);
+                      } else {
+                          console.log("시장이름 존재하지 않음");
+                      }
+                  },
+                  error: function (e) {
+                      alert("main.ejs");
+                      console.log('process error : ', e);
+                  }
+              }); // ajax
+            } // if ~ else 
         }); // click event
 
         function managerInfoLi_event(market_arr) { // market_arr는 manager DB값

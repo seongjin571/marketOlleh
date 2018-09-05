@@ -453,18 +453,18 @@ router.post('/searching/marketList', function(req, res){
   // 상점 이름
   var market_name = req.body.market_name;
 
-
-  if(name){ // 해당하는 같은 시장, 상점 모두 가져오기
-    var sql = "SELECT * FROM `manager` WHERE `sijang_name` LIKE '"+name+"' ORDER BY `like_count` DESC";
-    conn.query(sql, function(error, rows, fileds) {
-      return res.send({ rows: rows });
-    });// conn.query
-  } else if(market_name) { // 해당하는 시장은 유일
-    var sql = "SELECT * FROM `manager` WHERE `market_name` LIKE '"+market_name+"'";
-    conn.query(sql, function(error, rows, fileds) {
-      return res.send({ rows: rows });
-    });
-  }
+  // 로그인한 상점 == 클릭한 상점 --> mystore
+    if(name){ // 해당하는 같은 시장, 상점 모두 가져오기
+      var sql = "SELECT * FROM `manager` WHERE `sijang_name` LIKE '"+name+"' ORDER BY `like_count` DESC";
+      conn.query(sql, function(error, rows, fileds) {
+        return res.send({ rows: rows });
+      });// conn.query
+    } else if(market_name) { // 해당하는 시장은 유일
+      var sql = "SELECT * FROM `manager` WHERE `market_name` LIKE '"+market_name+"'";
+      conn.query(sql, function(error, rows, fileds) {
+        return res.send({ rows: rows });
+      });
+    } // if ~ else
 
 }); // post /searching/marketList
 
