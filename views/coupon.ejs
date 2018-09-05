@@ -27,8 +27,8 @@
   <div class="alert_x" style="display:none">
     <div class="alert_x_content">
       <div class="alert_image">
-        <img src="/images/alert_x.png" width="70px" height="70px" > 
-      </div> 
+        <img src="/images/alert_x.png" width="70px" height="70px" >
+      </div>
       <div class="alert_content">
       </div>
     </div>
@@ -37,8 +37,8 @@
   <div class="alert_o" style="display:none">
       <div class="alert_o_content">
         <div class="alert_image">
-          <img src="/images/alert_o.png" width="70px" height="70px" > 
-        </div> 
+          <img src="/images/alert_o.png" width="70px" height="70px" >
+        </div>
         <div class="alert_content">
         </div>
       </div>
@@ -80,11 +80,15 @@
               <% } %>
         <% } %>
         <% if(count == 1) { %>
+          <% for(var x = 0; x <img_result.length; x++) {%>
+            <% if(result2[j].sijang_name == img_result[x].name ) {%>
           <div class="market" id="market_name_id"name="sijang_name">
-              <div class="market_image" style="background: url('/files/<%= result2[j].manager_image %>');background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
+              <div class="market_image" style="background: url(<%= img_result[x].imgurl %>);background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
               <p id="click_coupon" class="click_coupon"value="<%= result2[j].sijang_name %>"><%= result2[j].sijang_name %></p>
               <img class="gray_button"src="/images/down-arrow.png" width="20px" height="20px">
               <img class="blue_button"src="/images/down-arrow-blue.png" width="20px" height="20px" style="display: none">
+                <% } %>
+              <% } %>
               <% if(cou_result) {%>
 
               <% } %>
@@ -122,7 +126,7 @@
           <img class="gray_button"src="/images/down-arrow.png" width="20px" height="20px">
               <img class="blue_button"src="/images/down-arrow-blue.png" width="20px" height="20px" style="display: none">
         </div>
-        
+
     </div>
 
 
@@ -619,7 +623,7 @@
                   }
               });
             })
-         
+
         }
       })
       $('.alert_x').click(function(){
@@ -631,7 +635,7 @@
       $('.alert_select_cancel').click(function(){
         $('.alert_select').css('display','none')
       })
-      
+
 
      function Get_sijanimg() {
         for (var i = 0; i < $('.market > p').length; i++) {
@@ -659,7 +663,7 @@
                   console.log('process error : ', e);
               }
           }); // ajax
-        } // for      
+        } // for
      }
 
 
