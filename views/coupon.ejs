@@ -20,7 +20,7 @@
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
         }, false); -->
-    </script>
+    <!-- </script> -->
 </head>
 
 <body>
@@ -94,15 +94,11 @@
                 <% } %>
               <% } %>
               <% if(cou_result) {%>
-
               <% } %>
           </div>
-
         <% } %>
         <% count =0; %>
         <% } %>
-
-
        <% } else { %>
             <p>비어있음</p>
         <% } %>
@@ -164,9 +160,7 @@
                         <div class="swiper-slide menu" id='swiper-slide-menu<%= result1[i].id %>'>삭제</div>
                     </div>
                 </div>
-
                     <!-- <div class="swiper-pagination"></div> -->
-
                     <div class='password_number_div_sj' id="password_number_div_sj<%= result1[i].id %>">
                         <div class="password_check" id="password_check<%= result1[i].id %>">
                             <div class="check<%= result1[i].id %>"></div>
@@ -197,7 +191,6 @@
                         </div>
                       </div>
                     </div>
-
                     <script>
                       /* 비밀번호 키패드 섞는 함수 */
                       var password_number_array_sj = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
@@ -210,20 +203,17 @@
                           a[j] = x;
                         }
                       }
-
                       /*  쿠폰 클릭했을 때  */
                       $('#swiper-slide-content<%= result1[i].id %>').click(function() {
                         shuffle(password_number_array_sj);
                         for (var i = 0; i < 10; i++) {
                           document.getElementsByClassName('password_number_sj <%= result1[i].id %>')[i].innerHTML = password_number_array_sj[i];
                          }
-
                         $('#swiper-slide-content<%= result1[i].id %>').css('display','none');
                         $('#swiper-slide-menu<%= result1[i].id %>').css('display','none');
                         $('.swiper-container').css('display', 'none');
                         $('.swiper-pagination').css('display','none');
                         $('#password_number_div_sj<%= result1[i].id %>').css('display','block');
-
                         /*  키패드 번호 클릭 시  */
                         var count = 0;
                         // var result = 1;
@@ -290,7 +280,6 @@
                           }
                         });
                       });
-
                       /* 쿠폰 밀어서 삭제 버튼 클릭 시 */
                       $('#swiper-slide-menu<%= result1[i].id %>').click(function() {
                         $.ajax({
@@ -311,7 +300,6 @@
                           }
                         });
                       });
-
                       /* 비밀번호 키패드에서 취소 버튼 눌렀을 때 */
                       $('#password_cancel<%= result1[i].id %>').click(function(){
                         $('#password_number_div_sj<%= result1[i].id %>').css('display','none');
@@ -322,7 +310,6 @@
                         $('.check<%= result1[i].id %>').html('')
                       });
                     </script>
-
                     <% } %>
                         <% } else { %>
                             <div class='stamp_list'>
@@ -359,7 +346,6 @@
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
 <script>
-
     $('#go_my_coupon').click(function () {
         $('#coupon_view').css('display','none')
         $('.my_coupon').css('display','block')
@@ -396,9 +382,6 @@
         dynamicBullets: true,
       },
     });
-
-
-
     var next_index = 0;
     var index=-1;
     var count=0;
@@ -424,7 +407,6 @@
         var data={
           'sijang_name' : sijang_name
         }
-
         $.ajax({
           type : 'post',
           url : '/send_sijang_name',
@@ -440,8 +422,6 @@
                 for(var i =0; i<coupon_name.length;i++){
                   var find_coupon_list_div = document.createElement("div");
                   find_coupon_list_div.setAttribute("class","find_coupon_list1");
-
-
                  var html = '<div class="find_coupon1">';
                       html += '<div class="store_and_market1">';
                       html += '<div class="store_name1">'+coupon_name[i].market_name +'</div>';
@@ -454,14 +434,11 @@
                       html += '<div class="logo_image"><img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;"></div>';
                       html += '</div>';
                       html += '</div>';
-
-
                   find_coupon_list_div.innerHTML = html;
                   document.getElementsByClassName('market')[next_index-1].after(find_coupon_list_div)
                   index=next_index;
                   count=1;
                 }
-
               }else{
                 $('.alert_x').css('display','block');
                 $('.alert_content').html('해당 시장에 쿠폰이 없습니다')
@@ -476,7 +453,6 @@
         }
         else{
             $('.find_coupon_list1').remove();
-
             $('.gray_button').css('display','block')
             $('.blue_button').css('display','none')
             $('.gray_button').eq(next_index-1).css('display','none')
@@ -487,7 +463,6 @@
         var data={
           'sijang_name' : sijang_name
         }
-
         $.ajax({
           type : 'post',
           url : '/send_sijang_name',
@@ -503,8 +478,6 @@
                 for(var i =0; i<coupon_name.length;i++){
                   var find_coupon_list_div = document.createElement("div");
                   find_coupon_list_div.setAttribute("class","find_coupon_list1");
-
-
                       var html = '<div class="find_coupon1">';
                       html += '<div class="store_and_market1">';
                       html += '<div class="store_name1">'+coupon_name[i].market_name +'</div>';
@@ -517,14 +490,11 @@
                       html += '<div class="logo_image"><img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;"></div>';
                       html += '</div>';
                       html += '</div>';
-
-
                   find_coupon_list_div.innerHTML = html;
                   document.getElementsByClassName('market')[next_index-1].after(find_coupon_list_div)
                   index=next_index;
                   count=1;
                 }
-
               }else{
                 $('.alert_x').css('display','block');
                 $('.alert_content').html('해당 시장에 쿠폰이 없습니다')
@@ -558,7 +528,6 @@
         console.log(user_id);
         // alert(market_name +'+'+sijang_name+'+'+coupon_password);
         down();
-
         function down() {
           $('.alert_select').css('display','block');
           $('.alert_content_select').html('쿠폰을 다운로드 하시겠습니까?')
@@ -616,7 +585,6 @@
                       else if(result['result']=='fail'){
                         $('.alert_x').css('display','block');
                         $('.alert_content').html('이미 해당 쿠폰이 있습니다')
-
                       }else {
                         alert('쿠폰등록실패1');
                         location.reload();
@@ -627,7 +595,6 @@
                   }
               });
             })
-
         }
       })
       $('.alert_x').click(function(){
@@ -639,11 +606,41 @@
       $('.alert_select_cancel').click(function(){
         $('.alert_select').css('display','none')
       })
+<<<<<<< HEAD
 
 
 
 
 
+=======
+     function Get_sijanimg() {
+        for (var i = 0; i < $('.market > p').length; i++) {
+          var tempone = $('.market > p')[i].innerText;
+          $.ajax({
+              url: "/searching/gooname",
+              dataType: 'json',
+              type: 'POST',
+              contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+              data: {
+                  "filed": "name",
+                  "search_value": tempone
+              },
+              success: function (result) {
+                  if (result.rows.length > 0) {
+                    var temptwo = "background: url("+result.rows[0].imgurl+");background-repeat: no-repeat; background-position: center center; background-size: 155%;";
+                    console.log(temptwo);
+                    document.getElementsByClassName("market_image")[i].setAttribute("style", temptwo);
+                  } else {
+                    console.log("시장이 하나도 없을리가 없음 ~ 앞 작용 확인");
+                  }
+              },
+              error: function (e) {
+                  console.log('process error : ', e);
+              }
+          }); // ajax
+        } // for
+     }
+>>>>>>> 303d7472e8354e7fd7c1cfa718dd020133d6f417
 </script>
 
 </html>
