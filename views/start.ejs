@@ -143,7 +143,7 @@
                 <button type="button" id="loginUser_sign_up">회원가입</button>
             </div>
             <div class="login_button_user3">
-                <button type='submit' value='' class="loginUser_insert">로그인</button>
+                <button type='submit' id="loginButton_user" class="loginUser_insert">로그인</button>
             </div>
         </form>
 
@@ -209,7 +209,7 @@
         </div>
         <div id="kakao_logo2">
             <div class="login_button_user5">
-                <button type='submit' id="loginButton" value='' class="loginUser_insert">로그인</button>
+                <button type='submit' id="loginButton_manager" value='' class="loginUser_insert">로그인</button>
             </div>
         </div>
     </div>
@@ -223,7 +223,7 @@
                 return false;
             }
         }
-        $('#loginButton').click(function (e) {
+        $('#loginButton_manager').click(function (e) {
             if (doubleSubmitCheck()) return;
             e.preventDefault();
             var manager_id = $('#manager_id').val();
@@ -264,12 +264,6 @@
                // })
                 }
             });
-        });
-        $("#password").keyup(function (event) {
-            // Enter 처리
-            if (event.keyCode == '13') {
-                $("#loginButton").trigger("click");
-            };
         });
         $('#idfind_manager').click(function (e) {
             e.preventDefault();
@@ -1102,6 +1096,23 @@
       $('.alert_select_cancel').click(function(){
         $('.alert_select').css('display','none')
       })
+
+    // (hw edit); enter event handleling!
+    $("#password").keyup(function (event) {
+        // Enter 처리
+        if (event.keyCode == '13') {
+            $("#loginButton_manager").trigger("click");
+        } // if
+    }); // enter keyup event
+
+    $("#userpassword").keyup(function (event) {
+        // Enter 처리
+        if (event.keyCode == '13') {
+            $("#loginButton_user").trigger("click");
+        } // if
+    }); // enter keyup event
+    
+
 </script>
 
 </html>
