@@ -21,18 +21,24 @@ router.post('/login', function(req, res, next) {
     if (err) {
       return next(err); // will generate a 500 error
     }
-    
+
     // Generate a JSON response reflecting authentication status
     if (! user) {
-      return res.send(
-        '<script> type="text/javascript">alert("아이디 혹은 비밀번호가 틀렸습니다."); document.location.href="/start";</script>'
-      );
+      // return res.send(
+      //   '<script> type="text/javascript">alert("아이디 혹은 비밀번호가 틀렸습니다."); document.location.href="/start";</script>'
+      // );
+      return res.send({
+        result: 'fail'
+      });
     }
     req.login(user, function(err){
       if(err){
         return next(err);
       }
-      return res.redirect('/main');
+      // return res.redirect('/main');
+      return res.send({
+        result: 'success'
+      });
     });
   })(req, res, next);
 });
