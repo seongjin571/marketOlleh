@@ -176,6 +176,7 @@
                 else {
                     $('.alert_x').css('display','block');
                     $('.alert_content').html('비밀번호와 아이디를 확인하세요.')
+                    $('#userpassword').val('');
                 }
               });
             });
@@ -274,9 +275,10 @@
                     } else {
                         $('.alert_x').css('display', 'block');
                         $('.alert_content').html('아이디 혹은 비밀번호를 다시 입력해주세요.');
-                        $('.alert_x').click(function () {
-                            $(window).attr('location', '/start');
-                        })
+                        // $('.alert_x').click(function () {
+                        //     $(window).attr('location', '/start');
+                        // })
+                        $('#password').val('');
                     }
                 },
                 error: function (error) {
