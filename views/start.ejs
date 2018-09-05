@@ -389,7 +389,14 @@
                             $('.alert_o').css('display','block');
                             $('.alert_content').html('회원가입이 완료되었습니다.');
                             $('#signupuser').fadeOut(300);
-                            $('#loginuser').fadeIn(300)
+                            $('#loginuser').fadeIn(300);
+
+                            $('#userid').val('');
+                            $('#username').val('');
+                            $('#userpwd').val('');
+                            $('#userpwdcheck').val('');
+                            $('#e_mail').val('');
+                            $('.check_div').css('display', 'none');
                         }
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
