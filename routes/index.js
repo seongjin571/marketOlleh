@@ -53,13 +53,14 @@ router.get('/coupon', function(req, res){
   // 유저 아이디 세션, 변수값 저장
   var user_id = req.user.id;
 
-  // SQL 
-  // var find_coupon_customer = 'select * from `coupon_customer` where `user_id` = ?'; 
+  // SQL
+  // var find_coupon_customer = 'select * from `coupon_customer` where `user_id` = ?';
   var find_stamp = 'select * from `stamp` where `user_id` =?';
   var mycoupon = 'SELECT coupon_customer.id, coupon_customer.user_id, coupon_customer.sijang_name, coupon_customer.market_name, coupon_customer.coupon_password, coupon_customer.coupon_reward, coupon_customer.coupon_standard, coupon_manager.coupon_count FROM coupon_customer INNER JOIN coupon_manager ON coupon_customer.sijang_name=coupon_manager.sijang_name and coupon_customer.market_name=coupon_manager.market_name WHERE coupon_customer.user_id=?;';
   var couponlist = 'select * from `coupon_manager`';
-  
+  var coupon_img = 'select * from market';
   //resullt1은 발급쿠폰 결과, result2는 발급받은 스탬프
+
   conn.query(couponlist,function(err,cou_result,fields){
     if(err){
       console.log('시작부터에러');
@@ -75,23 +76,31 @@ router.get('/coupon', function(req, res){
               console.log('error2');
             }
             else if(! result2.length){
-              console.log('발급받은 스탬프 없음');
-              res.render('coupon', {
-                title : '발급받은쿠폰없고 스탬프 없고',
-                result1 : undefined,
-                result2 : undefined,
-                cou_result : undefined,
-                user_id : user_id
+              conn.query(coupon_img,function(errrr,img_result,fields){
+                console.log('발급받은 스탬프 없음');
+                console.log(img_result[0]);
+                res.render('coupon', {
+                  title : '발급받은쿠폰없고 스탬프 없고',
+                  result1 : undefined,
+                  result2 : undefined,
+                  cou_result : undefined,
+                  user_id : user_id,
+                  img_result : img_result
+                })
               })
             }else{
               console.log('발급받은 스탬프 있음1');
               console.log('cou_result');
-              res.render('coupon', {
-                title : '발급받은쿠폰없고 스탬프 있고',
-                result1 : undefined,
-                result2 : result2,
-                cou_result : undefined,
-                user_id : user_id
+              conn.query(coupon_img,function(errrr,img_result,fields){
+                console.log(img_result[0]);
+                res.render('coupon', {
+                  title : '발급받은쿠폰없고 스탬프 있고',
+                  result1 : undefined,
+                  result2 : result2,
+                  cou_result : undefined,
+                  user_id : user_id,
+                  img_result : img_result
+                })
               })
             }
           })
@@ -100,22 +109,30 @@ router.get('/coupon', function(req, res){
           console.log('발급받은쿠폰이있는경우');
           conn.query(find_stamp,[user_id],function(error,result2,fields){
             if(! result2.length){
-              console.log('발급받은 스탬프 없음');
-              res.render('coupon',{
-                title : '쿠폰있고 스탬프 없고',
-                result1 : result1,
-                result2 : undefined,
-                cou_result : undefined,
-                user_id : user_id
+              conn.query(coupon_img,function(errrr,img_result,fields){
+                console.log('발급받은 스탬프 없음');
+                console.log(img_result[0]);
+                res.render('coupon',{
+                  title : '쿠폰있고 스탬프 없고',
+                  result1 : result1,
+                  result2 : undefined,
+                  cou_result : undefined,
+                  user_id : user_id,
+                  img_result : img_result
+                })
               })
             }else{
               console.log('발급받은 스탬프 있음');
-              res.render('coupon',{
-                title : '쿠폰있고 스탬프 있고',
-                result1 : result1,
-                result2 : result2,
-                cou_result : undefined,
-                user_id : user_id
+              conn.query(coupon_img,function(errrr,img_result,fields){
+                console.log(img_result[0]);
+                res.render('coupon',{
+                  title : '쿠폰있고 스탬프 있고',
+                  result1 : result1,
+                  result2 : result2,
+                  cou_result : undefined,
+                  user_id : user_id,
+                  img_result : img_result
+                })
               })
             }
           })
@@ -133,48 +150,66 @@ router.get('/coupon', function(req, res){
               console.log('error2');
             }
             else if(! result2.length){
-              console.log('발급받은 스탬프 없음');
-              res.render('coupon', {
-                title : '발급받은쿠폰없고 스탬프 없고',
-                result1 : undefined,
-                result2 : undefined,
-                cou_result : cou_result,
-                user_id : user_id
+              conn.query(coupon_img,function(errrr,img_result,fields){
+                console.log('발급받은 스탬프 없음');
+                console.log(img_result[0]);
+                res.render('coupon', {
+                  title : '발급받은쿠폰없고 스탬프 없고',
+                  result1 : undefined,
+                  result2 : undefined,
+                  cou_result : cou_result,
+                  user_id : user_id,
+                  img_result : img_result
+                })
               })
             }else{
+              //이부분
               console.log('발급받은 스탬프 있음');
-              console.log(cou_result);
-              res.render('coupon', {
-                title : '발급받은쿠폰없고 스탬프 있고',
-                result1 : undefined,
-                result2 : result2,
-                cou_result : cou_result,
-                user_id : user_id
+              conn.query(coupon_img,function(errrr,img_result,fields){
+                console.log(img_result[0]);
+                res.render('coupon', {
+                  title : '발급받은쿠폰없고 스탬프 있고',
+                  result1 : undefined,
+                  result2 : result2,
+                  cou_result : cou_result,
+                  user_id : user_id,
+                  img_result : img_result
+                })
               })
             }
           })
         }
         else{
+          //이부분
           console.log('발급받은쿠폰이있는경우');
           conn.query(find_stamp,[user_id],function(error,result2,fields){
             if(! result2.length){
               console.log('발급받은 스탬프 없음');
-              res.render('coupon',{
-                title : '쿠폰있고 스탬프 없고',
-                result1 : result1,
-                result2 : undefined,
-                cou_result : cou_result,
-                user_id : user_id
+              conn.query(coupon_img,function(errrr,img_result,fields){
+                console.log(img_result[0]);
+                res.render('coupon',{
+                  title : '쿠폰있고 스탬프 없고',
+                  result1 : result1,
+                  result2 : undefined,
+                  cou_result : cou_result,
+                  user_id : user_id,
+                  img_result : img_result
+                })
               })
             }else{
+              //이부분
               console.log('발급받은 스탬프 있음');
               console.log('cou_result');
-              res.render('coupon',{
-                title : '쿠폰있고 스탬프 있고',
-                result1 : result1,
-                result2 : result2,
-                cou_result : cou_result,
-                user_id : user_id
+              conn.query(coupon_img,function(errrr,img_result,fields){
+                console.log(img_result[0].imgurl);
+                res.render('coupon',{
+                  title : '쿠폰있고 스탬프 있고',
+                  result1 : result1,
+                  result2 : result2,
+                  cou_result : cou_result,
+                  user_id : user_id,
+                  img_result : img_result
+                })
               })
             }
           })
@@ -436,7 +471,7 @@ router.post('/searching/gooname', function(req, res){
               rows_first[temp + i] = rows_second[i];
             } // inner for
           } // inner if
-          console.log(rows_first);
+          //console.log(rows_first);
           return res.send({ rows: rows_first });
         }); // inner conn.query
       }); // conn.query
@@ -453,18 +488,18 @@ router.post('/searching/marketList', function(req, res){
   // 상점 이름
   var market_name = req.body.market_name;
 
-
-  if(name){ // 해당하는 같은 시장, 상점 모두 가져오기
-    var sql = "SELECT * FROM `manager` WHERE `sijang_name` LIKE '"+name+"' ORDER BY `like_count` DESC";
-    conn.query(sql, function(error, rows, fileds) {
-      return res.send({ rows: rows });
-    });// conn.query
-  } else if(market_name) { // 해당하는 시장은 유일
-    var sql = "SELECT * FROM `manager` WHERE `market_name` LIKE '"+market_name+"'";
-    conn.query(sql, function(error, rows, fileds) {
-      return res.send({ rows: rows });
-    });
-  }
+  // 로그인한 상점 == 클릭한 상점 --> mystore
+    if(name){ // 해당하는 같은 시장, 상점 모두 가져오기
+      var sql = "SELECT * FROM `manager` WHERE `sijang_name` LIKE '"+name+"' ORDER BY `like_count` DESC";
+      conn.query(sql, function(error, rows, fileds) {
+        return res.send({ rows: rows });
+      });// conn.query
+    } else if(market_name) { // 해당하는 시장은 유일
+      var sql = "SELECT * FROM `manager` WHERE `market_name` LIKE '"+market_name+"'";
+      conn.query(sql, function(error, rows, fileds) {
+        return res.send({ rows: rows });
+      });
+    } // if ~ else
 
 }); // post /searching/marketList
 

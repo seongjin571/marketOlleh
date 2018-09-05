@@ -167,11 +167,16 @@
 
               $.post('/login', data, result => {
                 if(result['result'] == 'success') {
-                  alert('login success');
-                  $(window).attr('location', '/main');
+                    $('.alert_o').css('display','block');
+                    $('.alert_content').html('로그인 완료')
+                    setTimeout(function () {
+                        $(window).attr('location', '/main');
+                     }, 1000);
                 }
                 else {
-                  alert('login failed');
+                    $('.alert_x').css('display','block');
+                    $('.alert_content').html('비밀번호와 아이디를 확인하세요.')
+
                 }
               });
             });
@@ -261,15 +266,16 @@
                 data: data,
                 success: function (result) {
                     if (result['result'] == 'success') {
-                        $('.alert_o').css('display','block');
+                        $('.alert_o').css('display', 'block');
                         $('.alert_content').html('로그인 완료')
-                        $('.alert_o').click(function(){
-                        $(window).attr('location', '/mainManager');
-                    })
+                        setTimeout(function () {
+                            $(window).attr('location', '/mainManager');
+                        }, 1000);
+
                     } else {
-                        $('.alert_x').css('display','block');
+                        $('.alert_x').css('display', 'block');
                         $('.alert_content').html('아이디 혹은 비밀번호를 다시 입력해주세요.');
-                        $('.alert_x').click(function(){
+                        $('.alert_x').click(function () {
                             $(window).attr('location', '/start');
                         })
                     }
@@ -382,13 +388,14 @@
                     success: function (result) {
                         if (result['result'] == 'success') {
                             $('.alert_o').css('display','block');
-                            $('.alert_content').html('로그인 완료')
-                            //  $(window).attr('location', '/start');
+                            $('.alert_content').html('회원가입이 완료되었습니다.');
+                            $('#signupuser').fadeOut(300);
+                            $('#loginuser').fadeIn(300)
                         }
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
                             $('.alert_content').html('이미 존재하는 아이디입니다.');
-                            $('#userid').val('')
+                            $('#userid').val('');
                         }
                     },
                     error: function (error) {
@@ -751,17 +758,37 @@
                     success: function (result) {
                         if (result['result'] == 'success') {
                             $('.alert_o').css('display','block');
-                            $('.alert_content').html('회원가입이 완료되었습니다!');
-                            $('.alert_o').click(function(){
-                                $(localStorage).setItem('introFlag', 2);
-                                $(location).reload();
-                            })
+                            $('.alert_content').html('회원가입이 완료되었습니다.');
+                            $('#signupManager').fadeOut(300)
+                            $('#loginManager').fadeIn(300)
+                            // $('.alert_o').click(function(){
+                            //     $(localStorage).setItem('introFlag', 2);
+                            //     $(location).reload();
+                            // })
+                            $('#manager_id_jh').val('');
+                            $('#password_jh').val('');
+                            $('#password_jh_check').val('');
+                            $('#market_name').val('');
+                            $('#market_location').val('');
+                            $('#manager_name').val('');
+                            $('#manager_phone').val('');
+                            $('#stamp_reward').val('');
+                            $('#stamp_password').val('');
+                            $('#market_promotion').val('');
+                            $('#market_introduce').val('');
+                            $('#sijang_name').text('시장선택');
+                            $('.stamp_standard option:eq(0)').attr('selected', 'selected');
+                            $('.manager_check_div').css('visibility', 'hidden');
+                            $('#nameing').text('');
+                            $('#password_star').text('');
+                            $('.tenControls_sj').css('display', 'none');
+                            $('.fiveControls_sj').css('display', 'none');
                         }
 
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
                             $('.alert_content').html('이미 존재하는 아이디입니다.');
-                            $('#manager_id').val('')
+                            $('#manager_id_jh').val('');
                         }
                     },
                     error: function (error) {
@@ -1075,14 +1102,16 @@
         $('#loginManager').fadeOut(300)
         $('#signupManager').fadeIn(300)
     })
-    $('#userfinish').click(function () {
-        $('#signupuser').fadeOut(300)
-        $('#loginuser').fadeIn(300)
-    })
-    $('#managerfinish').click(function () {
-        $('#signupManager').fadeOut(300)
-        $('#loginManager').fadeIn(300)
-    })
+
+    // $('#userfinish').click(function () {
+    //     $('#signupuser').fadeOut(300)
+    //     $('#loginuser').fadeIn(300)
+    // })
+    // $('#managerfinish').click(function () {
+    //     $('#signupManager').fadeOut(300)
+    //     $('#loginManager').fadeIn(300)
+    // })
+
     // 뒤로가기 고객로그인부분
     $('#back_loginuser').click(function () {
         $('#loginuser').fadeOut(300)
@@ -1130,7 +1159,6 @@
             $("#loginButton_user").trigger("click");
         } // if
     }); // enter keyup event
-
 
 </script>
 

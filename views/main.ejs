@@ -267,12 +267,12 @@
                       <div>
                           <img src="/files/<%= market[i].manager_image %>" width="100%" height="125px">
                       </div>
-                      <div class="good_market_name">
-                          <%= market[i].sijang_name %>
-                      </div>
                       <div class="good_store_name">
                           <%= market[i].market_name %>
                       </div>
+                      <div class="good_market_name">
+                          <%= market[i].sijang_name %>
+                      </div>                      
                       <div class="good_count">
                           <img src="/images/good.png" width="17px" height="17px" style="margin-right: 3px;">
                           <p><%= market[i].like_count %></p>
@@ -293,12 +293,12 @@
                       <div>
                           <img src="/files/<%= market[i+1].manager_image %>" width="100%" height="125px">
                       </div>
-                      <div class="good_market_name">
-                          <%= market[i+1].sijang_name %>
-                      </div>
                       <div class="good_store_name">
                           <%= market[i+1].market_name %>
                       </div>
+                      <div class="good_market_name">
+                          <%= market[i+1].sijang_name %>
+                      </div>                      
                       <div class="good_count">
                           <img src="/images/good.png" width="17px" height="17px" style="margin-right:3px;">
                           <p><%= market[i+1].like_count %></p>
@@ -621,8 +621,8 @@
                 type: 'POST',
                 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
                 data: {
-                    "name": this.childNodes[3].innerText,
-                    "market_name": this.childNodes[5].innerText 
+                    "name": this.childNodes[5].innerText,
+                    "market_name": this.childNodes[3].innerText 
                 },
                 success: function (result) {
                     if (result.rows.length > 0) {
