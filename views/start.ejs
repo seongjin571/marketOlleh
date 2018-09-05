@@ -29,23 +29,23 @@
     <div class="alert_x" style="display:none">
         <div class="alert_x_content">
           <div class="alert_image">
-            <img src="/images/alert_x.png" width="70px" height="70px" > 
-          </div> 
+            <img src="/images/alert_x.png" width="70px" height="70px" >
+          </div>
           <div class="alert_content">
           </div>
         </div>
       </div>
-    
+
       <div class="alert_o" style="display:none">
           <div class="alert_o_content">
             <div class="alert_image">
-              <img src="/images/alert_o.png" width="70px" height="70px" > 
-            </div> 
+              <img src="/images/alert_o.png" width="70px" height="70px" >
+            </div>
             <div class="alert_content">
             </div>
           </div>
         </div>
-    
+
           <div class="alert_select"  style="display:none">
               <div class="alert_o_content">
                 <div class="alert_content_select">
@@ -58,8 +58,8 @@
                   </div>
               </div>
             </div>
-    
-    
+
+
     <script>
         window.onload = function () {
             if (localStorage.getItem('introFlag') == 1) {
@@ -127,9 +127,9 @@
         <div id="top_logo">
             <img id="loginUser_logo_with_text2" src="/images/logo_with_text.png">
         </div>
-        <form class="formuser" action='/login' method='POST'>
+        <form class="formuser" id='formuser' action='/login' method='POST'>
             <div class="login_button_user_1">
-                <input class="inputuser" type='text' name='userid' placeholder=' 아이디' />
+                <input id='user_id' class="inputuser" type='text' name='userid' placeholder=' 아이디' />
             </div>
 
             <div class="login_button_user_2">
@@ -143,7 +143,7 @@
                 <button type="button" id="loginUser_sign_up">회원가입</button>
             </div>
             <div class="login_button_user3">
-                <button type='submit' value='' class="loginUser_insert">로그인</button>
+                <button type='submit' id="loginButton_user" class="loginUser_insert">로그인</button>
             </div>
         </form>
 
@@ -155,6 +155,25 @@
             $('#password_find1').click(function (e) {
                 e.preventDefault();
                 $(window).attr('location', '/findpassword_user');
+            });
+
+            $('#formuser').submit(e => {
+              e.preventDefault();
+
+              var data = {
+                'userid': $('#user_id').val(),
+                'userpwd': $('#userpassword').val()
+              };
+
+              $.post('/login', data, result => {
+                if(result['result'] == 'success') {
+                  alert('login success');
+                  $(window).attr('location', '/main');
+                }
+                else {
+                  alert('login failed');
+                }
+              });
             });
         </script>
 
@@ -209,7 +228,7 @@
         </div>
         <div id="kakao_logo2">
             <div class="login_button_user5">
-                <button type='submit' id="loginButton" value='' class="loginUser_insert">로그인</button>
+                <button type='submit' id="loginButton_manager" value='' class="loginUser_insert">로그인</button>
             </div>
         </div>
     </div>
@@ -223,7 +242,7 @@
                 return false;
             }
         }
-        $('#loginButton').click(function (e) {
+        $('#loginButton_manager').click(function (e) {
             if (doubleSubmitCheck()) return;
             e.preventDefault();
             var manager_id = $('#manager_id').val();
@@ -256,7 +275,7 @@
                     }
                 },
                 error: function (error) {
-                    console.log('erer');             
+                    console.log('erer');
                //     $('.alert_x').css('display','block'); //여기랑
                     $('.alert_content').html('아이디 혹은 비밀번호를 다시 입력해주세요.');
                  //   $('.alert_x').click(function(){   // 여기 추가시켰는데 맞나요?
@@ -264,12 +283,6 @@
                // })
                 }
             });
-        });
-        $("#password").keyup(function (event) {
-            // Enter 처리
-            if (event.keyCode == '13') {
-                $("#loginButton").trigger("click");
-            };
         });
         $('#idfind_manager').click(function (e) {
             e.preventDefault();
@@ -370,7 +383,7 @@
                         if (result['result'] == 'success') {
                             $('.alert_o').css('display','block');
                             $('.alert_content').html('로그인 완료')
-                            //  $(window).attr('location', '/start'); 
+                            //  $(window).attr('location', '/start');
                         }
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
@@ -843,7 +856,7 @@
                 else {
                     $('.alert_x').css('display','block');
                     $('.alert_content').html('비밀번호가 다릅니다.');
-                    
+
                     $(this).val('');
                     $('#userpwdcheck').val('');
                     $('.check_div').eq(2).css('visibility', 'hidden');
@@ -1102,6 +1115,23 @@
       $('.alert_select_cancel').click(function(){
         $('.alert_select').css('display','none')
       })
+
+    // (hw edit); enter event handleling!
+    $("#password").keyup(function (event) {
+        // Enter 처리
+        if (event.keyCode == '13') {
+            $("#loginButton_manager").trigger("click");
+        } // if
+    }); // enter keyup event
+
+    $("#userpassword").keyup(function (event) {
+        // Enter 처리
+        if (event.keyCode == '13') {
+            $("#loginButton_user").trigger("click");
+        } // if
+    }); // enter keyup event
+
+
 </script>
 
 </html>
