@@ -385,7 +385,12 @@
     var next_index = 0;
     var index=-1;
     var count=0;
+    // var isRun = false;
     $('.market').click(function () {
+    //   if(isRun == true) {
+    //     return;
+    // }
+    // isRun = true;
         next_index = $(".market").index( this )+1;
         if(next_index ==index){
             if(count==1){
@@ -416,6 +421,7 @@
           datatype: "json",
           success : function(result) {
             if(result['result']=='success'){
+              // isRun  = false;
               var coupon_name = result['results'];
               console.log(coupon_name);
               if(coupon_name.length){
@@ -446,6 +452,7 @@
               $('.gray_button').css('display', 'block')
               $('.blue_button').css('display', 'none')
               }
+              
             }
           }
         })
