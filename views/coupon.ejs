@@ -83,7 +83,11 @@
             <% for(var x = 0; x <img_result.length; x++) {%>
               <% if(result2[j].sijang_name == img_result[x].name ) {%>
             <div class="market" id="market_name_id"name="sijang_name">
+              <% if(img_result[x].imgurl != "") {%>
                 <div class="market_image" style="background: url('<%= img_result[x].imgurl %>');background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
+                <% } else { %>
+                  <div class="market_image" style="background: url('/images/manager_sample (1).jpg');background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
+                  <% } %>
                 <p id="click_coupon" class="click_coupon"value="<%= result2[j].sijang_name %>"><%= result2[j].sijang_name %></p>
                 <img class="gray_button"src="/images/down-arrow.png" width="20px" height="20px">
                 <img class="blue_button"src="/images/down-arrow-blue.png" width="20px" height="20px" style="display: none">
@@ -98,7 +102,7 @@
          <% } else { %>
               <!-- <p>비어있음</p> -->
           <% } %>
-  
+
 
 
         <div class="content_title">
@@ -387,7 +391,7 @@
       if (chk_send == 0){
        chk_send = 1;
       //  return true;
-       
+
         next_index = $(".market").index( this )+1;
         if(next_index ==index){
             if(count==1){
@@ -641,8 +645,8 @@
     //           error: function (e) {
     //               console.log('process error : ', e);
     //           }
-    //       }); 
-    //     } 
+    //       });
+    //     }
     //  }
 </script>
 
