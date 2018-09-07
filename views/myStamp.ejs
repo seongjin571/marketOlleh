@@ -974,6 +974,15 @@
                               $('.alert_select_cancel').click(function () {
                                 $('.alert_select').css('display', 'none')
                               })
+                              var allHeight=document.body.clientHeight ;
+                              var navHeight=allHeight*0.08;
+                              var topHeight=148;
+                              var passwordHeight=allHeight-navHeight-topHeight;
+                              var numberHeight=(passwordHeight-105)/4;
+                              $('.password_number_div_sj').css('height',passwordHeight+'px')
+                              $('.password_check').css('height','75px').css('padding-bottom','30px')
+                              $('.password_line_sj').css('height',numberHeight+'px')
+                              $('.password_line_sj div').css('height',numberHeight+'px')
 
 
                       </script>
