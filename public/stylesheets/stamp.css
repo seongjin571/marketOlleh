@@ -438,7 +438,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             background: url('/images/backSample5.png');
             background-repeat: no-repeat;
             background-size: 100% 100%;
-            margin-top: 15px;
+            margin-top: 20px;
             border-style: none;
             color: white;
             font-size:17px;
@@ -498,7 +498,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             font-weight: normal;
         }
 
-        .password_number_sj:hover{
+        .password_number_sj:active{
             background-color: rgb(212, 209, 209);
         }
 
@@ -608,16 +608,17 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             background-color:#f6f8f9;
         }
         #star_upload{
-            width: 95%;
-            margin-left: 4%;
+            width: 100%;
             display: inline-flex;
             height: 40px;
-            margin-top: 20px;
-            margin-bottom: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            text-align: center;
         }
         #intro_star{
-            width: 95%;
-            margin-left: 4%;
+            width: 100%;
+            text-align: center;
+            /* margin-left: 4%; */
             font-size: 14px;
             color: #9c9c9c;
             height: 20px;
