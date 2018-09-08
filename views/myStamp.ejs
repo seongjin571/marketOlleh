@@ -424,33 +424,33 @@
             </div>
               <div class="swiper-slide" id="swiper3<%= myStamps[i].id %>">
               <div class='review_write_sj' id="review_write_sj<%= myStamps[i].id %>">
-                <div id="star_upload">
-                  <div class="star<%= myStamps[i].id %>">
-                    <img class="gray<%= myStamps[i].id %>" id="gray1<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
-                    <img class="yellow<%= myStamps[i].id %>" id="yellow1<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
-                  </div>
-                  <div class="star<%= myStamps[i].id %>">
-                      <img class="gray<%= myStamps[i].id %>" id="gray2<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
-                    <img class="yellow<%= myStamps[i].id %>" id="yellow2<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
-                  </div>
-                  <div class="star<%= myStamps[i].id %>">
-                      <img class="gray<%= myStamps[i].id %>" id="gray3<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
-                      <img class="yellow<%= myStamps[i].id %>" id="yellow3<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
-                  </div>
-                  <div class="star<%= myStamps[i].id %>">
-                      <img class="gray<%= myStamps[i].id %>" id="gray4<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
-                      <img class="yellow<%= myStamps[i].id %>" id="yellow4<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
-                  </div>
-                  <div class="star<%= myStamps[i].id %>">
-                      <img class="gray<%= myStamps[i].id %>" id="gray5<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
-                      <img class="yellow<%= myStamps[i].id %>" id="yellow5<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
-                  </div>
-                </div>
-                <p id="intro_star">만족도만큼 별을 클릭해 주세요</p>
-                <div class="line"></div>
+              
                 <div id="write_div">리뷰 작성</div>
 
                 <textarea class="review_textarea <%= myStamps[i].id %>" id='review_textarea<%= myStamps[i].id %>' rows="6"></textarea>
+                <div id="star_upload">
+                    <div class="star<%= myStamps[i].id %>">
+                      <img class="gray<%= myStamps[i].id %>" id="gray1<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
+                      <img class="yellow<%= myStamps[i].id %>" id="yellow1<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
+                    </div>
+                    <div class="star<%= myStamps[i].id %>">
+                        <img class="gray<%= myStamps[i].id %>" id="gray2<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
+                      <img class="yellow<%= myStamps[i].id %>" id="yellow2<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
+                    </div>
+                    <div class="star<%= myStamps[i].id %>">
+                        <img class="gray<%= myStamps[i].id %>" id="gray3<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
+                        <img class="yellow<%= myStamps[i].id %>" id="yellow3<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
+                    </div>
+                    <div class="star<%= myStamps[i].id %>">
+                        <img class="gray<%= myStamps[i].id %>" id="gray4<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
+                        <img class="yellow<%= myStamps[i].id %>" id="yellow4<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
+                    </div>
+                    <div class="star<%= myStamps[i].id %>">
+                        <img class="gray<%= myStamps[i].id %>" id="gray5<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
+                        <img class="yellow<%= myStamps[i].id %>" id="yellow5<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
+                    </div>
+                  </div>
+                  <p id="intro_star">만족도만큼 별을 클릭해 주세요</p>
                 <!-- <div class='write_button_div_sj' id="write_button_div_sj<%= myStamps[i].id %>"> -->
                   <button class="write_ok_button <%= myStamps[i].id %>" id='write_ok_button<%= myStamps[i].id %>'>등록</button>
                 <!-- </div> -->
@@ -975,14 +975,18 @@
                                 $('.alert_select').css('display', 'none')
                               })
                               var allHeight=document.body.clientHeight ;
+                              var allWidth=document.body.clientWidth ;
                               var navHeight=allHeight*0.08;
                               var topHeight=148;
                               var passwordHeight=allHeight-navHeight-topHeight;
                               var numberHeight=(passwordHeight-105)/4;
+                              var starWidth=(allWidth-200)/2;
+                              $('#star_upload').css('margin-left',starWidth+'px')
                               $('.password_number_div_sj').css('height',passwordHeight+'px')
                               $('.password_check').css('height','75px').css('padding-bottom','30px')
                               $('.password_line_sj').css('height',numberHeight+'px')
                               $('.password_line_sj div').css('height',numberHeight+'px')
+                             
 
 
                       </script>
