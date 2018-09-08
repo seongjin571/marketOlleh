@@ -5,12 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>코르도바 GPS TEST</title>
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <script srd='/cordova/cordova_plugins.js'></script>
 </head>
-<body>
+<body onload="onLoad()">
+
+    <script type="text/javascript">
+
+    // ( hw edit; back button ) @overriding
+    function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+
+    function onDeviceReady() {
+        document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+
+    function onBackKeyDown() {
+        navigator.notification.confirm('앱을 종료하시겠습니까?', onBackKeyDownMsg, '스마트오더', '취소, 종료');
+    }
+
+    function onBackKeyDownMsg(button) {
+        if(button == 2) {
+            navigator.app.exitApp();
+        }
+    }
+    </script>
+
+
 	<div id="map" style="width:90%;height:250px;margin-left: 5%; "></div>
 	<input type="button" value="Get GPS" id="GetButton" />
     <!-- <script src='/cordova/cordova.js'></script> -->
-    <script srd='/cordova/cordova_plugins.js'></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
     <script type="text/javascript">
     

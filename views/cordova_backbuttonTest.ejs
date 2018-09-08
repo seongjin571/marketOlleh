@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>PhoneGap powered App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src='/cordova/cordova.js'></script>
+        <script srd='/cordova/cordova_plugins.js'></script>
+        <script type="text/javascript" charset="utf-8">
+            document.addEventListener("deviceready", onDeviceReady); 
+                function onDeviceReady() {
+                    alert ('123');
+                    document.addEventListener("backbutton", onBackKeyDown);
+            }
+
+            function onPrompt(results) {
+                alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+            }
+            
+            function onBackKeyDown() {
+                navigator.notification.prompt(
+                    'Please enter your name',  // message
+                    onPrompt,                  // callback to invoke
+                    'Registration',            // title
+                    ['Ok','Exit'],             // buttonLabels
+                    'Jane Doe'                 // defaultText
+                );
+            }
+
+
+            // function onBackKeyDown() {
+            //     navigator.notification.confirm('앱을 종료하시겠습니까?', onBackKeyDownMsg, 'BackButtonTest', 'Cancel, Exit');
+            // }
+
+            // function onBackKeyDownMsg(button) {
+            //     if(button == 2) {
+            //         navigator.app.exitApp();
+            //     }
+            // }
+        </script>
+
+    </head>
+    <body onload="onDeviceReady()">
+        <div data-role="page">
+
+            <div data-role="header">
+                <h1>title</h1>
+            </div><!-- /header -->
+
+            <div data-role="content">   
+                <h2>Begin by inserting your credentials.</h2>
+                <article>
+                    <button style="height: 20%;">TEST</button>
+                </article>
+            </div><!-- /content -->
+
+        </div><!-- /page -->
+
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function () {
+
+            });
+        </script>
+    </body>
+</html>
