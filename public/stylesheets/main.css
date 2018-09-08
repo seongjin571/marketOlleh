@@ -297,6 +297,9 @@ label{
         border-color: #c5c6c7;
         border-width: 0.8px;
 }
+.good_count_market img{
+    border-style: none !important;
+}
 
 /*  */
 #hot_store_list_market{
