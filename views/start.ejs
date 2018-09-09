@@ -841,6 +841,7 @@
             $('.go_slide').eq(this_index).css('color', '#63dded');
             swiper.slideTo(this_index, 500, false);
         });
+
         swiper.on('slideChangeTransitionStart', function () {
             var active = swiper.activeIndex;
             $('.go_slide').css('color', 'black');

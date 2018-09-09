@@ -12,6 +12,8 @@ function TableSetting() {
 }
 
 function turningBack() {
+	$('.go_slide').css('color','black');
+	$('.go_slide').eq(0).css('color','#63dded');
 	swiper2.destroy();
 	swiper2 = new Swiper('.s2', {
 		initialSlide: 0,
@@ -22,6 +24,11 @@ function turningBack() {
 			el: '.swiper-scrollbar',
 			hide: true,
 		},
+	});
+	swiper2.on('slideChangeTransitionStart', function () {
+		var active=swiper2.activeIndex;
+		$('.go_slide').css('color','black');
+		$('.go_slide').eq(active).css('color','#63dded');
 	});
 
 	// 스크롤 조절
