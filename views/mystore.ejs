@@ -86,9 +86,9 @@
 
 
         <div id="bottom_infor">
-            <p id="go_store_detail_sj">상점정보</p>
-            <p id="go_store_review_sj">리뷰</p>
-            <p id="go_store_review_sj">리뷰작성</p>
+            <p class="go_slide">상점정보</p>
+            <p class="go_slide">리뷰</p>
+            <p class="go_slide">리뷰작성</p>
         </div>
     </div>
 
@@ -274,6 +274,19 @@
                 el: '.swiper-scrollbar',
                 hide: true,
             },
+        });
+        $('.go_slide').click(function (e) {
+                var this_index = $(this).index();
+                e.preventDefault();
+                $('.go_slide').css('color','black');
+                $('.go_slide').eq(this_index).css('color','#63dded');
+                swiper.slideTo(this_index, 500, false);
+            });
+            
+        swiper.on('slideChangeTransitionStart', function () {
+            var active=swiper.activeIndex;
+            $('.go_slide').css('color','black');
+            $('.go_slide').eq(active).css('color','#63dded');
         });
 
         $('#home').click(function () {
