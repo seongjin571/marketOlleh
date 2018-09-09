@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -157,15 +156,12 @@
                 e.preventDefault();
                 $(window).attr('location', '/findpassword_user');
             });
-
             $('#formuser').submit(e => {
               e.preventDefault();
-
               var data = {
                 'userid': $('#user_id').val(),
                 'userpwd': $('#userpassword').val()
               };
-
               $.post('/login', data, result => {
                 if(result['result'] == 'success') {
                     $('.alert_o').css('display','block');
@@ -276,7 +272,6 @@
                         setTimeout(function () {
                             $(window).attr('location', '/mainManager');
                         }, 1000);
-
                     } else {
                         $('.alert_x').css('display', 'block');
                         $('.alert_content').html('비밀번호와 아이디를 확인하세요.');
@@ -401,7 +396,6 @@
                             $('.alert_content').html('회원가입이 완료되었습니다.');
                             $('#signupuser').fadeOut(300);
                             $('#loginuser').fadeIn(300);
-
                             $('#userid').val('');
                             $('#username').val('');
                             $('#userpwd').val('');
@@ -801,7 +795,6 @@
                             $('.tenControls_sj').css('display', 'none');
                             $('.fiveControls_sj').css('display', 'none');
                         }
-
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
                             $('.alert_content').html('이미 존재하는 아이디입니다.');
@@ -913,7 +906,6 @@
                 else {
                     $('.alert_x').css('display','block');
                     $('.alert_content').html('비밀번호가 다릅니다.');
-
                     $(this).val('');
                     $('#userpwdcheck').val('');
                     $('.check_div').eq(2).css('visibility', 'hidden');
@@ -1132,7 +1124,6 @@
         $('#loginManager').fadeOut(300)
         $('#signupManager').fadeIn(300)
     })
-
     // $('#userfinish').click(function () {
     //     $('#signupuser').fadeOut(300)
     //     $('#loginuser').fadeIn(300)
@@ -1141,7 +1132,6 @@
     //     $('#signupManager').fadeOut(300)
     //     $('#loginManager').fadeIn(300)
     // })
-
     // 뒤로가기 고객로그인부분
     $('#back_loginuser').click(function () {
         $('#loginuser').fadeOut(300)
@@ -1162,8 +1152,6 @@
         $('#signupManager').fadeOut(300)
         $('#loginManager').fadeIn(300)
     })
-
-
     // 클릭 이벤트
     $('.alert_x').click(function(){
         $(this).css('display','none')
@@ -1174,7 +1162,6 @@
       $('.alert_select_cancel').click(function(){
         $('.alert_select').css('display','none')
       })
-
     // (hw edit); enter event handleling!
     $("#password").keyup(function (event) {
         // Enter 처리
@@ -1182,14 +1169,12 @@
             $("#loginButton_manager").trigger("click");
         } // if
     }); // enter keyup event
-
     $("#userpassword").keyup(function (event) {
         // Enter 처리
         if (event.keyCode == '13') {
             $("#loginButton_user").trigger("click");
         } // if
     }); // enter keyup event
-
 </script>
 </html>
 
