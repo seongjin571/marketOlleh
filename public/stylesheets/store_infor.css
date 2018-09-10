@@ -69,13 +69,10 @@
     color: #9c9c9c;
     padding-top: 3px;
 }
-.top_image{
-    padding-top:23px;
-}
 /* ─────────────────────────────────────────────────── */
 #menu_infor{
     width: 100%;
-    height: 135px;
+    height: 110px;
     position: fixed;
     top:38px;
     background-color: white;
@@ -84,14 +81,14 @@
 #top_infor{
     width: 100%;
     display: inline-flex;
-    height: 85px;
+    height: 60px;
 
 }
 #store_name_sj {
     width: 80%;
     font-size: 20px;
-    height: 55px;
-    line-height: 75px;
+    height: 35px;
+    line-height: 35px;
     margin-left: 10%;
     font-weight: bold;
 
@@ -99,7 +96,7 @@
 #market_name_sj {
     font-size: 15px;
     height: 25px;
-    line-height: 5px;
+    line-height: 10px;
     color: gray;
     font-weight: lighter;
     margin-left: 10%;
@@ -111,7 +108,7 @@
 }
 #sns_sj {
     width: 45%;
-    height: 85px;
+    height: 60px;
     display: inline-flex;
     text-align: center;
     background-color: white;
@@ -322,7 +319,7 @@ h2{
 }
 .s2 {
     position: absolute !important;
-    top: 173px !important;
+    top: 149px !important;
     width: 100% !important;
     /* height: 100%; */
     
@@ -334,7 +331,7 @@ h2{
     opacity: 1 !important;
     transition-duration: 0 !important;
     position: fixed !important;
-    top: 173px !important;
+    top: 149px !important;
 }
 .store_image{
     width: 170px;
