@@ -7,7 +7,7 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src='/cordova/cordova.js'></script>
-    <script srd='/cordova/cordova_plugins.js'></script>
+    <script src='/cordova/cordova_plugins.js'></script>
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
@@ -23,51 +23,21 @@
 </head>
 
 <body>
-        <div class="alert_x" style="display:none">
-                <div class="alert_x_content">
-                    <div class="alert_image">
-                        <img src="/images/alert_x.png" width="70px" height="70px">
-                    </div>
-                    <div class="alert_content">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="alert_o" style="display:none">
-                <div class="alert_o_content">
-                    <div class="alert_image">
-                        <img src="/images/alert_o.png" width="70px" height="70px">
-                    </div>
-                    <div class="alert_content">
-                    </div>
-                </div>
-            </div>
-            <div class="alert_select" style="display:none">
-                <div class="alert_o_content">
-                    <div class="alert_content_select">
-                    </div>
-                    <div class="alert_select_cancel">
-                        취소
-                    </div>
-                    <div class="alert_select_ok">
-                        확인
-                    </div>
-                </div>
-            </div>
+
 
 
     <div id="nav_sj">
         <div id="home_sj">
-            <img src="/images/home.png" width="40%">
-            <p >홈</p>
+            <img src="/images/home2.png" width="40%">
+            <p id="nav_text">홈</p>
         </div>
         <div id="coupon_sj">
             <img src="/images/coupon.png" width="40%">
             <p>쿠폰</p>
         </div>
         <div id="location_sj">
-            <img src="/images/location2.png" width="40%">
-            <p id="nav_text">주변 가맹점</p>
+            <img src="/images/location.png" width="40%">
+            <p>주변 가맹점</p>
         </div>
         <div id="myStamp_sj">
             <img src="/images/stamp.png" width="40%">
@@ -90,23 +60,24 @@
             location.href = "/coupon";
         })
         $('#logout').click(function () {
-                $('.alert_select').css('display', 'block');
-                $('.alert_content_select').html('로그아웃 하시겠습니까?')
-                $('.alert_select_ok').click(function () {
-                    $('.alert_select').css('display', 'none');
-                    $(location).attr('href', '/logout');
-                })
-            })
-        // var swiper = new Swiper('.swiper-container', {
-        //     initialSlide: 0,
-        //     autoHeight: true,
-        //     observer: true,
-        //     observeParents: true,
-        //     scrollbar: {
-        //         el: '.swiper-scrollbar',
-        //         hide: true,
-        //     },
-        // });
+            var logout = confirm("로그아웃 하시겠습니까?");
+            if (logout == true) {
+                console.log('로그아웃성공');
+                $(location).attr('href', '/logout');
+            } else {
+                console.log('로그아웃실패');
+            }
+        })
+        var swiper = new Swiper('.swiper-container', {
+            initialSlide: 0,
+            autoHeight: true,
+            observer: true,
+            observeParents: true,
+            scrollbar: {
+                el: '.swiper-scrollbar',
+                hide: true,
+            },
+        });
 
         $('.back_div').click(function () {
             swiper.destroy();

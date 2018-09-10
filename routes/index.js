@@ -47,6 +47,9 @@ router.get('/findpassword_manager', function(req, res){
 router.get('/geolo', function(req, res){
   res.render('cordova_gelocationTest');
 });
+router.get('/backb', function(req, res){
+  res.render('cordova_backbuttonTest');
+});
 
 router.get('/coupon', function(req, res){
 

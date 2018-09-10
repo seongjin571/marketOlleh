@@ -7,7 +7,7 @@
     <title>Page Title</title>
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
     <script src='/cordova/cordova.js'></script>
-    <script srd='/cordova/cordova_plugins.js'></script>
+    <script src='/cordova/cordova_plugins.js'></script>
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
@@ -24,37 +24,6 @@
 </head>
 
 <body>
-        <div class="alert_x" style="display:none">
-            <div class="alert_x_content">
-                <div class="alert_image">
-                    <img src="/images/alert_x.png" width="70px" height="70px">
-                </div>
-                <div class="alert_content">
-                </div>
-            </div>
-        </div>
-        
-        <div class="alert_o" style="display:none">
-            <div class="alert_o_content">
-                <div class="alert_image">
-                    <img src="/images/alert_o.png" width="70px" height="70px">
-                </div>
-                <div class="alert_content">
-                </div>
-            </div>
-        </div>
-        <div class="alert_select" style="display:none">
-            <div class="alert_o_content">
-                <div class="alert_content_select">
-                </div>
-                <div class="alert_select_cancel">
-                    취소
-                </div>
-                <div class="alert_select_ok">
-                    확인
-                </div>
-            </div>
-        </div>
     <div id="menu_infor">
 
         <div id="top_infor">
@@ -107,7 +76,7 @@
                         </div>
                     </div>
                     <div id="map">
-                        <img src="/images/location3.png" width="30px" height="30px">
+                        <img src="/images/location2.png" width="30px" height="30px">
                         <div id="name">위치</div>
                     </div>
                     <img src="/images/han.png" width="80%" style="margin-left: 10%;margin-top: 5%;">
@@ -286,12 +255,14 @@
             location.href = "/mystampManager";
         })
         $('#logout').click(function () {
-            $('.alert_select').css('display', 'block');
-            $('.alert_content_select').html('로그아웃 하시겠습니까?')
-            $('.alert_select_ok').click(function () {
-                $('.alert_select').css('display', 'none');
+            var logout = confirm("로그아웃 하시겠습니까?");
+            if (logout == true) {
+                console.log('로그아웃성공');
                 $(location).attr('href', '/logoutmanager');
-            })
+
+            } else {
+                console.log('로그아웃실패');
+            }
         })
         var doubleSubmitFlag = false;
         function doubleSubmitCheck() {
@@ -325,8 +296,7 @@
                 leadingZeros(now.getDate(), 2);
 
             if (!text) {
-                $('.alert_x').css('display', 'block');
-                $('.alert_content').html('리뷰를 입력해 주세요')
+                alert('내용을 입력해주세요 !');
                 return false;
             }
             if (doubleSubmitCheck()) return;
@@ -348,11 +318,8 @@
                 success: function (result) {
                     if (result['result'] == 'success') {
                         // console.log(result);
-                        $('.alert_o').css('display', 'block');
-                        $('.alert_content').html('리뷰 등록이 완료되었습니다')
-                        $('.alert_o').click(function () {
-                            location.reload();
-                        });
+                        alert('등록완료');
+                        location.reload();
                     }
                     else {
                         console.log(result);
@@ -365,15 +332,6 @@
                 }
             });
         })
-        $('.alert_x').click(function () {
-                $(this).css('display', 'none')
-            })
-            $('.alert_o').click(function () {
-                $(this).css('display', 'none')
-            })
-            $('.alert_select_cancel').click(function () {
-                $('.alert_select').css('display', 'none')
-            })
         // $('#store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
     </script>
     <!-- <script src="/javascripts/mystore.js"></script> -->

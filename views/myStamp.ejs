@@ -7,9 +7,8 @@
   <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src='/cordova/cordova.js'></script>
-  <script srd='/cordova/cordova_plugins.js'></script>
-  <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src='/cordova/cordova_plugins.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
     <script src="/javascripts/spin.js"></script>
     <link rel="stylesheet" href="/stylesheets/swiper.min.css">
@@ -22,28 +21,46 @@
   </script> -->
 </head>
 
-<body>
-  <script>
-    window.onload = function() {
-      if(localStorage.getItem('reviewTab')) {
-        var review_tab = 'store_review_sj' + localStorage.getItem('reviewTab');
-        var stamp_detail = 'selected_stamp' + localStorage.getItem('reviewTab');
-        var back = 'back_div' + localStorage.getItem('reviewTab');
+<script>
 
-        $('#myStamp').fadeOut('200');
-        $('#'+stamp_detail).fadeIn('200');
-        $('#'+review_tab).fadeIn('200');
-        $('#'+back).fadeIn('200');
+  function shareFacebook() {
+    window.plugins.socialsharing.shareViaFacebook('msg', null, null,'http://13.209.89.231:3000/start');
+  }
 
-        localStorage.clear();
-      }
+  function onDeviceReady() {
+  }
+
+
+  function domLoaded(){
+    document.addEventListener("deviceready", onDeviceReady, false);
+  }
+
+  window.onload = function() {
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    if(localStorage.getItem('reviewTab')) {
+      var review_tab = 'store_review_sj' + localStorage.getItem('reviewTab');
+      var stamp_detail = 'selected_stamp' + localStorage.getItem('reviewTab');
+      var back = 'back_div' + localStorage.getItem('reviewTab');
+
+      $('#myStamp').fadeOut('200');
+      $('#'+stamp_detail).fadeIn('200');
+      $('#'+review_tab).fadeIn('200');
+      $('#'+back).fadeIn('200');
+
+      localStorage.clear();
     }
-  </script>
+
+
+  }
+
+</script>
+<body>
 <div class="alert_x" style="display:none">
   <div class="alert_x_content">
     <div class="alert_image">
-      <img src="/images/alert_x.png" width="70px" height="70px" > 
-    </div> 
+      <img src="/images/alert_x.png" width="70px" height="70px" >
+    </div>
     <div class="alert_content">
     </div>
   </div>
@@ -52,8 +69,8 @@
 <div class="alert_o" style="display:none">
     <div class="alert_o_content">
       <div class="alert_image">
-        <img src="/images/alert_o.png" width="70px" height="70px" > 
-      </div> 
+        <img src="/images/alert_o.png" width="70px" height="70px" >
+      </div>
       <div class="alert_content">
       </div>
     </div>
@@ -141,24 +158,24 @@
                       <img class="top_image" src="/images/kakao_bic.png" width="30px" height="30px">
                       <p class="top_font">공유하기</p>
                     </div>
-                    <div id="face" onclick="window.plugins.socialsharing.shareViaFacebook(null, null, null, 'http://13.209.89.231:3000/start')">
+                    <div id="face" onclick="shareFacebook()">
                       <img class="top_image" src="/images/face.png" width="30px" height="30px">
                       <p class="top_font">공유하기</p>
                     </div>
                   </div>
                 </div>
                 <div id="bottom_infor">
-                  <p id="go_store_detail_sj">스탬프</p>
-                  <p id="go_store_detail_sj">상점정보</p>
-                  <p id="go_store_review_sj">리뷰</p>
-                  <p id="go_store_review_sj">리뷰작성</p>
+                  <p class="go_slide" style="color:#63dded;">스탬프</p>
+                  <p class="go_slide">상점정보</p>
+                  <p class="go_slide">리뷰</p>
+                  <p class="go_slide">리뷰작성</p>
                 </div>
         </div>
 
 
-              <div class="swiper-container" id="<%= myStamps[i].id %>">
-                  <div class="swiper-wrapper" id="<%= myStamps[i].id %>">
-            <div class="swiper-slide" id="swiper1<%= myStamps[i].id %>">
+              <div class="swiper-container s1">
+                  <div class="swiper-wrapper">
+            <div class="swiper-slide">
               <div class='stamp_menu_sj' id="stamp_menu_sj<%= myStamps[i].id %>">
                 <div class='stamp_sj' id="stamp_sj<%= myStamps[i].id %>">
                   <div class='tenControls_sj' id="tenControls_sj<%= myStamps[i].id %>">
@@ -271,7 +288,7 @@
 
 
 
-              <div class="swiper-slide" id="swiper2<%= myStamps[i].id %>">
+              <div class="swiper-slide">
                   <div id="store_detail_sj">
                       <div class="store_image" style="background: url('/files/<%= myStamps[i].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
                       <div id="introduce">
@@ -287,7 +304,7 @@
                   </div>
               </div>
 
-              <div class="swiper-slide" id="swiper3<%= myStamps[i].id %>">
+              <div class="swiper-slide">
               <div class='store_review_sj' id="store_review_sj<%= myStamps[i].id %>">
                 <div class="review_rate">
                   <div class="review_star">
@@ -422,35 +439,35 @@
                   <% } %>
               </div>
             </div>
-              <div class="swiper-slide" id="swiper3<%= myStamps[i].id %>">
+              <div class="swiper-slide">
               <div class='review_write_sj' id="review_write_sj<%= myStamps[i].id %>">
-                <div id="star_upload">
-                  <div class="star<%= myStamps[i].id %>">
-                    <img class="gray<%= myStamps[i].id %>" id="gray1<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
-                    <img class="yellow<%= myStamps[i].id %>" id="yellow1<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
-                  </div>
-                  <div class="star<%= myStamps[i].id %>">
-                      <img class="gray<%= myStamps[i].id %>" id="gray2<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
-                    <img class="yellow<%= myStamps[i].id %>" id="yellow2<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
-                  </div>
-                  <div class="star<%= myStamps[i].id %>">
-                      <img class="gray<%= myStamps[i].id %>" id="gray3<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
-                      <img class="yellow<%= myStamps[i].id %>" id="yellow3<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
-                  </div>
-                  <div class="star<%= myStamps[i].id %>">
-                      <img class="gray<%= myStamps[i].id %>" id="gray4<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
-                      <img class="yellow<%= myStamps[i].id %>" id="yellow4<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
-                  </div>
-                  <div class="star<%= myStamps[i].id %>">
-                      <img class="gray<%= myStamps[i].id %>" id="gray5<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
-                      <img class="yellow<%= myStamps[i].id %>" id="yellow5<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
-                  </div>
-                </div>
-                <p id="intro_star">만족도만큼 별을 클릭해 주세요</p>
-                <div class="line"></div>
+
                 <div id="write_div">리뷰 작성</div>
 
                 <textarea class="review_textarea <%= myStamps[i].id %>" id='review_textarea<%= myStamps[i].id %>' rows="6"></textarea>
+                <div class="star_upload">
+                    <div class="star<%= myStamps[i].id %>">
+                      <img class="gray<%= myStamps[i].id %>" id="gray1<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
+                      <img class="yellow<%= myStamps[i].id %>" id="yellow1<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
+                    </div>
+                    <div class="star<%= myStamps[i].id %>">
+                        <img class="gray<%= myStamps[i].id %>" id="gray2<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
+                      <img class="yellow<%= myStamps[i].id %>" id="yellow2<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
+                    </div>
+                    <div class="star<%= myStamps[i].id %>">
+                        <img class="gray<%= myStamps[i].id %>" id="gray3<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
+                        <img class="yellow<%= myStamps[i].id %>" id="yellow3<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
+                    </div>
+                    <div class="star<%= myStamps[i].id %>">
+                        <img class="gray<%= myStamps[i].id %>" id="gray4<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
+                        <img class="yellow<%= myStamps[i].id %>" id="yellow4<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
+                    </div>
+                    <div class="star<%= myStamps[i].id %>">
+                        <img class="gray<%= myStamps[i].id %>" id="gray5<%= myStamps[i].id %>"src="/images/star_gray.png" width="40px"height="40px">
+                        <img class="yellow<%= myStamps[i].id %>" id="yellow5<%= myStamps[i].id %>"src="/images/star_yellow.png" width="40px"height="40px" style="display: none">
+                    </div>
+                  </div>
+                  <p id="intro_star">만족도만큼 별을 클릭해 주세요</p>
                 <!-- <div class='write_button_div_sj' id="write_button_div_sj<%= myStamps[i].id %>"> -->
                   <button class="write_ok_button <%= myStamps[i].id %>" id='write_ok_button<%= myStamps[i].id %>'>등록</button>
                 <!-- </div> -->
@@ -463,7 +480,7 @@
             <div class="swiper-scrollbar"></div>
             </div>
             </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+
 
             <script>
 
@@ -499,51 +516,24 @@
               $('#fiveControls_sj<%= myStamps[i].id %>').css('display', 'table');
               for (var i = 0; i < stamp_count<%= myStamps[i].id %>; i++) {
                 var check = document.getElementsByClassName('five_sj <%= myStamps[i].id %>')[i];
-                check.style.backgroundColor = "#232323";
+                // check.style.backgroundImage = "url('/images/circle_logo.png')";
+                // check.style.backgroundSize = 'cover';
+                // check.style.backgroundPosition = 'center';
+                // check.innerHTML='';
+                check.style.backgroundColor='black'
               }
             }
             else if (stamp_standard<%= myStamps[i].id %> == 10) {
               $('#tenControls_sj<%= myStamps[i].id %>').css('display', 'table');
               for (var i = 0; i < stamp_count<%= myStamps[i].id %>; i++) {
                 var check = document.getElementsByClassName('ten_sj <%= myStamps[i].id %>')[i];
-                check.style.backgroundColor = "#232323";
+                // check.style.backgroundImage = "url('/images/circle_logo.png')";
+                // check.style.backgroundSize = 'cover';
+                // check.style.backgroundPosition = 'center';
+                // check.innerHTML='';
+                check.style.backgroundColor='black'
               }
             }
-
-
-            /*  가게 상세정보 각 탭 및 버튼 클릭 이벤트  */
-            // $('#go_stamp_sj<%= myStamps[i].id %>').click(function () {
-            //   $('#stamp_menu_sj<%= myStamps[i].id %>').show(200);
-            //   $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
-            //   $('#store_review_sj<%= myStamps[i].id %>').hide(200);
-            //   $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-            //   $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-            // })
-            // $('#go_store_detail_sj<%= myStamps[i].id %>').click(function () {
-            //   $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
-            //   $('#store_detail_sj<%= myStamps[i].id %>').show(200);
-            //   $('#store_review_sj<%= myStamps[i].id %>').hide(200);
-            //   $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-            //   $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-            // })
-            // $('#go_store_review_sj<%= myStamps[i].id %>').click(function () {
-            //   $('#stamp_menu_sj<%= myStamps[i].id %>').hide(200);
-            //   $('#store_detail_sj<%= myStamps[i].id %>').hide(200);
-            //   $('#store_review_sj<%= myStamps[i].id %>').show(200);
-            //   $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-            //   $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-            // })
-            // $('#review_button_sj<%= myStamps[i].id %>').click(function () {
-            //   $('#store_review_sj<%= myStamps[i].id %>').hide(200);
-            //   $('#review_write_sj<%= myStamps[i].id %>').show(200);
-            //   $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-            // })
-            // $('#write_cancel_sj<%= myStamps[i].id %>').click(function () {
-            //   $('#store_review_sj<%= myStamps[i].id %>').show(200);
-            //   $('#review_write_sj<%= myStamps[i].id %>').hide(200);
-            //   $('#password_number_div_sj<%= myStamps[i].id %>').hide(200);
-            // })
-
 
             /*  좋아요  */
             var good<%= myStamps[i].id %> = document.getElementById('goodCount_sj<%= myStamps[i].id %>');
@@ -633,18 +623,11 @@
               })
 
             /* 리뷰 작성 버튼 */
-            var doubleSubmitFlag = false;
-            function doubleSubmitCheck(){
-              if(doubleSubmitFlag){
-                return doubleSubmitFlag;
-              }else{
-                doubleSubmitFlag = true;
-                return false;
-              }
-            }
 
+            var chk_send = 0;
             $('#write_ok_button<%= myStamps[i].id %>').click(function(){
-              if(doubleSubmitCheck()) return;
+              if (chk_send == 0){
+              chk_send = 1;
 
               var user_id = '<%= myStamps[i].user_id %>';
               var market_name = '<%= myStamps[i].market_name %>';
@@ -669,6 +652,7 @@
               if (!text) {
                 $('.alert_x').css('display', 'block');
                 $('.alert_content').html('리뷰를 입력해 주세요')
+                chk_send = 0;
                   return false;
                 }
 
@@ -693,6 +677,7 @@
                 data: data,
                 datatype: 'json',
                 success: function(result) {
+                  chk_send = 0;
                   if (result['result']=='success'){
                     // console.log(result);
                     $('.alert_o').css('display', 'block');
@@ -710,6 +695,11 @@
                   location.reload();
                 }
               });
+              }
+            else {
+                return false;
+            }
+
             });
 
 
@@ -779,14 +769,22 @@
                                   $('#fiveControls_sj<%= myStamps[i].id %>').css('display', 'table');
                                   for (var i = 0; i < parseInt(stamp_count<%= myStamps[i].id %>); i++) {
                                     var check = document.getElementsByClassName('five_sj <%= myStamps[i].id %>')[i];
-                                    check.style.backgroundColor = "#232323";
+                                    // check.style.backgroundImage = "url('/images/circle_logo.png')";
+                                    // check.style.backgroundSize = 'cover';
+                                    // check.style.backgroundPosition = 'center';
+                                    // check.innerHTML = '';
+                                    check.style.backgroundColor='black'
                                   }
                                 }
                                 else if (parseInt('<%= myStamps[i].stamp_standard %>') == 10) {
                                   $('#tenControls_sj<%= myStamps[i].id %>').css('display', 'table');
                                   for (var i = 0; i < parseInt(stamp_count<%= myStamps[i].id %>); i++) {
                                     var check = document.getElementsByClassName('ten_sj <%= myStamps[i].id %>')[i];
-                                    check.style.backgroundColor = "#232323";
+                                    // check.style.backgroundImage = "url('/images/circle_logo.png')";
+                                    // check.style.backgroundSize = 'cover';
+                                    // check.style.backgroundPosition = 'center';
+                                    // check.innerHTML = '';
+                                    check.style.backgroundColor='black'
                                   }
                                 }
                                 $('#stamp_count_vertical<%= myStamps[i].id %>').html('<p class="count_stamp">'+ (stamp_count<%= myStamps[i].id %>) +' / <%= myStamps[i].stamp_standard %></p>');
@@ -922,6 +920,7 @@
                         <p>로그아웃</p>
                     </div>
             </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
             <script>
 
                       $('#home_sj').click(function () {
@@ -939,9 +938,10 @@
                         $('.alert_select_ok').click(function () {
                           $('.alert_select').css('display', 'none');
                                 $(location).attr('href','/logout');
-                              }) 
+                              })
                           })
-                          var swiper = new Swiper('.swiper-container', {
+
+                          var swiper = new Swiper('.s1', {
                               initialSlide: 0,
                               autoHeight: true,
                               observer: true,
@@ -951,9 +951,21 @@
                                 hide: true,
                               },
                             });
+                            // $('.go_slide').click(function () {
+                            //     var this_index = $(this).index();
+                            //     $('.go_slide').css('color', 'black');
+                            //     $('.go_slide').eq(this_index).css('color', '#63dded');
+                            //     swiper.slideTo(this_index, 500, false);
+                            //   });
+
+                            //   swiper.on('slideChangeTransitionStart', function () {
+                            //     var active = swiper.activeIndex;
+                            //     $('.go_slide').css('color', 'black');
+                            //     $('.go_slide').eq(active).css('color', '#63dded');
+                            //   });
 
                           $('.back_div').click(function () {
-                             swiper.destroy();
+                            //  swiper.destroy();
                             //  var  swiper = new Swiper('.swiper-container', {
                             //     initialSlide: 0,
                             //     autoHeight: true,
@@ -965,6 +977,7 @@
                             //     },
                             //   });
                             });
+
                               $('.alert_x').click(function () {
                                 $(this).css('display', 'none')
                               })
@@ -974,6 +987,19 @@
                               $('.alert_select_cancel').click(function () {
                                 $('.alert_select').css('display', 'none')
                               })
+                              var allHeight=document.body.clientHeight ;
+                              var allWidth=document.body.clientWidth ;
+                              var navHeight=allHeight*0.08;
+                              var topHeight=148;
+                              var passwordHeight=allHeight-navHeight-topHeight;
+                              var numberHeight=(passwordHeight-105)/4;
+                              var starWidth=(allWidth-200)/2;
+                              $('.star_upload').css('margin-left',starWidth+'px')
+                              $('.password_number_div_sj').css('height',passwordHeight+'px')
+                              $('.password_check').css('height','75px').css('padding-bottom','30px')
+                              $('.password_line_sj').css('height',numberHeight+'px')
+                              $('.password_line_sj div').css('height',numberHeight+'px')
+
 
 
                       </script>
