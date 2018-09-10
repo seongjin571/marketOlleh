@@ -71,37 +71,38 @@
 
 
 
-      <% if(result2) { %>
-        <% var count =0; %>
-        <% for(var j=0; j<result2.length; j++) { %>
-          <% for(var k=j ;k<result2.length; k++) { %>
-            <% if(result2[j].sijang_name == result2[k].sijang_name) { %>
-              <% count++; %>
-              <% } %>
-        <% } %>
-        <% if(count == 1) { %>
-          <% for(var x = 0; x <img_result.length; x++) {%>
-            <% if(result2[j].sijang_name == img_result[x].name ) {%>
-          <div class="market" id="market_name_id"name="sijang_name">
-            <% if(img_result[x].imgurl != '') {%>
-              <div class="market_image" style="background: url(<%= img_result[x].imgurl %>);background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
-                <% } else {%>
-                  <div class="market_image" style="background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
-                  <% } %>
-              <p id="click_coupon" class="click_coupon"value="<%= result2[j].sijang_name %>"><%= result2[j].sijang_name %></p>
-              <img class="gray_button"src="/images/down-arrow.png" width="20px" height="20px">
-              <img class="blue_button"src="/images/down-arrow-blue.png" width="20px" height="20px" style="display: none">
+        <% if(result2) { %>
+          <% var count =0; %>
+          <% for(var j=0; j<result2.length; j++) { %>
+            <% for(var k=j ;k<result2.length; k++) { %>
+              <% if(result2[j].sijang_name == result2[k].sijang_name) { %>
+                <% count++; %>
                 <% } %>
-              <% } %>
-              <% if(cou_result) {%>
-              <% } %>
-          </div>
-        <% } %>
-        <% count =0; %>
-        <% } %>
-       <% } else { %>
-            <p>비어있음</p>
-        <% } %>
+          <% } %>
+          <% if(count == 1) { %>
+            <% for(var x = 0; x <img_result.length; x++) {%>
+              <% if(result2[j].sijang_name == img_result[x].name ) {%>
+            <div class="market" id="market_name_id"name="sijang_name">
+              <% if(img_result[x].imgurl != "") {%>
+                <div class="market_image" style="background: url('<%= img_result[x].imgurl %>');background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
+                <% } else { %>
+                  <div class="market_image" style="background: url('/images/manager_sample (1).jpg');background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
+                  <% } %>
+                <p id="click_coupon" class="click_coupon"value="<%= result2[j].sijang_name %>"><%= result2[j].sijang_name %></p>
+                <img class="gray_button"src="/images/down-arrow.png" width="20px" height="20px">
+                <img class="blue_button"src="/images/down-arrow-blue.png" width="20px" height="20px" style="display: none">
+              </div>
+                  <% } %>
+                <% } %>
+                <% if(cou_result) {%>
+                <% } %>
+          <% } %>
+          <% count =0; %>
+          <% } %>
+         <% } else { %>
+              <!-- <p>비어있음</p> -->
+          <% } %>
+
 
 
         <div class="content_title">
@@ -351,9 +352,9 @@
         $('.my_coupon').css('display','block')
     })
     $('#go_coupon_view').click(function () {
-        $('#coupon_view').show(200);
-        $('.my_coupon').hide(200);
-        Get_sijanimg();
+        $('#coupon_view').css('display','block')
+        $('.my_coupon').css('display','none')
+        // Get_sijanimg();
     })
     $('#location_sj').click(function () {
          location.href = "/location";
@@ -385,12 +386,12 @@
     var next_index = 0;
     var index=-1;
     var count=0;
-    // var isRun = false;
+    var chk_send = 0;
     $('.market').click(function () {
-    //   if(isRun == true) {
-    //     return;
-    // }
-    // isRun = true;
+      if (chk_send == 0){
+       chk_send = 1;
+      //  return true;
+
         next_index = $(".market").index( this )+1;
         if(next_index ==index){
             if(count==1){
@@ -400,6 +401,7 @@
             $('.find_coupon_list1').css('display','none');
             index=next_index;
             count=0;
+            chk_send = 0;
             }
             else{
               $('.market').css('color', '#9c9c9c');
@@ -421,7 +423,7 @@
           datatype: "json",
           success : function(result) {
             if(result['result']=='success'){
-              // isRun  = false;
+              chk_send = 0;
               var coupon_name = result['results'];
               console.log(coupon_name);
               if(coupon_name.length){
@@ -431,7 +433,7 @@
                  var html = '<div class="find_coupon1">';
                       html += '<div class="store_and_market1">';
                       html += '<div class="store_name1">'+coupon_name[i].market_name +'</div>';
-                      html += '<div class="period1">선착순 : '+coupon_name[i].coupon_count+'</div></div>';
+                      html += '<div class="period1">남은 수량 : '+coupon_name[i].coupon_count+'</div></div>';
                       html += '<div class="standard1">'+coupon_name[i].coupon_standard+'</div>';
                       html += '<div class="sale_price1">'+coupon_name[i].coupon_reward+'원 할인</div>';
                       html += '<div class="coupon_bottom">';
@@ -479,6 +481,7 @@
           datatype: "json",
           success : function(result) {
             if(result['result']=='success'){
+              chk_send = 0;
               var coupon_name = result['results'];
               console.log(coupon_name);
               if(coupon_name.length){
@@ -488,7 +491,7 @@
                       var html = '<div class="find_coupon1">';
                       html += '<div class="store_and_market1">';
                       html += '<div class="store_name1">'+coupon_name[i].market_name +'</div>';
-                      html += '<div class="period1">선착순 : '+coupon_name[i].coupon_count+'</div></div>';
+                      html += '<div class="period1">남은 수량 : '+coupon_name[i].coupon_count+'</div></div>';
                       html += '<div class="standard1">'+coupon_name[i].coupon_standard+'</div>';
                       html += '<div class="sale_price1">'+coupon_name[i].coupon_reward+'원 할인</div>';
                       html += '<div class="coupon_bottom">';
@@ -513,6 +516,12 @@
           }
         })
     }
+}
+
+
+    else{
+       return false;
+      }
     })
     // $(document).off('click', '.find_coupon_list1').on('click', '.find_coupon_list1', function() {
     $(document).on("click",'.find_coupon_list1',function(event){
@@ -593,7 +602,7 @@
                         $('.alert_x').css('display','block');
                         $('.alert_content').html('이미 해당 쿠폰이 있습니다')
                       }else {
-                        // alert('쿠폰등록실패1');
+                        alert('쿠폰등록실패1');
                         location.reload();
                       }
                   },
@@ -613,7 +622,33 @@
       $('.alert_select_cancel').click(function(){
         $('.alert_select').css('display','none')
       })
-
+    //  function Get_sijanimg() {
+    //     for (var i = 0; i < $('.market > p').length; i++) {
+    //       var tempone = $('.market > p')[i].innerText;
+    //       $.ajax({
+    //           url: "/searching/gooname",
+    //           dataType: 'json',
+    //           type: 'POST',
+    //           contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    //           data: {
+    //               "filed": "name",
+    //               "search_value": tempone
+    //           },
+    //           success: function (result) {
+    //               if (result.rows.length > 0) {
+    //                 var temptwo = "background: url("+result.rows[0].imgurl+");background-repeat: no-repeat; background-position: center center; background-size: 155%;";
+    //                 console.log(temptwo);
+    //                 document.getElementsByClassName("market_image")[i].setAttribute("style", temptwo);
+    //               } else {
+    //                 console.log("시장이 하나도 없을리가 없음 ~ 앞 작용 확인");
+    //               }
+    //           },
+    //           error: function (e) {
+    //               console.log('process error : ', e);
+    //           }
+    //       });
+    //     }
+    //  }
 </script>
 
 </html>

@@ -140,9 +140,9 @@
                   </div>
                 </div>
                 <div id="bottom_infor">
-                  <p id="go_store_detail_sj">스탬프</p>
-                  <p id="go_store_detail_sj">상점정보</p>
-                  <p id="go_store_review_sj">리뷰</p>
+                  <p class="go_slide">스탬프</p>
+                  <p class="go_slide">상점정보</p>
+                  <p class="go_slide">리뷰</p>
                 </div>
         </div>
 
@@ -290,6 +290,19 @@
               hide: true,
           },
       });
+      $('.go_slide').click(function (e) {
+                var this_index = $(this).index();
+                e.preventDefault();
+                $('.go_slide').css('color','black');
+                $('.go_slide').eq(this_index).css('color','#63dded');
+                swiper.slideTo(this_index, 500, false);
+            });
+            
+        swiper.on('slideChangeTransitionStart', function () {
+            var active=  swiper.activeIndex;
+            $('.go_slide').css('color','black');
+            $('.go_slide').eq(active).css('color','#63dded');
+        });
     </script>
 
     <script>
@@ -539,16 +552,23 @@
 
         // 뒤로 가기 버튼의 클릭 이벤트
         $('#tableControl').click(function (event) {
-        swiper.destroy();
-	    swiper = new Swiper('.s2', {
-		initialSlide: 0,
-		autoHeight: true,
-		observer: true,
-		observeParents: true,
-		scrollbar: {
-			el: '.swiper-scrollbar',
-			hide: true,
-		},
+            $('.go_slide').css('color', 'black');
+            $('.go_slide').eq(0).css('color', '#63dded');
+            swiper.destroy();
+            swiper = new Swiper('.s2', {
+                initialSlide: 0,
+                autoHeight: true,
+                observer: true,
+                observeParents: true,
+                scrollbar: {
+                    el: '.swiper-scrollbar',
+                    hide: true,
+                },
+            });
+            swiper.on('slideChangeTransitionStart', function () {
+                var active = swiper.activeIndex;
+                $('.go_slide').css('color', 'black');
+                $('.go_slide').eq(active).css('color', '#63dded');
 	});
           document.getElementById('hot_store').style.display = "block";
           document.getElementById('text_logo').style.display = "block";

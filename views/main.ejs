@@ -311,9 +311,9 @@
                   </div>
                 </div>
                 <div id="bottom_infor">
-                  <p id="go_store_detail_sj">스탬프</p>
-                  <p id="go_store_detail_sj">상점정보</p>
-                  <p id="go_store_review_sj">리뷰</p>
+                  <p class="go_slide" style="color:#63dded;">스탬프</p>
+                  <p class="go_slide">상점정보</p>
+                  <p class="go_slide">리뷰</p>
                 </div>
         </div>
 
@@ -512,7 +512,20 @@
             },
 
         });
-
+        $('.go_slide').click(function (e) {
+                var this_index = $(this).index();
+                e.preventDefault();
+                $('.go_slide').css('color','black');
+                $('.go_slide').eq(this_index).css('color','#63dded');
+                swiper2.slideTo(this_index, 500, false);
+            });
+            
+        swiper2.on('slideChangeTransitionStart', function () {
+            var active=swiper2.activeIndex;
+            $('.go_slide').css('color','black');
+            $('.go_slide').eq(active).css('color','#63dded');
+        });
+ 
     </script>
 
 

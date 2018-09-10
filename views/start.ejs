@@ -113,7 +113,8 @@
                 </div>
                 <!-- 코르도바 gps 테스트 위한 링크 ( hw edit ) -->
                 <div style="text-align: center;">
-                    <a href="/geolo">TEST</a>
+                    <a href="/geolo" style="display: inline;">Geolo</a>
+                    <a href="/backb" style="display: inline;">Backb</a>
                 </div>
             </div>
         </div>
@@ -156,15 +157,12 @@
                 e.preventDefault();
                 $(window).attr('location', '/findpassword_user');
             });
-
             $('#formuser').submit(e => {
               e.preventDefault();
-
               var data = {
                 'userid': $('#user_id').val(),
                 'userpwd': $('#userpassword').val()
               };
-
               $.post('/login', data, result => {
                 if(result['result'] == 'success') {
                     $('.alert_o').css('display','block');
@@ -238,18 +236,21 @@
         </div>
     </div>
     <script>
-        var doubleSubmitFlag = false;
-        function doubleSubmitCheck() {
-            if (doubleSubmitFlag) {
-                return doubleSubmitFlag;
-            } else {
-                doubleSubmitFlag = true;
-                return false;
-            }
-        }
+        // var doubleSubmitFlag = false;
+        // function doubleSubmitCheck() {
+        //     if (doubleSubmitFlag) {
+        //         return doubleSubmitFlag;
+        //     } else {
+        //         doubleSubmitFlag = true;
+        //         return false;
+        //     }
+        // }
+        var chk_send = 0;
         $('#loginButton_manager').click(function (e) {
-            if (doubleSubmitCheck()) return;
+            // if (doubleSubmitCheck()) return;
             e.preventDefault();
+            if (chk_send == 0){
+            chk_send = 1;
             var manager_id = $('#manager_id').val();
             var password = $('#password').val();
             var data = {
@@ -265,16 +266,16 @@
                 dataType: 'json',
                 data: data,
                 success: function (result) {
+                    chk_send = 0;
                     if (result['result'] == 'success') {
                         $('.alert_o').css('display', 'block');
                         $('.alert_content').html('로그인 완료')
                         setTimeout(function () {
                             $(window).attr('location', '/mainManager');
                         }, 1000);
-
                     } else {
                         $('.alert_x').css('display', 'block');
-                        $('.alert_content').html('아이디 혹은 비밀번호를 다시 입력해주세요.');
+                        $('.alert_content').html('비밀번호와 아이디를 확인하세요.');
                         // $('.alert_x').click(function () {
                         //     $(window).attr('location', '/start');
                         // })
@@ -284,12 +285,16 @@
                 error: function (error) {
                     console.log('erer');
                //     $('.alert_x').css('display','block'); //여기랑
-                    $('.alert_content').html('아이디 혹은 비밀번호를 다시 입력해주세요.');
+                    // $('.alert_content').html('아이디 혹은 비밀번호를 다시 입력해주세요.');
                  //   $('.alert_x').click(function(){   // 여기 추가시켰는데 맞나요?
                     window.reload();
                // })
                 }
             });
+            }
+            else {
+                return false;
+            }
         });
         $('#idfind_manager').click(function (e) {
             e.preventDefault();
@@ -392,7 +397,6 @@
                             $('.alert_content').html('회원가입이 완료되었습니다.');
                             $('#signupuser').fadeOut(300);
                             $('#loginuser').fadeIn(300);
-
                             $('#userid').val('');
                             $('#username').val('');
                             $('#userpwd').val('');
@@ -430,9 +434,9 @@
     <div id="signupManager">
         <img id="back_signupManager" src="/images/backButton_blue.png">
         <div class="menu">
-            <div>회원정보</div>
-            <div>상점정보</div>
-            <div>스탬프정보</div>
+            <div class="go_slide" style="color:#63dded;">회원정보</div>
+            <div class="go_slide">상점정보</div>
+            <div class="go_slide">스탬프정보</div>
         </div>
 
         <form id='signupForm2'>
@@ -792,7 +796,6 @@
                             $('.tenControls_sj').css('display', 'none');
                             $('.fiveControls_sj').css('display', 'none');
                         }
-
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
                             $('.alert_content').html('이미 존재하는 아이디입니다.');
@@ -832,6 +835,19 @@
             hide: true,
         },
     });
+    $('.go_slide').click(function (e) {
+            var this_index = $(this).index();
+            e.preventDefault();
+            $('.go_slide').css('color', 'black');
+            $('.go_slide').eq(this_index).css('color', '#63dded');
+            swiper.slideTo(this_index, 500, false);
+        });
+
+        swiper.on('slideChangeTransitionStart', function () {
+            var active = swiper.activeIndex;
+            $('.go_slide').css('color', 'black');
+            $('.go_slide').eq(active).css('color', '#63dded');
+        });
     setTimeout(function () {
         $('#intro_image_div').fadeOut('1000');
     }, 2000);
@@ -891,7 +907,6 @@
                 else {
                     $('.alert_x').css('display','block');
                     $('.alert_content').html('비밀번호가 다릅니다.');
-
                     $(this).val('');
                     $('#userpwdcheck').val('');
                     $('.check_div').eq(2).css('visibility', 'hidden');
@@ -1110,7 +1125,6 @@
         $('#loginManager').fadeOut(300)
         $('#signupManager').fadeIn(300)
     })
-
     // $('#userfinish').click(function () {
     //     $('#signupuser').fadeOut(300)
     //     $('#loginuser').fadeIn(300)
@@ -1119,7 +1133,6 @@
     //     $('#signupManager').fadeOut(300)
     //     $('#loginManager').fadeIn(300)
     // })
-
     // 뒤로가기 고객로그인부분
     $('#back_loginuser').click(function () {
         $('#loginuser').fadeOut(300)
@@ -1140,8 +1153,6 @@
         $('#signupManager').fadeOut(300)
         $('#loginManager').fadeIn(300)
     })
-
-
     // 클릭 이벤트
     $('.alert_x').click(function(){
         $(this).css('display','none')
@@ -1152,7 +1163,6 @@
       $('.alert_select_cancel').click(function(){
         $('.alert_select').css('display','none')
       })
-
     // (hw edit); enter event handleling!
     $("#password").keyup(function (event) {
         // Enter 처리
@@ -1160,16 +1170,13 @@
             $("#loginButton_manager").trigger("click");
         } // if
     }); // enter keyup event
-
     $("#userpassword").keyup(function (event) {
         // Enter 처리
         if (event.keyCode == '13') {
             $("#loginButton_user").trigger("click");
         } // if
     }); // enter keyup event
-
 </script>
-
 </html>
 
 
