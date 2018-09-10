@@ -24,6 +24,8 @@ body, html {
 #intro_image{
     width:100%;
     height:auto;
+    margin-left: 25%;
+    padding-top: 65%;
 }
 #top_part {
     display: table;
@@ -66,6 +68,8 @@ body, html {
     background-clip: content-box, border-box;    
     padding: 1px;
     border: 0px;
+    color: #B6B7B7;
+    outline:none;
 }
 
 #seller_login {
@@ -184,60 +188,73 @@ body, html {
 
 #login_button_user2{
    display: inline-flex;
-   height: 10%;
+   height: 64px;
    width: 100%;
+   position: fixed;
+   top: 355px;
 }
 #login_button_manager{
     display: inline-flex;
-    height: 4%;
+    height: 64px;
     width: 100%;
+    position: fixed;
+    top: 355px;
+   height: 10%;
+   width: 100%;
 }
+
 .idfind{
     background-color: white;
-    color:grey;
+    color:#B6B7B7;
     padding:0px;
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 10.5px;
+    font-size: 12.5px;
+    outline:none;
+    font-weight: 200;
 }
 #password_find1{
     background-color: white;
-    color:grey;
+    color:#B6B7B7;
     padding:0px;
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 10.5px;
+    font-size: 12.5px;
+    outline:none;
+    font-weight: 200;
 }
 #password_find2{
     background-color: white;
-    color:grey;
+    color:#B6B7B7;
     padding:0px;
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 10.5px;
+    font-size: 12.5px;
 }
 
 #loginUser_sign_up{
     padding:0px;
     background-color: white;
-    color:grey;
+    color:#B6B7B7;
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 10.5px;
+    font-weight: 200;
+    font-size: 12.5px;
 }
 #loginmanager_sign_up
 {
     background-color: white;
-    color:grey;
+    color:#B6B7B7;
     padding:0px;
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 10.5px;
+    font-weight: 200;
+    font-size: 12.5px;
 }
 .login_button_user3
 {
@@ -290,7 +307,7 @@ body, html {
     width: 90%;
     height: 50px;
     line-height: 50px;
-    color: grey;
+    color: #B6B7B7;
     background-color: white;
     border: double 1px transparent;
     border-radius: 50px;
@@ -308,8 +325,9 @@ a{
     text-decoration: none;
 }
 #kakao_Image{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
     margin-right: 1%;
 
 }
@@ -550,6 +568,57 @@ a{
     height: 45%;
     width: 100%;
 }
+
+
+#picture_pic
+{ 
+    display: block;
+    text-align: center;
+    box-shadow: 5px 5px 3px #efefef;
+    width: 50%;
+    background-color: white;
+    border: double 1px transparent;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+ radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    border: 0px;
+    color: gray;
+    height: 30px;
+    line-height: 30px;
+    font-size: 13px;
+    }
+
+ input[type="file"] { 
+  position: absolute; 
+  width: 1px; 
+  height: 1px; 
+  padding: 0; 
+  margin: -1px;
+   overflow: hidden; 
+   clip:rect(0,0,0,0);
+    border: 0;
+ }
+
+#modal_display{
+    font-size: 13px;
+    font-weight: 200;
+    box-shadow: 5px 5px 3px #efefef;
+    width: 50%;
+    background-color: white;
+    border: double 1px transparent;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+ radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    border: 0px;
+    color: gray;
+    height: 32px;
+}
 #modal_close{
     font-size:30px;
     color:#b6b7b7;
@@ -623,8 +692,8 @@ a{
     width: 30px;
     height: 30px;
     background: white;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin-top: 15px;
+    margin-left: 15px;
     position: fixed;
     z-index: 1;
 }
@@ -632,8 +701,8 @@ a{
     width: 30px;
     height: 30px;
     background: white;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin-top: 15px;
+    margin-left: 15px;
     position: fixed;
     z-index: 1;
 }
@@ -641,8 +710,8 @@ a{
     width: 30px;
     height: 30px;
     background: white;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin-top: 15px;
+    margin-left: 15px;
     position: fixed;
     z-index: 1;
 }
@@ -650,8 +719,8 @@ a{
     width: 30px;
     height: 30px;
     background: white;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin-top: 15px;
+    margin-left: 15px;
     position: fixed;
     z-index: 1;
 }

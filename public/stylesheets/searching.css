@@ -1,5 +1,5 @@
 @import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
-body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family: 'NanumSquare',sans-serif;}
+select,filed,body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family: 'NanumSquare',sans-serif;}
 
 #Goomap {
 	margin-top: 50px;
@@ -87,4 +87,21 @@ article{
 }
 #market_infoText{
 	margin-bottom: 7%;
+}
+#modal_display{
+    font-size: 13px;
+    box-shadow: 5px 5px 3px #efefef;
+    width: 50%;
+    background-color: white;
+    border: double 1px transparent;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+ radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+	border: 0px;
+	font-weight: 200;
+    color: gray;
+    height: 32px;
 }
