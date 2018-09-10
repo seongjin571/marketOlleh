@@ -53,6 +53,7 @@ function turningBack() {
 			document.getElementById('market_infor').style.display = "none";
 			document.getElementById('store_infor').style.display = "none";
 			$('#search_result').css('display', 'block');
+			document.getElementById('store_infor').style.display = "none";
 			setStyle_search_result();
 		} else { // 검색만 하고 뒤로가기
 			deleteNewSearchList();
@@ -72,7 +73,6 @@ function turningBack() {
 		document.getElementById('Searching').style.display = "table";
 		document.getElementById('market_infor').style.display = "none";
 		document.getElementById('store_infor').style.display = "none";
-		$('.button_sj').off();
 		$('#noGood_Button_sj').off();
 		$('#yesGood_Button_sj').off();
 	} // if ~ else
@@ -133,8 +133,6 @@ function makeGooTable(tableValue, gooCounter) {
 	// jquery, table값제어 / 동적 생성된 td에 클릭함수추가
 	$('#NewGoomap > div').html(fullString);
 	$('#NewGoomap > div > li').click(function (event) {
-        // 스크롤 조절
-        window.scrollTo(0, 0);		
 		// Daum(kakao map api test line)
 		$('#navControlButton').css('display', 'none');
 		$('#Goomap_container').css('display', 'none');
@@ -167,6 +165,9 @@ function makeSearchList(searchResult, listCounter) {
 
 	// 검색 결과 생성전, li 존재하면 정리
 	deleteNewSearchList();
+	if (search_result.style.display == "none") {
+		search_result.style.display = "block";
+	}
 
 	// 변수 선언
 	var tempString = new Array();
@@ -228,6 +229,8 @@ function makeSearchList(searchResult, listCounter) {
 				managerInfoLi_event(searchResult.rows[i]);
 			} // if ~ else
 		} // for
+		searchResult = ''; // 후처리, 겹치는 에러 방지
+
 	}); // click function
 } // makerSearchList --> article태그 부분
 
@@ -259,8 +262,7 @@ function searchingAjax(event) {
 
     // search_value 값 공백일때 서버 에러 처리
     if(!search_value.value){
-		$('.alert_x').css('display', 'block');
-		$('.alert_content').html('검색어를 확인해 주세요.')
+      alert("검색어를 확인하세요!")
       return;
     }
 
@@ -280,13 +282,11 @@ function searchingAjax(event) {
 			if (result.rows.length > 0) {
 				makeSearchList(result, result.rows.length);
 			} else {
-				$('.alert_x').css('display', 'block');
-		$('.alert_content').html('검색어를 확인해 주세요.')
+				alert("검색어를 확인하세요!")
 			}
 		},
 		error: function (e) {
-			$('.alert_x').css('display', 'block');
-		$('.alert_content').html('검색어를 확인해 주세요.')
+			alert("검색어를 확인하세요!");
 			console.log('process error : ', e);
 		}
 	});
