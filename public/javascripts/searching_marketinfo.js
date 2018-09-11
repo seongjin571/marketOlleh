@@ -7,11 +7,8 @@ function NewGoomapLi_css() {
 
 function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 
-	// 좋아요순 상점 흔적 없애기
-	if ($('#hot_store_list_market > div')) {
-		$('#hot_store_list_market > div').remove();	
-	}
-	
+	$('#hot_store_list_market > div').remove();
+
 	// 태그 동적으로 생성하기
 	var tempString = new Array();
 	var fullString = '';
@@ -42,7 +39,6 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 
 	// MAP API
 	relayout();
-	setMarkers(null); // 마커 배열 감추기 
 	changeCenter(market_arr.coordinateX, market_arr.coordinateY);
 
 	// 인기 상점 찾기
@@ -100,10 +96,10 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 		success: function (result) {
 		  if (result['result'] == 'exist' && result['like_check_val'] == 1) {
 		  	$('#noGood_Button_sj').css('display', 'none');
-	        $('#yesGood_Button_sj').css('display', 'inline-block');
+	        $('#yesGood_Button_sj').css('display', 'block');
 		  } else if(result['result']=='not exist' || result['like_check_val'] == 0){
 		  	$('#yesGood_Button_sj').css('display', 'none');
-		  	$('#noGood_Button_sj').css('display', 'inline-block');
+		  	$('#noGood_Button_sj').css('display', 'block');
 		  }
 		},
 		error: function (error) {
@@ -157,15 +153,11 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 			data: data,
 			success: function (result) {
 			  if (result['result'] == 'success') {
-				$('.alert_o').css('display', 'block');
-				$('.alert_content').html('다운받기 완료되었습니다.')
-				$('.alert_o').click(function () {
-				location.reload();
-				});
+			    alert('스탬프생성');
+			    location.reload();
 			  } else if(result['result']=='already'){
-			    $('.alert_x').css('display', 'block');
-                $('.alert_content').html('이미 해당 스탬프가 있습니다.')
-			    // location.reload();
+			    alert('스탬프 이미 존재');
+			    location.reload();
 			  }
 			},
 			error: function (error) {
@@ -232,7 +224,7 @@ function likeCount_function(market_arr) {
 	    success: function(result) {
 	      if (result['result'] == 'success'){
 	        $('#noGood_Button_sj').css('display', 'none');
-	        $('#yesGood_Button_sj').css('display', 'inline-block');
+	        $('#yesGood_Button_sj').css('display', 'block');
 	        $('#goodCount_sj').text(result['like_count']);
 	      }
 	    },
@@ -259,7 +251,7 @@ function likeCount_function(market_arr) {
         datatype: 'json',
         success: function(result) {
 	      if (result['result'] == 'success'){
-	        $('#noGood_Button_sj').css('display', 'inline-block');
+	        $('#noGood_Button_sj').css('display', 'block');
 	        $('#yesGood_Button_sj').css('display', 'none');
 	        $('#goodCount_sj').text(result['like_count']);
 	      }

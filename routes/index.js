@@ -55,11 +55,10 @@ router.get('/coupon', function(req, res){
 
   // 유저 아이디 세션, 변수값 저장
   var user_id = req.user.id;
-
   // SQL
   // var find_coupon_customer = 'select * from `coupon_customer` where `user_id` = ?';
   var find_stamp = 'select * from `stamp` where `user_id` =?';
-  var mycoupon = 'SELECT coupon_customer.id, coupon_customer.user_id, coupon_customer.sijang_name, coupon_customer.market_name, coupon_customer.coupon_password, coupon_customer.coupon_reward, coupon_customer.coupon_standard, coupon_manager.coupon_count FROM coupon_customer INNER JOIN coupon_manager ON coupon_customer.sijang_name=coupon_manager.sijang_name and coupon_customer.market_name=coupon_manager.market_name WHERE coupon_customer.user_id=?;';
+  var mycoupon = 'select * from `coupon_customer` where `user_id`=?';
   var couponlist = 'select * from `coupon_manager`';
   var coupon_img = 'select * from market';
   //resullt1은 발급쿠폰 결과, result2는 발급받은 스탬프

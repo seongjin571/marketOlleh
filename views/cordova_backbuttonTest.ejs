@@ -5,6 +5,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src='/cordova/cordova.js'></script>
         <script src='/cordova/cordova_plugins.js'></script>
+        <script type="text/javascript">        
+        // ( hw edit; back button ) @overriding
+        function onLoad() {
+            document.addEventListener("deviceready", onDeviceReady, false);
+        }
+
+        function onDeviceReady() {
+            document.addEventListener("backbutton", onBackKeyDown, false);
+        }
+
+        function onBackKeyDown() {
+            navigator.notification.confirm('앱을 종료하시겠습니까?', onBackKeyDownMsg, '스마트오더', '취소, 종료');
+        }
+
+        function onBackKeyDownMsg(button) {
+            if(button == 2) {
+                navigator.app.exitApp();
+            }
+        }
+        </script>
         <script type="text/javascript" charset="utf-8">
             document.addEventListener("deviceready", onDeviceReady); 
                 function onDeviceReady() {

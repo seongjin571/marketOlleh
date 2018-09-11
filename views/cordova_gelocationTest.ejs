@@ -5,40 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>코르도바 GPS TEST</title>
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
-    <script src='/cordova/cordova.js'></script>
-    <script src='/cordova/cordova_plugins.js'></script>
 </head>
-<body onload="onLoad()">
-
-    <script type="text/javascript">
-
-    // ( hw edit; back button ) @overriding
-    function onLoad() {
-        document.addEventListener("deviceready", onDeviceReady, false);
-    }
-
-    function onDeviceReady() {
-        document.addEventListener("backbutton", onBackKeyDown, false);
-    }
-
-    function onBackKeyDown() {
-        navigator.notification.confirm('앱을 종료하시겠습니까?', onBackKeyDownMsg, '스마트오더', '취소, 종료');
-    }
-
-    function onBackKeyDownMsg(button) {
-        if(button == 2) {
-            navigator.app.exitApp();
-        }
-    }
-    </script>
-
+<body>
+  <script src='/cordova/cordova_plugins.js'></script>
+  <script src='/cordova/cordova.js'></script>
 
 	<div id="map" style="width:90%;height:250px;margin-left: 5%; "></div>
 	<input type="button" value="Get GPS" id="GetButton" />
     <!-- <script src='/cordova/cordova.js'></script> -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
     <script type="text/javascript">
-    
+
     var markers = []; // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
 
     // 지도를 표시할 div (id)
@@ -50,7 +27,7 @@
 
     var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-    
+
     // 마커 하나를 지도위에 표시합니다
     addMarker(new daum.maps.LatLng(33.450701, 126.570667));
 
@@ -69,7 +46,7 @@
         // 생성된 마커를 배열에 추가합니다
         markers.push(marker);
     }
-    
+
     // 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수
     function setMarkers(map) {
         for (var i = 0; i < markers.length; i++) {
@@ -94,11 +71,11 @@
         map.setCenter(moveLatLon);
         map.setLevel(4);
 
-    } // changeCenter	
+    } // changeCenter
 	*/
 </script>
 <script type="text/javascript">
-	
+
     var Latitude = undefined;
     var Longitude = undefined;
 
@@ -119,7 +96,7 @@
     // Get map by using coordinates
     function getMap(latitude, longitude) {
 
-    	var mapContainer = document.getElementById('map'), 
+    	var mapContainer = document.getElementById('map'),
     		mapOptions = {
             	center: new daum.maps.LatLng(0, 0),
             	level: 4
@@ -127,7 +104,7 @@
 
 		var map = new daum.maps.Map(mapContainer, mapOptions);
 
-		// 마커 좌표 생성을 위한 변수 
+		// 마커 좌표 생성을 위한 변수
         var latLong = new daum.maps.LatLng(latitude, longitude);
 
         // 마커 생성
@@ -167,7 +144,7 @@
     }
 
     GetButton.addEventListener('click', getMapLocation, false);
-    
+
 </script>
 </body>
 </html>
