@@ -97,6 +97,7 @@ body, html {
 #light{
     height: 30px;
     width:30px;
+    margin-top: 3px;
     float: left;   
 }
 #idfind_top{
