@@ -24,6 +24,37 @@
 </head>
 
 <body>
+        <div class="alert_x" style="display:none">
+            <div class="alert_x_content">
+                <div class="alert_image">
+                    <img src="/images/alert_x.png" width="70px" height="70px">
+                </div>
+                <div class="alert_content">
+                </div>
+            </div>
+        </div>
+        
+        <div class="alert_o" style="display:none">
+            <div class="alert_o_content">
+                <div class="alert_image">
+                    <img src="/images/alert_o.png" width="70px" height="70px">
+                </div>
+                <div class="alert_content">
+                </div>
+            </div>
+        </div>
+        <div class="alert_select" style="display:none">
+            <div class="alert_o_content">
+                <div class="alert_content_select">
+                </div>
+                <div class="alert_select_cancel">
+                    취소
+                </div>
+                <div class="alert_select_ok">
+                    확인
+                </div>
+            </div>
+        </div>
     <div id="menu_infor">
 
         <div id="top_infor">
@@ -76,7 +107,7 @@
                         </div>
                     </div>
                     <div id="map">
-                        <img src="/images/location2.png" width="30px" height="30px">
+                        <img src="/images/location3.png" width="30px" height="30px">
                         <div id="name">위치</div>
                     </div>
                     <img src="/images/han.png" width="80%" style="margin-left: 10%;margin-top: 5%;">
@@ -98,7 +129,6 @@
                                         <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px">
                                     </div>
                                     <% } %>
-
                                         <% for(var k=0; k<5-avgRows.rateAvg; k++) { %>
                                             <div>
                                                 <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
@@ -128,7 +158,6 @@
                                                             <img class="star_yellow_customer" src="/images/star_yellow.png" width="20px" height="20px">
                                                         </div>
                                                     <% } %>
-
                                                     <% for(var k=0; k<5-review[j].rate; k++) { %>
                                                         <div>
                                                             <img class="star_gray_customer" src="/images/star_gray.png" width="20px" height="20px">
@@ -140,7 +169,6 @@
                                                     </div>
                                                 <% } %>
                                     </div>
-
                                     <div class="review_content_sj">
                                         <div class="review_content_id_sj" id='review_content_id_sj<%= review[j].id %>'>
                                             <% if(review[j].provider == 'kakao') { %>
@@ -162,7 +190,6 @@
                                                     }
                                                 </script>
                                             <% } %>
-
                                         </div>
                                         <div class="review_content_date_sj">
                                             <%= review[j].date %>
@@ -184,9 +211,7 @@
                                                         </div>
                                                         <% } %>
                                                 </div>
-
                                                 <p style="font-size: 20px; color: #9c9c9c;">작성된 리뷰가 없습니다.</p>
-
                                             </div>
                                             <div class="intro">
                                                     <p>
@@ -257,7 +282,6 @@
             $('.go_slide').css('color','black');
             $('.go_slide').eq(active).css('color','#63dded');
         });
-
         $('#home').click(function () {
             location.href = "/mainManager";
         })
@@ -268,14 +292,12 @@
             location.href = "/mystampManager";
         })
         $('#logout').click(function () {
-            var logout = confirm("로그아웃 하시겠습니까?");
-            if (logout == true) {
-                console.log('로그아웃성공');
+            $('.alert_select').css('display', 'block');
+            $('.alert_content_select').html('로그아웃 하시겠습니까?')
+            $('.alert_select_ok').click(function () {
+                $('.alert_select').css('display', 'none');
                 $(location).attr('href', '/logoutmanager');
-
-            } else {
-                console.log('로그아웃실패');
-            }
+            })
         })
         var doubleSubmitFlag = false;
         function doubleSubmitCheck() {
@@ -286,9 +308,7 @@
                 return false;
             }
         }
-
         $('#write_ok_button').click(function () {
-
             var user_id = '사장님';
             var market_name = '<%= result1[0].market_name %>';
             var sijang_name = '<%= result1[0].sijang_name %>';
@@ -307,9 +327,9 @@
             var post_date = leadingZeros(now.getYear() - 100, 2) + '-' +
                 leadingZeros(now.getMonth() + 1, 2) + '-' +
                 leadingZeros(now.getDate(), 2);
-
             if (!text) {
-                alert('내용을 입력해주세요 !');
+                $('.alert_x').css('display', 'block');
+                $('.alert_content').html('리뷰를 입력해 주세요')
                 return false;
             }
             if (doubleSubmitCheck()) return;
@@ -331,8 +351,11 @@
                 success: function (result) {
                     if (result['result'] == 'success') {
                         // console.log(result);
-                        alert('등록완료');
-                        location.reload();
+                        $('.alert_o').css('display', 'block');
+                        $('.alert_content').html('리뷰 등록이 완료되었습니다')
+                        $('.alert_o').click(function () {
+                            location.reload();
+                        });
                     }
                     else {
                         console.log(result);
@@ -345,6 +368,15 @@
                 }
             });
         })
+        $('.alert_x').click(function () {
+                $(this).css('display', 'none')
+            })
+            $('.alert_o').click(function () {
+                $(this).css('display', 'none')
+            })
+            $('.alert_select_cancel').click(function () {
+                $('.alert_select').css('display', 'none')
+            })
         // $('#store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
     </script>
     <!-- <script src="/javascripts/mystore.js"></script> -->
