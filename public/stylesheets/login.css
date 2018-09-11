@@ -7,6 +7,12 @@ body, html {
     margin: 0;
     background-color: white;
 }
+ /* ::placeholder {  파이어폭스 51+, 크롬 57+ 
+    color: red;
+    opacity:  1;
+    line-height: 200px;
+ }  */
+
 
 #start,#all_body {
     width: 100%;
@@ -149,8 +155,34 @@ body, html {
     font-family: initial !important;
 }
 .login_button_user > .inputuser{
+<<<<<<< HEAD
+    outline:none;
+    width: 288px;
+    height: 46px;    
+    background-color: white;
+    border: double 1px transparent;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
+}
+.login_button_user_1 > .inputuser{
+    outline:none;
+    width: 288px;
+    height: 46px;
+    background-color: white;
+    border: double 1px transparent;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
+}
+.login_button_user_2 > .inputuser{
+    outline:none;
+    width: 288px;
+    height: 46px;
+=======
     width: 80%;
     height: 90%;
+>>>>>>> 2fbda152c8f9d588df42912ef545d5f9038b4174
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
