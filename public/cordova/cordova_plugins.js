@@ -233,6 +233,11 @@ module.exports = [
     "pluginId": "cordova-plugin-file-transfer",
     "clobbers": [
       "window.FileTransfer"
+    "id": "cordova-plugin-x-socialsharing.SocialSharing",
+    "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
+    "pluginId": "cordova-plugin-x-socialsharing",
+    "clobbers": [
+      "window.plugins.socialsharing"
     ]
   }
 ];
@@ -244,6 +249,7 @@ module.exports.metadata =
   "cordova-plugin-camera": "4.0.3",
   "cordova-plugin-file": "6.0.1",
   "cordova-plugin-file-transfer": "1.7.1"
+  "cordova-plugin-x-socialsharing": "5.4.1"
 };
 // BOTTOM OF METADATA
 });
