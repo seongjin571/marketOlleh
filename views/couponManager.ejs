@@ -22,6 +22,38 @@
 </head>
 
 <body>
+        <div class="alert_x" style="display:none">
+                <div class="alert_x_content">
+                  <div class="alert_image">
+                    <img src="/images/alert_x.png" width="70px" height="70px" > 
+                  </div> 
+                  <div class="alert_content">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="alert_o" style="display:none">
+                  <div class="alert_o_content">
+                    <div class="alert_image">
+                      <img src="/images/alert_o.png" width="70px" height="70px" > 
+                    </div> 
+                    <div class="alert_content">
+                    </div>
+                  </div>
+                </div>
+              
+                  <div class="alert_select"  style="display:none">
+                      <div class="alert_o_content">
+                        <div class="alert_content_select">
+                        </div>
+                        <div class="alert_select_cancel">
+                          취소
+                        </div>
+                        <div class="alert_select_ok">
+                            확인
+                          </div>
+                      </div>
+                    </div>
     <div id="all_coupon_div">
         <div id="make_coupon_button">
             <button id="make_coupon">새로운 쿠폰 생성</button>
@@ -73,7 +105,7 @@
 
             <div id="make_coupon_form">
                     <div class="inputLine">
-                        <img class="check_select" src="/images/check.png" width="24px" height="24px">
+                        <img class="check_input" src="/images/check.png" width="24px" height="24px">
                         <p class="name">할인금액</p>
                         <select class="coupon_reward" name="coupon_reward">
                             <option value="0">선택</option>
@@ -89,7 +121,7 @@
                         <input class="input_content" type="text" id="coupon_standard" placeholder="ex)5000원 이상 구매시">
                     </div>
                     <div class="inputLine">
-                        <img class="check_select" src="/images/check.png" width="24px" height="24px">
+                        <img class="check_input" src="/images/check.png" width="24px" height="24px">
                         <p class="name">선착순</p>
                         <select id="people_number" name="coupon_reward" class="coupon_count">
                             <option value="0">선택</option>
@@ -186,59 +218,62 @@
     $('#myStamp_sj').click(function () {
         location.href = "/mystampManager";
     })
-    $('#logout').click(function () {
-        var logout = confirm("로그아웃 하시겠습니까?");
-        if (logout == true) {
-            console.log('로그아웃성공');
-            $(location).attr('href', '/logoutmanager');
-
-        } else {
-            console.log('로그아웃실패');
-        }
-    })
-
+        $('#logout').click(function () {
+            $('.alert_select').css('display', 'block');
+            $('.alert_content_select').html('로그아웃 하시겠습니까?')
+            $('.alert_select_ok').click(function () {
+                $('.alert_select').css('display', 'none');
+                $(location).attr('href', '/logoutmanager');
+            })
+        })
     $('select:eq(0)').change(function () {
         if ($(this).val() == '0') {
-            $('.check_select:eq(0)').css('visibility', 'hidden');
+            $('.check_input:eq(0)').css('visibility', 'hidden');
             $('.reward_coupon').html("")
         }
         else {
-            $('.check_select:eq(0)').css('visibility', 'visible');
+            $('.check_input:eq(0)').css('visibility', 'visible');
             var value3 = $(".coupon_reward option:selected").val();
             $('.reward_coupon').html(value3)
         }
     });
     $('select:eq(1)').change(function () {
         if ($(this).val() == '0') {
-            $('.check_select:eq(1)').css('visibility', 'hidden');
+            $('.check_input:eq(2)').css('visibility', 'hidden');
             $('.deadline').html("")
         }
         else {
-            $('.check_select:eq(1)').css('visibility', 'visible');
+            $('.check_input:eq(2)').css('visibility', 'visible');
             var value4 = $("#people_number option:selected").val();
             $('.deadline').html('선착순 : ' + value4)
         }
     });
     $('input:eq(0)').change(function () {
-        $('.check_input:eq(0)').css('visibility', 'visible');
         var value = $(this).val()
+        if(!value==''){
+        $('.check_input:eq(1)').css('visibility', 'visible');
+        
         $('.standard_coupon').html(value);
-
+        }
+        else{
+            $('.check_input:eq(1)').css('visibility', 'hidden');
+            $('.standard_coupon').html(value);
+        }
     });
     $('input:eq(1)').change(function () {
         var password_L = $(this).val();
         var true_or_false = password_number.test(password_L);
         if(true_or_false){
-            $('.check_input:eq(1)').css('visibility', 'visible');
+            $('.check_input:eq(3)').css('visibility', 'visible');
             $('#password').html('****')
         }
         else{
-            alert('4자리 숫자로 입력해주세요.')
+            $('.alert_x').css('display', 'block');
+            $('.alert_content').html('4자리 숫자로 입력해주세요.')
             $(this).val('')
             $('#password').html('')
-            $('.check_input:eq(1)').css('visibility', 'hidden')
+            $('.check_input:eq(3)').css('visibility', 'hidden')
         }
-
     });
     $('#make_coupon').click(function () {
         $('#all_coupon_div').css('display', 'none');
@@ -255,6 +290,16 @@
         location.href = '/mystore';
     })
     $('#coupon_make_button').click(function () {
+        var signcount = 0;
+            for (var i = 0; i < 4; i++) {
+                if ($('.check_input').eq(i).css('visibility') == 'visible') {
+                    signcount++;
+                }
+                else {
+                    continue;
+                }
+            }
+            if (signcount == 4) {
         var manager_id = '<%= results[0].manager_id %>';
         var sijang_name = '<%= results[0].sijang_name %>';
         var market_name = '<%= results[0].market_name %>';
@@ -296,7 +341,6 @@
             'coupon_reward': coupon_reward
         }
         console.log(data);
-
         $.ajax({
             type: "POST",
             url: "/couponManager",
@@ -306,12 +350,15 @@
             data: data,
             success: function (result) {
                 if (result['result'] == 'success') {
-                    alert("쿠폰 등록");
+                    $('.alert_o').css('display','block');
+                    $('.alert_content').html('쿠폰 등록이 완료되었습니다.')
+                    $('.alert_o').click(function(){
                     location.reload();
+                    });
                 }
-                else if(result['result']=='fail'){
-                    alert('이미쿠폰이 있습니다');
-
+                else if (result['result'] == 'fail') {
+                    $('.alert_x').css('display', 'block');
+                    $('.alert_content').html('이미 쿠폰이 존재합니다.')
                 }else {
                   alert('couponManager.ejs에서 확인해봐야함');
                   location.reload();
@@ -321,9 +368,21 @@
                 alert('couponManager.ejs에서 확인해봐야함');
             }
         });
+    }
+    else{
+        $('.alert_x').css('display', 'block');
+        $('.alert_content').html('쿠폰 입력을 모두 해주세요.')
+    }
     })
-
-
+        $('.alert_x').click(function () {
+            $(this).css('display', 'none')
+        })
+        $('.alert_o').click(function () {
+            $(this).css('display', 'none')
+        })
+        $('.alert_select_cancel').click(function () {
+            $('.alert_select').css('display', 'none')
+        })
 </script>
 
 </html>

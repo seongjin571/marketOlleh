@@ -959,19 +959,19 @@
                                 hide: true,
                               },
                             });
-                            $('.go_slide').click(function () {
-                                var this_index = $(this).index();
-                                alert(this_index)
-                                $('.go_slide').css('color', 'black');
-                                $('.go_slide').eq(this_index).css('color', '#63dded');
-                                swiper.slideTo(this_index, 500, false);
-                              });
+                            // $('.go_slide').click(function () {
+                            //     var this_index = $(this).index();
+                            //     alert(this_index)
+                            //     $('.go_slide').css('color', 'black');
+                            //     $('.go_slide').eq(this_index).css('color', '#63dded');
+                            //     swiper.slideTo(this_index, 500, false);
+                            //   });
 
-                              swiper.on('slideChangeTransitionStart', function () {
-                                var active = swiper.activeIndex;
-                                $('.go_slide').css('color', 'black');
-                                $('.go_slide').eq(active).css('color', '#63dded');
-                              });
+                            //   swiper.on('slideChangeTransitionStart', function () {
+                            //     var active = swiper.activeIndex;
+                            //     $('.go_slide').css('color', 'black');
+                            //     $('.go_slide').eq(active).css('color', '#63dded');
+                            //   });
 
                           $('.back_div').click(function () {
                             //  swiper.destroy();
