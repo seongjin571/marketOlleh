@@ -7,97 +7,67 @@ html {
     height: 100%;
     padding: 0;
     margin: 0;
-    overflow-x: hidden;
 }
-.content_title{
-    width:85%;
-    margin-left: 7.5%;
-    font-weight: bold;
-    font-size: 21px;
-    border-bottom-style: solid;
-    margin-bottom: 30px;
-    height: 50px;
-    line-height: 50px;
-    margin-top: 5px;
-}
+
 #menu {
     width: 100%;
-    position: fixed;
     display: inline-flex;
-    height: 9%;
+    height: 50px;
     background-image: url('/images/mainBack.png');
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: 10;
 }
 
 #menu div {
     width: 50%;
     height: 100%;
     text-align: center;
-    line-height: 57px;
+    line-height: 50px;
     color: white;
 }
 #coupon_view{
-    width: 100%;
-     margin-bottom: 80px;
-    margin-top: 20%;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-bottom: 80px;
     display: none;
 }
 .find_coupon_list{
-    width: 85%;
-    margin-left: 7.5%;
+    width: 80%;
+    margin-left: 10%;
     display: none;
 }
 .my_coupon{
-    margin-top: 17%;
-    width: 100%;
-    margin-bottom: 18%;
+    width: 70%;
+    margin-left: 15%;
 }
-.market{
-    padding-left: 10%;
-    width: 90%;
-    height: 40px;
-    display: inline-flex;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: #9c9c9c;
-}
-.market_image{
-    width: 40px;
-    height: 40px;
-    border-radius: 40px;
-    background-color: skyblue;
-}
+
 .market p{
-    height: 40px;
-    font-size: 16px;
-    width: 55%;
-    margin: 0;
-    line-height: 40px;
-    margin-left: 5%;
-}
-.market img{
-    padding-top: 10px;
+    font-size: 20px;
+    margin-top: 10px;
 }
 
-
+.content,.find_coupon{
+    width: 100%;
+    height: 120px !important;
+    background-color: #fb83a5;
+    border-radius: 7px;
+    margin-top: 20px;
+}
 .menu {
     min-width: 100px !important;
-    height: 160px !important;
+    height: 120px !important;
     width: 30% !important;
     max-width: 320px !important;
-    color: #Ff0055;
-    font-weight: lighter;
+    background-color: rgb(238, 39, 39);
     margin-top: 20px;
+    color: #fff;
     border-radius: 7px;
-    line-height: 160px;
-    font-size: 22px;
+    line-height: 120px;
+    font-size: 25px;
     text-align: center;
 }
 .stamp_list{
-    width: 75%;
-    margin-left: 12.5%;
+    width: 100%;
     height: 160px;
     background-image:url('/images/backSample1.png');
     background-repeat: no-repeat;
@@ -108,61 +78,21 @@ html {
     line-height: 160px;
     text-align: center;
 }
-
-
-.find_coupon_list1{
-    width: 100%;
-    height: 160px;
-    background-color: rgb(247, 245, 245);
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-
-.find_coupon1:nth-child(4n-3){
-
-    width: 75%;
-    margin-left: 12.5%;
-    height: 160px;
-    background-image:url('/images/backSample1.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    color: white;
+.download{
+    background-color: rgb(12, 141, 12);
     border-radius: 7px;
-}
-.find_coupon1:nth-child(4n-2){
-    width: 75%;
-    margin-left: 12.5%;
-    height: 160px;
-    background-image:url('/images/backSample2.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    color: white;
-    border-radius: 7px;
-}
-.find_coupon1:nth-child(4n-1){
-    width: 75%;
-    margin-left: 12.5%;
-    height: 160px;
-    background-image:url('/images/backSample3.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    color: white;
-    border-radius: 7px;
-}
-.find_coupon1:nth-child(4n){
-    width: 75%;
-    margin-left: 12.5%;
-    height: 160px;
-    background-image:url('/images/backSample4.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    color: white;
-    border-radius: 7px;
+    height: 130px;
+    color:white;
+    line-height: 130px;
+    font-size: 30px;
+    text-align: center;
 }
 
-.content:nth-child(4n-3){
-    width: 100%;
+
+
+.find_coupon_list1:nth-child(4n-3){
+    width: 75%;
+    margin-left:12.5%;
     height: 160px;
     background-image:url('/images/backSample1.png');
     background-repeat: no-repeat;
@@ -171,8 +101,9 @@ html {
     border-radius: 7px;
     margin-top: 20px;
 }
-.content:nth-child(4n-2){
-    width: 100%;
+.find_coupon_list1:nth-child(4n-2){
+    width: 75%;
+    margin-left:12.5%;
     height: 160px;
     background-image:url('/images/backSample2.png');
     background-repeat: no-repeat;
@@ -181,8 +112,9 @@ html {
     border-radius: 7px;
     margin-top: 20px;
 }
-.content:nth-child(4n-1){
-    width: 100%;
+.find_coupon_list1:nth-child(4n-1){
+    width: 75%;
+    margin-left:12.5%;
     height: 160px;
     background-image:url('/images/backSample3.png');
     background-repeat: no-repeat;
@@ -191,8 +123,9 @@ html {
     border-radius: 7px;
     margin-top: 20px;
 }
-.content:nth-child(4n){
-    width: 100%;
+.find_coupon_list1:nth-child(4n){
+    width: 75%;
+    margin-left:12.5%;
     height: 160px;
     background-image:url('/images/backSample4.png');
     background-repeat: no-repeat;
@@ -201,25 +134,25 @@ html {
     border-radius: 7px;
     margin-top: 20px;
 }
-.store_and_market1,.store_and_market{
-    width: 90%;
+.store_and_market1{
+    width: 86%;
     height: 40px;
-    margin-left: 5%;
-    line-height: 40px;
+    margin-left: 7%;
     display: inline-flex;
+    line-height: 40px;
 }
-.store_name1,.store_name{
+.store_name1{
     width: 60%;
     height: 40px;
     line-height: 40px;
 }
-.market_name1,.market_name{
-    width: 70%;
-    height: 35px;
-    line-height: 35px;
-    padding-left: 5%;
+.market_name1{
+    width: 40%;
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
 }
-.sale_price1,.sale_price{
+.sale_price1{
     width: 100%;
     height: 42.5px;
     font-size:24px;
@@ -228,7 +161,7 @@ html {
     text-align: center;
     font-weight: lighter;
 }
-.standard1,.standard{
+.standard1{
     width: 100%;
     height: 42.5px;
     font-size: 24px;
@@ -246,19 +179,16 @@ html {
     width: 33%;
     height: 100%;
 }
-.period1,.period{
-    width: 40%;
-    height: 40px;
-    /* margin-left: 7%; */
+.period1{
+    width: 60%;
+    height: 35px;
+    margin-left: 7%;
     font-size: 16px;
     color: white;
-    line-height: 40px;
+    line-height: 35px;
     font-weight: lighter;
 }
-.swiper-container{
-    width: 70%;
-    margin-left: 15%;
-}
+
 
 #nav_sj {
     width: 100%;
@@ -289,124 +219,36 @@ html {
 
 .password_number_div_sj{
     display: none;
-    width: 100%;
-    height: 83%;
-    background-color: #f6f8f9;
-    color: #b9b9b9;
+    width: 80%;
+    margin-left: 10%;
+    height: 50%;
+    position: fixed;
+    top: 42%;
+    background-color: rgb(230, 247, 236);
+    border-radius: 5px;
     font-size: 20px;
     text-align: center;
-     /* line-height: 90px; */
-     position: absolute;
-     /* margin-top: 20%; */
-     top:9%;
-     display: none;
-     font-weight: lighter;
-}
-.password_check{
-    width: 100%;
-    height: 28%;
-    /* background-color: red; */
-    display: inline-flex;
-    background-color: white !important;
-    text-align: center;
-    font-size: 40px;
-    color: #6078ea;
-}
-
-.password_check:nth-child(1){
-    padding-left:24%;
-}
-.password_check div{
-    width: 9%;
-    height: 65%;
-    line-height: 130px;
-    margin-right: 4%;
-    border-bottom-style: solid;
-    border-bottom-color: #d3d3d3;
-    border-bottom-width: 4px;
-    /* box-shadow: 5px 5px 5px #888888; */
+     line-height: 70px;
 }
 .password_line_sj{
     display: inline-flex;
     width: 100%;
-    height: 18%;
+    height: 25%;
 }
 .password_line_sj div{
     width: 33.33%;
     height: 100%;
     border-style: solid;
-    border-width: 1px;
-    border-color: white;
-    line-height: 95px;
+    border-color: rgb(181, 233, 199);
 }
 .password_cancel{
-    color: #Ff0055;
-    font-weight: normal;
-}
-
-.password_number_sj:active{
-    background-color: rgb(212, 209, 209);
-}
-.alert_x,.alert_o,.alert_select{
-    width: 100%;
-    height: 100%;
-    background-color:  rgba(141, 140, 140, 0.8);
-    position: fixed;
-    z-index: 100;
-    top:0;
-}
-.alert_x_content,.alert_o_content{
-    width: 70%;
-    height: 25%;
-    background-color: white;
-    border-radius: 10px;
-    position: fixed;
-    top: 37.5%;
-    left:15%;
-}
-.alert_image{
-    text-align: center;
-    width: 100%;
-    height: 50%;
-    padding-top: 10%;
-}
-.alert_content{
-    text-align: center;
-    width: 100%;
-    height: 40%;
-}
-.alert_content_select{
-    text-align: center;
-    width: 100%;
-    height: 60%;
-    line-height: 90px;
-}
-
-.alert_select_ok{
-    text-align: center;
-    width: 35%;
-    height: 40px;
-    line-height: 40px;
-    margin-left: 10%;
-    border-radius: 50px;
-    background-image: linear-gradient(white, white),
- radial-gradient(circle at top left, #17ead9,#6078ea);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    padding: 1px;
-    display: inline-block;
-}
-.alert_select_cancel{
-    text-align: center;
-    width: 35%;
-    height: 40px;
-    line-height: 40px;
-    margin-left: 10%;
-    border-radius: 50px;
-    background-image:url('/images/backSample5.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    padding: 1px;
-    display: inline-block;
+    background-color: rgb(241, 37, 37);
     color: white;
+}
+.password_ok{
+    background-color: rgb(241, 37, 37);
+    color: white;
+}
+.password_number_sj:hover{
+    background-color: rgb(185, 184, 184);
 }
