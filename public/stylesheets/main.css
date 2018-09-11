@@ -1,117 +1,296 @@
-body,
-html {
-    font-family: 'LotteMartDream', sans-serif;
+@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family: 'NanumSquare',sans-serif;}
+
+    body,
+        html {
     width: 100%;
     height: 100%;
     padding: 0;
     margin: 0;
     /* overflow: hidden; */
 }
+
+/* main ~ display 부분 초기 설정 */
+
+
+#Searching, #aaa{
+    display: block;
+}
+#searching_input,#searching_input input{
+    border-radius:4px;
+}
+#aaa{
+    position: absolute;
+    top:135px;
+}
+
+/* △ main ~ display △ */
+
 #text_logo{
-    width: 95%;
-    height: 10%;
-    margin-left: 5%;
-}
-#search{
-    width: 85%;
-    margin: 0 auto;
-    height: auto;
-    background-color: #acdce2;
-    padding: 20px;
-    border-radius: 5px;
-}
-#search_bar{
     width: 100%;
+    height: 90px;
+    /* margin-left: 5%; */
+    background-image: url('/images/mainBack.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 2%;
+    position: fixed;
+    top:0;
+    z-index: 2;
+}
+#store_infor,#market_infor{
+    display: none;
+}
+#verti{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#no_stamp{
+    text-align: center;
+    font-size: 18px;
+}
+
+#aaa{
+    width: 100%;
+    height: 100%;
+}
+#back_div{
+    width: 100%;
+    height: 40px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    display: none;
+    z-index: 2;
+}
+#back_div img{
+    margin-top: 10px;
+    margin-left:10px;
+}
+/* 검색 부분 CSS - 현우가 주석 처리함 / searching css 참조 */
+#searchingButton{
+    margin-top: 9px;
+    background-color: white;
+}
+#Searching{
+    width: 93%;
+    margin: 0 auto;
+    height: 38px;
+    display: table;
+    margin-top: 2px;
+}
+
+#verti{
+    width: 100%;
+    height: 30px;
+    display: table-cell;
+    vertical-align: middle;
+}
+#inline_logo{
+    margin-top: 10px;
+    margin-left: 3%;
+}
+#vertical_helper{
+    width: 100%;
+    height: 38px;
     display: inline-flex;
 }
-#search_bar input{
 
-    width:80%;
-    height:30px;
+#searching_input{
+    display: inline-flex;
+    width: 100%;
+    height: 38px;
+    box-shadow: 4px 4px 10px grey;
+    border-color: white;
+    background-color: white;
 }
-#search_bar img{
-margin-left: 10px;
+#searching_input input{
+    border-style: none;
+    width: 88.5%;
 }
-#search button{
-    width: 80%;
-    height: 40px;
-    margin-top: 15px;
-    background-color: #fb83a5;
-    color: white;
-    border-radius: 5px;
-    font-size: 21px;
-    margin-left: 10%;
+#verti-helper{
+    display: table-cell;
+    vertical-align: middle;
+    height: 22px;
 }
-#mystamp{
-    width: 85%;
+#navControlButton{
+    position: fixed;
+    top: 90px;
+    width: 100%;
+    height: 22px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #9c9c9c;
+    font-size: 14px;
+    text-align: center;
+    display: table;
+    z-index: 2;
+    background-color: white;
+}
+.near_market_list{
+    width: 30%;
+    margin-left: 2.5%;
+}
+
+/* △ 검색 부분 CSS △ */
+
+/* ▽ 구 표시 부분 CSS - 현우 ▽ */
+
+
+#Goomap table{
+    display: center;
+}
+
+/* △ 구 표시 부분 CSS △ */
+
+#myStamp{
+    width: 95%;
     margin: 0 auto;
-    height: 20%;
-    background-color: #acdce2;
-    padding: 15px;
+    height: 25%;
+    /* background-color: #acdce2; */
+    /* padding: 20px; */
+    /* border-radius: 5px; */
+}
+#user_name{
+    margin-top: 10px;
+}
+
+.swiper-pagination{
+    bottom:10px !important;
+}
+.swiper-container{
+    width: 96%;
+    height: 100%;
+    /* background-color: #acdce2; */
     border-radius: 5px;
     margin-top:10px;
 }
-label{
-    color:white;
-}
-.stamp_list{
-    width: 80%;
+
+.swiper-wrapper{
+    width: 100%;
+    margin: 0 auto;
     height: 100%;
-    background-color: #fb83a5;
-    margin-left: 10%;
+}
+
+label{
+    color:black;
+}
+
+.swiper1:nth-child(4n-3){
+    width: 70%;
+    height: 85%;
+    margin-top: 3.5%;
+    background-image:url('/images/backSample1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     border-radius: 5px;
     color: white;
 }
-.stamp_name{
-    display: inline-flex;
+.swiper1:nth-child(4n-2){
+    width: 70%;
+    height: 85%;
+    margin-top: 3.5%;
+    background-image:url('/images/backSample2.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 5px;
+    color: white;
+}
+.swiper1:nth-child(4n-1){
+    width: 70%;
+    height: 85%;
+    margin-top: 3.5%;
+    background-image:url('/images/backSample3.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 5px;
+    color: white;
+}
+.swiper1:nth-child(4n){
+    width: 70%;
+    height: 85%;
+    margin-top: 3.5%;
+    background-image:url('/images/backSample4.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 5px;
+    color: white;
+}
+
+.store_market_name{
     width: 90%;
-    height: 30%;
+    height: 18%;
     margin-left: 5%;
-    margin-top: 5px;
+    margin-top: 6%;
+    font-size: 16px;
+    /* font-weight: lighter; */
 }
 .market_name{
     font-size: 14px;
     text-align: center;
 }
-.stamp_count{
+.near_market_name{
+    font-size: 15px;
+    margin-top: 5px;
+}
+.my_stamp_count{
     width: 100%;
-    height: 60%;
-    font-size: 25px;
+    height: 49%;
+    text-align: center;
     display: table;
 }
-.stamp_count_vertical{
+.stamp_market{
     width: 100%;
-    height: 100%;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
+    height: 25%;
+    font-size: 20px;
+    display: inline-flex;
 }
+.logo_image{
+    width: 33%;
+    height: 100%;
+}
+.deadline{
+    width: 60%;
+    font-size: 13px;
+    margin-left: 5%;
+    font-weight: 400;
+    padding-top:5%;
+}
+.count_stamp{
+    width: 100%;
+    font-size: 40px;
+}
+
 
 #near_market{
-    width: 85%;
+    display: inline-flex;
+    width: 96%;
     margin: 0 auto;
-    height: 35%;
-    background-color: #acdce2;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top:10px;
+    height: 130px;
+    margin-left: 2%;
 }
-
+.good_store_name{
+    font-size: 16px;
+}
 #hot_store{
-    width: 85%;
-    margin: 0 auto;
-    height: 1620px;
-    background-color: #acdce2;
-    padding: 10px;
-    border-radius: 5px;
+    width: 100%;
+    /* margin: 0 auto; */
+    height: 2050px;
     margin-top:10px;
+    margin-bottom: 80px;
+}
+#hot_store_market{
+    width: 100%;
+    /* margin: 0 auto; */
+    height: 1025px;
+    margin-top:9%;
     margin-bottom: 80px;
 }
 .hot_store_list{
     width: 100%;
     display: inline-flex
 }
-
 .hot_store_list img,#hot_store_list_market img{
         border-radius: 4px;
         border-style: solid;
@@ -122,52 +301,175 @@ label{
     border-style: none !important;
 }
 
-.hot_store_detail{
-    width: 45%;
-    height: 150px;
-    border-style: solid;
-    border-color: #fb83a5;
-    margin-left: 3%;
-    color:white;
+/*  */
+#hot_store_list_market{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
-#user_name{
-    width: 90%;
-    height: 15%;
-    margin-left: 5%;
-    color: white;
-}
-#market_pic{
-    width: 90%;
-    margin-left: 5%;
-    height: 70%;
-}
-.detail_name{
-    text-align: center;
-}
-#near_infor{
-    width: 90%;
-    height: 15%;
-    margin-left:5%;
+
+.good_count_market{
+    height: 20px;
+    line-height: 25px;
     display: inline-flex;
-    text-align: center;
+    color:gray;
+    font-size: 14px;
+}
+.good_count{
+    height: 20px;
+    line-height: 25px;
+    display: inline-flex;
+    color:gray;
+    font-size:12.7px;
+    font-weight: lighter;
+}
+.good_count img,.good_count_market img{
+    border: none;
+}
+.good_count img{
+    width: 17px;
+    height: 17px;
+    margin-right: 3px;
+}
+.hot_store_detail,.hot_store_detail_market{
+    width: 45%;
+    height: 200px;
+    /* border-style: s; */
+     border-radius: 5px;
+    margin-left: 3.3%;
+    margin-bottom: 5px;
+}
+.no_stamp{
+    width: 70%;
+    margin-left: 15%;
+    height: 100%;
+    background-image:url('/images/backSample1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     color: white;
+    border-radius: 7px;
+    text-align: center;
+    display: table;
+}
+#no_stamp_verti{
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+.market_pic{
+    width: 100%;
+    height: 68%;
+}
+.market_pic img{
+        border-radius: 4px;
+        border-style: solid;
+        border-color: #c5c6c7;
+        border-width: 0.8px;
 }
 
+h3,h4{
+    margin-left: 15px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
 
+.distance,.good_market_name{
+    margin-top: 3px;
+    color: gray;
+    font-size: 14px;
+    font-weight: lighter;
+}
 #nav_sj {
     width: 100%;
-    height: 20%;
-    background: #63dded;
+    height: 8%;
+    background: white;
     display: inline-flex;
     position: fixed;
-    top: 90%;
+    top: 92%;
     z-index: 1;
+    border-top-style:solid;
+    border-top-width: 0.5px;
+    /* border-left-style: none */
 }
 
 #nav_sj div {
+    padding: 5px;
     width: 20%;
-    padding: 10px;
-    font-size: 8px;
-    color: white;
+    font-size: 10px;
+    color: #9c9c9c;
     text-align: center;
+}
+#nav_text{
+    color: #63dded;
+}
+.line{
+    margin-top: 10px;
+    width: 100%;
+    height: 10px;
+    background-color:#f2f2f2;
+}
+.alert_x,.alert_o,.alert_select{
+    width: 100%;
+    height: 100%;
+    background-color:  rgba(141, 140, 140, 0.8);
+    position: fixed;
+    z-index: 100;
+    top:0;
+}
+.alert_x_content,.alert_o_content{
+    width: 70%;
+    height: 25%;
+    background-color: white;
+    border-radius: 10px;
+    position: fixed;
+    top: 37.5%;
+    left:15%;
+}
+.alert_image{
+    text-align: center;
+    width: 100%;
+    height: 50%;
+    padding-top: 10%;
+}
+.alert_content{
+    text-align: center;
+    width: 100%;
+    height: 40%;
+}
+.alert_content_select{
+    text-align: center;
+    width: 100%;
+    height: 60%;
+    line-height: 90px;
+}
+
+.alert_select_ok{
+    text-align: center;
+    width: 35%;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 10%;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+ radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    display: inline-block;
+}
+.alert_select_cancel{
+    text-align: center;
+    width: 35%;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 10%;
+    border-radius: 50px;
+    background-image:url('/images/backSample5.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 1px;
+    display: inline-block;
+    color: white;
 }

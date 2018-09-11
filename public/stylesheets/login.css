@@ -13,17 +13,20 @@ body, html {
     height: 100%;
     position: absolute;
     overflow: hidden;
-
 }
 #intro_image_div{
     width: 100%;
     height: 100%;
-    position:fixed;
+    background-color: white;
+
+    /* position:fixed; */
 }
 
 #intro_image{
-    width:100%;
+    width:50%;
     height:auto;
+    margin-left: 25%;
+    padding-top: 55%;
 }
 #top_part {
     display: table;
@@ -53,6 +56,7 @@ body, html {
     text-align: center;
     
 }
+
 #user_login{
     box-shadow: 5px 5px 3px #efefef;
     width: 70%;
@@ -66,9 +70,12 @@ body, html {
     background-clip: content-box, border-box;    
     padding: 1px;
     border: 0px;
+    color: gray;
+    outline:none;
 }
 
 #seller_login {
+    outline:none;
     box-shadow: 5px 5px 3px #e5e5e5;
     width: 70%;
     height: 100%;
@@ -92,6 +99,9 @@ body, html {
     overflow: hidden;
     position: fixed;
 }
+/* #loginuser{
+    display: block;
+} */
 
 #top_logo
 {
@@ -108,13 +118,17 @@ body, html {
 }
 .formuser
 {
+    position: fixed;
+    padding-top:20%;
     width:100%;
     height: 35%;
     
 }
 .formManager{
+    position: fixed;
+    padding-top:20%;
     width:100%;
-    height: 20%;
+    height: 35%;
 }
 .login_button_user{
     width:100%;
@@ -122,16 +136,59 @@ body, html {
     text-align: center;
     color:grey;
     margin-bottom: 3px;
+    position: fixed;
+    top:10%;
 }
-.login_button_formManager{
-    width:100%;
-    height:45%;
+.login_button_user_1{
+    width:360px;
+    height:30px;
     text-align: center;
     color:grey;
+    margin-bottom: 3px;
+    position: fixed;
+    top:170px;
 }
-.login_button_formManager > .inputmanager{
-    width: 80%;
-    height: 90%;
+.login_button_user_2{
+    width:360px;
+    height:30px;
+    text-align: center;
+    color:grey;
+    margin-bottom: 3px;
+    position: fixed;
+    top:220px;
+}
+.login_button_formManager1{
+    width: 360px;
+    height: 30px;
+    text-align: center;
+    color: grey;
+    margin-bottom: 3px;
+    position: fixed;
+    top: 170px;
+}
+.login_button_formManager2{
+    width: 360px;
+    height: 30px;
+    text-align: center;
+    color: grey;
+    margin-bottom: 3px;
+    position: fixed;
+    top: 220px;
+}
+.login_button_formManager1 > .inputmanager{
+    outline:none;
+    width: 288px;
+    height: 46px;
+    background-color: white;
+    border: double 1px transparent;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
+}
+.login_button_formManager2 > .inputmanager{
+    outline:none;
+    width: 288px;
+    height: 46px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
@@ -145,8 +202,29 @@ body, html {
     font-family: initial !important;
 }
 .login_button_user > .inputuser{
-    width: 80%;
-    height: 90%;
+    outline:none;
+    width: 288px;
+    height: 46px;
+    background-color: white;
+    border: double 1px transparent;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
+}
+.login_button_user_1 > .inputuser{
+    outline:none;
+    width: 288px;
+    height: 46px;
+    background-color: white;
+    border: double 1px transparent;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
+}
+.login_button_user_2 > .inputuser{
+    outline:none;
+    width: 288px;
+    height: 46px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
@@ -154,28 +232,13 @@ body, html {
     border-bottom-style: solid;
 }
 .icon_div{
-  width: 35px;
+  width: 15%;
   height: 35px;
   float: left;
-  padding-top: 10px;
 }
-#icon1{
-    width:30px;
-    height: 30px;
-    float: left;
-    
-}
-#icon2{
-    width:40px;
-    height: 40px;
-    float: left;
-    padding-top: 17%;
-}
-#icon3{
-    width:40px;
-    height: 40px;
-    float: left;
-    padding-top: 17%;
+.icon_div img{
+    width:35px;
+    height: 35px;
 }
 .login_button_user > .login_user{
     width:15%;
@@ -184,13 +247,17 @@ body, html {
 
 #login_button_user2{
    display: inline-flex;
-   height: 10%;
-   width: 100%;
+   height: 64px;
+   width: 360px;
+   position: fixed;
+   top: 340px;
 }
 #login_button_manager{
     display: inline-flex;
-    height: 4%;
-    width: 100%;
+    height: 64px;
+    width: 360px;
+    position: fixed;
+    top: 340px;
 }
 .idfind{
     background-color: white;
@@ -200,6 +267,7 @@ body, html {
     width:33.3%;
     height: 100%;
     font-size: 10.5px;
+    outline:none;
 }
 #password_find1{
     background-color: white;
@@ -209,8 +277,10 @@ body, html {
     width:33.3%;
     height: 100%;
     font-size: 10.5px;
+    outline:none;
 }
 #password_find2{
+    outline:none;
     background-color: white;
     color:grey;
     padding:0px;
@@ -221,6 +291,7 @@ body, html {
 }
 
 #loginUser_sign_up{
+    outline:none;
     padding:0px;
     background-color: white;
     color:grey;
@@ -231,6 +302,7 @@ body, html {
 }
 #loginmanager_sign_up
 {
+    outline:none;
     background-color: white;
     color:grey;
     padding:0px;
@@ -243,8 +315,9 @@ body, html {
 {
     height:50px;
     width: 100%;
-    padding-top:8%;
     text-align: center;
+    position: fixed;
+    top:300px;
 }
 .login_button_user4
 {
@@ -253,11 +326,14 @@ body, html {
     text-align: center;
 }
 .login_button_user5{
-    height:25%;
+    height:50px;
     width: 100%;
     text-align: center;
+    position: fixed;
+    top:300px;
 }
 .loginUser_insert{
+    outline:none;
     box-shadow: 5px 5px 3px #efefef;
     width: 90%;
     height: 100%;
@@ -271,17 +347,19 @@ body, html {
     background: linear-gradient(to right, #17ead9 , #6078ea);
    }
 #kakao_logo{
-    padding-top: 5%;
     width:100%;
     height: 25%;
     text-align: center;
+    position:fixed;
+    top: 500px;
     
 }
 #kakao_logo2{
-    margin-top: 6%;
-    width:100%;
-    height: 31%;
+    height: 50px;
+    width: 100%;
     text-align: center;
+    position: fixed;
+    top: 300px;
 }
 #kakaobutton{
     box-shadow: 5px 5px 3px #efefef;
@@ -300,6 +378,7 @@ body, html {
     background-clip: content-box, border-box;    
     padding: 1px;
     border: 0px;
+    outline:none;
 }
 #kakaobutton p{
     margin: 0;
@@ -338,43 +417,46 @@ a{
 #signuplogo
 {
     width:50%;
-    height: auto;
+    height: auto; 
     margin-top: 18%;
 }
 
 
 .signupuser_input{
     width:100%;
-    height:20%;
+    height:40px;
     color:grey;
-    padding-left: 5%
+    margin-top: 15px;
 }
 .signuptext{
     width: 60%;
-    height: 50px;
+    height: 35px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
     border-top: 0px;
     border-bottom-style: solid;
+    outline:none;
 }
 .signupform1{
-    padding-top:60%;
-    width:100%;
+    padding-top:10%;
+    width:90%;
     height: 50%;
-    margin:0 auto;
+    margin-left: 5%;
 }
 #signupform2{
     width:300px;
     margin:0 auto;
 }
 .signupuser_input2{
-    width:100%;
-    height:15.7%;
+    height:50px;
+    width: 100%;
     text-align: center;
-    color:grey;
-    margin-top: 5%;
+    position: fixed;
+    top:330px;
+    left: 0px;
 }
+
 .signupbutton{
     box-shadow: 5px 5px 3px #efefef;
   width: 90%;
@@ -398,34 +480,77 @@ a{
 #password_jh_check{
     font-family: initial !important;
 }
+#password_jh{
+    font-family: initial !important;
+}
 #userpwdcheck{
     font-family: initial !important;
 }
 /*signupuser css finish*/
 #signupForm2{
     width:100%;
-    height: 70%;
-    padding-top:53.5%;
+    /* height: 200px; */
+    position: fixed;
+    top: 100px;
 }
 .signupuser_input3{
-    width:100%;
-    height:10%;
-    text-align: center;
+    width:90%;
+    margin-left: 5%;
+    height:50px;
     color:grey;
+    display: inline-flex;
 }
+.manager_signup_name{
+    width: 35%;
+    margin-left: 3%;
+    height: 30px;
+    line-height: 30px;
+    color: black;
+}
+
+.manager_signup_name2{
+    width: 35%;
+    margin-left: 3%;
+    height: 30px;
+    line-height: 30px;
+    color: black;
+}
+
 .signuptext2{
-    width: 60%;
-    height: 90%;
+    width: 53%;
+    margin-left: 8%;
+    height: 30px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
     border-top: 0px;
     border-bottom-style: solid;
 }
+.signuptext5,.stamp_standard{
+    width: 53%;
+    height: 30px;
+    background-color: white;
+    border: double 1px transparent;
+    border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
+    border-top: 0px;
+    border-bottom-style: solid;
+    border-bottom: 2px;
+}
+select{
+    color: grey;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(/images/down_arrow.png) no-repeat 95% 50%;
+    background-size: 10%;
+    outline: none;
+}
 .signupuser_input4{
-    width:100%;
-    height:10%;
-    padding-bottom:20%;
+    position: fixed;
+    top: 400px;
+    width:90%;
+    margin-left: 5%;
+    height:50px;
     text-align: center;
     color:grey;
 }
@@ -443,18 +568,37 @@ a{
       background: linear-gradient(to right, #17ead9 , #6078ea);
   }
   .signuser_coupon1{
-    padding-top:5%;
-    width:100%;
-    height:8%;
-    padding-left:15%;
-    color:grey;
+    width:90%;
+    margin-left: 5%;
+    height:50px;
+    display: inline-flex;
+  }
+
+#find_market{
+     margin-top:50px;
+  }
+#store_picture{
+    /* position: fixed !important;
+    top: 340px !important; */
+}
+  #sijang_name,#sijang_picture{
+      width: 36%;
+      height: 30px;
+      line-height: 30px;
+      margin-left: 3%;
+  }
+  #manager_img{
+      width: 50%;
+      height: 30px;
+  }
+  textarea{
+      height: 80px !important;
   }
   .signuser_coupon2{
-    padding-top:2%;
-    width:100%;
-    height:8%;
-    padding-left:15%;
-    color:grey;
+    width:90%;
+    margin-left: 5%;
+    height:50px;
+    display: inline-flex;
   }
 /*login manager css finish*/
 /*login manager css finish*/
@@ -490,7 +634,7 @@ a{
 #Searching
 {
     border-radius: 20px;
-    display: inline-flex;
+    display: flex;
     width: 100%;
     height: 40px;
     border-color: white;
@@ -501,20 +645,24 @@ a{
     padding: 0px;
     border-radius: 50px;
     background-color: white;
+    flex-grow: 0;
+    margin-left: 10px;
 }
 #search_value{
+    outline: none;
     border: 0px;
     padding: 0px;
+    flex-grow: 1;
+    margin-left: 10px;
 }
 #searchingButton{
     width: 20px;
     height: 20px;
     margin-top: 10px;
-    margin-left: 40px;
+    margin-right: 10px;
     background-color: white;
     border: 0px;
     padding: 0px;
-    
 }
 #verti{
     width: 100%;
@@ -527,7 +675,7 @@ a{
 #vertical_helper{
     width: 100%;
     height: 40px;
-    display: inline-flex;
+    display: flex;
 }
 #searching_input{
     display: inline-flex;
@@ -540,7 +688,7 @@ a{
 
 .modal-content{
     border-radius: 10px;
-    height: 70%;
+    height: 500px;
     width: 90%;
     margin-top: 18%;
     margin-left:5%;
@@ -549,6 +697,55 @@ a{
 #top_modal{
     height: 45%;
     width: 100%;
+}
+
+#picture_pic
+{ 
+    display: block;
+    text-align: center;
+    box-shadow: 5px 5px 3px #efefef;
+    width: 50%;
+    background-color: white;
+    border: double 1px transparent;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+ radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    border: 0px;
+    color: gray;
+    height: 30px;
+    line-height: 30px;
+    font-size: 13px;
+    }
+
+ input[type="file"] { 
+  position: absolute; 
+  width: 1px; 
+  height: 1px; 
+  padding: 0; 
+  margin: -1px;
+   overflow: hidden; 
+   clip:rect(0,0,0,0);
+    border: 0;
+ }
+
+#modal_display{
+    font-size: 13px;
+    box-shadow: 5px 5px 3px #efefef;
+    width: 50%;
+    background-color: white;
+    border: double 1px transparent;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+ radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    border: 0px;
+    color: gray;
+    height: 32px;
 }
 #modal_close{
     font-size:30px;
@@ -564,7 +761,7 @@ a{
      margin-left:25%;
 }
 #search-box{
-    width: 324px;
+    /*width: 324px;*/
     height: 40px;
     margin-top: 7%;
 }
@@ -581,11 +778,13 @@ a{
 /* modal_result 안에 동적으로 생기는 ol태그 id*/
 #search_result {
     display: flex;
+    height: 300px;
     width: 100%;
     list-style: none;
     padding-left: 0px;
     margin-left: 10px;
     margin-right: 10px;
+    margin-top: 0px;
 }
 
 /* ol tag ~ div/li CSS value (나중에 적용되야 할 CSS값 테스팅) */
@@ -609,6 +808,7 @@ a{
     padding:0;
     margin-top: 5px;
     border:0;
+    top:500px;
     border-radius: 50px;
     color:white;
     background: -webkit-linear-gradient(left, #17ead9, #6078ea);
@@ -618,6 +818,7 @@ a{
 }
 
 /*modal layout finish*/
+
 /* 뒤로가기 버튼 */
 #back_loginuser{
     width: 30px;
@@ -654,4 +855,185 @@ a{
     margin-left: 5px;
     position: fixed;
     z-index: 1;
+}
+.check_div{
+    visibility:  hidden;
+    width: 12%;
+    height: 35px;
+    float: left;
+  }
+  .manager_check_div{
+    visibility:  hidden;
+    width: 12%;
+    height: 30px;
+  }
+  .menu{
+      width: 100%;
+      height: 50px;
+      display: inline-flex;
+      position: fixed;
+      top: 30px;
+      text-align: center;
+  }
+  .menu div{
+      width: 33.3%;
+      height: 50px;
+      line-height: 50px;
+  }
+  .swiper-container{
+      min-height: 450px;
+  }
+  .swiper-scrollbar{
+    opacity: 1 !important;
+    transition-duration: 0 !important;
+    position: fixed !important;
+    top: 80px !important;
+}
+#myStamp{
+    position: fixed;
+    top:200px;
+    width: 75%;
+    margin-left: 12.5%;
+    height: 180px;
+    background-image:url('/images/backSample4.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 5px;
+    color: white;
+}
+#store_market_name{
+    width: 86%; 
+    height: 40px;
+    margin-left: 7%;
+    display: inline-flex;
+    line-height: 40px;
+}
+#store_market_name p{
+
+    margin: 0;
+}
+#password_star{
+    font-size: 25px;
+}
+
+.my_stamp_count{
+    width: 95%;
+    margin-left: 2.5%;
+    height: 115px;
+    display: table;
+}
+
+.fiveControls_sj,.tenControls_sj{
+    width: 100%;
+    height:115px;
+    display: none;
+}
+
+.tenStamp_sj {
+    width: 100%;
+    height: 56px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.fiveStamp_sj {
+    width: 100%;
+    height: 115px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.logo_image{
+    height: 25px;
+    width: 10%;
+    margin-left: 75%;
+}
+
+
+.five_sj,
+.ten_sj {
+    display: inline-flex;
+    width: 15%;
+    height: 36px;
+    border-radius: 200px;
+    margin-left: 3%;
+    background-color: rgb(202, 199, 199);
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    line-height: 35px;
+}
+ 
+.five_sj p,.ten_sj p{
+    margin: 0;
+    padding-left: 12px;
+}
+#ten{
+    padding-left: 7px !important;
+}
+.tenStamp_top_sj,
+.tenStamp_bottom_sj {
+    margin-bottom: 10px;
+}
+.alert_x,.alert_o,.alert_select{
+    width: 100%;
+    height: 100%;
+    background-color:  rgba(141, 140, 140, 0.8);
+    position: fixed;
+    z-index: 100;
+    top:0;
+}
+.alert_x_content,.alert_o_content{
+    width: 70%;
+    height: 25%;
+    background-color: white;
+    border-radius: 10px;
+    position: fixed;
+    top: 37.5%;
+    left:15%;
+}
+.alert_image{
+    text-align: center;
+    width: 100%;
+    height: 50%;
+    padding-top: 10%;
+}
+.alert_content{
+    text-align: center;
+    width: 100%;
+    height: 40%;
+}
+.alert_content_select{
+    text-align: center;
+    width: 100%;
+    height: 60%;
+    line-height: 90px;
+}
+
+.alert_select_ok{
+    text-align: center;
+    width: 35%;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 10%;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+ radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    display: inline-block;
+}
+.alert_select_cancel{
+    text-align: center;
+    width: 35%;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 10%;
+    border-radius: 50px;
+    background-image:url('/images/backSample5.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 1px;
+    display: inline-block;
+    color: white;
 }
