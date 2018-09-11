@@ -120,9 +120,12 @@
     height: 30px;
     margin-left: 5%;
 }
-/* #map{
-    margin-top: 22%;
-} */
+#introduce{
+    height: auto !important;
+}
+#map{
+    margin-top: 20px;
+}
 #intro_content{
     width: 58%;
     margin-left: 8%;
@@ -299,8 +302,8 @@ h2{
 }
 .review_div_sj p{
     margin-top: 10px;
-    width: 85%;
-    margin-left: 7.5%;
+    width: 90%;
+    margin-left: 5%;
     background:no-repeat;
     border-style: none;
     font-size: 20px;
