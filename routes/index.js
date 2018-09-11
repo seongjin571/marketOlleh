@@ -48,7 +48,9 @@ router.get('/geolo', function(req, res){
   res.render('cordova_gelocationTest');
 });
 router.get('/backb', function(req, res){
-  res.render('cordova_backbuttonTest');
+  //res.render('cordova_backbuttonTest');
+  //res.render('eud_camera');
+  res.render('photo');
 });
 
 router.get('/coupon', function(req, res){
