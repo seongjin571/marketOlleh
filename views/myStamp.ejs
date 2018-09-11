@@ -173,9 +173,9 @@
         </div>
 
 
-              <div class="swiper-container s1">
+              <div class="swiper-container s<%= myStamps[i].id %>">
                   <div class="swiper-wrapper">
-            <div class="swiper-slide">
+            <div class="swiper-slide s1<%= myStamps[i].id %>">
               <div class='stamp_menu_sj' id="stamp_menu_sj<%= myStamps[i].id %>">
                 <div class='stamp_sj' id="stamp_sj<%= myStamps[i].id %>">
                   <div class='tenControls_sj' id="tenControls_sj<%= myStamps[i].id %>">
@@ -288,7 +288,7 @@
 
 
 
-              <div class="swiper-slide">
+              <div class="swiper-slide s1<%= myStamps[i].id %>">
                   <div id="store_detail_sj">
                       <div class="store_image" style="background: url('/files/<%= myStamps[i].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
                       <div id="introduce">
@@ -304,7 +304,7 @@
                   </div>
               </div>
 
-              <div class="swiper-slide">
+              <div class="swiper-slide s1<%= myStamps[i].id %>">
               <div class='store_review_sj' id="store_review_sj<%= myStamps[i].id %>">
                 <div class="review_rate">
                   <div class="review_star">
@@ -439,7 +439,7 @@
                   <% } %>
               </div>
             </div>
-              <div class="swiper-slide">
+              <div class="swiper-slide s1<%= myStamps[i].id %>">
               <div class='review_write_sj' id="review_write_sj<%= myStamps[i].id %>">
 
                 <div id="write_div">리뷰 작성</div>
@@ -481,6 +481,8 @@
             </div>
             </div>
 
+          
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
 
             <script>
 
@@ -902,6 +904,29 @@
               });
               });
             });
+           
+            var swiper = new Swiper('.s<%= myStamps[i].id %>', {
+                initialSlide: 0,
+                autoHeight: true,
+                observer: true,
+                observeParents: true,
+                scrollbar: {
+                  el: '.swiper-scrollbar',
+                  hide: true,
+                },
+              });
+              $('.go_slide').click(function () {
+                var this_index = $(this).index();
+                $('.go_slide').css('color', 'black');
+                $('.go_slide').eq(this_index).css('color', '#63dded');
+                swiper.slideTo(this_index, 500, false);
+              });
+
+              swiper.on('slideChangeTransitionStart', function () {
+                var active = swiper.activeIndex;
+                $('.go_slide').css('color', 'black');
+                $('.go_slide').eq(active).css('color', '#63dded');
+              });
 
             </script>
             <% } %>
@@ -926,7 +951,7 @@
                         <p>로그아웃</p>
                     </div>
             </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script> -->
             <script>
 
                       $('#home_sj').click(function () {
@@ -947,16 +972,16 @@
                               })
                           })
 
-                          var swiper = new Swiper('.s1', {
-                              initialSlide: 0,
-                              autoHeight: true,
-                              observer: true,
-                              observeParents: true,
-                              scrollbar: {
-                                el: '.swiper-scrollbar',
-                                hide: true,
-                              },
-                            });
+                          // var swiper = new Swiper('.s1', {
+                          //     initialSlide: 0,
+                          //     autoHeight: true,
+                          //     observer: true,
+                          //     observeParents: true,
+                          //     scrollbar: {
+                          //       el: '.swiper-scrollbar',
+                          //       hide: true,
+                          //     },
+                          //   });
                             // $('.go_slide').click(function () {
                             //     var this_index = $(this).index();
                             //     $('.go_slide').css('color', 'black');
