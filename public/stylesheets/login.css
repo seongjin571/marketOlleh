@@ -32,7 +32,7 @@ body, html {
     width:50%;
     height:auto;
     margin-left: 25%;
-    padding-top: 55%;
+    padding-top: 65%;
 }
 #top_part {
     display: table;
@@ -76,7 +76,7 @@ body, html {
     background-clip: content-box, border-box;    
     padding: 1px;
     border: 0px;
-    color: gray;
+    color: #B6B7B7;
     outline:none;
 }
 
@@ -231,8 +231,6 @@ body, html {
     outline:none;
     width: 288px;
     height: 46px;
-    width: 80%;
-    height: 90%;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
@@ -258,7 +256,7 @@ body, html {
    height: 64px;
    width: 360px;
    position: fixed;
-   top: 340px;
+   top: 355px;
 }
 #login_button_manager{
     display: inline-flex;
@@ -275,7 +273,7 @@ body, html {
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 10.5px;
+    font-size: 12.5px;
     outline:none;
 }
 #password_find1{
@@ -285,7 +283,7 @@ body, html {
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 10.5px;
+    font-size: 12.5px;
     outline:none;
 }
 #password_find2{
