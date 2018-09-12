@@ -899,7 +899,7 @@ select{
       line-height: 50px;
   }
   .swiper-container{
-      min-height: 450px;
+      min-height: 500px;
   }
   .swiper-scrollbar{
     opacity: 1 !important;
