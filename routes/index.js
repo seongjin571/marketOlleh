@@ -448,6 +448,17 @@ router.get('/searching', function(req, res) {
   res.render('searching');
 });
 
+// 근처 시장 찾기 로직
+router.post('/searching/near', function(req, res) {
+  
+  // body...
+  var sql = "SELECT * FROM `market`";
+  conn.query(sql, function(error, rows, fileds) {
+    return res.send({ rows: rows });
+  });// conn.query
+
+});
+
 // 검색 부분 ajax 데이터 통신 위한 페이지 (렌더링 view X)
 router.post('/searching/gooname', function(req, res){
 
