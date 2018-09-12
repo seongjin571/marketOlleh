@@ -173,7 +173,7 @@
                 }
                 else {
                     $('.alert_x').css('display','block');
-                    $('.alert_content').html('비밀번호와 아이디를 확인하세요.')
+                    $('.alert_content').html('비밀번호와 아이디를 확인하세요')
                     $('#userpassword').val('');
                 }
               });
@@ -275,7 +275,7 @@
                         }, 1000);
                     } else {
                         $('.alert_x').css('display', 'block');
-                        $('.alert_content').html('비밀번호와 아이디를 확인하세요.');
+                        $('.alert_content').html('비밀번호와 아이디를 확인하세요');
                         // $('.alert_x').click(function () {
                         //     $(window).attr('location', '/start');
                         // })
@@ -394,7 +394,7 @@
                     success: function (result) {
                         if (result['result'] == 'success') {
                             $('.alert_o').css('display','block');
-                            $('.alert_content').html('회원가입이 완료되었습니다.');
+                            $('.alert_content').html('회원가입이 완료되었습니다');
                             $('#signupuser').fadeOut(300);
                             $('#loginuser').fadeIn(300);
                             $('#userid').val('');
@@ -406,7 +406,7 @@
                         }
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
-                            $('.alert_content').html('이미 존재하는 아이디입니다.');
+                            $('.alert_content').html('이미 존재하는 아이디입니다');
                             $('#userid').val('');
                         }
                     },
@@ -478,6 +478,7 @@
                             <div class="manager_signup_name">상점번호</div>
                             <input class="signuptext2" type="text" placeholder="ex)02-123-4567" id="manager_phone" name='manager_phone'>
                         </div>
+                        <div class="coupon_ment">메뉴 클릭/옆으로 밀기를 통해 모든 정보를 입력해주세요</div> 
                     </div>
 
 
@@ -559,7 +560,7 @@
                                 <img src="/images/check.png" width="30px" height="30px">
                                     </div>
 
-                            <div class="manager_signup_name">스탬프개수</div>
+                            <div class="manager_signup_name">스탬프 갯수</div>
 
                             <select class='stamp_standard' name="stamp_standard">
                                 <option value="0">선택</option>
@@ -568,16 +569,16 @@
                             </select>
                         </div>
 
-
+                        <div class="coupon_ment">스탬프 갯수는 수정이 제한되니 참고하여 생성하세요</div> 
 
 
 
                         <div id="myStamp">
                             <div id="store_market_name">
-                                <p id="nameing" style="width: 60%">
+                                <p id="nameing" style="width: 75%">
 
                                 </p>
-                                <p id="password_star" style="width: 40%"></p>
+                                <p id="password_star" style="width: 25%"></p>
                                 <!-- </div> -->
                             </div>
                             <div class="my_stamp_count">
@@ -770,7 +771,7 @@
                     success: function (result) {
                         if (result['result'] == 'success') {
                             $('.alert_o').css('display','block');
-                            $('.alert_content').html('회원가입이 완료되었습니다.');
+                            $('.alert_content').html('회원가입이 완료되었습니다');
                             $('#signupManager').fadeOut(300)
                             $('#loginManager').fadeIn(300)
                             // $('.alert_o').click(function(){
@@ -798,13 +799,13 @@
                         }
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
-                            $('.alert_content').html('이미 존재하는 아이디입니다.');
+                            $('.alert_content').html('이미 존재하는 아이디입니다');
                             $('#manager_id_jh').val('');
                         }
                     },
                     error: function (error) {
                         $('.alert_x').css('display','block');
-                            $('.alert_content').html('다시 입력해주세요.');
+                            $('.alert_content').html('다시 입력해주세요');
                             $('.alert_x').click(function(){
                         $(window).reload('');
                     })
@@ -813,7 +814,7 @@
             }
             else{
                 $('.alert_x').css('display','block');
-                $('.alert_content').html('가입 정보를 확인 해 주세요.');
+                $('.alert_content').html('모든 가입 정보를 작성해 주세요');
             }
             });
         </script>
@@ -1086,7 +1087,7 @@
         }
         else {
             $('.alert_x').css('display','block');
-            $('.alert_content').html('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
+            $('.alert_content').html('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다');
             $(this).val('');
         }
     })

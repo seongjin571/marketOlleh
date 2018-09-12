@@ -134,7 +134,7 @@ function makeGooTable(tableValue, gooCounter) {
 	$('#NewGoomap > div').html(fullString);
 	$('#NewGoomap > div > li').click(function (event) {
         // 스크롤 조절
-        window.scrollTo(0, 0);		
+        window.scrollTo(0, 0);
 		// Daum(kakao map api test line)
 		$('#navControlButton').css('display', 'none');
 		$('#Goomap_container').css('display', 'none');
@@ -281,15 +281,15 @@ function searchingAjax(event) {
 				makeSearchList(result, result.rows.length);
 			} else {
 				$('.alert_x').css('display', 'block');
-		$('.alert_content').html('검색어를 확인해 주세요.')
+				$('.alert_content').html('검색어를 확인해 주세요.');
 			}
 		},
 		error: function (e) {
 			$('.alert_x').css('display', 'block');
-		$('.alert_content').html('검색어를 확인해 주세요.')
+			$('.alert_content').html('검색어를 확인해 주세요.');
 			console.log('process error : ', e);
 		}
-	});
+	}); // ajax
 } // searchingAjax
 
 // 지도로 찾기 버튼 이벤트

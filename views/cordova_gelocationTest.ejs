@@ -88,7 +88,8 @@
         map.setLevel(4);
 
     } // changeCenter
-  */
+
+	*/
 
     // 전역 변수
     var Latitude = 37.540705;
@@ -165,6 +166,7 @@
         var SortingMarket = new Array();
 
         for (var i = 0; i < marketList.length; i++) {
+
             var tempX = Latitude - marketList[i].coordinateX;
             var tempY = Longitude - marketList[i].coordinateY;
             var tempResult = Math.pow(tempX, 2) + Math.pow(tempY, 2);
@@ -213,8 +215,6 @@
     GetButton.addEventListener('click', getMapLocation, false);
     Get_near_Button.addEventListener('click', getNearMarket, false);
   }
-
-
 
 
 </script>
