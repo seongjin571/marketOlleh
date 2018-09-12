@@ -27,7 +27,38 @@
 </head>
 
 <body>
-
+    <div class="alert_x" style="display:none">
+        <div class="alert_x_content">
+          <div class="alert_image">
+            <img src="/images/alert_x.png" width="70px" height="70px" > 
+          </div> 
+          <div class="alert_content">
+          </div>
+        </div>
+      </div>
+      
+      <div class="alert_o" style="display:none">
+          <div class="alert_o_content">
+            <div class="alert_image">
+              <img src="/images/alert_o.png" width="70px" height="70px" > 
+            </div> 
+            <div class="alert_content">
+            </div>
+          </div>
+        </div>
+      
+          <div class="alert_select"  style="display:none">
+              <div class="alert_o_content">
+                <div class="alert_content_select">
+                </div>
+                <div class="alert_select_cancel">
+                  취소
+                </div>
+                <div class="alert_select_ok">
+                    확인
+                  </div>
+              </div>
+            </div>
 
     <div id="text_logo">
         <!-- <div id="verti"> -->
@@ -50,7 +81,7 @@
 
     <div id="navControlButton">
         <div id="verti-helper">
-            <img src="/images/search.png" width="14px" height="14px">&nbsp지도로 검색
+            <img src="/images/search.png" width="14px" height="14px">&nbsp지역별로 검색
         </div>
     </div>
 
@@ -236,44 +267,40 @@
                       <div>
                           <img src="/files/<%= market[i].manager_image %>" width="100%" height="125px">
                       </div>
-                      <div class="good_market_name">
-                          <%= market[i].sijang_name %>
-                      </div>
                       <div class="good_store_name">
                           <%= market[i].market_name %>
                       </div>
+                      <div class="good_market_name">
+                          <%= market[i].sijang_name %>
+                      </div>                      
                       <div class="good_count">
                           <img src="/images/good.png" width="17px" height="17px" style="margin-right: 3px;">
                           <p><%= market[i].like_count %></p>
                       </div>
                   </div>
-
                   <%
                     if(i >= market.length-1) {
                   %>
-
                       </div>
                   <%
                         break;
                       }
                   %>
-
                   <div class="hot_store_detail">
                       <div>
                           <img src="/files/<%= market[i+1].manager_image %>" width="100%" height="125px">
                       </div>
-                      <div class="good_market_name">
-                          <%= market[i+1].sijang_name %>
-                      </div>
                       <div class="good_store_name">
                           <%= market[i+1].market_name %>
                       </div>
+                      <div class="good_market_name">
+                          <%= market[i+1].sijang_name %>
+                      </div>                      
                       <div class="good_count">
                           <img src="/images/good.png" width="17px" height="17px" style="margin-right:3px;">
                           <p><%= market[i+1].like_count %></p>
                       </div>
                   </div>
-
               </div> <!-- hot_store_list 닫는 div -->
               <!-- <div class="line_light"></div> -->
             <% } %>
@@ -299,10 +326,6 @@
                         <img class='top_image' id="yesGood_Button_sj" src="/images/likeM.png" width="30px" height="30px" style='display: none;'>
                         <!-- 좋아요 개수 출력 부분 [ like_count ] -->
                         <p class="top_font" id="goodCount_sj"></p>
-                    </div>
-                    <div id="kakao">
-                      <img class="top_image" src="/images/kakao_bic.png" width="30px" height="30px">
-                      <p class="top_font">공유하기</p>
                     </div>
                     <div id="face">
                       <img class="top_image" src="/images/face.png" width="30px" height="30px">
@@ -459,16 +482,14 @@
         $('#location_sj').click(function () {
          location.href = "/location";
         })
-        $('#logout').click(function () {
-            var logout = confirm("로그아웃 하시겠습니까?");
-            if (logout == true) {
-                console.log('로그아웃성공');
-                $(location).attr('href', '/logout');
-
-            } else {
-                console.log('로그아웃실패');
-            }
-        })
+            $('#logout').click(function () {
+                $('.alert_select').css('display', 'block');
+                $('.alert_content_select').html('로그아웃 하시겠습니까?')
+                $('.alert_select_ok').click(function () {
+                    $('.alert_select').css('display', 'none');
+                    $(location).attr('href', '/logout');
+                })
+            })
         var swiper = new Swiper('.s1', {
             slidesPerView: 'auto',
             centeredSlides: true,
@@ -485,7 +506,6 @@
                 },
             }
         });
-
         swiper.on('slideChangeTransitionStart', function () {
             $(".swiper-slide-active").animate({
                 height: '100%',
@@ -500,7 +520,6 @@
                 marginTop: '3.5%'
             }, 100);
         });
-
         var swiper2 = new Swiper('.s2', {
             initialSlide: 0,
             autoHeight: true,
@@ -510,7 +529,6 @@
                 el: '.swiper-scrollbar',
                 hide: true,
             },
-
         });
         $('.go_slide').click(function (e) {
                 var this_index = $(this).index();
@@ -533,76 +551,65 @@
     <script type="text/javascript">
          // 스크롤 조절
         window.scrollTo(0, 0);
-
         // 전역 변수
         var user_id = '<%= user.id %>';
         var markers = []; // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
-
         // 지도를 표시할 div (id)
         var mapContainer = document.getElementById('map'),
             mapOption = {
                 center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
                 level: 4 // 지도의 확대 레벨
             };
-
         var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
         // 마커 하나를 지도위에 표시합니다
         addMarker(new daum.maps.LatLng(33.450701, 126.570667));
-
         // 마커를 생성하고 지도위에 표시하는 함수입니다
         function addMarker(position) {
-
             // 마커를 생성합니다
             var marker = new daum.maps.Marker({
                 position: position
             });
-
             // 마커가 지도 위에 표시되도록 설정합니다
             marker.setMap(map);
-
             // 생성된 마커를 배열에 추가합니다
             markers.push(marker);
         }
-
         // 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수
         function setMarkers(map) {
             for (var i = 0; i < markers.length; i++) {
                 markers[i].setMap(map);
             }
         }
-
         function relayout() {
             // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
             // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다
             // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
             map.relayout();
         }
-
         function changeCenter(mapLat, mapLng) {
             var moveLatLon = new daum.maps.LatLng(mapLat, mapLng);
             relayout();
             // 입력받은 좌표에 마커 추가
             addMarker(moveLatLon);
-
             // 지도 중심을 이동 시킵니다
             map.setCenter(moveLatLon);
             map.setLevel(4);
-
         } // changeCenter
-
         // 서울시 좋아요순 상점
         $('.hot_store_detail').click(function (event) {
-
-            var tempText = this.childNodes[5].innerText;
-
+            // var tempText = this.childNodes[5].innerText;
+            // console.log(this.childNodes[3].innerText);
+            // console.log(tempText);
             // 인기 상점 찾기
             $.ajax({
                 url: "/searching/marketList",
                 dataType: 'json',
                 type: 'POST',
                 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                data: { "market_name": tempText },
+                data: {
+                    "name": this.childNodes[5].innerText,
+                    "market_name": this.childNodes[3].innerText 
+                },
                 success: function (result) {
                     if (result.rows.length > 0) {
                         document.getElementById('aaa').style.display = "none";
@@ -620,8 +627,15 @@
                 }
             }); // ajax
         }); // click event
-
-
+        $('.alert_x').click(function () {
+                $(this).css('display', 'none')
+            })
+            $('.alert_o').click(function () {
+                $(this).css('display', 'none')
+            })
+            $('.alert_select_cancel').click(function () {
+                $('.alert_select').css('display', 'none')
+            })
     </script>
     <!-------------------- KAKAO MAP API ---------------------->
     <script type='text/javascript' src='javascripts/searching.js'></script>

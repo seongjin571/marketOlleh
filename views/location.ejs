@@ -23,21 +23,32 @@
 </head>
 
 <body>
-
+        <div class="alert_select"  style="display:none">
+                <div class="alert_o_content">
+                  <div class="alert_content_select">
+                  </div>
+                  <div class="alert_select_cancel">
+                    취소
+                  </div>
+                  <div class="alert_select_ok">
+                      확인
+                    </div>
+                </div>
+              </div>
 
 
     <div id="nav_sj">
         <div id="home_sj">
-            <img src="/images/home2.png" width="40%">
-            <p id="nav_text">홈</p>
+            <img src="/images/home.png" width="40%">
+            <p>홈</p>
         </div>
         <div id="coupon_sj">
             <img src="/images/coupon.png" width="40%">
             <p>쿠폰</p>
         </div>
         <div id="location_sj">
-            <img src="/images/location.png" width="40%">
-            <p>주변 가맹점</p>
+            <img src="/images/location2.png" width="40%">
+            <p id="nav_text">주변 가맹점</p>
         </div>
         <div id="myStamp_sj">
             <img src="/images/stamp.png" width="40%">
@@ -60,39 +71,17 @@
             location.href = "/coupon";
         })
         $('#logout').click(function () {
-            var logout = confirm("로그아웃 하시겠습니까?");
-            if (logout == true) {
-                console.log('로그아웃성공');
-                $(location).attr('href', '/logout');
-            } else {
-                console.log('로그아웃실패');
-            }
+        $('.alert_select').css('display', 'block');
+        $('.alert_content_select').html('로그아웃 하시겠습니까?')
+        $('.alert_select_ok').click(function () {
+          $('.alert_select').css('display', 'none');
+          $(location).attr('href', '/logout');
         })
-        var swiper = new Swiper('.swiper-container', {
-            initialSlide: 0,
-            autoHeight: true,
-            observer: true,
-            observeParents: true,
-            scrollbar: {
-                el: '.swiper-scrollbar',
-                hide: true,
-            },
-        });
-
-        $('.back_div').click(function () {
-            swiper.destroy();
-            //  var  swiper = new Swiper('.swiper-container', {
-            //     initialSlide: 0,
-            //     autoHeight: true,
-            //     observer: true,
-            //     observeParents: true,
-            //     scrollbar: {
-            //       el: '.swiper-scrollbar',
-            //       hide: true,
-            //     },
-            //   });
-        });
-
+      })
+       
+        $('.alert_select_cancel').click(function(){
+        $('.alert_select').css('display','none')
+      })
 
     </script>
 

@@ -7,6 +7,12 @@ body, html {
     margin: 0;
     background-color: white;
 }
+ /* ::placeholder {  파이어폭스 51+, 크롬 57+ 
+    color: red;
+    opacity:  1;
+    line-height: 200px;
+ }  */
+
 
 #start,#all_body {
     width: 100%;
@@ -21,12 +27,20 @@ body, html {
 
     /* position:fixed; */
 }
-
+.coupon_ment{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color:#9c9c9c;
+    font-size:14px;
+    font-weight: lighter;
+}
 #intro_image{
     width:50%;
     height:auto;
     margin-left: 25%;
-    padding-top: 55%;
+    padding-top: 65%;
 }
 #top_part {
     display: table;
@@ -70,7 +84,7 @@ body, html {
     background-clip: content-box, border-box;    
     padding: 1px;
     border: 0px;
-    color: gray;
+    color: #B6B7B7;
     outline:none;
 }
 
@@ -177,7 +191,7 @@ body, html {
 }
 .login_button_formManager1 > .inputmanager{
     outline:none;
-    width: 288px;
+    width: 80%;
     height: 46px;
     background-color: white;
     border: double 1px transparent;
@@ -187,7 +201,7 @@ body, html {
 }
 .login_button_formManager2 > .inputmanager{
     outline:none;
-    width: 288px;
+    width: 80%;
     height: 46px;
     background-color: white;
     border: double 1px transparent;
@@ -203,7 +217,7 @@ body, html {
 }
 .login_button_user > .inputuser{
     outline:none;
-    width: 288px;
+    width: 80%;
     height: 46px;
     background-color: white;
     border: double 1px transparent;
@@ -213,7 +227,7 @@ body, html {
 }
 .login_button_user_1 > .inputuser{
     outline:none;
-    width: 288px;
+    width: 80%;
     height: 46px;
     background-color: white;
     border: double 1px transparent;
@@ -223,7 +237,7 @@ body, html {
 }
 .login_button_user_2 > .inputuser{
     outline:none;
-    width: 288px;
+    width: 80%;
     height: 46px;
     background-color: white;
     border: double 1px transparent;
@@ -250,66 +264,69 @@ body, html {
    height: 64px;
    width: 360px;
    position: fixed;
-   top: 340px;
+   top: 355px;
 }
 #login_button_manager{
     display: inline-flex;
     height: 64px;
     width: 360px;
     position: fixed;
-    top: 340px;
+    top: 355px;
 }
+
 .idfind{
     background-color: white;
-    color:grey;
+    color:#B6B7B7;
     padding:0px;
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 10.5px;
+    font-size: 12.5px;
     outline:none;
 }
 #password_find1{
     background-color: white;
-    color:grey;
+    color:#B6B7B7;
     padding:0px;
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 10.5px;
+    font-size: 12.5px;
     outline:none;
 }
 #password_find2{
     outline:none;
     background-color: white;
-    color:grey;
+    color:#B6B7B7;
     padding:0px;
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 10.5px;
+    font-size: 12.5px;
 }
 
 #loginUser_sign_up{
     outline:none;
     padding:0px;
     background-color: white;
-    color:grey;
+    color:#B6B7B7;
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 10.5px;
+    font-weight: 200;
+    font-size: 12.5px;
 }
 #loginmanager_sign_up
 {
     outline:none;
     background-color: white;
-    color:grey;
+    color:#B6B7B7;
     padding:0px;
     border :0px;
     width:33.3%;
     height: 100%;
-    font-size: 10.5px;
+    font-weight: 200;
+    font-size: 12.5px;
 }
 .login_button_user3
 {
@@ -368,7 +385,7 @@ body, html {
     width: 90%;
     height: 50px;
     line-height: 50px;
-    color: grey;
+    color: #B6B7B7;
     background-color: white;
     border: double 1px transparent;
     border-radius: 50px;
@@ -387,8 +404,9 @@ a{
     text-decoration: none;
 }
 #kakao_Image{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
     margin-right: 1%;
 
 }
@@ -496,7 +514,7 @@ a{
 .signupuser_input3{
     width:90%;
     margin-left: 5%;
-    height:50px;
+    height:45px;
     color:grey;
     display: inline-flex;
 }
@@ -824,8 +842,8 @@ select{
     width: 30px;
     height: 30px;
     background: white;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin-top: 15px;
+    margin-left: 15px;
     position: fixed;
     z-index: 1;
 }
@@ -833,8 +851,8 @@ select{
     width: 30px;
     height: 30px;
     background: white;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin-top: 15px;
+    margin-left: 15px;
     position: fixed;
     z-index: 1;
 }
@@ -842,8 +860,8 @@ select{
     width: 30px;
     height: 30px;
     background: white;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin-top: 15px;
+    margin-left: 15px;
     position: fixed;
     z-index: 1;
 }
@@ -851,8 +869,8 @@ select{
     width: 30px;
     height: 30px;
     background: white;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin-top: 15px;
+    margin-left: 15px;
     position: fixed;
     z-index: 1;
 }
@@ -881,7 +899,7 @@ select{
       line-height: 50px;
   }
   .swiper-container{
-      min-height: 450px;
+      min-height: 500px;
   }
   .swiper-scrollbar{
     opacity: 1 !important;
@@ -891,10 +909,10 @@ select{
 }
 #myStamp{
     position: fixed;
-    top:200px;
+    top:220px;
     width: 75%;
     margin-left: 12.5%;
-    height: 180px;
+    height: 165px;
     background-image:url('/images/backSample4.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -903,7 +921,7 @@ select{
 }
 #store_market_name{
     width: 86%; 
-    height: 40px;
+    height: 30px;
     margin-left: 7%;
     display: inline-flex;
     line-height: 40px;
@@ -919,7 +937,7 @@ select{
 .my_stamp_count{
     width: 95%;
     margin-left: 2.5%;
-    height: 115px;
+    height: 105px;
     display: table;
 }
 

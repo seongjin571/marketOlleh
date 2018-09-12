@@ -1,4 +1,4 @@
-cordova.define("cordova-plugin-file-transfer.FileTransferError", function(require, exports, module) {
+cordova.define("cordova-plugin-file.Metadata", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -21,24 +21,23 @@ cordova.define("cordova-plugin-file-transfer.FileTransferError", function(requir
 */
 
 /**
- * FileTransferError
- * @constructor
+ * Information about the state of the file or directory
+ *
+ * {Date} modificationTime (readonly)
  */
-var FileTransferError = function(code, source, target, status, body, exception) {
-    this.code = code || null;
-    this.source = source || null;
-    this.target = target || null;
-    this.http_status = status || null;
-    this.body = body || null;
-    this.exception = exception || null;
+var Metadata = function (metadata) {
+    if (typeof metadata === 'object') {
+        this.modificationTime = new Date(metadata.modificationTime);
+        this.size = metadata.size || 0;
+    } else if (typeof metadata === 'undefined') {
+        this.modificationTime = null;
+        this.size = 0;
+    } else {
+        /* Backwards compatiblity with platforms that only return a timestamp */
+        this.modificationTime = new Date(metadata);
+    }
 };
 
-FileTransferError.FILE_NOT_FOUND_ERR = 1;
-FileTransferError.INVALID_URL_ERR = 2;
-FileTransferError.CONNECTION_ERR = 3;
-FileTransferError.ABORT_ERR = 4;
-FileTransferError.NOT_MODIFIED_ERR = 5;
-
-module.exports = FileTransferError;
+module.exports = Metadata;
 
 });

@@ -65,6 +65,7 @@
 
 
     <div id="coupon_view">
+    <div class="coupon_ment">시장 선택 후 원하는 쿠폰을 클릭하여 다운받아보세요.</div>
         <div class="content_title">
             내가 가는 시장들
         </div>
@@ -133,6 +134,7 @@
 
 
     <div class="my_coupon">
+      <div class="coupon_ment">쿠폰을 옆으로 밀면 삭제/클릭 하시면 사용할수 있습니다.</div>
         <% if(result1) { %>
             <% for(var i=0; i<result1.length; i++) { %>
                 <div class="swiper-container" id='swiper-container<%= result1[i].id %>'>
@@ -291,8 +293,11 @@
                           dataType: 'json',
                           success: function(result) {
                             if(result['result'] == 'success') {
-                              alert('쿠폰 삭제가 완료되었습니다.');
+                              $('.alert_select').css('display', 'block');
+                              $('.alert_content_select').html('쿠폰을 삭제하시겠습니까?')
+                              $('.alert_select_ok').click(function () {
                               location.reload();
+                              });
                             }
                           },
                           error: function(error) {
