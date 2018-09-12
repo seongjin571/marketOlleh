@@ -279,6 +279,7 @@ h2{
     margin-bottom: 12%;
 }
 .review_div_sj{
+    padding-top: 10px;
     width: 100%;
     font-size: 20px;
 }
@@ -307,7 +308,7 @@ h2{
     background:no-repeat;
     border-style: none;
     font-size: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     word-break: break-all;
 }
 .market_infoText_li{
