@@ -514,7 +514,7 @@ a{
 .signupuser_input3{
     width:90%;
     margin-left: 5%;
-    height:45px;
+    height:48px;
     color:grey;
     display: inline-flex;
 }
@@ -565,7 +565,7 @@ select{
 }
 .signupuser_input4{
     position: fixed;
-    top: 400px;
+    top: 410px;
     width:90%;
     margin-left: 5%;
     height:50px;
@@ -900,6 +900,7 @@ select{
   }
   .swiper-container{
       min-height: 500px;
+      overflow: visible !important;
   }
   .swiper-scrollbar{
     opacity: 1 !important;
@@ -909,7 +910,7 @@ select{
 }
 #myStamp{
     position: fixed;
-    top:220px;
+    top:235px;
     width: 75%;
     margin-left: 12.5%;
     height: 165px;
@@ -933,17 +934,20 @@ select{
 #password_star{
     font-size: 25px;
 }
-
+.picture_div{
+    width: 60%;
+    margin-left: 20%;
+}
 .my_stamp_count{
     width: 95%;
     margin-left: 2.5%;
-    height: 105px;
+    height: 110px;
     display: table;
 }
 
 .fiveControls_sj,.tenControls_sj{
     width: 100%;
-    height:115px;
+    height:110px;
     display: none;
 }
 
@@ -956,7 +960,7 @@ select{
 
 .fiveStamp_sj {
     width: 100%;
-    height: 115px;
+    height: 110px;
     display: table-cell;
     vertical-align: middle;
 }

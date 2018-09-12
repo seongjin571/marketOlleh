@@ -184,15 +184,16 @@ html {
 }
 
 .store_name{
-    width: 60%;
+    width: 65%;
     height: 40px;
     line-height: 40px;
 }
 .market_name{
-    width: 40%;
-    height: 40px;
-    line-height: 40px;
-    text-align: right;
+    width: 70%;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+    text-align: center;
 }
 .sale_price{
     width: 100%;
@@ -222,12 +223,11 @@ html {
     height: 100%;
 }
 .period{
-    width: 60%;
-    height: 35px;
-    margin-left: 7%;
-    font-size: 16px;
+    width: 35%;
+    height: 40px;
+    font-size: 15px;
     color: white;
-    line-height: 35px;
+    line-height: 40px;
     font-weight: lighter;
 }
 #nav_sj {
