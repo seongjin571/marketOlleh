@@ -27,7 +27,15 @@ body, html {
 
     /* position:fixed; */
 }
-
+.coupon_ment{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color:#9c9c9c;
+    font-size:14px;
+    font-weight: lighter;
+}
 #intro_image{
     width:50%;
     height:auto;
@@ -506,7 +514,7 @@ a{
 .signupuser_input3{
     width:90%;
     margin-left: 5%;
-    height:50px;
+    height:45px;
     color:grey;
     display: inline-flex;
 }
@@ -901,10 +909,10 @@ select{
 }
 #myStamp{
     position: fixed;
-    top:200px;
+    top:220px;
     width: 75%;
     margin-left: 12.5%;
-    height: 180px;
+    height: 165px;
     background-image:url('/images/backSample4.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -913,7 +921,7 @@ select{
 }
 #store_market_name{
     width: 86%; 
-    height: 40px;
+    height: 30px;
     margin-left: 7%;
     display: inline-flex;
     line-height: 40px;
@@ -929,7 +937,7 @@ select{
 .my_stamp_count{
     width: 95%;
     margin-left: 2.5%;
-    height: 115px;
+    height: 105px;
     display: table;
 }
 
