@@ -292,8 +292,11 @@
                           dataType: 'json',
                           success: function(result) {
                             if(result['result'] == 'success') {
-                              alert('쿠폰 삭제가 완료되었습니다.');
+                              $('.alert_select').css('display', 'block');
+                              $('.alert_content_select').html('쿠폰을 삭제하시겠습니까?')
+                              $('.alert_select_ok').click(function () {
                               location.reload();
+                              });
                             }
                           },
                           error: function(error) {
