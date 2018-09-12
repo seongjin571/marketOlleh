@@ -24,13 +24,20 @@
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
     <script type="text/javascript">
+    function getMyLocation(lng,lat){
+      window.myLat = lat;
+      window.myLng = lng;
+      getMap();
+    }
+    window.seoulApp.getGPS();
 
+  function getMap(){
     var markers = []; // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
 
     // 지도를 표시할 div (id)
     var mapContainer = document.getElementById('map'),
         mapOption = {
-            center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            center: new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng)), // 지도의 중심좌표
             level: 4 // 지도의 확대 레벨
         };
 
@@ -38,7 +45,7 @@
 
 
     // 마커 하나를 지도위에 표시합니다
-    addMarker(new daum.maps.LatLng(33.450701, 126.570667));
+    addMarker(new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng)));
 
 
     // 마커를 생성하고 지도위에 표시하는 함수입니다
@@ -81,6 +88,7 @@
         map.setLevel(4);
 
     } // changeCenter
+
 	*/
 
     // 전역 변수
@@ -104,15 +112,15 @@
     // Get map by using coordinates
     function getMap(latitude, longitude) {
 
-    	var mapContainer = document.getElementById('map'),
-    		mapOptions = {
-            	center: new daum.maps.LatLng(0, 0),
-            	level: 4
-        	};
+      var mapContainer = document.getElementById('map'),
+        mapOptions = {
+              center: new daum.maps.LatLng(0, 0),
+              level: 4
+          };
 
-		var map = new daum.maps.Map(mapContainer, mapOptions);
+    var map = new daum.maps.Map(mapContainer, mapOptions);
 
-		// 마커 좌표 생성을 위한 변수
+    // 마커 좌표 생성을 위한 변수
         var latLong = new daum.maps.LatLng(latitude, longitude);
 
         // 마커 생성
@@ -158,14 +166,15 @@
         var SortingMarket = new Array();
 
         for (var i = 0; i < marketList.length; i++) {
-            var tempX = Latitude - marketList[i].coordinateX; 
+
+            var tempX = Latitude - marketList[i].coordinateX;
             var tempY = Longitude - marketList[i].coordinateY;
             var tempResult = Math.pow(tempX, 2) + Math.pow(tempY, 2);
             tempResult = Math.sqrt(tempResult);
             SortingMarket[i] = {
                 'marketName': marketList[i].name,
-                'marketDistance': tempResult                
-            };       
+                'marketDistance': tempResult
+            };
         } // for
 
         SortingMarket.sort(function(a, b) {
@@ -192,19 +201,21 @@
                 console.log(result);
                 if (result.rows.length > 0) {
                     nearCounting(result.rows); // nearCounting 함수로 결과 배열들 전달
-                } else {             
+                } else {
                     console.log('검색어를 확인해 주세요.');
                 }
             },
-            error: function (e) {              
+            error: function (e) {
                 console.log('검색어를 확인해 주세요.');
                 console.log('process error : ', e);
             }
-        }); // ajax        
+        }); // ajax
     }
 
     GetButton.addEventListener('click', getMapLocation, false);
     Get_near_Button.addEventListener('click', getNearMarket, false);
+  }
+
 
 </script>
 </body>

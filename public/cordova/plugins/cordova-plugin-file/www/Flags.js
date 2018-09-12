@@ -1,4 +1,4 @@
-cordova.define("cordova-plugin-file-transfer.FileTransferError", function(require, exports, module) {
+cordova.define("cordova-plugin-file.Flags", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -21,24 +21,19 @@ cordova.define("cordova-plugin-file-transfer.FileTransferError", function(requir
 */
 
 /**
- * FileTransferError
- * @constructor
+ * Supplies arguments to methods that lookup or create files and directories.
+ *
+ * @param create
+ *            {boolean} file or directory if it doesn't exist
+ * @param exclusive
+ *            {boolean} used with create; if true the command will fail if
+ *            target path exists
  */
-var FileTransferError = function(code, source, target, status, body, exception) {
-    this.code = code || null;
-    this.source = source || null;
-    this.target = target || null;
-    this.http_status = status || null;
-    this.body = body || null;
-    this.exception = exception || null;
-};
+function Flags (create, exclusive) {
+    this.create = create || false;
+    this.exclusive = exclusive || false;
+}
 
-FileTransferError.FILE_NOT_FOUND_ERR = 1;
-FileTransferError.INVALID_URL_ERR = 2;
-FileTransferError.CONNECTION_ERR = 3;
-FileTransferError.ABORT_ERR = 4;
-FileTransferError.NOT_MODIFIED_ERR = 5;
-
-module.exports = FileTransferError;
+module.exports = Flags;
 
 });
