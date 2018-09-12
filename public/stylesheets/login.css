@@ -191,7 +191,7 @@ body, html {
 }
 .login_button_formManager1 > .inputmanager{
     outline:none;
-    width: 288px;
+    width: 80%;
     height: 46px;
     background-color: white;
     border: double 1px transparent;
@@ -201,7 +201,7 @@ body, html {
 }
 .login_button_formManager2 > .inputmanager{
     outline:none;
-    width: 288px;
+    width: 80%;
     height: 46px;
     background-color: white;
     border: double 1px transparent;
@@ -217,7 +217,7 @@ body, html {
 }
 .login_button_user > .inputuser{
     outline:none;
-    width: 288px;
+    width: 80%;
     height: 46px;
     background-color: white;
     border: double 1px transparent;
@@ -227,7 +227,7 @@ body, html {
 }
 .login_button_user_1 > .inputuser{
     outline:none;
-    width: 288px;
+    width: 80%;
     height: 46px;
     background-color: white;
     border: double 1px transparent;
@@ -237,7 +237,7 @@ body, html {
 }
 .login_button_user_2 > .inputuser{
     outline:none;
-    width: 288px;
+    width: 80%;
     height: 46px;
     background-color: white;
     border: double 1px transparent;
@@ -271,7 +271,7 @@ body, html {
     height: 64px;
     width: 360px;
     position: fixed;
-    top: 340px;
+    top: 355px;
 }
 
 .idfind{
