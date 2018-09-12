@@ -24,7 +24,7 @@
 <script>
 
   function shareFacebook() {
-    window.plugins.socialsharing.shareViaFacebook('msg', null, null,'http://13.209.89.231:3000/start');
+    window.plugins.socialsharing.shareViaFacebook('msg', null, 'http://13.209.89.231:3000/start', null, null);
   }
 
   function onDeviceReady() {
@@ -154,10 +154,10 @@
                               <%= myStamps[i].like_count %>
                             </p>
                     </div>
-                    <div id="kakao">
-                      <img class="top_image" src="/images/kakao_bic.png" width="30px" height="30px">
-                      <p class="top_font">공유하기</p>
-                    </div>
+                      <!-- <div id="kakao">
+                        <img class="top_image" src="/images/kakao_bic.png" width="30px" height="30px">
+                        <p class="top_font">공유하기</p>
+                      </div> -->
                     <div id="face" onclick="shareFacebook()">
                       <img class="top_image" src="/images/face.png" width="30px" height="30px">
                       <p class="top_font">공유하기</p>

@@ -134,7 +134,7 @@ function makeGooTable(tableValue, gooCounter) {
 	$('#NewGoomap > div').html(fullString);
 	$('#NewGoomap > div > li').click(function (event) {
         // 스크롤 조절
-        window.scrollTo(0, 0);		
+        window.scrollTo(0, 0);
 		// Daum(kakao map api test line)
 		$('#navControlButton').css('display', 'none');
 		$('#Goomap_container').css('display', 'none');

@@ -1,4 +1,4 @@
-cordova.define("cordova-plugin-file-transfer.FileTransferError", function(require, exports, module) {
+cordova.define("cordova-plugin-file.FileError", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -21,24 +21,29 @@ cordova.define("cordova-plugin-file-transfer.FileTransferError", function(requir
 */
 
 /**
- * FileTransferError
- * @constructor
+ * FileError
  */
-var FileTransferError = function(code, source, target, status, body, exception) {
-    this.code = code || null;
-    this.source = source || null;
-    this.target = target || null;
-    this.http_status = status || null;
-    this.body = body || null;
-    this.exception = exception || null;
-};
+function FileError (error) {
+    this.code = error || null;
+}
 
-FileTransferError.FILE_NOT_FOUND_ERR = 1;
-FileTransferError.INVALID_URL_ERR = 2;
-FileTransferError.CONNECTION_ERR = 3;
-FileTransferError.ABORT_ERR = 4;
-FileTransferError.NOT_MODIFIED_ERR = 5;
+// File error codes
+// Found in DOMException
+FileError.NOT_FOUND_ERR = 1;
+FileError.SECURITY_ERR = 2;
+FileError.ABORT_ERR = 3;
 
-module.exports = FileTransferError;
+// Added by File API specification
+FileError.NOT_READABLE_ERR = 4;
+FileError.ENCODING_ERR = 5;
+FileError.NO_MODIFICATION_ALLOWED_ERR = 6;
+FileError.INVALID_STATE_ERR = 7;
+FileError.SYNTAX_ERR = 8;
+FileError.INVALID_MODIFICATION_ERR = 9;
+FileError.QUOTA_EXCEEDED_ERR = 10;
+FileError.TYPE_MISMATCH_ERR = 11;
+FileError.PATH_EXISTS_ERR = 12;
+
+module.exports = FileError;
 
 });
