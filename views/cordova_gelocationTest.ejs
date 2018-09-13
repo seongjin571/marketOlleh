@@ -112,15 +112,15 @@
     // Get map by using coordinates
     function getMap(latitude, longitude) {
 
-      var mapContainer = document.getElementById('map'),
+        var mapContainer = document.getElementById('map'),
         mapOptions = {
               center: new daum.maps.LatLng(0, 0),
               level: 4
-          };
+        };
 
-    var map = new daum.maps.Map(mapContainer, mapOptions);
+        var map = new daum.maps.Map(mapContainer, mapOptions);
 
-    // 마커 좌표 생성을 위한 변수
+        // 마커 좌표 생성을 위한 변수
         var latLong = new daum.maps.LatLng(latitude, longitude);
 
         // 마커 생성
@@ -155,8 +155,7 @@
 
     // Watch your changing position
     function watchMapPosition() {
-        return navigator.geolocation.watchPosition
-        (onMapWatchSuccess, onMapError, { enableHighAccuracy: true });
+        return navigator.geolocation.watchPosition(onMapWatchSuccess, onMapError, { enableHighAccuracy: true });
     }
 
     // 위도 경도의 순수 거리값 보다는 10진수화 된 값을 가지고
@@ -166,7 +165,6 @@
         var SortingMarket = new Array();
 
         for (var i = 0; i < marketList.length; i++) {
-
             var tempX = Latitude - marketList[i].coordinateX;
             var tempY = Longitude - marketList[i].coordinateY;
             var tempResult = Math.pow(tempX, 2) + Math.pow(tempY, 2);
