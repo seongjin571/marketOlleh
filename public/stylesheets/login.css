@@ -7,12 +7,7 @@ body, html {
     margin: 0;
     background-color: white;
 }
- /* ::placeholder {  파이어폭스 51+, 크롬 57+ 
-    color: red;
-    opacity:  1;
-    line-height: 200px;
- }  */
-
+  
 
 #start,#all_body {
     width: 100%;
@@ -154,7 +149,7 @@ body, html {
     top:10%;
 }
 .login_button_user_1{
-    width:360px;
+    width:100%;
     height:30px;
     text-align: center;
     color:grey;
@@ -163,7 +158,7 @@ body, html {
     top:170px;
 }
 .login_button_user_2{
-    width:360px;
+    width:100%;
     height:30px;
     text-align: center;
     color:grey;
@@ -172,7 +167,7 @@ body, html {
     top:220px;
 }
 .login_button_formManager1{
-    width: 360px;
+    width: 100%;
     height: 30px;
     text-align: center;
     color: grey;
@@ -181,7 +176,7 @@ body, html {
     top: 170px;
 }
 .login_button_formManager2{
-    width: 360px;
+    width: 100%;
     height: 30px;
     text-align: center;
     color: grey;
@@ -224,17 +219,26 @@ body, html {
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
     border-top: 0px;
     border-bottom-style: solid;
+    color:#B6B7B7;
 }
 .login_button_user_1 > .inputuser{
     outline:none;
     width: 80%;
-    height: 46px;
+    height: 36px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
     border-top: 0px;
     border-bottom-style: solid;
+    padding-top:10px;
 }
+
+.login_button_user_1 > .inputuser::placeholder {  
+    color: #B6B7B7;
+    opacity:  1;
+    line-height: 200px;
+ }  
+
 .login_button_user_2 > .inputuser{
     outline:none;
     width: 80%;
@@ -245,6 +249,11 @@ body, html {
     border-top: 0px;
     border-bottom-style: solid;
 }
+.login_button_user_1 > .inputuser::placeholder {  
+    color: #B6B7B7;
+    opacity:  1;
+    line-height: 200px;
+ }  
 .icon_div{
   width: 15%;
   height: 35px;
@@ -283,6 +292,7 @@ body, html {
     height: 100%;
     font-size: 12.5px;
     outline:none;
+    font-weight: 200;
 }
 #password_find1{
     background-color: white;
@@ -293,6 +303,8 @@ body, html {
     height: 100%;
     font-size: 12.5px;
     outline:none;
+    font-weight: 200;
+
 }
 #password_find2{
     outline:none;
@@ -303,6 +315,8 @@ body, html {
     width:33.3%;
     height: 100%;
     font-size: 12.5px;
+    font-weight: 200;
+
 }
 
 #loginUser_sign_up{
@@ -315,6 +329,7 @@ body, html {
     height: 100%;
     font-weight: 200;
     font-size: 12.5px;
+
 }
 #loginmanager_sign_up
 {
@@ -757,6 +772,7 @@ select{
     border: double 1px transparent;
     border-radius: 50px;
     background-image: linear-gradient(white, white),
+
  radial-gradient(circle at top left, #17ead9,#6078ea);
     background-origin: border-box;
     background-clip: content-box, border-box;
@@ -764,6 +780,7 @@ select{
     border: 0px;
     color: gray;
     height: 32px;
+
 }
 #modal_close{
     font-size:30px;
