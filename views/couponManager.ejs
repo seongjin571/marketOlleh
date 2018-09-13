@@ -8,8 +8,8 @@
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/couponManager.css" />
     <!-- <link rel="stylesheet" href="/stylesheets/swiper.min.css"> -->
-    <script src='/cordova/cordova.js'></script>
-    <script src='/cordova/cordova_plugins.js'></script>
+    <!-- <script src='/cordova/cordova.js'></script>
+    <script src='/cordova/cordova_plugins.js'></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
     <script src="/javascripts/spin.js"></script>
@@ -68,9 +68,10 @@
                                 <div class="store_name">
                                     <%= results1[i].market_name %>
                                 </div>
-                                <div class="market_name">
-                                    <%= results1[i].sijang_name %>
-                                </div>
+                                <div class="period">
+                                        선착순 :<%= results1[i].coupon_count %>
+                                    </div>
+                              
                             </div>
                             <div class="standard">
                                 <%= results1[i].coupon_standard %>
@@ -79,9 +80,8 @@
                                 <%= results1[i].coupon_reward %>원 할인
                             </div>
                             <div class="coupon_bottom">
-                                <div class="period">
-                                    선착순 :
-                                    <%= results1[i].coupon_count %>
+                                <div class="market_name">
+                                    <%= results1[i].sijang_name %>
                                 </div>
                                 <div class="logo_image">
                                     <img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;">
