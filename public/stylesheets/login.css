@@ -187,22 +187,24 @@ body, html {
 .login_button_formManager1 > .inputmanager{
     outline:none;
     width: 80%;
-    height: 46px;
+    height: 36px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
     border-top: 0px;
     border-bottom-style: solid;
+    padding-top:10px;
 }
 .login_button_formManager2 > .inputmanager{
     outline:none;
     width: 80%;
-    height: 46px;
+    height: 36px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
     border-top: 0px;
     border-bottom-style: solid;
+    padding-top:10px;
 }
 #userpassword{
     font-family: initial !important;
@@ -242,12 +244,13 @@ body, html {
 .login_button_user_2 > .inputuser{
     outline:none;
     width: 80%;
-    height: 46px;
+    height: 36px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
     border-top: 0px;
     border-bottom-style: solid;
+    padding-top:10px;
 }
 .login_button_user_1 > .inputuser::placeholder {  
     color: #B6B7B7;
