@@ -22,21 +22,27 @@
 </head>
 
 <script>
+  document.addEventListener("backbutton", onBackKeyDown, false);
+  function onBackKeyDown(e) {
+     e.preventDefault();
 
-  // function shareFacebook() {
-  //   window.plugins.socialsharing.shareViaFacebook('msg', null, 'http://13.209.89.231:3000/start', null, null);
-  // }
-  //
-  // function onDeviceReady() {
-  // }
-  //
-  //
-  // function domLoaded(){
-  //   document.addEventListener("deviceready", onDeviceReady, false);
+     var exitAppConfirm = confirm("앱을 종료하시겠습니까?");
+
+     if(exitAppConfirm) {
+       navigator.app.exitApp();
+     }
+
+     // navigator.notification.confirm('앱을 종료하시겠습니까?', onBackKeyDownMsg, 'a', 'b', 'c');
+
+  }
+
+  // function onBackKeyDownMsg(button) {
+  //   if(button == 2) {
+  //     navigator.app.exitApp();
+  //   }
   // }
 
   window.onload = function() {
-    // document.addEventListener("deviceready", onDeviceReady, false);
 
     if(localStorage.getItem('reviewTab')) {
       var review_tab = 'store_review_sj' + localStorage.getItem('reviewTab');
