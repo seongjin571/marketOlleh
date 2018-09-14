@@ -17,6 +17,21 @@
       crossorigin="anonymous"></script>
     <title></title>
   </head>
+
+  <script>
+    document.addEventListener("backbutton", onBackKeyDown, false);
+    function onBackKeyDown(e) {
+       e.preventDefault();
+
+       var exitAppConfirm = confirm("앱을 종료하시겠습니까?");
+
+       if(exitAppConfirm) {
+         navigator.app.exitApp();
+       }
+
+    }
+  </script>
+
   <body>
     <script>
           localStorage.setItem('introFlag', 2);

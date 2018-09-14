@@ -21,27 +21,41 @@
     </script> -->
 </head>
 
+<script>
+  document.addEventListener("backbutton", onBackKeyDown, false);
+  function onBackKeyDown(e) {
+     e.preventDefault();
+
+     var exitAppConfirm = confirm("앱을 종료하시겠습니까?");
+
+     if(exitAppConfirm) {
+       navigator.app.exitApp();
+     }
+
+  }
+</script>
+
 <body>
         <div class="alert_x" style="display:none">
                 <div class="alert_x_content">
                   <div class="alert_image">
-                    <img src="/images/alert_x.png" width="70px" height="70px" > 
-                  </div> 
+                    <img src="/images/alert_x.png" width="70px" height="70px" >
+                  </div>
                   <div class="alert_content">
                   </div>
                 </div>
               </div>
-              
+
               <div class="alert_o" style="display:none">
                   <div class="alert_o_content">
                     <div class="alert_image">
-                      <img src="/images/alert_o.png" width="70px" height="70px" > 
-                    </div> 
+                      <img src="/images/alert_o.png" width="70px" height="70px" >
+                    </div>
                     <div class="alert_content">
                     </div>
                   </div>
                 </div>
-              
+
                   <div class="alert_select"  style="display:none">
                       <div class="alert_o_content">
                         <div class="alert_content_select">
@@ -71,7 +85,7 @@
                                 <div class="period">
                                         선착순 :<%= results1[i].coupon_count %>
                                     </div>
-                              
+
                             </div>
                             <div class="standard">
                                 <%= results1[i].coupon_standard %>
@@ -137,10 +151,10 @@
                         <p class="name">쿠폰비밀번호</p>
                         <input class="input_content" id="coupon_password" type="password" maxlength="4" id="stamp_password" placeholder="ex)1234">
                     </div>
-                      
+
                 </div>
 
-                <div class="coupon_ment">쿠폰은 선착순 마감 후에만 삭제 됩니다.</div> 
+                <div class="coupon_ment">쿠폰은 선착순 마감 후에만 삭제 됩니다.</div>
 
 
 
@@ -252,7 +266,7 @@
         var value = $(this).val()
         if(!value==''){
         $('.check_input:eq(1)').css('visibility', 'visible');
-        
+
         $('.standard_coupon').html(value);
         }
         else{
