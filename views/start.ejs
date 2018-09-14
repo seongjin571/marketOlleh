@@ -18,6 +18,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta http-equiv="X-UA-Compatible" content="IE=9">
     <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <script type="text/javascript" charset="utf-8" src="/cordova/cordova.js"></script>
+    <script src='/cordova/cordova_plugins.js'></script>
     <script>
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
@@ -431,6 +433,94 @@
 
 
     <!--signupManager 시작-->
+    <script type="text/javascript" charset="utf-8">
+
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready",onDeviceReady,false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoDataSuccess(imageData) {
+      // Uncomment to view the base64-encoded image data
+      // console.log(imageData);
+
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the image file URI
+      // console.log(imageURI);
+
+      // Get image handle
+      //
+      var largeImage = document.getElementById('largeImage');
+
+      // Unhide image elements
+      //
+      largeImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      largeImage.src = imageURI;
+    }
+
+    // A button will call this function
+    //
+    function capturePhoto() {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+        destinationType: destinationType.DATA_URL });
+    }
+
+    // A button will call this function
+    //
+    function capturePhotoEdit() {
+      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
+        destinationType: destinationType.DATA_URL });
+    }
+
+    // A button will call this function
+    //
+    function getPhoto(source) {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+
+    // Called if something bad happens.
+    //
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
+
+    </script>
     <div id="signupManager">
         <img id="back_signupManager" src="/images/backButton_blue.png">
         <div class="menu">
@@ -478,7 +568,7 @@
                             <div class="manager_signup_name">상점번호</div>
                             <input class="signuptext2" type="text" placeholder="ex)02-123-4567" id="manager_phone" name='manager_phone'>
                         </div>
-                        <div class="coupon_ment">메뉴 클릭/옆으로 밀기를 통해 모든 정보를 입력해주세요</div> 
+                        <div class="coupon_ment">메뉴 클릭/옆으로 밀기를 통해 모든 정보를 입력해주세요</div>
                     </div>
 
 
@@ -517,10 +607,12 @@
                                 <img src="/images/check.png" width="30px" height="30px">
                             </div>
                             <div id="sijang_picture" name='sijang_name'>상점사진</div>
-                            <label id="picture_pic"for="manager_img">사진 선택</label>
-                            <input type='file' name='manager_img' id='manager_img' />
+                            <label id="picture_pic"for="manager_img" onclick="capturePhotoEdit();">사진 촬영</label>
+                            <!-- <input type='file' name='manager_img' id='manager_img' /> -->
                         </div>
-                        <img class="picture_div" src="/images/market9.jpg" height="auto"</img>
+                        <!-- <img class="picture_div" src="/images/market9.jpg" height="auto"</img> -->
+                        <img style="display:none;height="auto"" class="picture_div" id="smallImage" src="" />
+
                     </div>
 
 
@@ -570,7 +662,7 @@
                             </select>
                         </div>
 
-                        <div class="coupon_ment">스탬프 갯수는 수정이 제한되니 참고하여 생성하세요</div> 
+                        <div class="coupon_ment">스탬프 갯수는 수정이 제한되니 참고하여 생성하세요</div>
 
 
 
@@ -761,8 +853,9 @@
                 data2.append('market_introduce', market_introduce);
                 data2.append('stamp_standard', stamp_standard);
                 data2.append('sijang_name', sijang_name.innerHTML);
-                data2.append('manager_img', $('input[name=manager_img]')[0].files[0]);
-                console.log(data);
+                // data2.append('manager_img', $('input[name=manager_img]')[0].files[0]);
+
+
                 $.ajax({
                     type: "POST",
                     url: "/signup/signupmanager",
