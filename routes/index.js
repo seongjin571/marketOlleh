@@ -8,6 +8,9 @@ var app= express();
 router.get('/photo', function(req, res){
   res.render('photo');
 });
+router.get('/share', function(req, res){
+  res.render('share');
+});
 router.get('/eud_camera', function(req, res){
   res.render('eud_camera');
 });
