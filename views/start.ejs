@@ -231,7 +231,7 @@
         </div>
         <div id="kakao_logo2">
             <div class="login_button_user5">
-                <button type='submit' id="loginButton_manager" value='' class="loginUser_insert">로그인</button>
+                <button type='button' id="loginButton_manager" value='' class="loginUser_insert">로그인</button>
             </div>
         </div>
     </div>
@@ -1166,18 +1166,19 @@
         $('.alert_select').css('display','none')
       })
     // (hw edit); enter event handleling!
-    $("#password").keyup(function (event) {
-        // Enter 처리
-        if (event.keyCode == '13') {
-            $("#loginButton_manager").trigger("click");
-        } // if
-    }); // enter keyup event
     $("#userpassword").keyup(function (event) {
         // Enter 처리
         if (event.keyCode == '13') {
             $("#loginButton_user").trigger("click");
         } // if
     }); // enter keyup event
+    $("#password").keyup(function (event) {
+        // Enter 처리
+        if (event.keyCode == '13') {
+            $("#loginButton_manager").trigger("click");
+        } // if
+    }); // enter keyup event
+
 </script>
 </html>
 
