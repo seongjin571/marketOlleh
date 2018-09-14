@@ -127,7 +127,8 @@ SocialSharing.prototype._getErrorCallback = function (ecb, functionName) {
     return ecb;
   } else {
     return function (result) {
-      console.log("The injected error callback of '" + functionName + "' received: " + JSON.stringify(result));
+      //console.log("The injected error callback of '" + functionName + "' received: " + JSON.stringify(result));
+      alert('해당 기기에 설치되어 있는 페이스북 어플리케이션으로만 실행 가능합니다. 설치여부를 확인해주세요');
     }
   }
 };

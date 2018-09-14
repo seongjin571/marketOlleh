@@ -9,9 +9,9 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 
 	// 좋아요순 상점 흔적 없애기
 	if ($('#hot_store_list_market > div')) {
-		$('#hot_store_list_market > div').remove();	
+		$('#hot_store_list_market > div').remove();
 	}
-	
+
 	// 태그 동적으로 생성하기
 	var tempString = new Array();
 	var fullString = '';
@@ -42,7 +42,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 
 	// MAP API
 	relayout();
-	setMarkers(null); // 마커 배열 감추기 
+	setMarkers(null); // 마커 배열 감추기
 	changeCenter(market_arr.coordinateX, market_arr.coordinateY);
 
 	// 인기 상점 찾기
@@ -83,6 +83,10 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
     $('#store_name_sj').text(market_arr.market_name);
     $('#market_name_sj').text(market_arr.sijang_name);
     $('#goodCount_sj').text(market_arr.like_count);
+
+		$('#face').click(function() {
+			window.plugins.socialsharing.shareViaFacebook(null, null, 'http://13.209.89.231:3000/start', null, null)
+		});;
 
     // 지금 이 함수를 불러오게 하는 user_id가
     // 그 스탬프(상점)의 따봉을 눌렀는지(likeMarket에 존재하는지) 테스트

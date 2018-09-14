@@ -19,15 +19,119 @@
             FastClick.attach(document.body);
         }, false);
     </script>
+    <script type="text/javascript" charset="utf-8" src="/cordova/cordova.js"></script>
+    <script src='/cordova/cordova_plugins.js'></script>
+    <script type="text/javascript" charset="utf-8">
 
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready",onDeviceReady,false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoDataSuccess(imageData) {
+      // Uncomment to view the base64-encoded image data
+      // console.log(imageData);
+
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the image file URI
+      // console.log(imageURI);
+
+      // Get image handle
+      //
+      var largeImage = document.getElementById('largeImage');
+
+      // Unhide image elements
+      //
+      largeImage.style.display = 'block';
+
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      largeImage.src = imageURI;
+    }
+
+    // A button will call this function
+    //
+    function capturePhoto() {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+        destinationType: destinationType.DATA_URL });
+    }
+
+    // A button will call this function
+    //
+    function capturePhotoEdit() {
+      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
+        destinationType: destinationType.DATA_URL });
+    }
+
+    // A button will call this function
+    //
+    function getPhoto(source) {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+
+    // Called if something bad happens.
+    //
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
+
+    </script>
 </head>
+
+<script>
+  document.addEventListener("backbutton", onBackKeyDown, false);
+  function onBackKeyDown(e) {
+     e.preventDefault();
+
+     var exitAppConfirm = confirm("앱을 종료하시겠습니까?");
+
+     if(exitAppConfirm) {
+       navigator.app.exitApp();
+     }
+
+  }
+</script>
 
 <body>
         <div class="alert_x" style="display:none">
                 <div class="alert_x_content">
                   <div class="alert_image">
-                    <img src="/images/alert_x.png" width="70px" height="70px" > 
-                  </div> 
+                    <img src="/images/alert_x.png" width="70px" height="70px" >
+                  </div>
                   <div class="alert_content">
                   </div>
                 </div>
@@ -53,7 +157,7 @@
                 </div>
             </div>
         </div>
-    
+
 
     <div id="stamp_detail">
         <div class="inputLine">
@@ -81,15 +185,15 @@
             <p class="name">비밀번호</p>
             <input class="input_content" id="password_input"type="password" maxlength="4"  readonly value="<%= result[0].stamp_password %>">
         </div>
-        <div id="mystore_image" style="background: url('/files/<%= result[0].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
-        <div class="picture_reform" style="visibility:hidden">사진 클릭 시 사진을 수정할 수 있습니다.</div>
+        <div id="mystore_image"  style="background: url('/files/<%= result[0].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
+        <div class="picture_reform" onclick="capturePhotoEdit();" style="visibility:hidden">사진 클릭 시 사진을 수정할 수 있습니다.</div>
         <button id="stamp_reform">수정</button>
         <div id="reform">
                 <button id="stamp_reform_cancel" style="margin-right: 10%">취소</button>
                 <button id="stamp_reform_button">확인</button>
             </div>
     </div>
-    
+
     <div id="nav_sj">
         <div id="home">
             <img src="/images/home.png" width="40%">
@@ -205,7 +309,7 @@
                         location.reload();
                     });
                     }//result if
-   
+
                 },
                 error: function (error) {
                     console.log('erer');

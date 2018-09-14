@@ -7,7 +7,7 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src='/cordova/cordova.js'></script>
-    <script src='/cordova/cordova_plugins.js'></script>
+    <!-- <script src='/cordova/cordova_plugins.js'></script> -->
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
@@ -21,6 +21,20 @@
   }, false);
   </script> -->
 </head>
+
+<script>
+  document.addEventListener("backbutton", onBackKeyDown, false);
+  function onBackKeyDown(e) {
+     e.preventDefault();
+
+     var exitAppConfirm = confirm("앱을 종료하시겠습니까?");
+
+     if(exitAppConfirm) {
+       navigator.app.exitApp();
+     }
+
+  }
+</script>
 
 <body>
         <div class="alert_select"  style="display:none">
@@ -78,7 +92,7 @@
           $(location).attr('href', '/logout');
         })
       })
-       
+
         $('.alert_select_cancel').click(function(){
         $('.alert_select').css('display','none')
       })
