@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="alert_o" style="display:none">
             <div class="alert_o_content">
                 <div class="alert_image">
@@ -74,7 +74,7 @@
                         <%= result1[0].like_count %>
                     </p>
                 </div>
-                <div id="face">
+                <div id="face" onclick="window.plugins.socialsharing.shareViaFacebook(null, null, 'http://13.209.89.231:3000/start', null, null)">
                     <img class="top_image" src="/images/face.png" width="30px" height="30px">
                     <p class="top_font">공유하기</p>
                 </div>
@@ -274,7 +274,7 @@
                 $('.go_slide').eq(this_index).css('color','#63dded');
                 swiper.slideTo(this_index, 500, false);
             });
-            
+
         swiper.on('slideChangeTransitionStart', function () {
             var active=swiper.activeIndex;
             $('.go_slide').css('color','black');
