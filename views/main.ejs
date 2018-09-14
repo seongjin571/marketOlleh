@@ -26,27 +26,41 @@
 
 </head>
 
+<script>
+  document.addEventListener("backbutton", onBackKeyDown, false);
+  function onBackKeyDown(e) {
+     e.preventDefault();
+
+     var exitAppConfirm = confirm("앱을 종료하시겠습니까?");
+
+     if(exitAppConfirm) {
+       navigator.app.exitApp();
+     }
+
+  }
+</script>
+
 <body>
     <div class="alert_x" style="display:none">
         <div class="alert_x_content">
           <div class="alert_image">
-            <img src="/images/alert_x.png" width="70px" height="70px" > 
-          </div> 
+            <img src="/images/alert_x.png" width="70px" height="70px" >
+          </div>
           <div class="alert_content">
           </div>
         </div>
       </div>
-      
+
       <div class="alert_o" style="display:none">
           <div class="alert_o_content">
             <div class="alert_image">
-              <img src="/images/alert_o.png" width="70px" height="70px" > 
-            </div> 
+              <img src="/images/alert_o.png" width="70px" height="70px" >
+            </div>
             <div class="alert_content">
             </div>
           </div>
         </div>
-      
+
           <div class="alert_select"  style="display:none">
               <div class="alert_o_content">
                 <div class="alert_content_select">
@@ -272,7 +286,7 @@
                       </div>
                       <div class="good_market_name">
                           <%= market[i].sijang_name %>
-                      </div>                      
+                      </div>
                       <div class="good_count">
                           <img src="/images/good.png" width="17px" height="17px" style="margin-right: 3px;">
                           <p><%= market[i].like_count %></p>
@@ -295,7 +309,7 @@
                       </div>
                       <div class="good_market_name">
                           <%= market[i+1].sijang_name %>
-                      </div>                      
+                      </div>
                       <div class="good_count">
                           <img src="/images/good.png" width="17px" height="17px" style="margin-right:3px;">
                           <p><%= market[i+1].like_count %></p>
@@ -537,13 +551,13 @@
                 $('.go_slide').eq(this_index).css('color','#63dded');
                 swiper2.slideTo(this_index, 500, false);
             });
-            
+
         swiper2.on('slideChangeTransitionStart', function () {
             var active=swiper2.activeIndex;
             $('.go_slide').css('color','black');
             $('.go_slide').eq(active).css('color','#63dded');
         });
- 
+
     </script>
 
 
@@ -608,7 +622,7 @@
                 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
                 data: {
                     "name": this.childNodes[5].innerText,
-                    "market_name": this.childNodes[3].innerText 
+                    "market_name": this.childNodes[3].innerText
                 },
                 success: function (result) {
                     if (result.rows.length > 0) {

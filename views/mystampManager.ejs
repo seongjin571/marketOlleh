@@ -71,6 +71,7 @@
       //
       largeImage.style.display = 'block';
 
+
       // Show the captured photo
       // The inline CSS rules are used to resize the image
       //
@@ -110,6 +111,20 @@
 
     </script>
 </head>
+
+<script>
+  document.addEventListener("backbutton", onBackKeyDown, false);
+  function onBackKeyDown(e) {
+     e.preventDefault();
+
+     var exitAppConfirm = confirm("앱을 종료하시겠습니까?");
+
+     if(exitAppConfirm) {
+       navigator.app.exitApp();
+     }
+
+  }
+</script>
 
 <body>
         <div class="alert_x" style="display:none">
