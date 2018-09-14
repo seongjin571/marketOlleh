@@ -107,7 +107,7 @@
                   </div>
                   <div class="good_store_name">
                       <%= market[i+1].market_name %>
-                  </div>                  
+                  </div>
                   <div class="good_market_name">
                       <%= market[i+1].sijang_name %>
                   </div>
@@ -139,7 +139,7 @@
                         <!-- 좋아요 개수 출력 부분 [ like_count ] -->
                         <p class="top_font" id="goodCount_sj"></p>
                     </div>
-                    <div id="face">
+                    <div id="face" onclick="window.plugins.socialsharing.shareViaFacebook(null, null, 'http://13.209.89.231:3000/start', null, null)">
                       <img class="top_image" src="/images/face.png" width="30px" height="30px">
                       <p class="top_font">공유하기</p>
                     </div>
@@ -302,7 +302,7 @@
                 $('.go_slide').eq(this_index).css('color','#63dded');
                 swiper.slideTo(this_index, 500, false);
             });
-            
+
         swiper.on('slideChangeTransitionStart', function () {
             var active=  swiper.activeIndex;
             $('.go_slide').css('color','black');
@@ -371,7 +371,7 @@
                       console.log('process error : ', e);
                   }
               }); // ajax
-            } // if ~ else 
+            } // if ~ else
         }); // click event
         function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
           // 스크롤 조절

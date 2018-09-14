@@ -23,20 +23,20 @@
 
 <script>
 
-  function shareFacebook() {
-    window.plugins.socialsharing.shareViaFacebook('msg', null, 'http://13.209.89.231:3000/start', null, null);
-  }
-
-  function onDeviceReady() {
-  }
-
-
-  function domLoaded(){
-    document.addEventListener("deviceready", onDeviceReady, false);
-  }
+  // function shareFacebook() {
+  //   window.plugins.socialsharing.shareViaFacebook('msg', null, 'http://13.209.89.231:3000/start', null, null);
+  // }
+  //
+  // function onDeviceReady() {
+  // }
+  //
+  //
+  // function domLoaded(){
+  //   document.addEventListener("deviceready", onDeviceReady, false);
+  // }
 
   window.onload = function() {
-    document.addEventListener("deviceready", onDeviceReady, false);
+    // document.addEventListener("deviceready", onDeviceReady, false);
 
     if(localStorage.getItem('reviewTab')) {
       var review_tab = 'store_review_sj' + localStorage.getItem('reviewTab');
@@ -158,7 +158,7 @@
                         <img class="top_image" src="/images/kakao_bic.png" width="30px" height="30px">
                         <p class="top_font">공유하기</p>
                       </div> -->
-                    <div id="face" onclick="shareFacebook()">
+                    <div id="face" onclick="window.plugins.socialsharing.shareViaFacebook(null, null, 'http://13.209.89.231:3000/start', null, null)">
                       <img class="top_image" src="/images/face.png" width="30px" height="30px">
                       <p class="top_font">공유하기</p>
                     </div>
