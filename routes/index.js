@@ -35,7 +35,6 @@ router.get('/share/:sijang_name/:market_name', function(req, res){
   });
 });
 
-
 router.get('/eud_camera', function(req, res){
   res.render('eud_camera');
 });
