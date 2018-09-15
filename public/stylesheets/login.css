@@ -195,6 +195,11 @@ body, html {
     border-bottom-style: solid;
     padding-top:10px;
 }
+.login_button_formManager1 > .inputmanager::placeholder {  
+    color: #B6B7B7;
+    opacity:  1;
+    line-height: 200px;
+ }  
 .login_button_formManager2 > .inputmanager{
     outline:none;
     width: 80%;
@@ -206,6 +211,11 @@ body, html {
     border-bottom-style: solid;
     padding-top:10px;
 }
+.login_button_formManager2 > .inputmanager::placeholder {  
+    color: #B6B7B7;
+    opacity:  1;
+    line-height: 200px;
+ }  
 #userpassword{
     font-family: initial !important;
 }
@@ -252,7 +262,7 @@ body, html {
     border-bottom-style: solid;
     padding-top:10px;
 }
-.login_button_user_1 > .inputuser::placeholder {  
+.login_button_user_2 > .inputuser::placeholder {  
     color: #B6B7B7;
     opacity:  1;
     line-height: 200px;
