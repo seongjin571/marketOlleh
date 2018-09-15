@@ -90,8 +90,8 @@ body, html, #modal_market_name {
     padding-top: 150px;
     height: 50%;
     width: 77.7%;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 12.5%;
+    padding-right: 12.5%;
 }
 
 .fdd{
@@ -116,8 +116,8 @@ body, html, #modal_market_name {
 }
 #find_manager_id_to_password{
     outline:none;
-    width: 200px;
-    height: 36px;
+    width: 80.5%;
+    height: 40px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
@@ -145,8 +145,8 @@ body, html, #modal_market_name {
 }
 #find_manager_id_to_marketname{
     outline:none;
-    width: 200px;
-    height: 36px;
+    width: 80.5%;
+    height: 40px;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
@@ -158,8 +158,7 @@ body, html, #modal_market_name {
 #find_manager_id_bt{
     width: 20px;
     height: 20px;
-    margin-top: 10px;
-    margin-left: 40px;
+    margin-left: 8%;
     background-color: white;
     border: 0px;
     padding: 0px;
