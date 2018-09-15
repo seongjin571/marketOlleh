@@ -8,6 +8,34 @@ var app= express();
 router.get('/photo', function(req, res){
   res.render('photo');
 });
+
+
+router.get('/share/:sijang_name/:market_name', function(req, res){
+  var marketSql = 'select * from `manager` where `sijang_name`=? and `market_name`=? ;';
+  var reviewSql = 'select * from `review` where `sijang_name`=? and `market_name`=? ;';
+  conn.query(marketSql, [req.params.sijang_name, req.params.market_name], function(marketErr, marketRows) {
+    if(marketErr) {
+      console.log(marketErr);
+      console.log('가게 정보 에러');
+    }
+    else {
+      conn.query(reviewSql, [req.params.sijang_name, req.params.market_name], function(reviewErr, reviewRows) {
+        if(reviewErr) {
+          console.log(reviewErr);
+          console.log('리뷰 정보 에러');
+        }
+        else {
+          res.render('share', {
+            market: marketRows[0],
+            reviews: reviewRows
+          });
+        }
+      });
+    }
+  });
+});
+
+
 router.get('/eud_camera', function(req, res){
   res.render('eud_camera');
 });
@@ -450,7 +478,7 @@ router.get('/searching', function(req, res) {
 
 // 근처 시장 찾기 로직
 router.post('/searching/near', function(req, res) {
-  
+
   // body...
   var sql = "SELECT * FROM `market`";
   conn.query(sql, function(error, rows, fileds) {

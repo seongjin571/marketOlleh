@@ -5,7 +5,7 @@
     <title>login</title>
     <meta charset="utf-8" />
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="height=device-height,width=device-width,user-scalable=no">
 
     <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
@@ -18,26 +18,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta http-equiv="X-UA-Compatible" content="IE=9">
     <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+    <script src="/javascripts/spin.js"></script>
     <script type="text/javascript" charset="utf-8" src="/cordova/cordova.js"></script>
     <script src='/cordova/cordova_plugins.js'></script>
-    <script>
+    <!-- <script>
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
         }, false);
-    </script>
+    </script> -->
 </head>
 
 <script>
   document.addEventListener("backbutton", onBackKeyDown, false);
   function onBackKeyDown(e) {
      e.preventDefault();
-
-     var exitAppConfirm = confirm("앱을 종료하시겠습니까?");
-
-     if(exitAppConfirm) {
+      $('.alert_select').css('display', 'block');
+      $('.alert_content_select').html('앱을 종료하시겠습니까?')
+      $('.alert_select_ok').click(function () {
        navigator.app.exitApp();
-     }
-
+      });
   }
 </script>
 

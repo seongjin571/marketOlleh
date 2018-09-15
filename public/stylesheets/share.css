@@ -1,0 +1,465 @@
+@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family: 'NanumSquare',sans-serif;}
+body,html{
+    width: 100%;
+    height: 100%;
+    padding:0;
+    margin:0;
+}
+#mystamp{
+    width: 100%;
+    height:100%;
+}
+.selected_stamp{
+    width: 100%;
+    height:100%;
+    display: none;
+}
+
+.stamp_name{
+    display: inline-flex;
+    width: 90%;
+    height: 30%;
+    margin-left: 5%;
+    margin-top: 5px;
+}
+.market_name{
+    font-size: 14px;
+    text-align: center;
+}
+.stamp_count{
+    width: 100%;
+    height: 60%;
+    font-size: 25px;
+    display: table;
+}
+.stamp_count_vertical{
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.name_sj {
+    width: 100%;
+    height: 12%;
+    display: inline-flex;
+    position: fixed;
+    background-color: white;
+    z-index: 1;
+    top: 8%;
+}
+.name{
+    width: 23%;
+    margin-left: 3%;
+    height: 30px;
+    line-height: 30px;
+}
+
+#name_sj {
+    width: 80%;
+    height: 80px;
+}
+.top_font{
+    font-size: 11px;
+    font-weight: lighter;
+    text-align: center;
+    height: 20px;
+    color: #9c9c9c;
+    padding-top: 3px;
+}
+h3{
+    margin-left: 5%;
+    /* margin-top: 50px; */
+    font-size: 19px;
+}
+/* ─────────────────────────────────────────────────── */
+#menu_infor{
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top:0px;
+    background-color: white;
+    z-index: 2;
+    border-bottom-style: solid;
+    border-width: 1px;
+}
+#top_infor{
+    width: 100%;
+    display: inline-flex;
+    height: 60px;
+}
+#store_name_sj {
+    width: 80%;
+    font-size: 20px;
+    height: 50px;
+    line-height: 60px;
+    margin-left: 10%;
+    font-weight: bold;
+
+}
+#market_name_sj {
+    font-size: 15px;
+    height: 30px;
+    line-height: 15px;
+    color: gray;
+    font-weight: lighter;
+    margin-left: 10%;
+
+}
+#good,#face{
+    width: 50%;
+    display: block;
+}
+#sns_sj {
+    width: 20%;
+    height:80px;
+    /* display: inline-flex; */
+    text-align: center;
+    background-color: white;
+    z-index: 1;
+}
+.line{
+    width: 100%;
+    height: 8px;
+    background-color:#f6f8f9;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+#introduce,#map{
+    display: inline-flex;
+    width: 90%;
+    height: 30px;
+    margin-left: 5%;
+}
+#introduce{
+    height: auto !important;
+}
+.about_store{
+    width: 100%;
+    margin-top:100px;
+}
+.detail{
+    width: 100%;
+}
+#map{
+    margin-top: 20px;
+}
+#intro_content{
+    width: 58%;
+    margin-left: 8%;
+    color: #9c9c9c;
+    line-height: 22px;
+}
+
+#stamp_menu_sj{
+    width: 100%;
+    margin-top: 30px;
+    /* height: 50%; */
+}
+.stamp_infor_content{
+    width: 58%;
+    margin-left: 8%;
+    font-weight: lighter;
+    color: #9c9c9c;
+    line-height: 30px;
+    border-bottom-style: solid;
+    border-bottom-color: #cecdcd;
+    border-width: 1px;
+}
+.stamp_sj{
+    width: 77%;
+    height: 180px;
+    margin-left: 11.5%;
+    background-image:url('/images/backSample4.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 5px;
+    color: white;
+}
+
+.stamp_infor{
+    display: inline-flex;
+    width: 90%;
+    height: 30px;
+    margin-left: 5%;
+    margin-top: 20px;
+}
+
+p {
+    margin: 0;
+    /* font-size: 18px; */
+}
+.ten_sj p,.five_sj p{
+    margin-left: 35%;
+}
+
+.store_detail_sj p{
+    width: 90%;
+    margin-left: 5%;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.goodCount_sj {
+    font-size: 25px;
+    line-height: 70px;
+}
+
+#sns_sj img,
+#sns_sj p {
+    margin-left: 6%;
+}
+
+#menu_sj p {
+    width: 33.333%;
+    text-align: center;
+    font-size: 25px;
+}
+
+.fiveControls_sj,
+.tenControls_sj {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.tenStamp_sj {
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.fiveStamp_sj {
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.five_sj,
+.ten_sj {
+    display: inline-flex;
+    width: 15%;
+    height: 41px;
+    border-radius: 200px;
+    margin-left: 3%;
+    background-color: rgb(202, 199, 199);
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    line-height: 41px;
+
+}
+
+.tenStamp_top_sj,
+.tenStamp_bottom_sj {
+    margin-bottom: 10px;
+}
+
+.review_div_sj{
+    padding-top: 10px;
+    width: 100%;
+    font-size: 20px;
+}
+.review_content_sj{
+    height: 20px;
+    line-height: 20px;
+    width: 90%;
+    margin-left: 5%;
+    /* text-align: center; */
+    display: inline-flex;
+}
+.review_content_id_sj{
+    font-size: 16px;
+    width: 30%;
+}
+.review_content_date_sj{
+    color: #9c9c9c;
+    font-size: 14px;
+    width: 30%;
+    font-weight: lighter;
+}
+.review_div_sj p{
+    margin-top: 10px;
+    width: 90%;
+    margin-left: 5%;
+    background:no-repeat;
+    border-style: none;
+    font-size: 20px;
+    margin-bottom: 10px;
+    word-break: break-all;
+}
+.market_infoText_li{
+    width: 90%;
+    margin-left: 5%;
+    display: inline-flex;
+    margin-top: 10px;
+}
+/* 현우가 건드린 CSS */
+.store_review_sj {
+    width: 100%;
+}
+
+.store_image{
+    width: 170px;
+    height: 170px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 100px;
+}
+.review_rate{
+    margin-top: 20px;
+    width: 100%;
+    /*height: 118px;*/
+}
+.review_star{
+    display: inline-flex;
+    width: 90%;
+    margin-left: 5%;
+    height: 30px;
+}
+.review_star_customer{
+    /* padding-top: 10px; */
+    display: inline-flex;
+    width: 90%;
+    margin-left: 5%;
+    height: 20px;
+}
+
+.review_count{
+    display: inline-flex;
+    width: 90%;
+    margin-left: 5%;
+    height: 40px;
+    line-height: 40px;
+}
+.review_count_content{
+    margin-left: 10px;
+    color: #63dded;
+    font-size: 20px;
+}
+#intro{
+    width: 90%;
+    margin-left: 5%;
+    height: 30px;
+    line-height: 30px;
+    color: #9c9c9c;
+    font-size: 14px;
+    font-weight: lighter;
+    margin-bottom: 5px;
+}
+
+.naming{
+    width: 23%;
+    margin-left: 3%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;    
+}
+.content_div{
+    width: 58%;
+    margin-left: 8%;
+    font-weight: lighter;
+    color: #9c9c9c;
+    line-height: 30px;
+    font-size: 14px;
+}
+#logo_div{
+    display: none;
+    width: 100%;
+    height: 100px;
+}
+#logo{
+    margin-left: 44%;
+    width: 12%;
+    height: auto;
+}
+.menu{
+    display: none;
+}
+#store_name_web{
+    font-size: 23px;
+    height: 50px;
+    line-height: 60px;
+    font-weight: bold;
+    padding-left: 15px;
+}
+#market_name_web{
+    font-size: 17px;
+    height: 30px;
+    line-height: 15px;
+    color: gray;
+    font-weight: lighter;
+    padding-left: 15px;
+}
+th{
+    text-align: left;
+    color: #9c9c9c;
+    border-left-style: solid;
+    border-left-color: #9c9c9c;
+    cursor: pointer;
+}
+
+tr,th{
+    padding: 15px;
+}
+table{
+    border-spacing: 15px;
+ 
+}
+@media screen and (max-width: 790px) and (min-width: 450px) {
+    .detail{
+        width: 55%;
+        margin-left: 22.5%;
+    }
+}
+@media screen and (max-width: 2000px) and (min-width: 800px) {
+    #menu_infor{
+        display: none;
+    }
+    #logo_div{
+        display: block;
+    }
+    .detail{
+        width: 50%;
+        margin-left: 25%;
+    }
+    .stamp_sj{
+        width: 60%;
+        height: 270px;
+        margin-left: 20%;
+    }
+    .about_store{
+        margin-top:50px;
+    }
+    .line{
+        display: none;
+    }
+    .top_image{
+        width: 40px;
+        height: 40px;
+    }
+    .top_font{
+        font-size: 16px;
+    }
+    h3{
+        display: none;
+    }
+    .detail:nth-child(2),.detail:nth-child(3){
+        display: none;
+    }
+    .menu{
+        display: block;
+        position: fixed;
+        top: 200px;
+        left: 30px;
+    }
+    .stamp_infor{
+        margin-top: 35px;
+    }
+
+  }
