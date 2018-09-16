@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mystampManager.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
     <script src='/cordova/cordova.js'></script>
@@ -116,13 +116,11 @@
   document.addEventListener("backbutton", onBackKeyDown, false);
   function onBackKeyDown(e) {
      e.preventDefault();
-
-     var exitAppConfirm = confirm("앱을 종료하시겠습니까?");
-
-     if(exitAppConfirm) {
+      $('.alert_select').css('display', 'block');
+      $('.alert_content_select').html('앱을 종료하시겠습니까?')
+      $('.alert_select_ok').click(function () {
        navigator.app.exitApp();
-     }
-
+      });
   }
 </script>
 
