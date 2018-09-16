@@ -19,8 +19,6 @@ body, html {
     width: 100%;
     height: 100%;
     background-color: white;
-
-    /* position:fixed; */
 }
 .coupon_ment{
     width: 100%;
@@ -60,7 +58,7 @@ body, html {
 }
 .login_button{
     width: 100%;
-    height: 15%;
+    height: 17%;
     margin-bottom: 5%;
     text-align: center;
     
@@ -68,7 +66,7 @@ body, html {
 
 #user_login{
     box-shadow: 5px 5px 3px #efefef;
-    width: 70%;
+    width: 75%;
     height: 100%;
     background-color: white;
     border: double 1px transparent;
@@ -86,7 +84,7 @@ body, html {
 #seller_login {
     outline:none;
     box-shadow: 5px 5px 3px #e5e5e5;
-    width: 70%;
+    width: 75%;
     height: 100%;
     padding:0;
     border:0;
@@ -284,14 +282,14 @@ body, html {
 #login_button_user2{
    display: inline-flex;
    height: 64px;
-   width: 360px;
+   width: 100%;
    position: fixed;
    top: 355px;
 }
 #login_button_manager{
     display: inline-flex;
     height: 64px;
-    width: 360px;
+    width: 100%;
     position: fixed;
     top: 355px;
 }

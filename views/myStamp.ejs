@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Page Title</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
   <script src='/cordova/cordova.js'></script>
   <script src='/cordova/cordova_plugins.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -25,15 +25,11 @@
   document.addEventListener("backbutton", onBackKeyDown, false);
   function onBackKeyDown(e) {
      e.preventDefault();
-
-     var exitAppConfirm = confirm("앱을 종료하시겠습니까?");
-
-     if(exitAppConfirm) {
+      $('.alert_select').css('display', 'block');
+      $('.alert_content_select').html('앱을 종료하시겠습니까?')
+      $('.alert_select_ok').click(function () {
        navigator.app.exitApp();
-     }
-    
-     // navigator.notification.confirm('앱을 종료하시겠습니까?', onBackKeyDownMsg, 'a', 'b', 'c');
-
+      });
   }
 
   // function onBackKeyDownMsg(button) {
@@ -164,7 +160,7 @@
                         <img class="top_image" src="/images/kakao_bic.png" width="30px" height="30px">
                         <p class="top_font">공유하기</p>
                       </div> -->
-                    <div id="face" onclick="window.plugins.socialsharing.shareViaFacebook(null, null, 'http://13.209.89.231:3000/start', null, null)">
+                    <div id="face" onclick="window.plugins.socialsharing.shareViaFacebook(null, null, 'http://13.209.89.231:3000/share/<%= myStamps[i].sijang_name %>/<%= myStamps[i].market_name %>', null, null)">
                       <img class="top_image" src="/images/face.png" width="30px" height="30px">
                       <p class="top_font">공유하기</p>
                     </div>
