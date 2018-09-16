@@ -247,7 +247,7 @@
         </div>
         <div id="kakao_logo2">
             <div class="login_button_user5">
-                <button type='submit' id="loginButton_manager" value='' class="loginUser_insert">로그인</button>
+                <button type='button' id="loginButton_manager" value='' class="loginUser_insert">로그인</button>
             </div>
         </div>
     </div>
@@ -1236,14 +1236,24 @@
     })
     // 뒤로가기 고객회원가입부분
     $('#back_signupuser').click(function () {
-        $('#signupuser').fadeOut(300)
-        $('#loginuser').fadeIn(300)
-    })
+        $('.alert_select').css('display', 'block');
+        $('.alert_content_select').html('회원가입을 취소하시겠습니까?')
+        $('.alert_select_ok').click(function () {
+            $(".alert_select").css('display','none');
+            $('#signupuser').fadeOut(300)
+            $('#loginuser').fadeIn(300)
+        });
+    });
     // 뒤로가기 상인회원가입부분
     $('#back_signupManager').click(function () {
-        $('#signupManager').fadeOut(300)
-        $('#loginManager').fadeIn(300)
-    })
+        $('.alert_select').css('display', 'block');
+        $('.alert_content_select').html('회원가입을 취소하시겠습니까?')
+        $('.alert_select_ok').click(function () {
+            $(".alert_select").css('display','none');
+            $('#signupManager').fadeOut(300);
+            $('#loginManager').fadeIn(300);
+        });
+    });
     // 클릭 이벤트
     $('.alert_x').click(function(){
         $(this).css('display','none')
@@ -1255,18 +1265,19 @@
         $('.alert_select').css('display','none')
       })
     // (hw edit); enter event handleling!
-    $("#password").keyup(function (event) {
-        // Enter 처리
-        if (event.keyCode == '13') {
-            $("#loginButton_manager").trigger("click");
-        } // if
-    }); // enter keyup event
     $("#userpassword").keyup(function (event) {
         // Enter 처리
         if (event.keyCode == '13') {
             $("#loginButton_user").trigger("click");
         } // if
     }); // enter keyup event
+    $("#password").keyup(function (event) {
+        // Enter 처리
+        if (event.keyCode == '13') {
+            $("#loginButton_manager").trigger("click");
+        } // if
+    }); // enter keyup event
+
 </script>
 </html>
 
