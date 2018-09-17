@@ -85,9 +85,9 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
     $('#goodCount_sj').text(market_arr.like_count);
 
 		$('#face').click(function() {
-			var shareUrl = 'http://13.209.89.231:3000/share/' + market_arr.sijang_name + '/' + market_arr.market_name;
-			window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, null, null)
-		});;
+			var shareUrl = 'http://13.209.89.231:3000/share/' + market_arr.sijang_name.replace(/ /gi, '%20') + '\/' + market_arr.market_name.replace(/ /gi, '%20');
+			window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
+		});
 
 
     // 지금 이 함수를 불러오게 하는 user_id가
