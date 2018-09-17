@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title><%= market.market_name %> - <%= market.sijang_name %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/share.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -13,8 +13,8 @@
 
 <body>
     <div class="menu">
-        <div id="store_name_web">또래끼리</div>
-        <div id="market_name_web">화양시장</div>
+        <div id="store_name_web"><%= market.market_name %></div>
+        <div id="market_name_web"><%= market.sijang_name %></div>
         <table>
             <tr>
                 <th class="menu_list" style="color: #63dded;border-left-color: #63dded;">상점 정보</th>
@@ -35,16 +35,16 @@
             <div id="top_infor">
                 <div id="name_sj">
                     <p id="store_name_sj">
-                        또래끼리
+                        <%= market.market_name %>
                     </p>
                     <p id="market_name_sj">
-                        화양시장
+                        <%= market.sijang_name %>
                     </p>
                 </div>
                 <div id="sns_sj">
                     <div id="good">
                         <img class='top_image' id="noGood_Button_sj" src="/images/nolikeM.png" width="30px" height="30px" style="padding-top:15px;">
-                        <p class="top_font" id="goodCount_sj">23</p>
+                        <p class="top_font" id="goodCount_sj"><%= market.like_count %></p>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                         <img src="/images/storeM.png" width="30px" height="30px">
                         <div class="name">상점소개</div>
                         <div id="intro_content">
-                            저희 또래끼리는 화양시장을 대표하는 맛집입니다. 학생들을 위해 저렴한 가격으로 엄마가 손수 해주시던 김치 볶음밥의 향연을 느껴보세요.
+                          <%= market.market_introduce %>
                         </div>
                     </div>
                     <div id="map">
@@ -75,10 +75,10 @@
                     <h3>스탬프 정보</h3>
                     <div id="stamp_menu_sj">
                         <div class="stamp_sj">
-    
+
                             <div class="tenControls_sj">
                                 <div class="tenStamp_sj">
-    
+
                                     <div class="tenStamp_top_sj">
                                         <div class="ten_sj">
                                             <p>1</p>
@@ -96,7 +96,7 @@
                                             <p>5</p>
                                         </div>
                                     </div>
-    
+
                                     <div class="tenStamp_bottom_sj">
                                         <div class="ten_sj">
                                             <p>6</p>
@@ -114,10 +114,11 @@
                                             <p>10</p>
                                         </div>
                                     </div>
-    
+
                                 </div>
                             </div>
-    
+
+
                             <div class="fiveControls_sj">
                                 <div class="fiveStamp_sj">
                                     <div class="five_sj">
@@ -143,15 +144,15 @@
                             <img src="/images/standard.png" width="30px" height="30px">
                             <div class="name">적립기준</div>
                             <div class="stamp_infor_content">
-                                5000원 이상 구매시
+                                <%= market.stamp_standard %>
                             </div>
                         </div>
-    
+
                         <div class="stamp_infor">
                             <img src="/images/rewardM.png" width="30px" height="30px">
                             <div class="name">보상기준</div>
                             <div class="stamp_infor_content">
-                                볶음밥 1인분 무료
+                                <%= market.stamp_reward %>
                             </div>
                         </div>
                     </div>
@@ -160,7 +161,7 @@
             <div class="detail">
                 <h3>리뷰</h3>
                 <div class="store_review_sj">
-
+                  <p><%= reviews.length %></p>
                 </div>
             </div>
 
@@ -181,3 +182,4 @@
 </script>
 
 </html>
+

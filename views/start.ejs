@@ -247,7 +247,7 @@
         </div>
         <div id="kakao_logo2">
             <div class="login_button_user5">
-                <button type='submit' id="loginButton_manager" value='' class="loginUser_insert">로그인</button>
+                <button type='button' id="loginButton_manager" value='' class="loginUser_insert">로그인</button>
             </div>
         </div>
     </div>
@@ -453,28 +453,19 @@
     var destinationType; // sets the format of returned value
 
     // Wait for device API libraries to load
-    //
     document.addEventListener("deviceready",onDeviceReady,false);
 
     // device APIs are available
-    //
     function onDeviceReady() {
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     }
 
-    // Called when a photo is successfully retrieved
-    //
     function onPhotoDataSuccess(imageData) {
-      // Uncomment to view the base64-encoded image data
-      // console.log(imageData);
+       console.log(imageData);
 
-      // Get image handle
-      //
       var smallImage = document.getElementById('smallImage');
 
-      // Unhide image elements
-      //
       smallImage.style.display = 'block';
 
       // Show the captured photo
@@ -486,15 +477,10 @@
     // Called when a photo is successfully retrieved
     //
     function onPhotoURISuccess(imageURI) {
-      // Uncomment to view the image file URI
-      // console.log(imageURI);
+       console.log(imageURI);
 
-      // Get image handle
-      //
       var largeImage = document.getElementById('largeImage');
 
-      // Unhide image elements
-      //
       largeImage.style.display = 'block';
 
       // Show the captured photo
@@ -519,19 +505,15 @@
         destinationType: destinationType.DATA_URL });
     }
 
-    // A button will call this function
-    //
     function getPhoto(source) {
-      // Retrieve image file location from specified source
       navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     }
 
-    // Called if something bad happens.
-    //
+
     function onFail(message) {
-      alert('Failed because: ' + message);
+      alert('Failed because: ' + message + '이거뜨면안된다');
     }
 
     </script>
@@ -623,9 +605,9 @@
                             <div id="sijang_picture" name='sijang_name'>상점사진</div>
                             <label id="picture_pic"for="manager_img" onclick="capturePhotoEdit();">사진 촬영</label>
                             <!-- <input type='file' name='manager_img' id='manager_img' /> -->
+
                         </div>
-                        <!-- <img class="picture_div" src="/images/market9.jpg" height="auto"</img> -->
-                        <img style="display:none;height="auto"" class="picture_div" id="smallImage" src="" />
+                        <img name='manager_img' id='manager_img' style="display:none;height="auto"" class="picture_div" id="smallImage" src="" />
 
                     </div>
 
@@ -867,7 +849,7 @@
                 data2.append('market_introduce', market_introduce);
                 data2.append('stamp_standard', stamp_standard);
                 data2.append('sijang_name', sijang_name.innerHTML);
-                // data2.append('manager_img', $('input[name=manager_img]')[0].files[0]);
+                data2.append('manager_img', $('input[name=manager_img]')[0].files[0]);
 
 
                 $.ajax({
@@ -1254,14 +1236,24 @@
     })
     // 뒤로가기 고객회원가입부분
     $('#back_signupuser').click(function () {
-        $('#signupuser').fadeOut(300)
-        $('#loginuser').fadeIn(300)
-    })
+        $('.alert_select').css('display', 'block');
+        $('.alert_content_select').html('회원가입을 취소하시겠습니까?')
+        $('.alert_select_ok').click(function () {
+            $(".alert_select").css('display','none');
+            $('#signupuser').fadeOut(300)
+            $('#loginuser').fadeIn(300)
+        });
+    });
     // 뒤로가기 상인회원가입부분
     $('#back_signupManager').click(function () {
-        $('#signupManager').fadeOut(300)
-        $('#loginManager').fadeIn(300)
-    })
+        $('.alert_select').css('display', 'block');
+        $('.alert_content_select').html('회원가입을 취소하시겠습니까?')
+        $('.alert_select_ok').click(function () {
+            $(".alert_select").css('display','none');
+            $('#signupManager').fadeOut(300);
+            $('#loginManager').fadeIn(300);
+        });
+    });
     // 클릭 이벤트
     $('.alert_x').click(function(){
         $(this).css('display','none')
@@ -1273,18 +1265,19 @@
         $('.alert_select').css('display','none')
       })
     // (hw edit); enter event handleling!
-    $("#password").keyup(function (event) {
-        // Enter 처리
-        if (event.keyCode == '13') {
-            $("#loginButton_manager").trigger("click");
-        } // if
-    }); // enter keyup event
     $("#userpassword").keyup(function (event) {
         // Enter 처리
         if (event.keyCode == '13') {
             $("#loginButton_user").trigger("click");
         } // if
     }); // enter keyup event
+    $("#password").keyup(function (event) {
+        // Enter 처리
+        if (event.keyCode == '13') {
+            $("#loginButton_manager").trigger("click");
+        } // if
+    }); // enter keyup event
+
 </script>
 </html>
 

@@ -106,8 +106,8 @@ body, html {
 }
 #find_user_id_to_password{
     outline:none;
-    width: 200px;
-    height: 36px;
+    width: 70%;
+    height: 13%;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
@@ -122,8 +122,8 @@ body, html {
 }
 #find_user_id_to_email{
     outline:none;
-    width: 200px;
-    height: 36px;
+    width: 70%;
+    height: 13%;
     background-color: white;
     border: double 1px transparent;
     border-image: linear-gradient(to right, rgb(1, 201, 202) 0%, rgb(56, 134, 255) 50%) 1 / 0 0 1.0px / 0 stretch;
@@ -132,8 +132,8 @@ body, html {
     padding-top:10px;
 }
 #find_user_id_bt{
-    width: 20px;
-    height: 20px;
+    width: 8%;
+    height: 8%;
     margin-top: 10px;
     margin-left: 40px;
     background-color: white;
