@@ -94,8 +94,8 @@
                 </div>
                 <script>
                   $('#face').click(function() {
-                    var sijang_name = '<%= myStamps[i].sijang_name %>';
-                    var market_name = '<%= myStamps[i].market_name %>';
+                    var sijang_name = '<%= result1[0].sijang_name %>';
+                    var market_name = '<%= result1[0].market_name %>';
                     var shareUrl = 'http://13.209.89.231:3000/share/' + sijang_name.replace(/ /gi, '%20') + '/' + market_name.replace(/ /gi, '%20');
                     window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, null, null);
                   });
