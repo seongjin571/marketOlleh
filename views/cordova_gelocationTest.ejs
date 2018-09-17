@@ -24,128 +24,132 @@
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
     <script type="text/javascript">
+    window.seoulApp.getGPS();
+
     function getMyLocation(lng,lat){
       window.myLat = lat;
       window.myLng = lng;
       getMap();
     }
-    window.seoulApp.getGPS();
+        
 
-  function getMap(){
-    var markers = []; // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
+    function getMap(){
+        var markers = []; // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
 
-    // 지도를 표시할 div (id)
-    var mapContainer = document.getElementById('map'),
-        mapOption = {
-            center: new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng)), // 지도의 중심좌표
-            level: 4 // 지도의 확대 레벨
-        };
-
-    var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-
-    // 마커 하나를 지도위에 표시합니다
-    addMarker(new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng)));
-
-
-    // 마커를 생성하고 지도위에 표시하는 함수입니다
-    function addMarker(position) {
-
-        // 마커를 생성합니다
-        var marker = new daum.maps.Marker({
-            position: position
-        });
-
-        // 마커가 지도 위에 표시되도록 설정합니다
-        marker.setMap(map);
-
-        // 생성된 마커를 배열에 추가합니다
-        markers.push(marker);
-    }
-
-    // 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수
-    function setMarkers(map) {
-        for (var i = 0; i < markers.length; i++) {
-            markers[i].setMap(map);
-        }
-    }
-
-    function relayout() {
-        // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
-        // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다
-        // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
-        map.relayout();
-    }
-    /*
-    function changeCenter(mapLat, mapLng) {
-        var moveLatLon = new daum.maps.LatLng(mapLat, mapLng);
-        relayout();
-        // 입력받은 좌표에 마커 추가
-        addMarker(moveLatLon);
-
-        // 지도 중심을 이동 시킵니다
-        map.setCenter(moveLatLon);
-        map.setLevel(4);
-
-    } // changeCenter
-
-	*/
-
-    // 전역 변수
-    var Latitude = 37.540705;
-    var Longitude = 126.956764;
-
-    // Get geo coordinates
-    function getMapLocation(event) {
-        navigator.geolocation.getCurrentPosition(onMapSuccess, onMapError, { enableHighAccuracy: true });
-    }
-
-    // Success callback for get geo coordinates
-    var onMapSuccess = function (position) {
-
-        Latitude = position.coords.latitude;
-        Longitude = position.coords.longitude;
-
-        getMap(Latitude, Longitude);
-    }
-
-    // Get map by using coordinates
-    function getMap(latitude, longitude) {
-
+        // 지도를 표시할 div (id)
         var mapContainer = document.getElementById('map'),
-        mapOptions = {
-              center: new daum.maps.LatLng(0, 0),
-              level: 4
-        };
+            mapOption = {
+                center: new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng)), // 지도의 중심좌표
+                level: 4 // 지도의 확대 레벨
+            };
 
-        var map = new daum.maps.Map(mapContainer, mapOptions);
+        var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-        // 마커 좌표 생성을 위한 변수
-        var latLong = new daum.maps.LatLng(latitude, longitude);
 
-        // 마커 생성
-        var marker = new daum.maps.Marker({
-            position: latLong
-        });
+        // 마커 하나를 지도위에 표시합니다
+        addMarker(new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng)));
 
-        marker.setMap(map); // 마커 찍어주기
-        map.setCenter(marker.getPosition()); // 맵 중심 좌표 바꾸기
-        relayout();
-    }
 
-    // Success callback for watching your changing position
-    var onMapWatchSuccess = function (position) {
+        // 마커를 생성하고 지도위에 표시하는 함수입니다
+        function addMarker(position) {
 
-        var updatedLatitude = position.coords.latitude;
-        var updatedLongitude = position.coords.longitude;
+            // 마커를 생성합니다
+            var marker = new daum.maps.Marker({
+                position: position
+            });
 
-        if (updatedLatitude != Latitude && updatedLongitude != Longitude) {
+            // 마커가 지도 위에 표시되도록 설정합니다
+            marker.setMap(map);
 
-            Latitude = updatedLatitude;
-            Longitude = updatedLongitude;
-
-            getMap(updatedLatitude, updatedLongitude);
+            // 생성된 마커를 배열에 추가합니다
+            markers.push(marker);
         }
+
+        // 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수
+        function setMarkers(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+
+        function relayout() {
+            // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
+            // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다
+            // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
+            map.relayout();
+        }
+        /*
+        function changeCenter(mapLat, mapLng) {
+            var moveLatLon = new daum.maps.LatLng(mapLat, mapLng);
+            relayout();
+            // 입력받은 좌표에 마커 추가
+            addMarker(moveLatLon);
+
+            // 지도 중심을 이동 시킵니다
+            map.setCenter(moveLatLon);
+            map.setLevel(4);
+
+        } // changeCenter
+
+    	*/
+
+        // 전역 변수
+        var Latitude = 37.540705;
+        var Longitude = 126.956764;
+
+        // Get geo coordinates
+        function getMapLocation(event) {
+            navigator.geolocation.getCurrentPosition(onMapSuccess, onMapError, { enableHighAccuracy: true });
+        }
+
+        // Success callback for get geo coordinates
+        var onMapSuccess = function (position) {
+
+            Latitude = position.coords.latitude;
+            Longitude = position.coords.longitude;
+
+            getMap(Latitude, Longitude);
+        }
+
+        // Get map by using coordinates
+        function getMap(latitude, longitude) {
+
+            var mapContainer = document.getElementById('map'),
+            mapOptions = {
+                  center: new daum.maps.LatLng(0, 0),
+                  level: 4
+            };
+
+            var map = new daum.maps.Map(mapContainer, mapOptions);
+
+            // 마커 좌표 생성을 위한 변수
+            var latLong = new daum.maps.LatLng(latitude, longitude);
+
+            // 마커 생성
+            var marker = new daum.maps.Marker({
+                position: latLong
+            });
+
+            marker.setMap(map); // 마커 찍어주기
+            map.setCenter(marker.getPosition()); // 맵 중심 좌표 바꾸기
+            relayout();
+        }
+
+        // Success callback for watching your changing position
+        var onMapWatchSuccess = function (position) {
+
+            var updatedLatitude = position.coords.latitude;
+            var updatedLongitude = position.coords.longitude;
+
+            if (updatedLatitude != Latitude && updatedLongitude != Longitude) {
+
+                Latitude = updatedLatitude;
+                Longitude = updatedLongitude;
+
+                getMap(updatedLatitude, updatedLongitude);
+            }
+        }
+<<<<<<< HEAD
     }
 
     // Error callback
@@ -174,46 +178,74 @@
                 'marketDistance': tempResult
             };
         } // for
+=======
+>>>>>>> hw
 
-        SortingMarket.sort(function(a, b) {
-            return a.marketDistance - b.marketDistance;
-        });
-        console.log(SortingMarket[1], SortingMarket[2], SortingMarket[3]);
+        // Error callback
+        function onMapError(error) {
+            console.log('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+        }
 
-        var tempString = "<li>"+SortingMarket[1].marketName+"</li><li>"+SortingMarket[2].marketName+"</li><li>"+SortingMarket[3].marketName+"</li>"
+        // Watch your changing position
+        function watchMapPosition() {
+            return navigator.geolocation.watchPosition(onMapWatchSuccess, onMapError, { enableHighAccuracy: true });
+        }
 
-        // article inner ou ~ make <li> tags
-        nearMarketList.innerHTML = tempString;
+        // 위도 경도의 순수 거리값 보다는 10진수화 된 값을 가지고
+        // 정렬 먼저해봄 (실제 거리 구하시는 식 X )
+        function nearCounting(marketList) {
+            console.log(marketList);
+            var SortingMarket = new Array();
 
-    }
+            for (var i = 0; i < marketList.length; i++) {
+                var tempX = Latitude - marketList[i].coordinateX;
+                var tempY = Longitude - marketList[i].coordinateY;
+                var tempResult = Math.pow(tempX, 2) + Math.pow(tempY, 2);
+                tempResult = Math.sqrt(tempResult);
+                SortingMarket[i] = {
+                    'marketName': marketList[i].name,
+                    'marketDistance': tempResult
+                };
+            } // for
 
-    // ajax 통신 테스팅
-    function getNearMarket() {
-        $.ajax({
-            url: "/searching/near",
-            dataType: 'json',
-            type: 'POST',
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            // data: params,
-            success: function (result) {
-                console.log(result);
-                if (result.rows.length > 0) {
-                    nearCounting(result.rows); // nearCounting 함수로 결과 배열들 전달
-                } else {
+            SortingMarket.sort(function(a, b) {
+                return a.marketDistance - b.marketDistance;
+            });
+            console.log(SortingMarket[1], SortingMarket[2], SortingMarket[3]);
+
+            var tempString = "<li>"+SortingMarket[1].marketName+"</li><li>"+SortingMarket[2].marketName+"</li><li>"+SortingMarket[3].marketName+"</li>"
+
+            // article inner ou ~ make <li> tags
+            nearMarketList.innerHTML = tempString;
+
+        }
+
+        // ajax 통신 테스팅
+        function getNearMarket() {
+            $.ajax({
+                url: "/searching/near",
+                dataType: 'json',
+                type: 'POST',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                // data: params,
+                success: function (result) {
+                    console.log(result);
+                    if (result.rows.length > 0) {
+                        nearCounting(result.rows); // nearCounting 함수로 결과 배열들 전달
+                    } else {
+                        console.log('검색어를 확인해 주세요.');
+                    }
+                },
+                error: function (e) {
                     console.log('검색어를 확인해 주세요.');
+                    console.log('process error : ', e);
                 }
-            },
-            error: function (e) {
-                console.log('검색어를 확인해 주세요.');
-                console.log('process error : ', e);
-            }
-        }); // ajax
-    }
+            }); // ajax
+        }
 
-    GetButton.addEventListener('click', getMapLocation, false);
-    Get_near_Button.addEventListener('click', getNearMarket, false);
-  }
-
+        GetButton.addEventListener('click', getMapLocation, false);
+        Get_near_Button.addEventListener('click', getNearMarket, false);
+    } // getMap / 전체를 함수 하나로 묶어버림 
 
 </script>
 </body>
