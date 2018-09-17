@@ -160,10 +160,20 @@
                         <img class="top_image" src="/images/kakao_bic.png" width="30px" height="30px">
                         <p class="top_font">공유하기</p>
                       </div> -->
-                    <div id="face" onclick="window.plugins.socialsharing.shareViaFacebook(null, null, 'http://13.209.89.231:3000/share/<%= myStamps[i].sijang_name %>/<%= myStamps[i].market_name %>', null, null)">
+
+                    <div id="face">
+
                       <img class="top_image" src="/images/face.png" width="30px" height="30px">
                       <p class="top_font">공유하기</p>
                     </div>
+                    <script>
+                      $('#face').click(function() {
+                        var sijang_name = '<%= myStamps[i].sijang_name %>';
+                        var market_name = '<%= myStamps[i].market_name %>';
+                        var shareUrl = 'http://13.209.89.231:3000/share/' + sijang_name + '/' + market_name;
+                        window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, null, null);
+                      });
+                    </script>
                   </div>
                 </div>
                 <div id="bottom_infor">
