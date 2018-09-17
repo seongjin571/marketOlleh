@@ -86,8 +86,9 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 
 		$('#face').click(function() {
 			var shareUrl = 'http://13.209.89.231:3000/share/' + market_arr.sijang_name + '/' + market_arr.market_name;
-			window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, null, null);
-		});
+			window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, null, null)
+		});;
+
 
     // 지금 이 함수를 불러오게 하는 user_id가
     // 그 스탬프(상점)의 따봉을 눌렀는지(likeMarket에 존재하는지) 테스트

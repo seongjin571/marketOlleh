@@ -400,8 +400,10 @@
 
           $('#face').click(function() {
       			var shareUrl = 'http://13.209.89.231:3000/share/' + market_arr.sijang_name + '/' + market_arr.market_name;
-      			window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, null, null);
-      		});
+
+      			window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, null, null)
+      		});;
+
 
           // 스탬프 관련 내용
           var temp ='<div class="stamp_infor">'
