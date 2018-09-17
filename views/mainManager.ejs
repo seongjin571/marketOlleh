@@ -399,7 +399,7 @@
           $('#goodCount_sj').text(market_arr.like_count);
 
           $('#face').click(function() {
-      			var shareUrl = 'http://13.209.89.231:3000/share/' + market_arr.sijang_name + '/' + market_arr.market_name;
+      			var shareUrl = 'http://13.209.89.231:3000/share/' + market_arr.sijang_name.replace(/ /gi, '%20') + '/' + market_arr.market_name.replace(/ /gi, '%20');
       			window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, null, null);
       		});
 
