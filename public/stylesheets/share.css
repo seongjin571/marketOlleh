@@ -201,9 +201,7 @@ p {
     margin: 0;
     /* font-size: 18px; */
 }
-.ten_sj p,.five_sj p{
-    margin-left: 35%;
-}
+
 
 .store_detail_sj p{
     width: 90%;
@@ -251,7 +249,7 @@ p {
 
 .five_sj,
 .ten_sj {
-    display: inline-flex;
+    display: inline-block;
     width: 15%;
     height: 41px;
     border-radius: 200px;
@@ -348,7 +346,6 @@ p {
     line-height: 40px;
 }
 .review_count_content{
-    margin-left: 10px;
     color: #63dded;
     font-size: 20px;
 }
@@ -477,5 +474,10 @@ table{
     #review_id{
         display: none;
     }
+    .five_sj,
+    .ten_sj {
+    height: 60px;
+    line-height: 60px;
+}
 
   }

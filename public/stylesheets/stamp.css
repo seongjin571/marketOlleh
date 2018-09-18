@@ -280,9 +280,6 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             margin: 0;
             /* font-size: 18px; */
         }
-        .ten_sj p,.five_sj p{
-            margin-left: 35%;
-        }
         h2{
             margin-left: 20px;
         }
@@ -345,7 +342,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
 
         .five_sj,
         .ten_sj {
-            display: inline-flex;
+            display: inline-block;
             width: 15%;
             height: 41px;
             border-radius: 200px;
@@ -367,9 +364,6 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         }
         .store_review_sj{
             width: 100%;
-        }
-        #ten{
-            margin-left: 24% !important;
         }
         .review_div_sj{
             width: 100%;
