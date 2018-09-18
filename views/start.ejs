@@ -79,23 +79,23 @@
     <script>
         window.onload = function () {
             if (localStorage.getItem('introFlag') == 1) {
-                document.getElementById('intro_image_div').style.display = 'none';
+                // document.getElementById('intro_image_div').style.display = 'none';
                 document.getElementById('all_body').style.display = 'none';
                 document.getElementById('loginuser').style.display = 'block';
                 localStorage.clear();
             }
             else if (localStorage.getItem('introFlag') == 2) {
-                document.getElementById('intro_image_div').style.display = 'none';
+                // document.getElementById('intro_image_div').style.display = 'none';
                 document.getElementById('all_body').style.display = 'none';
                 document.getElementById('loginManager').style.display = 'block';
                 localStorage.clear();
             }
             else if (!localStorage.getItem('introFlag')) {
                 document.getElementById('all_body').style.display = 'block';
-                document.getElementById('intro_image_div').style.display = 'block';
-                setTimeout(function () {
-                    $('#intro_image_div').fadeOut('1000');
-                }, 2000);
+                // document.getElementById('intro_image_div').style.display = 'block';
+                // setTimeout(function () {
+                //     $('#intro_image_div').fadeOut('1000');
+                // }, 2000);
             }
             $('#back_loginuser').click(function() {
               document.getElementById('all_body').style.display = 'block';
@@ -109,9 +109,9 @@
     <!--start div 시작-->
 
     <div id="start">
-            <div id="intro_image_div">
+            <!-- <div id="intro_image_div">
                     <img id="intro_image" src="/images/logo_with_text.png">
-                </div>
+                </div> -->
         <div id="all_body" >
 
             <div id="top_part">
@@ -939,9 +939,9 @@
             $('.go_slide').css('color', 'black');
             $('.go_slide').eq(active).css('color', '#63dded');
         });
-    setTimeout(function () {
-        $('#intro_image_div').fadeOut('1000');
-    }, 2000);
+    // setTimeout(function () {
+    //     $('#intro_image_div').fadeOut('1000');
+    // }, 2000);
     var name2 = /^[가-힣]+$/;
     var id = /^[a-z0-9_]{6,15}$/;
     var password = /^[a-zA-Z0-9]{6,15}$/;
