@@ -169,13 +169,13 @@
                     <div class="review_rate">
                       <div class="review_star">
                         <% if(reviews.length) { %>
-                          <% for(var i=0; i<avg; i++) { %>
+                          <% for(var i=0; i<avg.avgRate; i++) { %>
                               <div>
                                 <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px">
                               </div>
                           <% } %>
 
-                          <% for(var i=0; i<5-avg; i++) { %>
+                          <% for(var i=0; i<5-avg.avgRate; i++) { %>
                             <div>
                               <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
                             </div>
@@ -220,13 +220,13 @@
                 <div class="review_div_sj" id='review_div_sj'>
                     <div class="review_star_customer">
                       <% if(reviews[i].user_id != '사장님') { %>
-                        <% for(var i=0; i<reviews[i].rate; i++) { %>
+                        <% for(var j=0; j<reviews[i].rate; j++) { %>
                             <div>
                               <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px">
                             </div>
                         <% } %>
 
-                        <% for(var i=0; i<5-reviews[i].rate; i++) { %>
+                        <% for(var j=0; j<5-reviews[i].rate; j++) { %>
                           <div>
                             <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
                           </div>
@@ -238,12 +238,12 @@
                       <% } %>
                     </div>
                   <div class="review_content_sj">
-                    <div class="review_content_id_sj" id='review_content_id_sj'>
+                    <div class="review_content_id_sj" id='review_content_id_sj<%= reviews[i].id %>'>
                       <% if(reviews[i].provider == 'kakao') { %>
                         <%= reviews[i].username %>
                       <% } else { %>
                         <script>
-                        var temp;
+                        var temp = '<%= reviews[i].user_id %>';
                         var secret = '***';
                         var l = temp.length;
                         var f = l-3;
@@ -251,9 +251,9 @@
                         var result3 = temp2.concat(secret);
 
                         if(result3 == '***'){
-                          $('#review_content_id_sj').html('사장님');
+                          $('#review_content_id_sj<%= reviews[i].id %>').html('사장님');
                         }else{
-                          $('#review_content_id_sj').html(result3);
+                          $('#review_content_id_sj<%= reviews[i].id %>').html(result3);
                           console.log(result3);
                         }
                          console.log("아래");
