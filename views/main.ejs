@@ -208,7 +208,7 @@
                     <!-- <label>내 스탬프</label> -->
                     <% if(myStamps) { %>
                         <% for(var i=0; i<myStamps.length; i++) { %>
-                            <div class="swiper-slide swiper1">
+                            <div class="swiper-slide swiper1" id='stamp<%= myStamps[i].id %>'>
                                 <div class="store_market_name">
                                     <%= myStamps[i].market_name %>
                                 </div>
@@ -229,6 +229,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <script>
+                              $('#stamp<%= myStamps[i].id %>').click(function() {
+                                localStorage.setItem('reviewTab', '<%= myStamps[i].id %>');
+                                location.href = '/myStamp';
+                              });
+                            </script>
                             <% } %>
                                 <% } else { %>
                                     <div class='no_stamp'>
