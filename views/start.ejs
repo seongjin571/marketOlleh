@@ -5,7 +5,7 @@
     <title>login</title>
     <meta charset="utf-8" />
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <meta name="viewport" content="height=device-height,width=device-width,user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
@@ -18,24 +18,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta http-equiv="X-UA-Compatible" content="IE=9">
     <meta http-equiv="X-UA-Compatible" content="IE=8">
+
+    <script type="text/javascript" charset="utf-8" src="/cordova/cordova.js"></script>
+    <script src='/cordova/cordova_plugins.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
     <script src="/javascripts/spin.js"></script>
     <!-- <script>
+
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
         }, false);
-    </script> -->
+    </script>
 </head>
 
 <script>
   document.addEventListener("backbutton", onBackKeyDown, false);
   function onBackKeyDown(e) {
      e.preventDefault();
-      $('.alert_select').css('display', 'block');
-      $('.alert_content_select').html('앱을 종료하시겠습니까?')
-      $('.alert_select_ok').click(function () {
+
+     var exitAppConfirm = confirm("앱을 종료하시겠습니까?");
+
+     if(exitAppConfirm) {
        navigator.app.exitApp();
-      });
+     }
+
   }
 </script>
 
@@ -451,19 +457,28 @@
     var destinationType; // sets the format of returned value
 
     // Wait for device API libraries to load
+    //
     document.addEventListener("deviceready",onDeviceReady,false);
 
     // device APIs are available
+    //
     function onDeviceReady() {
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     }
 
+    // Called when a photo is successfully retrieved
+    //
     function onPhotoDataSuccess(imageData) {
-       console.log(imageData);
+      // Uncomment to view the base64-encoded image data
+      // console.log(imageData);
 
+      // Get image handle
+      //
       var smallImage = document.getElementById('smallImage');
 
+      // Unhide image elements
+      //
       smallImage.style.display = 'block';
 
       // Show the captured photo
@@ -475,10 +490,15 @@
     // Called when a photo is successfully retrieved
     //
     function onPhotoURISuccess(imageURI) {
-       console.log(imageURI);
+      // Uncomment to view the image file URI
+      // console.log(imageURI);
 
+      // Get image handle
+      //
       var largeImage = document.getElementById('largeImage');
 
+      // Unhide image elements
+      //
       largeImage.style.display = 'block';
 
       // Show the captured photo
@@ -503,15 +523,19 @@
         destinationType: destinationType.DATA_URL });
     }
 
+    // A button will call this function
+    //
     function getPhoto(source) {
+      // Retrieve image file location from specified source
       navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     }
 
-
+    // Called if something bad happens.
+    //
     function onFail(message) {
-      alert('Failed because: ' + message + '이거뜨면안된다');
+      alert('Failed because: ' + message);
     }
 
     </script>
@@ -603,10 +627,12 @@
                             </div>
                             <div id="sijang_picture" name='sijang_name'>상점사진</div>
                             <label id="picture_pic"for="manager_img" onclick="capturePhotoEdit();">사진 촬영</label>
-                            <!-- <input type='file' name='manager_img' id='manager_img' /> -->
-
+                            <!-- <input type='file' name='manager_img' id='manager_img' accept="image/jpg" src=""/> -->
                         </div>
-                        <img name='manager_img' id='manager_img' style="display:none;height="auto"" class="picture_div" id="smallImage" src="" />
+                        <!-- <img class="picture_div" src="/images/market9.jpg" height="auto"</img> -->
+                        <img style="display:none;height="auto"" class="picture_div" height="auto" id="smallImage" src="" />
+                      
+
 
                     </div>
 
@@ -848,7 +874,8 @@
                 data2.append('market_introduce', market_introduce);
                 data2.append('stamp_standard', stamp_standard);
                 data2.append('sijang_name', sijang_name.innerHTML);
-                data2.append('manager_img', $('input[name=manager_img]')[0].files[0]);
+                // data2.append('manager_img', $('input[name=manager_img]')[0].files[0]);
+                data2.append('manager_img', $('#smallImg').val());
 
 
                 $.ajax({
@@ -1056,9 +1083,10 @@
             $('.manager_check_div').eq(4).css('visibility', 'hidden')
         }
     })
-    $('#manager_img').change(function () {
-        $('.manager_check_div').eq(9).css('visibility', 'visible')
-    })
+
+    $('#smallImage').on('load', function () {
+$('.manager_check_div').eq(9).css('visibility', 'visible')
+});
     $('.signuptext2').eq(5).change(function () {
         var naming=$(this).val();
         if($(this).val()){
