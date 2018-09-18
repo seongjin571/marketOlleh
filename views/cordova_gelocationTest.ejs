@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>코르도바 GPS TEST</title>
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 </head>
 <body>
     <script src='/cordova/cordova_plugins.js'></script>
@@ -31,7 +31,22 @@
       window.myLng = lng;
       getMap();
     }
-        
+
+    function gpsNULL(){
+        alert("위치권한이 필요합니다.")
+        window.seoulApp.getGPS();
+        window.seoulApp.getGPSPermission();
+        if (!isGPSPermission) { // false
+            // window.seoulApp.reload();
+            gpsNULL();
+        } else { // true
+            window.seoulApp.getGPS();
+        }
+    }  
+    
+    function getPermission(isGPSPermission) {
+      window.isGPSPermission = isGPSPermission;
+    }
 
     function getMap(){
         var markers = []; // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
@@ -149,6 +164,7 @@
                 getMap(updatedLatitude, updatedLongitude);
             }
         }
+
 
         // Error callback
         function onMapError(error) {
