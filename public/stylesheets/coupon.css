@@ -309,8 +309,9 @@ html {
     display: inline-flex;
     background-color: white !important;
     text-align: center;
-    font-size: 40px;
-    color: #6078ea;
+    font-size: 50px;
+    color: #63dded;
+    line-height:120px;
 }
 
 .password_check:nth-child(1){
