@@ -86,10 +86,20 @@
                         <%= result1[0].like_count %>
                     </p>
                 </div>
-                <div id="face" onclick="window.plugins.socialsharing.shareViaFacebook(null, null, 'http://13.209.89.231:3000/share/<%= result1[0].sijang_name %>/<%= result1[0].market_name %>', null, null)">
+
+                <div id="face">
+
                     <img class="top_image" src="/images/face.png" width="30px" height="30px">
                     <p class="top_font">공유하기</p>
                 </div>
+                <script>
+                  $('#face').click(function() {
+                    var sijang_name = '<%= result1[0].sijang_name %>';
+                    var market_name = '<%= result1[0].market_name %>';
+                    var shareUrl = 'http://13.209.89.231:3000/share/' + sijang_name.replace(/ /gi, '%20') + '/' + market_name.replace(/ /gi, '%20');
+                    window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, null, null);
+                  });
+                </script>
             </div>
         </div>
 

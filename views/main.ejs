@@ -208,7 +208,7 @@
                     <!-- <label>내 스탬프</label> -->
                     <% if(myStamps) { %>
                         <% for(var i=0; i<myStamps.length; i++) { %>
-                            <div class="swiper-slide swiper1">
+                            <div class="swiper-slide swiper1" id='stamp<%= myStamps[i].id %>'>
                                 <div class="store_market_name">
                                     <%= myStamps[i].market_name %>
                                 </div>
@@ -229,6 +229,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <script>
+                              $('#stamp<%= myStamps[i].id %>').click(function() {
+                                localStorage.setItem('reviewTab', '<%= myStamps[i].id %>');
+                                location.href = '/myStamp';
+                              });
+                            </script>
                             <% } %>
                                 <% } else { %>
                                     <div class='no_stamp'>
@@ -245,28 +251,16 @@
         <h3 id="user_name">
             <%= user.username %>님 근처 시장
         </h3>
+        <input type="button" id="user_nearMarket" value="새로고침" />
         <div id="near_market">
-            <div class="near_market_list">
-                <div class="market_pic">
-                    <img src="/images/market.png" width="100%" height="85px">
-                </div>
-                <div class="near_market_name">통인시장</div>
-                <div class="distance">2.2km</div>
-            </div>
-            <div class="near_market_list">
-                <div class="market_pic">
-                    <img src="/images/fruit.jpg" width="100%" height="85px">
-                </div>
-                <div class="near_market_name">노원시장</div>
-                <div class="distance">5.4km</div>
-            </div>
+            <!-- 아래 태그가 innerHTML 프로퍼티로 동적생성되어 삽임됨 / 코르도바, 자스, 제이쿼리 사용
             <div class="near_market_list">
                 <div class="market_pic">
                     <img src="/images/market2.jpg" width="100%" height="85px">
                 </div>
                 <div class="near_market_name">광장시장</div>
                 <div class="distance">7.9km</div>
-            </div>
+            </div> -->
         </div>
 
         <div class="line"></div>
@@ -652,6 +646,89 @@
     <!-------------------- KAKAO MAP API ---------------------->
     <script type='text/javascript' src='javascripts/searching.js'></script>
     <script type='text/javascript' src='javascripts/searching_marketinfo.js'></script>
+    <!-- HW EDIT 코르도바 + 자바스크립트 + 태그제어 -->
+    <script src="/javascripts/cordova_getgps.js"></script>
+    <script type="text/javascript">
+        // 아래 함수 실행시 전역변수 window.myLat, window.myLng 값 = 위도 경도 값 저장
+        window.seoulApp.SignUpgetGPS();
+        
+        // 위도 경도의 순수 거리값 보다는 10진수화 된 값을 가지고
+        // 정렬 먼저해봄 (실제 거리 구하시는 식 X )
+        function nearCounting(marketList) {
+            
+            var SortingMarket = new Array();
+
+            // marketList는 market DB의 시장을 전부 가져온 row값
+            for (var i = 0; i < marketList.length; i++) {
+                // 각 시장의 위도, 경도 값들을 전역 위도, 경도 값과 비교
+                var tempX = window.myLat - marketList[i].coordinateX;
+                var tempY = window.myLng - marketList[i].coordinateY;
+                var tempResult = Math.pow(tempX, 2) + Math.pow(tempY, 2);
+                tempResult = Math.sqrt(tempResult);
+                
+                // key : value 형태 object로 마켓리스트를 저장
+                // 하지만 imgurl이 없으면 디폴트 경로 설정
+                if (!marketList[i].imgurl) {
+                    SortingMarket[i] = {
+                        'imgurl' : '/images/market_default.jpg',
+                        'marketName': marketList[i].name,
+                        'marketDistance': tempResult
+                    };
+                } else {
+                    SortingMarket[i] = {
+                        'imgurl' : marketList[i].imgurl,
+                        'marketName': marketList[i].name,
+                        'marketDistance': tempResult
+                    };
+                }
+
+            } // for
+
+            SortingMarket.sort(function(a, b) {
+                return a.marketDistance - b.marketDistance;
+            });
+
+            var tempString = "";
+            for (var i = 0; i < 3; i++) {
+                tempString += '<div class="near_market_list">';
+                tempString += '<div class="market_pic">';
+                tempString += '<img src='+SortingMarket[i].imgurl+' width="100%" height="85px"></div>';
+                tempString += '<div class="near_market_name">'+SortingMarket[i].marketName+'</div></div>';
+                // tempString += '<div class="distance">2.2km</div></div>';
+            } // for
+            // console.log(tempString);
+            near_market.innerHTML = "";
+            near_market.innerHTML = tempString;
+        } // nearCounting()
+
+        // ajax 통신 테스팅
+        function getNearMarket() {
+            $.ajax({
+                url: "/searching/near",
+                dataType: 'json',
+                type: 'POST',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                // data: params,
+                success: function (result) {
+                    console.log(result);
+                    if (result.rows.length > 0) {
+                        nearCounting(result.rows); // nearCounting 함수로 결과 배열들 전달
+                    } else {
+                        console.log('검색어를 확인해 주세요.');
+                    }
+                },
+                error: function (e) {
+                    console.log('검색어를 확인해 주세요.');
+                    console.log('process error : ', e);
+                }
+            }); // ajax
+        } // getNearMarket
+
+        $('#user_nearMarket').click(function (event) {
+            getNearMarket();
+        });
+
+    </script>
 </body>
 
 </html>

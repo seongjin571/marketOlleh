@@ -6,6 +6,9 @@ body,html{
     padding:0;
     margin:0;
 }
+::-webkit-scrollbar {
+    display: none;
+    }
 #mystamp{
     width: 100%;
     height:100%;
@@ -83,6 +86,7 @@ h3{
     background-color: white;
     z-index: 2;
     border-bottom-style: solid;
+    border-bottom-color: #9c9c9c;
     border-width: 1px;
 }
 #top_infor{
@@ -91,11 +95,11 @@ h3{
     height: 60px;
 }
 #store_name_sj {
-    width: 80%;
+    width: 85%;
     font-size: 20px;
     height: 50px;
     line-height: 60px;
-    margin-left: 10%;
+    margin-left: 5%;
     font-weight: bold;
 
 }
@@ -105,7 +109,7 @@ h3{
     line-height: 15px;
     color: gray;
     font-weight: lighter;
-    margin-left: 10%;
+    margin-left: 5%;
 
 }
 #good,#face{
@@ -126,6 +130,13 @@ h3{
     background-color:#f6f8f9;
     margin-top: 25px;
     margin-bottom: 25px;
+}
+.line_review{
+    width: 100%;
+    height: 8px;
+    background-color:#f6f8f9;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 #introduce,#map{
     display: inline-flex;
@@ -191,9 +202,7 @@ p {
     margin: 0;
     /* font-size: 18px; */
 }
-.ten_sj p,.five_sj p{
-    margin-left: 35%;
-}
+
 
 .store_detail_sj p{
     width: 90%;
@@ -241,7 +250,7 @@ p {
 
 .five_sj,
 .ten_sj {
-    display: inline-flex;
+    display: inline-block;
     width: 15%;
     height: 41px;
     border-radius: 200px;
@@ -260,7 +269,7 @@ p {
 }
 
 .review_div_sj{
-    padding-top: 10px;
+    /* padding-top: 10px; */
     width: 100%;
     font-size: 20px;
 }
@@ -275,6 +284,7 @@ p {
 .review_content_id_sj{
     font-size: 16px;
     width: 30%;
+    /* font-weight:bold; */
 }
 .review_content_date_sj{
     color: #9c9c9c;
@@ -288,9 +298,10 @@ p {
     margin-left: 5%;
     background:no-repeat;
     border-style: none;
-    font-size: 20px;
+    font-size: 17px;
     margin-bottom: 10px;
     word-break: break-all;
+    color: #9c9c9c;
 }
 .market_infoText_li{
     width: 90%;
@@ -338,7 +349,6 @@ p {
     line-height: 40px;
 }
 .review_count_content{
-    margin-left: 10px;
     color: #63dded;
     font-size: 20px;
 }
@@ -461,5 +471,16 @@ table{
     .stamp_infor{
         margin-top: 35px;
     }
+    .store_detail_sj{
+        margin-bottom: 40px;
+    }
+    #review_id{
+        display: none;
+    }
+    .five_sj,
+    .ten_sj {
+    height: 60px;
+    line-height: 60px;
+}
 
   }

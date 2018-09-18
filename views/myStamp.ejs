@@ -144,12 +144,12 @@
                     </p>
                   </div>
                   <div id="sns_sj">
-                    <div id="good">
+                    <div id="good" class="good<%= myStamps[i].id %>">
                       <% if(! myStamps[i].like_check) { %>
-                        <img class='top_image' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/nolikeM.png" width="30px" height="30px">
+                        <img class='top_image' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/nolikeM.png" width="30px" height="30px"style='display: inline-block;'>
                         <img class='top_image' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/likeM.png" width="30px" height="30px" style='display: none;'>
                       <% } else { %>
-                        <img class='top_image' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/likeM.png" width="30px" height="30px">
+                        <img class='top_image' id="yesGood_Button_sj<%= myStamps[i].id %>" src="/images/likeM.png" width="30px" height="30px"style='display: inline-block;'>
                         <img class='top_image' id="noGood_Button_sj<%= myStamps[i].id %>" src="/images/nolikeM.png" width="30px" height="30px" style='display: none;'>
                       <% } %>
                             <p class="top_font" id="goodCount_sj<%= myStamps[i].id %>">
@@ -160,10 +160,19 @@
                         <img class="top_image" src="/images/kakao_bic.png" width="30px" height="30px">
                         <p class="top_font">공유하기</p>
                       </div> -->
-                    <div id="face" onclick="window.plugins.socialsharing.shareViaFacebook(null, null, 'http://13.209.89.231:3000/share/<%= myStamps[i].sijang_name %>/<%= myStamps[i].market_name %>', null, null)">
+
+                    <div id="face<%= myStamps[i].id %>">
                       <img class="top_image" src="/images/face.png" width="30px" height="30px">
                       <p class="top_font">공유하기</p>
                     </div>
+                    <script>
+                      $('#face<%= myStamps[i].id %>').click(function() {
+                        var sijang_name = '<%= myStamps[i].sijang_name %>';
+                        var market_name = '<%= myStamps[i].market_name %>';
+                        var shareUrl = 'http://13.209.89.231:3000/share/' + sijang_name.replace(/ /gi, '%20') + '/' + market_name.replace(/ /gi, '%20');
+                        window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, null, null);
+                      });
+                    </script>
                   </div>
                 </div>
                 <div id="bottom_infor">
@@ -544,7 +553,9 @@
 
             /*  좋아요  */
             var good<%= myStamps[i].id %> = document.getElementById('goodCount_sj<%= myStamps[i].id %>');
-            $('#noGood_Button_sj<%= myStamps[i].id %>').click(function () {
+            
+            $('.good<%= myStamps[i].id %>').click(function () {
+              if ($('#noGood_Button_sj<%= myStamps[i].id %>').css('display') == 'inline-block'){
               var data = {
                 'market_name' : '<%= myStamps[i].market_name %>',
                 'sijang_name' : '<%= myStamps[i].sijang_name %>',
@@ -569,11 +580,8 @@
                   console.log('좋아요 실패');
                 }
               });
-            });
-
-
-            /* 좋아요 취소 */
-            $('#yesGood_Button_sj<%= myStamps[i].id %>').click(function () {
+            }
+            else{
               var data = {
                 'market_name' : '<%= myStamps[i].market_name %>',
                 'sijang_name' : '<%= myStamps[i].sijang_name %>',
@@ -597,7 +605,9 @@
                   console.log('좋아요 취소 실패');
                 }
               });
+            }
             });
+
 
 
             /* 비밀번호 키패드 섞는 함수 */
