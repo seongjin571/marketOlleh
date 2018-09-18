@@ -365,6 +365,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         .store_review_sj{
             width: 100%;
         }
+
         .review_div_sj{
             width: 100%;
             font-size: 20px;
@@ -468,9 +469,9 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             display: inline-flex;
             background-color: white !important;
             text-align: center;
-            font-size: 40px;
-            color: #6078ea;
-            line-height: 90px;
+            font-size: 45px;
+            color: #63dded;
+            line-height: 110px;
         }
         .password_check:nth-child(1){
             padding-left:24%;
