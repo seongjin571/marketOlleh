@@ -8,8 +8,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-    <script src='/cordova/cordova_plugins.js'></script>
-    <script src='/cordova/cordova.js'></script>
+<!--     <script src='/cordova/cordova_plugins.js'></script>
+    <script src='/cordova/cordova.js'></script> -->
 
 	<div id="map" style="width:90%;height:250px;margin-left: 5%; "></div>
 	<input type="button" value="Get GPS" id="GetButton" />
@@ -31,7 +31,21 @@
       window.myLng = lng;
       getMap();
     }
-        
+
+    function gpsNULL(){
+        alert("위치권한이 필요합니다.")
+        window.seoulApp.getGPSPermission();
+        if (!isGPSPermission) { // false
+            window.seoulApp.reload();
+        } else { // true
+            window.seoulApp.getGPS();
+        }
+    }  
+    
+
+    function getPermission(isGPSPermission) {
+      window.isGPSPermission = isGPSPermission;
+    }
 
     function getMap(){
         var markers = []; // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
@@ -149,37 +163,7 @@
                 getMap(updatedLatitude, updatedLongitude);
             }
         }
-<<<<<<< HEAD
-    }
 
-    // Error callback
-    function onMapError(error) {
-        console.log('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
-    }
-
-    // Watch your changing position
-    function watchMapPosition() {
-        return navigator.geolocation.watchPosition(onMapWatchSuccess, onMapError, { enableHighAccuracy: true });
-    }
-
-    // 위도 경도의 순수 거리값 보다는 10진수화 된 값을 가지고
-    // 정렬 먼저해봄 (실제 거리 구하시는 식 X )
-    function nearCounting(marketList) {
-        console.log(marketList);
-        var SortingMarket = new Array();
-
-        for (var i = 0; i < marketList.length; i++) {
-            var tempX = Latitude - marketList[i].coordinateX;
-            var tempY = Longitude - marketList[i].coordinateY;
-            var tempResult = Math.pow(tempX, 2) + Math.pow(tempY, 2);
-            tempResult = Math.sqrt(tempResult);
-            SortingMarket[i] = {
-                'marketName': marketList[i].name,
-                'marketDistance': tempResult
-            };
-        } // for
-=======
->>>>>>> hw
 
         // Error callback
         function onMapError(error) {
