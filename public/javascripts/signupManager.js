@@ -114,6 +114,8 @@ function setStyle_search_result() {
     insert_sijang = $(this).text();
   });
 
+  $('#search_result > div > li').css('margin-top', '5%');
+
 } // setStyle_search_result
 
 function click_modalbutton() {
