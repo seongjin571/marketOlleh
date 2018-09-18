@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>코르도바 GPS TEST</title>
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <script src='/cordova/cordova_plugins.js'></script>
@@ -32,6 +32,11 @@
       getMap();
     }
 
+    function gpsGetFail() {
+        console.log("못받아옴");
+        window.location = './';
+    }
+
     function gpsNULL(){
         alert("위치권한이 필요합니다.")
         window.seoulApp.getGPS();
@@ -49,6 +54,10 @@
     }
 
     function getMap(){
+        if (map) {
+            map = null;
+        }
+
         var markers = []; // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
 
         // 지도를 표시할 div (id)
@@ -106,11 +115,7 @@
 
         } // changeCenter
 
-    	*/
-
-        // 전역 변수
-        var Latitude = 37.540705;
-        var Longitude = 126.956764;
+    	
 
         // Get geo coordinates
         function getMapLocation(event) {
@@ -165,7 +170,6 @@
             }
         }
 
-
         // Error callback
         function onMapError(error) {
             console.log('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
@@ -175,62 +179,68 @@
         function watchMapPosition() {
             return navigator.geolocation.watchPosition(onMapWatchSuccess, onMapError, { enableHighAccuracy: true });
         }
-
-        // 위도 경도의 순수 거리값 보다는 10진수화 된 값을 가지고
-        // 정렬 먼저해봄 (실제 거리 구하시는 식 X )
-        function nearCounting(marketList) {
-            console.log(marketList);
-            var SortingMarket = new Array();
-
-            for (var i = 0; i < marketList.length; i++) {
-                var tempX = Latitude - marketList[i].coordinateX;
-                var tempY = Longitude - marketList[i].coordinateY;
-                var tempResult = Math.pow(tempX, 2) + Math.pow(tempY, 2);
-                tempResult = Math.sqrt(tempResult);
-                SortingMarket[i] = {
-                    'marketName': marketList[i].name,
-                    'marketDistance': tempResult
-                };
-            } // for
-
-            SortingMarket.sort(function(a, b) {
-                return a.marketDistance - b.marketDistance;
-            });
-            console.log(SortingMarket[1], SortingMarket[2], SortingMarket[3]);
-
-            var tempString = "<li>"+SortingMarket[1].marketName+"</li><li>"+SortingMarket[2].marketName+"</li><li>"+SortingMarket[3].marketName+"</li>"
-
-            // article inner ou ~ make <li> tags
-            nearMarketList.innerHTML = tempString;
-
-        }
-
-        // ajax 통신 테스팅
-        function getNearMarket() {
-            $.ajax({
-                url: "/searching/near",
-                dataType: 'json',
-                type: 'POST',
-                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                // data: params,
-                success: function (result) {
-                    console.log(result);
-                    if (result.rows.length > 0) {
-                        nearCounting(result.rows); // nearCounting 함수로 결과 배열들 전달
-                    } else {
-                        console.log('검색어를 확인해 주세요.');
-                    }
-                },
-                error: function (e) {
-                    console.log('검색어를 확인해 주세요.');
-                    console.log('process error : ', e);
-                }
-            }); // ajax
-        }
-
-        GetButton.addEventListener('click', getMapLocation, false);
-        Get_near_Button.addEventListener('click', getNearMarket, false);
+        */
     } // getMap / 전체를 함수 하나로 묶어버림 
+
+    // 전역 변수
+    var Latitude = 37.540705;
+    var Longitude = 126.956764;
+
+    // 위도 경도의 순수 거리값 보다는 10진수화 된 값을 가지고
+    // 정렬 먼저해봄 (실제 거리 구하시는 식 X )
+    function nearCounting(marketList) {
+        console.log(marketList);
+        var SortingMarket = new Array();
+
+        for (var i = 0; i < marketList.length; i++) {
+            var tempX = Latitude - marketList[i].coordinateX;
+            var tempY = Longitude - marketList[i].coordinateY;
+            var tempResult = Math.pow(tempX, 2) + Math.pow(tempY, 2);
+            tempResult = Math.sqrt(tempResult);
+            SortingMarket[i] = {
+                'marketName': marketList[i].name,
+                'marketDistance': tempResult
+            };
+        } // for
+
+        SortingMarket.sort(function(a, b) {
+            return a.marketDistance - b.marketDistance;
+        });
+        console.log(SortingMarket[1], SortingMarket[2], SortingMarket[3]);
+
+        var tempString = "<li>"+SortingMarket[1].marketName+"</li><li>"+SortingMarket[2].marketName+"</li><li>"+SortingMarket[3].marketName+"</li>"
+
+        // article inner ou ~ make <li> tags
+        nearMarketList.innerHTML = tempString;
+
+    }
+
+    // ajax 통신 테스팅
+    function getNearMarket() {
+        $.ajax({
+            url: "/searching/near",
+            dataType: 'json',
+            type: 'POST',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            // data: params,
+            success: function (result) {
+                console.log(result);
+                if (result.rows.length > 0) {
+                    nearCounting(result.rows); // nearCounting 함수로 결과 배열들 전달
+                } else {
+                    console.log('검색어를 확인해 주세요.');
+                }
+            },
+            error: function (e) {
+                console.log('검색어를 확인해 주세요.');
+                console.log('process error : ', e);
+            }
+        }); // ajax
+    } // getNearMarket
+
+    // ──── event handler ────
+    GetButton.addEventListener('click', getMap, false);
+    Get_near_Button.addEventListener('click', getNearMarket, false);
 
 </script>
 </body>

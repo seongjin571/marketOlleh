@@ -20,8 +20,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
     <script src="/javascripts/spin.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/cordova/cordova.js"></script>
-    <script src='/cordova/cordova_plugins.js'></script>
     <!-- <script>
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
@@ -582,7 +580,7 @@
                             </div>
                             <div class="manager_signup_name">상점위치</div>
                             <input class="signuptext2" type="text" id="market_location" name='market_location' placeholder="상점 위치">
-                            <input type="button" value="GetGPS" style="padding: 0; height: 70%;" onclick="getMyLocationInS()" />
+                            <input type="button" value="GetGPS" style="padding: 0; height: 70%;" id="getMarket_location"/>
                         </div>
 
                         <div class="signupuser_input3">
@@ -1281,6 +1279,11 @@
 
 </script>
 <script src="/javascripts/cordova_getgps.js"></script>
+<script type="text/javascript">
+    $('#getMarket_location').click(function(event) {
+        window.seoulApp.SignUpgetGPS();
+    }); // get location
+</script>
 </html>
 
 
