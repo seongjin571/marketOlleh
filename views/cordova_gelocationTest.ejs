@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>코르도바 GPS TEST</title>
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 </head>
 <body>
-<!--     <script src='/cordova/cordova_plugins.js'></script>
-    <script src='/cordova/cordova.js'></script> -->
+    <script src='/cordova/cordova_plugins.js'></script>
+    <script src='/cordova/cordova.js'></script>
 
 	<div id="map" style="width:90%;height:250px;margin-left: 5%; "></div>
 	<input type="button" value="Get GPS" id="GetButton" />
@@ -34,15 +34,16 @@
 
     function gpsNULL(){
         alert("위치권한이 필요합니다.")
+        window.seoulApp.getGPS();
         window.seoulApp.getGPSPermission();
         if (!isGPSPermission) { // false
-            window.seoulApp.reload();
+            // window.seoulApp.reload();
+            gpsNULL();
         } else { // true
             window.seoulApp.getGPS();
         }
     }  
     
-
     function getPermission(isGPSPermission) {
       window.isGPSPermission = isGPSPermission;
     }
