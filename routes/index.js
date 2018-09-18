@@ -13,6 +13,7 @@ router.get('/photo', function(req, res){
 router.get('/share/:sijang_name/:market_name', function(req, res){
   var marketSql = 'select * from `manager` where `sijang_name`=? and `market_name`=? ;';
   var reviewSql = 'select * from `review` where `sijang_name`=? and `market_name`=? ;';
+  var avgSql = 'SELECT IFNULL(round(avg(rate),0), 0) as avgRate FROM `review` WHERE `sijang_name`=? and `market_name`=? GROUP BY `sijang_name`, `market_name` ;';
   conn.query(marketSql, [req.params.sijang_name, req.params.market_name], function(marketErr, marketRows) {
     if(marketErr) {
       console.log(marketErr);
@@ -25,14 +26,25 @@ router.get('/share/:sijang_name/:market_name', function(req, res){
           console.log('리뷰 정보 에러');
         }
         else {
-          res.render('share', {
-            market: marketRows[0],
-            reviews: reviewRows
-          });
-        }
-      });
-    }
-  });
+          conn.query(avgSql, [req.params.sijang_name, req.params.market_name], function(avgErr, avgRows) {
+            if(avgErr) {
+              console.log(avgErr);
+              console.log('평균 에러');
+            }
+            else {
+              var avgRate = avgRows[0];
+              if(! avgRate) { avgRate = 0; }
+              res.render('share', {
+                market: marketRows[0],
+                reviews: reviewRows,
+                avg: avgRate
+              }); // render
+            } // avg else
+          }); // avg sql
+        } // review else
+      }); // review sql
+    } // market else
+  }); // market sql
 });
 
 router.get('/eud_camera', function(req, res){
