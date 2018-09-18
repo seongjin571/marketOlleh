@@ -76,6 +76,7 @@
                     <div id="stamp_menu_sj">
                         <div class="stamp_sj">
 
+                          <% if(market.stamp_standard == 10) { %>
                             <div class="tenControls_sj">
                                 <div class="tenStamp_sj">
 
@@ -117,34 +118,42 @@
 
                                 </div>
                             </div>
+                            <script>
+                              document.getElementsByClassName('tenControls_sj')[0].style.display = 'block';
+                            </script>
+                          <% } else { %>
 
 
-                            <div class="fiveControls_sj">
-                                <div class="fiveStamp_sj">
-                                    <div class="five_sj">
-                                        <p>1</p>
-                                    </div>
-                                    <div class="five_sj">
-                                        <p>2</p>
-                                    </div>
-                                    <div class="five_sj">
-                                        <p>3</p>
-                                    </div>
-                                    <div class="five_sj">
-                                        <p>4</p>
-                                    </div>
-                                    <div class="five_sj">
-                                        <p>5</p>
-                                    </div>
-                                </div>
-                            </div>
+                              <div class="fiveControls_sj">
+                                  <div class="fiveStamp_sj">
+                                      <div class="five_sj">
+                                          <p>1</p>
+                                      </div>
+                                      <div class="five_sj">
+                                          <p>2</p>
+                                      </div>
+                                      <div class="five_sj">
+                                          <p>3</p>
+                                      </div>
+                                      <div class="five_sj">
+                                          <p>4</p>
+                                      </div>
+                                      <div class="five_sj">
+                                          <p>5</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <script>
+                                document.getElementsByClassName('fiveControls_sj')[0].style.display = 'block';
+                              </script>
+                            <% } %>
                         </div>
 
                         <div class="stamp_infor">
                             <img src="/images/standard.png" width="30px" height="30px">
                             <div class="name">적립기준</div>
                             <div class="stamp_infor_content">
-                                <%= market.stamp_standard %>
+                                <%= market.market_promotion %>
                             </div>
                         </div>
 
