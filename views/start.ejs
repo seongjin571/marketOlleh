@@ -60,6 +60,7 @@
                     5
                     <button id="user_x">닫기</button>
                 </div>
+
         
             </div>
                 <div class="swiper-pagination"></div>
@@ -557,18 +558,18 @@
       }, options);
     }
     var takePicture = function(){
-			var options = {
-				quality          : 75,
-				destinationType  : Camera.DestinationType.DATA_URL,
-				sourceType       : Camera.PictureSourceType.CAMERA,
-				allowEdit        : true,
-				encodingType     : Camera.EncodingType.JPEG,
-				targetWidth      : 300,
-				targetHeight     : 300,
-				popoverOptions   : CameraPopoverOptions,
-				saveToPhotoAlbum : false
-			};
-			navigator.camera.getPicture(function(imageURI) {
+            var options = {
+                quality          : 75,
+                destinationType  : Camera.DestinationType.DATA_URL,
+                sourceType       : Camera.PictureSourceType.CAMERA,
+                allowEdit        : true,
+                encodingType     : Camera.EncodingType.JPEG,
+                targetWidth      : 300,
+                targetHeight     : 300,
+                popoverOptions   : CameraPopoverOptions,
+                saveToPhotoAlbum : false
+            };
+            navigator.camera.getPicture(function(imageURI) {
         alert(imageURI);
         var smallImage = document.getElementById('smallImage');
 
@@ -581,9 +582,9 @@
         //
         smallImage.src = "data:image/jpeg;base64," + imageURI;
         // $("#smallImage").attr("src",imageURI);
- 			}, function(err) {
- 			}, options);
-		};
+            }, function(err) {
+            }, options);
+        };
     // function capturePhotoEdit() {
     //   // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
     //   navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
@@ -668,6 +669,7 @@
                             </div>
                             <div class="manager_signup_name">상점위치</div>
                             <input class="signuptext2" type="text" id="market_location" name='market_location' placeholder="상점 위치">
+                            <input type="button" value="GetGPS" style="padding: 0; height: 70%;" id="getMarket_location"/>                            
                         </div>
 
                         <div class="signupuser_input3">
@@ -1383,12 +1385,12 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     $('.alert_x').click(function(){
         $(this).css('display','none')
       })
-      $('.alert_o').click(function(){
+    $('.alert_o').click(function(){
         $(this).css('display','none')
-      })
-      $('.alert_select_cancel').click(function(){
+    })
+    $('.alert_select_cancel').click(function(){
         $('.alert_select').css('display','none')
-      })
+    })
     // (hw edit); enter event handleling!
     $("#password").keyup(function (event) {
         // Enter 처리
@@ -1402,6 +1404,12 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
             $("#loginButton_user").trigger("click");
         } // if
     }); // enter keyup event
+</script>
+<script src="/javascripts/cordova_getgps.js"></script>
+<script type="text/javascript">
+    $('#getMarket_location').click(function(event) {
+        window.seoulApp.SignUpgetGPS();
+    }); // get location
 </script>
 </html>
 
