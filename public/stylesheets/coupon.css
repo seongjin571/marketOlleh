@@ -396,6 +396,7 @@ html {
     background-clip: content-box, border-box;
     padding: 1px;
     display: inline-block;
+    font-size: 14px;
 }
 .coupon_ment{
     width: 100%;
@@ -419,4 +420,5 @@ html {
     padding: 1px;
     display: inline-block;
     color: white;
+    font-size: 14px;
 }
