@@ -18,13 +18,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta http-equiv="X-UA-Compatible" content="IE=9">
     <meta http-equiv="X-UA-Compatible" content="IE=8">
-
     <script type="text/javascript" charset="utf-8" src="/cordova/cordova.js"></script>
     <script src='/cordova/cordova_plugins.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
-    <script src="/javascripts/spin.js"></script>
-    <!-- <script>
-
+    <script>
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
         }, false);
@@ -83,23 +79,23 @@
     <script>
         window.onload = function () {
             if (localStorage.getItem('introFlag') == 1) {
-                // document.getElementById('intro_image_div').style.display = 'none';
+                document.getElementById('intro_image_div').style.display = 'none';
                 document.getElementById('all_body').style.display = 'none';
                 document.getElementById('loginuser').style.display = 'block';
                 localStorage.clear();
             }
             else if (localStorage.getItem('introFlag') == 2) {
-                // document.getElementById('intro_image_div').style.display = 'none';
+                document.getElementById('intro_image_div').style.display = 'none';
                 document.getElementById('all_body').style.display = 'none';
                 document.getElementById('loginManager').style.display = 'block';
                 localStorage.clear();
             }
             else if (!localStorage.getItem('introFlag')) {
                 document.getElementById('all_body').style.display = 'block';
-                // document.getElementById('intro_image_div').style.display = 'block';
-                // setTimeout(function () {
-                //     $('#intro_image_div').fadeOut('1000');
-                // }, 2000);
+                document.getElementById('intro_image_div').style.display = 'block';
+                setTimeout(function () {
+                    $('#intro_image_div').fadeOut('1000');
+                }, 2000);
             }
             $('#back_loginuser').click(function() {
               document.getElementById('all_body').style.display = 'block';
@@ -113,9 +109,9 @@
     <!--start div 시작-->
 
     <div id="start">
-            <!-- <div id="intro_image_div">
+            <div id="intro_image_div">
                     <img id="intro_image" src="/images/logo_with_text.png">
-                </div> -->
+                </div>
         <div id="all_body" >
 
             <div id="top_part">
@@ -251,7 +247,7 @@
         </div>
         <div id="kakao_logo2">
             <div class="login_button_user5">
-                <button type='button' id="loginButton_manager" value='' class="loginUser_insert">로그인</button>
+                <button type='submit' id="loginButton_manager" value='' class="loginUser_insert">로그인</button>
             </div>
         </div>
     </div>
@@ -517,11 +513,29 @@
 
     // A button will call this function
     //
-    function capturePhotoEdit() {
-      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-        destinationType: destinationType.DATA_URL });
+    var uploadPhoto = function(){
+      var options = {
+        quality : 50,
+        destinationType : Camera.DestinationType.DATA_URL,
+        sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
+        allowEdit : true,
+        encodingType : Camera.EncodingType.JPEG,
+        targetWidth : 300,
+        targetHeight : 300,
+        popoverOptions : CameraPopoverOptions,
+        saveToPhotoAlbum : false
+      }
+      navigator.camera.getPicture(function(imageData) {
+        alert(imageData);
+      }, function(err){
+
+      }, options);
     }
+    // function capturePhotoEdit() {
+    //   // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
+    //   navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
+    //     destinationType: destinationType.DATA_URL });
+    // }
 
     // A button will call this function
     //
@@ -604,7 +618,6 @@
                             </div>
                             <div class="manager_signup_name">상점위치</div>
                             <input class="signuptext2" type="text" id="market_location" name='market_location' placeholder="상점 위치">
-                            <input type="button" value="GetGPS" style="padding: 0; height: 70%;" id="getMarket_location"/>
                         </div>
 
                         <div class="signupuser_input3">
@@ -626,12 +639,13 @@
                                 <img src="/images/check.png" width="30px" height="30px">
                             </div>
                             <div id="sijang_picture" name='sijang_name'>상점사진</div>
-                            <label id="picture_pic"for="manager_img" onclick="capturePhotoEdit();">사진 촬영</label>
+                            <label id="picture_pic"for="manager_img" onclick="uploadPhoto();">사진 촬영</label>
+                            <!-- <label id="picture_pic"for="manager_img" onclick="capturePhotoEdit();">사진 촬영</label> -->
                             <!-- <input type='file' name='manager_img' id='manager_img' accept="image/jpg" src=""/> -->
                         </div>
                         <!-- <img class="picture_div" src="/images/market9.jpg" height="auto"</img> -->
                         <img style="display:none;height="auto"" class="picture_div" height="auto" id="smallImage" src="" />
-                      
+
 
 
                     </div>
@@ -965,9 +979,9 @@
             $('.go_slide').css('color', 'black');
             $('.go_slide').eq(active).css('color', '#63dded');
         });
-    // setTimeout(function () {
-    //     $('#intro_image_div').fadeOut('1000');
-    // }, 2000);
+    setTimeout(function () {
+        $('#intro_image_div').fadeOut('1000');
+    }, 2000);
     var name2 = /^[가-힣]+$/;
     var id = /^[a-z0-9_]{6,15}$/;
     var password = /^[a-zA-Z0-9]{6,15}$/;
@@ -1263,24 +1277,14 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     })
     // 뒤로가기 고객회원가입부분
     $('#back_signupuser').click(function () {
-        $('.alert_select').css('display', 'block');
-        $('.alert_content_select').html('회원가입을 취소하시겠습니까?')
-        $('.alert_select_ok').click(function () {
-            $(".alert_select").css('display','none');
-            $('#signupuser').fadeOut(300)
-            $('#loginuser').fadeIn(300)
-        });
-    });
+        $('#signupuser').fadeOut(300)
+        $('#loginuser').fadeIn(300)
+    })
     // 뒤로가기 상인회원가입부분
     $('#back_signupManager').click(function () {
-        $('.alert_select').css('display', 'block');
-        $('.alert_content_select').html('회원가입을 취소하시겠습니까?')
-        $('.alert_select_ok').click(function () {
-            $(".alert_select").css('display','none');
-            $('#signupManager').fadeOut(300);
-            $('#loginManager').fadeIn(300);
-        });
-    });
+        $('#signupManager').fadeOut(300)
+        $('#loginManager').fadeIn(300)
+    })
     // 클릭 이벤트
     $('.alert_x').click(function(){
         $(this).css('display','none')
@@ -1292,25 +1296,18 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         $('.alert_select').css('display','none')
       })
     // (hw edit); enter event handleling!
-    $("#userpassword").keyup(function (event) {
-        // Enter 처리
-        if (event.keyCode == '13') {
-            $("#loginButton_user").trigger("click");
-        } // if
-    }); // enter keyup event
     $("#password").keyup(function (event) {
         // Enter 처리
         if (event.keyCode == '13') {
             $("#loginButton_manager").trigger("click");
         } // if
     }); // enter keyup event
-
-</script>
-<script src="/javascripts/cordova_getgps.js"></script>
-<script type="text/javascript">
-    $('#getMarket_location').click(function(event) {
-        window.seoulApp.SignUpgetGPS();
-    }); // get location
+    $("#userpassword").keyup(function (event) {
+        // Enter 처리
+        if (event.keyCode == '13') {
+            $("#loginButton_user").trigger("click");
+        } // if
+    }); // enter keyup event
 </script>
 </html>
 
