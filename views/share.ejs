@@ -119,7 +119,7 @@
                                 </div>
                             </div>
                             <script>
-                              document.getElementsByClassName('tenControls_sj')[0].style.display = 'block';
+                              document.getElementsByClassName('tenControls_sj')[0].style.display = 'table';
                             </script>
                           <% } else { %>
 
@@ -144,7 +144,7 @@
                                   </div>
                               </div>
                               <script>
-                                document.getElementsByClassName('fiveControls_sj')[0].style.display = 'block';
+                                document.getElementsByClassName('fiveControls_sj')[0].style.display = 'table';
                               </script>
                             <% } %>
                         </div>
@@ -201,9 +201,9 @@
 
                         <!-- <p style="font-size: 20px; color: #9c9c9c;">리뷰</p> -->
 
-                              <p class="review_count_content" id='review_count_content'></p>
+                              <p class="review_count_content" id='review_count_content'><%= reviews.length %></p>
                               <% if(reviews.length) { %>
-                                <p style="font-size: 20px; color: #9c9c9c;"><%= reviews.length %>개의 리뷰가 있습니다.</p>
+                                <p style="font-size: 20px; color: #9c9c9c;">개의 리뷰가 있습니다.</p>
                               <% } else { %>
                                 <p style="font-size: 20px; color: #9c9c9c;">작성된 리뷰가 없습니다.</p>
                               <% } %>
@@ -231,13 +231,13 @@
                       <% if(reviews[i].user_id != '사장님') { %>
                         <% for(var j=0; j<reviews[i].rate; j++) { %>
                             <div>
-                              <img class="star_yellow" src="/images/star_yellow.png" width="30px" height="30px">
+                              <img class="star_yellow" src="/images/star_yellow.png" width="20px" height="20px">
                             </div>
                         <% } %>
 
                         <% for(var j=0; j<5-reviews[i].rate; j++) { %>
                           <div>
-                            <img class="star_gray" src="/images/star_gray.png" width="30px" height="30px">
+                            <img class="star_gray" src="/images/star_gray.png" width="20px" height="20px">
                           </div>
                         <% } %>
                       <% } else { %>

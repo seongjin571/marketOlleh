@@ -8,7 +8,9 @@ body, html {
     background-color: white;
 }
   
-
+.user{
+    display: none;
+}
 #start,#all_body {
     width: 100%;
     height: 100%;
@@ -197,6 +199,7 @@ body, html {
     color: #B6B7B7;
     opacity:  1;
     line-height: 200px;
+    font-family: 'NanumSquare',sans-serif;
  }  
 .login_button_formManager2 > .inputmanager{
     outline:none;
@@ -213,6 +216,7 @@ body, html {
     color: #B6B7B7;
     opacity:  1;
     line-height: 200px;
+    font-family: 'NanumSquare',sans-serif;
  }  
 #userpassword{
     font-family: initial !important;
@@ -423,6 +427,25 @@ body, html {
     border: 0px;
     outline:none;
 }
+#way{
+    box-shadow: 5px 5px 3px #efefef;
+    text-align: center;
+    display: inline-block;
+    width: 90%;
+    height: 50px;
+    line-height: 50px;
+    color: #B6B7B7;
+    background-color: white;
+    border: double 1px transparent;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+     radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;    
+    padding: 1px;
+    border: 0px;
+    outline:none;
+}
 #kakaobutton p{
     margin: 0;
 }
@@ -513,6 +536,7 @@ a{
     background: -o-linear-gradient(right, #17ead9, #6078ea);
     background: -moz-linear-gradient(right, #17ead9, #6078ea);
     background: linear-gradient(to right, #17ead9 , #6078ea);
+    margin-top:20px;
 }
 
 #userpwd{
@@ -869,38 +893,38 @@ select{
 
 /* 뒤로가기 버튼 */
 #back_loginuser{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background: white;
-    margin-top: 15px;
-    margin-left: 15px;
+    margin-top: 10px;
+    margin-left: 10px;
     position: fixed;
     z-index: 1;
 }
 #back_loginManager{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background: white;
-    margin-top: 15px;
-    margin-left: 15px;
+    margin-top: 10px;
+    margin-left: 10px;
     position: fixed;
     z-index: 1;
 }
 #back_signupuser{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background: white;
-    margin-top: 15px;
-    margin-left: 15px;
+    margin-top: 10px;
+    margin-left: 10px;
     position: fixed;
     z-index: 1;
 }
 #back_signupManager{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background: white;
-    margin-top: 15px;
-    margin-left: 15px;
+    margin-top: 10px;
+    margin-left: 10px;
     position: fixed;
     z-index: 1;
 }

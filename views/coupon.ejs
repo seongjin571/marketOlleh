@@ -408,7 +408,6 @@
       if (chk_send == 0){
        chk_send = 1;
       //  return true;
-
         next_index = $(".market").index( this )+1;
         if(next_index ==index){
             if(count==1){
@@ -471,7 +470,6 @@
               $('.gray_button').css('display', 'block')
               $('.blue_button').css('display', 'none')
               }
-
             }
           }
         })
@@ -534,17 +532,13 @@
         })
     }
 }
-
-
     else{
        return false;
       }
     })
-    // $(document).off('click', '.find_coupon_list1').on('click', '.find_coupon_list1', function() {
+      var check=0;
     $(document).on("click",'.find_coupon_list1',function(event){
-      // $(".my-list > li").on("click", function() {
-    // $(this).toggleClass("alternate-background");
-// });
+
         var list = $('.find_coupon_list1').index(this);
         var market=document.getElementsByClassName('store_name1')[list];
         var market_name =market.innerHTML;
@@ -559,14 +553,16 @@
         console.log(coupon_password);
         var user_id = '<%= user_id %>'
         console.log(user_id);
-        // alert(market_name +'+'+sijang_name+'+'+coupon_password);
         down();
         function down() {
           $('.alert_select').css('display','block');
+          $('.alert_x').css('display', 'none');
           $('.alert_content_select').html('쿠폰을 다운로드 하시겠습니까?')
             $('.alert_select_ok').click(function(){
+              if(check==0)
+              check=1;
               $('.alert_select').css('display','none');
-              var data = {
+              var data = {  
                 'user_id' : user_id,
                 'sijang_name' : sijang_name,
                 'market_name' : market_name,
@@ -582,10 +578,14 @@
                 cache: false,
                 datatype: "json",
                 data: data,
+            
                 success: function (result) {
+
                   if (result['result'] == 'success') {
+                    $('.alert_x').css('display', 'none');
                     $('.alert_o').css('display', 'block');
                     $('.alert_content').html('쿠폰이 발급 되었습니다.')
+                    console.log('발급')
                     $('.alert_o').click(function () {
                       var data = {
                         'sijang_name': sijang_name,
@@ -601,34 +601,42 @@
                         data: data,
                         success: function (result) {
                           if (result['result'] == 'decrease') {
-                            // alert('뻄1');
                             location.reload()
+                            // });
                           }
                           else if (result['result'] == 'delete') {
-                            // alert('뺌2');
                             location.reload()
+                            // });
                           }
                         },
                         error: function (error) {
                           alert('에러');
                         }
                       });
+                      // break;
                     });
                   }
-                      else if(result['result']=='fail'){
-                        $('.alert_x').css('display','block');
-                        $('.alert_content').html('이미 해당 쿠폰이 있습니다')
-                      }else {
-                        alert('쿠폰등록실패1');
-                        location.reload();
-                      }
+                  
+                      else if (result['result'] == 'fail') {
+                    if (check == 1) {
+                      console.log('이미')
+                      $('.alert_x').css('display', 'block');
+                      $('.alert_content').html('이미 해당 쿠폰이 있습니다')
+                      check=0;
+                    }
+                  }
+                     
+                    
                   },
                   error: function (error) {
-                      alert('쿠폰등록실패2');
+                    location.reload();
+                      // alert('쿠폰등록실패2');
                   }
               });
             })
-        }
+        // }
+      }
+
       })
       $('.alert_x').click(function(){
         $(this).css('display','none')
