@@ -434,7 +434,8 @@
                         <img src="/images/location3.png" width="30px" height="30px">
                         <div class="name">위치</div>
                 </div>
-                <img src="/images/han.png" width="80%" style="margin-left: 10%;margin-top: 5%;">
+                <div id="manager_Map" style="width:90%;height:250px;margin-left: 5%; "></div>                
+                <!-- <img src="/images/han.png" width="80%" style="margin-left: 10%;margin-top: 5%;"> -->
             </div>
 
 
@@ -623,6 +624,17 @@
                         $('#navControlButton').css('display', 'none');
                         document.getElementById('back_div').style.display = "block";
                         managerInfoLi_event(result.rows[0]);
+                        // 지도를 표시할 div (id)
+                        var mapContainer = document.getElementById('manager_Map'),
+                            mapOption = {
+                                center: new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng)), // 지도의 중심좌표
+                                level: 4 // 지도의 확대 레벨
+                            };
+                        var manager_Map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+                        // 마커 하나를 지도위에 표시합니다
+                        addMarker(new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng)));
+
+                        // manager_Map.relayout();
                     } else {
                         console.log("시장이름 존재하지 않음");
                     }
