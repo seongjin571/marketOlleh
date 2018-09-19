@@ -771,7 +771,7 @@ select{
     width: 100%;
 }
 
-#picture_pic
+#picture_pic,#picture_cat
 { 
     display: block;
     text-align: center;
