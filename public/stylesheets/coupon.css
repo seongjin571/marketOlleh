@@ -19,6 +19,7 @@ html {
     height: 50px;
     line-height: 50px;
     margin-top: 5px;
+    border-bottom-width: 2px;
 }
 #menu {
     width: 100%;
@@ -224,7 +225,7 @@ html {
     height: 42.5px;
     font-size:24px;
     color: white;
-    line-height: 42.5px;
+    line-height: 32px;
     text-align: center;
     font-weight: lighter;
 }
