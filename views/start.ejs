@@ -20,11 +20,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=8">
     <script type="text/javascript" charset="utf-8" src="/cordova/cordova.js"></script>
     <script src='/cordova/cordova_plugins.js'></script>
-    <script>
+    <!-- <script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
     <script src="/javascripts/spin.js"></script>
      <script>
-
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
         }, false);
@@ -35,13 +34,10 @@
   document.addEventListener("backbutton", onBackKeyDown, false);
   function onBackKeyDown(e) {
      e.preventDefault();
-
      var exitAppConfirm = confirm("앱을 종료하시겠습니까?");
-
      if(exitAppConfirm) {
        navigator.app.exitApp();
      }
-
   }
 </script>
 
@@ -452,61 +448,49 @@
 
     <!--signupManager 시작-->
     <script type="text/javascript" charset="utf-8">
-
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value
-
     // Wait for device API libraries to load
     //
     document.addEventListener("deviceready",onDeviceReady,false);
-
     // device APIs are available
     //
     function onDeviceReady() {
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     }
-
     // Called when a photo is successfully retrieved
     //
     function onPhotoDataSuccess(imageData) {
       // Uncomment to view the base64-encoded image data
       // console.log(imageData);
-
       // Get image handle
       //
       var smallImage = document.getElementById('smallImage');
-
       // Unhide image elements
       //
       smallImage.style.display = 'block';
-
       // Show the captured photo
       // The inline CSS rules are used to resize the image
       //
       smallImage.src = "data:image/jpeg;base64," + imageData;
     }
-
     // Called when a photo is successfully retrieved
     //
     function onPhotoURISuccess(imageURI) {
       // Uncomment to view the image file URI
       // console.log(imageURI);
-
       // Get image handle
       //
       var largeImage = document.getElementById('largeImage');
-
       // Unhide image elements
       //
       largeImage.style.display = 'block';
-
       // Show the captured photo
       // The inline CSS rules are used to resize the image
       //
       largeImage.src = imageURI;
     }
-
     // A button will call this function
     //
     function capturePhoto() {
@@ -514,7 +498,6 @@
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
         destinationType: destinationType.DATA_URL });
     }
-
     // A button will call this function
     //
     var uploadPhoto = function(){
@@ -532,7 +515,6 @@
       navigator.camera.getPicture(function(imageData) {
         alert(imageData);
       }, function(err){
-
       }, options);
     }
     // function capturePhotoEdit() {
@@ -540,7 +522,6 @@
     //   navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
     //     destinationType: destinationType.DATA_URL });
     // }
-
     // A button will call this function
     //
     function getPhoto(source) {
@@ -549,13 +530,11 @@
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     }
-
     // Called if something bad happens.
     //
     function onFail(message) {
       alert('Failed because: ' + message);
     }
-
     </script>
     <div id="signupManager">
         <img id="back_signupManager" src="/images/backButton_blue.png">
@@ -566,7 +545,7 @@
         </div>
 
         <form id='signupForm2'>
-            <div class="swiper-container">
+            <div class="swiper-container s1">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="signupuser_input3">
@@ -648,7 +627,7 @@
                             <!-- <input type='file' name='manager_img' id='manager_img' accept="image/jpg" src=""/> -->
                         </div>
                         <!-- <img class="picture_div" src="/images/market9.jpg" height="auto"</img> -->
-                        <img style="display:none;height="auto"" class="picture_div" height="auto" id="smallImage" src="" />
+                        <img style="display:none;height:auto;" class="picture_div" height="auto" id="smallImage" src="" />
 
 
 
@@ -825,6 +804,24 @@
             </div>
         </div>
 
+
+        <div class="swiper-container user">
+            <div class="swiper-wrapper">
+                        <div class="swiper-slide swiper1">
+                    
+                        </div>
+                        <div class="swiper-slide swiper1">
+                    
+                        </div>
+                        <div class="swiper-slide swiper1">
+                    
+                        </div>
+                  
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        
+
         <script>
             $('#signupForm2').submit(function (e) {
                 var signcount_manager=0;
@@ -894,8 +891,6 @@
                 data2.append('sijang_name', sijang_name.innerHTML);
                 // data2.append('manager_img', $('input[name=manager_img]')[0].files[0]);
                 data2.append('manager_img', $('#smallImg').val());
-
-
                 $.ajax({
                     type: "POST",
                     url: "/signup/signupmanager",
@@ -908,10 +903,6 @@
                             $('.alert_content').html('회원가입이 완료되었습니다');
                             $('#signupManager').css('display','none');
                             $('#loginManager').css('display','block');
-                            // $('.alert_o').click(function(){
-                            //     $(localStorage).setItem('introFlag', 2);
-                            //     $(location).reload();
-                            // })
                             $('#manager_id_jh').val('');
                             $('#password_jh').val('');
                             $('#password_jh_check').val('');
@@ -954,14 +945,14 @@
         </script>
         <script type="text/javascript" src="/javascripts/signupManager.js"></script>
     </div>
-    <!--signupManager `끝-->
+    <!--signupManager 끝-->
 
 </body>
 <!--start script  시작-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
 
 <script>
-    var swiper = new Swiper('.swiper-container', {
+    var swiper = new Swiper('.s1', {
         autoHeight: true,
         observer: true,
         observeParents: true,
@@ -970,6 +961,21 @@
             hide: true,
         },
     });
+    swiper.on('slideChangeTransitionStart', function () {
+            var active = swiper.activeIndex;
+            $('.go_slide').css('color', 'black');
+            $('.go_slide').eq(active).css('color', '#63dded');
+        });
+    var swiper_user = new Swiper('.user', {
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            spaceBetween: 0,
+            pagination: {
+                el: '.swiper-pagination',
+                dynamicBullets: true,
+                clickable: true,
+            },
+        });
     $('.go_slide').click(function (e) {
             var this_index = $(this).index();
             e.preventDefault();
@@ -977,6 +983,12 @@
             $('.go_slide').eq(this_index).css('color', '#63dded');
             swiper.slideTo(this_index, 500, false);
         });
+<<<<<<< HEAD
+   
+    // setTimeout(function () {
+    //     $('#intro_image_div').fadeOut('1000');
+    // }, 2000);
+=======
         swiper.on('slideChangeTransitionStart', function () {
             var active = swiper.activeIndex;
             $('.go_slide').css('color', 'black');
@@ -985,6 +997,7 @@
     setTimeout(function () {
         $('#intro_image_div').fadeOut('1000');
     }, 2000);
+>>>>>>> 63e92d3ad9535682e3904a572e1a8fe9ce905b83
     var name2 = /^[가-힣]+$/;
     var id = /^[a-z0-9_]{6,15}$/;
     var password = /^[a-zA-Z0-9]{6,15}$/;
@@ -1100,7 +1113,6 @@
             $('.manager_check_div').eq(4).css('visibility', 'hidden')
         }
     })
-
     $('#smallImage').on('load', function () {
 $('.manager_check_div').eq(9).css('visibility', 'visible')
 });
@@ -1297,7 +1309,6 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
             $('#loginManager').css('display','block');
         });
     });
-
     // 클릭 이벤트
     $('.alert_x').click(function(){
         $(this).css('display','none')
