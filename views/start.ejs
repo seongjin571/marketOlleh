@@ -694,7 +694,7 @@
                             </div>
                             <div class="manager_signup_name">상점위치</div>
                             <input class="signuptext2" type="text" id="market_location" name='market_location' placeholder="상점 위치">
-                            <input type="button" value="GetGPS" style="padding: 0; height: 70%;" id="getMarket_location"/>                            
+                            <input type="button" value="GetGPS" style="padding: 0; height: 70%;" id="getMarket_location"/>
                         </div>
 
                         <div class="signupuser_input3">
@@ -717,7 +717,7 @@
                             </div>
                             <div id="sijang_picture" name='sijang_name'>상점사진</div>
                             <label id="picture_pic"for="manager_img" onclick="uploadPhoto();">사진 촬영</label>
-                            <!-- <label style="position:absolute;width:100px;height:100px;background-color:red;" for="manager_img" onclick="takePicture();">사진 촬영2</label> -->
+                            <label style="position:absolute;width:100px;height:100px;background-color:red;" for="manager_img" onclick="takePicture();">사진 촬영2</label>
                             <!-- <label id="picture_pic"for="manager_img" onclick="capturePhotoEdit();">사진 촬영</label> -->
                             <!-- <input type='file' name='manager_img' id='manager_img' accept="image/jpg" src=""/> -->
                         </div>
@@ -903,12 +903,13 @@
 
 
 
-        
+
 
 
         <script>
             $('#signupForm2').submit(function (e) {
                 var signcount_manager=0;
+                var val_src = jQuery('#smallImage').attr("src");
                 e.preventDefault();
                 for (var i = 0; i < 14; i++) {
                 if ($('.manager_check_div').eq(i).css('visibility') == 'visible') {
@@ -952,13 +953,7 @@
                     'stamp_standard': stamp_standard,
                     'sijang_name': sijang_name.innerHTML
                 };
-                if (!$('#smallImage').files) {
-                    $('.alert_x').css('display','block');
-                        $('.alert_content').html('이미지를 등록해주세요');
-                        $('.alert_x').click(function(){
-                    })
-                    return false;
-                }
+
                 var data2 = new FormData();
                 data2.append('manager_id', manager_id);
                 data2.append('password', password);
