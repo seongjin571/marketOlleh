@@ -658,6 +658,9 @@ select{
       height: 30px;
       line-height: 30px;
       margin-left: 3%;
+      white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   #manager_img{
       width: 50%;
