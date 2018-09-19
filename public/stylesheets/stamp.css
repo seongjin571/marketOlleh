@@ -20,6 +20,9 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             display: none;
             /* visibility: hidden; */
         }
+        .s1{
+            display: none;
+        }
         #name_sj {
             width: 68%;
             height: 60px;

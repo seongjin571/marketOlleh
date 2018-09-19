@@ -184,7 +184,7 @@
         </div>
 
 
-              <div class="swiper-container s1">
+              <div class="swiper-container s1<%= myStamps[i].id %>">
                   <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class='stamp_menu_sj' id="stamp_menu_sj<%= myStamps[i].id %>">
@@ -492,21 +492,50 @@
             <div class="swiper-scrollbar"></div>
             </div>
             </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
-
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
             <script>
 
 
             var number1 = "";
+            var swiper
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
+              var stamp_index=$(this).index()
+              $('.go_slide').eq(stamp_index*4).css('color', '#63dded');
               // 스크롤 조절
               window.scrollTo(0, 0);
               $('#selected_stamp<%= myStamps[i].id %>').css('display', 'block');
+              $('.s1<%= myStamps[i].id %>').css('display', 'block');
               $('#back_div<%= myStamps[i].id %>').css('display', 'block');
               $('#myStamp').css('display', 'none');
+              swiper = new Swiper('.s1<%= myStamps[i].id %>', {
+                initialSlide: 0,
+                autoHeight: true,
+                observer: true,
+                observeParents: true,
+                scrollbar: {
+                  el: '.swiper-scrollbar',
+                  hide: true,
+                },
+              });
+              swiper.on('slideChangeTransitionStart', function () {
+                var active = swiper.activeIndex+(stamp_index*4);
+                $('.go_slide').css('color', 'black');
+                $('.go_slide').eq(active).css('color', '#63dded');
+              });
+              
             });
+            $('.go_slide').click(function () {
+              var slide_index = $(this).index();
+              var this_index = $('.go_slide').index(this);
+              $('.go_slide').css('color', 'black');
+              $('.go_slide').eq(this_index).css('color', '#63dded');
+              swiper.slideTo(slide_index, 500, false);
+              });
 
             $('#back_div<%= myStamps[i].id %>').click(function () {
+              swiper.destroy();
+              $('.go_slide').css('color', 'black');
+              $('.go_slide').eq(0).css('color', '#63dded');
 
               $('#selected_stamp<%= myStamps[i].id %>').css('display', 'none');
               $('#back_div<%= myStamps[i].id %>').css('display', 'none');
@@ -961,44 +990,6 @@
                                 $(location).attr('href','/logout');
                               })
                           })
-
-                          var swiper = new Swiper('.s1', {
-                              initialSlide: 0,
-                              autoHeight: true,
-                              observer: true,
-                              observeParents: true,
-                              scrollbar: {
-                                el: '.swiper-scrollbar',
-                                hide: true,
-                              },
-                            });
-                            // $('.go_slide').click(function () {
-                            //     var this_index = $(this).index();
-                            //     alert(this_index)
-                            //     $('.go_slide').css('color', 'black');
-                            //     $('.go_slide').eq(this_index).css('color', '#63dded');
-                            //     swiper.slideTo(this_index, 500, false);
-                            //   });
-
-                            //   swiper.on('slideChangeTransitionStart', function () {
-                            //     var active = swiper.activeIndex;
-                            //     $('.go_slide').css('color', 'black');
-                            //     $('.go_slide').eq(active).css('color', '#63dded');
-                            //   });
-
-                          $('.back_div').click(function () {
-                            //  swiper.destroy();
-                            //  var  swiper = new Swiper('.swiper-container', {
-                            //     initialSlide: 0,
-                            //     autoHeight: true,
-                            //     observer: true,
-                            //     observeParents: true,
-                            //     scrollbar: {
-                            //       el: '.swiper-scrollbar',
-                            //       hide: true,
-                            //     },
-                            //   });
-                            });
 
                               $('.alert_x').click(function () {
                                 $(this).css('display', 'none')
