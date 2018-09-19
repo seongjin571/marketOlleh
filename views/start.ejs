@@ -55,7 +55,7 @@
                             <div class="swiper-slide swiper1">
                         3
                             </div>
-                      
+
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -871,7 +871,7 @@
 
 
 
-        
+
 
 
         <script>
@@ -920,13 +920,7 @@
                     'stamp_standard': stamp_standard,
                     'sijang_name': sijang_name.innerHTML
                 };
-                if (!$('#smallImage').files) {
-                    $('.alert_x').css('display','block');
-                        $('.alert_content').html('이미지를 등록해주세요');
-                        $('.alert_x').click(function(){
-                    })
-                    return false;
-                }
+
                 var data2 = new FormData();
                 data2.append('manager_id', manager_id);
                 data2.append('password', password);
