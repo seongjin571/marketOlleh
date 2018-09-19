@@ -1226,14 +1226,14 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
             $('#nameing').html('')
         }
     })
-    $('.signuptext2').eq(6).change(function () {
-        if($(this).val()){
-            $('.manager_check_div').eq(6).css('visibility', 'visible')
-        }
-        else{
-            $('.manager_check_div').eq(6).css('visibility', 'hidden')
-        }
-    })
+    // $('.signuptext2').eq(6).change(function () {
+    //     if($(this).val()){
+    //         $('.manager_check_div').eq(6).css('visibility', 'visible')
+    //     }
+    //     else{
+    //         $('.manager_check_div').eq(6).css('visibility', 'hidden')
+    //     }
+    // })
     $('.signuptext2').eq(7).change(function () {
         if($(this).val()){
             $('.manager_check_div').eq(7).css('visibility', 'visible')
@@ -1457,6 +1457,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
 <script type="text/javascript">
     $('#getMarket_location').click(function(event) {
         window.seoulApp.SignUpgetGPS();
+        $('.manager_check_div').eq(6).css('visibility', 'visible')
     }); // get location
 </script>
 </html>
