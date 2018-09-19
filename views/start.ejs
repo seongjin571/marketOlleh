@@ -87,7 +87,7 @@
                   취소
                 </div>
                 <div class="alert_select_ok">
-                    확인                                
+                    확인
                   </div>
               </div>
             </div>
@@ -870,7 +870,9 @@
         </div>
 
 
+
         
+
 
         <script>
             $('#signupForm2').submit(function (e) {
@@ -918,11 +920,10 @@
                     'stamp_standard': stamp_standard,
                     'sijang_name': sijang_name.innerHTML
                 };
-                if (!$('input[name=manager_img]')[0].files[0]) {
+                if (!$('#smallImage').files) {
                     $('.alert_x').css('display','block');
                         $('.alert_content').html('이미지를 등록해주세요');
                         $('.alert_x').click(function(){
-                        $(window).reload('');
                     })
                     return false;
                 }
@@ -939,8 +940,8 @@
                 data2.append('market_introduce', market_introduce);
                 data2.append('stamp_standard', stamp_standard);
                 data2.append('sijang_name', sijang_name.innerHTML);
-                // data2.append('manager_img', $('input[name=manager_img]')[0].files[0]);
-                data2.append('manager_img', $('#smallImg').val());
+                data2.append('manager_img', $('#smallImage').files);
+                // data2.append('manager_img', $('#smallImg').val());
                 $.ajax({
                     type: "POST",
                     url: "/signup/signupmanager",
