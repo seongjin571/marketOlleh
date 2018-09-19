@@ -940,7 +940,7 @@
                 } else if (select_stamp_standard == 2) {
                     stamp_standard = 10;
                 }
-                var manager_img = jQuery('#smallImage').attr("src");
+                var manager_image = jQuery('#smallImage').attr("src");
                 // var sijang_name = sijang_name.innerHTML;
                 var data = {
                     'manager_id': manager_id,
@@ -955,7 +955,7 @@
                     'market_introduce': market_introduce,
                     'stamp_standard': stamp_standard,
                     'sijang_name': sijang_name.innerHTML,
-                    'manager_img': manager_img
+                    'manager_image': manager_image
                 };
 
                 var data2 = new FormData();
@@ -971,14 +971,15 @@
                 data2.append('market_introduce', market_introduce);
                 data2.append('stamp_standard', stamp_standard);
                 data2.append('sijang_name', sijang_name.innerHTML);
-                data2.append('manager_img', manager_img);
+                data2.append('manager_image', manager_image);
                 // data2.append('manager_img', $('#smallImg').val());
                 alert(manager_img);
                 $.ajax({
                     type: "POST",
                     url: "/signup/signupmanager",
-                    contentType: false,
-                    processData: false,
+                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                    cache: false,
+                    datatype: "json",
                     data: data2,
                     success: function (result) {
                         if (result['result'] == 'success') {
