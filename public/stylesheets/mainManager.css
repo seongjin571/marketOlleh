@@ -281,6 +281,7 @@ h3{
     background-clip: content-box, border-box;
     padding: 1px;
     display: inline-block;
+    font-size: 14px;
 }
 .alert_select_cancel{
     text-align: center;
@@ -295,4 +296,5 @@ h3{
     padding: 1px;
     display: inline-block;
     color: white;
+    font-size: 14px;
 }
