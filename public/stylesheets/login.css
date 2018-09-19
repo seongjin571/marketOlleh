@@ -427,6 +427,9 @@ body, html {
     border: 0px;
     outline:none;
 }
+.user{
+    height: 100%;
+}
 #way{
     box-shadow: 5px 5px 3px #efefef;
     text-align: center;
