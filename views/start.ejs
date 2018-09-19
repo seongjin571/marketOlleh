@@ -70,7 +70,7 @@
                   취소
                 </div>
                 <div class="alert_select_ok">
-                    확인
+                    확인                                
                   </div>
               </div>
             </div>
@@ -485,7 +485,10 @@
       var largeImage = document.getElementById('largeImage');
       // Unhide image elements
       //
+
       largeImage.style.display = 'block';
+     // largeImage.style.display = 'visible';
+
       // Show the captured photo
       // The inline CSS rules are used to resize the image
       //
@@ -514,9 +517,48 @@
       }
       navigator.camera.getPicture(function(imageData) {
         alert(imageData);
+        var smallImage = document.getElementById('smallImage');
+
+        // Unhide image elements
+        //
+        smallImage.style.display = 'visible';
+
+        // Show the captured photo
+        // The inline CSS rules are used to resize the image
+        //
+        smallImage.src = "data:image/jpeg;base64," + imageData;
+         // $("#smallImage").attr("src",imageData);
       }, function(err){
       }, options);
     }
+    var takePicture = function(){
+			var options = {
+				quality          : 75,
+				destinationType  : Camera.DestinationType.DATA_URL,
+				sourceType       : Camera.PictureSourceType.CAMERA,
+				allowEdit        : true,
+				encodingType     : Camera.EncodingType.JPEG,
+				targetWidth      : 300,
+				targetHeight     : 300,
+				popoverOptions   : CameraPopoverOptions,
+				saveToPhotoAlbum : false
+			};
+			navigator.camera.getPicture(function(imageURI) {
+        alert(imageURI);
+        var smallImage = document.getElementById('smallImage');
+
+        // Unhide image elements
+        //
+        smallImage.style.display = 'visible';
+
+        // Show the captured photo
+        // The inline CSS rules are used to resize the image
+        //
+        smallImage.src = "data:image/jpeg;base64," + imageURI;
+        // $("#smallImage").attr("src",imageURI);
+ 			}, function(err) {
+ 			}, options);
+		};
     // function capturePhotoEdit() {
     //   // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
     //   navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
@@ -623,11 +665,14 @@
                             </div>
                             <div id="sijang_picture" name='sijang_name'>상점사진</div>
                             <label id="picture_pic"for="manager_img" onclick="uploadPhoto();">사진 촬영</label>
+                            <!-- <label style="position:absolute;width:100px;height:100px;background-color:red;" for="manager_img" onclick="takePicture();">사진 촬영2</label> -->
                             <!-- <label id="picture_pic"for="manager_img" onclick="capturePhotoEdit();">사진 촬영</label> -->
                             <!-- <input type='file' name='manager_img' id='manager_img' accept="image/jpg" src=""/> -->
                         </div>
                         <!-- <img class="picture_div" src="/images/market9.jpg" height="auto"</img> -->
-                        <img style="display:none;height:auto;" class="picture_div" height="auto" id="smallImage" src="" />
+
+                        <img style="display:hidden;height : 10px;" id="smallImage" src='' />
+
 
 
 
@@ -808,13 +853,13 @@
         <div class="swiper-container user">
             <div class="swiper-wrapper">
                         <div class="swiper-slide swiper1">
-                    
+                    1
                         </div>
                         <div class="swiper-slide swiper1">
-                    
+                    2
                         </div>
                         <div class="swiper-slide swiper1">
-                    
+                    3
                         </div>
                   
             </div>
@@ -984,10 +1029,7 @@
             swiper.slideTo(this_index, 500, false);
         });
 
-<<<<<<< HEAD
-   
-=======
->>>>>>> 88256d9e67ee419850fe95d4720648b4969eb4e8
+
     // setTimeout(function () {
     //     $('#intro_image_div').fadeOut('1000');
     // }, 2000);
@@ -1000,6 +1042,7 @@
     setTimeout(function () {
         $('#intro_image_div').fadeOut('1000');
     }, 2000);
+
 
     var name2 = /^[가-힣]+$/;
     var id = /^[a-z0-9_]{6,15}$/;
@@ -1275,7 +1318,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         $('#loginManager').css('display','none');
         $('#signupManager').css('display','block');
     })
- 
+
     // 뒤로가기 고객로그인부분
     $('#back_loginuser').click(function () {
         $('#loginuser').fadeOut(300)
