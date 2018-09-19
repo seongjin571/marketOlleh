@@ -829,13 +829,13 @@
         <div class="swiper-container user">
             <div class="swiper-wrapper">
                         <div class="swiper-slide swiper1">
-                    
+                    1
                         </div>
                         <div class="swiper-slide swiper1">
-                    
+                    2
                         </div>
                         <div class="swiper-slide swiper1">
-                    
+                    3
                         </div>
                   
             </div>
@@ -1007,18 +1007,7 @@
             swiper.slideTo(this_index, 500, false);
         });
 
-    // setTimeout(function () {
-    //     $('#intro_image_div').fadeOut('1000');
-    // }, 2000);
 
-        swiper.on('slideChangeTransitionStart', function () {
-            var active = swiper.activeIndex;
-            $('.go_slide').css('color', 'black');
-            $('.go_slide').eq(active).css('color', '#63dded');
-        });
-    setTimeout(function () {
-        $('#intro_image_div').fadeOut('1000');
-    }, 2000);
     var name2 = /^[가-힣]+$/;
     var id = /^[a-z0-9_]{6,15}$/;
     var password = /^[a-zA-Z0-9]{6,15}$/;
