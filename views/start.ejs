@@ -20,7 +20,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=8">
     <script type="text/javascript" charset="utf-8" src="/cordova/cordova.js"></script>
     <script src='/cordova/cordova_plugins.js'></script>
-    <script>
+    <!-- <script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
     <script src="/javascripts/spin.js"></script>
      <script>
@@ -566,7 +566,7 @@
         </div>
 
         <form id='signupForm2'>
-            <div class="swiper-container">
+            <div class="swiper-container s1">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="signupuser_input3">
@@ -648,7 +648,7 @@
                             <!-- <input type='file' name='manager_img' id='manager_img' accept="image/jpg" src=""/> -->
                         </div>
                         <!-- <img class="picture_div" src="/images/market9.jpg" height="auto"</img> -->
-                        <img style="display:none;height="auto"" class="picture_div" height="auto" id="smallImage" src="" />
+                        <img style="display:none;height:auto;" class="picture_div" height="auto" id="smallImage" src="" />
 
 
 
@@ -825,6 +825,24 @@
             </div>
         </div>
 
+
+        <div class="swiper-container user">
+            <div class="swiper-wrapper">
+                        <div class="swiper-slide swiper1">
+                    
+                        </div>
+                        <div class="swiper-slide swiper1">
+                    
+                        </div>
+                        <div class="swiper-slide swiper1">
+                    
+                        </div>
+                  
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        
+
         <script>
             $('#signupForm2').submit(function (e) {
                 var signcount_manager=0;
@@ -908,10 +926,6 @@
                             $('.alert_content').html('회원가입이 완료되었습니다');
                             $('#signupManager').css('display','none');
                             $('#loginManager').css('display','block');
-                            // $('.alert_o').click(function(){
-                            //     $(localStorage).setItem('introFlag', 2);
-                            //     $(location).reload();
-                            // })
                             $('#manager_id_jh').val('');
                             $('#password_jh').val('');
                             $('#password_jh_check').val('');
@@ -961,7 +975,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
 
 <script>
-    var swiper = new Swiper('.swiper-container', {
+    var swiper = new Swiper('.s1', {
         autoHeight: true,
         observer: true,
         observeParents: true,
@@ -970,6 +984,21 @@
             hide: true,
         },
     });
+    swiper.on('slideChangeTransitionStart', function () {
+            var active = swiper.activeIndex;
+            $('.go_slide').css('color', 'black');
+            $('.go_slide').eq(active).css('color', '#63dded');
+        });
+    var swiper_user = new Swiper('.user', {
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            spaceBetween: 0,
+            pagination: {
+                el: '.swiper-pagination',
+                dynamicBullets: true,
+                clickable: true,
+            },
+        });
     $('.go_slide').click(function (e) {
             var this_index = $(this).index();
             e.preventDefault();
@@ -978,6 +1007,12 @@
             swiper.slideTo(this_index, 500, false);
         });
 
+<<<<<<< HEAD
+   
+    // setTimeout(function () {
+    //     $('#intro_image_div').fadeOut('1000');
+    // }, 2000);
+=======
         swiper.on('slideChangeTransitionStart', function () {
             var active = swiper.activeIndex;
             $('.go_slide').css('color', 'black');
@@ -986,6 +1021,7 @@
     setTimeout(function () {
         $('#intro_image_div').fadeOut('1000');
     }, 2000);
+>>>>>>> 63e92d3ad9535682e3904a572e1a8fe9ce905b83
     var name2 = /^[가-힣]+$/;
     var id = /^[a-z0-9_]{6,15}$/;
     var password = /^[a-zA-Z0-9]{6,15}$/;
