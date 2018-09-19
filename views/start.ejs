@@ -60,6 +60,7 @@
                     5
                     <button id="user_x">닫기</button>
                 </div>
+
         
             </div>
                 <div class="swiper-pagination"></div>
@@ -1374,6 +1375,10 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     $('#way').click(function(){
         $('.user').css('display','block')
         $('#loginuser').css('display','none');
+    })
+    $('#user_x').click(function(){
+        $('.user').css('display','none')
+        $('#loginuser').css('display','block');
     })
 
     // 클릭 이벤트
