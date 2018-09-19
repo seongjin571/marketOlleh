@@ -76,11 +76,11 @@ body, html {
     color: white;
 }
 #back_loginuser{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background: white;
-    margin-top: 15px;
-    margin-left: 15px;
+    margin-top: 10px;
+    margin-left: 10px;
     position: fixed;
 }
 #findid_form{
@@ -132,8 +132,8 @@ body, html {
     padding-top:10px;
 }
 #find_user_id_bt{
-    width: 8%;
-    height: 8%;
+    width: 20px;
+    height: 20px;
     margin-top: 10px;
     margin-left: 40px;
     background-color: white;
