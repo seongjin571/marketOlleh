@@ -1079,8 +1079,11 @@ select{
 }
 .alert_content{
     text-align: center;
-    width: 100%;
     height: 40%;
+    margin-left: 5%;
+    width: 90%;
+    height: 40%;
+    line-height: 20px;
 }
 .alert_content_select{
     text-align: center;
