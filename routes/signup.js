@@ -46,7 +46,7 @@ router.post('/signupmanager', function(req, res) {
   var market_promotion = req.body.market_promotion;
   var market_introduce = req.body.market_introduce;
   var sijang_name = req.body.sijang_name;
-  var manager_img = req.body.manager_img;
+  var manager_img = req.body.manager_image;
   var selectSql = 'select * from `manager` where `manager_id`=?';
   var insertSql = 'insert into `manager`(`manager_id`, `password`, `market_name`,`market_location`,`manager_phone`,`manager_name`,`stamp_standard`,`stamp_reward`,`stamp_password`,`market_promotion`,`market_introduce`,`sijang_name`, `manager_image`) values (?,?,?,?,?,?,?,?,?,?,?,?,?);';
 
@@ -56,7 +56,7 @@ router.post('/signupmanager', function(req, res) {
       res.send({ result: 'already' });
     }
     else{
-      conn.query(insertSql, [manager_id, password, market_name,market_location,manager_phone,manager_name,stamp_standard,stamp_reward,stamp_password,market_promotion,market_introduce,sijang_name, manager_img], function(err, rows){
+      conn.query(insertSql, [manager_id, password, market_name,market_location,manager_phone,manager_name,stamp_standard,stamp_reward,stamp_password,market_promotion,market_introduce,sijang_name, manager_image], function(err, rows){
         if(err){ console.log(err); }
         else{
           res.send({ result: 'success' });
