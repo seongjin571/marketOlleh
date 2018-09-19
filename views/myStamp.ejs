@@ -806,7 +806,7 @@
                             success: function (result) {
                               if (result['result'] == 'success') {
                                 $('.alert_o').css('display','block');
-                                $('.alert_content').html('스탬프가 추가 되었습니다.')
+                                $('.alert_content').html('스탬프가 추가 되었습니다')
                                 number1 = "";
                                 $('.check<%= myStamps[i].id %>').html('');
                                 console.log(result);
@@ -860,7 +860,7 @@
                             success: function (result) {
                               if (result['result'] == 'successs') {
                                       $('.alert_o').css('display','block');
-                                      $('.alert_content').html('스탬프가 사용 되었습니다.')
+                                      $('.alert_content').html('스탬프가 사용 되었습니다')
                                 number1 = "";
                                 stamp_count<%= myStamps[i].id %> = 0;
                                 if (parseInt('<%= myStamps[i].stamp_standard %>') == 5) {
