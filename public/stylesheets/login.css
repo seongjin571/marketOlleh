@@ -427,6 +427,25 @@ body, html {
     border: 0px;
     outline:none;
 }
+#way{
+    box-shadow: 5px 5px 3px #efefef;
+    text-align: center;
+    display: inline-block;
+    width: 90%;
+    height: 50px;
+    line-height: 50px;
+    color: #B6B7B7;
+    background-color: white;
+    border: double 1px transparent;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+     radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;    
+    padding: 1px;
+    border: 0px;
+    outline:none;
+}
 #kakaobutton p{
     margin: 0;
 }
