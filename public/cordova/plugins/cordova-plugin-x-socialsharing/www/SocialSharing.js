@@ -128,7 +128,13 @@ SocialSharing.prototype._getErrorCallback = function (ecb, functionName) {
   } else {
     return function (result) {
       //console.log("The injected error callback of '" + functionName + "' received: " + JSON.stringify(result));
-      alert('해당 기기에 설치되어 있는 페이스북 어플리케이션으로만 실행 가능합니다. 설치여부를 확인해주세요');
+
+      // alert('해당 기기에 설치되어 있는 페이스북 어플리케이션으로만 실행 가능합니다. 설치여부를 확인해주세요');
+      var goToPlayStoreConfirm = confirm('본 기능은 해당 기기에 페이스북 어플리케이션이 있어야 실행이 가능합니다. 앱을 설치하시겠습니까?');
+      if(goToPlayStoreConfirm) {
+        window.location.href = 'https://play.google.com/store/apps/details?id=com.facebook.katana';
+      }
+
     }
   }
 };
