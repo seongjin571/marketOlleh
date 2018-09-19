@@ -536,12 +536,8 @@
        return false;
       }
     })
-    // var chk_send = 0;
-    // $(document).off('click', '.find_coupon_list1').on('click', '.find_coupon_list1', function() {
       var check=0;
     $(document).on("click",'.find_coupon_list1',function(event){
-      // if (chk_send == 0){
-      //         chk_send = 1;
 
         var list = $('.find_coupon_list1').index(this);
         var market=document.getElementsByClassName('store_name1')[list];
@@ -557,7 +553,6 @@
         console.log(coupon_password);
         var user_id = '<%= user_id %>'
         console.log(user_id);
-        // alert(market_name +'+'+sijang_name+'+'+coupon_password);
         down();
         function down() {
           $('.alert_select').css('display','block');
@@ -606,18 +601,10 @@
                         data: data,
                         success: function (result) {
                           if (result['result'] == 'decrease') {
-                            // $('.alert_x').css('display', 'none');
-                            // $('.alert_content').html('쿠폰이 발급 되었습니다.')
-                            // $('.alert_o').click(function () {
-                            // alert('뻄1');
                             location.reload()
                             // });
                           }
                           else if (result['result'] == 'delete') {
-                            // $('.alert_x').css('display', 'none');
-                            // $('.alert_content').html('쿠폰이 발급 되었습니다.')
-                            // $('.alert_o').click(function () {
-                            // alert('뺌2');
                             location.reload()
                             // });
                           }

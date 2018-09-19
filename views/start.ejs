@@ -416,8 +416,8 @@
                         if (result['result'] == 'success') {
                             $('.alert_o').css('display','block');
                             $('.alert_content').html('회원가입이 완료되었습니다');
-                            $('#signupuser').fadeOut(300);
-                            $('#loginuser').fadeIn(300);
+                            $('#signupuser').css('display','none');
+                            $('#loginuser').css('display','block');
                             $('#userid').val('');
                             $('#username').val('');
                             $('#userpwd').val('');
@@ -889,8 +889,8 @@
                         if (result['result'] == 'success') {
                             $('.alert_o').css('display','block');
                             $('.alert_content').html('회원가입이 완료되었습니다');
-                            $('#signupManager').fadeOut(300)
-                            $('#loginManager').fadeIn(300)
+                            $('#signupManager').css('display','none');
+                            $('#loginManager').css('display','block');
                             // $('.alert_o').click(function(){
                             //     $(localStorage).setItem('introFlag', 2);
                             //     $(location).reload();
@@ -1237,21 +1237,14 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         $('#loginManager').fadeIn(300)
     })
     $('#loginUser_sign_up').click(function () {
-        $('#loginuser').fadeOut(300)
-        $('#signupuser').fadeIn(300)
+        $('#loginuser').css('display','none');
+        $('#signupuser').css('display','block');
     })
     $('#loginmanager_sign_up').click(function () {
-        $('#loginManager').fadeOut(300)
-        $('#signupManager').fadeIn(300)
+        $('#loginManager').css('display','none');
+        $('#signupManager').css('display','block');
     })
-    // $('#userfinish').click(function () {
-    //     $('#signupuser').fadeOut(300)
-    //     $('#loginuser').fadeIn(300)
-    // })
-    // $('#managerfinish').click(function () {
-    //     $('#signupManager').fadeOut(300)
-    //     $('#loginManager').fadeIn(300)
-    // })
+ 
     // 뒤로가기 고객로그인부분
     $('#back_loginuser').click(function () {
         $('#loginuser').fadeOut(300)
@@ -1268,8 +1261,11 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         $('.alert_content_select').html('회원가입을 취소하시겠습니까?')
         $('.alert_select_ok').click(function () {
             $(".alert_select").css('display','none');
-            $('#signupuser').fadeOut(300)
-            $('#loginuser').fadeIn(300)
+            $('#signupuser').css('display','none');
+            $('#loginManager').css('display','none');
+            $('#signupManager').css('display','none');
+            $('#start').css('display','none');
+            $('#loginuser').css('display','block');
         });
     });
     // 뒤로가기 상인회원가입부분
@@ -1278,8 +1274,11 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         $('.alert_content_select').html('회원가입을 취소하시겠습니까?')
         $('.alert_select_ok').click(function () {
             $(".alert_select").css('display','none');
-            $('#signupManager').fadeOut(300);
-            $('#loginManager').fadeIn(300);
+            $('#signupuser').css('display','none');
+            $('#loginuser').css('display','none');
+            $('#signupManager').css('display','none');
+            $('#start').css('display','none');
+            $('#loginManager').css('display','block');
         });
     });
     // 클릭 이벤트
