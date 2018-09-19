@@ -56,6 +56,7 @@ body, html, #modal_market_name {
     background-clip: content-box, border-box;
     padding: 1px;
     display: inline-block;
+    font-size: 14px;
 }
 .alert_select_cancel{
     text-align: center;
@@ -70,6 +71,7 @@ body, html, #modal_market_name {
     padding: 1px;
     display: inline-block;
     color: white;
+    font-size: 14px;
 }
 #modal_market_name{
     font-family: 'NanumSquare',sans-serif;    
