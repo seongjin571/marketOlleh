@@ -86,8 +86,8 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 
 		$('#face').click(function() {
 			var shareUrl = 'http://13.209.89.231:3000/share/' + market_arr.sijang_name.replace(/ /gi, '%20') + '\/' + market_arr.market_name.replace(/ /gi, '%20');
-			// window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
-			window.plugins.socialsharing.shareVia('com.facebook.katana', null, null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
+			window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
+			// window.plugins.socialsharing.shareVia('com.facebook.katana', null, null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
 		});
 
 
