@@ -24,7 +24,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
     <script src="/javascripts/spin.js"></script>
      <script>
-
         window.addEventListener('load', function () {
             FastClick.attach(document.body);
         }, false);
@@ -35,13 +34,10 @@
   document.addEventListener("backbutton", onBackKeyDown, false);
   function onBackKeyDown(e) {
      e.preventDefault();
-
      var exitAppConfirm = confirm("앱을 종료하시겠습니까?");
-
      if(exitAppConfirm) {
        navigator.app.exitApp();
      }
-
   }
 </script>
 
@@ -74,7 +70,7 @@
                   취소
                 </div>
                 <div class="alert_select_ok">
-                    확인
+                    확인                                
                   </div>
               </div>
             </div>
@@ -452,61 +448,52 @@
 
     <!--signupManager 시작-->
     <script type="text/javascript" charset="utf-8">
-
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value
-
     // Wait for device API libraries to load
     //
     document.addEventListener("deviceready",onDeviceReady,false);
-
     // device APIs are available
     //
     function onDeviceReady() {
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     }
-
     // Called when a photo is successfully retrieved
     //
     function onPhotoDataSuccess(imageData) {
       // Uncomment to view the base64-encoded image data
       // console.log(imageData);
-
       // Get image handle
       //
       var smallImage = document.getElementById('smallImage');
-
       // Unhide image elements
       //
       smallImage.style.display = 'block';
-
       // Show the captured photo
       // The inline CSS rules are used to resize the image
       //
       smallImage.src = "data:image/jpeg;base64," + imageData;
     }
-
     // Called when a photo is successfully retrieved
     //
     function onPhotoURISuccess(imageURI) {
       // Uncomment to view the image file URI
       // console.log(imageURI);
-
       // Get image handle
       //
       var largeImage = document.getElementById('largeImage');
-
       // Unhide image elements
       //
-      largeImage.style.display = 'visible';
+
+      largeImage.style.display = 'block';
+     // largeImage.style.display = 'visible';
 
       // Show the captured photo
       // The inline CSS rules are used to resize the image
       //
       largeImage.src = imageURI;
     }
-
     // A button will call this function
     //
     function capturePhoto() {
@@ -514,7 +501,6 @@
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
         destinationType: destinationType.DATA_URL });
     }
-
     // A button will call this function
     //
     var uploadPhoto = function(){
@@ -543,7 +529,6 @@
         smallImage.src = "data:image/jpeg;base64," + imageData;
          // $("#smallImage").attr("src",imageData);
       }, function(err){
-
       }, options);
     }
     var takePicture = function(){
@@ -579,7 +564,6 @@
     //   navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
     //     destinationType: destinationType.DATA_URL });
     // }
-
     // A button will call this function
     //
     function getPhoto(source) {
@@ -588,7 +572,6 @@
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     }
-
     // Called if something bad happens.
     //
     function onFail(message) {
@@ -953,8 +936,6 @@
                 data2.append('sijang_name', sijang_name.innerHTML);
                 // data2.append('manager_img', $('input[name=manager_img]')[0].files[0]);
                 data2.append('manager_img', $('#smallImg').val());
-
-
                 $.ajax({
                     type: "POST",
                     url: "/signup/signupmanager",
@@ -1009,7 +990,7 @@
         </script>
         <script type="text/javascript" src="/javascripts/signupManager.js"></script>
     </div>
-    <!--signupManager `끝-->
+    <!--signupManager 끝-->
 
 </body>
 <!--start script  시작-->
@@ -1047,6 +1028,20 @@
             $('.go_slide').eq(this_index).css('color', '#63dded');
             swiper.slideTo(this_index, 500, false);
         });
+
+
+    // setTimeout(function () {
+    //     $('#intro_image_div').fadeOut('1000');
+    // }, 2000);
+
+        swiper.on('slideChangeTransitionStart', function () {
+            var active = swiper.activeIndex;
+            $('.go_slide').css('color', 'black');
+            $('.go_slide').eq(active).css('color', '#63dded');
+        });
+    setTimeout(function () {
+        $('#intro_image_div').fadeOut('1000');
+    }, 2000);
 
 
     var name2 = /^[가-힣]+$/;
@@ -1164,7 +1159,6 @@
             $('.manager_check_div').eq(4).css('visibility', 'hidden')
         }
     })
-
     $('#smallImage').on('load', function () {
 $('.manager_check_div').eq(9).css('visibility', 'visible')
 });
@@ -1330,11 +1324,13 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         $('#loginuser').fadeOut(300)
         $('#start').fadeIn(300)
     })
-    // 뒤로가기 상인로그인부분
+    // 뒤로가기 상인로그인부분1
     $('#back_loginManager').click(function () {
         $('#loginManager').fadeOut(300)
         $('#start').fadeIn(300)
     })
+
+
     // 뒤로가기 고객회원가입부분
     $('#back_signupuser').click(function () {
         $('.alert_select').css('display', 'block');
@@ -1361,7 +1357,6 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
             $('#loginManager').css('display','block');
         });
     });
-
     // 클릭 이벤트
     $('.alert_x').click(function(){
         $(this).css('display','none')
