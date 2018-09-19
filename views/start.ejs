@@ -908,9 +908,8 @@
 
         <script>
             $('#signupForm2').submit(function (e) {
-                var signcount_manager=0;
-                var val_src = jQuery('#smallImage').attr("src");
                 e.preventDefault();
+                var signcount_manager=0;
                 for (var i = 0; i < 14; i++) {
                 if ($('.manager_check_div').eq(i).css('visibility') == 'visible') {
                     signcount_manager++;
@@ -938,6 +937,7 @@
                 } else if (select_stamp_standard == 2) {
                     stamp_standard = 10;
                 }
+                var manager_img = jQuery('#smallImage').attr("src");
                 // var sijang_name = sijang_name.innerHTML;
                 var data = {
                     'manager_id': manager_id,
@@ -951,7 +951,8 @@
                     'market_promotion': market_promotion,
                     'market_introduce': market_introduce,
                     'stamp_standard': stamp_standard,
-                    'sijang_name': sijang_name.innerHTML
+                    'sijang_name': sijang_name.innerHTML,
+                    'manager_img': manager_img
                 };
 
                 var data2 = new FormData();
@@ -967,8 +968,9 @@
                 data2.append('market_introduce', market_introduce);
                 data2.append('stamp_standard', stamp_standard);
                 data2.append('sijang_name', sijang_name.innerHTML);
-                data2.append('manager_img', $('#smallImage').files);
+                data2.append('manager_img', manager_img);
                 // data2.append('manager_img', $('#smallImg').val());
+                alert(manager_img);
                 $.ajax({
                     type: "POST",
                     url: "/signup/signupmanager",
