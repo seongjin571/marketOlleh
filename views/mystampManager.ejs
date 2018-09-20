@@ -331,6 +331,7 @@
         var password_number=/^[0-9]{4}$/;
         $('#password_input').change(function () {
         var password_L = $(this).val();
+    console.log(password_L)
         var true_or_false = password_number.test(password_L);
         if(true_or_false){
         }
