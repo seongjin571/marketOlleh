@@ -1064,11 +1064,11 @@ select{
 }
 .alert_x_content,.alert_o_content{
     width: 70%;
-    height: 25%;
+    height: 150px;
     background-color: white;
     border-radius: 10px;
     position: fixed;
-    top: 37.5%;
+    /* top: 37.5%; */
     left:15%;
 }
 .alert_image{

@@ -1006,14 +1006,20 @@
 
                               var topHeight=148;
 
-                              var passwordHeight=allHeight-navHeight-topHeight;
-                              var numberHeight=(passwordHeight-105)/4;
-                              var starWidth=(allWidth-200)/2;
-                              $('.star_upload').css('margin-left',starWidth+'px')
-                              $('.password_number_div_sj').css('height',passwordHeight+'px')
-                              $('.password_check').css('height','75px').css('padding-bottom','30px')
-                              $('.password_line_sj').css('height',numberHeight+'px')
-                              $('.password_line_sj div').css('height',numberHeight+'px')
+                                var passwordHeight = allHeight - navHeight - topHeight;
+                                var numberHeight = (passwordHeight - 105) / 4;
+                                var starWidth = (allWidth - 200) / 2;
+                                $('.star_upload').css('margin-left', starWidth + 'px')
+                                $('.password_number_div_sj').css('height', passwordHeight + 'px')
+                                $('.password_check').css('height', '75px').css('padding-bottom', '30px')
+                                $('.password_line_sj').css('height', numberHeight + 'px')
+                                $('.password_line_sj div').css('height', numberHeight + 'px')
+
+                                var nav_height = allHeight - (allHeight * 0.08)
+                                var alert_height = (allHeight / 2) - 75;
+                                $('.alert_x_content').css('top', alert_height + 'px');
+                                $('.alert_o_content').css('top', alert_height + 'px');
+                                $('#nav_sj').css('top', nav_height + 'px');
 
 
 

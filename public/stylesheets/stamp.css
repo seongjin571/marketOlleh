@@ -651,7 +651,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         }
         .alert_x_content,.alert_o_content{
             width: 70%;
-            height: 25%;
+            height: 150px;
             background-color: white;
             border-radius: 10px;
             position: fixed;

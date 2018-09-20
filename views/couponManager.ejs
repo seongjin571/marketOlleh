@@ -212,6 +212,12 @@
 </body>
 <!-- <script src="/javascripts/swiper.min.js"></script> -->
 <script>
+    var allHeight=document.body.clientHeight;
+          var nav_height=allHeight-(allHeight*0.08)
+    var alert_height=(allHeight/2)-75;
+    $('.alert_x_content').css('top',alert_height+'px');
+    $('.alert_o_content').css('top',alert_height+'px');
+    $('#nav_sj').css('top',nav_height+'px');
     var password_number=/^[0-9]{4}$/;
     $('#go_my_coupon').click(function () {
         $('#coupon_view').hide(200);

@@ -189,11 +189,15 @@ html {
     line-height: 40px;
 }
 .market_name{
-    width: 70%;
+    width: 63%;
+    margin-left: 7%;
     height: 35px;
     line-height: 35px;
     font-size: 14px;
-    text-align: center;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .sale_price{
     width: 100%;
@@ -356,7 +360,7 @@ input,select{
 }
 .alert_x_content,.alert_o_content{
     width: 70%;
-    height: 25%;
+    height: 150px;
     background-color: white;
     border-radius: 10px;
     position: fixed;
