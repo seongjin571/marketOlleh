@@ -333,10 +333,10 @@
                         <!-- 좋아요 개수 출력 부분 [ like_count ] -->
                         <p class="top_font" id="goodCount_sj"></p>
                     </div>
-                    <div id="face">
+                    <!-- <div id="face">
                       <img class="top_image" src="/images/face.png" width="30px" height="30px">
                       <p class="top_font">공유하기</p>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
                 <div id="bottom_infor">
@@ -434,7 +434,7 @@
                         <img src="/images/location3.png" width="30px" height="30px">
                         <div class="name">위치</div>
                 </div>
-                <div id="manager_Map" style="width:90%;height:250px;margin-left: 5%; "></div>                
+                <div id="manager_Map" style="width:90%;height:250px;margin-left: 5%; "></div>
                 <!-- <img src="/images/han.png" width="80%" style="margin-left: 10%;margin-top: 5%;"> -->
             </div>
 
@@ -669,11 +669,11 @@
     <script type="text/javascript">
         // 아래 함수 실행시 전역변수 window.myLat, window.myLng 값 = 위도 경도 값 저장
         window.seoulApp.SignUpgetGPS();
-        
+
         // 위도 경도의 순수 거리값 보다는 10진수화 된 값을 가지고
         // 정렬 먼저해봄 (실제 거리 구하시는 식 X )
         function nearCounting(marketList) {
-            
+
             var SortingMarket = new Array();
 
             // marketList는 market DB의 시장을 전부 가져온 row값
@@ -683,7 +683,7 @@
                 var tempY = window.myLng - marketList[i].coordinateY;
                 var tempResult = Math.pow(tempX, 2) + Math.pow(tempY, 2);
                 tempResult = Math.sqrt(tempResult);
-                
+
                 // key : value 형태 object로 마켓리스트를 저장
                 // 하지만 imgurl이 없으면 디폴트 경로 설정
                 if (!marketList[i].imgurl) {
