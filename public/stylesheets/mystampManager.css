@@ -27,6 +27,38 @@ html {
     margin-top: 20px;
     text-align: center;
 } */
+#picture_reform_div{
+    margin-top: 10px;
+    width: 100%;
+    height: 110px;
+    display: inline-flex;
+}
+.picture_reform{
+    width: 50%;
+}
+#picture_capture{
+    display: none;
+}
+#picture_capture button{
+    box-shadow: 5px 5px 3px #efefef;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    margin-top: 11px;
+    height: 37px;
+    line-height: 37px;
+    color: #B6B7B7;
+    background-color: white;
+    border: double 1px transparent;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+     radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;    
+    padding: 1px;
+    border: 0px;
+    outline:none;
+}
 #mystore_image{
     width: 110px;
     height: 110px;
@@ -118,6 +150,7 @@ input,textarea{
 
 
 #stamp_reform{
+    margin-top: 20px;
     font-size: 17px;
     width: 45%;
     margin-left: 27.5%;
@@ -140,14 +173,16 @@ input,textarea{
     margin-left: 7.5%;
 }
 .picture_reform{
+    width: 50%;
+    padding-top: 30px;
     text-align: center;
     color: #9c9c9c;
     font-size: 14px;
-    height: 30px;
-    line-height: 30px;
-    margin-bottom: 10px;
+    height: 50px;
+    line-height: 27px;
 }
 #reform{
+    margin-top: 20px;
     display: inline-flex;
     width: 75%;
     margin-left: 12.5%;
