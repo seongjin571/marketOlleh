@@ -688,14 +688,7 @@
                             <div class="manager_signup_name">상점이름</div>
                             <input class="signuptext2" type="text" id="market_name" name='market_name' placeholder="ex)또리네 분식집">
                         </div>
-                        <div class="signupuser_input3">
-                            <div class="manager_check_div">
-                                <img src="/images/check.png" width="30px" height="30px">
-                            </div>
-                            <div class="manager_signup_name">상점위치</div>
-                            <!-- <input class="signuptext2" type="text" id="market_location" name='market_location' placeholder="상점 위치"> -->
-                            <input type="button" value="위치"  id="getMarket_location"/>
-                        </div>
+                      
 
                         <div class="signupuser_input3">
                             <div class="manager_check_div">
@@ -704,7 +697,15 @@
                             <div class="manager_signup_name">상점소개</div>
                             <textarea class="signuptext2" type="text" id="market_introduce" name='market_introduce'></textarea>
                         </div>
-                        <div class="signuser_coupon1" id="find_market">
+                        <div class="signupuser_input3" id="find_market">
+                                <div class="manager_check_div">
+                                    <img src="/images/check.png" width="30px" height="30px">
+                                </div>
+                                <div class="manager_signup_name">상점위치</div>
+                                <!-- <input class="signuptext2" type="text" id="market_location" name='market_location' placeholder="상점 위치"> -->
+                                <input type="button" value="위치"  id="getMarket_location"/>
+                            </div>
+                        <div class="signuser_coupon1">
                             <div class="manager_check_div">
                                 <img src="/images/check.png" width="30px" height="30px">
                             </div>
@@ -1253,10 +1254,10 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     // })
     $('.signuptext2').eq(6).change(function () {
         if($(this).val()){
-            $('.manager_check_div').eq(7).css('visibility', 'visible')
+            $('.manager_check_div').eq(6).css('visibility', 'visible')
         }
         else{
-            $('.manager_check_div').eq(7).css('visibility', 'hidden')
+            $('.manager_check_div').eq(6).css('visibility', 'hidden')
         }
     })
     $('.signuptext5').eq(0).change(function () {
@@ -1478,7 +1479,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
 <script type="text/javascript">
     $('#getMarket_location').click(function(event) {
         window.seoulApp.SignUpgetGPS();
-        $('.manager_check_div').eq(6).css('visibility', 'visible')
+        $('.manager_check_div').eq(7).css('visibility', 'visible')
     }); // get location
 </script>
 </html>
