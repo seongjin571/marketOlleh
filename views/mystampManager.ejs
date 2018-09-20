@@ -159,11 +159,6 @@
 
     <div id="stamp_detail">
         <div class="inputLine">
-            <img src="/images/mulUserM.png" width="24px" height="24px">
-            <p class="name">사용자수</p>
-            <input readonly value="<%= results3.cnt2 %>"></input>
-        </div>
-        <div class="inputLine">
             <img src="/images/stampM.png" width="24px" height="24px">
             <p class="name">지급 기준</p>
             <input class="input_content" type="text" id="market_promotion" readonly value="<%= result[0].market_promotion %>">
@@ -183,8 +178,19 @@
             <p class="name">비밀번호</p>
             <input class="input_content" id="password_input"type="password" maxlength="4"  readonly value="<%= result[0].stamp_password %>">
         </div>
-        <div id="mystore_image"  style="background: url('/files/<%= result[0].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
-        <div class="picture_reform" onclick="capturePhotoEdit();" style="visibility:hidden">사진 클릭 시 사진을 수정할 수 있습니다.</div>
+        <div class="inputLine">
+                <img src="/images/mulUserM.png" width="24px" height="24px">
+                <p class="name">사용자수</p>
+                <input readonly value="<%= results3.cnt2 %>"></input>
+            </div>
+        <div id="picture_reform_div">
+        <div id="mystore_image"  style="background: url('/files/<%= result[0].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 100%;"></div>
+        <div class="picture_reform">수정 버튼 클릭 시 사진을 수정할 수 있습니다.</div>
+        <div id="picture_capture">
+            <button>갤러리</button>
+            <button>사진 촬영</button>
+        </div>
+        </div>
         <button id="stamp_reform">수정</button>
         <div id="reform">
                 <button id="stamp_reform_cancel" style="margin-right: 10%">취소</button>
@@ -240,7 +246,8 @@
             })
         })
         $('#stamp_reform').click(function () {
-            $('.picture_reform').css('visibility', 'visible');
+            $('.picture_reform').css('display', 'none');
+            $('#picture_capture').css('display', 'block');
             $(this).css('display', 'none');
             $('#reform').css('display', 'inline-flex');
             $('.input_content').attr('readonly', false);
@@ -263,12 +270,13 @@
             else {
                 $('#reform').css('display', 'none');
                 $('#stamp_reform').css('display', 'block');
-                $('.input_content').attr('readonly', true).css('border-image','none');
-                $('textarea').attr('readonly', true).css('border-image','none');
+                $('.input_content').attr('readonly', true).css('border-image', 'none');
+                $('textarea').attr('readonly', true).css('border-image', 'none');
                 $('input').css('color', '#9c9c9c');
                 $('textarea').css('color', '#9c9c9c');
-                $('#password_input').css('color','#48a2eb');
-                $('.picture_reform').css('visibility', 'hidden');
+                $('#password_input').css('color', '#48a2eb');
+                $('.picture_reform').css('display', 'block');
+                $('#picture_capture').css('display', 'none');
             }
         })
         // $('#mystore_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });

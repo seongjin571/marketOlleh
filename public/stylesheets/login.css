@@ -7,7 +7,12 @@ body, html {
     margin: 0;
     background-color: white;
 }
-  
+#smallImage{
+    width: 40%;
+    height: auto;
+    margin-left: 30%;
+    margin-top: 20px;
+}
 #start,#all_body {
     width: 100%;
     height: 100%;
