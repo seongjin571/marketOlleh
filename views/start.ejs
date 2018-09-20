@@ -693,8 +693,8 @@
                                 <img src="/images/check.png" width="30px" height="30px">
                             </div>
                             <div class="manager_signup_name">상점위치</div>
-                            <input class="signuptext2" type="text" id="market_location" name='market_location' placeholder="상점 위치">
-                            <input type="button" value="GetGPS" style="padding: 0; height: 70%;" id="getMarket_location"/>
+                            <!-- <input class="signuptext2" type="text" id="market_location" name='market_location' placeholder="상점 위치"> -->
+                            <input type="button" value="위치"  id="getMarket_location"/>
                         </div>
 
                         <div class="signupuser_input3">
@@ -726,7 +726,7 @@
                     </div>
                         <!-- <img class="picture_div" src="/images/market9.jpg" height="auto"</img> -->
 
-                        <img style="display:hidden;height : 10px;" id="smallImage" src='' />
+                        <img id="smallImage" src='' />
 
 
 
@@ -911,9 +911,8 @@
 
         <script>
             $('#signupForm2').submit(function (e) {
-                var signcount_manager=0;
-                var val_src = jQuery('#smallImage').attr("src");
                 e.preventDefault();
+                var signcount_manager=0;
                 for (var i = 0; i < 14; i++) {
                 if ($('.manager_check_div').eq(i).css('visibility') == 'visible') {
                     signcount_manager++;
@@ -941,6 +940,7 @@
                 } else if (select_stamp_standard == 2) {
                     stamp_standard = 10;
                 }
+                var manager_image = jQuery('#smallImage').attr("src");
                 // var sijang_name = sijang_name.innerHTML;
                 var data = {
                     'manager_id': manager_id,
@@ -954,7 +954,8 @@
                     'market_promotion': market_promotion,
                     'market_introduce': market_introduce,
                     'stamp_standard': stamp_standard,
-                    'sijang_name': sijang_name.innerHTML
+                    'sijang_name': sijang_name.innerHTML,
+                    'manager_image': manager_image
                 };
 
                 var data2 = new FormData();
@@ -970,14 +971,19 @@
                 data2.append('market_introduce', market_introduce);
                 data2.append('stamp_standard', stamp_standard);
                 data2.append('sijang_name', sijang_name.innerHTML);
-                data2.append('manager_img', $('#smallImage').files);
+                data2.append('manager_image', manager_image);
                 // data2.append('manager_img', $('#smallImg').val());
+                alert(manager_image);
                 $.ajax({
                     type: "POST",
                     url: "/signup/signupmanager",
                     contentType: false,
+                    datatype: "json",
                     processData: false,
                     data: data2,
+
+                    // contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+
                     success: function (result) {
                         if (result['result'] == 'success') {
                             $('.alert_o').css('display','block');
@@ -1093,10 +1099,23 @@
     setTimeout(function () {
         $('#intro_image_div').fadeOut('1000');
     }, 2000);
-
-
+var ok;
+function CheckPass(str){
+   var reg1 = /^[a-z0-9]{6,15}$/;    // a-z 0-9 중에 7자리 부터 14자리만 허용 한다는 뜻이구요
+   var reg2 = /[a-z]/g;    
+   var reg3 = /[0-9]/g;
+   if((reg1.test(str) &&  reg2.test(str) && reg3.test(str))){
+       ok=1;
+   }
+   else{
+       ok=0;
+   }
+   
+};
     var name2 = /^[가-힣]+$/;
-    var id = /^[a-z0-9_]{6,15}$/;
+    
+ 
+    // var id = /^[a-z0-9_]{6,15}$/;
     var password = /^[a-zA-Z0-9]{6,15}$/;
     var password_number=/^[0-9]{4}$/;
     var email = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -1109,7 +1128,7 @@
         else {
             $('.check_div').eq(0).css('visibility', 'hidden');
             $('.alert_x').css('display','block');
-            $('.alert_content').html('이름을 확인해 주세요.');
+            $('.alert_content').html('이름을 확인해 주세요');
         }
     })
     $('.signuptext').eq(4).change(function () {
@@ -1121,73 +1140,73 @@
         else {
             $('.check_div').eq(4).css('visibility', 'hidden');
             $('.alert_x').css('display','block');
-            $('.alert_content').html('이메일을 확인해 주세요.');
+            $('.alert_content').html('이메일을 확인해 주세요');
             $(this).val('');
         }
     })
     $('.signuptext').eq(1).change(function () {
-        var id_check = $(this).val();
-        var true_or_false = id.test(id_check);
-        if (true_or_false) {
-            $('.check_div').eq(1).css('visibility', 'visible');
-        }
-        else {
-            $('.check_div').eq(1).css('visibility', 'hidden');
-            $('.alert_x').css('display','block');
-            $('.alert_content').html('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
-        }
-    })
+            var id_check = $(this).val();
+            CheckPass(id_check)
+            if (ok == 1) {
+                $('.check_div').eq(1).css('visibility', 'visible');
+            }
+            else {
+                $('.check_div').eq(1).css('visibility', 'hidden');
+                $('.alert_x').css('display', 'block');
+                $('.alert_content').html('6~15자리 숫자/영문자 조합으로 아이디를 생성할 수 있습니다');
+            }
+        })
     var pwd1, pwd2 = 0;
     var pwd1_M,pwd2_M=0;
     $('#userpwd').change(function () {
         pwd1 = $(this).val();
-        var true_or_false = password.test(pwd1);
-        if (true_or_false) {
-            if ($('#userpwdcheck').val()) {
+        CheckPass(pwd1)
+            if (ok == 1) {
+                if ($('#userpwdcheck').val()) {
                 if (pwd1 == pwd2) {
                     $('.check_div').eq(2).css('visibility', 'visible');
                     $('.check_div').eq(3).css('visibility', 'visible');
                 }
                 else {
                     $('.alert_x').css('display','block');
-                    $('.alert_content').html('비밀번호가 다릅니다.');
+                    $('.alert_content').html('비밀번호가 다릅니다');
                     $(this).val('');
                     $('#userpwdcheck').val('');
                     $('.check_div').eq(2).css('visibility', 'hidden');
                     $('.check_div').eq(3).css('visibility', 'hidden');
                 }
             }
-        }
-        else {
-            $('.alert_x').css('display','block');
-            $('.alert_content').html('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
+            }
+            else {
+                $('.alert_x').css('display','block');
+            $('.alert_content').html('6~15자리 숫자/영문자 조합으로 비밀번호를 생성할 수 있습니다');
             $(this).val('');
-        }
+            }
     })
     $('#userpwdcheck').change(function () {
         pwd2 = $(this).val();
-        var true_or_false = password.test(pwd2);
-        if (true_or_false) {
-            if ($('#userpwd').val()) {
+        CheckPass(pwd2)
+            if (ok == 1) {
+                if ($('#userpwd').val()) {
                 if (pwd1 == pwd2) {
                     $('.check_div').eq(2).css('visibility', 'visible');
                     $('.check_div').eq(3).css('visibility', 'visible');
                 }
                 else {
                     $('.alert_x').css('display','block');
-                    $('.alert_content').html('비밀번호가 다릅니다.');
+                    $('.alert_content').html('비밀번호가 다릅니다');
                     $(this).val('');
                     $('#userpwd').val('');
                     $('.check_div').eq(2).css('visibility', 'hidden');
                     $('.check_div').eq(3).css('visibility', 'hidden');
                 }
             }
-        }
-        else {
-            $('.alert_x').css('display','block');
-            $('.alert_content').html('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
+            }
+            else {
+                $('.alert_x').css('display','block');
+            $('.alert_content').html('6~15자리 숫자/영문자 조합으로 비밀번호를 생성할 수 있습니다');
             $(this).val('');
-        }
+            }
     })
     //////////유저회원가입 정규식/////////////
     $('.signuptext2').eq(0).change(function () {
@@ -1197,9 +1216,9 @@
             $('.manager_check_div').eq(0).css('visibility', 'visible');
         }
         else {
-            $('.check_div').eq(0).css('visibility', 'hidden');
+            $('.manager_check_div').eq(0).css('visibility', 'hidden');
             $('.alert_x').css('display','block');
-            $('.alert_content').html('이름을 확인해 주세요.');
+            $('.alert_content').html('이름을 확인해 주세요');
         }
     })
     $('.signuptext2').eq(4).change(function () {
@@ -1224,14 +1243,14 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
             $('#nameing').html('')
         }
     })
-    $('.signuptext2').eq(6).change(function () {
-        if($(this).val()){
-            $('.manager_check_div').eq(6).css('visibility', 'visible')
-        }
-        else{
-            $('.manager_check_div').eq(6).css('visibility', 'hidden')
-        }
-    })
+    // $('.signuptext2').eq(6).change(function () {
+    //     if($(this).val()){
+    //         $('.manager_check_div').eq(6).css('visibility', 'visible')
+    //     }
+    //     else{
+    //         $('.manager_check_div').eq(6).css('visibility', 'hidden')
+    //     }
+    // })
     $('.signuptext2').eq(7).change(function () {
         if($(this).val()){
             $('.manager_check_div').eq(7).css('visibility', 'visible')
@@ -1266,74 +1285,74 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         }
         else{
             $('.alert_x').css('display','block');
-            $('.alert_content').html('4자리 숫자로 입력해주세요.');
+            $('.alert_content').html('4자리 숫자로 입력해주세요');
             $(this).val('')
             $('#password_star').html('');
             $('.manager_check_div').eq(12).css('visibility', 'hidden')
         }
     })
     $('.signuptext2').eq(1).change(function () {
-        var id_check = $(this).val();
-        var true_or_false = id.test(id_check);
-        if (true_or_false) {
-            $('.manager_check_div').eq(1).css('visibility', 'visible');
-        }
-        else {
-            $('.check_div').eq(1).css('visibility', 'hidden');
-            $('.alert_x').css('display','block');
-            $('.alert_content').html('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
-        }
-    })
+            var id_check = $(this).val();
+            CheckPass(id_check)
+            if (ok == 1) {
+                $('.manager_check_div').eq(1).css('visibility', 'visible');
+            }
+            else {
+                $('.manager_check_div').eq(1).css('visibility', 'hidden');
+                $('.alert_x').css('display', 'block');
+                $('.alert_content').html('6~15자리 숫자/영문자 조합으로 아이디를 생성할 수 있습니다');
+            }
+        })
     $('#password_jh').change(function () {
-        pwd1_M = $(this).val();
-        var true_or_false = password.test(pwd1_M);
-        if (true_or_false) {
-            if ($('#password_jh_check').val()) {
-                if (pwd1_M == pwd2_M) {
-                    $('.manager_check_div').eq(2).css('visibility', 'visible');
-                    $('.manager_check_div').eq(3).css('visibility', 'visible');
-                }
-                else {
-                    $('.alert_x').css('display','block');
-                    $('.alert_content').html('비밀번호가 다릅니다.');
-                    $(this).val('');
-                    $('#password_jh_check').val('');
-                    $('.manager_check_div').eq(2).css('visibility', 'hidden');
-                    $('.manager_check_div').eq(3).css('visibility', 'hidden');
-                }
-            }
-        }
-        else {
-            $('.alert_x').css('display','block');
-            $('.alert_content').html('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다.');
-            $(this).val('');
-        }
-    })
-    $('#password_jh_check').change(function () {
-        pwd2_M = $(this).val();
-        var true_or_false = password.test(pwd2_M);
-        if (true_or_false) {
-            if ($('#password_jh').val()) {
-                if (pwd1_M == pwd2_M) {
-                    $('.manager_check_div').eq(2).css('visibility', 'visible');
-                    $('.manager_check_div').eq(3).css('visibility', 'visible');
-                }
-                else {
-                    $('.alert_x').css('display','block');
-                   $('.alert_content').html('비밀번호가 다릅니다.');
-                    $(this).val('');
-                    $('#password_jh').val('');
-                    $('.manager_check_div').eq(2).css('visibility', 'hidden');
-                    $('.manager_check_div').eq(3).css('visibility', 'hidden');
+            pwd1_M = $(this).val();
+            CheckPass(pwd1_M)
+            if (ok == 1) {
+                if ($('#password_jh_check').val()) {
+                    if (pwd1_M == pwd2_M) {
+                        $('.manager_check_div').eq(2).css('visibility', 'visible');
+                        $('.manager_check_div').eq(3).css('visibility', 'visible');
+                    }
+                    else {
+                        $('.alert_x').css('display', 'block');
+                        $('.alert_content').html('비밀번호가 다릅니다.');
+                        $(this).val('');
+                        $('#password_jh_check').val('');
+                        $('.manager_check_div').eq(2).css('visibility', 'hidden');
+                        $('.manager_check_div').eq(3).css('visibility', 'hidden');
+                    }
                 }
             }
-        }
-        else {
-            $('.alert_x').css('display','block');
-            $('.alert_content').html('숫자와 영문자 조합으로 6~15자리를 사용해야 합니다');
-            $(this).val('');
-        }
-    })
+            else {
+                $('.alert_x').css('display', 'block');
+                $('.alert_content').html('6~15자리 숫자/영문자 조합으로 비밀번호를 생성할 수 있습니다');
+                $(this).val('');
+            }
+        })
+        $('#password_jh_check').change(function () {
+            pwd2_M = $(this).val();
+            CheckPass(pwd2_M)
+            if (ok == 1) {
+                if ($('#password_jh').val()) {
+                    if (pwd1_M == pwd2_M) {
+                        $('.manager_check_div').eq(2).css('visibility', 'visible');
+                        $('.manager_check_div').eq(3).css('visibility', 'visible');
+                    }
+                    else {
+                        $('.alert_x').css('display', 'block');
+                        $('.alert_content').html('비밀번호가 다릅니다.');
+                        $(this).val('');
+                        $('#password_jh').val('');
+                        $('.manager_check_div').eq(2).css('visibility', 'hidden');
+                        $('.manager_check_div').eq(3).css('visibility', 'hidden');
+                    }
+                }
+            }
+            else {
+                $('.alert_x').css('display', 'block');
+                $('.alert_content').html('6~15자리 숫자/영문자 조합으로 비밀번호를 생성할 수 있습니다');
+                $(this).val('');
+            }
+        })
     $('.stamp_standard').change(function(){
         var stamp_standard_option=$(".stamp_standard option:selected").val();
         if (stamp_standard_option==5){
@@ -1450,11 +1469,16 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
             $("#loginButton_user").trigger("click");
         } // if
     }); // enter keyup event
+    var allHeight=document.body.clientHeight;
+    var alert_height=(allHeight/2)-75;
+    $('.alert_x_content').css('top',alert_height+'px');
+    $('.alert_o_content').css('top',alert_height+'px');
 </script>
 <script src="/javascripts/cordova_getgps.js"></script>
 <script type="text/javascript">
     $('#getMarket_location').click(function(event) {
         window.seoulApp.SignUpgetGPS();
+        $('.manager_check_div').eq(6).css('visibility', 'visible')
     }); // get location
 </script>
 </html>

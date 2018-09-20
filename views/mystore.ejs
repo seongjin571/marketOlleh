@@ -117,7 +117,7 @@
 
             <div class="swiper-slide">
                 <div id="store_detail_sj">
-                    <div id="store_image" style="background: url('/files/<%= result1[0].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 155%;"></div>
+                    <div id="store_image" style="background: url('/files/<%= result1[0].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 100%;"></div>
                     <div id="introduce">
                         <img src="/images/storeM.png" width="30px" height="30px">
                         <div id="name">상점소개</div>
@@ -281,7 +281,13 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
 
-    <script>
+    <script>          
+            var allHeight = document.body.clientHeight;
+            var nav_height = allHeight - (allHeight * 0.08)
+            var alert_height = (allHeight / 2) - 75;
+            $('.alert_x_content').css('top', alert_height + 'px');
+            $('.alert_o_content').css('top', alert_height + 'px');
+            $('#nav_sj').css('top', nav_height + 'px');
         var swiper = new Swiper('.swiper-container', {
             autoHeight: true,
             scrollbar: {

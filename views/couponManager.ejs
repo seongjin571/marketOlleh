@@ -212,6 +212,12 @@
 </body>
 <!-- <script src="/javascripts/swiper.min.js"></script> -->
 <script>
+    var allHeight=document.body.clientHeight;
+          var nav_height=allHeight-(allHeight*0.08)
+    var alert_height=(allHeight/2)-75;
+    $('.alert_x_content').css('top',alert_height+'px');
+    $('.alert_o_content').css('top',alert_height+'px');
+    $('#nav_sj').css('top',nav_height+'px');
     var password_number=/^[0-9]{4}$/;
     $('#go_my_coupon').click(function () {
         $('#coupon_view').hide(200);
@@ -281,7 +287,7 @@
         }
         else{
             $('.alert_x').css('display', 'block');
-            $('.alert_content').html('4자리 숫자로 입력해주세요.')
+            $('.alert_content').html('4자리 숫자로 입력해주세요')
             $(this).val('')
             $('#password').html('')
             $('.check_input:eq(3)').css('visibility', 'hidden')
@@ -363,14 +369,14 @@
             success: function (result) {
                 if (result['result'] == 'success') {
                     $('.alert_o').css('display','block');
-                    $('.alert_content').html('쿠폰 등록이 완료되었습니다.')
+                    $('.alert_content').html('쿠폰 등록이 완료되었습니다')
                     $('.alert_o').click(function(){
                     location.reload();
                     });
                 }
                 else if (result['result'] == 'fail') {
                     $('.alert_x').css('display', 'block');
-                    $('.alert_content').html('이미 쿠폰이 존재합니다.')
+                    $('.alert_content').html('이미 쿠폰이 존재합니다')
                 }else {
                   alert('couponManager.ejs에서 확인해봐야함');
                   location.reload();
@@ -383,7 +389,7 @@
     }
     else{
         $('.alert_x').css('display', 'block');
-        $('.alert_content').html('쿠폰 입력을 모두 해주세요.')
+        $('.alert_content').html('쿠폰 입력을 모두 해주세요')
     }
     })
         $('.alert_x').click(function () {

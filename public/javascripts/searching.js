@@ -260,7 +260,7 @@ function searchingAjax(event) {
     // search_value 값 공백일때 서버 에러 처리
     if(!search_value.value){
 		$('.alert_x').css('display', 'block');
-		$('.alert_content').html('검색어를 확인해 주세요.')
+		$('.alert_content').html('검색어를 확인해 주세요')
       return;
     }
 
@@ -281,12 +281,12 @@ function searchingAjax(event) {
 				makeSearchList(result, result.rows.length);
 			} else {
 				$('.alert_x').css('display', 'block');
-				$('.alert_content').html('검색어를 확인해 주세요.');
+				$('.alert_content').html('검색어를 확인해 주세요');
 			}
 		},
 		error: function (e) {
 			$('.alert_x').css('display', 'block');
-			$('.alert_content').html('검색어를 확인해 주세요.');
+			$('.alert_content').html('검색어를 확인해 주세요');
 			console.log('process error : ', e);
 		}
 	}); // ajax
