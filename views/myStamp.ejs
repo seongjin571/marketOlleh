@@ -302,7 +302,7 @@
 
               <div class="swiper-slide">
                   <div id="store_detail_sj">
-                      <div class="store_image" style="background: url('/files/<%= myStamps[i].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 100%;"></div>
+                      <div class="store_image" style="background: url('<%= myStamps[i].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 100%;"></div>
                       <div id="introduce">
                           <img src="/images/storeM.png" width="30px" height="30px">
                           <div class="name">상점소개</div>
@@ -522,7 +522,7 @@
                 $('.go_slide').css('color', 'black');
                 $('.go_slide').eq(active).css('color', '#63dded');
               });
-              
+
             });
             $('.go_slide').click(function () {
               var slide_index = $(this).index();
@@ -582,7 +582,7 @@
 
             /*  좋아요  */
             var good<%= myStamps[i].id %> = document.getElementById('goodCount_sj<%= myStamps[i].id %>');
-            
+
             $('.good<%= myStamps[i].id %>').click(function () {
               if ($('#noGood_Button_sj<%= myStamps[i].id %>').css('display') == 'inline-block'){
               var data = {
