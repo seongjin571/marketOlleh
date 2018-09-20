@@ -11,7 +11,7 @@ body, html {
     width: 40%;
     height: auto;
     margin-left: 30%;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 #start,#all_body {
     width: 100%;
@@ -570,15 +570,15 @@ a{
 .signupuser_input3{
     width:90%;
     margin-left: 5%;
-    height:48px;
+    height:50px;
     color:grey;
     display: inline-flex;
 }
 .manager_signup_name{
     width: 35%;
     margin-left: 3%;
-    height: 30px;
-    line-height: 30px;
+    height: 35px;
+    line-height: 35px;
     color: black;
 }
 
@@ -795,8 +795,8 @@ select{
     padding: 1px;
     border: 0px;
     color: gray;
-    height: 30px;
-    line-height: 30px;
+    height: 33px;
+    line-height: 33px;
     font-size: 13px;
     }
 
@@ -811,7 +811,7 @@ select{
     border: 0;
  }
 
-#modal_display{
+#modal_display,#getMarket_location{
     font-size: 13px;
     box-shadow: 5px 5px 3px #efefef;
     width: 50%;
@@ -825,7 +825,7 @@ select{
     padding: 1px;
     border: 0px;
     color: gray;
-    height: 32px;
+    height: 35px;
     outline: none;
 }
 #modal_close{
