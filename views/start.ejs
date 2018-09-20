@@ -973,14 +973,17 @@
                 data2.append('sijang_name', sijang_name.innerHTML);
                 data2.append('manager_image', manager_image);
                 // data2.append('manager_img', $('#smallImg').val());
-                alert(manager_img);
+                alert(manager_image);
                 $.ajax({
                     type: "POST",
                     url: "/signup/signupmanager",
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    cache: false,
+                    contentType: false,
                     datatype: "json",
+                    processData: false,
                     data: data2,
+
+                    // contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+
                     success: function (result) {
                         if (result['result'] == 'success') {
                             $('.alert_o').css('display','block');
