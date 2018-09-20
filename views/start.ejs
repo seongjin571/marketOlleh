@@ -1469,6 +1469,10 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
             $("#loginButton_user").trigger("click");
         } // if
     }); // enter keyup event
+    var allHeight=document.body.clientHeight;
+    var alert_height=(allHeight/2)-75;
+    $('.alert_x_content').css('top',alert_height+'px');
+    $('.alert_o_content').css('top',alert_height+'px');
 </script>
 <script src="/javascripts/cordova_getgps.js"></script>
 <script type="text/javascript">

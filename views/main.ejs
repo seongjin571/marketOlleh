@@ -480,6 +480,12 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
     <script>
+            var allHeight = document.body.clientHeight;
+            var nav_height = allHeight - (allHeight * 0.08)
+            var alert_height = (allHeight / 2) - 75;
+            $('.alert_x_content').css('top', alert_height + 'px');
+            $('.alert_o_content').css('top', alert_height + 'px');
+            $('#nav_sj').css('top', nav_height + 'px');
         $('#myStamp_sj').click(function () {
             location.href = "/myStamp";
         })
@@ -783,7 +789,7 @@
                 }); // ajax
             }); // click event
         }
-
+      
     </script>
 </body>
 

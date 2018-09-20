@@ -387,7 +387,7 @@ h3,h4{
     background: white;
     display: inline-flex;
     position: fixed;
-    top: 92%;
+    /* top: 92%; */
     z-index: 1;
     border-top-style:solid;
     border-top-width: 0.5px;
@@ -420,11 +420,11 @@ h3,h4{
 }
 .alert_x_content,.alert_o_content{
     width: 70%;
-    height: 25%;
+    height: 150px;
     background-color: white;
     border-radius: 10px;
     position: fixed;
-    top: 37.5%;
+    /* top: 37.5%; */
     left:15%;
 }
 .alert_image{

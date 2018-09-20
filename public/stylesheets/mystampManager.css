@@ -193,7 +193,7 @@ input,textarea{
 }
 .alert_x_content,.alert_o_content{
     width: 70%;
-    height: 25%;
+    height: 150px;
     background-color: white;
     border-radius: 10px;
     position: fixed;

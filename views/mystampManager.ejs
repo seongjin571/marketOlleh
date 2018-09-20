@@ -215,6 +215,12 @@
         </div>
     </div>
     <script>
+            var allHeight = document.body.clientHeight;
+            var nav_height = allHeight - (allHeight * 0.08)
+            var alert_height = (allHeight / 2) - 75;
+            $('.alert_x_content').css('top', alert_height + 'px');
+            $('.alert_o_content').css('top', alert_height + 'px');
+            $('#nav_sj').css('top', nav_height + 'px');
         var change = 0;
         $('#home').click(function () {
             location.href = "/mainManager";
