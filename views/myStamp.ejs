@@ -44,11 +44,28 @@
       var review_tab = 'store_review_sj' + localStorage.getItem('reviewTab');
       var stamp_detail = 'selected_stamp' + localStorage.getItem('reviewTab');
       var back = 'back_div' + localStorage.getItem('reviewTab');
+      var stamp_index_number=localStorage.getItem('stamp_index_number');
 
       $('#myStamp').fadeOut('200');
       $('#'+stamp_detail).fadeIn('200');
       $('#'+review_tab).fadeIn('200');
       $('#'+back).fadeIn('200');
+      var id_value=localStorage.getItem('reviewTab');
+      swiper = new Swiper('.s1'+id_value, {
+        initialSlide: 0,
+        autoHeight: true,
+        observer: true,
+        observeParents: true,
+        scrollbar: {
+          el: '.swiper-scrollbar',
+          hide: true,
+        },
+      });
+      swiper.on('slideChangeTransitionStart', function () {
+        var active = swiper.activeIndex + (stamp_index_number * 4);
+        $('.go_slide').css('color', 'black');
+        $('.go_slide').eq(active).css('color', '#63dded');
+      });
 
       localStorage.clear();
     }
@@ -498,8 +515,9 @@
 
             var number1 = "";
             var swiper
+            var stamp_index
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
-              var stamp_index=$(this).index()
+              stamp_index=$(this).index()
               $('.go_slide').eq(stamp_index*4).css('color', '#63dded');
               // 스크롤 조절
               window.scrollTo(0, 0);
@@ -672,6 +690,7 @@
 
             var chk_send = 0;
             $('#write_ok_button<%= myStamps[i].id %>').click(function(){
+              
               if (chk_send == 0){
               chk_send = 1;
 
@@ -730,6 +749,7 @@
                     $('.alert_content').html('리뷰 등록이 완료되었습니다')
                     $('.alert_o').click(function () {
                     localStorage.setItem('reviewTab', '<%= myStamps[i].id %>');
+                    localStorage.setItem('stamp_index_number', stamp_index);
                     location.reload();
                     });
                   }

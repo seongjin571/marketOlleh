@@ -25,7 +25,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 		}
 	tempString[2] = '<div class="market_infoText_li"><img src="/images/type.png" width="30px" height="30px"><p class="naming">유형</p><div class="content_div">'+market_arr.shape+','+market_arr.dealing+'</div></div>';
 	// tempString[4] = '<div class="market_infoText_li"> <a href='+market_arr.web+'>시장 링크</a></div>';
-	tempString[3] = '<div class="market_infoText_li"><img src="/images/type.png" width="30px" height="30px"><p class="naming">주소</p><div class="content_div">'+market_arr.oldaddress+'</div></div>';
+	tempString[3] = '<div class="market_infoText_li"><img src="/images/location3.png" width="30px" height="30px"><p class="naming">주소</p><div class="content_div">'+market_arr.oldaddress+'</div></div>';
 	tempString[4] = '<div class="market_infoText_li"><img src="/images/phone.png" width="30px" height="30px"><p class="naming">전화번호</p><div class="content_div">'+market_arr.callnum+'</div></div>';
 	// tempString[7] = '<div class="market_infoText_li"> 시장 대표 품목 : '+market_arr.representative+'</div>';
 	tempString[5] = '<div class="market_infoText_li"><img src="/images/traffic.png" width="30px" height="30px"><p class="naming">교통편</p><div class="content_div">'+market_arr.nearinfo+'</div></div><div class="line"></div>';

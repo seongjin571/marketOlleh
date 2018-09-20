@@ -623,7 +623,7 @@ select{
 }
 .signupuser_input4{
     position: fixed;
-    top: 410px;
+    top: 412px;
     width:90%;
     margin-left: 5%;
     height:50px;
@@ -973,7 +973,7 @@ select{
 }
 #myStamp{
     position: fixed;
-    top:235px;
+    top:238px;
     width: 75%;
     margin-left: 12.5%;
     height: 165px;
@@ -1036,7 +1036,7 @@ select{
 
 .five_sj,
 .ten_sj {
-    display: inline-flex;
+    display: inline-block;
     width: 15%;
     height: 36px;
     border-radius: 200px;
@@ -1050,10 +1050,7 @@ select{
  
 .five_sj p,.ten_sj p{
     margin: 0;
-    padding-left: 12px;
-}
-#ten{
-    padding-left: 7px !important;
+    /* padding-left: 12px; */
 }
 .tenStamp_top_sj,
 .tenStamp_bottom_sj {
