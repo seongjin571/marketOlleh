@@ -25,7 +25,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 		}
 	tempString[2] = '<div class="market_infoText_li"><img src="/images/type.png" width="30px" height="30px"><p class="naming">유형</p><div class="content_div">'+market_arr.shape+','+market_arr.dealing+'</div></div>';
 	// tempString[4] = '<div class="market_infoText_li"> <a href='+market_arr.web+'>시장 링크</a></div>';
-	tempString[3] = '<div class="market_infoText_li"><img src="/images/type.png" width="30px" height="30px"><p class="naming">주소</p><div class="content_div">'+market_arr.oldaddress+'</div></div>';
+	tempString[3] = '<div class="market_infoText_li"><img src="/images/location3.png" width="30px" height="30px"><p class="naming">주소</p><div class="content_div">'+market_arr.oldaddress+'</div></div>';
 	tempString[4] = '<div class="market_infoText_li"><img src="/images/phone.png" width="30px" height="30px"><p class="naming">전화번호</p><div class="content_div">'+market_arr.callnum+'</div></div>';
 	// tempString[7] = '<div class="market_infoText_li"> 시장 대표 품목 : '+market_arr.representative+'</div>';
 	tempString[5] = '<div class="market_infoText_li"><img src="/images/traffic.png" width="30px" height="30px"><p class="naming">교통편</p><div class="content_div">'+market_arr.nearinfo+'</div></div><div class="line"></div>';
@@ -84,11 +84,17 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
     $('#market_name_sj').text(market_arr.sijang_name);
     $('#goodCount_sj').text(market_arr.like_count);
 
-		// $('#face').click(function() {
-		// 	var shareUrl = 'http://13.209.89.231:3000/share/' + market_arr.sijang_name.replace(/ /gi, '%20') + '\/' + market_arr.market_name.replace(/ /gi, '%20');
-		// 	window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
-		// 	// window.plugins.socialsharing.shareVia('com.facebook.katana', null, null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
-		// });
+		$('#face').click(function() {
+			var shareUrl = 'http://13.209.89.231:3000/share/' + market_arr.sijang_name.replace(/ /gi, '%20') + '\/' + market_arr.market_name.replace(/ /gi, '%20');
+			window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){
+				//alert(errormsg)
+				var goToPlayStoreConfirm = confirm('본 기능은 해당 기기에 페이스북 어플리케이션이 있어야 실행이 가능합니다. 앱을 설치하시겠습니까?');
+	      if(goToPlayStoreConfirm) {
+	        window.location.href = 'https://play.google.com/store/apps/details?id=com.facebook.katana';
+	      }
+			});
+			// window.plugins.socialsharing.shareVia('com.facebook.katana', null, null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
+		});
 
 
     // 지금 이 함수를 불러오게 하는 user_id가
