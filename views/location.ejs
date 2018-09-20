@@ -7,7 +7,7 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <script src='/cordova/cordova.js'></script>
-    <!-- <script src='/cordova/cordova_plugins.js'></script> -->
+    <script src='/cordova/cordova_plugins.js'></script>
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
@@ -33,8 +33,12 @@
       });
   }
 </script>
+<!-- kakao map API (hw edit) -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
 
 <body>
+  <div id="Lo_manager_Map" style="width:90%;height:250px;margin-left: 5%; "></div>
+
         <div class="alert_select"  style="display:none">
                 <div class="alert_o_content">
                   <div class="alert_content_select">
@@ -96,7 +100,121 @@
       })
 
     </script>
+    
+    <!-- HW EDIT 코르도바 + 자바스크립트 + 태그제어 -->
+    <script src="/javascripts/cordova_getgps.js"></script>
+    <!-- ▼ hw edit; map javascirpt -->
+    <script type="text/javascript">
+      // 아래 함수 실행시 전역변수 window.myLat, window.myLng 값 = 위도 경도 값 저장
+      // window.seoulApp.SignUpgetGPS();        
+      // 안드로이드 ~ SignUpgetGPS Class 참조 
+      window.seoulApp.SignUpgetGPS();
 
+      var markersGPS = []; // (need gps) 지도에 표시된 마커 객체를 가지고 있을 배열입니다
+
+      // 마커를 생성하고 지도위에 표시하는 함수입니다
+      function addMarkerGPS(position, mapObj) {
+
+          // 마커를 생성합니다
+          var marker = new daum.maps.Marker({
+              position: position
+          });
+
+          // 마커가 지도 위에 표시되도록 설정합니다
+          marker.setMap(mapObj);
+
+          // 생성된 마커를 배열에 추가합니다
+          markersGPS.push(marker);
+      }
+
+      // 지도를 표시할 div (id)
+      var mapContainer = document.getElementById('Lo_manager_Map'),
+          mapOption = {
+              center: new daum.maps.LatLng(parseFloat(window.myLat), parseFloat(window.myLng)), // 지도의 중심좌표
+              level: 4 // 지도의 확대 레벨
+          };
+
+      var Lo_manager_Map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+      // 마커 하나를 지도위에 표시합니다
+      addMarkerGPS(new daum.maps.LatLng(parseFloat(window.myLat), parseFloat(window.myLng)), Lo_manager_Map);
+
+      // Lo_manager_Map.relayout();
+
+    </script>
+    <script type="text/javascript">
+      
+      // ajax 통신 테스팅
+      function getNearMarket() {
+          $.ajax({
+              url: "/searching/near",
+              dataType: 'json',
+              type: 'POST',
+              contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+              // data: params,
+              success: function (result) {
+                  console.log(result);
+                  if (result.rows.length > 0) {
+                    for (var i = 0; i < result.rows.length; i++) {
+                      var tempX = result.rows[i].coordinateX;
+                      var tempY = result.rows[i].coordinateY;
+                      
+                      addMarkerGPS(new daum.maps.LatLng(parseFloat(window.myLat), parseFloat(window.myLng)), Lo_manager_Map);                      
+                    } // inner for
+                  } else {
+                      console.log('DB error _ or _ index.js ~ router error');
+                  } // if ~ else
+              },
+              error: function (e) {
+                  console.log('process error : ', e);
+              }
+          }); // ajax
+      } // getNearMarket
+
+      getNearMarket();
+
+      /*
+      function gettingMap() {
+
+          $.ajax({
+              url: "/searching/marketList",
+              dataType: 'json',
+              type: 'POST',
+              contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+              data: {
+
+              },
+              success: function (result) {
+                  if (result.rows.length > 0) {
+
+                      // manager get gps ~ display map, marker!
+                      // tempLo는 result의 location -> 위도 경도값 가짐
+                      var temp = result.rows[0].market_location;
+                      var tempLo = temp.split(', ')
+                      console.log(tempLo);
+                      
+                      // 지도를 표시할 div (id)
+                      var mapContainer = document.getElementById('Lo_manager_Map'),
+                          mapOption = {
+                              center: new daum.maps.LatLng(parseFloat(tempLo[0]), parseFloat(tempLo[1])), // 지도의 중심좌표
+                              level: 4 // 지도의 확대 레벨
+                          };
+                      var Lo_manager_Map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+                      // 마커 하나를 지도위에 표시합니다
+                      addMarkerGPS(new daum.maps.LatLng(parseFloat(tempLo[0]), parseFloat(tempLo[1])), Lo_manager_Map);
+                      Lo_manager_Map.relayout();
+                  } else {
+                      console.log("시장이름 존재하지 않음");
+                  }
+              },
+              error: function (e) {
+                  alert("main.ejs");
+                  console.log('process error : ', e);
+              }
+          }); // ajax
+      }
+      */
+    </script>    
 </body>
 
 </html>
