@@ -7,12 +7,15 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             height: 100%;
             padding: 0;
             margin: 0;
-            /* overflow: hidden; */
+            overflow: hidden;
         }
         input{
             position: absolute;
-            width: 30%;
-            margin-left: 35%;
+            width: 13%;
+            margin-left: 80%;
+            height: 5%;
+            top:20px;
+            z-index: 10;
         }
         #myStamp{
             width: 100%;
@@ -541,9 +544,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         .stamp_infor{
             margin-top: 20px;
         }
-        #map{
-            margin-top: 20px;
-        }
+
         .name{
             width: 23%;
             margin-left: 3%;
