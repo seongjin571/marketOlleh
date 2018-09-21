@@ -58,6 +58,7 @@ function turningBack() {
 			deleteNewSearchList();
 			document.getElementById('aaa').style.display = "block";
 			$('#navControlButton').css('display', 'table');
+			$('article').css('display','none');
 			document.getElementById('text_logo').style.display = "block";
 			document.getElementById('back_div').style.display = "none";
 			document.getElementById('Searching').style.display = "table";

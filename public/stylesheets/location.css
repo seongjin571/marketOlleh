@@ -9,6 +9,11 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             margin: 0;
             /* overflow: hidden; */
         }
+        input{
+            position: absolute;
+            width: 30%;
+            margin-left: 35%;
+        }
         #myStamp{
             width: 100%;
             margin-bottom: 18%;
@@ -524,7 +529,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         /* .swiper-slide{
             margin-top: 30px;
         } */
-        #introduce,#map,.stamp_infor{
+        #introduce,.stamp_infor{
             display: inline-flex;
             width: 90%;
             height: 30px;
