@@ -20,6 +20,7 @@ function gpsGetFail() {
     $('#no_gps_alert').css('font-size','0.8em');
     $('.alert_select_ok').click(function () {
         window.location = './start';
+        gpsNULL();
     });     
 }
 
