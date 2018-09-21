@@ -10,8 +10,8 @@
   <script src='/cordova/cordova_plugins.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
-    <script src="/javascripts/spin.js"></script>
-    <link rel="stylesheet" href="/stylesheets/swiper.min.css">
+  <script src="/javascripts/spin.js"></script>
+  <link rel="stylesheet" href="/stylesheets/swiper.min.css">
   <link rel="stylesheet" type="text/css" href="/stylesheets/stamp.css" />
   <!-- <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script> -->
   <!-- <script>
@@ -72,8 +72,9 @@
 
 
   }
-
 </script>
+<!-- kakao map API (hw edit) -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
 <body>
 <div class="alert_x" style="display:none">
   <div class="alert_x_content">
@@ -113,9 +114,7 @@
       <% for(var i=0; i<myStamps.length; i++) { %>
         <div class="stamp_one" id='stamp_list<%= myStamps[i].id %>'>
 
-            <div class="store_market_name">
-                <%= myStamps[i].market_name %>
-            </div>
+            <div class="store_market_name"><%= myStamps[i].market_name %></div>
             <div class="my_stamp_count">
                 <div class="stamp_count_vertical" id='stamp_count_vertical<%= myStamps[i].id %>'>
                     <p class="count_stamp">
@@ -125,9 +124,7 @@
                 </div>
             </div>
             <div class="stamp_market">
-                    <p class="deadline">
-                        <%= myStamps[i].sijang_name %>
-                    </p>
+                    <p class="deadline"><%= myStamps[i].sijang_name %></p>
                     <div class="logo_image">
                     <img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;">
                 </div>
@@ -153,12 +150,8 @@
                 <div id="menu_infor">
                 <div id="top_infor">
                   <div id="name_sj">
-                    <p id="store_name_sj">
-                      <%= myStamps[i].market_name %>
-                    </p>
-                    <p id="market_name_sj">
-                      <%= myStamps[i].sijang_name %>
-                    </p>
+                    <p id="store_name_sj"><%= myStamps[i].market_name %></p>
+                    <p id="market_name_sj"><%= myStamps[i].sijang_name %></p>
                   </div>
                   <div id="sns_sj">
                     <div id="good" class="good<%= myStamps[i].id %>">
@@ -329,7 +322,7 @@
                               <img src="/images/location3.png" width="30px" height="30px">
                               <div class="name">위치</div>
                       </div>
-                      <img src="/images/han.png" width="80%" style="margin-left: 10%;margin-top: 5%;">
+                      <div id="manager_Map" style="width:90%;height:250px;margin-left: 5%; "></div>
                   </div>
               </div>
 
@@ -510,12 +503,31 @@
             </div>
             </div>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+            <!-- ▼ hw edit; map javascirpt -->
+            <script type="text/javascript">
+              var markersGPS = []; // (need gps) 지도에 표시된 마커 객체를 가지고 있을 배열입니다
+
+              // 마커를 생성하고 지도위에 표시하는 함수입니다
+              function addMarkerGPS(position, mapObj) {
+
+                  // 마커를 생성합니다
+                  var marker = new daum.maps.Marker({
+                      position: position
+                  });
+
+                  // 마커가 지도 위에 표시되도록 설정합니다
+                  marker.setMap(mapObj);
+
+                  // 생성된 마커를 배열에 추가합니다
+                  markersGPS.push(marker);
+              }
+            </script>
             <script>
-
-
             var number1 = "";
             var swiper
             var stamp_index
+
+            // 들여쓰기 난해... 595 line까지 
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
               stamp_index=$(this).index()
               $('.go_slide').eq(stamp_index*4).css('color', '#63dded');
@@ -541,7 +553,48 @@
                 $('.go_slide').eq(active).css('color', '#63dded');
               });
 
-            });
+              // hw edit; map setting part - KAKAO MAP API
+              var tempO = $('.store_market_name')[stamp_index];
+              var tempT = $('.deadline')[stamp_index];
+              $.ajax({
+                  url: "/searching/marketList",
+                  dataType: 'json',
+                  type: 'POST',
+                  contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                  data: {
+                      "name": tempT.innerText,
+                      "market_name": tempO.innerText
+                  },
+                  success: function (result) {
+                      if (result.rows.length > 0) {
+                          // manager get gps ~ display map, marker!
+                          // tempLo는 result의 location -> 위도 경도값 가짐
+                          var temp = result.rows[0].market_location;
+                          var tempLo = temp.split(', ')
+                          console.log(tempLo);
+                          
+                          // 지도를 표시할 div (id)
+                          var mapContainer = document.getElementById('manager_Map'),
+                              mapOption = {
+                                  center: new daum.maps.LatLng(parseFloat(tempLo[0]), parseFloat(tempLo[1])), // 지도의 중심좌표
+                                  level: 4 // 지도의 확대 레벨
+                              };
+                          var manager_Map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+                          // 마커 하나를 지도위에 표시합니다
+                          addMarkerGPS(new daum.maps.LatLng(parseFloat(tempLo[0]), parseFloat(tempLo[1])), manager_Map);
+                          manager_Map.relayout();
+                      } else {
+                          console.log("시장(상점)이름 존재하지 않음");
+                      }
+                  },
+                  error: function (e) {
+                      alert("main.ejs");
+                      console.log('process error : ', e);
+                  }
+              }); // ajax
+            }); // stamp_list[index] click event
+
+
             $('.go_slide').click(function () {
               var slide_index = $(this).index();
               var this_index = $('.go_slide').index(this);
