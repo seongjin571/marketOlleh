@@ -26,12 +26,12 @@
   document.addEventListener("backbutton", onBackKeyDown, false);
   function onBackKeyDown(e) {
     e.preventDefault();
-      $('.alert_out').css('display', 'block');
-      $('.alert_content_select').html('앱을 종료하시겠습니까?')
-      $('.alert_select_ok_out').click(function () {
-       navigator.app.exitApp();
-      });
-  }
+    $('.alert_select').css('display', 'block');
+    $('.alert_content_select').html('앱을 종료하시겠습니까?')
+    $('.alert_select_ok').click(function () {
+     navigator.app.exitApp();
+    });
+  }  
 </script>
 <!-- kakao map API (hw edit) -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
@@ -47,8 +47,6 @@
       <div class="alert_select_ok">확인</div>
     </div>
   </div>
-
- 
   
   <!-- HW EDIT 코르도바 + 자바스크립트 + 태그제어 -->
   <script src="/javascripts/cordova_getgps.js"></script>
@@ -56,6 +54,30 @@
   <script type="text/javascript">
     window.seoulApp.getGPS();
 
+    // 마커 저장 배열 
+    var markers = [];
+
+    /* ─────────────▽▽▽마커의 특정 이미지 사용 위한 API▽▽▽───────────── */
+    // 내 위치 표시해주는 마커 특수 IMG
+    var markerImageSrc = '/images/myMarker.png';
+
+    // 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
+    function createMarkerImage(src, size, options) {
+        var markerImage = new daum.maps.MarkerImage(src, size, options);
+        return markerImage;
+    }
+
+    // 좌표와 마커이미지를 받아 마커를 생성하여 리턴하는 함수입니다
+    function createMarker(position, image) {
+        var marker = new daum.maps.Marker({
+            position: position,
+            image: image
+        });
+        
+        return marker;  
+    }   
+    // createMyMarkers() 함수 필수 참조 
+    /* ─────────────△△△마커의 특정 이미지 사용 위한 API△△△───────────── */
 
     function getMyLocation(lng,lat){
       window.myLat = lat;
@@ -84,9 +106,13 @@
       window.isGPSPermission = isGPSPermission;
     }
 
+    // GPS 값이 콜백이라는 점을 감한해 함수로 감았다
+
     function getMap(){
-        if (map) {
-            map = null;
+
+        // document.getElementById('map') 차일드 노드 여부로 map의 중복 생성, 겹침을 해결하였다.
+        if (document.getElementById('map').hasChildNodes()) {
+            document.getElementById('map').innerHTML = null;
         }
 
         // 지도를 표시할 div (id)
@@ -98,82 +124,106 @@
 
         var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-
-        // 마커 하나를 지도위에 표시합니다
-        addMarker(new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng)));
-
-        // 마커를 생성하고 지도위에 표시하는 함수입니다
-        function addMarker(position) {
-
-            // 마커를 생성합니다
-            var marker = new daum.maps.Marker({
-                position: position
-            });
-
-            // 마커가 지도 위에 표시되도록 설정합니다
+        // 내 이미지 마커를 생성하고 마커 배열에 추가하는 함수입니다
+        function createMyMarkers() {
+                
+            var imageSize = new daum.maps.Size(64, 69),
+                imageOptions = { offset: new daum.maps.Point(27, 69) };     
+            
+            var myLatLng = new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng));
+            // 마커이미지와 마커를 생성합니다
+            var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+                marker = createMarker(myLatLng, markerImage);  
+            
             marker.setMap(map);
-
-            // 생성된 마커를 배열에 추가합니다
+            // 생성된 마커를 마커 배열에 추가합니다
             markers.push(marker);
-        }            
+        }
 
-        // // 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수
-        // function setMarkers(map) {
-        //     for (var i = 0; i < markers.length; i++) {
-        //         markers[i].setMap(map);
-        //     }
-        // }
+        createMyMarkers();
 
         function relayout() {
-            // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
-            // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다
-            // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
             map.relayout();
         }
         
         function changeCenter() {
+            window.seoulApp.getGPS();
+
             var moveLatLon = new daum.maps.LatLng(myLat, myLng);
             relayout();
             // 지도 중심을 이동 시킵니다
             map.setCenter(moveLatLon);
             map.setLevel(6);
-
         } // changeCenter    
 
         getMyLo.addEventListener('click', changeCenter, false);
         getNearMarket(map);
-    } // getMap
+    } // end ~ getMap()
    
-    // ajax 통신 테스팅
+    // 페이지 로드 되고 getMap() 함수 실행 -> 아래 함수 실행
+    // 아래 함수에서 DB의 모든 시장 위치 읽어옴 
+    // '내 위치' 버튼 누르면 getGPS (전역함수 ~ 코르도바/자바 클래스) 함수 실행
+    // 다시 getMap() 함수 실행되는 사이클 형식 
     function getNearMarket(map) {
 
-      function addMarker(position) {
+      var infowindow = [];
+
+      function addMarker(position, arr) {
           // 마커를 생성합니다
           var marker = new daum.maps.Marker({
-              position: position
+              position: position,
+              clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
           });
-
           // 마커가 지도 위에 표시되도록 설정합니다
           marker.setMap(map);
 
+          // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+          // 인포윈도우 내용, HTML 문자열이나 document element가 가능합니다
+          var iwContent = '<div style="padding:5px;"><h3>'+arr.market_name+'</h3><span>'+arr.sijang_name+'</span></div>', 
+              iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+          // 인포윈도우를 생성합니다
+          var infowindowTemp = new daum.maps.InfoWindow({
+              content : iwContent,
+              removable : iwRemoveable
+          });
+
+          // 마커에 클릭이벤트를 등록합니다
+          daum.maps.event.addListener(marker, 'click', function() {
+                // 마커 위에 인포윈도우를 표시합니다
+                infowindowTemp.open(map, marker);  
+          });
+
+          infowindow.push(infowindowTemp);
           // 생성된 마커를 배열에 추가합니다
-          markers.push(marker);
+          markers.push(marker);    
       } // addMarket
 
+      // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+      function makeOverListener(map, markerInfo, infowindow) {
+          return function() {
+              infowindow.open(map, markerInfo);
+          };
+      }
+
+      // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+      function makeOutListener(infowindow) {
+          return function() {
+              infowindow.close();
+          };
+      }
+
       $.ajax({
-          url: "/searching/near",
+          url: "/searching/nearManager",
           dataType: 'json',
           type: 'POST',
           contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
           // data: params,
           success: function (result) {
-              console.log(result);
               if (result.rows.length > 0) {
                 for (var i = 0; i < result.rows.length; i++) {
-                  var tempX = result.rows[i].coordinateX;
-                  var tempY = result.rows[i].coordinateY;
-                  console.log(tempX, tempY);         
-                  addMarker(new daum.maps.LatLng(parseFloat(tempX), parseFloat(tempY)));
+                  var tempLo = result.rows[i].market_location;
+                    tempLo = tempLo.split(', ');
+                  addMarker(new daum.maps.LatLng(parseFloat(tempLo[0]), parseFloat(tempLo[1])), result.rows[i]);
                 } // inner for
               } else {
                   console.log('DB error _ or _ index.js ~ router error');
@@ -232,7 +282,8 @@
       }); // logout click event
   
       $('.alert_select_cancel').click(function(){
-        $('.alert_select').css('display','none')
+        $('.alert_select').css('display','none');
+        $('.alert_select_ok').off();
       });
     </script>    
 </body>
