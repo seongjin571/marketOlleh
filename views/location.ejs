@@ -25,10 +25,10 @@
 <script>
   document.addEventListener("backbutton", onBackKeyDown, false);
   function onBackKeyDown(e) {
-     e.preventDefault();
-      $('.alert_select').css('display', 'block');
+    e.preventDefault();
+      $('.alert_out').css('display', 'block');
       $('.alert_content_select').html('앱을 종료하시겠습니까?')
-      $('.alert_select_ok').click(function () {
+      $('.alert_select_ok_out').click(function () {
        navigator.app.exitApp();
       });
   }
@@ -197,7 +197,6 @@
     function getNearMarket(map) {
 
       function addMarker(position) {
-
           // 마커를 생성합니다
           var marker = new daum.maps.Marker({
               position: position
