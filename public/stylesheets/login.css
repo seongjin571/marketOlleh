@@ -1056,7 +1056,7 @@ select{
 .tenStamp_bottom_sj {
     margin-bottom: 10px;
 }
-.alert_x,.alert_o,.alert_select{
+.alert_x,.alert_o,.alert_select,.alert_out{
     width: 100%;
     height: 100%;
     background-color:  rgba(141, 140, 140, 0.8);
@@ -1094,7 +1094,7 @@ select{
     line-height: 90px;
 }
 
-.alert_select_ok{
+.alert_select_ok,.alert_select_ok_out{
     text-align: center;
     width: 35%;
     height: 40px;
