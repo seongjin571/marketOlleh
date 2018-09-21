@@ -673,7 +673,8 @@
             $('.alert_select_cancel').click(function () {
                 $('.alert_out').css('display', 'none')
                 $('.alert_select').css('display', 'none')
-            })
+                $('.alert_select_ok').off();
+            });
     </script>
     <!-------------------- KAKAO MAP API ---------------------->
     <script type='text/javascript' src='javascripts/searching.js'></script>
