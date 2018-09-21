@@ -474,7 +474,7 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt, MarketName) {
 function making_correct_map(market_arr) {
 	// if no right map --> make correct map 
 	var tempLo = market_arr.market_location;
-    tempLo = tempLo.split(', ')
+    tempLo = tempLo.split(', ');
     // 지도를 표시할 div (id)
     var mapContainer = document.getElementById('manager_Map'),
         mapOption = {

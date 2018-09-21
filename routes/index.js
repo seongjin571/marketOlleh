@@ -487,11 +487,21 @@ router.get('/searching', function(req, res) {
   res.render('searching');
 });
 
-// 근처 시장 찾기 로직
+// 근처 시장 찾기
 router.post('/searching/near', function(req, res) {
 
   // body...
   var sql = "SELECT * FROM `market`";
+  conn.query(sql, function(error, rows, fileds) {
+    return res.send({ rows: rows });
+  });// conn.query
+
+});
+// 근처 상인(가맹점) 찾기
+router.post('/searching/nearManager', function(req, res) {
+
+  // body...
+  var sql = "SELECT * FROM `manager`";
   conn.query(sql, function(error, rows, fileds) {
     return res.send({ rows: rows });
   });// conn.query
@@ -543,13 +553,13 @@ router.post('/searching/marketList', function(req, res){
   var market_name = req.body.market_name;
 
   // 로그인한 상점 == 클릭한 상점 --> mystore
-    if(name){ // 해당하는 같은 시장, 상점 모두 가져오기
+    if(!market_name){ // 해당하는 같은 시장, 상점 모두 가져오기
       var sql = "SELECT * FROM `manager` WHERE `sijang_name` LIKE '"+name+"' ORDER BY `like_count` DESC";
       conn.query(sql, function(error, rows, fileds) {
         return res.send({ rows: rows });
       });// conn.query
     } else if(market_name) { // 해당하는 시장은 유일
-      var sql = "SELECT * FROM `manager` WHERE `market_name` LIKE '"+market_name+"'";
+      var sql = "SELECT * FROM `manager` WHERE `sijang_name` LIKE '"+name+"' AND `market_name` LIKE '"+market_name+"'";
       conn.query(sql, function(error, rows, fileds) {
         return res.send({ rows: rows });
       });
