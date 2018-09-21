@@ -971,6 +971,9 @@ select{
     position: fixed !important;
     top: 80px !important;
 }
+.swiper-slide user_way{
+    overflow: hidden;
+}
 #myStamp{
     position: fixed;
     top:238px;
