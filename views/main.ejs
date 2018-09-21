@@ -102,6 +102,9 @@
     <div id="back_div">
         <img id="tableControl" src="/images/backButton_blue.png" width="20px" height="20px">
     </div>
+    <div id="back_div_near">
+            <img id="tableControl" src="/images/backButton_blue.png" width="20px" height="20px">
+        </div>
 
     <div id="navControlButton">
         <div id="verti-helper">
@@ -263,7 +266,7 @@
         <h3 id="user_name">
             <%= user.username %>님 근처 시장
         </h3>
-        <input type="button" id="user_nearMarket" value="새로고침" />
+        <!-- <input type="button" id="user_nearMarket" value="새로고침" /> -->
         <div id="near_market">
             <!-- 아래 태그가 innerHTML 프로퍼티로 동적생성되어 삽임됨 / 코르도바, 자스, 제이쿼리 사용
             <div class="near_market_list">
@@ -784,7 +787,7 @@
                             document.getElementById('navControlButton').style.display = "none";
                             document.getElementById('aaa').style.display = "none";
                             document.getElementById('text_logo').style.display = "none";
-                            document.getElementById('back_div').style.display = "block";
+                            document.getElementById('back_div_near').style.display = "block";
                             document.getElementById('market_infor').style.display = "block";
 
                             for(var i = 0; i < parseInt(result.rows.length); i++){
@@ -804,6 +807,13 @@
                 }); // ajax
             }); // click event
         }
+        $('#back_div_near').click(function () {
+                document.getElementById('navControlButton').style.display = "table";
+                document.getElementById('aaa').style.display = "block";
+                document.getElementById('text_logo').style.display = "block";
+                document.getElementById('back_div_near').style.display = "none";
+                document.getElementById('market_infor').style.display = "none";
+            })
 
         $('#user_nearMarket').click(function (event) {
             start_nearMarket_setting();
