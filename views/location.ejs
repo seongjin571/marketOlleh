@@ -35,199 +35,205 @@
 </script>
 <!-- kakao map API (hw edit) -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
-
 <body>
-  <div id="Lo_manager_Map" style="width:90%;height:250px;margin-left: 5%; "></div>
-
-        <div class="alert_select"  style="display:none">
-                <div class="alert_o_content">
-                  <div class="alert_content_select">
-                  </div>
-                  <div class="alert_select_cancel">
-                    취소
-                  </div>
-                  <div class="alert_select_ok">
-                      확인
-                    </div>
-                </div>
-              </div>
-              <div class="alert_out"  style="display:none">
-                    <div class="alert_o_content">
-                      <div class="alert_content_select">
-                      </div>
-                      <div class="alert_select_cancel">
-                        취소
-                      </div>
-                      <div class="alert_select_ok_out">
-                          확인
-                        </div>
-                    </div>
-                  </div>
-
-
-    <div id="nav_sj">
-        <div id="home_sj">
-            <img src="/images/home.png" width="40%">
-            <p>홈</p>
-        </div>
-        <div id="coupon_sj">
-            <img src="/images/coupon.png" width="40%">
-            <p>쿠폰</p>
-        </div>
-        <div id="location_sj">
-            <img src="/images/location2.png" width="40%">
-            <p id="nav_text">주변 가맹점</p>
-        </div>
-        <div id="myStamp_sj">
-            <img src="/images/stamp.png" width="40%">
-            <p>내 스탬프</p>
-        </div>
-        <div id="logout">
-            <img src="/images/logout.png" width="40%">
-            <p>로그아웃</p>
-        </div>
+  <!-- kakao map -->
+  <div id="map" style="width:90%; height:80%; margin-left: 5%;"></div>
+  <input type="button" id="getMyLo" value="GET MY LOCATION" name="">
+  
+  <div class="alert_select"  style="display:none">
+    <div class="alert_o_content">
+      <div class="alert_content_select"><!--INNER TEXT VALUE --></div>
+      <div class="alert_select_cancel">취소</div>
+      <div class="alert_select_ok">확인</div>
     </div>
+  </div>
 
-    <script>
-          $('#myStamp_sj').click(function () {
-            location.href = "/myStamp";
-        })
-        $('#home_sj').click(function () {
-            location.href = "/main";
-        })
-        $('#coupon_sj').click(function () {
-            location.href = "/coupon";
-        })
-        $('#logout').click(function () {
-        $('.alert_select').css('display', 'block');
-        $('.alert_content_select').html('로그아웃 하시겠습니까?')
-        $('.alert_select_ok').click(function () {
-          $('.alert_select').css('display', 'none');
-          $(location).attr('href', '/logout');
-        })
-      })
+  <div id="nav_sj">
+      <div id="home_sj">
+          <img src="/images/home.png" width="40%">
+          <p>홈</p>
+      </div>
+      <div id="coupon_sj">
+          <img src="/images/coupon.png" width="40%">
+          <p>쿠폰</p>
+      </div>
+      <div id="location_sj">
+          <img src="/images/location2.png" width="40%">
+          <p id="nav_text">주변 가맹점</p>
+      </div>
+      <div id="myStamp_sj">
+          <img src="/images/stamp.png" width="40%">
+          <p>내 스탬프</p>
+      </div>
+      <div id="logout">
+          <img src="/images/logout.png" width="40%">
+          <p>로그아웃</p>
+      </div>
+  </div>
 
-        $('.alert_select_cancel').click(function(){
-            $('.alert_out').css('display', 'none')
-        $('.alert_select').css('display','none')
-      })
+  <script>
+    $('#myStamp_sj').click(function () {
+        location.href = "/myStamp";
+    });
 
-    </script>
-    
-    <!-- HW EDIT 코르도바 + 자바스크립트 + 태그제어 -->
-    <script src="/javascripts/cordova_getgps.js"></script>
-    <!-- ▼ hw edit; map javascirpt -->
-    <script type="text/javascript">
-      // 아래 함수 실행시 전역변수 window.myLat, window.myLng 값 = 위도 경도 값 저장
-      // window.seoulApp.SignUpgetGPS();        
-      // 안드로이드 ~ SignUpgetGPS Class 참조 
-      window.seoulApp.SignUpgetGPS();
+    $('#home_sj').click(function () {
+        location.href = "/main";
+    });
 
-      var markersGPS = []; // (need gps) 지도에 표시된 마커 객체를 가지고 있을 배열입니다
+    $('#coupon_sj').click(function () {
+        location.href = "/coupon";
+    });
 
-      // 마커를 생성하고 지도위에 표시하는 함수입니다
-      function addMarkerGPS(position, mapObj) {
+    $('#logout').click(function () {
+      $('.alert_select').css('display', 'block');
+      $('.alert_content_select').html('로그아웃 하시겠습니까?');
 
+      $('.alert_select_ok').click(function () {
+      $('.alert_select').css('display', 'none');
+      $(location).attr('href', '/logout');
+      });
+    }); // logout click event
+
+    $('.alert_select_cancel').click(function(){
+      $('.alert_select').css('display','none')
+    });
+  </script>
+  
+  <!-- HW EDIT 코르도바 + 자바스크립트 + 태그제어 -->
+  <script src="/javascripts/cordova_getgps.js"></script>
+  <!-- ▼ hw edit; map javascirpt -->
+  <script type="text/javascript">
+    window.seoulApp.getGPS();
+
+
+    function getMyLocation(lng,lat){
+      window.myLat = lat;
+      window.myLng = lng;
+      getMap();
+    }
+
+    function gpsGetFail() {
+        console.log("못받아옴");
+        window.location = './';
+    }
+
+    function gpsNULL(){
+        alert("위치권한이 필요합니다.")
+        window.seoulApp.getGPS();
+        window.seoulApp.getGPSPermission();
+        if (!isGPSPermission) { // false
+            // window.seoulApp.reload();
+            gpsNULL();
+        } else { // true
+            window.seoulApp.getGPS();
+        }
+    }  
+
+    function getPermission(isGPSPermission) {
+      window.isGPSPermission = isGPSPermission;
+    }
+
+    function getMap(){
+        if (map) {
+            map = null;
+        }
+
+        // 지도를 표시할 div (id)
+        var mapContainer = document.getElementById('map'),
+            mapOption = {
+                center: new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng)), // 지도의 중심좌표
+                level: 6 // 지도의 확대 레벨
+            };
+
+        var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+
+        // 마커 하나를 지도위에 표시합니다
+        addMarker(new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng)));
+
+        // 마커를 생성하고 지도위에 표시하는 함수입니다
+        function addMarker(position) {
+
+            // 마커를 생성합니다
+            var marker = new daum.maps.Marker({
+                position: position
+            });
+
+            // 마커가 지도 위에 표시되도록 설정합니다
+            marker.setMap(map);
+
+            // 생성된 마커를 배열에 추가합니다
+            markers.push(marker);
+        }            
+
+        // // 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수
+        // function setMarkers(map) {
+        //     for (var i = 0; i < markers.length; i++) {
+        //         markers[i].setMap(map);
+        //     }
+        // }
+
+        function relayout() {
+            // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
+            // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다
+            // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
+            map.relayout();
+        }
+        
+        function changeCenter() {
+            var moveLatLon = new daum.maps.LatLng(myLat, myLng);
+            relayout();
+            // 지도 중심을 이동 시킵니다
+            map.setCenter(moveLatLon);
+            map.setLevel(6);
+
+        } // changeCenter    
+
+        getMyLo.addEventListener('click', changeCenter, false);
+        getNearMarket(map);
+    } // getMap
+   
+    // ajax 통신 테스팅
+    function getNearMarket(map) {
+
+      function addMarker(position) {
           // 마커를 생성합니다
           var marker = new daum.maps.Marker({
               position: position
           });
 
           // 마커가 지도 위에 표시되도록 설정합니다
-          marker.setMap(mapObj);
+          marker.setMap(map);
 
           // 생성된 마커를 배열에 추가합니다
-          markersGPS.push(marker);
-      }
+          markers.push(marker);
+      } // addMarket
 
-      // 지도를 표시할 div (id)
-      var mapContainer = document.getElementById('Lo_manager_Map'),
-          mapOption = {
-              center: new daum.maps.LatLng(parseFloat(window.myLat), parseFloat(window.myLng)), // 지도의 중심좌표
-              level: 4 // 지도의 확대 레벨
-          };
-
-      var Lo_manager_Map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-      // 마커 하나를 지도위에 표시합니다
-      addMarkerGPS(new daum.maps.LatLng(parseFloat(window.myLat), parseFloat(window.myLng)), Lo_manager_Map);
-
-      // Lo_manager_Map.relayout();
-
-    </script>
-    <script type="text/javascript">
-      
-      // ajax 통신 테스팅
-      function getNearMarket() {
-          $.ajax({
-              url: "/searching/near",
-              dataType: 'json',
-              type: 'POST',
-              contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-              // data: params,
-              success: function (result) {
-                  console.log(result);
-                  if (result.rows.length > 0) {
-                    for (var i = 0; i < result.rows.length; i++) {
-                      var tempX = result.rows[i].coordinateX;
-                      var tempY = result.rows[i].coordinateY;
-                      
-                      addMarkerGPS(new daum.maps.LatLng(parseFloat(window.myLat), parseFloat(window.myLng)), Lo_manager_Map);                      
-                    } // inner for
-                  } else {
-                      console.log('DB error _ or _ index.js ~ router error');
-                  } // if ~ else
-              },
-              error: function (e) {
-                  console.log('process error : ', e);
-              }
-          }); // ajax
-      } // getNearMarket
-
-      getNearMarket();
-
-      /*
-      function gettingMap() {
-
-          $.ajax({
-              url: "/searching/marketList",
-              dataType: 'json',
-              type: 'POST',
-              contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-              data: {
-
-              },
-              success: function (result) {
-                  if (result.rows.length > 0) {
-
-                      // manager get gps ~ display map, marker!
-                      // tempLo는 result의 location -> 위도 경도값 가짐
-                      var temp = result.rows[0].market_location;
-                      var tempLo = temp.split(', ')
-                      console.log(tempLo);
-                      
-                      // 지도를 표시할 div (id)
-                      var mapContainer = document.getElementById('Lo_manager_Map'),
-                          mapOption = {
-                              center: new daum.maps.LatLng(parseFloat(tempLo[0]), parseFloat(tempLo[1])), // 지도의 중심좌표
-                              level: 4 // 지도의 확대 레벨
-                          };
-                      var Lo_manager_Map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-                      // 마커 하나를 지도위에 표시합니다
-                      addMarkerGPS(new daum.maps.LatLng(parseFloat(tempLo[0]), parseFloat(tempLo[1])), Lo_manager_Map);
-                      Lo_manager_Map.relayout();
-                  } else {
-                      console.log("시장이름 존재하지 않음");
-                  }
-              },
-              error: function (e) {
-                  alert("main.ejs");
-                  console.log('process error : ', e);
-              }
-          }); // ajax
-      }
-      */
-    </script>    
+      $.ajax({
+          url: "/searching/near",
+          dataType: 'json',
+          type: 'POST',
+          contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+          // data: params,
+          success: function (result) {
+              console.log(result);
+              if (result.rows.length > 0) {
+                for (var i = 0; i < result.rows.length; i++) {
+                  var tempX = result.rows[i].coordinateX;
+                  var tempY = result.rows[i].coordinateY;
+                  console.log(tempX, tempY);         
+                  addMarker(new daum.maps.LatLng(parseFloat(tempX), parseFloat(tempY)));
+                } // inner for
+              } else {
+                  console.log('DB error _ or _ index.js ~ router error');
+              } // if ~ else
+          },
+          error: function (e) {
+              console.log('process error : ', e);
+          }
+      }); // ajax
+    } // getNearMarket    
+  </script>    
 </body>
 
 </html>

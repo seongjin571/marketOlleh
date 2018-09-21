@@ -580,6 +580,7 @@
         var user_id = '<%= user.id %>';
         var markers = []; // (No gps) 지도에 표시된 마커 객체를 가지고 있을 배열입니다
         var markersGPS = []; // (need gps) 지도에 표시된 마커 객체를 가지고 있을 배열입니다
+        
         // 지도를 표시할 div (id)
         var mapContainer = document.getElementById('map'),
             mapOption = {
@@ -778,11 +779,6 @@
             }); // ajax
         } // getNearMarket
 
-        $('#user_nearMarket').click(function (event) {
-            window.seoulApp.SignUpgetGPS();
-            getNearMarket();
-        });
-
         // 동적으로 생성된 near_market의 클릭 펑션
         // 태그가 생성된 뒤에 클릭 이벤트가 추가되어야 한다
         function near_market_click_event() {
@@ -825,6 +821,17 @@
                 }); // ajax
             }); // click event
         }
+
+        $('#user_nearMarket').click(function (event) {
+            start_nearMarket_setting();
+        });        
+
+        function start_nearMarket_setting(argument) {
+            window.seoulApp.SignUpgetGPS();
+            getNearMarket();
+        }
+        
+        start_nearMarket_setting();
 
     </script>
 </body>
