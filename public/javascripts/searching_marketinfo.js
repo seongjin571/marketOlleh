@@ -219,6 +219,8 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 		}
 	}); // ajax
 
+	making_correct_map(market_arr);
+
 } // managerInfoLi_event
 
 function likeCount_function(market_arr) {
@@ -465,10 +467,22 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt, MarketName) {
 		} // for in
 	}
 
-
-
-
-
     $('.store_review_sj').html(fullString);
 
 } // managerInfoLi_event_review
+
+function making_correct_map(market_arr) {
+	// if no right map --> make correct map 
+	var tempLo = market_arr.market_location;
+    tempLo = tempLo.split(', ')
+    // 지도를 표시할 div (id)
+    var mapContainer = document.getElementById('manager_Map'),
+        mapOption = {
+            center: new daum.maps.LatLng(parseFloat(tempLo[0]), parseFloat(tempLo[1])), // 지도의 중심좌표
+            level: 4 // 지도의 확대 레벨
+        };
+    var manager_Map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    // 마커 하나를 지도위에 표시합니다
+    addMarkerGPS(new daum.maps.LatLng(parseFloat(tempLo[0]), parseFloat(tempLo[1])), manager_Map);
+    manager_Map.relayout();
+}
