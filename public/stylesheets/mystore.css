@@ -362,7 +362,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             color: #9c9c9c;
             line-height: 50px;
         }
-        .alert_x,.alert_o,.alert_select{
+        .alert_x,.alert_o,.alert_select,.alert_out{
             width: 100%;
             height: 100%;
             background-color:  rgba(141, 140, 140, 0.8);
@@ -397,7 +397,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             line-height: 90px;
         }
         
-        .alert_select_ok{
+        .alert_select_ok,.alert_select_ok_out{
             text-align: center;
             width: 35%;
             height: 40px;

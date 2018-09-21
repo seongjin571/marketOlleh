@@ -24,10 +24,10 @@
 <script>
   document.addEventListener("backbutton", onBackKeyDown, false);
   function onBackKeyDown(e) {
-     e.preventDefault();
-      $('.alert_select').css('display', 'block');
+    e.preventDefault();
+      $('.alert_out').css('display', 'block');
       $('.alert_content_select').html('앱을 종료하시겠습니까?')
-      $('.alert_select_ok').click(function () {
+      $('.alert_select_ok_out').click(function () {
        navigator.app.exitApp();
       });
   }
@@ -66,6 +66,18 @@
                           </div>
                       </div>
                     </div>
+                    <div class="alert_out"  style="display:none">
+                            <div class="alert_o_content">
+                              <div class="alert_content_select">
+                              </div>
+                              <div class="alert_select_cancel">
+                                취소
+                              </div>
+                              <div class="alert_select_ok_out">
+                                  확인
+                                </div>
+                            </div>
+                          </div>
     <div id="all_coupon_div">
         <div id="make_coupon_button">
             <button id="make_coupon">새로운 쿠폰 생성</button>
@@ -399,6 +411,7 @@
             $(this).css('display', 'none')
         })
         $('.alert_select_cancel').click(function () {
+            $('.alert_out').css('display', 'none')
             $('.alert_select').css('display', 'none')
         })
 </script>
