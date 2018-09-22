@@ -22,62 +22,52 @@
     <script type="text/javascript" charset="utf-8" src="/cordova/cordova.js"></script>
     <script src='/cordova/cordova_plugins.js'></script>
     <script type="text/javascript" charset="utf-8">
-
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value
-
     // Wait for device API libraries to load
     //
     document.addEventListener("deviceready",onDeviceReady,false);
-
     // device APIs are available
     //
     function onDeviceReady() {
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     }
-
     // Called when a photo is successfully retrieved
     //
     function onPhotoDataSuccess(imageData) {
       // Uncomment to view the base64-encoded image data
       // console.log(imageData);
-
       // Get image handle
       //
       var smallImage = document.getElementById('smallImage');
-
       // Unhide image elements
       //
       smallImage.style.display = 'block';
-
       // Show the captured photo
       // The inline CSS rules are used to resize the image
       //
       smallImage.src = "data:image/jpeg;base64," + imageData;
     }
-
     // Called when a photo is successfully retrieved
     //
     function onPhotoURISuccess(imageURI) {
       // Uncomment to view the image file URI
       // console.log(imageURI);
-
       // Get image handle
       //
       var largeImage = document.getElementById('largeImage');
-
       // Unhide image elements
       //
-      largeImage.style.display = 'block';
 
+      largeImage.style.display = 'block';
+     // largeImage.style.display = 'visible';
 
       // Show the captured photo
       // The inline CSS rules are used to resize the image
       //
       largeImage.src = imageURI;
     }
-
     // A button will call this function
     //
     function capturePhoto() {
@@ -85,15 +75,69 @@
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
         destinationType: destinationType.DATA_URL });
     }
-
     // A button will call this function
     //
-    function capturePhotoEdit() {
-      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-        destinationType: destinationType.DATA_URL });
-    }
+    var uploadPhoto = function(){
+      var options = {
+        quality : 50,
+        destinationType : Camera.DestinationType.DATA_URL,
+        sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
+        allowEdit : true,
+        encodingType : Camera.EncodingType.JPEG,
+        targetWidth : 300,
+        targetHeight : 300,
+        popoverOptions : CameraPopoverOptions,
+        saveToPhotoAlbum : false
+      }
+      navigator.camera.getPicture(function(imageData) {
+        alert(imageData);
+        var smallImage = document.getElementById('smallImage');
 
+        // Unhide image elements
+        //
+        smallImage.style.display = 'visible';
+
+        // Show the captured photo
+        // The inline CSS rules are used to resize the image
+        //
+        smallImage.src = "data:image/jpeg;base64," + imageData;
+         // $("#smallImage").attr("src",imageData);
+      }, function(err){
+      }, options);
+    }
+    var takePicture = function(){
+            var options = {
+                quality          : 75,
+                destinationType  : Camera.DestinationType.DATA_URL,
+                sourceType       : Camera.PictureSourceType.CAMERA,
+                allowEdit        : true,
+                encodingType     : Camera.EncodingType.JPEG,
+                targetWidth      : 300,
+                targetHeight     : 300,
+                popoverOptions   : CameraPopoverOptions,
+                saveToPhotoAlbum : false
+            };
+            navigator.camera.getPicture(function(imageURI) {
+        alert(imageURI);
+        var smallImage = document.getElementById('smallImage');
+
+        // Unhide image elements
+        //
+        smallImage.style.display = 'visible';
+
+        // Show the captured photo
+        // The inline CSS rules are used to resize the image
+        //
+        smallImage.src = "data:image/jpeg;base64," + imageURI;
+        // $("#smallImage").attr("src",imageURI);
+            }, function(err) {
+            }, options);
+        };
+    // function capturePhotoEdit() {
+    //   // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
+    //   navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
+    //     destinationType: destinationType.DATA_URL });
+    // }
     // A button will call this function
     //
     function getPhoto(source) {
@@ -102,13 +146,11 @@
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     }
-
     // Called if something bad happens.
     //
     function onFail(message) {
       alert('Failed because: ' + message);
     }
-
     </script>
 </head>
 
@@ -199,8 +241,8 @@
         <div id="mystore_image"  style="background: url('<%= result[0].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 100%;"></div>
         <div class="picture_reform">수정 버튼 클릭 시 사진을 수정할 수 있습니다.</div>
         <div id="picture_capture">
-            <button>갤러리</button>
-            <button>사진 촬영</button>
+            <button onclick="uploadPhoto();">갤러리</button>
+            <button onclick="takePicture();">사진 촬영</button>
         </div>
         </div>
         <button id="stamp_reform">수정</button>
