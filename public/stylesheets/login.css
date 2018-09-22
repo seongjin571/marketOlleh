@@ -67,7 +67,10 @@ body, html {
     text-align: center;
     
 }
-
+#user_x,#manager_x{
+    top: 20px;
+    left: 88%;
+}
 #user_login{
     box-shadow: 5px 5px 3px #efefef;
     width: 75%;
@@ -969,8 +972,11 @@ select{
     position: fixed !important;
     top: 80px !important;
 }
-.swiper-slide user_way{
-    overflow: hidden;
+.user_way,.manager_way{
+    background-color: #eeeeee;
+}
+.user_way img,.manager_way img{
+    position: absolute;
 }
 #myStamp{
     position: fixed;
@@ -1125,3 +1131,71 @@ select{
     color: white;
     font-size: 14px;
 }
+  #user1{
+      width: 100%;
+      background-image: url('/images/user_way1.png');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+  }
+  #user2{
+    width: 100%;
+    background-image: url('/images/user_way2.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#user3{
+    width: 100%;
+    background-image: url('/images/user_way3.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#user4{
+    width: 100%;
+    background-image: url('/images/user_way4.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#manager1{
+    width: 100%;
+    background-image: url('/images/manager_way1.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#manager2{
+  width: 100%;
+  background-image: url('/images/manager_way2.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#manager3{
+  width: 100%;
+  background-image: url('/images/manager_way3.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* #manager4{
+  width: 100%;
+  background-image: url('/images/user_way4.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+.introduce_way{
+    text-align: center;
+}
+.big_intro{
+    font-size: 20px;
+}
+.small_intro{
+    padding-top: 10px;
+    font-size:14px;
+    font-weight: lighter;
+}
+
