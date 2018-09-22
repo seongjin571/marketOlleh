@@ -575,8 +575,7 @@ a{
     display: inline-flex;
 }
 .manager_signup_name{
-    width: 35%;
-    margin-left: 3%;
+    width: 40%;
     height: 35px;
     line-height: 35px;
     color: black;
@@ -602,7 +601,7 @@ a{
     outline:none;
 }
 .signuptext5,.stamp_standard{
-    width: 53%;
+    width: 50%;
     height: 30px;
     background-color: white;
     border: double 1px transparent;
@@ -659,10 +658,9 @@ select{
     top: 340px !important; */
 }
   #sijang_name,#sijang_picture{
-      width: 36%;
+      width: 40%;
       height: 30px;
       line-height: 30px;
-      margin-left: 3%;
       white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

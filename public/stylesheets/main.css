@@ -233,6 +233,9 @@ label{
 .near_market_name{
     font-size: 15px;
     margin-top: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .my_stamp_count{
     width: 100%;
@@ -256,6 +259,9 @@ label{
     margin-left: 5%;
     font-weight: 400;
     padding-top:5%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .count_stamp{
     width: 100%;
@@ -380,6 +386,9 @@ h3,h4{
     color: gray;
     font-size: 14px;
     font-weight: lighter;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 #nav_sj {
     width: 100%;
