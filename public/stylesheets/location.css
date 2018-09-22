@@ -11,11 +11,19 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         }
         input{
             position: absolute;
-            width: 13%;
+            width: 42px;
             margin-left: 80%;
-            height: 5%;
+            height: 42px;
             top:20px;
             z-index: 10;
+            background-color: white;
+            border-radius: 5px;
+            border-style: none;
+            /* border-color: white; */
+            outline: none;
+        }
+        input:active{
+            background-color: rgb(204, 200, 200);
         }
         #myStamp{
             width: 100%;
