@@ -682,9 +682,10 @@
     <!-- HW EDIT 코르도바 + 자바스크립트 + 태그제어 -->
     <script src="/javascripts/cordova_getgps.js"></script>
     <script type="text/javascript">
+        /* ☆순서☆ : getNearMarket -> nearCounting -> near_market_click_event */
+
         // 아래 함수 실행시 전역변수 window.myLat, window.myLng 값 = 위도 경도 값 저장
         // window.seoulApp.SignUpgetGPS();
-
         // 위도 경도의 순수 거리값 보다는 10진수화 된 값을 가지고
         // 정렬 먼저해봄 (실제 거리 구하시는 식 X )
         function nearCounting(marketList) {
