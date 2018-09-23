@@ -38,12 +38,15 @@ html {
 }
 #picture_capture{
     display: none;
+    width: 50%;
 }
+
 #picture_capture button{
     box-shadow: 5px 5px 3px #efefef;
     text-align: center;
     display: inline-block;
-    width: 100%;
+    width: 65%;
+    margin-left: 25%;
     margin-top: 11px;
     height: 37px;
     line-height: 37px;
@@ -59,7 +62,7 @@ html {
     border: 0px;
     outline:none;
 }
-#mystore_image{
+#mystore_image,#mystore_image_reform{
     width: 110px;
     height: 110px;
     border-radius: 100px;

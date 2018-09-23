@@ -1548,9 +1548,14 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
 <script src="/javascripts/cordova_getgps.js"></script>
 <script type="text/javascript">
     $('#getMarket_location').click(function(event) {
+        if(!$('#market_location').value()){
+            $('.manager_check_div').eq(7).css('visibility', 'hidden')
+        }
+        else{
         // alert("GPS 값을 가져옵니다"); // test line
         window.seoulApp.SignUpgetGPS();
         $('.manager_check_div').eq(7).css('visibility', 'visible')
+        }
     }); // get location
 </script>
 </html>
