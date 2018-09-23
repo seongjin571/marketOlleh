@@ -1241,10 +1241,12 @@ router.post('/manager_reform_stamp',function(req,res,next){//접수 버튼 클�
   var stamp_password = req.body.stamp_password;
   var market_introduce = req.body.market_introduce;
   var market_promotion = req.body.market_promotion;
+  var manager_image = req.body.manager_image;
 
-  var update_manager_sql = 'update manager set stamp_reward = ?, stamp_password = ?, market_introduce =?, market_promotion =? where manager_id = ?';
+
+  var update_manager_sql = 'update manager set stamp_reward = ?, stamp_password = ?, market_introduce =?, market_promotion =?, manager_image=? where manager_id = ?';
   var update_stamp_sql ='update stamp set stamp_reward = ?,stamp_password = ? where sijang_name = ? and market_name =?';
-  conn.query(update_manager_sql,[stamp_reward, stamp_password, market_introduce, market_promotion,manager_id],function(error,result,fields){
+  conn.query(update_manager_sql,[stamp_reward, stamp_password, market_introduce, market_promotion,manager_image, manager_id],function(error,result,fields){
     if(error){
       console.log(error);
       console.log('no1');
