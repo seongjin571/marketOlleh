@@ -45,7 +45,6 @@
 
 <body>
     <!-- hw edit; creat dragable map -->
-    <div id="map" style="width:100%; height:92%;"></div>
 
         <div class="swiper-container user">
             <div class="swiper-wrapper">
@@ -751,7 +750,7 @@
                             <div class="manager_signup_name">상점이름</div>
                             <input class="signuptext2" type="text" id="market_name" name='market_name' placeholder="ex)또리네 분식집">
                         </div>
-                      
+
 
                         <div class="signupuser_input3">
                             <div class="manager_check_div">
@@ -1166,7 +1165,7 @@
 var ok;
 function CheckPass(str){
    var reg1 = /^[a-z0-9]{6,15}$/;    // a-z 0-9 중에 7자리 부터 14자리만 허용 한다는 뜻이구요
-   var reg2 = /[a-z]/g;    
+   var reg2 = /[a-z]/g;
    var reg3 = /[0-9]/g;
    if((reg1.test(str) &&  reg2.test(str) && reg3.test(str))){
        ok=1;
@@ -1174,11 +1173,11 @@ function CheckPass(str){
    else{
        ok=0;
    }
-   
+
 };
     var name2 = /^[가-힣]+$/;
-    
- 
+
+
     // var id = /^[a-z0-9_]{6,15}$/;
     var password = /^[a-zA-Z0-9]{6,15}$/;
     var password_number=/^[0-9]{4}$/;
@@ -1553,34 +1552,34 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
 <script src="/javascripts/cordova_getgps.js"></script>
 <script type="text/javascript">
     /*
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-        mapOption = { 
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
             center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
             level: 3 // 지도의 확대 레벨
         };
 
     var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-    var startSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png', // 출발 마커이미지의 주소입니다    
-        startSize = new daum.maps.Size(50, 45), // 출발 마커이미지의 크기입니다 
-        startOption = { 
+    var startSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png', // 출발 마커이미지의 주소입니다
+        startSize = new daum.maps.Size(50, 45), // 출발 마커이미지의 크기입니다
+        startOption = {
             offset: new daum.maps.Point(15, 43) // 출발 마커이미지에서 마커의 좌표에 일치시킬 좌표를 설정합니다 (기본값은 이미지의 가운데 아래입니다)
         };
 
     // 출발 마커 이미지를 생성합니다
     var startImage = new daum.maps.MarkerImage(startSrc, startSize, startOption);
 
-    var startDragSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/red_drag.png', // 출발 마커의 드래그 이미지 주소입니다    
-        startDragSize = new daum.maps.Size(50, 64), // 출발 마커의 드래그 이미지 크기입니다 
-        startDragOption = { 
+    var startDragSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/red_drag.png', // 출발 마커의 드래그 이미지 주소입니다
+        startDragSize = new daum.maps.Size(50, 64), // 출발 마커의 드래그 이미지 크기입니다
+        startDragOption = {
             offset: new daum.maps.Point(15, 54) // 출발 마커의 드래그 이미지에서 마커의 좌표에 일치시킬 좌표를 설정합니다 (기본값은 이미지의 가운데 아래입니다)
         };
 
     // 출발 마커의 드래그 이미지를 생성합니다
     var startDragImage = new daum.maps.MarkerImage(startDragSrc, startDragSize, startDragOption);
 
-    // 출발 마커가 표시될 위치입니다 
-    var startPosition = new daum.maps.LatLng(33.450701, 126.570667); 
+    // 출발 마커가 표시될 위치입니다
+    var startPosition = new daum.maps.LatLng(33.450701, 126.570667);
 
     // 출발 마커를 생성합니다
     var startMarker = new daum.maps.Marker({
@@ -1605,21 +1604,21 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
 
     // 지도에 클릭 이벤트를 등록합니다
     // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-    daum.maps.event.addListener(map, 'click', function(mouseEvent) {        
-        
-        // 클릭한 위도, 경도 정보를 가져옵니다 
-        var latlng = mouseEvent.latLng; 
-        
+    daum.maps.event.addListener(map, 'click', function(mouseEvent) {
+
+        // 클릭한 위도, 경도 정보를 가져옵니다
+        var latlng = mouseEvent.latLng;
+
         // 마커 위치를 클릭한 위치로 옮깁니다
         startMarker.setPosition(latlng);
-        
+
         var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
         message += '경도는 ' + latlng.getLng() + ' 입니다';
         console.log(message);
-    });    
+    });
     */
     $('#getMarket_location').click(function(event) {
-        
+
         // alert("GPS 값을 가져옵니다"); // test line
         window.seoulApp.SignUpgetGPS();
         if(!market_location.value){
@@ -1633,7 +1632,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
                 $('.alert_select').css('display','none')
                 $('.alert_select_ok').off();
                 window.seoulApp.SignUpgetGPS();
-            });// 모달 ok 버튼 click event            
+            });// 모달 ok 버튼 click event
         }
         else{
             $('.manager_check_div').eq(7).css('visibility', 'visible');
@@ -1647,7 +1646,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
                 $('.alert_select_ok').off();
             });// 모달 ok 버튼 click event
         } // if ~ else
-        
+
     }); // get location
 </script>
 </html>
