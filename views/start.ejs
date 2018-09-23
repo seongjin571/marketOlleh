@@ -45,7 +45,7 @@
 
 <body>
     <!-- hw edit; creat dragable map -->
-    <div id="map" style="width:100%; height:92%;"></div>
+    <div id="map" style="width:50%; height:30%; display: none;"></div>
 
         <div class="swiper-container user">
             <div class="swiper-wrapper">
@@ -767,6 +767,7 @@
                                 <div class="manager_signup_name">상점위치</div>
                                 <input class="signuptext2" type="text" id="market_location" name='market_location' placeholder="상점 위치" style="display: none;">
                                 <input type="button" value="위치"  id="getMarket_location"/>
+                                <input type="button" value="위치"  id="testButton"/>
                             </div>
                         <div class="signuser_coupon1">
                             <div class="manager_check_div">
@@ -1552,56 +1553,22 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
 </script>
 <script src="/javascripts/cordova_getgps.js"></script>
 <script type="text/javascript">
-    /*
+    
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
         mapOption = { 
-            center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            center: new daum.maps.LatLng(37.56300372568073, 126.97729513156993), // 지도의 중심좌표
             level: 3 // 지도의 확대 레벨
         };
 
     var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-    var startSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/red_b.png', // 출발 마커이미지의 주소입니다    
-        startSize = new daum.maps.Size(50, 45), // 출발 마커이미지의 크기입니다 
-        startOption = { 
-            offset: new daum.maps.Point(15, 43) // 출발 마커이미지에서 마커의 좌표에 일치시킬 좌표를 설정합니다 (기본값은 이미지의 가운데 아래입니다)
-        };
-
-    // 출발 마커 이미지를 생성합니다
-    var startImage = new daum.maps.MarkerImage(startSrc, startSize, startOption);
-
-    var startDragSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/red_drag.png', // 출발 마커의 드래그 이미지 주소입니다    
-        startDragSize = new daum.maps.Size(50, 64), // 출발 마커의 드래그 이미지 크기입니다 
-        startDragOption = { 
-            offset: new daum.maps.Point(15, 54) // 출발 마커의 드래그 이미지에서 마커의 좌표에 일치시킬 좌표를 설정합니다 (기본값은 이미지의 가운데 아래입니다)
-        };
-
-    // 출발 마커의 드래그 이미지를 생성합니다
-    var startDragImage = new daum.maps.MarkerImage(startDragSrc, startDragSize, startDragOption);
-
-    // 출발 마커가 표시될 위치입니다 
-    var startPosition = new daum.maps.LatLng(33.450701, 126.570667); 
-
-    // 출발 마커를 생성합니다
-    var startMarker = new daum.maps.Marker({
-        map: map, // 출발 마커가 지도 위에 표시되도록 설정합니다
-        position: startPosition,
-        draggable: true, // 출발 마커가 드래그 가능하도록 설정합니다
-        image: startImage // 출발 마커이미지를 설정합니다
-    });
-
-    // 출발 마커에 dragstart 이벤트를 등록합니다
-    daum.maps.event.addListener(startMarker, 'dragstart', function() {
-        // 출발 마커의 드래그가 시작될 때 마커 이미지를 변경합니다
-        startMarker.setImage(startDragImage);
-    });
-
-    // 출발 마커에 dragend 이벤트를 등록합니다
-    daum.maps.event.addListener(startMarker, 'dragend', function() {
-         // 출발 마커의 드래그가 종료될 때 마커 이미지를 원래 이미지로 변경합니다
-        startMarker.setImage(startImage);
-        $("#map > div").trigger("click");
-    });
+    // 지도를 클릭한 위치에 표출할 마커입니다
+    var marker = new daum.maps.Marker({ 
+        // 지도 중심좌표에 마커를 생성합니다 
+        position: map.getCenter() 
+    }); 
+    // 지도에 마커를 표시합니다
+    marker.setMap(map);
 
     // 지도에 클릭 이벤트를 등록합니다
     // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
@@ -1609,19 +1576,13 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         
         // 클릭한 위도, 경도 정보를 가져옵니다 
         var latlng = mouseEvent.latLng; 
-        
+        var retunr_val = latlng.getLat()+', '+latlng.getLng();
         // 마커 위치를 클릭한 위치로 옮깁니다
-        startMarker.setPosition(latlng);
-        
-        var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
-        message += '경도는 ' + latlng.getLng() + ' 입니다';
-        console.log(message);
+        marker.setPosition(latlng);
+        market_location.value = retunr_val;
     });    
-    */
-    $('#getMarket_location').click(function(event) {
-        
-        // alert("GPS 값을 가져옵니다"); // test line
-        window.seoulApp.SignUpgetGPS();
+    
+    function check_getGPS() {
         if(!market_location.value){
             $('.manager_check_div').eq(7).css('visibility', 'hidden');
 
@@ -1647,8 +1608,19 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
                 $('.alert_select_ok').off();
             });// 모달 ok 버튼 click event
         } // if ~ else
+    } // check_getGPS()
+
+    $('#getMarket_location').click(function(event) {
         
+        // alert("GPS 값을 가져옵니다");
+        window.seoulApp.SignUpgetGPS();
+        //check_getGPS() --> cordova_getgps.js 파일로 실행 순서 옮김
     }); // get location
+
+    $('#testButton').click(function(e) {
+        $('#find_market').append($('#map'));
+        $('#map').css('display', 'block');
+    });
 </script>
 </html>
 

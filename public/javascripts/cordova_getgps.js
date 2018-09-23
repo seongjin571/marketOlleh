@@ -7,7 +7,9 @@ function getMyLocationInS(lng,lat){
     }
     else{
         market_location.value = window.myLat+", "+window.myLng;
-    }
+    } // if ~ else
+
+    check_getGPS();
 }
 
 function gpsGetFail() {
