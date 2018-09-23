@@ -45,7 +45,9 @@
 
 <body>
     <!-- hw edit; creat dragable map -->
+
     <div id="map" style="width:50%; height:30%; display: none;"></div>
+
 
         <div class="swiper-container user">
             <div class="swiper-wrapper">
@@ -751,7 +753,7 @@
                             <div class="manager_signup_name">상점이름</div>
                             <input class="signuptext2" type="text" id="market_name" name='market_name' placeholder="ex)또리네 분식집">
                         </div>
-                      
+
 
                         <div class="signupuser_input3">
                             <div class="manager_check_div">
@@ -1167,7 +1169,7 @@
 var ok;
 function CheckPass(str){
    var reg1 = /^[a-z0-9]{6,15}$/;    // a-z 0-9 중에 7자리 부터 14자리만 허용 한다는 뜻이구요
-   var reg2 = /[a-z]/g;    
+   var reg2 = /[a-z]/g;
    var reg3 = /[0-9]/g;
    if((reg1.test(str) &&  reg2.test(str) && reg3.test(str))){
        ok=1;
@@ -1175,11 +1177,11 @@ function CheckPass(str){
    else{
        ok=0;
    }
-   
+
 };
     var name2 = /^[가-힣]+$/;
-    
- 
+
+
     // var id = /^[a-z0-9_]{6,15}$/;
     var password = /^[a-zA-Z0-9]{6,15}$/;
     var password_number=/^[0-9]{4}$/;
@@ -1553,14 +1555,17 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
 </script>
 <script src="/javascripts/cordova_getgps.js"></script>
 <script type="text/javascript">
+
     
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
         mapOption = { 
             center: new daum.maps.LatLng(37.56300372568073, 126.97729513156993), // 지도의 중심좌표
+
             level: 3 // 지도의 확대 레벨
         };
 
     var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
 
     // 지도를 클릭한 위치에 표출할 마커입니다
     var marker = new daum.maps.Marker({ 
@@ -1583,6 +1588,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     });    
     
     function check_getGPS() {
+
         if(!market_location.value){
             $('.manager_check_div').eq(7).css('visibility', 'hidden');
 
@@ -1594,7 +1600,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
                 $('.alert_select').css('display','none')
                 $('.alert_select_ok').off();
                 window.seoulApp.SignUpgetGPS();
-            });// 모달 ok 버튼 click event            
+            });// 모달 ok 버튼 click event
         }
         else{
             $('.manager_check_div').eq(7).css('visibility', 'visible');
@@ -1608,6 +1614,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
                 $('.alert_select_ok').off();
             });// 모달 ok 버튼 click event
         } // if ~ else
+
     } // check_getGPS()
 
     $('#getMarket_location').click(function(event) {
@@ -1615,6 +1622,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         // alert("GPS 값을 가져옵니다");
         window.seoulApp.SignUpgetGPS();
         //check_getGPS() --> cordova_getgps.js 파일로 실행 순서 옮김
+
     }); // get location
 
     $('#testButton').click(function(e) {
