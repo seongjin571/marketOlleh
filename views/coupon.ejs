@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/coupon.css" />
     <link rel="stylesheet" href="/stylesheets/swiper.min.css">
     <script src='/cordova/cordova.js'></script>
-    <!-- <script src='/cordova/cordova_plugins.js'></script> -->
+    <script src='/cordova/cordova_plugins.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
     <script src="/javascripts/spin.js"></script>
@@ -130,32 +130,9 @@
 
 
 
-        <div class="content_title">
-            주변 시장들
-        </div>
-
-        <div class="market" id="market_name_id" name="sijang_name">
-          <div class="market_image"></div>
-          <p id="click_coupon" class="click_coupon">통인시장</p>
-          <img class="gray_button"src="/images/down-arrow.png" width="20px" height="20px">
-              <img class="blue_button"src="/images/down-arrow-blue.png" width="20px" height="20px" style="display: none">
-        </div>
-        <div class="market" id="market_name_id" name="sijang_name">
-          <div class="market_image"></div>
-          <p id="click_coupon" class="click_coupon">회기시장</p>
-          <img class="gray_button"src="/images/down-arrow.png" width="20px" height="20px">
-              <img class="blue_button"src="/images/down-arrow-blue.png" width="20px" height="20px" style="display: none">
-        </div>
-        <div class="market" id="market_name_id" name="sijang_name">
-          <div class="market_image"></div>
-          <p id="click_coupon" class="click_coupon">광장시장</p>
-          <img class="gray_button"src="/images/down-arrow.png" width="20px" height="20px">
-              <img class="blue_button"src="/images/down-arrow-blue.png" width="20px" height="20px" style="display: none">
-        </div>
+        <div class="content_title">주변 시장들</div>
 
     </div>
-
-
 
     <div class="my_coupon">
       <div class="coupon_ment">쿠폰을 옆으로 밀면 삭제/클릭 하시면 사용할 수 있습니다.</div>
@@ -374,319 +351,405 @@
         </div>
     </div>
 </body>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
-<script>
-    $('#go_my_coupon').click(function () {
-        $('#coupon_view').css('display','none')
-        $('.my_coupon').css('display','block')
-    })
-    $('#go_coupon_view').click(function () {
-        $('#coupon_view').css('display','block')
-        $('.my_coupon').css('display','none')
-        // Get_sijanimg();
-    })
-    $('#location_sj').click(function () {
-         location.href = "/location";
-        })
-    $('#myStamp_sj').click(function () {
-        location.href = "/myStamp";
-    })
-    $('#home_sj').click(function () {
-        location.href = "/main";
-    })
-      $('#logout').click(function () {
-        $('.alert_select').css('display', 'block');
-        $('.alert_content_select').html('로그아웃 하시겠습니까?')
-        $('.alert_select_ok').click(function () {
-          $('.alert_select').css('display', 'none');
-          $(location).attr('href', '/logout');
-        })
+<script src="/javascripts/cordova_getgps.js"></script>
+<script type="text/javascript">
+  /* ☆순서☆ : gettStart_setting -> getNearMarket -> nearCounting -> afterGetNearFunction */
+  function gettStart_setting() {
+    window.seoulApp.SignUpgetGPS();
+    getNearMarket();
+  }
+
+  // 근거리 정렬 (실제 거리 구하시는 식 X )
+  function nearCounting(marketList) {
+
+      var SortingMarket = new Array();
+
+      // marketList는 market DB의 시장을 전부 가져온 row값
+      for (var i = 0; i < marketList.length; i++) {
+          // 각 시장의 위도, 경도 값들을 전역 위도, 경도 값과 비교
+          var tempX = window.myLat - marketList[i].coordinateX;
+          var tempY = window.myLng - marketList[i].coordinateY;
+          var tempResult = Math.pow(tempX, 2) + Math.pow(tempY, 2);
+          tempResult = Math.sqrt(tempResult);
+
+          // key : value 형태 object로 마켓리스트를 저장
+          // 하지만 imgurl이 없으면 디폴트 경로 설정
+          if (!marketList[i].imgurl) {
+              SortingMarket[i] = {
+                  'imgurl' : '/images/market_default.jpg',
+                  'marketName': marketList[i].name,
+                  'marketDistance': tempResult
+              };
+          } else {
+              SortingMarket[i] = {
+                  'imgurl' : marketList[i].imgurl,
+                  'marketName': marketList[i].name,
+                  'marketDistance': tempResult
+              };
+          }
+
+      } // for
+
+      // Oject SortingMarket의 marketDistance값 기준으로 object sorting method
+      SortingMarket.sort(function(a, b) {
+          return a.marketDistance - b.marketDistance;
+      });
+
+      var tempString = "";
+      for (var i = 0; i < 3; i++) {
+          tempString += '<div class="market" id="market_name_id" name="sijang_name">';
+          tempString += '<div class="market_image" style="background: url('+SortingMarket[i].imgurl+');background-repeat: no-repeat; background-position: center center; background-size: 170%;"></div>';
+          tempString += '<p id="click_coupon" class="click_coupon">'+SortingMarket[i].marketName+'</p>';
+          tempString += '<img class="gray_button"src="/images/down-arrow.png" width="20px" height="20px">';
+          tempString += '<img class="blue_button"src="/images/down-arrow-blue.png" width="20px" height="20px" style="display: none"></div>'
+      } // for
+
+      // content_title_nearMarket.innerHTML = "";
+      // content_title_nearMarket.innerHTML = tempString;
+      $('#coupon_view').append(tempString);
+      afterGetNearFunction();
+  } // nearCounting()
+
+  // ajax 통신 테스팅
+  function getNearMarket() { 
+      $.ajax({
+          url: "/searching/near",
+          dataType: 'json',
+          type: 'POST',
+          contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+          // data: params,
+          success: function (result) {
+              console.log(result);
+              if (result.rows.length > 0) {
+                  nearCounting(result.rows); // nearCounting 함수로 결과 배열들 전달
+              } else {
+                  console.log('검색어를 확인해 주세요.');
+              }
+          },
+          error: function (e) {
+              console.log('검색어를 확인해 주세요.');
+              console.log('process error : ', e);
+          }
+      }); // ajax
+  } // getNearMarket()
+
+  gettStart_setting();
+  // ──────────────────────────────────────────── //  
+
+  function afterGetNearFunction() {
+
+      $('#go_my_coupon').click(function () {
+          $('#coupon_view').css('display','none')
+          $('.my_coupon').css('display','block')
       })
-        var swiper = new Swiper('.swiper-container', {
-      slidesPerView: 'auto',
-      initialSlide: 0,
-      resistanceRatio: 0,
-      slideToClickedSlide: true,
-      pagination: {
-        el: '.swiper-pagination',
-        dynamicBullets: true,
-      },
-    });
-    var next_index = 0;
-    var index=-1;
-    var count=0;
-    var chk_send = 0;
-    $('.market').click(function () {
-      if (chk_send == 0){
-       chk_send = 1;
-      //  return true;
-        next_index = $(".market").index( this )+1;
-        if(next_index ==index){
-            if(count==1){
-            $('.gray_button').eq(next_index-1).css('display','block')
-            $('.blue_button').eq(next_index-1).css('display','none')
-            $('.market').css('color','#9c9c9c');
-            $('.find_coupon_list1').css('display','none');
-            index=next_index;
-            count=0;
-            chk_send = 0;
-            }
-            else{
-              $('.market').css('color', '#9c9c9c');
-              $('.gray_button').css('display', 'block')
-              $('.blue_button').css('display', 'none')
-              $('.gray_button').eq(next_index - 1).css('display', 'none')
-              $('.blue_button').eq(next_index - 1).css('display', 'block')
-              $('.market').eq(next_index - 1).css('color', '#63dded');
-              var sijang_name = document.getElementsByClassName('click_coupon')[next_index - 1].innerHTML;
-        var data={
-          'sijang_name' : sijang_name
-        }
-        $.ajax({
-          type : 'post',
-          url : '/send_sijang_name',
-          contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-          cache: false,
-          data: data,
-          datatype: "json",
-          success : function(result) {
-            if(result['result']=='success'){
+      $('#go_coupon_view').click(function () {
+          $('#coupon_view').css('display','block')
+          $('.my_coupon').css('display','none')
+      })
+      $('#location_sj').click(function () {
+           location.href = "/location";
+          })
+      $('#myStamp_sj').click(function () {
+          location.href = "/myStamp";
+      })
+      $('#home_sj').click(function () {
+          location.href = "/main";
+      })
+        $('#logout').click(function () {
+          $('.alert_select').css('display', 'block');
+          $('.alert_content_select').html('로그아웃 하시겠습니까?')
+          $('.alert_select_ok').click(function () {
+            $('.alert_select').css('display', 'none');
+            $(location).attr('href', '/logout');
+          })
+        })
+          var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 'auto',
+        initialSlide: 0,
+        resistanceRatio: 0,
+        slideToClickedSlide: true,
+        pagination: {
+          el: '.swiper-pagination',
+          dynamicBullets: true,
+        },
+      });
+      var next_index = 0;
+      var index=-1;
+      var count=0;
+      var chk_send = 0;
+      $('.market').click(function () {
+        if (chk_send == 0){
+         chk_send = 1;
+        //  return true;
+          next_index = $(".market").index( this )+1;
+          if(next_index ==index){
+              if(count==1){
+              $('.gray_button').eq(next_index-1).css('display','block')
+              $('.blue_button').eq(next_index-1).css('display','none')
+              $('.market').css('color','#9c9c9c');
+              $('.find_coupon_list1').css('display','none');
+              index=next_index;
+              count=0;
               chk_send = 0;
-              var coupon_name = result['results'];
-              console.log(coupon_name);
-              if(coupon_name.length){
-                for(var i =0; i<coupon_name.length;i++){
-                  var find_coupon_list_div = document.createElement("div");
-                  find_coupon_list_div.setAttribute("class","find_coupon_list1");
-                 var html = '<div class="find_coupon1">';
-                      html += '<div class="store_and_market1">';
-                      html += '<div class="store_name1">'+coupon_name[i].market_name +'</div>';
-                      html += '<div class="period1">남은 수량 : '+coupon_name[i].coupon_count+'</div></div>';
-                      html += '<div class="standard1">'+coupon_name[i].coupon_standard+'</div>';
-                      html += '<div class="sale_price1">'+coupon_name[i].coupon_reward+'원 할인</div>';
-                      html += '<div class="coupon_bottom">';
-                      html += '<div class="cp" style="display:none;">'+coupon_name[i].coupon_password +'</div>';
-                      html += '<div class="market_name1">'+coupon_name[i].sijang_name+'</div>';
-                      html += '<div class="logo_image"><img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;"></div>';
-                      html += '</div>';
-                      html += '</div>';
-                  find_coupon_list_div.innerHTML = html;
-                  document.getElementsByClassName('market')[next_index-1].after(find_coupon_list_div)
-                  index=next_index;
-                  count=1;
-                }
-              }else{
-                $('.alert_x').css('display','block');
-                $('.alert_content').html('해당 시장에 쿠폰이 없습니다')
+              }
+              else{
                 $('.market').css('color', '#9c9c9c');
-              $('.gray_button').css('display', 'block')
-              $('.blue_button').css('display', 'none')
+                $('.gray_button').css('display', 'block')
+                $('.blue_button').css('display', 'none')
+                $('.gray_button').eq(next_index - 1).css('display', 'none')
+                $('.blue_button').eq(next_index - 1).css('display', 'block')
+                $('.market').eq(next_index - 1).css('color', '#63dded');
+                var sijang_name = document.getElementsByClassName('click_coupon')[next_index - 1].innerHTML;
+          var data={
+            'sijang_name' : sijang_name
+          }
+          $.ajax({
+            type : 'post',
+            url : '/send_sijang_name',
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            cache: false,
+            data: data,
+            datatype: "json",
+            success : function(result) {
+              if(result['result']=='success'){
+                chk_send = 0;
+                var coupon_name = result['results'];
+                console.log(coupon_name);
+                if(coupon_name.length){
+                  for(var i =0; i<coupon_name.length;i++){
+                    var find_coupon_list_div = document.createElement("div");
+                    find_coupon_list_div.setAttribute("class","find_coupon_list1");
+                   var html = '<div class="find_coupon1">';
+                        html += '<div class="store_and_market1">';
+                        html += '<div class="store_name1">'+coupon_name[i].market_name +'</div>';
+                        html += '<div class="period1">남은 수량 : '+coupon_name[i].coupon_count+'</div></div>';
+                        html += '<div class="standard1">'+coupon_name[i].coupon_standard+'</div>';
+                        html += '<div class="sale_price1">'+coupon_name[i].coupon_reward+'원 할인</div>';
+                        html += '<div class="coupon_bottom">';
+                        html += '<div class="cp" style="display:none;">'+coupon_name[i].coupon_password +'</div>';
+                        html += '<div class="market_name1">'+coupon_name[i].sijang_name+'</div>';
+                        html += '<div class="logo_image"><img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;"></div>';
+                        html += '</div>';
+                        html += '</div>';
+                    find_coupon_list_div.innerHTML = html;
+                    document.getElementsByClassName('market')[next_index-1].after(find_coupon_list_div)
+                    index=next_index;
+                    count=1;
+                  }
+                }else{
+                  $('.alert_x').css('display','block');
+                  $('.alert_content').html('해당 시장에 쿠폰이 없습니다')
+                  $('.market').css('color', '#9c9c9c');
+                $('.gray_button').css('display', 'block')
+                $('.blue_button').css('display', 'none')
+                }
               }
             }
+          })
+              }
           }
-        })
-            }
-        }
-        else{
-            $('.find_coupon_list1').remove();
-            $('.gray_button').css('display','block')
-            $('.blue_button').css('display','none')
-            $('.gray_button').eq(next_index-1).css('display','none')
-            $('.blue_button').eq(next_index-1).css('display','block')
-            $('.market').css('color','#9c9c9c');
-            $('.market').eq(next_index-1).css('color','#63dded');
-        var sijang_name=document.getElementsByClassName('click_coupon')[next_index-1].innerHTML;
-        var data={
-          'sijang_name' : sijang_name
-        }
-        $.ajax({
-          type : 'post',
-          url : '/send_sijang_name',
-          contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-          cache: false,
-          data: data,
-          datatype: "json",
-          success : function(result) {
-            if(result['result']=='success'){
-              chk_send = 0;
-              var coupon_name = result['results'];
-              console.log(coupon_name);
-              if(coupon_name.length){
-                for(var i =0; i<coupon_name.length;i++){
-                  var find_coupon_list_div = document.createElement("div");
-                  find_coupon_list_div.setAttribute("class","find_coupon_list1");
-                      var html = '<div class="find_coupon1">';
-                      html += '<div class="store_and_market1">';
-                      html += '<div class="store_name1">'+coupon_name[i].market_name +'</div>';
-                      html += '<div class="period1">남은 수량 : '+coupon_name[i].coupon_count+'</div></div>';
-                      html += '<div class="standard1">'+coupon_name[i].coupon_standard+'</div>';
-                      html += '<div class="sale_price1">'+coupon_name[i].coupon_reward+'원 할인</div>';
-                      html += '<div class="coupon_bottom">';
-                      html += '<div class="cp" style="display:none;">'+coupon_name[i].coupon_password +'</div>';
-                      html += '<div class="market_name1">'+coupon_name[i].sijang_name+'</div>';
-                      html += '<div class="logo_image"><img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;"></div>';
-                      html += '</div>';
-                      html += '</div>';
-                  find_coupon_list_div.innerHTML = html;
-                  document.getElementsByClassName('market')[next_index-1].after(find_coupon_list_div)
-                  index=next_index;
-                  count=1;
+          else{
+              $('.find_coupon_list1').remove();
+              $('.gray_button').css('display','block')
+              $('.blue_button').css('display','none')
+              $('.gray_button').eq(next_index-1).css('display','none')
+              $('.blue_button').eq(next_index-1).css('display','block')
+              $('.market').css('color','#9c9c9c');
+              $('.market').eq(next_index-1).css('color','#63dded');
+          var sijang_name=document.getElementsByClassName('click_coupon')[next_index-1].innerHTML;
+          var data={
+            'sijang_name' : sijang_name
+          }
+          $.ajax({
+            type : 'post',
+            url : '/send_sijang_name',
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            cache: false,
+            data: data,
+            datatype: "json",
+            success : function(result) {
+              if(result['result']=='success'){
+                chk_send = 0;
+                var coupon_name = result['results'];
+                console.log(coupon_name);
+                if(coupon_name.length){
+                  for(var i =0; i<coupon_name.length;i++){
+                    var find_coupon_list_div = document.createElement("div");
+                    find_coupon_list_div.setAttribute("class","find_coupon_list1");
+                        var html = '<div class="find_coupon1">';
+                        html += '<div class="store_and_market1">';
+                        html += '<div class="store_name1">'+coupon_name[i].market_name +'</div>';
+                        html += '<div class="period1">남은 수량 : '+coupon_name[i].coupon_count+'</div></div>';
+                        html += '<div class="standard1">'+coupon_name[i].coupon_standard+'</div>';
+                        html += '<div class="sale_price1">'+coupon_name[i].coupon_reward+'원 할인</div>';
+                        html += '<div class="coupon_bottom">';
+                        html += '<div class="cp" style="display:none;">'+coupon_name[i].coupon_password +'</div>';
+                        html += '<div class="market_name1">'+coupon_name[i].sijang_name+'</div>';
+                        html += '<div class="logo_image"><img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;"></div>';
+                        html += '</div>';
+                        html += '</div>';
+                    find_coupon_list_div.innerHTML = html;
+                    document.getElementsByClassName('market')[next_index-1].after(find_coupon_list_div)
+                    index=next_index;
+                    count=1;
+                  }
+                }else{
+                  $('.alert_x').css('display','block');
+                  $('.alert_content').html('해당 시장에 쿠폰이 없습니다')
+                  $('.market').css('color', '#9c9c9c');
+                $('.gray_button').css('display', 'block')
+                $('.blue_button').css('display', 'none')
                 }
-              }else{
-                $('.alert_x').css('display','block');
-                $('.alert_content').html('해당 시장에 쿠폰이 없습니다')
-                $('.market').css('color', '#9c9c9c');
-              $('.gray_button').css('display', 'block')
-              $('.blue_button').css('display', 'none')
               }
             }
-          }
-        })
-    }
-}
-    else{
-       return false;
+          })
       }
-    })
-      var check=0;
-    $(document).on("click",'.find_coupon_list1',function(event){
+  }
+      else{
+         return false;
+        }
+      })
+        var check=0;
+      $(document).on("click",'.find_coupon_list1',function(event){
 
-        var list = $('.find_coupon_list1').index(this);
-        var market=document.getElementsByClassName('store_name1')[list];
-        var market_name =market.innerHTML;
-        var sijang = document.getElementsByClassName('market_name1')[list];
-        var sijang_name = sijang.innerHTML;
-        var password = document.getElementsByClassName('cp')[list];
-        var coupon_password = password.innerHTML;
-        var reward = document.getElementsByClassName('sale_price1')[list];
-        var coupon_reward = reward.innerHTML;
-        var standard = document.getElementsByClassName('standard1')[list];
-        var coupon_standard = standard.innerHTML;
-        console.log(coupon_password);
-        var user_id = '<%= user_id %>'
-        console.log(user_id);
-        down();
-        function down() {
-          $('.alert_select').css('display','block');
-          $('.alert_x').css('display', 'none');
-          $('.alert_content_select').html('쿠폰을 다운로드 하시겠습니까?')
-            $('.alert_select_ok').click(function(){
-              if(check==0)
-              check=1;
-              $('.alert_select').css('display','none');
-              var data = {  
-                'user_id' : user_id,
-                'sijang_name' : sijang_name,
-                'market_name' : market_name,
-                'coupon_password' : coupon_password,
-                'coupon_reward' : coupon_reward,
-                'coupon_standard' : coupon_standard
-              }
-              console.log(data);
-              $.ajax({
-                type: "POST",
-                url: "/coupon_customer",
-                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                cache: false,
-                datatype: "json",
-                data: data,
-            
-                success: function (result) {
+          var list = $('.find_coupon_list1').index(this);
+          var market=document.getElementsByClassName('store_name1')[list];
+          var market_name =market.innerHTML;
+          var sijang = document.getElementsByClassName('market_name1')[list];
+          var sijang_name = sijang.innerHTML;
+          var password = document.getElementsByClassName('cp')[list];
+          var coupon_password = password.innerHTML;
+          var reward = document.getElementsByClassName('sale_price1')[list];
+          var coupon_reward = reward.innerHTML;
+          var standard = document.getElementsByClassName('standard1')[list];
+          var coupon_standard = standard.innerHTML;
+          console.log(coupon_password);
+          var user_id = '<%= user_id %>'
+          console.log(user_id);
+          down();
+          function down() {
+            $('.alert_select').css('display','block');
+            $('.alert_x').css('display', 'none');
+            $('.alert_content_select').html('쿠폰을 다운로드 하시겠습니까?')
+              $('.alert_select_ok').click(function(){
+                if(check==0)
+                check=1;
+                $('.alert_select').css('display','none');
+                var data = {  
+                  'user_id' : user_id,
+                  'sijang_name' : sijang_name,
+                  'market_name' : market_name,
+                  'coupon_password' : coupon_password,
+                  'coupon_reward' : coupon_reward,
+                  'coupon_standard' : coupon_standard
+                }
+                console.log(data);
+                $.ajax({
+                  type: "POST",
+                  url: "/coupon_customer",
+                  contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                  cache: false,
+                  datatype: "json",
+                  data: data,
+              
+                  success: function (result) {
 
-                  if (result['result'] == 'success') {
-                    $('.alert_x').css('display', 'none');
-                    $('.alert_o').css('display', 'block');
-                    $('.alert_content').html('쿠폰이 발급 되었습니다')
-                    console.log('발급')
-                    $('.alert_o').click(function () {
-                      var data = {
-                        'sijang_name': sijang_name,
-                        'market_name': market_name
-                      }
-                      console.log(data);
-                      $.ajax({
-                        type: "POST",
-                        url: "/decreasecoupon",
-                        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                        cache: false,
-                        datatype: "json",
-                        data: data,
-                        success: function (result) {
-                          if (result['result'] == 'decrease') {
-                            location.reload()
-                            // });
-                          }
-                          else if (result['result'] == 'delete') {
-                            location.reload()
-                            // });
-                          }
-                        },
-                        error: function (error) {
-                          alert('에러');
+                    if (result['result'] == 'success') {
+                      $('.alert_x').css('display', 'none');
+                      $('.alert_o').css('display', 'block');
+                      $('.alert_content').html('쿠폰이 발급 되었습니다')
+                      console.log('발급')
+                      $('.alert_o').click(function () {
+                        var data = {
+                          'sijang_name': sijang_name,
+                          'market_name': market_name
                         }
+                        console.log(data);
+                        $.ajax({
+                          type: "POST",
+                          url: "/decreasecoupon",
+                          contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                          cache: false,
+                          datatype: "json",
+                          data: data,
+                          success: function (result) {
+                            if (result['result'] == 'decrease') {
+                              location.reload()
+                              // });
+                            }
+                            else if (result['result'] == 'delete') {
+                              location.reload()
+                              // });
+                            }
+                          },
+                          error: function (error) {
+                            alert('에러');
+                          }
+                        });
+                        // break;
                       });
-                      // break;
-                    });
-                  }
-                  
-                      else if (result['result'] == 'fail') {
-                    if (check == 1) {
-                      console.log('이미')
-                      $('.alert_x').css('display', 'block');
-                      $('.alert_content').html('이미 해당 쿠폰이 있습니다')
-                      check=0;
                     }
-                  }
-                     
                     
-                  },
-                  error: function (error) {
-                    location.reload();
-                      // alert('쿠폰등록실패2');
-                  }
-              });
-            })
-        // }
-      }
+                        else if (result['result'] == 'fail') {
+                      if (check == 1) {
+                        console.log('이미')
+                        $('.alert_x').css('display', 'block');
+                        $('.alert_content').html('이미 해당 쿠폰이 있습니다')
+                        check=0;
+                      }
+                    }
+                       
+                      
+                    },
+                    error: function (error) {
+                      location.reload();
+                        // alert('쿠폰등록실패2');
+                    }
+                });
+              })
+          // }
+        }
 
-      })
-      $('.alert_x').click(function(){
-        $(this).css('display','none')
-      })
-      $('.alert_o').click(function(){
-        $(this).css('display','none')
-      })
-      $('.alert_select_cancel').click(function(){
-        $('.alert_out').css('display', 'none')
-        $('.alert_select').css('display','none')
-      })
-    //  function Get_sijanimg() {
-    //     for (var i = 0; i < $('.market > p').length; i++) {
-    //       var tempone = $('.market > p')[i].innerText;
-    //       $.ajax({
-    //           url: "/searching/gooname",
-    //           dataType: 'json',
-    //           type: 'POST',
-    //           contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-    //           data: {
-    //               "filed": "name",
-    //               "search_value": tempone
-    //           },
-    //           success: function (result) {
-    //               if (result.rows.length > 0) {
-    //                 var temptwo = "background: url("+result.rows[0].imgurl+");background-repeat: no-repeat; background-position: center center; background-size: 155%;";
-    //                 console.log(temptwo);
-    //                 document.getElementsByClassName("market_image")[i].setAttribute("style", temptwo);
-    //               } else {
-    //                 console.log("시장이 하나도 없을리가 없음 ~ 앞 작용 확인");
-    //               }
-    //           },
-    //           error: function (e) {
-    //               console.log('process error : ', e);
-    //           }
-    //       });
-    //     }
-    //  }
+        })
+        $('.alert_x').click(function(){
+          $(this).css('display','none')
+        })
+        $('.alert_o').click(function(){
+          $(this).css('display','none')
+        })
+        $('.alert_select_cancel').click(function(){
+          $('.alert_out').css('display', 'none')
+          $('.alert_select').css('display','none')
+        })
+      //  function Get_sijanimg() {
+      //     for (var i = 0; i < $('.market > p').length; i++) {
+      //       var tempone = $('.market > p')[i].innerText;
+      //       $.ajax({
+      //           url: "/searching/gooname",
+      //           dataType: 'json',
+      //           type: 'POST',
+      //           contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      //           data: {
+      //               "filed": "name",
+      //               "search_value": tempone
+      //           },
+      //           success: function (result) {
+      //               if (result.rows.length > 0) {
+      //                 var temptwo = "background: url("+result.rows[0].imgurl+");background-repeat: no-repeat; background-position: center center; background-size: 155%;";
+      //                 console.log(temptwo);
+      //                 document.getElementsByClassName("market_image")[i].setAttribute("style", temptwo);
+      //               } else {
+      //                 console.log("시장이 하나도 없을리가 없음 ~ 앞 작용 확인");
+      //               }
+      //           },
+      //           error: function (e) {
+      //               console.log('process error : ', e);
+      //           }
+      //       });
+      //     }
+      //  }
+    }
 </script>
-
 </html>
