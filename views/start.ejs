@@ -1589,6 +1589,11 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         market_location.value = retunr_val;
     });    
     
+    // map 크기 변화 있을때 레이아웃 수정해주자
+    function relayout() {
+        map.relayout();
+    }
+
     function check_getGPS() {
 
         if(!market_location.value){
