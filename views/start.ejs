@@ -46,7 +46,7 @@
 <body>
     <!-- hw edit; creat dragable map -->
 
-    <div id="map" style="width:50%; height:200px; display: none;">
+    <div id="map" style="width:70%; height:100%  ; display: none;">
     </div>
         <div class="swiper-container user">
             <div class="swiper-wrapper">
@@ -770,7 +770,6 @@
                             <div class="signupuser_input3">
                                 <input class="signuptext2" type="text" id="market_location" name='market_location' placeholder="상점 위치" style="display: none;">
                                 <input type="button" value="위치"  id="getMarket_location"/>
-                                <input type="button" value="위치"  id="testButton"/>
                             </div>
                         <div class="signuser_coupon1">
                             <div class="manager_check_div">
@@ -1557,7 +1556,8 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
 <script src="/javascripts/cordova_getgps.js"></script>
 <script type="text/javascript">
 
-    
+    var infowindowTemp; // 지도의 인포 윈도우
+
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
         mapOption = { 
             center: new daum.maps.LatLng(37.56300372568073, 126.97729513156993), // 지도의 중심좌표
@@ -1571,24 +1571,63 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     // 지도를 클릭한 위치에 표출할 마커입니다
     var marker = new daum.maps.Marker({ 
         // 지도 중심좌표에 마커를 생성합니다 
-        position: map.getCenter() 
+        position: map.getCenter(),
+        clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
     }); 
     // 지도에 마커를 표시합니다
     marker.setMap(map);
 
+
     // 지도에 클릭 이벤트를 등록합니다
     // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-    daum.maps.event.addListener(map, 'click', function(mouseEvent) {        
+    daum.maps.event.addListener(map, 'click', function(mouseEvent) {
         
+        // 이미 인포 윈도우 존재하면 없애주기 
+        if (infowindowTemp!=null) {
+            infowindowTemp.close();
+        } // if
+
         // 클릭한 위도, 경도 정보를 가져옵니다 
         var latlng = mouseEvent.latLng; 
         var retunr_val = latlng.getLat()+', '+latlng.getLng();
         // 마커 위치를 클릭한 위치로 옮깁니다
         marker.setPosition(latlng);
         market_location.value = retunr_val;
-    });    
-    
+
+        // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+        // 인포윈도우 내용, HTML 문자열이나 document element가 가능합니다
+        var iwContent = '<div style="padding:5px;"><span>'+latlng.getLat()+'</span><br><span>'+latlng.getLng()+'</span></div>', 
+          iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+        
+        // 인포윈도우를 생성합니다
+        infowindowTemp = new daum.maps.InfoWindow({
+          content : iwContent,
+          removable : iwRemoveable
+        });
+
+        infowindowTemp.open(map, marker);
+        // console.log(market_location.value);
+    }); // 지도에 클릭 이벤트
+
+    function changeCenter(moveLatLon) {
+        window.seoulApp.getGPS();
+
+        relayout();
+        // 지도 중심을 이동 시킵니다
+        map.setCenter(moveLatLon);
+        map.setLevel(6);
+    } // changeCenter        
+
+    // map 크기 변화 있을때 레이아웃 수정해주자
+    function relayout() {
+        map.relayout();
+    }
+
     function check_getGPS() {
+
+        $('#find_market').append($('#map'));
+        $('#map').css('display', 'block');
+        relayout();
 
         if(!market_location.value){
             $('.manager_check_div').eq(7).css('visibility', 'hidden');
@@ -1614,6 +1653,8 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
                 $('.alert_select').css('display','none')
                 $('.alert_select_ok').off();
             });// 모달 ok 버튼 click event
+            changeCenter(new daum.maps.LatLng(myLat, myLng));
+            marker.setPosition(new daum.maps.LatLng(myLat, myLng));  
         } // if ~ else
 
     } // check_getGPS()
@@ -1626,10 +1667,6 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
 
     }); // get location
 
-    $('#testButton').click(function(e) {
-        $('#find_market').append($('#map'));
-        $('#map').css('display', 'block');
-    });
 </script>
 </html>
 
