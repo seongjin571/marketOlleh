@@ -90,7 +90,6 @@
         saveToPhotoAlbum : false
       }
       navigator.camera.getPicture(function(imageData) {
-        alert(imageData);
         var smallImage = document.getElementById('smallImage');
 
         // Unhide image elements
@@ -118,7 +117,6 @@
                 saveToPhotoAlbum : false
             };
             navigator.camera.getPicture(function(imageURI) {
-        alert(imageURI);
         var smallImage = document.getElementById('smallImage');
 
         // Unhide image elements
