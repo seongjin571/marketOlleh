@@ -1556,10 +1556,12 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
 <script src="/javascripts/cordova_getgps.js"></script>
 <script type="text/javascript">
 
+
     var infowindowTemp; // 지도의 인포 윈도우
 
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
         mapOption = { 
+
             center: new daum.maps.LatLng(37.56300372568073, 126.97729513156993), // 지도의 중심좌표
 
             level: 3 // 지도의 확대 레벨
@@ -1569,11 +1571,13 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
 
 
     // 지도를 클릭한 위치에 표출할 마커입니다
+
     var marker = new daum.maps.Marker({ 
         // 지도 중심좌표에 마커를 생성합니다 
         position: map.getCenter(),
         clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
     }); 
+
     // 지도에 마커를 표시합니다
     marker.setMap(map);
 
@@ -1581,6 +1585,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     // 지도에 클릭 이벤트를 등록합니다
     // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
     daum.maps.event.addListener(map, 'click', function(mouseEvent) {
+
         
         // 이미 인포 윈도우 존재하면 없애주기 
         if (infowindowTemp!=null) {
@@ -1589,10 +1594,12 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
 
         // 클릭한 위도, 경도 정보를 가져옵니다 
         var latlng = mouseEvent.latLng; 
+
         var retunr_val = latlng.getLat()+', '+latlng.getLng();
         // 마커 위치를 클릭한 위치로 옮깁니다
         marker.setPosition(latlng);
         market_location.value = retunr_val;
+
 
         // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
         // 인포윈도우 내용, HTML 문자열이나 document element가 가능합니다
@@ -1622,6 +1629,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     function relayout() {
         map.relayout();
     }
+
 
     function check_getGPS() {
 
@@ -1660,7 +1668,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     } // check_getGPS()
 
     $('#getMarket_location').click(function(event) {
-        
+
         // alert("GPS 값을 가져옵니다");
         window.seoulApp.SignUpgetGPS();
         //check_getGPS() --> cordova_getgps.js 파일로 실행 순서 옮김
