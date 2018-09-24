@@ -238,7 +238,7 @@
         <div id="picture_reform_div">
         <div id="mystore_image"  style="background: url('<%= result[0].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 100%;"></div>
         <div id="mystore_image_reform"style="display:none">
-            <img id="smallImage" src="http://placehold.it/100" width="100%" height="100%"style="border-radius:100px"/>
+            <img id="smallImage" src="'<%= result[0].manager_image %>'" width="100%" height="100%"style="border-radius:100px"/>
         </div>
         <div class="picture_reform">수정 버튼 클릭 시 사진을 수정할 수 있습니다.</div>
         <div id="picture_capture">
