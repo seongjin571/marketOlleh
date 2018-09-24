@@ -655,6 +655,8 @@ select{
 
 #find_market{
      margin-top:50px;
+     height: 200px;
+
   }
 #store_picture{
     /* position: fixed !important;
@@ -829,6 +831,12 @@ select{
     height: 35px;
     outline: none;
 }
+/* hw edit; for map style */
+#getMarket_location{
+    margin-left: 51%;
+    margin-top: 2%;
+}
+
 #modal_close{
     font-size:30px;
     color:#b6b7b7;

@@ -81,11 +81,11 @@ body, html, #modal_market_name {
     height: 100%;
 }
 #back_loginuser{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background: white;
-    margin-top: 15px;
-    margin-left: 15px;
+    margin-top: 10px;
+    margin-left: 10px;
     position: fixed;
 }
 #findid_form{

@@ -3,13 +3,12 @@ function getMyLocationInS(lng,lat){
     if (!window.myLat) {
         window.myLat = lat;
         window.myLng = lng;
-        market_location.value = window.myLat+", "+window.myLng;    
+        market_location.value = window.myLat+", "+window.myLng;
     }
     else{
         market_location.value = window.myLat+", "+window.myLng;
     } // if ~ else
-
-    check_getGPS();
+    check_getGPS(); // start.ejs 마지막줄 js참조
 }
 
 function gpsGetFail() {
