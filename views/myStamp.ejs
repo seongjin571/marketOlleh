@@ -194,7 +194,7 @@
                       $('#face<%= myStamps[i].id %>').click(function() {
                         var sijang_name = '<%= myStamps[i].sijang_name %>';
                         var market_name = '<%= myStamps[i].market_name %>';
-                        var shareUrl = 'http://13.209.89.231:3000/share/' + sijang_name.replace(/ /gi, '%20') + '/' + market_name.replace(/ /gi, '%20');
+                        var shareUrl = 'http://18.219.181.225:3000/share/' + sijang_name.replace(/ /gi, '%20') + '/' + market_name.replace(/ /gi, '%20');
                         window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, null, null);
                       });
                     </script>
@@ -335,7 +335,7 @@
                       <div id="map<%= myStamps[i].id %>" class="map_myStamp_class">
                           <img src="/images/location3.png" width="30px" height="30px">
                           <div class="name">위치</div>
-                      </div>                      
+                      </div>
                   </div>
               </div>
 
@@ -517,13 +517,13 @@
             <!-- ▼ hw edit; map javascirpt -->
             <script type="text/javascript">
 
-            var markers = []; // 지도에 표시된 마커 객체를 가지고 있을 배열입니다 
+            var markers = []; // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
 
             // document.getElementById('map') 차일드 노드 여부로 map의 중복 생성, 겹침을 해결하였다.
             // if (document.getElementById('manager_Map').hasChildNodes()) {
             //     document.getElementById('manager_Map').innerHTML = null;
             // }
-            
+
             // 지도를 표시할 div (id)
             var mapContainer = document.getElementById('manager_Map'),
                 mapOption = {
@@ -546,7 +546,7 @@
 
                 // 생성된 마커를 배열에 추가합니다
                 markers.push(marker);
-            }            
+            }
 
             function setMarkers(map) {
                 for (var i = 0; i < markers.length; i++) {
@@ -560,23 +560,23 @@
                 // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
                 map.relayout();
             }
-            
+
             function changeCenter(getLat, getLng) {
                 var moveLatLon = new daum.maps.LatLng(getLat, getLng);
                 relayout();
                 // 지도 중심을 이동 시킵니다
                 map.setCenter(moveLatLon);
                 map.setLevel(4);
-            } // changeCenter   
+            } // changeCenter
 
-            </script>            
+            </script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
             <script>
             var number1 = "";
             var swiper
             var stamp_index
 
-            // 들여쓰기 난해... 595 line까지 
+            // 들여쓰기 난해... 595 line까지
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
               // 콜백 틀수성 때문에, 논콜백 호출위해 클릭 펑션에 제일먼저 수행시킴
               $('#manager_Map').css('display', 'block');
@@ -637,7 +637,7 @@
                       console.log('process error : ', e);
                   }
               }); // ajax
-              
+
             }); // stamp_list[index] click event
 
 
@@ -789,7 +789,7 @@
 
             var chk_send = 0;
             $('#write_ok_button<%= myStamps[i].id %>').click(function(){
-              
+
               if (chk_send == 0){
               chk_send = 1;
 
