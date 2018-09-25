@@ -49,6 +49,15 @@
       <div class="alert_select_ok">확인</div>
     </div>
   </div>
+  <div class="alert_o" style="display:none">
+    <div class="alert_o_content">
+      <div class="alert_image">
+        <img src="/images/alert_o.png" width="70px" height="70px" >
+      </div>
+      <div class="alert_content">
+      </div>
+    </div>
+  </div>
   
   <!-- HW EDIT 코르도바 + 자바스크립트 + 태그제어 -->
   <script src="/javascripts/cordova_getgps.js"></script>
@@ -102,7 +111,8 @@
     }
 
     function gpsNULL(){
-        alert("위치권한이 필요합니다.")
+        $('.alert_o').css('display', 'block');
+        $('.alert_content_select').html("위치권한이 필요합니다");
         window.seoulApp.getGPS();
         window.seoulApp.getGPSPermission();
         if (!isGPSPermission) { // false
@@ -296,6 +306,9 @@
         $('.alert_select').css('display','none');
         $('.alert_select_ok').off();
       });
+      $('.alert_o').click(function () {
+            $(this).css('display', 'none')
+        })
     </script>    
 </body>
 
