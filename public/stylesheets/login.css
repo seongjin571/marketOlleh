@@ -655,7 +655,7 @@ select{
 
 #find_market{
      margin-top:50px;
-     height: 200px;
+     height: 50px;
 
   }
 #store_picture{
@@ -814,7 +814,7 @@ select{
     border: 0;
  }
 
-#modal_display,#getMarket_location{
+#modal_display,#location_map{
     font-size: 13px;
     box-shadow: 5px 5px 3px #efefef;
     width: 50%;
@@ -831,10 +831,59 @@ select{
     height: 35px;
     outline: none;
 }
+#map_div button{
+    font-size: 13px;
+    box-shadow: 5px 5px 3px #efefef;
+    width: 60%;
+    margin-left: 20%;
+    background-color: white;
+    border: double 1px transparent;
+    border-radius: 50px;
+    background-image: linear-gradient(white, white),
+ radial-gradient(circle at top left, #17ead9,#6078ea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 1px;
+    border: 0px;
+    position: absolute;
+    top: 90%;
+    color: gray;
+    height: 7%;
+    outline: none;
+}
+#map_div img{
+    z-index: 100000000;
+    position: absolute;
+}
+#map_div p{
+    position: absolute;
+    top: 81%;
+    color: #9c9c9c;
+    width: 90%;
+    margin-left:5%;
+    text-align: center;
+    font-size:14px;
+}
 /* hw edit; for map style */
 #getMarket_location{
-    margin-left: 51%;
-    margin-top: 2%;
+        position: absolute;
+        width: 42px;
+        margin-left: 80%;
+        height: 42px;
+        top:20px;
+        z-index: 10;
+        background-color: white;
+        border-radius: 5px;
+        border-style: none;
+        /* border-color: white; */
+        outline: none;
+}
+#getMarket_location:active{
+    background-color: rgb(204, 200, 200);
+}
+#map{
+    position: fixed;
+    top: 0;
 }
 
 #modal_close{
