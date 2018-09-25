@@ -20,17 +20,17 @@ function gpsGetFail() {
     );
     $('#no_gps_alert').css('font-size','0.8em');
     $('.alert_select_ok').click(function () {
-        window.location = './start';
+        window.location.reload();
         gpsNULL();
     });     
 }
 
 function gpsNULL(){
 
-    alert("위치권한이 필요합니다.")
     // window.seoulApp.getGPS();
     window.seoulApp.getGPSPermission();
     if (!isGPSPermission) { // false
+        alert("위치권한이 필요합니다.");        
         // window.seoulApp.reload();
         window.seoulApp.getGPS();
     }

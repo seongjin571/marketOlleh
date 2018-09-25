@@ -1448,10 +1448,17 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         $('#loginuser').css('display','none');
         $('#signupuser').css('display','block');
     })
+    // hw edit; GPS끈 상태 고려 위해 회원가입 클릭했을때 맵 생기는 이벤트 
     $('#loginmanager_sign_up').click(function () {
         $('#loginManager').css('display','none');
         $('#signupManager').css('display','block');
-    })
+        $('#find_market').append($('#map'));
+        $('#map').css('display', 'block');
+        relayout();
+        var setPo = new daum.maps.LatLng(37.5657258494498, 126.9797731426241);
+        changeCenter(setPo);
+        marker.setPosition(setPo);            
+    });
 
     // 뒤로가기 고객로그인부분
     $('#back_loginuser').click(function () {
@@ -1627,12 +1634,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         map.relayout();
     }
 
-
     function check_getGPS() {
-
-        $('#find_market').append($('#map'));
-        $('#map').css('display', 'block');
-        relayout();
 
         if(!market_location.value){
             $('.manager_check_div').eq(7).css('visibility', 'hidden');
@@ -1645,7 +1647,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
                 $('.alert_select').css('display','none')
                 $('.alert_select_ok').off();
                 window.seoulApp.SignUpgetGPS();
-            });// 모달 ok 버튼 click event
+            });// 모달 ok 버튼 click             
         }
         else{
             $('.manager_check_div').eq(7).css('visibility', 'visible');
@@ -1658,8 +1660,9 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
                 $('.alert_select').css('display','none')
                 $('.alert_select_ok').off();
             });// 모달 ok 버튼 click event
-            changeCenter(new daum.maps.LatLng(myLat, myLng));
-            marker.setPosition(new daum.maps.LatLng(myLat, myLng));
+            var setPo = new daum.maps.LatLng(myLat, myLng)
+            changeCenter(setPo);
+            marker.setPosition(setPo);
         } // if ~ else
 
     } // check_getGPS()
