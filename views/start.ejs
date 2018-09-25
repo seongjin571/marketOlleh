@@ -51,7 +51,7 @@
     <div id="map" style="width:100%; height:80%;">
     </div>
     <p>지도에서 위치를 클릭하시거나 오른쪽 상단의 내 위치 아이콘 클릭 후 확인버튼을 눌러주세요</p>
-    <button>확인</button>
+    <button id="map_getLocationButton">확인</button>
     </div>
         <div class="swiper-container user">
             <div class="swiper-wrapper">
@@ -1563,6 +1563,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     if(allHeight>600){
         $('.signupuser_input4').css('top','440px')
     }
+
     $('#location_map').click(function(){
         $('#signupManager').css('display','none');
         $('#map_div').css('display','block')
@@ -1571,9 +1572,8 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         var setPo = new daum.maps.LatLng(37.5657258494498, 126.9797731426241);
         changeCenter(setPo);
         marker.setPosition(setPo); 
+    }); // '위치찾기' 버튼 event
 
-        alert('a')
-    })
     $('#back_map').click(function(){
         $('#signupManager').css('display','block');
         $('#map_div').css('display','none')
@@ -1649,7 +1649,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         relayout();
         // 지도 중심을 이동 시킵니다
         map.setCenter(moveLatLon);
-        map.setLevel(6);
+        map.setLevel(4);
     } // changeCenter
 
     // map 크기 변화 있을때 레이아웃 수정해주자
@@ -1657,20 +1657,28 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         map.relayout();
     }
 
-    function check_getGPS() {
+    $('#getMarket_location').click(function(event) {
+        // alert("GPS 값을 가져옵니다");
+        window.seoulApp.SignUpgetGPS();
+        var setPo = new daum.maps.LatLng(myLat, myLng)
+        changeCenter(setPo);
+        marker.setPosition(setPo);        
+    }); // get location
+
+    $('#map_getLocationButton').click(function(event) {
 
         if(!market_location.value){
             $('.manager_check_div').eq(7).css('visibility', 'hidden');
 
             // 모달
             $('.alert_out').css('display', 'block');
-            $('.alert_content_select').html('GPS 확인후 한번 더 눌러주세요!');
+            $('.alert_content_select').html('지도에서 위치를 클릭해 주세요!');
             $('.alert_select_ok_out').click(function () {
                 $('.alert_out').css('display', 'none')
                 $('.alert_select').css('display','none')
                 $('.alert_select_ok').off();
                 window.seoulApp.SignUpgetGPS();
-            });// 모달 ok 버튼 click             
+            });// 모달 ok 버튼 click
         }
         else{
             $('.manager_check_div').eq(7).css('visibility', 'visible');
@@ -1682,21 +1690,14 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
                 $('.alert_out').css('display', 'none')
                 $('.alert_select').css('display','none')
                 $('.alert_select_ok').off();
+                // map_back 버튼 기능과 동일
+                $('#signupManager').css('display','block');
+                $('#map_div').css('display','none')                
             });// 모달 ok 버튼 click event
-            var setPo = new daum.maps.LatLng(myLat, myLng)
-            changeCenter(setPo);
-            marker.setPosition(setPo);
-        } // if ~ else
 
-    } // check_getGPS()
+        } // if ~ else            
 
-    $('#getMarket_location').click(function(event) {
-
-        // alert("GPS 값을 가져옵니다");
-        window.seoulApp.SignUpgetGPS();
-        //check_getGPS() --> cordova_getgps.js 파일로 실행 순서 옮김
-
-    }); // get location
+    }); // map_getLocationButton (in map, '확인' button) event
 
 </script>
 </html>
