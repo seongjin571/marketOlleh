@@ -102,7 +102,7 @@
     <div id="hot_store">
         <h3>서울시 좋아요순 상점</h3>
 
-        <% for(var i=0; i<=market.length-1; i+=2) { %>
+        <% for(var i=0; i<=18; i+=2) { %>
           <div class="hot_store_list">
               <div class="hot_store_detail">
                   <div>
@@ -119,14 +119,7 @@
                       <p><%= market[i].like_count %></p>
                   </div>
               </div>
-              <%
-                if(i >= market.length-1) {
-              %>
-                  </div>
-              <%
-                    break;
-                  }
-              %>
+
               <div class="hot_store_detail">
                   <div>
                       <img src="<%= market[i+1].manager_image %>" width="100%" height="125px">

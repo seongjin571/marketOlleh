@@ -282,7 +282,7 @@
 
         <div id="hot_store">
             <h3>서울시 좋아요순 상점</h3>
-            <% for(var i=0; i<=market.length-1; i+=2) { %>
+            <% for(var i=0; i<=18; i+=2) { %>
               <div class="hot_store_list">
                   <div class="hot_store_detail">
                       <div>
@@ -295,14 +295,7 @@
                           <p><%= market[i].like_count %></p>
                       </div>
                   </div>
-                  <%
-                    if(i >= market.length-1) {
-                  %>
-                      </div>
-                  <%
-                        break;
-                      }
-                  %>
+
                   <div class="hot_store_detail">
                       <div>
                           <img src="<%= market[i+1].manager_image %>" width="100%" height="125px">
@@ -575,7 +568,7 @@
         var user_id = '<%= user.id %>';
         var markers = []; // (No gps) 지도에 표시된 마커 객체를 가지고 있을 배열입니다
         var markersGPS = []; // (need gps) 지도에 표시된 마커 객체를 가지고 있을 배열입니다
-        
+
         // 지도를 표시할 div (id)
         var mapContainer = document.getElementById('map'),
             mapOption = {
@@ -652,7 +645,7 @@
                         $('#navControlButton').css('display', 'none');
                         document.getElementById('back_div').style.display = "block";
                         // searching_marketinfo.js 참조
-                        // 기본 틀과 UI, display설정 포함 
+                        // 기본 틀과 UI, display설정 포함
                         managerInfoLi_event(result.rows[0]);
                     } else {
                         console.log("시장이름 존재하지 않음");
@@ -786,8 +779,8 @@
 
                             for(var i = 0; i < parseInt(result.rows.length); i++){
                                 if(temp == result.rows[i].name){
-                                    window.scrollTo(0, 0);     
-                                    marketInfoLi_event(result.rows[i])   
+                                    window.scrollTo(0, 0);
+                                    marketInfoLi_event(result.rows[i])
                                 } // inner if
                             } // for
                         } else {
@@ -811,13 +804,13 @@
 
         $('#user_nearMarket').click(function (event) {
             start_nearMarket_setting();
-        });        
+        });
 
         function start_nearMarket_setting(argument) {
             window.seoulApp.SignUpgetGPS();
             getNearMarket();
         }
-        
+
         start_nearMarket_setting();
 
     </script>
