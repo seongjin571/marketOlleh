@@ -527,11 +527,15 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         /* .swiper-slide{
             margin-top: 30px;
         } */
-        #introduce,#map,.stamp_infor{
+        #introduce,#map_intro,.stamp_infor{
             display: inline-flex;
             width: 90%;
             height: 30px;
             margin-left: 5%;
+        }
+        #map_intro{
+            margin-bottom:15px;
+            margin-top: 20px;
         }
         #introduce{
             height: auto !important;
