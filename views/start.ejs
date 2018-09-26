@@ -239,8 +239,7 @@
                 </div>
                 <!-- 코르도바 gps 테스트 위한 링크 ( hw edit ) -->
                 <div style="text-align: center;">
-                    <a href="/geolo" style="display: inline;">Geolo</a>
-                    <a href="/backb" style="display: inline;">Backb</a>
+                    
                 </div>
             </div>
         </div>
@@ -1455,7 +1454,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         $('#loginuser').css('display','none');
         $('#signupuser').css('display','block');
     })
-    // hw edit; GPS끈 상태 고려 위해 회원가입 클릭했을때 맵 생기는 이벤트 
+    // hw edit; GPS끈 상태 고려 위해 회원가입 클릭했을때 맵 생기는 이벤트
     $('#loginmanager_sign_up').click(function () {
         $('#loginManager').css('display','none');
         $('#signupManager').css('display','block');
@@ -1464,7 +1463,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         // relayout();
         // var setPo = new daum.maps.LatLng(37.5657258494498, 126.9797731426241);
         // changeCenter(setPo);
-        // marker.setPosition(setPo);            
+        // marker.setPosition(setPo);
     });
 
     // 뒤로가기 고객로그인부분
@@ -1571,7 +1570,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         relayout();
         var setPo = new daum.maps.LatLng(37.5657258494498, 126.9797731426241);
         changeCenter(setPo);
-        marker.setPosition(setPo); 
+        marker.setPosition(setPo);
     }); // '위치찾기' 버튼 event
 
     $('#back_map').click(function(){
@@ -1662,7 +1661,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         window.seoulApp.SignUpgetGPS();
         var setPo = new daum.maps.LatLng(myLat, myLng)
         changeCenter(setPo);
-        marker.setPosition(setPo);        
+        marker.setPosition(setPo);
     }); // get location
 
     $('#map_getLocationButton').click(function(event) {
@@ -1692,10 +1691,10 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
                 $('.alert_select_ok').off();
                 // map_back 버튼 기능과 동일
                 $('#signupManager').css('display','block');
-                $('#map_div').css('display','none')                
+                $('#map_div').css('display','none')
             });// 모달 ok 버튼 click event
 
-        } // if ~ else            
+        } // if ~ else
 
     }); // map_getLocationButton (in map, '확인' button) event
 
