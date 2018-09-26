@@ -74,6 +74,7 @@
       localStorage.clear();
     } // if main에서 쿠폰 클릭해서 myStamp로 왔을때
 
+
   } // onload function()
 
 </script>
@@ -199,6 +200,7 @@
                         var sijang_name = '<%= myStamps[i].sijang_name %>';
                         var market_name = '<%= myStamps[i].market_name %>';
                         var shareUrl = 'http://18.219.181.225:3000/share/' + sijang_name.replace(/ /gi, '%20') + '/' + market_name.replace(/ /gi, '%20');
+
                         // window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, null, null);
                         window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){
                   				//alert(errormsg)
@@ -207,6 +209,7 @@
                   	        window.location.href = 'https://play.google.com/store/apps/details?id=com.facebook.katana';
                   	      }
                   			});
+
                       });
                     </script>
                   </div>
