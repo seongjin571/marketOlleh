@@ -291,6 +291,8 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
               font-weight: lighter;
               color: #9c9c9c;
               line-height: 24px;
+             word-break:break-all;
+
           }
           .review_rate{
             margin-top: 20px;

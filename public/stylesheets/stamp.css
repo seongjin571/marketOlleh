@@ -554,6 +554,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             font-weight: lighter;
             color: #9c9c9c;
             line-height: 30px;
+            word-break:break-all;
         }
         .stamp_infor_content{
             line-height: 30px;
