@@ -1,7 +1,7 @@
 
 // 전역 변수
 var insert_sijang = '';
-
+var setPo;
 // 현우가 건든 부분 ~ 모달창 제어
 
 modal_display.addEventListener('click', function(event) {
@@ -115,12 +115,12 @@ function setStyle_search_result(searchResult) {
     $('#search_result > div > li').css('color', 'black');
     $(this).css('color', '#17ead9');
     $(this).css('transition', '1s');
-    $('.manager_check_div').eq(8).css('visibility', 'visible')
+    $('.manager_check_div').eq(7).css('visibility', 'visible')
     insert_sijang = $(this).text();
     
     for (var i = 0; i < searchResult.rows.length; i++) {
       if (searchResult.rows[i].name == $(this).text()) {
-        var setPo = new daum.maps.LatLng(searchResult.rows[i].coordinateX, searchResult.rows[i].coordinateY);
+        setPo = new daum.maps.LatLng(searchResult.rows[i].coordinateX, searchResult.rows[i].coordinateY);
         changeCenter(setPo);
         marker.setPosition(setPo);
         return; // if out
