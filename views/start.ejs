@@ -530,6 +530,7 @@
                         if (result['result'] == 'success') {
                             $('.alert_o').css('display','block');
                             $('.alert_content').html('회원가입이 완료되었습니다');
+                            $('.alert_o').click(function(){
                             $('#signupuser').css('display','none');
                             $('#loginuser').css('display','block');
                             $('#userid').val('');
@@ -538,6 +539,7 @@
                             $('#userpwdcheck').val('');
                             $('#e_mail').val('');
                             $('.check_div').css('display', 'none');
+                            })
                         }
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
@@ -1058,6 +1060,7 @@
                         if (result['result'] == 'success') {
                             $('.alert_o').css('display','block');
                             $('.alert_content').html('회원가입이 완료되었습니다');
+                            $('.alert_o').click(function(){
                             $('#signupManager').css('display','none');
                             $('#loginManager').css('display','block');
                             $('#manager_id_jh').val('');
@@ -1078,7 +1081,9 @@
                             $('#password_star').text('');
                             $('.tenControls_sj').css('display', 'none');
                             $('.fiveControls_sj').css('display', 'none');
+                        })
                         }
+                  
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
                             $('.alert_content').html('이미 존재하는 아이디입니다');
