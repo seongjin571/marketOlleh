@@ -1237,13 +1237,21 @@ select{
   background-position: center;
   background-repeat: no-repeat;
 }
-/* #manager4{
-  width: 100%;
-  background-image: url('/images/user_way4.png');
+ #manager4{
+  margin-left: 7%;
+  width: 60%;
+  background-image: url('/images/coupon3.png');
   background-size: contain;
-  background-position: center;
+  background-position: left;
   background-repeat: no-repeat;
-} */
+} 
+#manager5{
+    width: 60%;
+    margin-left: 33%;
+    background-image: url('/images/stamp3.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+  } 
 .introduce_way{
     text-align: center;
 }
@@ -1251,8 +1259,61 @@ select{
     font-size: 20px;
 }
 .small_intro{
-    padding-top: 10px;
     font-size:14px;
     font-weight: lighter;
 }
+.small_intro1{
+    margin-left: 10%;
+    font-size:14px;
+    font-weight: lighter;
+}
+.small_intro2{
+    margin-left:40%;
+    font-size:14px;
+    font-weight: lighter;
+}
+.small_intro1_S{
+    font-size:30px;
+    color: red;
+    
+}
+.small_intro2_P{
+    font-size:30px;
+    color: red;
+}
+.small_intro2_1{
+    margin-left:42%;
+    font-size:14px;
+    font-weight: lighter;
+}
+.small_intro1_S1{
+    margin-left: 10%;
+    font-size:14px;
+    font-weight: lighter;
+    float: left;
+    margin-top: 3%;
+    margin-right: 2%;
+}
+.small_intro2_P1{
+    margin-left: 58%;
+    font-size:14px;
+    font-weight: lighter;
+    float: left;
+    margin-top: 3%;
+    margin-right: 2%;
+}
+/* #coupon3{
+    width: 100%;
+    background-image: url('/images/coupon3.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 
+  #stamp3{
+    width: 100%;
+    background-image: url('/images/stamp3.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  } */
