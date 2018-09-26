@@ -39,39 +39,43 @@
   // }
 
   window.onload = function() {
+    console.log("test: ", localStorage);
 
     if(localStorage.getItem('reviewTab')) {
-      var review_tab = 'store_review_sj' + localStorage.getItem('reviewTab');
-      var stamp_detail = 'selected_stamp' + localStorage.getItem('reviewTab');
-      var back = 'back_div' + localStorage.getItem('reviewTab');
-      var stamp_index_number=localStorage.getItem('stamp_index_number');
+      // var review_tab = 'store_review_sj' + localStorage.getItem('reviewTab');
+      // var stamp_detail = 'selected_stamp' + localStorage.getItem('reviewTab');
+      // var back = 'back_div' + localStorage.getItem('reviewTab');
+      // var stamp_index_number=localStorage.getItem('stamp_index_number');
 
-      $('#myStamp').fadeOut('200');
-      $('#'+stamp_detail).fadeIn('200');
-      $('#'+review_tab).fadeIn('200');
-      $('#'+back).fadeIn('200');
-      var id_value=localStorage.getItem('reviewTab');
-      swiper = new Swiper('.s1'+id_value, {
-        initialSlide: 0,
-        autoHeight: true,
-        observer: true,
-        observeParents: true,
-        scrollbar: {
-          el: '.swiper-scrollbar',
-          hide: true,
-        },
-      });
-      swiper.on('slideChangeTransitionStart', function () {
-        var active = swiper.activeIndex + (stamp_index_number * 4);
-        $('.go_slide').css('color', 'black');
-        $('.go_slide').eq(active).css('color', '#63dded');
-      });
+      $('#stamp_list'+localStorage.getItem('reviewTab')).trigger("click");
+      // $('#myStamp').fadeOut('200');
+      // $('#'+stamp_detail).fadeIn('200');
+      // $('#'+review_tab).fadeIn('200');
+      // $('#'+back).fadeIn('200');
+
+      // var id_value=localStorage.getItem('reviewTab');
+      // swiper = new Swiper('.s1'+id_value, {
+      //   initialSlide: 0,
+      //   autoHeight: true,
+      //   observer: true,
+      //   observeParents: true,
+      //   scrollbar: {
+      //     el: '.swiper-scrollbar',
+      //     hide: true,
+      //   },
+      // });
+
+      // swiper.on('slideChangeTransitionStart', function () {
+      //   var active = swiper.activeIndex + (stamp_index_number * 4);
+      //   $('.go_slide').css('color', 'black');
+      //   $('.go_slide').eq(active).css('color', '#63dded');
+      // });
 
       localStorage.clear();
-    }
+    } // if main에서 쿠폰 클릭해서 myStamp로 왔을때 
 
+  } // onload function()
 
-  }
 </script>
 <!-- kakao map API (hw edit) -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
