@@ -85,7 +85,7 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
     $('#goodCount_sj').text(market_arr.like_count);
 
 		$('#face').click(function() {
-			var shareUrl = 'http://13.209.89.231:3000/share/' + market_arr.sijang_name.replace(/ /gi, '%20') + '\/' + market_arr.market_name.replace(/ /gi, '%20');
+			var shareUrl = 'http://18.219.181.225:3000/share/' + market_arr.sijang_name.replace(/ /gi, '%20') + '\/' + market_arr.market_name.replace(/ /gi, '%20');
 			window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){
 				//alert(errormsg)
 				var goToPlayStoreConfirm = confirm('본 기능은 해당 기기에 페이스북 어플리케이션이 있어야 실행이 가능합니다. 앱을 설치하시겠습니까?');
