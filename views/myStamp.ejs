@@ -10,8 +10,8 @@
   <script src='/cordova/cordova_plugins.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
-    <script src="/javascripts/spin.js"></script>
-    <link rel="stylesheet" href="/stylesheets/swiper.min.css">
+  <script src="/javascripts/spin.js"></script>
+  <link rel="stylesheet" href="/stylesheets/swiper.min.css">
   <link rel="stylesheet" type="text/css" href="/stylesheets/stamp.css" />
   <!-- <script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script> -->
   <!-- <script>
@@ -24,10 +24,10 @@
 <script>
   document.addEventListener("backbutton", onBackKeyDown, false);
   function onBackKeyDown(e) {
-     e.preventDefault();
-      $('.alert_select').css('display', 'block');
+    e.preventDefault();
+      $('.alert_out').css('display', 'block');
       $('.alert_content_select').html('앱을 종료하시겠습니까?')
-      $('.alert_select_ok').click(function () {
+      $('.alert_select_ok_out').click(function () {
        navigator.app.exitApp();
       });
   }
@@ -39,24 +39,46 @@
   // }
 
   window.onload = function() {
+    console.log("test: ", localStorage);
 
     if(localStorage.getItem('reviewTab')) {
-      var review_tab = 'store_review_sj' + localStorage.getItem('reviewTab');
-      var stamp_detail = 'selected_stamp' + localStorage.getItem('reviewTab');
-      var back = 'back_div' + localStorage.getItem('reviewTab');
+      // var review_tab = 'store_review_sj' + localStorage.getItem('reviewTab');
+      // var stamp_detail = 'selected_stamp' + localStorage.getItem('reviewTab');
+      // var back = 'back_div' + localStorage.getItem('reviewTab');
+      // var stamp_index_number=localStorage.getItem('stamp_index_number');
 
-      $('#myStamp').fadeOut('200');
-      $('#'+stamp_detail).fadeIn('200');
-      $('#'+review_tab).fadeIn('200');
-      $('#'+back).fadeIn('200');
+      $('#stamp_list'+localStorage.getItem('reviewTab')).trigger("click");
+      // $('#myStamp').fadeOut('200');
+      // $('#'+stamp_detail).fadeIn('200');
+      // $('#'+review_tab).fadeIn('200');
+      // $('#'+back).fadeIn('200');
+
+      // var id_value=localStorage.getItem('reviewTab');
+      // swiper = new Swiper('.s1'+id_value, {
+      //   initialSlide: 0,
+      //   autoHeight: true,
+      //   observer: true,
+      //   observeParents: true,
+      //   scrollbar: {
+      //     el: '.swiper-scrollbar',
+      //     hide: true,
+      //   },
+      // });
+
+      // swiper.on('slideChangeTransitionStart', function () {
+      //   var active = swiper.activeIndex + (stamp_index_number * 4);
+      //   $('.go_slide').css('color', 'black');
+      //   $('.go_slide').eq(active).css('color', '#63dded');
+      // });
 
       localStorage.clear();
-    }
+    } // if main에서 쿠폰 클릭해서 myStamp로 왔을때
 
-
-  }
+  } // onload function()
 
 </script>
+<!-- kakao map API (hw edit) -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
 <body>
 <div class="alert_x" style="display:none">
   <div class="alert_x_content">
@@ -90,15 +112,28 @@
             </div>
         </div>
       </div>
+      <div class="alert_out"  style="display:none">
+                    <div class="alert_o_content">
+                      <div class="alert_content_select">
+                      </div>
+                      <div class="alert_select_cancel">
+                        취소
+                      </div>
+                      <div class="alert_select_ok_out">
+                          확인
+                        </div>
+                    </div>
+                  </div>
+
+<div id="manager_Map" style="width:90%; height:250px; margin-left:5%; display: none;"></div>
+
   <div id="myStamp">
     <!-- <label>내 스탬프</label> -->
     <% if(myStamps) { %>
       <% for(var i=0; i<myStamps.length; i++) { %>
         <div class="stamp_one" id='stamp_list<%= myStamps[i].id %>'>
 
-            <div class="store_market_name">
-                <%= myStamps[i].market_name %>
-            </div>
+            <div class="store_market_name"><%= myStamps[i].market_name %></div>
             <div class="my_stamp_count">
                 <div class="stamp_count_vertical" id='stamp_count_vertical<%= myStamps[i].id %>'>
                     <p class="count_stamp">
@@ -108,9 +143,7 @@
                 </div>
             </div>
             <div class="stamp_market">
-                    <p class="deadline">
-                        <%= myStamps[i].sijang_name %>
-                    </p>
+                    <p class="deadline"><%= myStamps[i].sijang_name %></p>
                     <div class="logo_image">
                     <img src="/images/inline-logo.png" width="75%" height="auto" style="padding-top: 12%;padding-left: 8%;">
                 </div>
@@ -136,12 +169,8 @@
                 <div id="menu_infor">
                 <div id="top_infor">
                   <div id="name_sj">
-                    <p id="store_name_sj">
-                      <%= myStamps[i].market_name %>
-                    </p>
-                    <p id="market_name_sj">
-                      <%= myStamps[i].sijang_name %>
-                    </p>
+                    <p id="store_name_sj"><%= myStamps[i].market_name %></p>
+                    <p id="market_name_sj"><%= myStamps[i].sijang_name %></p>
                   </div>
                   <div id="sns_sj">
                     <div id="good" class="good<%= myStamps[i].id %>">
@@ -169,8 +198,15 @@
                       $('#face<%= myStamps[i].id %>').click(function() {
                         var sijang_name = '<%= myStamps[i].sijang_name %>';
                         var market_name = '<%= myStamps[i].market_name %>';
-                        var shareUrl = 'http://13.209.89.231:3000/share/' + sijang_name.replace(/ /gi, '%20') + '/' + market_name.replace(/ /gi, '%20');
-                        window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, null, null);
+                        var shareUrl = 'http://18.219.181.225:3000/share/' + sijang_name.replace(/ /gi, '%20') + '/' + market_name.replace(/ /gi, '%20');
+                        // window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, null, null);
+                        window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){
+                  				//alert(errormsg)
+                  				var goToPlayStoreConfirm = confirm('본 기능은 해당 기기에 페이스북 어플리케이션이 있어야 실행이 가능합니다. 앱을 설치하시겠습니까?');
+                  	      if(goToPlayStoreConfirm) {
+                  	        window.location.href = 'https://play.google.com/store/apps/details?id=com.facebook.katana';
+                  	      }
+                  			});
                       });
                     </script>
                   </div>
@@ -299,20 +335,20 @@
               <!-- </div> -->
 
 
-
               <div class="swiper-slide">
                   <div id="store_detail_sj">
-                      <div class="store_image" style="background: url('/files/<%= myStamps[i].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 100%;"></div>
+                      <div class="store_image" style="background: url('<%= myStamps[i].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 100%;"></div>
                       <div id="introduce">
                           <img src="/images/storeM.png" width="30px" height="30px">
                           <div class="name">상점소개</div>
                           <div id="intro_content"><%= myStamps[i].market_introduce %></div>
                       </div>
-                      <div id="map">
-                              <img src="/images/location3.png" width="30px" height="30px">
-                              <div class="name">위치</div>
+                      <div id="map<%= myStamps[i].id %>" class="map_myStamp_class">
+                        <div id="map_intro">
+                          <img src="/images/location3.png" width="30px" height="30px">
+                          <div class="name">위치</div>
+                        </div>
                       </div>
-                      <img src="/images/han.png" width="80%" style="margin-left: 10%;margin-top: 5%;">
                   </div>
               </div>
 
@@ -486,20 +522,80 @@
               </div>
             </div>
 
-
             </div>
 
             <div class="swiper-scrollbar"></div>
             </div>
             </div>
+            <!-- ▼ hw edit; map javascirpt -->
+            <script type="text/javascript">
+
+            var markers = []; // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
+
+            // document.getElementById('map') 차일드 노드 여부로 map의 중복 생성, 겹침을 해결하였다.
+            // if (document.getElementById('manager_Map').hasChildNodes()) {
+            //     document.getElementById('manager_Map').innerHTML = null;
+            // }
+
+            // 지도를 표시할 div (id)
+            var mapContainer = document.getElementById('manager_Map'),
+                mapOption = {
+                    center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                    level: 4 // 지도의 확대 레벨
+                };
+
+            var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+            // 마커를 생성하고 지도위에 표시하는 함수입니다
+            function addMarker(position) {
+
+                // 마커를 생성합니다
+                var marker = new daum.maps.Marker({
+                    position: position
+                });
+
+                // 마커가 지도 위에 표시되도록 설정합니다
+                marker.setMap(map);
+
+                // 생성된 마커를 배열에 추가합니다
+                markers.push(marker);
+            }
+
+            function setMarkers(map) {
+                for (var i = 0; i < markers.length; i++) {
+                    markers[i].setMap(map);
+                }
+            }
+
+            function relayout() {
+                // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
+                // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다
+                // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
+                map.relayout();
+            }
+
+            function changeCenter(getLat, getLng) {
+                var moveLatLon = new daum.maps.LatLng(getLat, getLng);
+                relayout();
+                // 지도 중심을 이동 시킵니다
+                map.setCenter(moveLatLon);
+                map.setLevel(4);
+            } // changeCenter
+
+            </script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
             <script>
-
-
             var number1 = "";
             var swiper
+            var stamp_index
+
+            // 들여쓰기 난해... 595 line까지
             $('#stamp_list<%= myStamps[i].id %>').click(function () {
-              var stamp_index=$(this).index()
+              // 콜백 틀수성 때문에, 논콜백 호출위해 클릭 펑션에 제일먼저 수행시킴
+              $('#manager_Map').css('display', 'block');
+              $('#map<%= myStamps[i].id %>').append($('#manager_Map'));
+
+              stamp_index=$(this).index()
               $('.go_slide').eq(stamp_index*4).css('color', '#63dded');
               // 스크롤 조절
               window.scrollTo(0, 0);
@@ -522,8 +618,42 @@
                 $('.go_slide').css('color', 'black');
                 $('.go_slide').eq(active).css('color', '#63dded');
               });
-              
-            });
+
+              // hw edit; map setting part - KAKAO MAP API
+              var tempO = $('.store_market_name')[stamp_index];
+              var tempT = $('.deadline')[stamp_index];
+              $.ajax({
+                  url: "/searching/marketList",
+                  dataType: 'json',
+                  type: 'POST',
+                  contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                  data: {
+                      "name": tempT.innerText,
+                      "market_name": tempO.innerText
+                  },
+                  success: function (result) {
+                      if (result.rows.length > 0) {
+                          // manager get gps ~ display map, marker!
+                          // tempLo는 result의 location -> 위도 경도값 가짐
+                          var tempLo = result.rows[0].market_location;
+                          tempLo = tempLo.split(', ')
+
+                          setMarkers(null);
+                          addMarker(new daum.maps.LatLng(parseFloat(tempLo[0]), parseFloat(tempLo[1])));
+                          changeCenter(tempLo[0], tempLo[1])
+                      } else {
+                          console.log("시장(상점)이름 존재하지 않음");
+                      }
+                  },
+                  error: function (e) {
+                      alert("main.ejs");
+                      console.log('process error : ', e);
+                  }
+              }); // ajax
+
+            }); // stamp_list[index] click event
+
+
             $('.go_slide').click(function () {
               var slide_index = $(this).index();
               var this_index = $('.go_slide').index(this);
@@ -582,7 +712,7 @@
 
             /*  좋아요  */
             var good<%= myStamps[i].id %> = document.getElementById('goodCount_sj<%= myStamps[i].id %>');
-            
+
             $('.good<%= myStamps[i].id %>').click(function () {
               if ($('#noGood_Button_sj<%= myStamps[i].id %>').css('display') == 'inline-block'){
               var data = {
@@ -672,6 +802,7 @@
 
             var chk_send = 0;
             $('#write_ok_button<%= myStamps[i].id %>').click(function(){
+
               if (chk_send == 0){
               chk_send = 1;
 
@@ -730,6 +861,7 @@
                     $('.alert_content').html('리뷰 등록이 완료되었습니다')
                     $('.alert_o').click(function () {
                     localStorage.setItem('reviewTab', '<%= myStamps[i].id %>');
+                    localStorage.setItem('stamp_index_number', stamp_index);
                     location.reload();
                     });
                   }
@@ -998,6 +1130,7 @@
                                 $(this).css('display', 'none')
                               })
                               $('.alert_select_cancel').click(function () {
+                                $('.alert_out').css('display', 'none')
                                 $('.alert_select').css('display', 'none')
                               })
                               var allHeight=document.body.clientHeight ;
@@ -1024,7 +1157,5 @@
 
 
                       </script>
-
-                    </body>
-
-                    </html>
+</body>
+</html>

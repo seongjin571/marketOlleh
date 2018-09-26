@@ -25,7 +25,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 		}
 	tempString[2] = '<div class="market_infoText_li"><img src="/images/type.png" width="30px" height="30px"><p class="naming">유형</p><div class="content_div">'+market_arr.shape+','+market_arr.dealing+'</div></div>';
 	// tempString[4] = '<div class="market_infoText_li"> <a href='+market_arr.web+'>시장 링크</a></div>';
-	tempString[3] = '<div class="market_infoText_li"><img src="/images/type.png" width="30px" height="30px"><p class="naming">주소</p><div class="content_div">'+market_arr.oldaddress+'</div></div>';
+	tempString[3] = '<div class="market_infoText_li"><img src="/images/location3.png" width="30px" height="30px"><p class="naming">주소</p><div class="content_div">'+market_arr.oldaddress+'</div></div>';
 	tempString[4] = '<div class="market_infoText_li"><img src="/images/phone.png" width="30px" height="30px"><p class="naming">전화번호</p><div class="content_div">'+market_arr.callnum+'</div></div>';
 	// tempString[7] = '<div class="market_infoText_li"> 시장 대표 품목 : '+market_arr.representative+'</div>';
 	tempString[5] = '<div class="market_infoText_li"><img src="/images/traffic.png" width="30px" height="30px"><p class="naming">교통편</p><div class="content_div">'+market_arr.nearinfo+'</div></div><div class="line"></div>';
@@ -85,7 +85,7 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
     $('#goodCount_sj').text(market_arr.like_count);
 
 		$('#face').click(function() {
-			var shareUrl = 'http://13.209.89.231:3000/share/' + market_arr.sijang_name.replace(/ /gi, '%20') + '\/' + market_arr.market_name.replace(/ /gi, '%20');
+			var shareUrl = 'http://18.219.181.225:3000/share/' + market_arr.sijang_name.replace(/ /gi, '%20') + '\/' + market_arr.market_name.replace(/ /gi, '%20');
 			window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){
 				//alert(errormsg)
 				var goToPlayStoreConfirm = confirm('본 기능은 해당 기기에 페이스북 어플리케이션이 있어야 실행이 가능합니다. 앱을 설치하시겠습니까?');
@@ -190,7 +190,7 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 
     // 상점 소개와 위치
     $('#intro_content').text(market_arr.market_introduce);
-		$('.store_image').css({ "background": "url(/files/"+ market_arr.manager_image +")", 'background-repeat': 'no-repeat', 'background-position': 'center center', 'background-size': '155%' });
+		$('.store_image').css({ "background": "url("+ market_arr.manager_image +")", 'background-repeat': 'no-repeat', 'background-position': 'center center', 'background-size': '155%' });
 
 	// 리뷰, 앞에 있던 정보들 초기화
 	if ($('.review_div_sj > div')) {
@@ -218,6 +218,8 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 			console.log('process error : ', e);
 		}
 	}); // ajax
+
+	making_correct_map(market_arr);
 
 } // managerInfoLi_event
 
@@ -305,21 +307,21 @@ function marketInfoLi_event_likelist(result_rows) {
 			if (i == 0) { // 처음 실행 ~ div 닫기 태그 X
 				tempString[i] = '<div>';
 				tempString[i] += '<div class="hot_store_detail_market">';
-				tempString[i] += '<div><img src="/files/'+ result_rows[i].manager_image +'" width="100%" height="100px"> </div>';
+				tempString[i] += '<div><img src="' + result_rows[i].manager_image + '" width="100%" height="100px"> </div>';
 				tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
 				tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
 				tempString[i] += '</div>';
 			} else {
 				tempString[i] = '</div><div>';
 				tempString[i] += '<div class="hot_store_detail_market">';
-				tempString[i] += '<div><img src="/files/'+ result_rows[i].manager_image +'" width="100%" height="100px"> </div>';
+				tempString[i] += '<div><img src="' + result_rows[i].manager_image + '" width="100%" height="100px"> </div>';
 				tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
 				tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
 				tempString[i] += '</div>';
 			} // inner if ~ else
 		} else {
 			tempString[i] = '<div class="hot_store_detail_market">';
-			tempString[i] += '<div><img src="/files/'+ result_rows[i].manager_image +'" width="100%" height="100px"> </div>';
+			tempString[i] += '<div><img src="' + result_rows[i].manager_image + '" width="100%" height="100px"> </div>';
 			tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
 			tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
 			tempString[i] += '</div>';
@@ -465,10 +467,22 @@ function managerInfoLi_event_review(review_arr, avg_and_cnt, MarketName) {
 		} // for in
 	}
 
-
-
-
-
     $('.store_review_sj').html(fullString);
 
 } // managerInfoLi_event_review
+
+function making_correct_map(market_arr) {
+	// if no right map --> make correct map
+	var tempLo = market_arr.market_location;
+    tempLo = tempLo.split(', ');
+    // 지도를 표시할 div (id)
+    var mapContainer = document.getElementById('manager_Map'),
+        mapOption = {
+            center: new daum.maps.LatLng(parseFloat(tempLo[0]), parseFloat(tempLo[1])), // 지도의 중심좌표
+            level: 4 // 지도의 확대 레벨
+        };
+    var manager_Map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    // 마커 하나를 지도위에 표시합니다
+    addMarkerGPS(new daum.maps.LatLng(parseFloat(tempLo[0]), parseFloat(tempLo[1])), manager_Map);
+    manager_Map.relayout();
+}

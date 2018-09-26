@@ -26,15 +26,16 @@
 <script>
   document.addEventListener("backbutton", onBackKeyDown, false);
   function onBackKeyDown(e) {
-     e.preventDefault();
-      $('.alert_select').css('display', 'block');
+    e.preventDefault();
+      $('.alert_out').css('display', 'block');
       $('.alert_content_select').html('앱을 종료하시겠습니까?')
-      $('.alert_select_ok').click(function () {
+      $('.alert_select_ok_out').click(function () {
        navigator.app.exitApp();
       });
   }
 </script>
-
+<!-- kakao map API (hw edit) -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
 <body>
         <div class="alert_select" style="display:none">
                 <div class="alert_o_content">
@@ -48,12 +49,25 @@
                     </div>
                 </div>
             </div>
+            <div class="alert_out"  style="display:none">
+                    <div class="alert_o_content">
+                      <div class="alert_content_select">
+                      </div>
+                      <div class="alert_select_cancel">
+                        취소
+                      </div>
+                      <div class="alert_select_ok_out">
+                          확인
+                        </div>
+                    </div>
+                  </div>
+
     <div id="text_logo">
         <div id="logo">
             <img id="inline_logo" src="/images/inline-logo.png"style="width:22%;padding-left:3%;padding-top:10px; height:auto">
         </div>
         <div id="mystore_div">
-            <div id="mystore_image" style="background: url('/files/<%= results[0].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 100%;"></div>
+            <div id="mystore_image" style="background: url('<%= results[0].manager_image %>'); background-repeat: no-repeat; background-position: center center; background-size: 100%;"></div>
             <div id="my_id">
                 <%= admin_name %>님 상점</div>
             <div id="mystore_name"><%= results[0].market_name %></div>
@@ -92,7 +106,7 @@
           <div class="hot_store_list">
               <div class="hot_store_detail">
                   <div>
-                      <img src="/files/<%= market[i].manager_image %>" width="100%" height="125px">
+                      <img src="<%= market[i].manager_image %>" width="100%" height="125px">
                   </div>
                   <div class="good_store_name">
                       <%= market[i].market_name %>
@@ -115,7 +129,7 @@
               %>
               <div class="hot_store_detail">
                   <div>
-                      <img src="/files/<%= market[i+1].manager_image %>" width="100%" height="125px">
+                      <img src="<%= market[i+1].manager_image %>" width="100%" height="125px">
                   </div>
                   <div class="good_store_name">
                       <%= market[i+1].market_name %>
@@ -253,7 +267,7 @@
                         <img src="/images/location3.png" width="30px" height="30px">
                         <div class="name">위치</div>
                 </div>
-                <img src="/images/han.png" width="80%" style="margin-left: 10%;margin-top: 5%;">
+                <div id="manager_Map" style="width:90%;height:250px;margin-left: 5%; "></div>
             </div>
 
 
@@ -323,7 +337,25 @@
             $('.go_slide').eq(active).css('color','#63dded');
         });
     </script>
+    <!-- ▼ hw edit; map javascirpt -->
+    <script type="text/javascript">
+      var markersGPS = []; // (need gps) 지도에 표시된 마커 객체를 가지고 있을 배열입니다
 
+      // 마커를 생성하고 지도위에 표시하는 함수입니다
+      function addMarkerGPS(position, mapObj) {
+
+          // 마커를 생성합니다
+          var marker = new daum.maps.Marker({
+              position: position
+          });
+
+          // 마커가 지도 위에 표시되도록 설정합니다
+          marker.setMap(mapObj);
+
+          // 생성된 마커를 배열에 추가합니다
+          markersGPS.push(marker);
+      }
+    </script>
     <script>
         $('#mystore_sj').click(function () {
             location.href = "/mystore";
@@ -353,40 +385,62 @@
         })
         // $('.store_image').css({ "background": "url(/images/market3.jpg)", 'background-repeat': 'no-repeat', 'background-position': 'center center' });
         document.getElementById('store_infor').style.display = "none";
+
         // 서울시 좋아요순 상점
         $('.hot_store_detail').click(function (event) {
             // 매니저로 로그인한 상인이 좋아요순에서 자기껄 누르면
             if (mystore_name.innerText == this.childNodes[3].innerText) {
               window.location.href = '/mystore';
-            } else {
-              // 인기 상점 찾기
-              $.ajax({
-                  url: "/searching/marketList",
-                  dataType: 'json',
-                  type: 'POST',
-                  contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                  data: {
-                      "name": this.childNodes[5].innerText,
-                      "market_name": this.childNodes[3].innerText
-                  },
-                  success: function (result) {
-                      if (result.rows.length > 0) {
-                          document.getElementById('hot_store').style.display = "none";
-                          document.getElementById('text_logo').style.display = "none";
-                          $('#table').css('display', 'none');
-                          document.getElementById('back_div').style.display = "block";
-                          managerInfoLi_event(result.rows[0]);
-                      } else {
-                          console.log("시장이름 존재하지 않음");
-                      }
-                  },
-                  error: function (e) {
-                      alert("main.ejs");
-                      console.log('process error : ', e);
-                  }
-              }); // ajax
-            } // if ~ else
+              return;
+            }
+            // 인기 상점 찾기
+            $.ajax({
+                url: "/searching/marketList",
+                dataType: 'json',
+                type: 'POST',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                data: {
+                    "name": this.childNodes[5].innerText,
+                    "market_name": this.childNodes[3].innerText
+                },
+                success: function (result) {
+                    if (result.rows.length > 0) {
+                        document.getElementById('hot_store').style.display = "none";
+                        document.getElementById('text_logo').style.display = "none";
+                        $('#table').css('display', 'none');
+                        document.getElementById('back_div').style.display = "block";
+
+                        // searching_marketinfo.js 참조
+                        // 기본 틀과 UI, display설정 포함
+                        managerInfoLi_event(result.rows[0]);
+
+                        // manager get gps ~ display map, marker!
+                        // tempLo는 result의 location -> 위도 경도값 가짐
+                        var temp = result.rows[0].market_location;
+                        var tempLo = temp.split(', ')
+                        console.log(tempLo);
+
+                        // 지도를 표시할 div (id)
+                        var mapContainer = document.getElementById('manager_Map'),
+                            mapOption = {
+                                center: new daum.maps.LatLng(parseFloat(tempLo[0]), parseFloat(tempLo[1])), // 지도의 중심좌표
+                                level: 4 // 지도의 확대 레벨
+                            };
+                        var manager_Map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+                        // 마커 하나를 지도위에 표시합니다
+                        addMarkerGPS(new daum.maps.LatLng(parseFloat(tempLo[0]), parseFloat(tempLo[1])), manager_Map);
+                        manager_Map.relayout();
+                    } else {
+                        console.log("시장이름 존재하지 않음");
+                    }
+                },
+                error: function (e) {
+                    alert("main.ejs");
+                    console.log('process error : ', e);
+                }
+            }); // ajax
         }); // click event
+
         function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
           // 스크롤 조절
           window.scrollTo(0, 0);
@@ -401,9 +455,16 @@
           $('#goodCount_sj').text(market_arr.like_count);
 
           $('#face').click(function() {
-      			var shareUrl = 'http://13.209.89.231:3000/share/' + market_arr.sijang_name.replace(/ /gi, '%20') + '\/' + market_arr.market_name.replace(/ /gi, '%20');
-      			window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
-      		});
+      			var shareUrl = 'http://18.219.181.225:3000/share/' + market_arr.sijang_name.replace(/ /gi, '%20') + '\/' + market_arr.market_name.replace(/ /gi, '%20');
+      			// window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
+            window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){
+      				//alert(errormsg)
+      				var goToPlayStoreConfirm = confirm('본 기능은 해당 기기에 페이스북 어플리케이션이 있어야 실행이 가능합니다. 앱을 설치하시겠습니까?');
+      	      if(goToPlayStoreConfirm) {
+      	        window.location.href = 'https://play.google.com/store/apps/details?id=com.facebook.katana';
+      	      }
+      			});
+          });
 
           // 스탬프 관련 내용
           var temp ='<div class="stamp_infor">'
@@ -425,7 +486,7 @@
           }
           // 상점 소개와 위치
           $('#intro_content').text(market_arr.market_introduce);
-          $('.store_image').css({ "background": "url(/files/"+ market_arr.manager_image +")", 'background-repeat': 'no-repeat', 'background-position': 'center center', 'background-size': '100%' });
+          $('.store_image').css({ "background": "url("+ market_arr.manager_image +")", 'background-repeat': 'no-repeat', 'background-position': 'center center', 'background-size': '100%' });
           // 리뷰, 앞에 있던 정보들 초기화
           if ($('.review_div_sj > div')) {
             $('.review_div_sj').remove();
@@ -572,6 +633,7 @@
           $('#market_infor').css('display', 'block');
         });
         $('.alert_select_cancel').click(function () {
+            $('.alert_out').css('display', 'none')
                 $('.alert_select').css('display', 'none')
             })
     </script>

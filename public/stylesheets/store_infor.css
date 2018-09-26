@@ -132,6 +132,7 @@
     font-weight: lighter;
     color: #9c9c9c;
     line-height: 30px;
+    word-break:break-all;
 }
 #bottom_infor {
     width: 100%;

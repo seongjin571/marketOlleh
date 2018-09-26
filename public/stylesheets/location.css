@@ -7,7 +7,23 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             height: 100%;
             padding: 0;
             margin: 0;
-            /* overflow: hidden; */
+            overflow: hidden;
+        }
+        input{
+            position: absolute;
+            width: 42px;
+            margin-left: 80%;
+            height: 42px;
+            top:20px;
+            z-index: 10;
+            background-color: white;
+            border-radius: 5px;
+            border-style: none;
+            /* border-color: white; */
+            outline: none;
+        }
+        input:active{
+            background-color: rgb(204, 200, 200);
         }
         #myStamp{
             width: 100%;
@@ -524,7 +540,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         /* .swiper-slide{
             margin-top: 30px;
         } */
-        #introduce,#map,.stamp_infor{
+        #introduce,.stamp_infor{
             display: inline-flex;
             width: 90%;
             height: 30px;
@@ -536,9 +552,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         .stamp_infor{
             margin-top: 20px;
         }
-        #map{
-            margin-top: 20px;
-        }
+
         .name{
             width: 23%;
             margin-left: 3%;
@@ -636,7 +650,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             color: #9c9c9c;
             line-height: 50px;
         }
-        .alert_x,.alert_o,.alert_select{
+        .alert_x,.alert_o,.alert_select,.alert_out{
             width: 100%;
             height: 100%;
             background-color:  rgba(141, 140, 140, 0.8);
@@ -671,7 +685,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             line-height: 90px;
         }
         
-        .alert_select_ok{
+        .alert_select_ok,.alert_select_ok_out{
             text-align: center;
             width: 35%;
             height: 40px;

@@ -204,7 +204,7 @@ html {
     height: 42.5px;
     font-size:24px;
     color: white;
-    line-height: 42.5px;
+    line-height: 35px;
     text-align: center;
     font-weight: lighter;
 }
@@ -350,7 +350,7 @@ input,select{
     font-weight: lighter;
     margin: 0;
 }
-.alert_x,.alert_o,.alert_select{
+.alert_x,.alert_o,.alert_select,.alert_out{
     width: 100%;
     height: 100%;
     background-color:  rgba(141, 140, 140, 0.8);
@@ -385,7 +385,7 @@ input,select{
     line-height: 90px;
 }
 
-.alert_select_ok{
+.alert_select_ok,.alert_select_ok_out{
     text-align: center;
     width: 35%;
     height: 40px;
