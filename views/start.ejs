@@ -45,14 +45,15 @@
 
 <body>
     <!-- hw edit; creat dragable map -->
+    <div id="map" style="width:100%; height:80%;"></div>
     <div id="map_div"style="width:100%; height:100%; display:none">
-            <input type="button"style="background-image:url('/images/placeholder.png'); background-position:center center; background-size:20px 20px; background-repeat:no-repeat" id="getMarket_location"/>
-            <img id="back_map" src="/images/backButton_blue.png" width="23px"height="23px" style="padding-left:10px; padding-top: 10px">
-    <div id="map" style="width:100%; height:80%;">
+        <input type="button"style="background-image:url('/images/placeholder.png'); background-position:center center; background-size:20px 20px; background-repeat:no-repeat" id="getMarket_location"/>
+        <img id="back_map" src="/images/backButton_blue.png" width="23px"height="23px" style="padding-left:10px; padding-top: 10px">
+        
+        <p>지도에서 위치를 클릭하시거나 오른쪽 상단의 내 위치 아이콘 클릭 후 확인버튼을 눌러주세요</p>
+        <button id="map_getLocationButton">확인</button>
     </div>
-    <p>지도에서 위치를 클릭하시거나 오른쪽 상단의 내 위치 아이콘 클릭 후 확인버튼을 눌러주세요</p>
-    <button id="map_getLocationButton">확인</button>
-    </div>
+
         <div class="swiper-container user">
             <div class="swiper-wrapper">
                 <div class="swiper-slide user_way" style="overflow: hidden;">
@@ -1105,7 +1106,6 @@
             }
             });
         </script>
-        <script type="text/javascript" src="/javascripts/signupManager.js"></script>
     </div>
     <!--signupManager 끝-->
 
@@ -1573,9 +1573,9 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         $('#map_div').css('display','block')
         // $('#map').css('display','block')
         relayout();
-        var setPo = new daum.maps.LatLng(37.5657258494498, 126.9797731426241);
-        changeCenter(setPo);
-        marker.setPosition(setPo);
+        // var setPo = new daum.maps.LatLng(37.5657258494498, 126.9797731426241);
+        // changeCenter(setPo);
+        // marker.setPosition(setPo);
     }); // '위치찾기' 버튼 event
 
     $('#back_map').click(function(){
@@ -1631,6 +1631,8 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         marker.setPosition(latlng);
         market_location.value = retunr_val;
 
+        // var setPo = new daum.maps.LatLng(latlng.getLat(), latlng.getLng())
+        // changeCenter(setPo);
 
         // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
         // 인포윈도우 내용, HTML 문자열이나 document element가 가능합니다
@@ -1648,12 +1650,12 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     }); // 지도에 클릭 이벤트
 
     function changeCenter(moveLatLon) {
-        window.seoulApp.getGPS();
+        // window.seoulApp.getGPS();
 
         relayout();
         // 지도 중심을 이동 시킵니다
         map.setCenter(moveLatLon);
-        map.setLevel(4);
+        map.setLevel(3);
     } // changeCenter
 
     // map 크기 변화 있을때 레이아웃 수정해주자
@@ -1702,8 +1704,9 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         } // if ~ else
 
     }); // map_getLocationButton (in map, '확인' button) event
-
+    relayout();
 </script>
+<script type="text/javascript" src="/javascripts/signupManager.js"></script>
 </html>
 
 

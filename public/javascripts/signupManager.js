@@ -19,6 +19,44 @@ window.onkeydown = function (event) {
   }
 };
 
+function searchingAjax(event) {
+
+  // search_value 값 공백일때 서버 에러 처리
+  if(!search_value.value){
+    $('.alert_x').css('display','block');
+    $('.alert_content').html('검색어를 확인하세요')
+    return;
+  }
+
+  // 전달하려는 json 변수
+  var params = {
+    filed: $('#Searching > select').val(),
+    search_value: $('#search_value').val()
+  };
+  $.ajax({
+    url: "/searching/gooname",
+    dataType: 'json',
+    type: 'POST',
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    data: params,
+    success: function (result) {
+      // 비동기식, 함수호출
+      if (result.rows.length > 0) {
+        makeSearchList(result, result.rows.length);       
+      } else {
+        $('.alert_x').css('display','block');
+        $('.alert_content').html('검색어를 확인하세요')
+      }
+    },
+    error: function (e) {
+      $('.alert_x').css('display','block');
+      $('.alert_content').html('검색어를 확인하세요')
+      console.log('process error : ', e);
+      return;
+    }
+  });
+} // searchingAjax
+
 function deleteNewSearchList() {
   if ($('#search_result > li')) {
     // 동적으로 New 검색 결과 리스트 삭제
@@ -30,6 +68,8 @@ function makeSearchList(searchResult, listCounter) {
 
   // 검색 결과 생성전, li 존재하면 정리
   deleteNewSearchList();
+
+  // local values 
   var tempString = new Array();
   var fullString = '\0';
   var half_listCounter = parseInt(listCounter/2)+1;
@@ -58,51 +98,13 @@ function makeSearchList(searchResult, listCounter) {
 
   // 검색 결과 출력 + CSS 후첨 사항 설정
   $('#search_result').html(fullString);
-  setStyle_search_result();
+  setStyle_search_result(searchResult);
 
 } // makerSearchList --> articlr태그 부분
 
-function searchingAjax(event) {
+function setStyle_search_result(searchResult) {
 
-  // search_value 값 공백일때 서버 에러 처리
-  if(!search_value.value){
-    $('.alert_x').css('display','block');
-    $('.alert_content').html('검색어를 확인하세요')
-    return;
-  }
-
-  // 전달하려는 json 변수
-  var params = {
-    filed: $('#Searching > select').val(),
-    search_value: $('#search_value').val()
-  };
-  $.ajax({
-    url: "/searching/gooname",
-    dataType: 'json',
-    type: 'POST',
-    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-    data: params,
-    success: function (result) {
-      console.log('form data ajax clear!')
-      console.log(result);
-      // 비동기식, 함수호출
-      if (result.rows.length > 0) {
-        makeSearchList(result, result.rows.length);
-      } else {
-        $('.alert_x').css('display','block');
-        $('.alert_content').html('검색어를 확인하세요')
-      }
-    },
-    error: function (e) {
-      $('.alert_x').css('display','block');
-      $('.alert_content').html('검색어를 확인하세요')
-      console.log('process error : ', e);
-      return;
-    }
-  });
-} // searchingAjax
-
-function setStyle_search_result() {
+  console.log(searchResult);
 
   $('#search_result > div').css('width', '125px');
   $('#search_result > div').css('word-break', 'break-all');
@@ -115,6 +117,16 @@ function setStyle_search_result() {
     $(this).css('transition', '1s');
     $('.manager_check_div').eq(8).css('visibility', 'visible')
     insert_sijang = $(this).text();
+    
+    for (var i = 0; i < searchResult.rows.length; i++) {
+      if (searchResult.rows[i].name == $(this).text()) {
+        var setPo = new daum.maps.LatLng(searchResult.rows[i].coordinateX, searchResult.rows[i].coordinateY);
+        changeCenter(setPo);
+        marker.setPosition(setPo);
+        return; // if out
+      } // if
+    } // for
+
   });
 
   $('#search_result > div > li').css('margin-top', '5%');
@@ -124,6 +136,7 @@ function setStyle_search_result() {
 function click_modalbutton() {
   sijang_name.innerHTML = insert_sijang; // 전역변수 이용
   myModal.style.display = 'none';
+
 }
 
 $("#search_value").keyup(function (event) {
@@ -135,5 +148,5 @@ $("#search_value").keyup(function (event) {
 
 //──────────────────────addEventListener──────────────────────//
 
-searchingButton.addEventListener('click', searchingAjax, false);
-modalbutton.addEventListener('click', click_modalbutton, false);
+searchingButton.addEventListener('click', searchingAjax, false); // 돋보기 버튼 --> 엔터 엑션과 동일
+modalbutton.addEventListener('click', click_modalbutton, false); // 모달창의 '확인' 버튼
