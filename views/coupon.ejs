@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -413,7 +414,7 @@
   } // nearCounting()
 
   // ajax 통신 테스팅
-  function getNearMarket() {
+  function getNearMarket() { 
       $.ajax({
           url: "/searching/near",
           dataType: 'json',
@@ -436,7 +437,7 @@
   } // getNearMarket()
 
   gettStart_setting();
-  // ──────────────────────────────────────────── //
+  // ──────────────────────────────────────────── //  
 
   function afterGetNearFunction() {
 
@@ -636,7 +637,7 @@
               $('.alert_select_ok').click(function(){
                 
                 $('.alert_select').css('display','none');
-                var data = {
+                var data = {  
                   'user_id' : user_id,
                   'sijang_name' : sijang_name,
                   'market_name' : market_name,
@@ -652,13 +653,10 @@
                   cache: false,
                   datatype: "json",
                   data: data,
-
+              
                   success: function (result) {
-                    if(check==0){
-                check=1;
                     if (result['result'] == 'success') {
-                      check=2;
-                      if(check==2){
+                      if(check==0){
                       $('.alert_x').css('display', 'none');
                       $('.alert_o').css('display', 'block');
                       $('.alert_content').html('쿠폰이 발급 되었습니다')
@@ -692,10 +690,9 @@
                         });
                         // break;
                       });
-
-                    }
                     }
                   }
+                
                     
                         else if (result['result'] == 'fail') {
                       if (check == 0) {
@@ -705,8 +702,8 @@
                         check=1;
                       }
                     }
-
-
+                       
+                      
                     },
                     error: function (error) {
                       location.reload();
