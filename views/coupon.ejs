@@ -413,7 +413,7 @@
   } // nearCounting()
 
   // ajax 통신 테스팅
-  function getNearMarket() { 
+  function getNearMarket() {
       $.ajax({
           url: "/searching/near",
           dataType: 'json',
@@ -436,7 +436,7 @@
   } // getNearMarket()
 
   gettStart_setting();
-  // ──────────────────────────────────────────── //  
+  // ──────────────────────────────────────────── //
 
   function afterGetNearFunction() {
 
@@ -637,7 +637,7 @@
                 if(check==0)
                 check=1;
                 $('.alert_select').css('display','none');
-                var data = {  
+                var data = {
                   'user_id' : user_id,
                   'sijang_name' : sijang_name,
                   'market_name' : market_name,
@@ -653,7 +653,7 @@
                   cache: false,
                   datatype: "json",
                   data: data,
-              
+
                   success: function (result) {
 
                     if (result['result'] == 'success') {
@@ -692,10 +692,9 @@
                         });
                         // break;
                       });
-                    }
-                    }
-                    
-                        else if (result['result'] == 'fail') {
+                        }
+                      }//if문 끝나는곳
+                      else if (result['result'] == 'fail') {
                       if (check == 1) {
                         console.log('이미')
                         $('.alert_x').css('display', 'block');
@@ -703,8 +702,8 @@
                         check=0;
                       }
                     }
-                       
-                      
+
+
                     },
                     error: function (error) {
                       location.reload();
