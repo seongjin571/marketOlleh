@@ -657,6 +657,8 @@
                   success: function (result) {
 
                     if (result['result'] == 'success') {
+                      check=2;
+                      if(check==2){
                       $('.alert_x').css('display', 'none');
                       $('.alert_o').css('display', 'block');
                       $('.alert_content').html('쿠폰이 발급 되었습니다')
@@ -690,6 +692,7 @@
                         });
                         // break;
                       });
+                    }
                     }
                     
                         else if (result['result'] == 'fail') {
