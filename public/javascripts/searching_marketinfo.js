@@ -92,8 +92,12 @@ var count=0;
 				//alert(errormsg)
 				var goToPlayStoreConfirm = confirm('a본 기능은 해당 기기에 페이스북 어플리케이션이 있어야 실행이 가능합니다. 앱을 설치하시겠습니까?');
 	      if(goToPlayStoreConfirm) {
+			  count=0;
 	        window.location.href = 'https://play.google.com/store/apps/details?id=com.facebook.katana';
-	      }
+		  }
+		  else{
+			  count++;
+		  }
 			});
 			// window.plugins.socialsharing.shareVia('com.facebook.katana', null, null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
 		}
