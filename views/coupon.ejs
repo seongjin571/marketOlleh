@@ -654,11 +654,8 @@
                   data: data,
               
                   success: function (result) {
-                    if(check==0){
-                check=1;
                     if (result['result'] == 'success') {
-                      check=2;
-                      if(check==2){
+                      if(check==0){
                       $('.alert_x').css('display', 'none');
                       $('.alert_o').css('display', 'block');
                       $('.alert_content').html('쿠폰이 발급 되었습니다')
@@ -693,8 +690,8 @@
                         // break;
                       });
                     }
-                    }
                   }
+                
                     
                         else if (result['result'] == 'fail') {
                       if (check == 0) {
