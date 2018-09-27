@@ -613,7 +613,7 @@
         }
       })
         var check=0;
-      $(document).on("click",'.find_coupon_list1',function(event){
+      $(document).off("click",'.find_coupon_list1').on("click",'.find_coupon_list1',function(event){
           check=0;
           var list = $('.find_coupon_list1').index(this);
           var market=document.getElementsByClassName('store_name1')[list];
@@ -692,7 +692,6 @@
                       }
                     }else if (result['result'] == 'fail') {
                       if (check == 0) {
-                        result['result'] = null;
                         console.log('이미')
                         $('.alert_x').css('display', 'block');
                         $('.alert_content').html('이미 해당 쿠폰이 있습니다')
