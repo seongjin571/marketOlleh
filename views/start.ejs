@@ -544,7 +544,7 @@
                             $('#userpwd').val('');
                             $('#userpwdcheck').val('');
                             $('#e_mail').val('');
-                            $('.check_div').css('display', 'none');
+                            $('.check_div').css('visibility', 'hidden');
                             })
                         }
                         else if (result['result'] == 'already') {
@@ -1079,6 +1079,7 @@
                             $('#market_introduce').val('');
                             $('#sijang_name').text('시장선택');
                             $('.stamp_standard option:eq(0)').attr('selected', 'selected');
+                            $('#smallImage').attr('src', '');
                             $('.manager_check_div').css('visibility', 'hidden');
                             $('#nameing').text('');
                             $('#password_star').text('');
