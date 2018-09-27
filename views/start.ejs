@@ -50,7 +50,7 @@
             <div id="map" style="width:100%; height:80%;"></div>
         <input type="button"style="background-image:url('/images/placeholder.png'); background-position:center center; background-size:20px 20px; background-repeat:no-repeat" id="getMarket_location"/>
         <img id="back_map" src="/images/backButton_blue.png" width="23px"height="23px" style="padding-left:10px; padding-top: 10px">
-        
+
         <p>지도에서 위치를 클릭하시거나 오른쪽 상단의 내 위치 아이콘 클릭 후 확인버튼을 눌러주세요</p>
         <button id="map_getLocationButton">확인</button>
     </div>
@@ -133,7 +133,7 @@
                         <div style="height: 5%;"class="small_intro1">쿠폰은 자동으로 발급 되지 않아요</div>
                         <div style="height: 5%;"class="small_intro1_S1">쿠폰은 </div>
                         <div style="height: 10%;"class="small_intro1_S"> 선택</div>
-                
+
                         <div style="height: 5%;"class="small_intro2_P1">스템프는 </div>
                         <div style="height: 8%;"class="small_intro2_P">필수</div>
                         <div style="height: 5%;"class="small_intro2">스탬프는 도장을 찍을 수 있어요</div>
@@ -245,7 +245,7 @@
                 </div>
                 <!-- 코르도바 gps 테스트 위한 링크 ( hw edit ) -->
                 <div style="text-align: center;">
-                    
+
                 </div>
             </div>
         </div>
@@ -544,7 +544,7 @@
                             $('#userpwd').val('');
                             $('#userpwdcheck').val('');
                             $('#e_mail').val('');
-                            $('.check_div').css('display', 'none');
+                            $('.check_div').css('visibility', 'hidden');
                             })
                         }
                         else if (result['result'] == 'already') {
@@ -771,7 +771,7 @@
                             <div class="manager_signup_name">상점소개</div>
                             <textarea class="signuptext2" type="text" id="market_introduce" name='market_introduce'></textarea>
                         </div>
-                
+
                         <div class="signuser_coupon1"  id="find_market">
                             <div class="manager_check_div">
                                 <img src="/images/check.png" width="30px" height="30px">
@@ -1079,6 +1079,7 @@
                             $('#market_introduce').val('');
                             $('#sijang_name').text('시장선택');
                             $('.stamp_standard option:eq(0)').attr('selected', 'selected');
+                            $('#smallImage').attr('src', '');
                             $('.manager_check_div').css('visibility', 'hidden');
                             $('#nameing').text('');
                             $('#password_star').text('');
@@ -1086,7 +1087,7 @@
                             $('.fiveControls_sj').css('display', 'none');
                         })
                         }
-                  
+
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
                             $('.alert_content').html('이미 존재하는 아이디입니다');
