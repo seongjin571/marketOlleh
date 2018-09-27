@@ -84,7 +84,7 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
     $('#market_name_sj').text(market_arr.sijang_name);
     $('#goodCount_sj').text(market_arr.like_count);
 var count=0;
-		$('#face').click(function() {
+		$('.face').click(function() {
 			count=1;
 			if(count==1){
 			var shareUrl = 'http://18.219.181.225:3000/share/' + market_arr.sijang_name.replace(/ /gi, '%20') + '\/' + market_arr.market_name.replace(/ /gi, '%20');
