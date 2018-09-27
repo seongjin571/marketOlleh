@@ -83,8 +83,10 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
     $('#store_name_sj').text(market_arr.market_name);
     $('#market_name_sj').text(market_arr.sijang_name);
     $('#goodCount_sj').text(market_arr.like_count);
-
+var count=0;
 		$('#face').click(function() {
+			count=1;
+			if(count==1){
 			var shareUrl = 'http://18.219.181.225:3000/share/' + market_arr.sijang_name.replace(/ /gi, '%20') + '\/' + market_arr.market_name.replace(/ /gi, '%20');
 			window.plugins.socialsharing.shareViaFacebook(null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){
 				//alert(errormsg)
@@ -94,6 +96,7 @@ function managerInfoLi_event(market_arr) { // market_arr는 manager DB값
 	      }
 			});
 			// window.plugins.socialsharing.shareVia('com.facebook.katana', null, null, null, shareUrl, function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
+		}
 		});
 
 
