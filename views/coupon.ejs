@@ -413,7 +413,7 @@
   } // nearCounting()
 
   // ajax 통신 테스팅
-  function getNearMarket() { 
+  function getNearMarket() {
       $.ajax({
           url: "/searching/near",
           dataType: 'json',
@@ -436,7 +436,7 @@
   } // getNearMarket()
 
   gettStart_setting();
-  // ──────────────────────────────────────────── //  
+  // ──────────────────────────────────────────── //
 
   function afterGetNearFunction() {
 
@@ -636,7 +636,7 @@
               $('.alert_select_ok').click(function(){
                 
                 $('.alert_select').css('display','none');
-                var data = {  
+                var data = {
                   'user_id' : user_id,
                   'sijang_name' : sijang_name,
                   'market_name' : market_name,
@@ -652,7 +652,7 @@
                   cache: false,
                   datatype: "json",
                   data: data,
-              
+
                   success: function (result) {
                     if(check==0){
                 check=1;
@@ -692,6 +692,7 @@
                         });
                         // break;
                       });
+
                     }
                     }
                   }
@@ -704,8 +705,8 @@
                         check=1;
                       }
                     }
-                       
-                      
+
+
                     },
                     error: function (error) {
                       location.reload();
