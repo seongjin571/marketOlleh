@@ -289,7 +289,7 @@ label{
 #hot_store_market{
     width: 100%;
     /* margin: 0 auto; */
-    height: 1025px;
+    height: 1000px;
     margin-top:9%;
     margin-bottom: 80px;
 }
@@ -347,7 +347,7 @@ label{
 }
 .hot_store_detail_market{
     width: 45%;
-    height: 180px;
+    height: 185px;
     /* border-style: s; */
      border-radius: 5px;
     margin-left: 3.3%;
