@@ -12,7 +12,6 @@ function getMyLocationInS(lng,lat){
 
 
 function gpsGetFail() {
-    console.log("못받아옴");
     var test = window.location.pathname;
     if (test == "/start") {
         // reload 필요 X
@@ -34,6 +33,7 @@ function gpsGetFail() {
         });
     }
 } // gpsGetFail() ~ loaction.ejs에서는 엑션 제외 
+
 
 function gpsNULL(){
 
