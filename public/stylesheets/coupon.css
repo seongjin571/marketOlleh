@@ -210,7 +210,7 @@ html {
     display: inline-flex;
 }
 .store_name1,.store_name{
-    width: 60%;
+    width: 55%;
     height: 40px;
     line-height: 40px;
 }
@@ -248,7 +248,7 @@ html {
     height: 100%;
 }
 .period1,.period{
-    width: 40%;
+    width: 45%;
     height: 40px;
     /* margin-left: 7%; */
     font-size: 16px;
