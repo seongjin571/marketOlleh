@@ -30,19 +30,6 @@
 
 <script>
 
-  if(localStorage.getItem('signup')) {
-
-    if(localStorage.getItem('signup') == 1) {
-      document.getElementById('loginuser').style.display = 'block';
-    } // 유저 회원가입 완료 후
-
-    else {
-      document.getElementById('loginManager').style.display = 'block';
-    } // 상인 회원가입 완료 후
-
-    localStorage.clear();
-
-  }
 
   document.addEventListener("backbutton", onBackKeyDown, false);
   function onBackKeyDown(e) {
@@ -210,25 +197,23 @@
 
     <script>
         window.onload = function () {
-            if (localStorage.getItem('introFlag') == 1) {
-                // document.getElementById('intro_image_div').style.display = 'none';
-                document.getElementById('all_body').style.display = 'none';
+
+            if(localStorage.getItem('signup')) {
+
+              if(localStorage.getItem('signup') == 1) {
+                document.getElementById('start').style.display = 'none';
                 document.getElementById('loginuser').style.display = 'block';
-                localStorage.clear();
-            }
-            else if (localStorage.getItem('introFlag') == 2) {
-                // document.getElementById('intro_image_div').style.display = 'none';
-                document.getElementById('all_body').style.display = 'none';
+              } // 유저 회원가입 완료 후
+
+              else {
+                document.getElementById('start').style.display = 'none';
                 document.getElementById('loginManager').style.display = 'block';
-                localStorage.clear();
-            }
-            else if (!localStorage.getItem('introFlag')) {
-                document.getElementById('all_body').style.display = 'block';
-                // document.getElementById('intro_image_div').style.display = 'block';
-                // setTimeout(function () {
-                //     $('#intro_image_div').fadeOut('1000');
-                // }, 2000);
-            }
+              } // 상인 회원가입 완료 후
+
+              localStorage.clear();
+
+            } // check localStorage named signup
+
             $('#back_loginuser').click(function() {
               document.getElementById('all_body').style.display = 'block';
             });
@@ -1645,27 +1630,29 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
             position: position,
             image: image
         });
-        
-        return marker;  
-    }
 
-    // 내 이미지 마커를 생성하고 마커 배열에 추가하는 함수입니다
-    function createMyMarkers(position) {
-            
-        var imageSize = new daum.maps.Size(32, 33),
-            imageOptions = { offset: new daum.maps.Point(27, 69) };     
-        
-        var myLatLng = new daum.maps.LatLng(position); // position
-        // 마커이미지와 마커를 생성합니다
-        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
-            marker = createMarker(myLatLng, markerImage);  
 
         return marker;
     }
 
- 
-    // createMyMarkers() 함수 필수 참조 
+    // 내 이미지 마커를 생성하고 마커 배열에 추가하는 함수입니다
+    function createMyMarkers(position) {
+
+        var imageSize = new daum.maps.Size(32, 33),
+            imageOptions = { offset: new daum.maps.Point(27, 69) };
+
+        var myLatLng = new daum.maps.LatLng(position); // position
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),
+            marker = createMarker(myLatLng, markerImage);
+
+        return marker;
+    }
+
+
+    // createMyMarkers() 함수 필수 참조
     /* ─────────────△△△마커의 특정 이미지 사용 위한 API△△△───────────── */
+
 
     // 지도를 클릭한 위치에 표출할 마커입니다. 아래 마커 변수는 전역변수입니다.
     var marker = createMyMarkers(37.56300372568073, 126.97729513156993);
