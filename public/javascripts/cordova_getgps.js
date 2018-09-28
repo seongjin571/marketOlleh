@@ -14,13 +14,13 @@ function getMyLocationInS(lng,lat){
 function gpsGetFail() {
     console.log("못받아옴");
     // alert("Can't get GPS!");
-    $('.alert_select').css('display', 'block');
+    $('.alert_gps').css('display', 'block');
     
-    $('.alert_content_select').html(
-        'GPS가 꺼져있습니다 위치를 받아오는데 시간이 걸릴 수 있습니다'
+    $('.alert_content_select_gps').html(
+        'GPS가 꺼져있습니다 위치를 받아오는데 시간이 걸리거나 건물내/지하에서 GPS가 잘 작동하지 않을 수 있습니다.'
     );
     // $('#gps_label').css('line-height','8px')
-    $('.alert_select_ok').click(function () {
+    $('.alert_select_ok_gps').click(function () {
         window.location.reload();
         gpsNULL();
     });
