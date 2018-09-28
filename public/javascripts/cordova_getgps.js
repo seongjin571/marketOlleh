@@ -13,19 +13,27 @@ function getMyLocationInS(lng,lat){
 
 function gpsGetFail() {
     console.log("못받아옴");
-    // alert("Can't get GPS!");
-    $('.alert_gps').css('display', 'block');
-    
-    $('.alert_content_select_gps').html(
-        'GPS가 꺼져있습니다 위치를 받아오는데 시간이 걸리거나 건물내/지하에서 GPS가 잘 작동하지 않을 수 있습니다.'
-    );
-    // $('#gps_label').css('line-height','8px')
-    $('.alert_select_ok_gps').click(function () {
-        window.location.reload();
-        // window.seoulApp.SignUpgetGPS();
-        gpsNULL();
-    });
-}
+    var test = window.location.pathname;
+    if (test == "/start") {
+        // reload 필요 X
+        $('.alert_gps').css('display', 'block');
+        $('.alert_content_select_gps').html(
+            'GPS 신호가 잡히지 않습니다. 건물내/지하에서 GPS가 잘 작동하지 않을 수 있습니다. 다시한번 눌러주세요'
+        );        
+    }
+    else {
+        // 다른 페이지에선 reload가 필요
+        $('.alert_gps').css('display', 'block');
+        $('.alert_content_select_gps').html(
+            'GPS가 꺼져있습니다 위치를 받아오는데 시간이 걸리거나 건물내/지하에서 GPS가 잘 작동하지 않을 수 있습니다.'
+        );
+        // $('#gps_label').css('line-height','8px')
+        $('.alert_select_ok_gps').click(function () {
+            window.location.reload();
+            gpsNULL();
+        });
+    }
+} // gpsGetFail() ~ loaction.ejs에서는 엑션 제외 
 
 function gpsNULL(){
 
