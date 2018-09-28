@@ -17,14 +17,14 @@ function gpsGetFail() {
         // reload 필요 X
         $('.alert_gps').css('display', 'block');
         $('.alert_content_select_gps').html(
-            'GPS가 꺼져있거나 건물내/지하에서 GPS가 잘 작동하지 않을 수 있습니다.'
+            'GPS 인식에 실패하였습니다. GPS를 켜고 만약 건물내부 일시 위치 설정을 높은 정확도로 변경해주세요'
         );        
     }
     else {
         // 다른 페이지에선 reload가 필요
         $('.alert_gps').css('display', 'block');
         $('.alert_content_select_gps').html(
-            'GPS가 꺼져있거나 건물내/지하에서 GPS가 잘 작동하지 않을 수 있습니다.'
+            'GPS 인식에 실패하였습니다. GPS를 켜고 만약 건물내부 일시 위치 설정을 높은 정확도로 변경해주세요'
         );
         // $('#gps_label').css('line-height','8px')
         $('.alert_select_ok_gps').click(function () {
