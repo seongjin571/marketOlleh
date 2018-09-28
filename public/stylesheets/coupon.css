@@ -349,7 +349,7 @@ html {
 .password_number_sj:active{
     background-color: rgb(212, 209, 209);
 }
-.alert_x,.alert_o,.alert_select,.alert_out{
+.alert_x,.alert_o,.alert_select,.alert_out,.alert_gps{
     width: 100%;
     height: 100%;
     background-color:  rgba(141, 140, 140, 0.8);
@@ -359,11 +359,11 @@ html {
 }
 .alert_x_content,.alert_o_content{
     width: 70%;
-    height: 25%;
+    height: 150px;
     background-color: white;
     border-radius: 10px;
     position: fixed;
-    top: 37.5%;
+    /* top: 37.5%; */
     left:15%;
 }
 .alert_image{
@@ -374,8 +374,11 @@ html {
 }
 .alert_content{
     text-align: center;
-    width: 100%;
     height: 40%;
+    margin-left: 5%;
+    width: 90%;
+    height: 40%;
+    line-height: 20px;
 }
 .alert_content_select{
     text-align: center;
@@ -383,8 +386,17 @@ html {
     height: 60%;
     line-height: 90px;
 }
+.alert_content_select_gps{
+    text-align: center;
+    width: 90%;
+    margin-left: 5%;
+    height: 60%;
+    line-height: 30px;
+    padding-top: 5px;
+}
 
-.alert_select_ok,.alert_select_ok_out{
+
+.alert_select_ok,.alert_select_ok_out,.alert_select_ok_gps{
     text-align: center;
     width: 35%;
     height: 40px;
@@ -392,23 +404,14 @@ html {
     margin-left: 10%;
     border-radius: 50px;
     background-image: linear-gradient(white, white),
- radial-gradient(circle at top left, #17ead9,#6078ea);
+    radial-gradient(circle at top left, #17ead9,#6078ea);
     background-origin: border-box;
     background-clip: content-box, border-box;
     padding: 1px;
     display: inline-block;
     font-size: 14px;
 }
-.coupon_ment{
-    width: 100%;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    color:#9c9c9c;
-    font-size:14px;
-    font-weight: lighter;
-}
-.alert_select_cancel{
+.alert_select_cancel,.alert_select_cancel_gps{
     text-align: center;
     width: 35%;
     height: 40px;
