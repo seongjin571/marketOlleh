@@ -1565,11 +1565,18 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     $('.alert_o').click(function(){
         $(this).css('display','none')
     })
-    $('.alert_select_cancel').click(function(){
-        $('.alert_out').css('display', 'none')
-        $('.alert_select').css('display','none')
-        $('.alert_select_ok').off();
-    });
+    $('.alert_select_cancel').click(function () {
+                $('.alert_out').css('display', 'none')
+                $('.alert_gps').css('display', 'none')
+                $('.alert_select').css('display', 'none')
+                $('.alert_select_ok').off();
+            });
+            $('.alert_select_cancel_gps').click(function () {
+                $('.alert_select').css('display', 'none')
+                $('.alert_out').css('display', 'none')
+                $('.alert_gps').css('display', 'none')
+                $('.alert_select_ok_gps').off();
+            });
     // (hw edit); enter event handleling!
     $("#password").keyup(function (event) {
         // Enter 처리
