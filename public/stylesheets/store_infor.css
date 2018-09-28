@@ -58,7 +58,7 @@
 }
 
 #name_sj {
-    width: 68%;
+    width: 80%;
     height: 85px;
 }
 .top_font{
@@ -103,11 +103,11 @@
 
 }
 #good,.face{
-    width: 50%;
+    width: 100%;
     display: block;
 }
 #sns_sj {
-    width: 30%;
+    width: 10%;
     height: 60px;
     display: inline-flex;
     text-align: center;
