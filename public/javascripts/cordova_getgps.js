@@ -15,9 +15,11 @@ function gpsGetFail() {
     console.log("못받아옴");
     // alert("Can't get GPS!");
     $('.alert_select').css('display', 'block');
+    
     $('.alert_content_select').html(
-        'GPS가 꺼져있습니다</br>위치를 받아오는데 시간이 걸릴 수 있습니다'
+        '<label id="gps_label">GPS가 꺼져있습니다</br>위치를 받아오는데 시간이 걸릴 수 있습니다</label>'
     );
+    $('#gps_labe').css('line-height','20px')
     $('.alert_select_ok').click(function () {
         window.location.reload();
         gpsNULL();
