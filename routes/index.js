@@ -1302,6 +1302,7 @@ router.post('/coupon_customer', function(req, res) {
     if(err) {
       console.log('센드시장에러');
     }else if(result.length){
+      console.log('fail에 들어옴');
       res.send({
         result : 'fail',
         results : undefined
@@ -1309,6 +1310,7 @@ router.post('/coupon_customer', function(req, res) {
     }
     else{
       conn.query(sql2, [user_id,sijang_name,market_name,coupon_password,coupon_reward,coupon_standard],function(error,results){
+        console.log('success 들어옴');
         res.send({
           result: 'success',
           results : results,
