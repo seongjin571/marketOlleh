@@ -21,8 +21,8 @@ function gpsGetFail() {
     );
     // $('#gps_label').css('line-height','8px')
     $('.alert_select_ok_gps').click(function () {
-        // window.location.reload();
-        window.seoulApp.SignUpgetGPS();
+        window.location.reload();
+        // window.seoulApp.SignUpgetGPS();
         gpsNULL();
     });
 }

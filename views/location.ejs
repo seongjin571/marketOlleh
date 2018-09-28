@@ -141,6 +141,7 @@
 
     /* ─────────────△△△마커의 특정 이미지 사용 위한 API△△△───────────── */
 
+    
     function getMyLocation(lng,lat){
       window.myLat = lat;
       window.myLng = lng;
@@ -149,10 +150,11 @@
     }
 
     function gpsGetFail() {
-        console.log("못받아옴");
-        // alert("Can't get GPS!");
-        $('.alert_gps').css('display', 'block');
+      console.log("못받아옴");
+      // alert("Can't get GPS!");
+      $('.alert_gps').css('display', 'block');
     
+
     $('.alert_content_select_gps').html(
         'GPS가 꺼져있거나 건물내/지하에서 GPS가 잘 작동하지 않을 수 있습니다.'
     );
@@ -162,6 +164,7 @@
         // window.seoulApp.SignUpgetGPS();
         gpsNULL();
     });
+
     }
 
     function gpsNULL(){
@@ -180,6 +183,7 @@
     function getPermission(isGPSPermission) {
       window.isGPSPermission = isGPSPermission;
     }
+    
 
     // GPS 값이 콜백이라는 점을 감한해 함수로 감았다
     function getMap() {
