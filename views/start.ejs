@@ -29,6 +29,21 @@
 </head>
 
 <script>
+
+  if(localStorage.getItem('signup')) {
+
+    if(localStorage.getItem('signup') == 1) {
+      document.getElementById('loginuser').style.display = 'block';
+    } // 유저 회원가입 완료 후
+
+    else {
+      document.getElementById('loginManager').style.display = 'block';
+    } // 상인 회원가입 완료 후
+
+    localStorage.clear();
+
+  }
+
   document.addEventListener("backbutton", onBackKeyDown, false);
   function onBackKeyDown(e) {
      e.preventDefault();
@@ -38,6 +53,7 @@
        navigator.app.exitApp();
       });
   }
+
   window.seoulApp.getGPS();
 </script>
 <!-- kakao map API (hw edit) -->
@@ -537,14 +553,18 @@
                             $('.alert_o').css('display','block');
                             $('.alert_content').html('회원가입이 완료되었습니다');
                             $('.alert_o').click(function(){
-                            $('#signupuser').css('display','none');
-                            $('#loginuser').css('display','block');
-                            $('#userid').val('');
-                            $('#username').val('');
-                            $('#userpwd').val('');
-                            $('#userpwdcheck').val('');
-                            $('#e_mail').val('');
-                            $('.check_div').css('visibility', 'hidden');
+
+                                // $('#signupuser').css('display','none');
+                                // $('#loginuser').css('display','block');
+                                // $('#userid').val('');
+                                // $('#username').val('');
+                                // $('#userpwd').val('');
+                                // $('#userpwdcheck').val('');
+                                // $('#e_mail').val('');
+                                // $('.check_div').css('visibility', 'hidden');
+                                localStorage.setItem('signup', 1);
+                                location.reload();
+
                             })
                         }
                         else if (result['result'] == 'already') {
@@ -1064,28 +1084,32 @@
                             $('.alert_o').css('display','block');
                             $('.alert_content').html('회원가입이 완료되었습니다');
                             $('.alert_o').click(function(){
-                            $('#signupManager').css('display','none');
-                            $('#loginManager').css('display','block');
-                            $('#manager_id_jh').val('');
-                            $('#password_jh').val('');
-                            $('#password_jh_check').val('');
-                            $('#market_name').val('');
-                            $('#market_location').val('');
-                            $('#manager_name').val('');
-                            $('#manager_phone').val('');
-                            $('#stamp_reward').val('');
-                            $('#stamp_password').val('');
-                            $('#market_promotion').val('');
-                            $('#market_introduce').val('');
-                            $('#sijang_name').text('시장선택');
-                            $('.stamp_standard option:eq(0)').attr('selected', 'selected');
-                            $('#smallImage').attr('src', '');
-                            $('.manager_check_div').css('visibility', 'hidden');
-                            $('#nameing').text('');
-                            $('#password_star').text('');
-                            $('.tenControls_sj').css('display', 'none');
-                            $('.fiveControls_sj').css('display', 'none');
-                        })
+
+                                // $('#signupManager').css('display','none');
+                                // $('#loginManager').css('display','block');
+                                // $('#manager_id_jh').val('');
+                                // $('#password_jh').val('');
+                                // $('#password_jh_check').val('');
+                                // $('#market_name').val('');
+                                // $('#market_location').val('');
+                                // $('#manager_name').val('');
+                                // $('#manager_phone').val('');
+                                // $('#stamp_reward').val('');
+                                // $('#stamp_password').val('');
+                                // $('#market_promotion').val('');
+                                // $('#market_introduce').val('');
+                                // $('#sijang_name').text('시장선택');
+                                // $('.stamp_standard option:eq(0)').attr('selected', 'selected');
+                                // $('#smallImage').attr('src', '');
+                                // $('.manager_check_div').css('visibility', 'hidden');
+                                // $('#nameing').text('');
+                                // $('#password_star').text('');
+                                // $('.tenControls_sj').css('display', 'none');
+                                // $('.fiveControls_sj').css('display', 'none');
+                                localStorage.setItem('signup', 2);
+                                location.reload();
+                            })
+
                         }
 
                         else if (result['result'] == 'already') {
