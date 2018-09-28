@@ -601,7 +601,7 @@
       })
         var check=0;
       $(document).on("click",'.find_coupon_list1',function(event){
-        check=0;
+
           var list = $('.find_coupon_list1').index(this);
           var market=document.getElementsByClassName('store_name1')[list];
           var market_name =market.innerHTML;
@@ -622,6 +622,8 @@
             $('.alert_x').css('display', 'none');
             $('.alert_content_select').html('쿠폰을 다운로드 하시겠습니까?')
               $('.alert_select_ok').click(function(){
+                // if(check==0)
+                // check=1;
 
                 $('.alert_select').css('display','none');
                 var data = {
@@ -643,7 +645,6 @@
 
                   success: function (result) {
                     if (result['result'] == 'success') {
-                      if(check==0){
                       $('.alert_x').css('display', 'none');
                       $('.alert_o').css('display', 'block');
                       $('.alert_content').html('쿠폰이 발급 되었습니다')
@@ -677,18 +678,16 @@
                         });
                         // break;
                       });
-                    }
                   }
 
-
                         else if (result['result'] == 'fail') {
-                      if (check == 0) {
                         console.log('이미')
                         $('.alert_x').css('display', 'block');
                         $('.alert_content').html('이미 해당 쿠폰이 있습니다')
-                        check=1;
+                        location.reload();
+
                       }
-                    }
+
 
 
                     },
