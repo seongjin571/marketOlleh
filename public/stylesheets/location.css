@@ -660,11 +660,11 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         }
         .alert_x_content,.alert_o_content{
             width: 70%;
-            height: 150px;
+            height: 25%;
             background-color: white;
             border-radius: 10px;
             position: fixed;
-            /* top: 37.5%; */
+            top: 37.5%;
             left:15%;
         }
         .alert_image{
@@ -675,11 +675,8 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
         }
         .alert_content{
             text-align: center;
+            width: 100%;
             height: 40%;
-            margin-left: 5%;
-            width: 90%;
-            height: 40%;
-            line-height: 20px;
         }
         .alert_content_select{
             text-align: center;
@@ -696,7 +693,6 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             padding-top: 5px;
         }
         
-        
         .alert_select_ok,.alert_select_ok_out,.alert_select_ok_gps{
             text-align: center;
             width: 35%;
@@ -705,7 +701,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             margin-left: 10%;
             border-radius: 50px;
             background-image: linear-gradient(white, white),
-            radial-gradient(circle at top left, #17ead9,#6078ea);
+         radial-gradient(circle at top left, #17ead9,#6078ea);
             background-origin: border-box;
             background-clip: content-box, border-box;
             padding: 1px;

@@ -328,10 +328,18 @@
         });
       }); // logout click event
 
-      $('.alert_select_cancel').click(function(){
-        $('.alert_select').css('display','none');
-        $('.alert_select_ok').off();
-      });
+        $('.alert_select_cancel').click(function () {
+                $('.alert_out').css('display', 'none')
+                $('.alert_gps').css('display', 'none')
+                $('.alert_select').css('display', 'none')
+                $('.alert_select_ok').off();
+            });
+            $('.alert_select_cancel_gps').click(function () {
+                $('.alert_select').css('display', 'none')
+                $('.alert_out').css('display', 'none')
+                $('.alert_gps').css('display', 'none')
+                $('.alert_select_ok_gps').off();
+            });
       $('.alert_o').click(function () {
             $(this).css('display', 'none')
         })
