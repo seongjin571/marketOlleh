@@ -7,7 +7,7 @@ function getMyLocationInS(lng,lat){
   
         var setPo = new daum.maps.LatLng(myLat, myLng);
         changeCenter(setPo);
-        marker.setPosition(setPo);        
+        marker.setPosition(setPo);
 } // getMyLocationInS()
 
 
