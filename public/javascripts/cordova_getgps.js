@@ -17,9 +17,9 @@ function gpsGetFail() {
     $('.alert_select').css('display', 'block');
     
     $('.alert_content_select').html(
-        '<label id="gps_label">GPS가 꺼져있습니다</br>위치를 받아오는데 시간이 걸릴 수 있습니다</label>'
+        '<p>GPS가 꺼져있습니다</p><p>위치를 받아오는데 시간이 걸릴 수 있습니다</p>'
     );
-    $('#gps_label').css('line-height','8px')
+    // $('#gps_label').css('line-height','8px')
     $('.alert_select_ok').click(function () {
         window.location.reload();
         gpsNULL();
