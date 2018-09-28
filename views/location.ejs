@@ -75,7 +75,7 @@
   <!-- ▼ hw edit; map javascirpt -->
   <script type="text/javascript">
     window.seoulApp.getGPS();
-
+    var map_count=0;
     // 마커 저장 배열
     var markers = [];
 
@@ -99,11 +99,52 @@
         return marker;
     }
     // createMyMarkers() 함수 필수 참조
+    // 내 이미지 마커를 생성하고 마커 배열에 추가하는 함수입니다
+    function createMyMarkers(map) {
+
+        var imageSize = new daum.maps.Size(32, 33),
+            imageOptions = { offset: new daum.maps.Point(3, 6) };
+
+        var myLatLng = new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng));
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),
+            marker = createMarker(myLatLng, markerImage);
+
+        marker.setMap(map);
+        // 생성된 마커를 마커 배열에 추가합니다
+        markers.push(marker);
+    }
+
+    function relayout(map) {
+        map.relayout();
+    }
+
+    function changeCenter(map, moveLatLon) {
+
+      // map_count++;
+      // if(map_count==3){
+      //   location.onlad();
+      //   alert('a');
+      // }
+      // else{
+        // window.seoulApp.getGPS();
+
+        relayout(map);
+        // 지도 중심을 이동 시킵니다
+        map.setCenter(moveLatLon);
+        map.setLevel(2);
+      } // changeCenter
+
+      function FUXKING_GPS() {
+        window.seoulApp.getGPS();
+      }
+
     /* ─────────────△△△마커의 특정 이미지 사용 위한 API△△△───────────── */
 
     function getMyLocation(lng,lat){
       window.myLat = lat;
       window.myLng = lng;
+      $('#getMyLo').off();
       getMap();
     }
 
@@ -139,8 +180,7 @@
     }
 
     // GPS 값이 콜백이라는 점을 감한해 함수로 감았다
-
-    function getMap(){
+    function getMap() {
 
         // document.getElementById('map') 차일드 노드 여부로 map의 중복 생성, 겹침을 해결하였다.
         if (document.getElementById('map').hasChildNodes()) {
@@ -151,45 +191,15 @@
         var mapContainer = document.getElementById('map'),
             mapOption = {
                 center: new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng)), // 지도의 중심좌표
-                level: 6 // 지도의 확대 레벨
+                level: 2 // 지도의 확대 레벨
             };
 
         var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-        // 내 이미지 마커를 생성하고 마커 배열에 추가하는 함수입니다
-        function createMyMarkers() {
-
-            var imageSize = new daum.maps.Size(32, 33),
-                imageOptions = { offset: new daum.maps.Point(27, 69) };
-
-            var myLatLng = new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng));
-            // 마커이미지와 마커를 생성합니다
-            var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),
-                marker = createMarker(myLatLng, markerImage);
-
-            marker.setMap(map);
-            // 생성된 마커를 마커 배열에 추가합니다
-            markers.push(marker);
-        }
-
-        createMyMarkers();
-
-        function relayout() {
-            map.relayout();
-        }
-
-        function changeCenter() {
-            window.seoulApp.getGPS();
-
-            var moveLatLon = new daum.maps.LatLng(myLat, myLng);
-            relayout();
-            // 지도 중심을 이동 시킵니다
-            map.setCenter(moveLatLon);
-            map.setLevel(6);
-        } // changeCenter
-
-        getMyLo.addEventListener('click', changeCenter, false);
+        createMyMarkers(map); // marker img
+        changeCenter(map, new daum.maps.LatLng(myLat, myLng))
         getNearMarket(map);
+
     } // end ~ getMap()
 
     // 페이지 로드 되고 getMap() 함수 실행 -> 아래 함수 실행
@@ -244,6 +254,7 @@
           };
       }
 
+
       $.ajax({
           url: "/searching/nearManager",
           dataType: 'json',
@@ -266,6 +277,10 @@
           }
       }); // ajax
     } // getNearMarket
+
+    // add event listenr
+    getMyLo.addEventListener('click', FUXKING_GPS, false);
+
   </script>
    <div id="nav_sj">
         <div id="home_sj">
