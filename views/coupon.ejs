@@ -600,7 +600,7 @@
         }
       })
         var check=0;
-      $(document).on("click",'.find_coupon_list1',function(event){
+      $(document).off("click",'.find_coupon_list1').on("click",'.find_coupon_list1',function(event){
 
           var list = $('.find_coupon_list1').index(this);
           var market=document.getElementsByClassName('store_name1')[list];
@@ -688,7 +688,6 @@
                         location.reload();
                       })
                       }
-
 
 
 
