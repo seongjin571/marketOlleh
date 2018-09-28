@@ -29,6 +29,21 @@
 </head>
 
 <script>
+
+  if(localStorage.getItem('signup')) {
+
+    if(localStorage.getItem('signup') == 1) {
+      document.getElementById('loginuser').style.display = 'block';
+    } // 유저 회원가입 완료 후
+
+    else {
+      document.getElementById('loginManager').style.display = 'block';
+    } // 상인 회원가입 완료 후
+
+    localStorage.clear();
+
+  }
+
   document.addEventListener("backbutton", onBackKeyDown, false);
   function onBackKeyDown(e) {
      e.preventDefault();
@@ -38,6 +53,7 @@
        navigator.app.exitApp();
       });
   }
+
   window.seoulApp.getGPS();
 </script>
 <!-- kakao map API (hw edit) -->
@@ -45,14 +61,16 @@
 
 <body>
     <!-- hw edit; creat dragable map -->
-    <div id="map_div"style="width:100%; height:100%; display:none">
-            <input type="button"style="background-image:url('/images/placeholder.png'); background-position:center center; background-size:20px 20px; background-repeat:no-repeat" id="getMarket_location"/>
-            <img id="back_map" src="/images/backButton_blue.png" width="23px"height="23px" style="padding-left:10px; padding-top: 10px">
-    <div id="map" style="width:100%; height:80%;">
+    <!-- <div id="map" style="width:100%; height:80%;"></div> -->
+    <div id="map_div"style="width:100%; height:100%; display:none;">
+            <div id="map" style="width:100%; height:80%;"></div>
+        <input type="button"style="background-image:url('/images/placeholder.png'); background-position:center center; background-size:20px 20px; background-repeat:no-repeat" id="getMarket_location"/>
+        <img id="back_map" src="/images/backButton_blue.png" width="23px"height="23px" style="padding-left:10px; padding-top: 10px">
+
+        <p>지도에서 위치를 클릭하시거나 오른쪽 상단의 내 위치 아이콘 클릭 후 확인버튼을 눌러주세요</p>
+        <button id="map_getLocationButton">확인</button>
     </div>
-    <p>지도에서 위치를 클릭하시거나 오른쪽 상단의 내 위치 아이콘 클릭 후 확인버튼을 눌러주세요</p>
-    <button id="map_getLocationButton">확인</button>
-    </div>
+
         <div class="swiper-container user">
             <div class="swiper-wrapper">
                 <div class="swiper-slide user_way" style="overflow: hidden;">
@@ -126,13 +144,17 @@
                         <div id="manager3" style="height: 80%;"></div>
                     </div>
                     <div class="swiper-slide manager_way" style="overflow: hidden;">
-                        <div class="introduce_way" style="height: 20%;">
-                            <div style="height: 37%;"></div>
-                            <div style="height: 23%;"class="big_intro">쿠폰과 스탬프는</div>
-                            <div style="height: 20%;color:#63dded;"class="big_intro">상인에게 보여주세요</div>
-                            <div style="height: 20%;"class="small_intro">상인이 비밀번호를 입력해야 사용할 수 있어요</div>
-                        </div>
-                        <div id="manager4" style="height: 80%;"></div>
+                        <div id="manager4" style="height: 30%;"></div>
+                        <div style="height: 5%;"class="small_intro1">쿠폰은 생성 뒤엔 삭제할 수 없어요</div>
+                        <div style="height: 5%;"class="small_intro1">쿠폰은 자동으로 발급 되지 않아요</div>
+                        <div style="height: 5%;"class="small_intro1_S1">쿠폰은 </div>
+                        <div style="height: 10%;"class="small_intro1_S"> 선택</div>
+
+                        <div style="height: 5%;"class="small_intro2_P1">스템프는 </div>
+                        <div style="height: 8%;"class="small_intro2_P">필수</div>
+                        <div style="height: 5%;"class="small_intro2">스탬프는 도장을 찍을 수 있어요</div>
+                        <div style="height: 5%;"class="small_intro2_1">스템프는 자동으로 발급되어요</div>
+                        <div id="manager5" style="height: 30%;"></div>
                         <img id="manager_x" src="/images/cancel.png" width="17px" height="17px">
                     </div>
                 </div>
@@ -239,7 +261,7 @@
                 </div>
                 <!-- 코르도바 gps 테스트 위한 링크 ( hw edit ) -->
                 <div style="text-align: center;">
-                    
+
                 </div>
             </div>
         </div>
@@ -531,14 +553,16 @@
                             $('.alert_o').css('display','block');
                             $('.alert_content').html('회원가입이 완료되었습니다');
                             $('.alert_o').click(function(){
-                            $('#signupuser').css('display','none');
-                            $('#loginuser').css('display','block');
-                            $('#userid').val('');
-                            $('#username').val('');
-                            $('#userpwd').val('');
-                            $('#userpwdcheck').val('');
-                            $('#e_mail').val('');
-                            $('.check_div').css('display', 'none');
+                                // $('#signupuser').css('display','none');
+                                // $('#loginuser').css('display','block');
+                                // $('#userid').val('');
+                                // $('#username').val('');
+                                // $('#userpwd').val('');
+                                // $('#userpwdcheck').val('');
+                                // $('#e_mail').val('');
+                                // $('.check_div').css('visibility', 'hidden');
+                                localStorage.setItem('signup', 1);
+                                location.reload();
                             })
                         }
                         else if (result['result'] == 'already') {
@@ -765,7 +789,15 @@
                             <div class="manager_signup_name">상점소개</div>
                             <textarea class="signuptext2" type="text" id="market_introduce" name='market_introduce'></textarea>
                         </div>
-                        <div class="signupuser_input3" id="find_market">
+
+                        <div class="signuser_coupon1"  id="find_market">
+                            <div class="manager_check_div">
+                                <img src="/images/check.png" width="30px" height="30px">
+                            </div>
+                            <div id="sijang_name" name='sijang_name'>시장선택</div>
+                            <input type="button" value="시장찾기" id="modal_display" />
+                        </div>
+                        <div class="signupuser_input3">
                                 <div class="manager_check_div">
                                     <img src="/images/check.png" width="30px" height="30px">
                                 </div>
@@ -773,17 +805,6 @@
                                 <input class="signuptext2" type="text" id="market_location" name='market_location' placeholder="상점 위치" style="display: none;">
                                 <input type="button" value="위치찾기" id="location_map">
                             </div>
-                            <!-- <div class="signupuser_input3">
-                                <input class="signuptext2" type="text" id="market_location" name='market_location' placeholder="상점 위치" style="display: none;">
-                                <input type="button" value="위치찾기" id="location_map">
-                            </div> -->
-                        <div class="signuser_coupon1">
-                            <div class="manager_check_div">
-                                <img src="/images/check.png" width="30px" height="30px">
-                            </div>
-                            <div id="sijang_name" name='sijang_name'>시장선택</div>
-                            <input type="button" value="시장찾기" id="modal_display" />
-                        </div>
                         <div class="signuser_coupon1" id="store_picture">
                             <div class="manager_check_div">
                                 <img src="/images/check.png" width="30px" height="30px">
@@ -1061,29 +1082,32 @@
                             $('.alert_o').css('display','block');
                             $('.alert_content').html('회원가입이 완료되었습니다');
                             $('.alert_o').click(function(){
-                            $('#signupManager').css('display','none');
-                            $('#loginManager').css('display','block');
-                            $('#manager_id_jh').val('');
-                            $('#password_jh').val('');
-                            $('#password_jh_check').val('');
-                            $('#market_name').val('');
-                            $('#market_location').val('');
-                            $('#manager_name').val('');
-                            $('#manager_phone').val('');
-                            $('#stamp_reward').val('');
-                            $('#stamp_password').val('');
-                            $('#market_promotion').val('');
-                            $('#market_introduce').val('');
-                            $('#sijang_name').text('시장선택');
-                            $('.stamp_standard option:eq(0)').attr('selected', 'selected');
-                            $('.manager_check_div').css('visibility', 'hidden');
-                            $('#nameing').text('');
-                            $('#password_star').text('');
-                            $('.tenControls_sj').css('display', 'none');
-                            $('.fiveControls_sj').css('display', 'none');
-                        })
+                                // $('#signupManager').css('display','none');
+                                // $('#loginManager').css('display','block');
+                                // $('#manager_id_jh').val('');
+                                // $('#password_jh').val('');
+                                // $('#password_jh_check').val('');
+                                // $('#market_name').val('');
+                                // $('#market_location').val('');
+                                // $('#manager_name').val('');
+                                // $('#manager_phone').val('');
+                                // $('#stamp_reward').val('');
+                                // $('#stamp_password').val('');
+                                // $('#market_promotion').val('');
+                                // $('#market_introduce').val('');
+                                // $('#sijang_name').text('시장선택');
+                                // $('.stamp_standard option:eq(0)').attr('selected', 'selected');
+                                // $('#smallImage').attr('src', '');
+                                // $('.manager_check_div').css('visibility', 'hidden');
+                                // $('#nameing').text('');
+                                // $('#password_star').text('');
+                                // $('.tenControls_sj').css('display', 'none');
+                                // $('.fiveControls_sj').css('display', 'none');
+                                localStorage.setItem('signup', 2);
+                                location.reload();
+                            })
                         }
-                  
+
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
                             $('.alert_content').html('이미 존재하는 아이디입니다');
@@ -1105,7 +1129,6 @@
             }
             });
         </script>
-        <script type="text/javascript" src="/javascripts/signupManager.js"></script>
     </div>
     <!--signupManager 끝-->
 
@@ -1571,15 +1594,17 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     $('#location_map').click(function(){
         $('#signupManager').css('display','none');
         $('#map_div').css('display','block')
+        changeCenter(setPo);
         // $('#map').css('display','block')
         relayout();
-        var setPo = new daum.maps.LatLng(37.5657258494498, 126.9797731426241);
-        changeCenter(setPo);
-        marker.setPosition(setPo);
+        // var setPo = new daum.maps.LatLng(37.5657258494498, 126.9797731426241);
+        // changeCenter(setPo);
+        // marker.setPosition(setPo);
     }); // '위치찾기' 버튼 event
 
     $('#back_map').click(function(){
         $('#signupManager').css('display','block');
+        $('#loginManager').css('display','none');
         $('#map_div').css('display','none')
         // $('#map').css('display','block')
     })
@@ -1631,6 +1656,8 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         marker.setPosition(latlng);
         market_location.value = retunr_val;
 
+        // var setPo = new daum.maps.LatLng(latlng.getLat(), latlng.getLng())
+        // changeCenter(setPo);
 
         // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
         // 인포윈도우 내용, HTML 문자열이나 document element가 가능합니다
@@ -1648,12 +1675,12 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     }); // 지도에 클릭 이벤트
 
     function changeCenter(moveLatLon) {
-        window.seoulApp.getGPS();
+        // window.seoulApp.getGPS();
 
         relayout();
         // 지도 중심을 이동 시킵니다
         map.setCenter(moveLatLon);
-        map.setLevel(4);
+        map.setLevel(3);
     } // changeCenter
 
     // map 크기 변화 있을때 레이아웃 수정해주자
@@ -1664,15 +1691,15 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     $('#getMarket_location').click(function(event) {
         // alert("GPS 값을 가져옵니다");
         window.seoulApp.SignUpgetGPS();
-        var setPo = new daum.maps.LatLng(myLat, myLng)
-        changeCenter(setPo);
-        marker.setPosition(setPo);
+        // var setPo = new daum.maps.LatLng(myLat, myLng)
+        // changeCenter(setPo);
+        // marker.setPosition(setPo);
     }); // get location
 
     $('#map_getLocationButton').click(function(event) {
 
         if(!market_location.value){
-            $('.manager_check_div').eq(7).css('visibility', 'hidden');
+            $('.manager_check_div').eq(8).css('visibility', 'hidden');
 
             // 모달
             $('.alert_out').css('display', 'block');
@@ -1685,7 +1712,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
             });// 모달 ok 버튼 click
         }
         else{
-            $('.manager_check_div').eq(7).css('visibility', 'visible');
+            $('.manager_check_div').eq(8).css('visibility', 'visible');
 
             // 모달
             $('.alert_o').css('display', 'block');
@@ -1696,14 +1723,16 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
                 $('.alert_select_ok').off();
                 // map_back 버튼 기능과 동일
                 $('#signupManager').css('display','block');
+                $('#loginManager').css('display','none');
                 $('#map_div').css('display','none')
             });// 모달 ok 버튼 click event
 
         } // if ~ else
 
     }); // map_getLocationButton (in map, '확인' button) event
-
+    relayout();
 </script>
+<script type="text/javascript" src="/javascripts/signupManager.js"></script>
 </html>
 
 
