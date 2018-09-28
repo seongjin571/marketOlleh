@@ -30,19 +30,6 @@
 
 <script>
 
-  if(localStorage.getItem('signup')) {
-
-    if(localStorage.getItem('signup') == 1) {
-      document.getElementById('loginuser').style.display = 'block';
-    } // 유저 회원가입 완료 후
-
-    else {
-      document.getElementById('loginManager').style.display = 'block';
-    } // 상인 회원가입 완료 후
-
-    localStorage.clear();
-
-  }
 
   document.addEventListener("backbutton", onBackKeyDown, false);
   function onBackKeyDown(e) {
@@ -210,25 +197,23 @@
 
     <script>
         window.onload = function () {
-            if (localStorage.getItem('introFlag') == 1) {
-                // document.getElementById('intro_image_div').style.display = 'none';
-                document.getElementById('all_body').style.display = 'none';
+
+            if(localStorage.getItem('signup')) {
+
+              if(localStorage.getItem('signup') == 1) {
+                document.getElementById('start').style.display = 'none';
                 document.getElementById('loginuser').style.display = 'block';
-                localStorage.clear();
-            }
-            else if (localStorage.getItem('introFlag') == 2) {
-                // document.getElementById('intro_image_div').style.display = 'none';
-                document.getElementById('all_body').style.display = 'none';
+              } // 유저 회원가입 완료 후
+
+              else {
+                document.getElementById('start').style.display = 'none';
                 document.getElementById('loginManager').style.display = 'block';
-                localStorage.clear();
-            }
-            else if (!localStorage.getItem('introFlag')) {
-                document.getElementById('all_body').style.display = 'block';
-                // document.getElementById('intro_image_div').style.display = 'block';
-                // setTimeout(function () {
-                //     $('#intro_image_div').fadeOut('1000');
-                // }, 2000);
-            }
+              } // 상인 회원가입 완료 후
+
+              localStorage.clear();
+
+            } // check localStorage named signup
+
             $('#back_loginuser').click(function() {
               document.getElementById('all_body').style.display = 'block';
             });
@@ -838,7 +823,7 @@
 
                             <div class="manager_signup_name">적립기준</div>
 
-                            <input class="signuptext5" type="text" placeholder="ex)3000원 이상 구매시" id="market_promotion" name='market_promotion'>
+                            <input class="signuptext5" type="text" maxlength="18"placeholder="ex)3000원 이상 구매시" id="market_promotion" name='market_promotion'>
                         </div>
                         <div class="signupuser_input3">
                             <div class="manager_check_div">
@@ -847,7 +832,7 @@
 
                             <div class="manager_signup_name">스탬프보상</div>
 
-                            <input class="signuptext5" type="text" placeholder="ex)채소 2000원 어치 제공" id="stamp_reward" name='stamp_reward'>
+                            <input class="signuptext5" type="text" maxlength="18"placeholder="ex)채소 2000원 어치 제공" id="stamp_reward" name='stamp_reward'>
                         </div>
                         <div class="signupuser_input3">
                             <div class="manager_check_div">
@@ -1646,6 +1631,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
             image: image
         });
 
+
         return marker;
     }
 
@@ -1653,7 +1639,9 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     function createMyMarkers(position) {
 
         var imageSize = new daum.maps.Size(32, 33),
+
             imageOptions = { offset: new daum.maps.Point(2, 3) };
+
 
         var myLatLng = new daum.maps.LatLng(position); // position
         // 마커이미지와 마커를 생성합니다
@@ -1666,6 +1654,7 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
 
     // createMyMarkers() 함수 필수 참조
     /* ─────────────△△△마커의 특정 이미지 사용 위한 API△△△───────────── */
+
 
     // 지도를 클릭한 위치에 표출할 마커입니다. 아래 마커 변수는 전역변수입니다.
     var marker = createMyMarkers(37.56300372568073, 126.97729513156993);
