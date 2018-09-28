@@ -466,9 +466,10 @@ h3,h4{
 }
 .alert_content_select_gps{
     text-align: center;
-    width: 100%;
+    width: 90%;
+    margin-left: 5%;
     height: 60%;
-    line-height: 50px;
+    line-height: 30px;
 }
 
 
