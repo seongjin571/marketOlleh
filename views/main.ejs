@@ -793,6 +793,12 @@
                     },
                     success: function (result) {
                         if (result.rows.length > 0) {
+                            
+                            document.getElementById('navControlButton').style.display = "none";
+                            document.getElementById('aaa').style.display = "none";
+                            document.getElementById('text_logo').style.display = "none";
+                            document.getElementById('back_div_near').style.display = "block";
+                            document.getElementById('market_infor').style.display = "block";
 
                             for(var i = 0; i < parseInt(result.rows.length); i++){
                                 if(temp == result.rows[i].name){
@@ -800,12 +806,7 @@
                                     marketInfoLi_event(result.rows[i])
                                     break;
                                 } // inner if
-                            } // for
-                            document.getElementById('navControlButton').style.display = "none";
-                            document.getElementById('aaa').style.display = "none";
-                            document.getElementById('text_logo').style.display = "none";
-                            document.getElementById('back_div_near').style.display = "block";
-                            document.getElementById('market_infor').style.display = "block";                            
+                            } // for                            
                         } else {
                             console.log("시장이름 존재하지 않음");
                         }
