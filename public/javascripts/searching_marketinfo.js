@@ -313,30 +313,34 @@ function marketInfoLi_event_likelist(result_rows) {
 	// [ main.ejs ] 의 [ id = hot_store_list_market ] 참고
 	for (var i = 0; i <10; i++) {
 
-		// 2개씩 div 태그로 묶어주기
-		if (i%2 == 0) {
-			if (i == 0) { // 처음 실행 ~ div 닫기 태그 X
-				tempString[i] = '<div>';
-				tempString[i] += '<div class="hot_store_detail_market">';
-				tempString[i] += '<div><img src="' + result_rows[i].manager_image + '" width="100%" height="130px"> </div>';
-				tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
-				tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
-				tempString[i] += '</div>';
+		if (!result_rows[i]) {
+
+			// 2개씩 div 태그로 묶어주기
+			if (i%2 == 0) {
+				if (i == 0) { // 처음 실행 ~ div 닫기 태그 X
+					tempString[i] = '<div>';
+					tempString[i] += '<div class="hot_store_detail_market">';
+					tempString[i] += '<div><img src="' + result_rows[i].manager_image + '" width="100%" height="130px"> </div>';
+					tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
+					tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
+					tempString[i] += '</div>';
+				} else {
+					tempString[i] = '</div><div>';
+					tempString[i] += '<div class="hot_store_detail_market">';
+					tempString[i] += '<div><img src="' + result_rows[i].manager_image + '" width="100%" height="130px"> </div>';
+					tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
+					tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
+					tempString[i] += '</div>';
+				} // inner if ~ else
 			} else {
-				tempString[i] = '</div><div>';
-				tempString[i] += '<div class="hot_store_detail_market">';
+				tempString[i] = '<div class="hot_store_detail_market">';
 				tempString[i] += '<div><img src="' + result_rows[i].manager_image + '" width="100%" height="130px"> </div>';
 				tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
 				tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
 				tempString[i] += '</div>';
 			} // inner if ~ else
-		} else {
-			tempString[i] = '<div class="hot_store_detail_market">';
-			tempString[i] += '<div><img src="' + result_rows[i].manager_image + '" width="100%" height="130px"> </div>';
-			tempString[i] += '<div class="good_store_name_market">'+result_rows[i].market_name+'</div>';
-			tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
-			tempString[i] += '</div>';
-		} // if ~ else
+			
+		} // IF 
 
 	} // for
 
