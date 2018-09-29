@@ -605,6 +605,9 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
             color: #63dded;
             font-size: 20px;
         }
+        input,button,textarea{
+            outline: none;
+        }
         #intro{
             width: 95%;
             margin-left: 5%;

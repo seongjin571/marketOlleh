@@ -9,6 +9,9 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
     margin: 0;
     /* overflow: hidden; */
 }
+input,button,textarea{
+    outline: none;
+}
 #logo{
     width: 100%;
     height:33px;

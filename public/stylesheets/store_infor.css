@@ -376,6 +376,9 @@ h2{
     color: #63dded;
     font-size: 20px;
 }
+input,button,textarea{
+    outline: none;
+}
 #intro{
     width: 95%;
     margin-left: 5%;

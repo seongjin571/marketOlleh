@@ -8,6 +8,8 @@ html {
     padding: 0;
     margin: 0;
     overflow-x: hidden;
+}
+input,button,textarea{
     outline: none;
 }
 .content_title{
