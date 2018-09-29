@@ -391,6 +391,11 @@ html {
     line-height: 30px;
     padding-top: 5px;
 }
+.click_coupon{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .alert_select_ok,.alert_select_ok_out,.alert_select_ok_gps{
     text-align: center;
