@@ -567,7 +567,9 @@
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
                             $('.alert_content').html('이미 존재하는 아이디입니다');
+                            $('.check_div').eq(1).css('visibility', 'hidden');
                             $('#userid').val('');
+
                         }
                     },
                     error: function (error) {
@@ -1112,6 +1114,7 @@
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
                             $('.alert_content').html('이미 존재하는 아이디입니다');
+                            $('.manager_check_div').eq(1).css('visibility', 'hidden');
                             $('#manager_id_jh').val('');
                         }
                     },
