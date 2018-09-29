@@ -74,12 +74,11 @@
   <script src="/javascripts/cordova_getgps.js"></script>
   <!-- ▼ hw edit; map javascirpt -->
   <script type="text/javascript">
-    window.seoulApp.getGPS();
 
     // 마커 저장 배열
     var markers = [];
     var infowindow = [];
-    
+
     // parseFloat(myLat), parseFloat(myLng)
     // 지도를 표시할 div (id)
     var mapContainer = document.getElementById('map'),
@@ -194,7 +193,7 @@
         createMyMarkers(); // marker img
         changeCenter(new daum.maps.LatLng(myLat, myLng))
         getNearMarket(map);
-
+        relayout();
     } // end ~ getMap()
 
     function addMarker(position, arr) {
@@ -272,7 +271,8 @@
 
     // add event listenr
     getMyLo.addEventListener('click', FUXKING_GPS, false);
-
+    window.seoulApp.getGPS();
+    
   </script>
    <div id="nav_sj">
         <div id="home_sj">
