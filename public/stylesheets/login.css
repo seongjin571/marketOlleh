@@ -739,10 +739,8 @@ select{
     margin-left: 10px;
 }
 #searchingButton{
-    width: 20px;
-    height: 20px;
-    margin-top: 10px;
-    margin-right: 10px;
+    width: 40px;
+    height: 40px;
     background-color: white;
     border: 0px;
     padding: 0px;
