@@ -313,7 +313,7 @@ function marketInfoLi_event_likelist(result_rows) {
 	// [ main.ejs ] 의 [ id = hot_store_list_market ] 참고
 	for (var i = 0; i <10; i++) {
 
-		if (!result_rows[i]) {
+		if (result_rows[i]) {
 
 			// 2개씩 div 태그로 묶어주기
 			if (i%2 == 0) {
@@ -339,7 +339,7 @@ function marketInfoLi_event_likelist(result_rows) {
 				tempString[i] += '<div class="good_count_market"><img src="/images/good.png" width="20px" height="20px"><p>'+result_rows[i].like_count+'</p></div>'
 				tempString[i] += '</div>';
 			} // inner if ~ else
-			
+
 		} // IF 
 
 	} // for
