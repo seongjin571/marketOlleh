@@ -262,6 +262,7 @@ function searchingAjax(event) {
     if(!search_value.value){
 		$('.alert_x').css('display', 'block');
 		$('.alert_content').html('검색어를 확인해 주세요')
+		$('#search_value').val('')
       return;
     }
 
@@ -283,11 +284,13 @@ function searchingAjax(event) {
 			} else {
 				$('.alert_x').css('display', 'block');
 				$('.alert_content').html('검색어를 확인해 주세요');
+				$('#search_value').val('')
 			}
 		},
 		error: function (e) {
 			$('.alert_x').css('display', 'block');
 			$('.alert_content').html('검색어를 확인해 주세요');
+			$('#search_value').val('')
 			console.log('process error : ', e);
 		}
 	}); // ajax
