@@ -42,23 +42,7 @@
   }
 
   window.seoulApp.getGPS();
-  $(document).ready(function() {
-    $('#loginUser_sign_up').click(function () {
-        $('#loginuser').css('display','none');
-        $('#signupuser').css('display','block');
-    })
-    // hw edit; GPS끈 상태 고려 위해 회원가입 클릭했을때 맵 생기는 이벤트
-    $('#loginmanager_sign_up').click(function () {
-        $('#loginManager').css('display','none');
-        $('#signupManager').css('display','block');
-        // $('#find_market').append($('#map'));
-        // $('#map').css('display', 'block');
-        // relayout();
-        // var setPo = new daum.maps.LatLng(37.5657258494498, 126.9797731426241);
-        // changeCenter(setPo);
-        // marker.setPosition(setPo);
-    });
-});
+
 
 </script>
 <!-- kakao map API (hw edit) -->
@@ -1476,23 +1460,21 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         $('#start').fadeOut(300)
         $('#loginManager').fadeIn(300)
     })
-//     $(document).ready(function() {
-//     $('#loginUser_sign_up').click(function () {
-//         $('#loginuser').css('display','none');
-//         $('#signupuser').css('display','block');
-//     })
-//     // hw edit; GPS끈 상태 고려 위해 회원가입 클릭했을때 맵 생기는 이벤트
-//     $('#loginmanager_sign_up').click(function () {
-//         $('#loginManager').css('display','none');
-//         $('#signupManager').css('display','block');
-//         // $('#find_market').append($('#map'));
-//         // $('#map').css('display', 'block');
-//         // relayout();
-//         // var setPo = new daum.maps.LatLng(37.5657258494498, 126.9797731426241);
-//         // changeCenter(setPo);
-//         // marker.setPosition(setPo);
-//     });
-// });
+    $('#loginUser_sign_up').click(function () {
+        $('#loginuser').css('display','none');
+        $('#signupuser').css('display','block');
+    })
+    // hw edit; GPS끈 상태 고려 위해 회원가입 클릭했을때 맵 생기는 이벤트
+    $('#loginmanager_sign_up').click(function () {
+        $('#loginManager').css('display','none');
+        $('#signupManager').css('display','block');
+        // $('#find_market').append($('#map'));
+        // $('#map').css('display', 'block');
+        // relayout();
+        // var setPo = new daum.maps.LatLng(37.5657258494498, 126.9797731426241);
+        // changeCenter(setPo);
+        // marker.setPosition(setPo);
+    });
 
     // 뒤로가기 고객로그인부분
     $('#back_loginuser').click(function () {
