@@ -7,8 +7,10 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
     height: 100%;
     padding: 0;
     margin: 0;
-    outline: none;
     /* overflow: hidden; */
+}
+input,button,textarea{
+    outline: none;
 }
 
 /* main ~ display 부분 초기 설정 */
@@ -73,6 +75,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label {font-family
 #searchingButton{
     /* margin-top: 9px; */
     background-color: white;
+    padding-top:1px;
 }
 #Searching{
     width: 93%;
