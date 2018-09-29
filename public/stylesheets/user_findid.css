@@ -35,6 +35,9 @@ body, html {
     height: 50%;
     padding-top: 10%;
 }
+input,button,textarea{
+    outline: none;
+}
 .alert_content{
     text-align: center;
     width: 100%;

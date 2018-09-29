@@ -7,6 +7,9 @@ body, html {
     margin: 0;
     background-color: white;
 }
+input,button,textarea{
+    outline: none;
+}
 #smallImage{
     width: 40%;
     height: auto;

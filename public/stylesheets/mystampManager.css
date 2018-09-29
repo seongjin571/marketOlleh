@@ -9,6 +9,9 @@ html {
     padding: 0;
     margin: 0;
 }
+input,button,textarea{
+    outline: none;
+}
 
 /* #text_logo{
     width: 100%;
