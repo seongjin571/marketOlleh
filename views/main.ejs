@@ -257,12 +257,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <script>
-                              $('#stamp<%= myStamps[i].id %>').click(function() {
-                                // localStorage.setItem('reviewTab', '<%= myStamps[i].id %>');
-                                location.href = '/myStamp';
-                              });
-                            </script>
                             <% } %>
                                 <% } else { %>
                                     <div class='no_stamp'>
@@ -830,7 +824,9 @@
         $('#user_nearMarket').click(function (event) {
             start_nearMarket_setting();
         });
-
+        $('.swiper1').click(function () {
+                location.href = '/myStamp';
+            });
         function start_nearMarket_setting(argument) {
             window.seoulApp.SignUpgetGPS();
             getNearMarket();
