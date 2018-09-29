@@ -140,6 +140,7 @@
     /* ─────────────△△△마커의 특정 이미지 사용 위한 API△△△───────────── */
 
     function FUXKING_GPS() {
+      hideMarkers();
       window.seoulApp.getGPS();
     }
 
@@ -149,6 +150,11 @@
             markers[i].setMap(map);
         }            
     }
+
+    // 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
+    function hideMarkers() {
+        setMarkers(null);    
+    }    
 
     function getMyLocation(lng,lat){
       window.myLat = lat;
