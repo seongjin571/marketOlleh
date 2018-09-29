@@ -225,33 +225,7 @@
                   </div>
 
 
-    <script>
-        window.onload = function () {
 
-            if(localStorage.getItem('signup')) {
-
-              if(localStorage.getItem('signup') == 1) {
-                document.getElementById('start').style.display = 'none';
-                document.getElementById('loginuser').style.display = 'block';
-              } // 유저 회원가입 완료 후
-
-              else {
-                document.getElementById('start').style.display = 'none';
-                document.getElementById('loginManager').style.display = 'block';
-              } // 상인 회원가입 완료 후
-
-              localStorage.clear();
-
-            } // check localStorage named signup
-
-            $('#back_loginuser').click(function() {
-              document.getElementById('all_body').style.display = 'block';
-            });
-            $('#back_loginManager').click(function() {
-              document.getElementById('all_body').style.display = 'block';
-            });
-        }
-    </script>
 
     <!--start div 시작-->
 
@@ -577,7 +551,8 @@
                                 // $('#userpwdcheck').val('');
                                 // $('#e_mail').val('');
                                 // $('.check_div').css('visibility', 'hidden');
-                                localStorage.setItem('signup', 1);
+
+                                // localStorage.setItem('signup', 1);
                                 location.reload();
 
                             })
@@ -1123,7 +1098,8 @@
                                 // $('#password_star').text('');
                                 // $('.tenControls_sj').css('display', 'none');
                                 // $('.fiveControls_sj').css('display', 'none');
-                                localStorage.setItem('signup', 2);
+
+                                // localStorage.setItem('signup', 2);
                                 location.reload();
                             })
 
