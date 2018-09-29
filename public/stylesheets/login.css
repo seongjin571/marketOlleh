@@ -960,8 +960,8 @@ select{
 
 /* 뒤로가기 버튼 */
 #back_loginuser{
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     background: white;
     margin-top: 10px;
     margin-left: 10px;
@@ -969,8 +969,8 @@ select{
     z-index: 1;
 }
 #back_loginManager{
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     background: white;
     margin-top: 10px;
     margin-left: 10px;
@@ -978,8 +978,8 @@ select{
     z-index: 1;
 }
 #back_signupuser{
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     background: white;
     margin-top: 10px;
     margin-left: 10px;
@@ -987,8 +987,8 @@ select{
     z-index: 1;
 }
 #back_signupManager{
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     background: white;
     margin-top: 10px;
     margin-left: 10px;
