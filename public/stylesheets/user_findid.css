@@ -126,11 +126,11 @@ body, html {
     border-bottom-style: solid;
     padding-top:10px;
 }
-#find_user_id_bt{
-    width: 20px;
-    height: 20px;
+#back_loginuser{
+    width: 25px;
+    height: 25px;
     margin-top: 10px;
-    margin-left: 40px;
+    margin-left: 10px;
     background-color: white;
     border: 0px;
     padding: 0px;

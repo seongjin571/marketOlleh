@@ -74,10 +74,20 @@
   <script src="/javascripts/cordova_getgps.js"></script>
   <!-- ▼ hw edit; map javascirpt -->
   <script type="text/javascript">
-    window.seoulApp.getGPS();
-    var map_count=0;
+
     // 마커 저장 배열
     var markers = [];
+    var infowindow = [];
+
+    // parseFloat(myLat), parseFloat(myLng)
+    // 지도를 표시할 div (id)
+    var mapContainer = document.getElementById('map'),
+        mapOption = {
+            center: new daum.maps.LatLng(37.56300372568073, 126.97729513156993), // 지도의 중심좌표
+            level: 2 // 지도의 확대 레벨
+        };
+
+    var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
     /* ─────────────▽▽▽마커의 특정 이미지 사용 위한 API▽▽▽───────────── */
     // 내 위치 표시해주는 마커 특수 IMG
@@ -100,7 +110,7 @@
     }
     // createMyMarkers() 함수 필수 참조
     // 내 이미지 마커를 생성하고 마커 배열에 추가하는 함수입니다
-    function createMyMarkers(map) {
+    function createMyMarkers() {
 
         var imageSize = new daum.maps.Size(32, 33),
             imageOptions = { offset: new daum.maps.Point(3, 6) };
@@ -115,31 +125,36 @@
         markers.push(marker);
     }
 
-    function relayout(map) {
+    function relayout() {
         map.relayout();
     }
 
-    function changeCenter(map, moveLatLon) {
+    function changeCenter(moveLatLon) {
 
-      // map_count++;
-      // if(map_count==3){
-      //   location.onlad();
-      //   alert('a');
-      // }
-      // else{
-        // window.seoulApp.getGPS();
-
-        relayout(map);
+        relayout();
         // 지도 중심을 이동 시킵니다
         map.setCenter(moveLatLon);
         map.setLevel(2);
       } // changeCenter
 
-      function FUXKING_GPS() {
-        window.seoulApp.getGPS();
-      }
-
     /* ─────────────△△△마커의 특정 이미지 사용 위한 API△△△───────────── */
+
+    function FUXKING_GPS() {
+      hideMarkers();
+      window.seoulApp.getGPS();
+    }
+
+    // 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
+    function setMarkers(map) {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+        }            
+    }
+
+    // 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
+    function hideMarkers() {
+        setMarkers(null);    
+    }    
 
     function getMyLocation(lng,lat){
       window.myLat = lat;
@@ -152,17 +167,16 @@
         console.log("못받아옴");
         // alert("Can't get GPS!");
         $('.alert_gps').css('display', 'block');
-    
-    $('.alert_content_select_gps').html(
-        'GPS 인식에 실패하였습니다. GPS를 켜고 만약 건물내부 일시 위치 설정을 높은 정확도로 변경해주세요'
-    );
-    // $('#gps_label').css('line-height','8px')
-    $('.alert_select_ok_gps').click(function () {
-        window.location.reload();
-        // window.seoulApp.SignUpgetGPS();
-        gpsNULL();
-    });
-    }
+        $('.alert_content_select_gps').html(
+            'GPS 인식에 실패하였습니다. GPS를 켜고 만약 건물내부 일시 위치 설정을 높은 정확도로 변경해주세요'
+        );
+        // $('#gps_label').css('line-height','8px')
+        $('.alert_select_ok_gps').click(function () {
+            window.location.reload();
+            // window.seoulApp.SignUpgetGPS();
+            gpsNULL();
+        });
+    } // gpsGetFail()
 
     function gpsNULL(){
         $('.alert_o').css('display', 'block');
@@ -185,77 +199,65 @@
     function getMap() {
 
         // document.getElementById('map') 차일드 노드 여부로 map의 중복 생성, 겹침을 해결하였다.
-        if (document.getElementById('map').hasChildNodes()) {
-            document.getElementById('map').innerHTML = null;
-        }
+        // if (document.getElementById('map').hasChildNodes()) {
+        //     document.getElementById('map').innerHTML = null;
+        // }
 
-        // 지도를 표시할 div (id)
-        var mapContainer = document.getElementById('map'),
-            mapOption = {
-                center: new daum.maps.LatLng(parseFloat(myLat), parseFloat(myLng)), // 지도의 중심좌표
-                level: 2 // 지도의 확대 레벨
-            };
-
-        var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-        createMyMarkers(map); // marker img
-        changeCenter(map, new daum.maps.LatLng(myLat, myLng))
-        getNearMarket(map);
-
+        createMyMarkers(); // marker img
+        changeCenter(new daum.maps.LatLng(myLat, myLng))
+        getNearMarket();
+        relayout();
     } // end ~ getMap()
+
+    function addMarker(position, arr) {
+        // 마커를 생성합니다
+        var marker = new daum.maps.Marker({
+            position: position,
+            clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+        });
+        // 마커가 지도 위에 표시되도록 설정합니다
+        marker.setMap(map);
+
+        // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+        // 인포윈도우 내용, HTML 문자열이나 document element가 가능합니다
+        var iwContent = '<div style="padding:5px;"><h3>'+arr.market_name+'</h3><span>'+arr.sijang_name+'</span></div>',
+            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+        // 인포윈도우를 생성합니다
+        var infowindowTemp = new daum.maps.InfoWindow({
+            content : iwContent,
+            removable : iwRemoveable
+        });
+
+        // 마커에 클릭이벤트를 등록합니다
+        daum.maps.event.addListener(marker, 'click', function() {
+              // 마커 위에 인포윈도우를 표시합니다
+              infowindowTemp.open(map, marker);
+        });
+
+        infowindow.push(infowindowTemp);
+        // 생성된 마커를 배열에 추가합니다
+        markers.push(marker);
+    } // addMarket
+
+    // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+    function makeOverListener(map, markerInfo, infowindow) {
+        return function() {
+            infowindow.open(map, markerInfo);
+        };
+    }
+
+    // 인포윈도우를 닫는 클로저를 만드는 함수입니다
+    function makeOutListener(infowindow) {
+        return function() {
+            infowindow.close();
+        };
+    }
 
     // 페이지 로드 되고 getMap() 함수 실행 -> 아래 함수 실행
     // 아래 함수에서 DB의 모든 시장 위치 읽어옴
     // '내 위치' 버튼 누르면 getGPS (전역함수 ~ 코르도바/자바 클래스) 함수 실행
     // 다시 getMap() 함수 실행되는 사이클 형식
-    function getNearMarket(map) {
-
-      var infowindow = [];
-
-      function addMarker(position, arr) {
-          // 마커를 생성합니다
-          var marker = new daum.maps.Marker({
-              position: position,
-              clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
-          });
-          // 마커가 지도 위에 표시되도록 설정합니다
-          marker.setMap(map);
-
-          // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-          // 인포윈도우 내용, HTML 문자열이나 document element가 가능합니다
-          var iwContent = '<div style="padding:5px;"><h3>'+arr.market_name+'</h3><span>'+arr.sijang_name+'</span></div>',
-              iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-          // 인포윈도우를 생성합니다
-          var infowindowTemp = new daum.maps.InfoWindow({
-              content : iwContent,
-              removable : iwRemoveable
-          });
-
-          // 마커에 클릭이벤트를 등록합니다
-          daum.maps.event.addListener(marker, 'click', function() {
-                // 마커 위에 인포윈도우를 표시합니다
-                infowindowTemp.open(map, marker);
-          });
-
-          infowindow.push(infowindowTemp);
-          // 생성된 마커를 배열에 추가합니다
-          markers.push(marker);
-      } // addMarket
-
-      // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
-      function makeOverListener(map, markerInfo, infowindow) {
-          return function() {
-              infowindow.open(map, markerInfo);
-          };
-      }
-
-      // 인포윈도우를 닫는 클로저를 만드는 함수입니다
-      function makeOutListener(infowindow) {
-          return function() {
-              infowindow.close();
-          };
-      }
-
+    function getNearMarket() {
 
       $.ajax({
           url: "/searching/nearManager",
@@ -282,6 +284,8 @@
 
     // add event listenr
     getMyLo.addEventListener('click', FUXKING_GPS, false);
+    FUXKING_GPS();
+    // window.seoulApp.getGPS();
 
   </script>
    <div id="nav_sj">
