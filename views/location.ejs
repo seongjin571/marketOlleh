@@ -113,6 +113,11 @@
     // 내 이미지 마커를 생성하고 마커 배열에 추가하는 함수입니다
     function createMyMarkers() {
 
+        if (!markersMy) {
+          markersMy.setMap(null);
+          markersMy = null;
+        } // 현존 마커값 삭제 
+
         var imageSize = new daum.maps.Size(32, 33),
             imageOptions = { offset: new daum.maps.Point(3, 6) };
 
@@ -191,9 +196,8 @@
         // if (document.getElementById('map').hasChildNodes()) {
         //     document.getElementById('map').innerHTML = null;
         // }
-        markersMy.setMap(null);
-        createMyMarkers(); // marker img
         changeCenter(new daum.maps.LatLng(myLat, myLng))
+        createMyMarkers(); // marker img
         getNearMarket();
         relayout();
     } // end ~ getMap()
