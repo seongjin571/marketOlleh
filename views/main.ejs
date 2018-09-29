@@ -71,6 +71,18 @@
                   </div>
               </div>
             </div>
+            <div class="alert_gps"  style="display:none">
+                    <div class="alert_o_content">
+                      <div class="alert_content_select_gps">
+                      </div>
+                      <div class="alert_select_cancel_gps">
+                        취소
+                      </div>
+                      <div class="alert_select_ok_gps">
+                          재시도
+                        </div>
+                    </div>
+                  </div>
             <div class="alert_out"  style="display:none">
                     <div class="alert_o_content">
                       <div class="alert_content_select">
@@ -93,7 +105,7 @@
                 <div id="vertical_helper">
                     <div id="searching_input">
                         <input type="text" id="search_value">
-                        <img src="/images/search3.png" value="검색" id="searchingButton" width="20px" height="20px">
+                        <img src="/images/search.png" value="검색" id="searchingButton" width="40px" height="40px">
                     </div>
                 </div>
             </div>
@@ -246,7 +258,7 @@
                             </div>
                             <script>
                               $('#stamp<%= myStamps[i].id %>').click(function() {
-                                localStorage.setItem('reviewTab', '<%= myStamps[i].id %>');
+                                // localStorage.setItem('reviewTab', '<%= myStamps[i].id %>');
                                 location.href = '/myStamp';
                               });
                             </script>
@@ -667,8 +679,15 @@
             })
             $('.alert_select_cancel').click(function () {
                 $('.alert_out').css('display', 'none')
+                $('.alert_gps').css('display', 'none')
                 $('.alert_select').css('display', 'none')
                 $('.alert_select_ok').off();
+            });
+            $('.alert_select_cancel_gps').click(function () {
+                $('.alert_select').css('display', 'none')
+                $('.alert_out').css('display', 'none')
+                $('.alert_gps').css('display', 'none')
+                $('.alert_select_ok_gps').off();
             });
     </script>
     <!-------------------- KAKAO MAP API ---------------------->
@@ -721,7 +740,7 @@
             for (var i = 0; i < 3; i++) {
                 tempString += '<div class="near_market_list">';
                 tempString += '<div class="market_pic">';
-                tempString += '<img src='+SortingMarket[i].imgurl+' width="100%" height="85px"></div>';
+                tempString += '<img src='+SortingMarket[i].imgurl+' width="100%" height="100%"></div>';
                 tempString += '<div class="near_market_name">'+SortingMarket[i].marketName+'</div></div>';
                 // tempString += '<div class="distance">2.2km</div></div>';
             } // for

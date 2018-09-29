@@ -55,6 +55,18 @@
         </div>
       </div>
     </div>
+    <div class="alert_gps"  style="display:none">
+        <div class="alert_o_content">
+          <div class="alert_content_select_gps">
+          </div>
+          <div class="alert_select_cancel_gps">
+            취소
+          </div>
+          <div class="alert_select_ok_gps">
+              재시도
+            </div>
+        </div>
+      </div>
 
       <div class="alert_select"  style="display:none">
           <div class="alert_o_content">
@@ -707,10 +719,18 @@
         $('.alert_o').click(function(){
           $(this).css('display','none')
         })
-        $('.alert_select_cancel').click(function(){
-          $('.alert_out').css('display', 'none')
-          $('.alert_select').css('display','none')
-        })
+        $('.alert_select_cancel').click(function () {
+                $('.alert_out').css('display', 'none')
+                $('.alert_gps').css('display', 'none')
+                $('.alert_select').css('display', 'none')
+                $('.alert_select_ok').off();
+            });
+            $('.alert_select_cancel_gps').click(function () {
+                $('.alert_select').css('display', 'none')
+                $('.alert_out').css('display', 'none')
+                $('.alert_gps').css('display', 'none')
+                $('.alert_select_ok_gps').off();
+            });
       //  function Get_sijanimg() {
       //     for (var i = 0; i < $('.market > p').length; i++) {
       //       var tempone = $('.market > p')[i].innerText;

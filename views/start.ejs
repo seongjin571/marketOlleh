@@ -42,6 +42,24 @@
   }
 
   window.seoulApp.getGPS();
+  $(document).ready(function() {
+    $('#loginUser_sign_up').click(function () {
+        $('#loginuser').css('display','none');
+        $('#signupuser').css('display','block');
+    })
+    // hw edit; GPS끈 상태 고려 위해 회원가입 클릭했을때 맵 생기는 이벤트
+    $('#loginmanager_sign_up').click(function () {
+        $('#loginManager').css('display','none');
+        $('#signupManager').css('display','block');
+        // $('#find_market').append($('#map'));
+        // $('#map').css('display', 'block');
+        // relayout();
+        // var setPo = new daum.maps.LatLng(37.5657258494498, 126.9797731426241);
+        // changeCenter(setPo);
+        // marker.setPosition(setPo);
+    });
+});
+
 </script>
 <!-- kakao map API (hw edit) -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1f14a7f1512988347e7ffdd75ac7ab4c"></script>
@@ -52,7 +70,7 @@
     <div id="map_div"style="width:100%; height:100%; display:none;">
             <div id="map" style="width:100%; height:80%;"></div>
         <input type="button"style="background-image:url('/images/placeholder.png'); background-position:center center; background-size:20px 20px; background-repeat:no-repeat" id="getMarket_location"/>
-        <img id="back_map" src="/images/backButton_blue.png" width="23px"height="23px" style="padding-left:10px; padding-top: 10px">
+        <img id="back_map" src="/images/backButton_blue.png" width="25px"height="25px" style="padding-left:10px; padding-top: 10px">
 
         <p>지도에서 위치를 클릭하시거나 오른쪽 상단의 내 위치 아이콘 클릭 후 확인버튼을 눌러주세요</p>
         <button id="map_getLocationButton">확인</button>
@@ -180,6 +198,18 @@
                   </div>
               </div>
             </div>
+            <div class="alert_gps"  style="display:none">
+                    <div class="alert_o_content">
+                      <div class="alert_content_select_gps">
+                      </div>
+                      <!-- <div class="alert_select_cancel_gps">
+                        취소
+                      </div>
+                      <div class="alert_select_ok_gps">
+                          재시도
+                        </div> -->
+                    </div>
+                  </div>
 
             <div class="alert_out"  style="display:none">
                     <div class="alert_o_content">
@@ -195,33 +225,7 @@
                   </div>
 
 
-    <script>
-        window.onload = function () {
 
-            if(localStorage.getItem('signup')) {
-
-              if(localStorage.getItem('signup') == 1) {
-                document.getElementById('start').style.display = 'none';
-                document.getElementById('loginuser').style.display = 'block';
-              } // 유저 회원가입 완료 후
-
-              else {
-                document.getElementById('start').style.display = 'none';
-                document.getElementById('loginManager').style.display = 'block';
-              } // 상인 회원가입 완료 후
-
-              localStorage.clear();
-
-            } // check localStorage named signup
-
-            $('#back_loginuser').click(function() {
-              document.getElementById('all_body').style.display = 'block';
-            });
-            $('#back_loginManager').click(function() {
-              document.getElementById('all_body').style.display = 'block';
-            });
-        }
-    </script>
 
     <!--start div 시작-->
 
@@ -459,7 +463,7 @@
                     <img id="check1" src="/images/check.png" width="35px" height="35px">
                 </div>
                 <div class="icon_div">
-                    <img id="icon1" src="/images/nameicon.png">
+                    <img id="icon1" src="/images/name_icon.png">
                 </div>
                 <input class="signuptext" type='text' id='username' name='username' placeholder='이름' />
             </div>
@@ -468,7 +472,7 @@
                     <img id="check2" src="/images/check.png" width="35px" height="35px">
                 </div>
                 <div class="icon_div">
-                    <img id="icon2" src="/images/idicon.png">
+                    <img id="icon2" src="/images/my_icon.png">
                 </div>
                 <input class="signuptext" type='text' id='userid' name='userid' placeholder='아이디' />
             </div>
@@ -477,7 +481,7 @@
                     <img id="check3" src="/images/check.png" width="35px" height="35px">
                 </div>
                 <div class="icon_div">
-                    <img id="icon3" src="/images/passwordicon.png">
+                    <img id="icon3" src="/images/password_icon.png">
                 </div>
                 <input class="signuptext" type='password' id='userpwd' name='userpwd' placeholder='비밀번호' />
             </div>
@@ -486,7 +490,7 @@
                     <img id="check4" src="/images/check.png" width="35px" height="35px">
                 </div>
                 <div class="icon_div">
-                    <img id="icon4" src="/images/passwordicon.png">
+                    <img id="icon4" src="/images/password_icon.png">
                 </div>
                 <input class="signuptext" type='password' id='userpwdcheck' name='userpwd' placeholder='비밀번호확인' />
             </div>
@@ -495,7 +499,7 @@
                     <img id="check5" src="/images/check.png" width="35px" height="35px">
                 </div>
                 <div class="icon_div">
-                    <img id="icon5" src="/images/e_mailicon.png">
+                    <img id="icon5" src="/images/email_icon.png">
                 </div>
                 <div>
                     <input class="signuptext" type='text' id='e_mail' name='e_mail' placeholder='이메일' />
@@ -547,7 +551,8 @@
                                 // $('#userpwdcheck').val('');
                                 // $('#e_mail').val('');
                                 // $('.check_div').css('visibility', 'hidden');
-                                localStorage.setItem('signup', 1);
+
+                                // localStorage.setItem('signup', 1);
                                 location.reload();
 
                             })
@@ -555,7 +560,9 @@
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
                             $('.alert_content').html('이미 존재하는 아이디입니다');
+                            $('.check_div').eq(1).css('visibility', 'hidden');
                             $('#userid').val('');
+
                         }
                     },
                     error: function (error) {
@@ -823,7 +830,7 @@
 
                             <div class="manager_signup_name">적립기준</div>
 
-                            <input class="signuptext5" type="text" placeholder="ex)3000원 이상 구매시" id="market_promotion" name='market_promotion'>
+                            <input class="signuptext5" type="text" maxlength="16"placeholder="ex)3000원 이상 구매시" id="market_promotion" name='market_promotion'>
                         </div>
                         <div class="signupuser_input3">
                             <div class="manager_check_div">
@@ -832,7 +839,7 @@
 
                             <div class="manager_signup_name">스탬프보상</div>
 
-                            <input class="signuptext5" type="text" placeholder="ex)채소 2000원 어치 제공" id="stamp_reward" name='stamp_reward'>
+                            <input class="signuptext5" type="text" maxlength="16"placeholder="ex)채소 2000원 어치 제공" id="stamp_reward" name='stamp_reward'>
                         </div>
                         <div class="signupuser_input3">
                             <div class="manager_check_div">
@@ -969,7 +976,7 @@
                                             <option value="oldaddress">지번</option>
                                         </select>
                                         <input type="text" placeholder="searching" id="search_value">
-                                        <img src="/images/search.png" value="검색" id="searchingButton" width="10%" height="30px">
+                                        <img src="/images/search.png" value="검색" id="searchingButton" width="40px" height="40px">
                                     </div>
                                 </div>
                             </div>
@@ -1091,7 +1098,8 @@
                                 // $('#password_star').text('');
                                 // $('.tenControls_sj').css('display', 'none');
                                 // $('.fiveControls_sj').css('display', 'none');
-                                localStorage.setItem('signup', 2);
+
+                                // localStorage.setItem('signup', 2);
                                 location.reload();
                             })
 
@@ -1100,6 +1108,7 @@
                         else if (result['result'] == 'already') {
                             $('.alert_x').css('display','block');
                             $('.alert_content').html('이미 존재하는 아이디입니다');
+                            $('.manager_check_div').eq(1).css('visibility', 'hidden');
                             $('#manager_id_jh').val('');
                         }
                     },
@@ -1467,21 +1476,23 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
         $('#start').fadeOut(300)
         $('#loginManager').fadeIn(300)
     })
-    $('#loginUser_sign_up').click(function () {
-        $('#loginuser').css('display','none');
-        $('#signupuser').css('display','block');
-    })
-    // hw edit; GPS끈 상태 고려 위해 회원가입 클릭했을때 맵 생기는 이벤트
-    $('#loginmanager_sign_up').click(function () {
-        $('#loginManager').css('display','none');
-        $('#signupManager').css('display','block');
-        // $('#find_market').append($('#map'));
-        // $('#map').css('display', 'block');
-        // relayout();
-        // var setPo = new daum.maps.LatLng(37.5657258494498, 126.9797731426241);
-        // changeCenter(setPo);
-        // marker.setPosition(setPo);
-    });
+//     $(document).ready(function() {
+//     $('#loginUser_sign_up').click(function () {
+//         $('#loginuser').css('display','none');
+//         $('#signupuser').css('display','block');
+//     })
+//     // hw edit; GPS끈 상태 고려 위해 회원가입 클릭했을때 맵 생기는 이벤트
+//     $('#loginmanager_sign_up').click(function () {
+//         $('#loginManager').css('display','none');
+//         $('#signupManager').css('display','block');
+//         // $('#find_market').append($('#map'));
+//         // $('#map').css('display', 'block');
+//         // relayout();
+//         // var setPo = new daum.maps.LatLng(37.5657258494498, 126.9797731426241);
+//         // changeCenter(setPo);
+//         // marker.setPosition(setPo);
+//     });
+// });
 
     // 뒤로가기 고객로그인부분
     $('#back_loginuser').click(function () {
@@ -1553,11 +1564,21 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     $('.alert_o').click(function(){
         $(this).css('display','none')
     })
-    $('.alert_select_cancel').click(function(){
-        $('.alert_out').css('display', 'none')
-        $('.alert_select').css('display','none')
-        $('.alert_select_ok').off();
-    });
+    $('.alert_gps').click(function(){
+        $(this).css('display','none')
+    })
+    $('.alert_select_cancel').click(function () {
+                $('.alert_out').css('display', 'none')
+                $('.alert_gps').css('display', 'none')
+                $('.alert_select').css('display', 'none')
+                $('.alert_select_ok').off();
+            });
+            $('.alert_select_cancel_gps').click(function () {
+                $('.alert_select').css('display', 'none')
+                $('.alert_out').css('display', 'none')
+                $('.alert_gps').css('display', 'none')
+                $('.alert_select_ok_gps').off();
+            });
     // (hw edit); enter event handleling!
     $("#password").keyup(function (event) {
         // Enter 처리
@@ -1639,7 +1660,9 @@ $('.manager_check_div').eq(9).css('visibility', 'visible')
     function createMyMarkers(position) {
 
         var imageSize = new daum.maps.Size(32, 33),
-            imageOptions = { offset: new daum.maps.Point(27, 69) };
+
+            imageOptions = { offset: new daum.maps.Point(2, 3) };
+
 
         var myLatLng = new daum.maps.LatLng(position); // position
         // 마커이미지와 마커를 생성합니다

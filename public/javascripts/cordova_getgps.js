@@ -7,23 +7,33 @@ function getMyLocationInS(lng,lat){
   
         var setPo = new daum.maps.LatLng(myLat, myLng);
         changeCenter(setPo);
-        marker.setPosition(setPo);        
+        marker.setPosition(setPo);
 } // getMyLocationInS()
 
 
 function gpsGetFail() {
-    console.log("못받아옴");
-    // alert("Can't get GPS!");
-    $('.alert_select').css('display', 'block');
-    $('.alert_content_select').html(
-        'GPS가 꺼져있습니다.</br><span id="no_gps_alert">위치를 받아오는데 시간이 걸릴 수 있습니다.</span></br>'
-    );
-    $('#no_gps_alert').css('font-size','0.8em');
-    $('.alert_select_ok').click(function () {
-        window.location.reload();
-        gpsNULL();
-    });
-}
+    var test = window.location.pathname;
+    if (test == "/start") {
+        // reload 필요 X
+        $('.alert_gps').css('display', 'block');
+        $('.alert_content_select_gps').html(
+            'GPS 인식에 실패하였습니다. GPS를 켜고 만약 건물내부 일시 위치 설정을 높은 정확도로 변경해주세요'
+        );        
+    }
+    else {
+        // 다른 페이지에선 reload가 필요
+        $('.alert_gps').css('display', 'block');
+        $('.alert_content_select_gps').html(
+            'GPS 인식에 실패하였습니다. GPS를 켜고 만약 건물내부 일시 위치 설정을 높은 정확도로 변경해주세요'
+        );
+        // $('#gps_label').css('line-height','8px')
+        $('.alert_select_ok_gps').click(function () {
+            window.location.reload();
+            gpsNULL();
+        });
+    }
+} // gpsGetFail() ~ loaction.ejs에서는 엑션 제외 
+
 
 function gpsNULL(){
 
