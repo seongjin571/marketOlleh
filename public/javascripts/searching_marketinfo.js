@@ -3,6 +3,7 @@ function NewGoomapLi_css() {
 	$("#market_infor > article").css('display', 'block');
 	// $(".market_infoText_li").css('margin', '10px');
 	$(".market_main_image >img").css('width', '90%').css('margin-left','5%');
+	$("#buffering_img").css('width', '50%').css('margin-left', '42%').css('margin-top', '6%');
 }
 
 function marketInfoLi_event(market_arr) { // market_arr는 market DB값
@@ -10,7 +11,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 	// 좋아요순 상점 흔적 없애기
 	if ($('#hot_store_list_market > div')) {
 		$('#hot_store_list_market > div').remove();
-		$('#hot_store_list_market > div').html('<img src="/images/buffering-dial.gif" style="width: 50%; margin-left: 42%; margin-top: 6%;" />');
+		$('#hot_store_list_market').html('<img src="/images/buffering-dial.gif" id="buffering_img" />');
 	}
 
 	// 태그 동적으로 생성하기
