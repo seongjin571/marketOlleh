@@ -9,7 +9,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 
 	// 좋아요순 상점 흔적 없애기
 	if ($('#hot_store_list_market > div')) {
-		$('#hot_store_list_market > div').remove();
+		$('#hot_store_list_market > div').html('<img src="/images/buffering-dial.gif" style="width: 50%; margin-left: 42%; margin-top: 6%;" />');
 	}
 
 	// 태그 동적으로 생성하기
@@ -34,6 +34,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 	for (var index in tempString) {
 		fullString += tempString[index];
 	} // for in
+
 
 	market_infoText.innerHTML = fullString;
 
