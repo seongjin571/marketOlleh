@@ -170,3 +170,6 @@ input,button,textarea{
     top:60px;
     margin-left:8%;
 }
+#find_user_id_bt{
+    padding-left: 15px;
+}
