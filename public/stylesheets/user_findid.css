@@ -173,3 +173,11 @@ input,button,textarea{
 #find_user_id_bt{
     padding-left: 15px;
 }
+#findid_form >#find_user_id_to_password::placeholder {  
+    color: #B6B7B7;
+      font-family: 'NanumSquare',sans-serif;
+ } 
+ #findid_form >#find_user_id_to_email::placeholder {  
+    color: #B6B7B7;
+      font-family: 'NanumSquare',sans-serif;
+ } 
