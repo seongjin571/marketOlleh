@@ -16,7 +16,7 @@ function marketInfoLi_event(market_arr) { // market_arr는 market DB값
 	var tempString = new Array();
 	var fullString = '';
 
-	tempString[0] = '<div> <h3>'+market_arr.name+'</h3></div>';
+	tempString[0] = '<div> <h3 id="market_name_searching">'+market_arr.name+'</h3></div>';
 		// 시장 img URL 존재 하면 표시
 		if (market_arr.imgurl) {
 			tempString[1] = '<div  class="market_main_image"> <img src="'+market_arr.imgurl+'"></div><div class="line"></div>';

@@ -325,15 +325,15 @@ function navControl(event) {
 
 function setStyle_search_result() {
 
-  $('#search_result').parent().css('display', 'flex');
-  $('#search_result').css('display', 'flex');
+//   $('#search_result').parent().css('display', 'flex');
+//   $('#search_result').css('display', 'flex');
   $('#search_result').css('list-style', 'none');
 
   // flex설정후 word-break
-  $('#search_result > div').css('width', '140px');
+  $('#search_result > div').css('width', '100%');
   $('#search_result > div').css('word-break', 'break-all');
-  $('#search_result > div').css('margin-left', '5%');
-  $('#search_result > div > li').css('margin-top', '5%');
+//   $('#search_result > div').css('margin-left', '5%');
+//   $('#search_result > div > li').css('margin-top', '5%');
 
 } // setStyle_search_result
 

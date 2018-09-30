@@ -7,7 +7,23 @@ select,filed,body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label
 	display: none;
 	margin-bottom: 20%;
 }
-
+#search_result{
+	width: 100%;
+    list-style: none;
+    padding: 0px;
+    background-color: rgb(250, 250, 250);
+    margin: 0px;
+}
+#market_name_searching{
+	margin-top: 55px;
+}
+#search_result li{
+	border-bottom-style: inset;
+    height: 50px;
+    line-height: 50px;
+    border-width: 1.2px;
+    padding-left: 20px;
+}
 #Goomap_container {
 	height: 100%;
 	width: 100%;
@@ -68,8 +84,9 @@ select,filed,body, h1, h2, h3, h4, h5, h6, li, p, span, div input,textarea,label
 	margin: 6px;
 }
 article{
-	margin-top: 17%;
+	margin-top: 12%;
 	margin-bottom: 15%;
+	height:100%;
 }
 
 /*  market_infor (시장 API 정보 뿌려주는 div ~ article)  */
