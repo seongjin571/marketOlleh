@@ -1,0 +1,4 @@
+#Wed Sep 12 20:50:18 KST 2018
+base.0=C\:\\Users\\jungh\\Desktop\\wsadtest\\seoulApp\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\7
+renamed.0=classes.dex
+file.0=C\:\\Users\\jungh\\Desktop\\wsadtest\\seoulApp\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\7\\classes.dex

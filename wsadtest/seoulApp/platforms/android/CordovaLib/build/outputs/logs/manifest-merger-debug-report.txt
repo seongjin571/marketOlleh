@@ -1,0 +1,35 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:20:1-25:12
+INJECTED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:20:1-25:12
+INJECTED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:20:1-25:12
+INJECTED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:20:1-25:12
+INJECTED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:20:1-25:12
+INJECTED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:20:1-25:12
+INJECTED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:20:1-25:12
+	package
+		ADDED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:21:7-35
+		INJECTED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml
+		INJECTED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml
+	android:versionName
+		ADDED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:21:36-61
+		INJECTED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml
+		INJECTED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:20:11-69
+	android:versionCode
+		ADDED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:21:62-85
+		INJECTED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml
+		INJECTED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml
+uses-sdk
+ADDED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:22:5-44
+	android:minSdkVersion
+		ADDED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:22:15-41
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:23:5-79
+	android:name
+		ADDED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:23:22-76
+uses-feature#android.hardware.location.gps
+ADDED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:24:5-66
+	android:name
+		ADDED from C:\Users\admin\Desktop\wsadtest\seoulApp\platforms\android\CordovaLib\AndroidManifest.xml:24:19-63
