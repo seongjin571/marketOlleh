@@ -1,0 +1,48 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\jungh\\Desktop\\wsadtest\\seoulApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\jungh\\Desktop\\wsadtest\\seoulApp\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "4,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "160,55,101",
+                        "endColumns": "63,45,58",
+                        "endOffsets": "219,96,155"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,119,165",
+                        "endColumns": "63,45,58",
+                        "endOffsets": "114,160,219"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\admin\\Desktop\\wsadtest\\seoulApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\admin\\Desktop\\wsadtest\\seoulApp\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "-1,2,-1",
+                        "startColumns": "-1,4,-1",
+                        "startOffsets": "-1,55,-1",
+                        "endColumns": "-1,45,-1",
+                        "endOffsets": "-1,96,-1"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,119,165",
+                        "endColumns": "63,45,58",
+                        "endOffsets": "114,160,219"
+                    }
+                }
+            ]
+        }
+    ]
+}
