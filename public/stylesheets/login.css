@@ -771,16 +771,15 @@ select{
 }
 
 .modal-content{
-    border-radius: 10px;
-    height: 500px;
-    width: 90%;
-    margin-top: 18%;
-    margin-left:5%;
+    height: 100%;
+    width: 100%;
     background-color: white;
 }
 #top_modal{
-    height: 45%;
+    height: 38%;
     width: 100%;
+    border-bottom-style: inset;
+    border-bottom-width: 2px;
 }
 
 #picture_pic,#picture_cat
@@ -911,27 +910,31 @@ select{
 #modal_result{
     width: 100%;
     overflow:scroll;
-    height: 42%;
-    display: flex;
+    height: 50%;
 }
 
 /* modal_result 안에 동적으로 생기는 ol태그 id*/
 #search_result {
-    display: flex;
-    height: 300px;
+    height: 100%;
     width: 100%;
     list-style: none;
     padding-left: 0px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+    margin-top:5px;
 }
-
+li{
+    height: 45px;
+    width: 90%;
+    margin-left: 5%;
+    line-height: 45px;
+    border-bottom-style: inset;
+    border-width: 1px;
+}
 /* ol tag ~ div/li CSS value (나중에 적용되야 할 CSS값 테스팅) */
 #search_result > div {
-    width: 125px;
+    width: 100%;
     word-break: break-all;
-    margin-left: 7%;
 }
 
 #modal_result2{
@@ -943,14 +946,14 @@ select{
 #modalbutton{
     position: fixed;
     box-shadow: 5px 5px 3px #efefef;
-    width: 80%;
-    height: 40px;
-    padding:0;
+    width: 90%;
+    height: 45px;
+    padding: 0;
     margin-top: 5px;
-    border:0;
-    top:500px;
+    border: 0;
+    top: 90%;
     border-radius: 50px;
-    color:white;
+    color: white;
     background: -webkit-linear-gradient(left, #17ead9, #6078ea);
     background: -o-linear-gradient(right, #17ead9, #6078ea);
     background: -moz-linear-gradient(right, #17ead9, #6078ea);

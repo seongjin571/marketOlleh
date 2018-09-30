@@ -129,7 +129,7 @@ function setStyle_search_result(searchResult) {
 
   });
 
-  $('#search_result > div > li').css('margin-top', '5%');
+  // $('#search_result > div > li').css('margin-top', '5%');
 
 } // setStyle_search_result
 
