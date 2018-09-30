@@ -106,9 +106,9 @@ function setStyle_search_result(searchResult) {
 
   console.log(searchResult);
 
-  $('#search_result > div').css('width', '125px');
+  $('#search_result > div').css('width', '100%');
   $('#search_result > div').css('word-break', 'break-all');
-  $('#search_result > div').css('margin-left', '7%');
+  // $('#search_result > div').css('margin-left', '7%');
 
   // li 태그들 클릭 (focus / blur 함수) ~ CSS 제어
   $('#search_result > div > li').click(function(){
