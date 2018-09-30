@@ -3,7 +3,7 @@ function NewGoomapLi_css() {
 	$("#market_infor > article").css('display', 'block');
 	// $(".market_infoText_li").css('margin', '10px');
 	$(".market_main_image >img").css('width', '90%').css('margin-left','5%');
-	$("#buffering_img").css('width', '120px').css('height', '120px').css('margin-top', '0%').css('margin-left', '0 auto');
+	$("#buffering_img").css('width', '120px').css('height', '120px').css('margin-top', '0%').css('margin-left', '0 auto').css('border-style','none');
 }
 
 function marketInfoLi_event(market_arr) { // market_arr는 market DB값
