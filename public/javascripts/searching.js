@@ -12,6 +12,7 @@ function TableSetting() {
 }
 
 function turningBack() {
+	$('span').css('color','black');
 	$('.go_slide').css('color','black');
 	$('.go_slide').eq(0).css('color','#63dded');
 	swiper2.destroy();

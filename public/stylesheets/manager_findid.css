@@ -187,3 +187,11 @@ input,button,textarea{
     margin-top: 3px;
     float: left;   
 }
+#searching_div2 >#find_manager_id_to_marketname::placeholder {  
+    color: #B6B7B7;
+      font-family: 'NanumSquare',sans-serif;
+ } 
+ #searching_div2 >#find_manager_id_to_password::placeholder {  
+    color: #B6B7B7;
+      font-family: 'NanumSquare',sans-serif;
+ } 
