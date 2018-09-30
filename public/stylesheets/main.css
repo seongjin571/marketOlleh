@@ -508,3 +508,9 @@ h3,h4{
     color: white;
     font-size: 14px;
 }
+
+#buffering_img {
+    width: 50%; 
+    margin-left: 42%; 
+    margin-top: 6%;
+}
