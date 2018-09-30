@@ -325,7 +325,7 @@ function navControl(event) {
 
 function setStyle_search_result() {
 
-//   $('#search_result').parent().css('display', 'flex');
+  $('#search_result').parent().css('display', 'block');
 //   $('#search_result').css('display', 'flex');
   $('#search_result').css('list-style', 'none');
 
