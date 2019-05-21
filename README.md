@@ -6,17 +6,17 @@
 주 기능은 앞서 말한 스탬프와 쿠폰 기능이며 상인은 등록한 스탬프와 쿠폰으로 마케팅 효과를 얻을 수 있고, 고객은 할인 혜택을 누릴 수 있다.
 그 외에 부가적 기능으로 리뷰, 좋아요, 공유, 내 주변 가맹점 탐색, 시장/상점 정보 검색 등의 서비스를 제공한다.  
 
-<center>## 개발 스택</center>
+## 개발 스택
 - HTML, CSS, Javascript, Jquery
 - Node.js
 - Cordova.js
 - MySql
 - 활용 데이터 : 서울시 열린 데이터 광장 '서울시 전통시장 현황 API' 
 
-## 고객
-<center><img src="public/images/client.jpg" width="65%" height="auto"></center><br/>
+## 고객 서비스
+<center><img src="public/images/client.jpg" width="100%" height="auto"></center><br/>
 
-## 상인
+## 상인 서비스
 <center><img src="public/images/host.jpg" width="65%" height="auto"></center><br/>
 
 ## 기대효과
