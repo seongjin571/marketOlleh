@@ -14,5 +14,5 @@
 - 활용 데이터 : 서울시 열린 데이터 광장 '서울시 전통시장 현황 API' 
 
 ## 고객
-![대체 텍스트(alternative text)를 입력하세요!](public/images/client.jpg "링크 설명(title)을 작성하세요."){: width="500px" height="auto"}
 
+![title](public/images/client.jpg){: width="300" height="auto"}
