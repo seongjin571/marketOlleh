@@ -11,13 +11,12 @@
 - Node.js
 - Cordova.js
 - MySql
-- 활용 데이터 : 서울시 열린 데이터 광장 '서울시 전통시장 현황 API' 
-
+- 활용 데이터 : 서울시 열린 데이터 광장 '서울시 전통시장 현황 API' <br/>
 ## 고객 서비스
-<img style="margin:20" src="public/images/client.jpg" width="75%" height="auto"><br/>
+<img style="margin : 10" src="public/images/client.jpg" width="70%" height="auto"><br/><br/><br/>
 
 ## 상인 서비스
-<center><img src="public/images/host.jpg" width="75%" height="auto"></center><br/>
+<br/><img src="public/images/host.jpg" width="70%" height="auto"><br/>
 
 ## 기대효과
 - 초기 회원가입만 하면 어플리케이션 없이 서비스를 이용할 수 있기 때문에 **어플리케이션을 다루기 어려운 상인**도 쉽게 서비스를 이용할 수 있다. 이 서비스를 통해 상인은 자유롭게 마케팅을 활용하여 상점을 홍보하고 소비자를 유입하는데 도움을 줄 수 있다.
