@@ -27,4 +27,4 @@
 - 해당 서비스는 누구나 무료로 간단하게 사용할 수 있는 쿠폰과 스탬프를 제공하는 만큼, 추후에 **시장 뿐 아니라 일반 소상인**도 서비스를 사용 할 수 있다. 해당 서비스를 사용하면 종이 스탬프를 만드는 데 사용되는 비용을 없애고 소비자에게 편의성을 제공할 수 있다.
 
 ## 관련 링크
-[서울시 앱 공모전-시장올래](https://mplatform.seoul.go.kr/w/contest/award/2018/wnpz/selectWinner.do)
+[서울시 앱 공모전-시장올래](https://www.seoulappcontest.org/web/info/winnerView.do?idx=99&year=2018&type=win)
