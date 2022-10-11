@@ -8,7 +8,7 @@
   "dependencies": {
     "body-parser": "~1.0.0",
     "cookie-parser": "~1.0.1",
-    "cordova": "^8.0.0",
+    "cordova": "^11.0.0",
     "debug": "~0.7.4",
     "ejs": "~0.8.5",
     "express": "~4.0.0",
@@ -21,7 +21,7 @@
     "passport-kakao": "0.0.5",
     "passport-local": "^1.0.0",
     "passport-naver": "^1.0.6",
-    "phonegap": "^8.0.0",
+    "phonegap": "^9.0.0",
     "static-favicon": "~1.0.0"
   }
 }
