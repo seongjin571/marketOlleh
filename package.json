@@ -21,7 +21,7 @@
     "passport-kakao": "0.0.5",
     "passport-local": "^1.0.0",
     "passport-naver": "^1.0.6",
-    "phonegap": "^8.0.0",
+    "phonegap": "^8.2.2",
     "static-favicon": "~1.0.0"
   }
 }
